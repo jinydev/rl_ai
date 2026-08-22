@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="100%" height="100%">
+  <!-- Background container -->
+  <rect width="800" height="250" rx="12" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Highlight boxes for Q -->
+  <!-- Left Q (Blue Box) -->
+  <rect x="133" y="102" width="34" height="46" rx="4" fill="#e3f2fd" stroke="#0077c2" stroke-width="1.5" />
+  
+  <!-- Middle Q (Yellow Box) -->
+  <rect x="228" y="102" width="34" height="46" rx="4" fill="#fffde7" stroke="#fbc02d" stroke-width="1.5" />
+
+  <!-- Right Q (Yellow Box) -->
+  <rect x="528" y="102" width="34" height="46" rx="4" fill="#fffde7" stroke="#fbc02d" stroke-width="1.5" />
+
+  <!-- Code Text: Q = Q + (reward - Q) / n -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="34" font-weight="bold" fill="#333333">
+    <!-- Q (left) -->
+    <text x="150" y="136" text-anchor="middle" fill="#0d47a1">Q</text>
+    <text x="190" y="136" text-anchor="middle">=</text>
+    <!-- Q (middle) -->
+    <text x="245" y="136" text-anchor="middle" fill="#f57f17">Q</text>
+    <text x="290" y="136" text-anchor="middle">+</text>
+    <text x="330" y="136" text-anchor="middle">(</text>
+    <text x="410" y="136" text-anchor="middle" font-family="'Inter', sans-serif" font-size="30">reward</text>
+    <text x="490" y="136" text-anchor="middle">-</text>
+    <!-- Q (right) -->
+    <text x="545" y="136" text-anchor="middle" fill="#f57f17">Q</text>
+    <text x="590" y="136" text-anchor="middle">)</text>
+    <text x="630" y="136" text-anchor="middle">/</text>
+    <text x="670" y="136" text-anchor="middle">n</text>
+  </g>
+
+  <!-- Connecting Lines (Dashed) -->
+  <!-- Left Q -> New Estimate -->
+  <line x1="150" y1="154" x2="110" y2="190" stroke="#0077c2" stroke-width="1.5" stroke-dasharray="3 3" />
+  
+  <!-- Middle Q -> Previous Estimate -->
+  <line x1="245" y1="96" x2="350" y2="55" stroke="#f57f17" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <!-- Right Q -> Previous Estimate -->
+  <line x1="545" y1="96" x2="450" y2="55" stroke="#f57f17" stroke-width="1.5" stroke-dasharray="3 3" />
+
+  <!-- Labels (Korean) -->
+  <g font-family="'Noto Sans KR', sans-serif" font-size="14">
+    <!-- New Estimate (Blue) -->
+    <text x="110" y="215" text-anchor="middle" font-weight="bold" fill="#0d47a1">새로운 추정치</text>
+    <text x="110" y="232" text-anchor="middle" fill="#0d47a1">(Q_n에 해당)</text>
+
+    <!-- Previous Estimate (Orange) -->
+    <text x="400" y="32" text-anchor="middle" font-weight="bold" fill="#f57f17">1회 전의 추정치</text>
+    <text x="400" y="49" text-anchor="middle" fill="#f57f17">(Q_n-1에 해당)</text>
+  </g>
+</svg>

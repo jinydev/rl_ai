@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Level 0: State L1 -->
+  <circle cx="250" cy="40" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+  <text x="250" y="44" font-family="sans-serif" font-size="13" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+
+  <!-- Branches to Action Nodes -->
+  <!-- Left Action (Left) -->
+  <line x1="235" y1="52" x2="165" y2="100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="155" cy="110" r="6" fill="#2d3748"/>
+  <text x="170" y="114" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748">Left</text>
+
+  <!-- Right Action (Right) -->
+  <line x1="265" y1="52" x2="335" y2="100" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="345" cy="110" r="6" fill="#2d3748"/>
+  <text x="360" y="114" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748">Right</text>
+
+  <!-- Level 2 State Nodes -->
+  <!-- Left Action -> L1 -->
+  <line x1="155" y1="116" x2="155" y2="182" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="140" y="155" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="end">-1</text>
+  <circle cx="155" cy="200" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+  <text x="155" y="204" font-family="sans-serif" font-size="13" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+
+  <!-- Right Action -> L2 -->
+  <line x1="345" y1="116" x2="345" y2="182" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="330" y="155" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="end">+1</text>
+  <circle cx="345" cy="200" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+  <text x="345" y="204" font-family="sans-serif" font-size="13" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+
+  <!-- Level 3 Action Nodes -->
+  <!-- L1 (Left) -> Left dot -->
+  <line x1="140" y1="210" x2="105" y2="250" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="95" cy="260" r="6" fill="#2d3748"/>
+  <text x="110" y="264" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Left</text>
+
+  <!-- L1 (Left) -> Right dot -->
+  <line x1="170" y1="210" x2="205" y2="250" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="215" cy="260" r="6" fill="#2d3748"/>
+  <text x="230" y="264" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+  <!-- L2 (Right) -> Left dot -->
+  <line x1="330" y1="210" x2="295" y2="250" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="285" cy="260" r="6" fill="#2d3748"/>
+  <text x="300" y="264" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Left</text>
+
+  <!-- L2 (Right) -> Right dot -->
+  <line x1="360" y1="210" x2="395" y2="250" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <circle cx="405" cy="260" r="6" fill="#2d3748"/>
+  <text x="420" y="264" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+  <!-- Level 4 State Nodes -->
+  <!-- L1 Left -> L1 -->
+  <line x1="95" y1="266" x2="95" y2="304" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="85" y="290" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="end">-1</text>
+  <circle cx="95" cy="320" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+  <text x="95" y="324" font-family="sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+
+  <!-- L1 Right -> L2 -->
+  <line x1="215" y1="266" x2="215" y2="304" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="205" y="290" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="end">+1</text>
+  <circle cx="215" cy="320" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+  <text x="215" y="324" font-family="sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+
+  <!-- L2 Left -> L1 -->
+  <line x1="285" y1="266" x2="285" y2="304" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="275" y="290" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="end">0</text>
+  <circle cx="285" cy="320" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+  <text x="285" y="324" font-family="sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+
+  <!-- L2 Right -> L2 -->
+  <line x1="405" y1="266" x2="405" y2="304" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="395" y="290" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="end">-1</text>
+  <circle cx="405" cy="320" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+  <text x="405" y="324" font-family="sans-serif" font-size="10" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+
+  <!-- Level 5: Dashed dots at bottom -->
+  <line x1="85" y1="334" x2="75" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="105" y1="334" x2="115" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <line x1="205" y1="334" x2="195" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="225" y1="334" x2="235" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <line x1="275" y1="334" x2="265" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="295" y1="334" x2="305" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <line x1="395" y1="334" x2="385" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="415" y1="334" x2="425" y2="348" stroke="#718096" stroke-width="1" stroke-dasharray="2,2"/>
+</svg>

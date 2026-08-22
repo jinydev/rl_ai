@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 380" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 40 22 C 26 15, 12 30, 20 50 C 24 64, 34 68, 40 64 C 46 68, 56 64, 60 50 C 68 30, 54 15, 40 22 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 40 22 Q 45 10 56 14" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 45 17 Q 55 12 56 22 C 52 24, 48 22, 45 17 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent80">
+      <rect x="20" y="22" width="40" height="36" rx="14" ry="14" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="32" cy="34" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="48" cy="34" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="30" cy="34" r="3" fill="#2d3748"/>
+      <circle cx="46" cy="34" r="3" fill="#2d3748"/>
+      <path d="M 36 45 Q 40 49 44 45" fill="none" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 37 46 Q 40 52 43 46 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 24 58 C 24 56, 32 56, 32 58 C 32 60, 30 62, 27 62 C 22 62, 24 58, 24 58 Z" fill="#2d3748"/>
+      <path d="M 48 58 C 48 56, 56 56, 56 58 C 56 60, 54 62, 51 62 C 46 62, 48 58, 48 58 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Bomb Icon -->
+    <g id="bomb">
+      <circle cx="40" cy="45" r="20" fill="#2d3748" stroke="#1a202c" stroke-width="2.5"/>
+      <path d="M 50 29 Q 58 18 62 20" fill="none" stroke="#a0aec0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 62 20 L 66 16 L 62 12 L 59 16 Z" fill="#f59e0b"/>
+      <path d="M 58 12 L 64 6 M 70 14 L 76 12 M 64 22 L 70 26" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Cyan Arrow Marker -->
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#00bfff"/>
+    </marker>
+    <!-- Blue Arrow Marker -->
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#0284c7"/>
+    </marker>
+    <!-- Orange Arrow Marker -->
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ea580c"/>
+    </marker>
+    <!-- Small Arrow Marker for policy arrows -->
+    <marker id="small-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <g font-family="Cambria Math, Georgia, serif" font-size="24" fill="#2d3748">
+    <!-- Row 0: pi_0 -> V_0 -->
+    <text x="30" y="48">π<tspan dy="6" font-size="16">0</tspan></text>
+    <line x1="80" y1="38" x2="235" y2="38" stroke="#0284c7" stroke-width="2" marker-end="url(#blue-arrow)"/>
+    <text x="160" y="28" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle">평가</text>
+    <text x="255" y="48">V<tspan dy="6" font-size="16">0</tspan></text>
+
+    <!-- Diagonal: V_0 -> mu_1 -->
+    <line x1="240" y1="58" x2="95" y2="114" stroke="#ea580c" stroke-width="2" marker-end="url(#orange-arrow)"/>
+    <text x="160" y="80" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ea580c" text-anchor="middle">탐욕화</text>
+
+    <!-- Row 1: mu_1 -> V_1 -->
+    <text x="30" y="128">μ<tspan dy="6" font-size="16">1</tspan></text>
+    <line x1="80" y1="118" x2="235" y2="118" stroke="#0284c7" stroke-width="2" marker-end="url(#blue-arrow)"/>
+    <text x="160" y="108" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle">평가</text>
+    <text x="255" y="128">V<tspan dy="6" font-size="16">1</tspan></text>
+
+    <!-- Diagonal: V_1 -> mu_2 -->
+    <line x1="240" y1="138" x2="95" y2="194" stroke="#ea580c" stroke-width="2" marker-end="url(#orange-arrow)"/>
+    <text x="160" y="160" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ea580c" text-anchor="middle">탐욕화</text>
+
+    <!-- Row 2: mu_2 -> V_2 -->
+    <text x="30" y="208">μ<tspan dy="6" font-size="16">2</tspan></text>
+    <line x1="80" y1="198" x2="235" y2="198" stroke="#0284c7" stroke-width="2" marker-end="url(#blue-arrow)"/>
+    <text x="160" y="188" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle">평가</text>
+    <text x="255" y="208">V<tspan dy="6" font-size="16">2</tspan></text>
+
+    <!-- Vertical Dots -->
+    <circle cx="160" cy="235" r="2.5" fill="#2d3748"/>
+    <circle cx="160" cy="250" r="2.5" fill="#2d3748"/>
+    <circle cx="160" cy="265" r="2.5" fill="#2d3748"/>
+
+    <!-- Diagonal: V_k -> mu_* -->
+    <line x1="240" y1="280" x2="95" y2="336" stroke="#ea580c" stroke-width="2" marker-end="url(#orange-arrow)"/>
+    <text x="160" y="302" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ea580c" text-anchor="middle">탐욕화</text>
+
+    <!-- Row 3: mu_* -> V_* -->
+    <text x="30" y="350">μ<tspan dy="6" font-size="16">*</tspan></text>
+    <line x1="80" y1="340" x2="235" y2="340" stroke="#0284c7" stroke-width="2" marker-end="url(#blue-arrow)"/>
+    <text x="160" y="360" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle">평가</text>
+    <text x="255" y="350">V<tspan dy="6" font-size="16">*</tspan></text>
+  </g>
+</svg>

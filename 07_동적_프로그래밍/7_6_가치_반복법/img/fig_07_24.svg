@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 320" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Cyan Arrow Marker -->
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#00bfff"/>
+    </marker>
+    <!-- Orange Arrow Marker -->
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ea580c"/>
+    </marker>
+  </defs>
+  <!-- Left Grid: 처음 -->
+  <g transform="translate(10, 10)">
+    <!-- Grid -->
+    <rect x="80" y="80" width="80" height="80" fill="#2d3748"/>
+    <rect x="0" y="0" width="320" height="240" fill="none" stroke="#2d3748" stroke-width="2"/>
+    <line x1="80" y1="0" x2="80" y2="240" stroke="#cbd5e0" stroke-width="1.2"/>
+    <line x1="160" y1="0" x2="160" y2="240" stroke="#cbd5e0" stroke-width="1.2"/>
+    <line x1="240" y1="0" x2="240" y2="240" stroke="#cbd5e0" stroke-width="1.2"/>
+    
+    <line x1="0" y1="80" x2="320" y2="80" stroke="#cbd5e0" stroke-width="1.2"/>
+    <line x1="0" y1="160" x2="320" y2="160" stroke="#cbd5e0" stroke-width="1.2"/>
+
+    <!-- Grid values text -->
+    <g font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="end">
+      <text x="74" y="18">0.00</text>
+      <text x="154" y="18">0.00</text>
+      <text x="234" y="18">0.00</text>
+      <text x="314" y="18">0.00</text>
+      <text x="74" y="98">0.00</text>
+      <text x="234" y="98">0.00</text>
+      <text x="314" y="98">0.00</text>
+      <text x="74" y="178">0.00</text>
+      <text x="154" y="178">0.00</text>
+      <text x="234" y="178">0.00</text>
+      <text x="314" y="178">0.00</text>
+    </g>
+
+    <!-- Goal and Bomb texts -->
+    <text x="280" y="45" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">R 1.0 (GOAL)</text>
+    <text x="280" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">R -1.0</text>
+
+    <text x="160" y="275" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2d3748" text-anchor="middle">처음</text>
+  </g>
+
+  <!-- Big Transition Arrow -->
+  <line x1="345" y1="130" x2="385" y2="130" stroke="#2d3748" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <!-- Right Grid: 마지막(세 번째 갱신) -->
+  <g transform="translate(400, 10)">
+    <!-- Heatmap cells -->
+    <!-- Row 0 -->
+    <rect x="0" y="0" width="80" height="80" fill="#15803d" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="0" width="80" height="80" fill="#166534" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="0" width="80" height="80" fill="#14532d" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <!-- Row 1 -->
+    <rect x="0" y="80" width="80" height="80" fill="#16a34a" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="80" width="80" height="80" fill="#2d3748" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="80" width="80" height="80" fill="#166534" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="80" width="80" height="80" fill="#14532d" stroke="#cbd5e0" stroke-width="1"/>
+    <!-- Row 2 -->
+    <rect x="0" y="160" width="80" height="80" fill="#22c55e" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="160" width="80" height="80" fill="#16a34a" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="160" width="80" height="80" fill="#15803d" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="160" width="80" height="80" fill="#166534" stroke="#cbd5e0" stroke-width="1"/>
+
+    <!-- Outer Border -->
+    <rect x="0" y="0" width="320" height="240" fill="none" stroke="#2d3748" stroke-width="2"/>
+
+    <!-- Grid values text -->
+    <g font-family="sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="end">
+      <text x="74" y="18">0.81</text>
+      <text x="154" y="18">0.90</text>
+      <text x="234" y="18">1.00</text>
+      <text x="314" y="18" fill="#2d3748">0.00</text>
+      <text x="74" y="98">0.73</text>
+      <text x="234" y="98">0.90</text>
+      <text x="314" y="98">1.00</text>
+      <text x="74" y="178">0.66</text>
+      <text x="154" y="178">0.73</text>
+      <text x="234" y="178">0.81</text>
+      <text x="314" y="178">0.73</text>
+    </g>
+
+    <!-- Goal and Bomb texts -->
+    <text x="280" y="45" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">R 1.0 (GOAL)</text>
+    <text x="280" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">R -1.0</text>
+
+    <text x="160" y="275" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2d3748" text-anchor="middle">마지막(세 번째 갱신)</text>
+  </g>
+</svg>

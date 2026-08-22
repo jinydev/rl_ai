@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 250" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    
+    <!-- White Die (1) -->
+    <g id="die1">
+      <rect x="0" y="0" width="30" height="30" rx="5" ry="5" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+      <circle cx="15" cy="15" r="3.5" fill="#ef4444"/> <!-- Red dot for 1 -->
+    </g>
+
+    <!-- White Die (3) -->
+    <g id="die3">
+      <rect x="0" y="0" width="30" height="30" rx="5" ry="5" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+      <circle cx="7" cy="7" r="2.5" fill="#2d3748"/>
+      <circle cx="15" cy="15" r="2.5" fill="#2d3748"/>
+      <circle cx="23" cy="23" r="2.5" fill="#2d3748"/>
+    </g>
+
+    <!-- White Die (5) -->
+    <g id="die5">
+      <rect x="0" y="0" width="30" height="30" rx="5" ry="5" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+      <circle cx="7" cy="7" r="2.5" fill="#2d3748"/>
+      <circle cx="23" cy="7" r="2.5" fill="#2d3748"/>
+      <circle cx="15" cy="15" r="2.5" fill="#2d3748"/>
+      <circle cx="7" cy="23" r="2.5" fill="#2d3748"/>
+      <circle cx="23" cy="23" r="2.5" fill="#2d3748"/>
+    </g>
+    
+    <!-- Cartoon Agent Icon -->
+    <g id="mini-agent">
+      <rect x="0" y="0" width="28" height="24" rx="8" ry="8" fill="#a0ecff" stroke="#2d3748" stroke-width="1.8"/>
+      <circle cx="8" cy="8" r="4.5" fill="#ffffff" stroke="#2d3748" stroke-width="1"/>
+      <circle cx="20" cy="8" r="4.5" fill="#ffffff" stroke="#2d3748" stroke-width="1"/>
+      <circle cx="7" cy="8" r="2" fill="#2d3748"/>
+      <circle cx="19" cy="8" r="2" fill="#2d3748"/>
+      <path d="M 11 16 Q 14 19 17 16" fill="none" stroke="#2d3748" stroke-width="1.8" stroke-linecap="round"/>
+      <path d="M 4 24 C 4 23, 8 23, 8 24 C 8 25, 7 26, 5 26 C 2 26, 4 24, 4 24 Z" fill="#2d3748"/>
+      <path d="M 20 24 C 20 23, 24 23, 24 24 C 24 25, 23 26, 21 26 C 18 26, 20 24, 20 24 Z" fill="#2d3748"/>
+    </g>
+  </defs>
+  <!-- Top dice -->
+  <use href="#die1" x="340" y="10"/>
+  <use href="#die3" x="380" y="10"/>
+
+  <!-- Level 1 Branching -->
+  <g stroke="#1e293b" stroke-width="1.2" fill="none">
+    <path d="M 370 45 C 370 80, 75 75, 75 100" marker-end="url(#arrow)"/>
+    <path d="M 370 45 C 370 80, 195 75, 195 100" marker-end="url(#arrow)"/>
+    <path d="M 370 45 C 370 80, 315 75, 315 100" marker-end="url(#arrow)"/>
+    <path d="M 370 45 C 370 80, 435 75, 435 100" marker-end="url(#arrow)"/>
+    <path d="M 370 45 C 370 80, 555 75, 555 100" marker-end="url(#arrow)"/>
+    <path d="M 370 45 C 370 80, 675 75, 675 100" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Level 1 Labels -->
+  <g font-family="sans-serif" font-size="16" font-weight="bold" fill="#2d3748" text-anchor="middle">
+    <text x="75" y="120">1</text>
+    <text x="195" y="120">2</text>
+    <text x="315" y="120">3</text>
+    <text x="435" y="120">4</text>
+    <text x="555" y="120">5</text>
+    <text x="675" y="120">6</text>
+  </g>
+
+  <!-- Level 2 Branching -->
+  <g stroke="#475569" stroke-width="0.8" fill="none">
+    <!-- Branch 1 -->
+    <path d="M 75 125 C 75 150, 45 150, 45 180" marker-end="url(#arrow)"/>
+    <path d="M 75 125 C 75 150, 57 150, 57 180" marker-end="url(#arrow)"/>
+    <path d="M 75 125 C 75 150, 69 150, 69 180" marker-end="url(#arrow)"/>
+    <path d="M 75 125 C 75 150, 81 150, 81 180" marker-end="url(#arrow)"/>
+    <path d="M 75 125 C 75 150, 93 150, 93 180" marker-end="url(#arrow)"/>
+    <path d="M 75 125 C 75 150, 105 150, 105 180" marker-end="url(#arrow)"/>
+
+    <!-- Branch 2 -->
+    <path d="M 195 125 C 195 150, 165 150, 165 180" marker-end="url(#arrow)"/>
+    <path d="M 195 125 C 195 150, 177 150, 177 180" marker-end="url(#arrow)"/>
+    <path d="M 195 125 C 195 150, 189 150, 189 180" marker-end="url(#arrow)"/>
+    <path d="M 195 125 C 195 150, 201 150, 201 180" marker-end="url(#arrow)"/>
+    <path d="M 195 125 C 195 150, 213 150, 213 180" marker-end="url(#arrow)"/>
+    <path d="M 195 125 C 195 150, 225 150, 225 180" marker-end="url(#arrow)"/>
+
+    <!-- Branch 3 -->
+    <path d="M 315 125 C 315 150, 285 150, 285 180" marker-end="url(#arrow)"/>
+    <path d="M 315 125 C 315 150, 297 150, 297 180" marker-end="url(#arrow)"/>
+    <path d="M 315 125 C 315 150, 309 150, 309 180" marker-end="url(#arrow)"/>
+    <path d="M 315 125 C 315 150, 321 150, 321 180" marker-end="url(#arrow)"/>
+    <path d="M 315 125 C 315 150, 333 150, 333 180" marker-end="url(#arrow)"/>
+    <path d="M 315 125 C 315 150, 345 150, 345 180" marker-end="url(#arrow)"/>
+
+    <!-- Branch 4 -->
+    <path d="M 435 125 C 435 150, 405 150, 405 180" marker-end="url(#arrow)"/>
+    <path d="M 435 125 C 435 150, 417 150, 417 180" marker-end="url(#arrow)"/>
+    <path d="M 435 125 C 435 150, 429 150, 429 180" marker-end="url(#arrow)"/>
+    <path d="M 435 125 C 435 150, 441 150, 441 180" marker-end="url(#arrow)"/>
+    <path d="M 435 125 C 435 150, 453 150, 453 180" marker-end="url(#arrow)"/>
+    <path d="M 435 125 C 435 150, 465 150, 465 180" marker-end="url(#arrow)"/>
+
+    <!-- Branch 5 -->
+    <path d="M 555 125 C 555 150, 525 150, 525 180" marker-end="url(#arrow)"/>
+    <path d="M 555 125 C 555 150, 537 150, 537 180" marker-end="url(#arrow)"/>
+    <path d="M 555 125 C 555 150, 549 150, 549 180" marker-end="url(#arrow)"/>
+    <path d="M 555 125 C 555 150, 561 150, 561 180" marker-end="url(#arrow)"/>
+    <path d="M 555 125 C 555 150, 573 150, 573 180" marker-end="url(#arrow)"/>
+    <path d="M 555 125 C 555 150, 585 150, 585 180" marker-end="url(#arrow)"/>
+
+    <!-- Branch 6 -->
+    <path d="M 675 125 C 675 150, 645 150, 645 180" marker-end="url(#arrow)"/>
+    <path d="M 675 125 C 675 150, 657 150, 657 180" marker-end="url(#arrow)"/>
+    <path d="M 675 125 C 675 150, 669 150, 669 180" marker-end="url(#arrow)"/>
+    <path d="M 675 125 C 675 150, 681 150, 681 180" marker-end="url(#arrow)"/>
+    <path d="M 675 125 C 675 150, 693 150, 693 180" marker-end="url(#arrow)"/>
+    <path d="M 675 125 C 675 150, 705 150, 705 180" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Level 2 Labels -->
+  <g font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">
+    <!-- Sub 1 -->
+    <text x="45" y="200">2</text><text x="57" y="200">3</text><text x="69" y="200">4</text><text x="81" y="200">5</text><text x="93" y="200">6</text><text x="105" y="200">7</text>
+    <!-- Sub 2 -->
+    <text x="165" y="200">3</text><text x="177" y="200">4</text><text x="189" y="200">5</text><text x="201" y="200">6</text><text x="213" y="200">7</text><text x="225" y="200">8</text>
+    <!-- Sub 3 -->
+    <text x="285" y="200">4</text><text x="297" y="200">5</text><text x="309" y="200">6</text><text x="321" y="200">7</text><text x="333" y="200">8</text><text x="345" y="200">9</text>
+    <!-- Sub 4 -->
+    <text x="405" y="200">5</text><text x="417" y="200">6</text><text x="429" y="200">7</text><text x="441" y="200">8</text><text x="453" y="200">9</text><text x="465" y="200">10</text>
+    <!-- Sub 5 -->
+    <text x="525" y="200">6</text><text x="537" y="200">7</text><text x="549" y="200">8</text><text x="561" y="200">9</text><text x="573" y="200">10</text><text x="585" y="200">11</text>
+    <!-- Sub 6 -->
+    <text x="645" y="200">7</text><text x="657" y="200">8</text><text x="669" y="200">9</text><text x="681" y="200">10</text><text x="693" y="200">11</text><text x="705" y="200">12</text>
+  </g>
+</svg>

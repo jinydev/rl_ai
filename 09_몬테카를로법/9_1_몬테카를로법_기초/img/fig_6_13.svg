@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 710 300" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 40 22 C 26 15, 12 30, 20 50 C 24 64, 34 68, 40 64 C 46 68, 56 64, 60 50 C 68 30, 54 15, 40 22 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 40 22 Q 45 10 56 14" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 45 17 Q 55 12 56 22 C 52 24, 48 22, 45 17 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    <!-- Bomb Icon -->
+    <g id="bomb">
+      <circle cx="40" cy="45" r="20" fill="#2d3748" stroke="#1a202c" stroke-width="2.5"/>
+      <path d="M 50 29 Q 58 18 62 20" fill="none" stroke="#a0aec0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 62 20 L 66 16 L 62 12 L 59 16 Z" fill="#f59e0b"/>
+      <path d="M 58 12 L 64 6 M 70 14 L 76 12 M 64 22 L 70 26" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+    </g>
+    <!-- Mini Agent (for grid cell) -->
+    <g id="mini-agent-grid">
+      <rect x="5" y="10" width="30" height="26" rx="9" ry="9" fill="#a0ecff" stroke="#2d3748" stroke-width="1.8"/>
+      <circle cx="13" cy="18" r="4.5" fill="#ffffff" stroke="#2d3748" stroke-width="1"/>
+      <circle cx="27" cy="18" r="4.5" fill="#ffffff" stroke="#2d3748" stroke-width="1"/>
+      <circle cx="12" cy="18" r="2" fill="#2d3748"/>
+      <circle cx="26" cy="18" r="2" fill="#2d3748"/>
+      <path d="M 17 26 Q 20 29 23 26" fill="none" stroke="#2d3748" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 18 27 Q 20 31 22 27 Z" fill="#ff7070" stroke="#2d3748" stroke-width="0.8"/>
+      <path d="M 8 36 C 8 35, 14 35, 14 36 C 14 37, 12 38, 10 38 C 7 38, 8 36, 8 36 Z" fill="#2d3748"/>
+      <path d="M 26 36 C 26 35, 32 35, 32 36 C 32 37, 30 38, 28 38 C 25 38, 26 36, 26 36 Z" fill="#2d3748"/>
+    </g>
+  </defs>
+  <!-- Left Side: MC -->
+  <g transform="translate(10, 20)">
+    <text x="160" y="-10" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">〈몬테카를로법〉</text>
+    
+    <rect x="0" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="0" width="80" height="80" fill="#c6f6d5" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="0" y="80" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="80" width="80" height="80" fill="#2d3748" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="80" width="80" height="80" fill="#ffa1a1" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="80" width="80" height="80" fill="#ffc8c8" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="0" y="160" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="160" width="80" height="80" fill="#ffe5e5" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="160" width="80" height="80" fill="#ffa1a1" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="160" width="80" height="80" fill="#ff3b3b" stroke="#cbd5e0" stroke-width="1"/>
+    
+    <rect x="0" y="0" width="320" height="240" fill="none" stroke="#2d3748" stroke-width="2"/>
+
+    <g font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="end">
+      <text x="74" y="18">0.02</text>
+      <text x="154" y="18">0.08</text>
+      <text x="234" y="18">0.21</text>
+      <text x="314" y="18">0.00</text>
+      <text x="74" y="98">-0.03</text>
+      <text x="234" y="98">-0.44</text>
+      <text x="314" y="98">-0.39</text>
+      <text x="74" y="178">-0.09</text>
+      <text x="154" y="178">-0.19</text>
+      <text x="234" y="178">-0.40</text>
+      <text x="314" y="178" fill="#ffffff">-0.76</text>
+    </g>
+
+    <text x="280" y="45" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">R 1.0 (GOAL)</text>
+    <text x="280" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">R -1.0</text>
+  </g>
+
+  <!-- Right Side: DP -->
+  <g transform="translate(380, 20)">
+    <text x="160" y="-10" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">〈동적 프로그래밍〉</text>
+
+    <rect x="0" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="0" width="80" height="80" fill="#e6fffa" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="0" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="0" y="80" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="80" width="80" height="80" fill="#2d3748" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="80" width="80" height="80" fill="#ffa3a3" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="80" width="80" height="80" fill="#ffc8c8" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="0" y="160" width="80" height="80" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="80" y="160" width="80" height="80" fill="#fff5f5" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="160" y="160" width="80" height="80" fill="#ff8b8b" stroke="#cbd5e0" stroke-width="1"/>
+    <rect x="240" y="160" width="80" height="80" fill="#ff3b3b" stroke="#cbd5e0" stroke-width="1"/>
+    
+    <rect x="0" y="0" width="320" height="240" fill="none" stroke="#2d3748" stroke-width="2"/>
+
+    <g font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="end">
+      <text x="74" y="18">0.03</text>
+      <text x="154" y="18">0.10</text>
+      <text x="234" y="18">0.21</text>
+      <text x="314" y="18">0.00</text>
+      <text x="74" y="98">-0.03</text>
+      <text x="234" y="98">-0.50</text>
+      <text x="314" y="98">-0.37</text>
+      <text x="74" y="178">-0.10</text>
+      <text x="154" y="178">-0.22</text>
+      <text x="234" y="178">-0.43</text>
+      <text x="314" y="178" fill="#ffffff">-0.78</text>
+    </g>
+
+    <text x="280" y="45" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">R 1.0 (GOAL)</text>
+    <text x="280" y="125" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">R -1.0</text>
+  </g>
+</svg>

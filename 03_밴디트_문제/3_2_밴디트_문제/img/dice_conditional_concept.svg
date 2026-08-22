@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .dice-bg { fill: #ffffff; stroke: #202124; stroke-width: 2; rx: 6px; }
+      .dice-dot { fill: #ea4335; }
+      .dice-dot-black { fill: #202124; }
+      .funnel-line { stroke: #ea4335; stroke-dasharray: 4; stroke-width: 2; fill: none; }
+      .text-title { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .text-body { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; fill: #3c4043; text-anchor: middle; }
+      .text-math { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: bold; fill: #202124; text-anchor: middle; }
+      .box { stroke-width: 1.5; rx: 12px; }
+      .box-all { fill: #f8f9fa; stroke: #dadce0; }
+      .box-filtered { fill: #e8f0fe; stroke: #1a73e8; }
+      .funnel-arrow { stroke: #ea4335; stroke-width: 3; fill: none; }
+      .marker { fill: #ea4335; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Left: All Dice Faces (1 to 6) -->
+  <rect x="30" y="40" width="310" height="170" class="box box-all" />
+  <text x="185" y="65" class="text-title">원래 주사위 세상 (6가지 가능성)</text>
+  
+  <!-- Dice 1 -->
+  <g transform="translate(50, 85)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="20" cy="20" r="5" class="dice-dot" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#5f6368" font-weight="bold">1</text>
+  </g>
+  <!-- Dice 2 -->
+  <g transform="translate(100, 85)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#1e8e3e" font-weight="bold">2 (짝)</text>
+  </g>
+  <!-- Dice 3 -->
+  <g transform="translate(150, 85)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="20" cy="20" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#5f6368" font-weight="bold">3</text>
+  </g>
+  <!-- Dice 4 -->
+  <g transform="translate(200, 85)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="10" cy="30" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#1e8e3e" font-weight="bold">4 (짝)</text>
+  </g>
+  <!-- Dice 5 -->
+  <g transform="translate(250, 85)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="10" cy="30" r="4" class="dice-dot-black" />
+    <circle cx="20" cy="20" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#5f6368" font-weight="bold">5</text>
+  </g>
+  <!-- Dice 6 -->
+  <g transform="translate(150, 150)">
+    <rect width="40" height="40" class="dice-bg" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="10" cy="20" r="4" class="dice-dot-black" />
+    <circle cx="10" cy="30" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="20" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#1e8e3e" font-weight="bold">6 (짝)</text>
+  </g>
+
+  <!-- Middle Filter Flow -->
+  <path d="M 340 120 L 450 120" class="funnel-arrow" marker-end="url(#arrowhead)" />
+  <rect x="350" y="70" width="90" height="36" rx="4" fill="#ea4335" />
+  <text x="395" y="87" class="text-title" fill="#ffffff" font-size="11">조건: 짝수가 나옴</text>
+  <text x="395" y="100" class="text-body" fill="#ffffff" font-size="8">(홀수 1,3,5 필터링)</text>
+
+  <!-- Right: Filtered Dice Faces (2, 4, 6) -->
+  <rect x="460" y="40" width="310" height="170" class="box box-filtered" />
+  <text x="615" y="65" class="text-title" fill="#1a73e8">조건부 세상 (짝수 3가지 가능성)</text>
+
+  <!-- Dice 2 -->
+  <g transform="translate(490, 85)">
+    <rect width="40" height="40" class="dice-bg" stroke="#1a73e8" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#5f6368" font-weight="bold">2</text>
+  </g>
+  <!-- Dice 4 -->
+  <g transform="translate(560, 85)">
+    <rect width="40" height="40" class="dice-bg" stroke="#1a73e8" />
+    <circle cx="10" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="10" cy="30" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="10" r="4" class="dice-dot-black" />
+    <circle cx="30" cy="30" r="4" class="dice-dot-black" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#5f6368" font-weight="bold">4</text>
+  </g>
+  <!-- Dice 6 (Target Highlighted) -->
+  <g transform="translate(630, 85)">
+    <rect width="40" height="40" class="dice-bg" stroke="#ea4335" stroke-width="2.5" fill="#fce8e6" />
+    <circle cx="10" cy="10" r="4" class="dice-dot" />
+    <circle cx="10" cy="20" r="4" class="dice-dot" />
+    <circle cx="10" cy="30" r="4" class="dice-dot" />
+    <circle cx="30" cy="10" r="4" class="dice-dot" />
+    <circle cx="30" cy="20" r="4" class="dice-dot" />
+    <circle cx="30" cy="30" r="4" class="dice-dot" />
+    <text x="20" y="38" class="text-body" font-size="9" fill="#ea4335" font-weight="bold">6 (목표)</text>
+  </g>
+
+  <!-- Math Summary Box on bottom right -->
+  <rect x="490" y="150" width="250" height="45" rx="6" fill="#ffffff" stroke="#dadce0" stroke-width="1" />
+  <text x="615" y="177" class="text-math" fill="#ea4335">P( 6 | 짝수 ) = 1/3 (약 33.3%)</text>
+</svg>

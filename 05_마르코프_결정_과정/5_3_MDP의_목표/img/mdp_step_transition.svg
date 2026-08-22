@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#4b5563"/>
+    </marker>
+    <!-- Glow/Shadow filter for a premium look -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none"/>
+
+  <!-- 1. State S_t Node -->
+  <g transform="translate(90, 125)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="32" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0369a1" text-anchor="middle">S<tspan font-size="12" dy="4">t</tspan></text>
+  </g>
+  <text x="90" y="182" font-family="sans-serif" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">현재 상태 (t)</text>
+
+  <!-- 2. Agent (Policy pi) Node -->
+  <g transform="translate(200, 20)" filter="url(#shadow)">
+    <rect x="0" y="0" width="130" height="56" rx="10" fill="#eff6ff" stroke="#3b82f6" stroke-width="2.5"/>
+    <text x="65" y="24" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1e40af" text-anchor="middle">에이전트 (정책 π)</text>
+    <text x="65" y="42" font-family="sans-serif" font-size="11" fill="#2563eb" text-anchor="middle">행동 A<tspan font-size="9" dy="2">t</tspan><tspan dy="-2"> 선택</tspan></text>
+  </g>
+
+  <!-- 3. Environment Node -->
+  <g transform="translate(390, 95)" filter="url(#shadow)">
+    <rect x="0" y="0" width="130" height="60" rx="10" fill="#f0fdf4" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="65" y="26" font-family="sans-serif" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">환경 (Environment)</text>
+    <text x="65" y="44" font-family="sans-serif" font-size="11" fill="#16a34a" text-anchor="middle">상태 전이 &amp; 보상 계산</text>
+  </g>
+
+  <!-- 4. Next State S_t+1 Node -->
+  <g transform="translate(590, 85)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="32" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0369a1" text-anchor="middle">S<tspan font-size="12" dy="4">t+1</tspan></text>
+  </g>
+  <text x="590" y="140" font-family="sans-serif" font-size="13" font-weight="bold" fill="#334155" text-anchor="middle">다음 상태 (t+1)</text>
+
+  <!-- 5. Reward R_t Node -->
+  <g transform="translate(540, 160)" filter="url(#shadow)">
+    <rect x="0" y="0" width="100" height="40" rx="20" fill="#fef3c7" stroke="#d97706" stroke-width="2.5"/>
+    <text x="50" y="25" font-family="sans-serif" font-size="16" font-weight="bold" fill="#92400e" text-anchor="middle">R<tspan font-size="11" dy="3">t</tspan></text>
+  </g>
+  <text x="590" y="222" font-family="sans-serif" font-size="13" font-weight="bold" fill="#b45309" text-anchor="middle">보상 획득</text>
+
+  <!-- Connections / Arrows -->
+  <!-- State S_t -> Agent (Observation) -->
+  <path d="M 115 105 C 135 85, 160 48, 195 48" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="148" y="70" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">상태 관측 (S_t)</text>
+
+  <!-- State S_t -> Environment (Current State for Transition) -->
+  <path d="M 122 125 L 382 125" fill="none" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="250" y="118" font-family="sans-serif" font-size="11" fill="#475569" text-anchor="middle">상태 전이 입력</text>
+
+  <!-- Agent -> Environment (Action input) -->
+  <path d="M 330 48 C 365 48, 455 58, 455 90" fill="none" stroke="#d97706" stroke-width="2" stroke-dasharray="3,2" marker-end="url(#arrow)"/>
+  <text x="410" y="42" font-family="sans-serif" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">행동 수행 (A_t)</text>
+
+  <!-- Environment -> Next State S_t+1 -->
+  <path d="M 520 115 C 535 115, 542 85, 555 85" fill="none" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Environment -> Reward R_t -->
+  <path d="M 520 135 C 535 135, 532 180, 537 180" fill="none" stroke="#db2777" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>

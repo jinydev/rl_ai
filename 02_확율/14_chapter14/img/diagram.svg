@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #4a5568; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 14px; font-style: italic; fill: #1a202c; }
+    .math-bold { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 16px; font-weight: bold; fill: #2b6cb0; }
+    .box { fill: #ffffff; stroke: #cbd5e0; stroke-width: 1.5; rx: 8; ry: 8; }
+    .bag { fill: #fffaf0; stroke: #dd6b20; stroke-width: 2; rx: 12; ry: 12; }
+    .ball-r { fill: #f56565; stroke: #c53030; stroke-width: 1.5; }
+    .ball-b { fill: #4299e1; stroke: #2b6cb0; stroke-width: 1.5; }
+    .arrow { stroke: #4a5568; stroke-width: 2; fill: none; }
+  </style>
+
+  <text class="title" x="40" y="45">확률의 곱셈정리와 독립시행의 정리</text>
+  <text class="label" x="40" y="65">사건이 종속인 경우와 매 시행이 독립적으로 반복되는 경우의 확률 계산</text>
+
+  <!-- Left: Dependent Multiplication Rule (비복원추출) -->
+  <g transform="translate(60, 95)">
+    <rect class="box" x="0" y="0" width="320" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">1. 종속사건의 곱셈정리 (비복원)</text>
+    
+    <!-- Bag 1 -->
+    <rect class="bag" x="20" y="60" width="80" height="80" />
+    <circle class="ball-r" cx="45" cy="90" r="10" />
+    <circle class="ball-r" cx="75" cy="90" r="10" />
+    <circle class="ball-b" cx="35" cy="120" r="10" />
+    <circle class="ball-b" cx="60" cy="120" r="10" />
+    <circle class="ball-b" cx="85" cy="120" r="10" />
+    <text font-family="Inter" font-size="11" x="60" y="155" text-anchor="middle">1차: 빨간공 (2/5)</text>
+
+    <!-- Arrow -->
+    <path class="arrow" d="M 110 100 L 170 100" />
+    <path d="M 170 95 L 180 100 L 170 105 Z" fill="#4a5568" />
+    <text font-family="Inter" font-size="9" fill="#718096" x="140" y="90" text-anchor="middle">비복원 꺼냄</text>
+
+    <!-- Bag 2 -->
+    <rect class="bag" x="190" y="60" width="80" height="80" />
+    <circle class="ball-r" cx="215" cy="90" r="10" />
+    <circle class="ball-b" cx="205" cy="120" r="10" />
+    <circle class="ball-b" cx="230" cy="120" r="10" />
+    <circle class="ball-b" cx="255" cy="120" r="10" />
+    <text font-family="Inter" font-size="11" x="230" y="155" text-anchor="middle">2차: 빨간공 (1/4)</text>
+
+    <!-- Formula -->
+    <text class="math-bold" x="20" y="200">P(A ∩ B) = P(A) × P(B|A)</text>
+    <text class="math-bold" x="90" y="235" font-size="18" fill="#2d3748">= 2/5 × 1/4 = 1/10</text>
+  </g>
+
+  <!-- Right: Independent Trials Formula -->
+  <g transform="translate(420, 95)">
+    <rect class="box" x="0" y="0" width="320" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">2. 독립시행의 정리 (Binomial)</text>
+    
+    <text class="label" x="20" y="70">동일한 시행을 독립적으로 n회 반복하여</text>
+    <text class="label" x="20" y="90">사건 A(확률 p)가 r회 일어날 확률:</text>
+
+    <!-- Formula Box -->
+    <rect x="20" y="120" width="280" height="60" fill="#ebf8ff" stroke="#3182ce" stroke-width="1.5" rx="6" ry="6" />
+    <text class="math-bold" x="160" y="157" font-size="20" text-anchor="middle">ₙCᵣ pʳ (1-p)ⁿ⁻ʳ</text>
+
+    <!-- Formula description labels -->
+    <text class="label" x="30" y="205" font-size="11" fill="#718096">ₙCᵣ: r회 일어나는 자리 선택 조합</text>
+    <text class="label" x="30" y="225" font-size="11" fill="#718096">pʳ: 사건이 r번 일어날 확률</text>
+    <text class="label" x="30" y="245" font-size="11" fill="#718096">(1-p)ⁿ⁻ʳ: 나머지 (n-r)번 실패할 확률</text>
+  </g>
+</svg>

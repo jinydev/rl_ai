@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 260" width="100%" height="100%">
+  <!-- Definition of arrow markers -->
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#0077c2" />
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#f57c00" />
+    </marker>
+    <marker id="arrow-line" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 10 5 L 0 8.5 z" fill="#333333" />
+    </marker>
+  </defs>
+
+  <!-- Background container with rounded corners and light shading -->
+  <rect width="800" height="260" rx="12" fill="#fafafa" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- Horizontal coordinate line -->
+  <line x1="80" y1="180" x2="720" y2="180" stroke="#333333" stroke-width="2" marker-end="url(#arrow-line)" />
+
+  <!-- Points on the coordinate line -->
+  <!-- Q_{n-1} -->
+  <circle cx="150" cy="180" r="6" fill="#333333" />
+  <line x1="150" y1="180" x2="150" y2="60" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+  
+  <!-- Q_n -->
+  <circle cx="330" cy="180" r="6" fill="#333333" />
+  <line x1="330" y1="180" x2="330" y2="60" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- R_n -->
+  <circle cx="650" cy="180" r="6" fill="#333333" />
+  <line x1="650" y1="180" x2="650" y2="110" stroke="#bdbdbd" stroke-width="1" stroke-dasharray="4 4" />
+
+  <!-- Labels on coordinate line (LaTeX style subscripts) -->
+  <text x="150" y="215" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#333333">Q</text>
+  <text x="172" y="222" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#333333">n-1</text>
+  <text x="150" y="240" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" text-anchor="middle" fill="#757575">(이전 추정치)</text>
+
+  <text x="330" y="215" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#333333">Q</text>
+  <text x="345" y="222" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#333333">n</text>
+  <text x="330" y="240" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" text-anchor="middle" fill="#757575">(새로운 추정치)</text>
+
+  <text x="650" y="215" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="18" font-weight="600" text-anchor="middle" fill="#333333">R</text>
+  <text x="665" y="222" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" font-weight="600" text-anchor="middle" fill="#333333">n</text>
+  <text x="650" y="240" font-family="'Inter', 'Noto Sans KR', sans-serif" font-size="12" text-anchor="middle" fill="#757575">(새로 얻은 보상)</text>
+
+  <!-- Blue Arrow: Prediction Error (R_n - Q_{n-1}) -->
+  <line x1="150" y1="125" x2="642" y2="125" stroke="#0077c2" stroke-width="2.5" marker-end="url(#arrow-blue)" />
+  <rect x="360" y="105" width="220" height="35" rx="4" fill="#e3f2fd" stroke="#0077c2" stroke-width="1" />
+  <text x="440" y="127" font-family="'Inter', sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#0056b3">R</text>
+  <text x="449" y="132" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#0056b3">n</text>
+  <text x="461" y="127" font-family="'Inter', sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#0056b3">-</text>
+  <text x="473" y="127" font-family="'Inter', sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#0056b3">Q</text>
+  <text x="488" y="132" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#0056b3">n-1</text>
+  <text x="530" y="127" font-family="'Noto Sans KR', sans-serif" font-size="11" text-anchor="middle" fill="#555555">(예측 오차)</text>
+
+  <!-- Orange Arrow: Update Step (1/n * (R_n - Q_{n-1})) -->
+  <line x1="150" y1="75" x2="322" y2="75" stroke="#f57c00" stroke-width="2.5" marker-end="url(#arrow-orange)" />
+  <rect x="180" y="55" width="115" height="35" rx="4" fill="#fff3e0" stroke="#f57c00" stroke-width="1" />
+  <text x="195" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">1/n</text>
+  <text x="210" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">(</text>
+  <text x="220" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">R</text>
+  <text x="228" y="81" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#e65100">n</text>
+  <text x="238" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">-</text>
+  <text x="248" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">Q</text>
+  <text x="261" y="81" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#e65100">n-1</text>
+  <text x="270" y="77" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#e65100">)</text>
+  <text x="250" y="42" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e65100">갱신 크기</text>
+</svg>
