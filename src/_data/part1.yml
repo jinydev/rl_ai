@@ -108,7 +108,7 @@ main:
         url: "/10_TD법/10_5_분포_모델과_샘플_모델/"
       - title: "10.6 정리"
         url: "/10_TD법/10_6_정리/"
-  - title: "신경망과 Q 러닝"
+  - title: "11강 신경망과 Q 러닝"
     url: "/11_신경망과_Q_러닝/"
     subitems:
       - title: "11.1 DeZero 기초"
@@ -121,7 +121,7 @@ main:
         url: "/11_신경망과_Q_러닝/11_4_Q_러닝과_신경망/"
       - title: "11.5 정리"
         url: "/11_신경망과_Q_러닝/11_5_정리/"
-  - title: "DQN"
+  - title: "12강 DQN"
     url: "/12_DQN/"
     subitems:
       - title: "12.1 OpenAI Gym"
