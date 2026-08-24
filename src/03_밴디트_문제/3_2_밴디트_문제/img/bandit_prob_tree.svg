@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 350" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .line { stroke: #5f6368; stroke-width: 2; fill: none; }
+      .line-a { stroke: #1a73e8; stroke-width: 2.5; }
+      .line-b { stroke: #f9ab00; stroke-width: 2.5; }
+      .node-root { fill: #f1f3f4; stroke: #5f6368; stroke-width: 2; rx: 8px; }
+      .node-a { fill: #e8f0fe; stroke: #1a73e8; stroke-width: 2; rx: 8px; }
+      .node-b { fill: #fef7e0; stroke: #f9ab00; stroke-width: 2; rx: 8px; }
+      .node-leaf { fill: #ffffff; stroke: #dadce0; stroke-width: 1.5; rx: 6px; }
+      .text-title { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .text-body { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; fill: #3c4043; text-anchor: middle; }
+      .text-math { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: bold; fill: #202124; text-anchor: middle; }
+      .prob-label { font-family: 'Noto Sans KR', sans-serif; font-size: 11px; fill: #5f6368; font-weight: bold; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- ROOT NODE -->
+  <rect x="30" y="140" width="120" height="60" class="node-root" />
+  <text x="90" y="165" class="text-title">행동 선택</text>
+  <text x="90" y="185" class="text-body">(플레이어의 선택)</text>
+
+  <!-- BRANCH LINES FOR A = a -->
+  <path d="M 150 170 C 220 170, 220 90, 270 90" class="line-a" />
+  <!-- BRANCH LINES FOR A = b -->
+  <path d="M 150 170 C 220 170, 220 250, 270 250" class="line-b" />
+
+  <!-- Action Labels on branches -->
+  <rect x="175" y="105" width="60" height="20" rx="4" fill="#ffffff" stroke="#1a73e8" stroke-width="1" />
+  <text x="205" y="119" class="prob-label" fill="#1a73e8">행동 A = a</text>
+
+  <rect x="175" y="215" width="60" height="20" rx="4" fill="#ffffff" stroke="#f9ab00" stroke-width="1" />
+  <text x="205" y="229" class="prob-label" fill="#b06000">행동 A = b</text>
+
+  <!-- NODE FOR MACHINE A -->
+  <rect x="270" y="60" width="140" height="60" class="node-a" />
+  <text x="340" y="85" class="text-title" fill="#1a73e8">슬롯머신 a 선택</text>
+  <text x="340" y="105" class="text-body" fill="#5f6368">조건: A = a</text>
+
+  <!-- NODE FOR MACHINE B -->
+  <rect x="270" y="220" width="140" height="60" class="node-b" />
+  <text x="340" y="245" class="text-title" fill="#b06000">슬롯머신 b 선택</text>
+  <text x="340" y="265" class="text-body" fill="#5f6368">조건: A = b</text>
+
+  <!-- LEAF BRANCH LINES & LABELS FOR MACHINE A -->
+  <!-- Leaf 1 (0 Coins) -->
+  <line x1="410" y1="90" x2="520" y2="35" class="line" />
+  <text x="465" y="55" class="prob-label">확률 70%</text>
+  <rect x="520" y="15" width="140" height="35" class="node-leaf" />
+  <text x="590" y="37" class="text-math">보상 R = 0 (코인)</text>
+
+  <!-- Leaf 2 (1 Coin) -->
+  <line x1="410" y1="90" x2="520" y2="70" class="line" />
+  <text x="475" y="78" class="prob-label">확률 15%</text>
+  <rect x="520" y="55" width="140" height="35" class="node-leaf" />
+  <text x="590" y="77" class="text-math">보상 R = 1 (코인)</text>
+
+  <!-- Leaf 3 (5 Coins) -->
+  <line x1="410" y1="90" x2="520" y2="110" class="line" />
+  <text x="475" y="108" class="prob-label">확률 12%</text>
+  <rect x="520" y="95" width="140" height="35" class="node-leaf" />
+  <text x="590" y="117" class="text-math">보상 R = 5 (코인)</text>
+
+  <!-- Leaf 4 (10 Coins) -->
+  <line x1="410" y1="90" x2="520" y2="150" class="line" />
+  <text x="465" y="132" class="prob-label">확률 3%</text>
+  <rect x="520" y="135" width="140" height="35" class="node-leaf" />
+  <text x="590" y="157" class="text-math">보상 R = 10 (코인)</text>
+
+
+  <!-- LEAF BRANCH LINES & LABELS FOR MACHINE B -->
+  <!-- Leaf 1 (0 Coins) -->
+  <line x1="410" y1="250" x2="520" y2="195" class="line" />
+  <text x="465" y="215" class="prob-label">확률 50%</text>
+  <rect x="520" y="175" width="140" height="35" class="node-leaf" />
+  <text x="590" y="197" class="text-math">보상 R = 0 (코인)</text>
+
+  <!-- Leaf 2 (1 Coin) -->
+  <line x1="410" y1="250" x2="520" y2="230" class="line" />
+  <text x="475" y="238" class="prob-label">확률 40%</text>
+  <rect x="520" y="215" width="140" height="35" class="node-leaf" />
+  <text x="590" y="237" class="text-math">보상 R = 1 (코인)</text>
+
+  <!-- Leaf 3 (5 Coins) -->
+  <line x1="410" y1="250" x2="520" y2="270" class="line" />
+  <text x="475" y="268" class="prob-label">확률 9%</text>
+  <rect x="520" y="255" width="140" height="35" class="node-leaf" />
+  <text x="590" y="277" class="text-math">보상 R = 5 (코인)</text>
+
+  <!-- Leaf 4 (10 Coins) -->
+  <line x1="410" y1="250" x2="520" y2="310" class="line" />
+  <text x="465" y="292" class="prob-label">확률 1%</text>
+  <rect x="520" y="295" width="140" height="35" class="node-leaf" />
+  <text x="590" y="317" class="text-math">보상 R = 10 (코인)</text>
+
+  <!-- Formula Highlight Box on Right -->
+  <rect x="680" y="110" width="105" height="120" rx="8" fill="#e6f4ea" stroke="#1e8e3e" stroke-width="1.5" />
+  <text x="732" y="135" class="text-title" fill="#1e8e3e">조건부 확률</text>
+  <text x="732" y="165" class="text-math" fill="#1e8e3e">P(R = r | A = a)</text>
+  <text x="732" y="195" class="text-body" fill="#1e8e3e" font-size="11">행동 a를 했을 때</text>
+  <text x="732" y="212" class="text-body" fill="#1e8e3e" font-size="11">보상 r이 나올 확률</text>
+</svg>

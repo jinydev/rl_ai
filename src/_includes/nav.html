@@ -1,0 +1,89 @@
+<nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        {% assign is_part1 = false %}
+        {% assign is_intro = false %}
+        {% if page.url contains "/part1/" or page.url contains "/03_" or page.url contains "/04_" or page.url contains "/05_" or page.url contains "/06_" or page.url contains "/07_" or page.url contains "/09_" or page.url contains "/10_" or page.url contains "/11_" or page.url contains "/12_" or page.url contains "/13_" or page.url contains "/14_" %}
+          {% assign is_part1 = true %}
+        {% elsif page.url contains "/01_" %}
+          {% assign is_intro = true %}
+        {% endif %}
+
+        {% if is_part1 %}
+          {% assign nav_items = site.data.part1.main %}
+        {% elsif is_intro %}
+          {% assign nav_items = site.data.intro.main %}
+        {% else %}
+          {% assign nav_items = site.data.navigation.main %}
+        {% endif %}
+
+        {% for item in nav_items %}
+        {% assign show_item = false %}
+        
+        {% if is_part1 or is_intro %}
+          {% assign show_item = true %}
+        {% else %}
+          {% if page.url contains "/02_" %}
+            {% if item.url contains "/02_" %}
+              {% assign show_item = true %}
+            {% endif %}
+          {% elsif page.url == "/" %}
+            {% if item.url != "/" %}
+              {% assign show_item = true %}
+            {% endif %}
+          {% else %}
+            {% if item.url contains "/A_" or item.url contains "/B_" or item.url contains "/C_" or item.url contains "/D_" %}
+              {% assign show_item = true %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+        
+        {% if show_item %}
+        <li>
+          {% if item.subitems %}
+          {% assign is_active_group = false %}
+          {% for subitem in item.subitems %}
+          {% if page.url == subitem.url %}
+          {% assign is_active_group = true %}
+          {% endif %}
+          {% endfor %}
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 {% unless is_active_group %}collapsed{% endunless %} w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-{{ forloop.index }}"
+            aria-expanded="{{ is_active_group }}">
+            {{ item.title }}
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse {% if is_active_group %}show{% endif %}" id="collapse-{{ forloop.index }}">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              {% for subitem in item.subitems %}
+              <li>
+                <a href="{{ site.baseurl }}{{ subitem.url }}"
+                  class="bd-links-link d-inline-block rounded {% if page.url == subitem.url %}active{% endif %}">
+                  {{ subitem.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% else %}
+          <a href="{{ site.baseurl }}{{ item.url }}"
+            class="bd-links-link d-inline-block rounded {% if page.url == item.url %}active{% endif %}">
+            {{ item.title }}
+          </a>
+          {% endif %}
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+  </ul>
+</nav>

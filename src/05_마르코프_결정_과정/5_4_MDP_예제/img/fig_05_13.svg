@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 150" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- 2 Cells -->
+  <g transform="translate(60, 30)">
+    <rect x="0" y="0" width="200" height="100" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#2d3748" stroke-width="2.5"/>
+    
+    <!-- State Labels -->
+    <text x="50" y="-12" font-family="sans-serif" font-size="16" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    <text x="150" y="-12" font-family="sans-serif" font-size="16" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+    
+    <use href="#agent" x="0" y="20"/>
+    <use href="#apple" x="100" y="20"/>
+  </g>
+
+  <!-- Left Wall Hatching -->
+  <path d="M 60 30 L 45 45 M 60 50 L 45 65 M 60 70 L 45 85 M 60 90 L 45 105 M 60 110 L 45 125" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+  <!-- Right Wall Hatching -->
+  <path d="M 260 30 L 275 45 M 260 50 L 275 65 M 260 70 L 275 85 M 260 90 L 275 105 M 260 110 L 275 125" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+</svg>

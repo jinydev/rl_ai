@@ -1,85 +1,90 @@
-# 🧭 마법 요정 고양이 지니와 함께하는 도로시와 토토의 강화학습 모험
+# 밑바닥부터 시작하는 딥러닝 4 (Deep Learning from Scratch 4) 강의 노트
 
-이 책은 오즈의 마법사에서 영감을 얻은 **도로시**와 그의 반려견 **토토**, 그리고 요술 램프에서 나타난 신비로운 마법 요정 고양이 **지니**가 함께 격자 세상을 탐험하는 이야기를 다룹니다. 다소 건조하고 수학적인 **인공지능 강화학습(Reinforcement Learning)**을 신밧드의 모험처럼 흥미진진한 보물 탐구의 여정으로 풀어내어, 가장 직관적이고 친근하게 학습할 수 있도록 안내하는 특별한 가이드 교재입니다.
+직접 구현하며 익히는 강화 학습 알고리즘 학습을 위한 강의 노트 프로젝트입니다. 이 저장소는 수강생들이 강화 학습의 핵심 수학 기초부터 실전 딥러닝 알고리즘(DQN, 정책 경사법 등)까지 단계별로 학습할 수 있도록 구성된 온라인 웹사이트의 소스 코드를 담고 있습니다. Jekyll 기반의 정적 사이트로 만들어졌으며, Markdown 문서를 통해 강의 자료가 관리됩니다.
 
-![지니와 도로시, 토토의 모험](./img/dorothy_toto_jiny.png)
+## 1. 주요 강의 내용
 
----
+본 강의는 강화 학습의 기초 수학 이론부터 시작하여 최신 심층 강화 학습(Deep Reinforcement Learning)까지의 로드맵을 제공합니다:
 
-## 👥 캐릭터 소개 (Characters)
+- **01 강화학습 소개:** 에이전트, 환경, 보상, 행동 등 강화학습의 4대 요소 및 탐색과 활용의 딜레마
+- **02 확률과 기초수학:** 등비수열, 시그마 기호, 재귀적 증분 평균 업데이트 공식, 확률의 정의와 성질, 조건부 확률(몬티 홀, 생일 패러독스), 선형대수 행렬과 벡터의 연산 기초
+- **03 밴디트 문제:** 다중 슬롯머신(Multi-armed Bandit) 문제, 에psilon-greedy 알고리즘 구현 및 비정상 문제 해결
+- **04 마르코프 체인/과정:** 상태 전이 확률과 마르코프 과정, 은닉 마르코프 모델(HMM) 기초
+- **05 마르코프 결정 과정 (MDP):** 에이전트와 환경의 상호작용 수식화 및 강화학습의 목표인 할인 누적 반환값 정의
+- **06 벨만 방정식 (Bellman Equation):** 상태 가치 함수와 행동 가치 함수(Q-함수)의 유도 및 벨만 최적 방정식
+- **07 동적 프로그래밍 (Dynamic Programming):** 그리드월드 예제를 통한 정책 평가, 정책 반복법(Policy Iteration), 가치 반복법(Value Iteration) 구현
+- **09 몬테카를로법 (Monte Carlo):** 샘플 경험 기반의 정책 평가 및 제어, 중요도 샘플링을 활용한 오프-정책(Off-policy) MC 기초
+- **10 TD법 (Temporal Difference):** 시간차 성능 비교, SARSA, 오프-정책 SARSA 및 대표적인 Q-러닝(Q-Learning) 알고리즘
+- **11 신경망과 Q 러닝:** DeZero 프레임워크 기초 및 선형 회귀, 다층 신경망(Neural Network)을 결합한 가치 함수 근사
+- **12 DQN (Deep Q-Network):** OpenAI Gym 환경 다루기, Experience Replay(경험 재생), Target Network의 핵심 기술 및 아타리 게임 적용
+- **13 정책 경사법 (Policy Gradient):** REINFORCE 알고리즘, Baseline 도입 및 Actor-Critic(행위자-비평자) 모델 구현
+- **14 한 걸음 더:** DQN 및 Policy Gradient 계열의 고급 확장 알고리즘(DDPG, PPO 등) 및 학습 과제
+- **부록:** 오프-정책 몬테카를로법, n단계 TD법, Double DQN 및 정책 경사법 수학적 증명
 
-강화학습이라는 넓고 낯선 모험 지도를 헤쳐 나가는 세 명의 주인공입니다.
+## 2. 개발 환경 설정 및 빌드 (Jekyll)
 
-### 🧞‍♂️ 지니 (Jiny)
-* **역할**: 마법 멘토 (Teacher) / 환경 (Environment)
-* **시각적 특징**: 보라빛 털의 날씬하고 세련된 마법 고양이(Slender purple-blue magic cat), 이집트 스핑크스 고양이를 닮은 크고 곧게 선 귀(Large sharp ears), 공중에 둥둥 떠 있으며 마법 연기와 별가루에 둘러싸임, 3등신 SD 비율
-* **캐릭터 이미지**:
-  ![지니](./img/jiny.png)
-* **성격 및 설명**: 
-  요술 램프에서 나타나는 신비롭고 영리한 마법사 고양이이자, 도로시와 토토의 현명한 강화학습 교사입니다. 드래곤볼의 '파괴신 비루스'처럼 날렵하고 세련된 보랏빛 스핑크스 고양이의 외형을 지녔지만, 성격은 매우 상냥하고 귀여운 반전 매력이 있습니다. 신비로운 푸른 마법 연기와 반짝이는 별가루를 흩날리며 도로시에게 강화학습의 복잡한 수식을 장난스럽고 이해하기 쉽게 가르쳐주는 똑똑한 멘토입니다.
+이 웹사이트는 **Ruby**와 **Jekyll**을 사용하여 정적 사이트로 빌드됩니다. 로컬 환경에서 문서를 작성하고 사이트를 띄워보려면 아래 과정을 진행하세요.
 
-### 👧 도로시 (Dorothy)
-* **역할**: 에이전트 (Agent) / 학습자 (Learner)
-* **시각적 특징**: 갈색 단발머리(Short bob cut brown hair), 단정한 옅은 하늘색 스쿨 베스트(교복 조끼)와 주름치마, 검은색 점눈(Black dot eyes), 3등신 SD 비율
-* **캐릭터 이미지**:
-  ![도로시](./img/dorothy.png)
-* **성격 및 설명**: 
-  늘 호기심이 많고 긍정적인 소녀입니다. 새로운 격자 세상(Grid World)에 놓일 때마다 나침반과 수첩을 들고 기댓값을 계산하며, 최적의 가치(Value)와 정책(Policy)을 찾아 성장합니다.
+### 2.1. 설치 단계
 
-### 🐶 토토 (Toto)
-* **역할**: 동반자 (Companion) / 가이드 (Guide)
-* **시각적 특징**: 복슬복슬한 갈색 아기 푸들형 강아지(Poodle-like curly brown dog), 앙증맞은 목줄, 2등신 SD 비율
-* **캐릭터 이미지**:
-  ![토토](./img/toto.png)
-* **성격 및 설명**: 
-  도로시의 충직한 반려견입니다. 도로시가 수학적 고민에 빠지거나 길을 잃었을 때 꼬리를 흔들며 사과 보상이 있는 방향을 앞발로 콕 가리켜주는 든든한 길잡이 역할을 합니다.
+macOS의 경우 시스템 기본 Ruby 권한 문제가 발생할 수 있으므로 Homebrew를 통해 최신 버전을 설치하는 것을 권장합니다.
 
----
+```bash
+# 1. 최신 Ruby 설치 (macOS)
+brew install ruby
 
-## 🎨 일러스트 생성 가이드 (Illustration Prompt Guide)
+# 2. Bundler와 Jekyll 설치
+gem install bundler jekyll
 
-도로시, 토토, 그리고 지니의 모험에 사용되는 모든 삽화는 **일관성 있는 Chibi 화풍**을 유지해야 합니다. 향후 생성형 AI(예: Gemini/Imagen 등)를 통해 삽화를 생성하거나 수정할 때는 다음 공식 가이드를 철저하게 따릅니다.
+# 3. 프로젝트 루트 디렉토리에서 패키지 의존성 설치
+bundle install
+```
 
-### 1. 이미지 스타일 치트키 프롬프트 (Core Prompt Formula)
-새로운 상황의 이미지를 생성할 때는 항상 아래 프롬프트 문구를 접두사(Prefix)로 사용하여 스타일 일관성을 보장합니다.
+### 2.2. 로컬 서버 실행 및 사이트 빌드
 
-> **[필수 접두 프롬프트]**
-> `Super cute chibi character, simple 2.5-3 head ratio SD style, thick clean black outlines, flat pastel colors, very simple facial features with black dot eyes, white background.`
+마크다운 문서를 작성하면서 로컬에서 실시간으로 렌더링된 결과를 확인할 수 있습니다.
 
-### 2. 캐릭터별 묘사 프롬프트 (Character Description)
-* **지니 (Jiny)**: `A slender and sleek purple-blue magical cat with large tall pointed ears, inspired by the style of a Sphynx cat but drawn in an extremely cute and friendly way. It floats in mid-air with tiny sparkling stars and soft blue magical smoke around it, smiling warmly. No hat and no boots. Cozy, warm, educational textbook style illustration.`
-* **도로시 (Dorothy)**: `A cute young school girl with short bob cut hair (brown), wearing a simple sky blue school vest and a pleated skirt. Cozy, warm, educational textbook style illustration.`
-* **토토 (Toto)**: `A fluffy curly brown puppy with a cute collar happily. Cozy, warm, educational textbook style illustration.`
+```bash
+# 로컬 개발용 서버 실행 (접속 주소: http://127.0.0.1:4000)
+bundle exec jekyll serve
 
-### 3. 디자인 및 화풍 상세 규칙 (Design Rules)
-* **라인 아트**: 카툰 느낌의 두껍고 깔끔한 **검은색 외곽 테두리선(Thick clean black outlines)**을 반드시 유지합니다.
-* **색상 팔레트**: 너무 자극적이거나 원색적인 톤은 피하고, 따뜻하고 화사한 **플랫 파스텔톤(Flat pastel colors)**의 색상을 사용합니다.
-* **눈 표현**: 복잡하고 화려한 만화식 눈망울 대신, 검고 심플한 **점눈(Black dot eyes)**으로 단순화하여 도로시의 귀여움을 극대화합니다.
-* **배경**: 인물과 다이어그램이 돋보이도록 원칙적으로 깔끔한 **흰색 배경(White background)**을 바탕으로 생성합니다.
+# 핫 리로드(Live Reload) 서버 실행 (파일 저장 시 브라우저 자동 새로고침)
+bundle exec jekyll serve --livereload
 
----
+# 사이트 전체 빌드 (docs/ 폴더에 생성됨)
+bundle exec jekyll build
+```
 
-## 📚 교재 기술 및 서술 가이드라인 (Textbook Guidelines)
+- **Source**: `src/` (작업할 마크다운 파일 경로)
+- **Destination**: `docs/` (빌드 결과물 출력 경로)
 
-본 교재의 마크다운 콘텐츠를 집필하거나 수정할 때는 독자의 학습 몰입감을 높이기 위해 다음 3대 원칙을 철저하게 고수합니다.
+> **주의사항**: 빌드 대상은 `src` 폴더에 한정되며, 루트의 다른 폴더에 있는 파일은 빌드에 포함되지 않습니다. 
+> **Troubleshooting**: `bundle` 관련 명령어를 찾을 수 없다는 오류가 발생한다면, 터미널 환경 설정(`.zshrc` 등)에 Ruby 경로가 제대로 추가되었는지 확인해 주세요. (예: `export PATH="/usr/local/opt/ruby/bin:$PATH"`)
 
-### 1. 수식 렌더링 호환성 유지 (No MathJax/LaTeX dependency)
-특수 수식 렌더링 플러그인이 깔려있지 않은 일반 마크다운 리더나 브라우저에서도 수식이 깨지지 않고 직관적으로 읽히도록 아래의 포맷을 사용합니다.
-* **LaTeX 기호($) 사용 제한**: 줄바꿈이나 특정 뷰어에서 깨지기 쉬운 인라인 `$` 문법을 지양합니다.
-* **대체 서식 활용**:
-  - 변수나 수식은 마크다운 이탤릭체(`*s*`, `*a*`, `*v*`)로 캡슐화합니다.
-  - 첨자가 HTML 태그(`<sub>`, `<sup>`)를 사용합니다. (예: *v*<sub>*π*</sub>(*s*))
-  - 수학 연산자가 직관적인 유니코드 문자(`×`, `≥`, `∑`)를 사용합니다.
+### 2.3. 배포 (Deployment)
 
-### 2. 지니와 함께하는 도로시/토토의 모험 비유 (Adventure Metaphor)
-복잡하고 추상적인 강화학습의 수학적 개념을 지니가 도로시와 토토에게 친절하게 설명하는 마법 도구와 스토리에 비유하여 소개합니다.
-* **상태 가치 함수 *v*(*s*)**: 도로시가 특정 땅(상태)에 발을 디뎠을 때, 그 땅이 가진 잠재적 가치(보물상자의 크기).
-* **행동 가치 함수 *q*(*s*, *a*)**: 도로시가 특정 땅(상태)에서 특정 방향으로 발걸음을 떼는 행동(행동)을 저질렀을 때의 성적표.
-* **즉각 보상 *R* / 할인율 *γ***: 오늘 먹는 달콤한 사과(+10)와 먼 미래에 열릴 보물상자의 시간 가치 할인(할인율). 지니의 '사과 마법'과 '유통기한 마법'에 대응됩니다.
-* **벨만 방정식**: 오늘 얻을 사과와 내일 도착할 땅의 가치의 합을 구하기 위해 지니가 칠판에 적어주는 마법의 계산식.
-* **무한 루프 문제**: 다람쥐 쳇바퀴에 갇혀 끝없이 달리는 도로시를 지니가 벨만 방정식이라는 연립방정식 열쇠로 탈출시키는 비유.
-* **정책 평가와 개선**: 도로시가 들고 다니는 엉성한 지도(*μ*)를 보고 지니가 돋보기로 계산하여 더 좋은 방향의 화살표로 지도를 업그레이드(탐욕화)해주는 교육 과정.
+웹사이트는 GitHub Pages를 통해 배포됩니다. 배포 환경 구성 방법은 다음과 같습니다.
 
-### 3. 코드와 그림의 정합성
-* 코드 blocks는 설명이나 마크다운 파싱 문제로 쪼개어 렌더링되지 않도록 하나의 완전한 블록으로 병합하여 제공합니다.
-* 파이썬 문법(예: `yield`, `@property`, `defaultdict`)에 대한 직관적인 비유 설명(자판기, 가면, 마법의 상자)을 지니의 대사나 삽화로 곁들여 설명합니다.
+1. 수정한 내용을 `git push`로 저장소에 업로드합니다.
+2. 저장소의 **Settings -> Pages** 메뉴로 이동합니다.
+3. **Build and deployment** 항목 설정:
+    - **Source**: Deploy from a branch
+    - **Branch**: `main` (또는 `master`) 브랜치의 `/docs` 폴더 지정
+4. **Custom Domain**: `rl.ai.jiny.dev`
+
+설정이 완료되면 `docs` 폴더 내의 변경 사항이 자동으로 실제 사이트에 반영됩니다.
+
+## 3. 기여 가이드 (Contributing)
+
+본 프로젝트는 누구나 자유롭게 참여하고 개선할 수 있는 오픈소스 강의 자료를 지향합니다. 오타 수정, 내용 보강, 더 좋은 예제 추가 등 어떠한 형태의 기여도 환영합니다.
+
+1. 이 저장소를 **Fork** 하여 본인의 계정으로 복사합니다.
+2. 로컬 환경으로 clone 후 새로운 브랜치를 생성합니다. (`git checkout -b feature/new-content`)
+3. 문서를 수정하거나 새로운 내용을 추가한 후 커밋합니다. (`git commit -m "docs: 가치 반복법 설명 보강"`)
+4. 작업한 브랜치를 원격 저장소에 푸시합니다. (`git push origin feature/new-content`)
+5. 원본 저장소에 **Pull Request(PR)**를 생성하여 변경 사항 리뷰를 요청합니다.
+
+## 4. 라이선스 (License)
+
+이 프로젝트에 포함된 문서 및 소스 코드는 **MIT 라이선스 (MIT License)** 하에 배포됩니다.
+누구나 상업적 또는 비상업적 목적으로 자유롭게 활용, 복제, 수정, 배포할 수 있습니다.

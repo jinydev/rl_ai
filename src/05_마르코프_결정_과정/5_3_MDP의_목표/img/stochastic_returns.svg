@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 250" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#4b5563"/>
+    </marker>
+    <!-- Glow/Shadow filter -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="none"/>
+
+  <!-- 1. Start State -->
+  <g transform="translate(70, 125)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="28" fill="#e0f2fe" stroke="#0284c7" stroke-width="2.5"/>
+    <text x="0" y="6" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0369a1" text-anchor="middle">S<tspan font-size="11" dy="4">t</tspan></text>
+  </g>
+  <text x="70" y="175" font-family="sans-serif" font-size="12" font-weight="bold" fill="#475569" text-anchor="middle">시작 상태 s</text>
+  <text x="70" y="190" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">(예: L3)</text>
+
+  <!-- 2. Paths (Branching due to stochasticity) -->
+  <path d="M 98 125 C 135 125, 165 50, 202 50" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 98 125 L 202 125" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 98 125 C 135 125, 165 200, 202 200" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Labels on paths to indicate random choice -->
+  <text x="145" y="80" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">확률적 선택 A</text>
+  <text x="145" y="120" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">확률적 선택 B</text>
+  <text x="145" y="175" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">확률적 선택 C</text>
+
+  <!-- 3. Episode Rectangles -->
+  <g transform="translate(210, 30)" filter="url(#shadow)">
+    <rect x="0" y="0" width="90" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="45" y="25" font-family="sans-serif" font-size="12" fill="#334155" text-anchor="middle">에피소드 1</text>
+  </g>
+  <g transform="translate(210, 105)" filter="url(#shadow)">
+    <rect x="0" y="0" width="90" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="45" y="25" font-family="sans-serif" font-size="12" fill="#334155" text-anchor="middle">에피소드 2</text>
+  </g>
+  <g transform="translate(210, 180)" filter="url(#shadow)">
+    <rect x="0" y="0" width="90" height="40" rx="6" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+    <text x="45" y="25" font-family="sans-serif" font-size="12" fill="#334155" text-anchor="middle">에피소드 3</text>
+  </g>
+
+  <!-- Arrows from Episode to Return -->
+  <path d="M 300 50 H 342" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 300 125 H 342" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 300 200 H 342" fill="none" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 4. Return Rectangles -->
+  <g transform="translate(350, 30)" filter="url(#shadow)">
+    <rect x="0" y="0" width="150" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="75" y="25" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">수익 G<tspan font-size="9" dy="3">t</tspan> = 10.4</text>
+  </g>
+  <g transform="translate(350, 105)" filter="url(#shadow)">
+    <rect x="0" y="0" width="150" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="75" y="25" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">수익 G<tspan font-size="9" dy="3">t</tspan> = 8.7</text>
+  </g>
+  <g transform="translate(350, 180)" filter="url(#shadow)">
+    <rect x="0" y="0" width="150" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="75" y="25" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">수익 G<tspan font-size="9" dy="3">t</tspan> = 9.4</text>
+  </g>
+
+  <!-- 5. Bracket on the right -->
+  <path d="M 510 50 H 525 V 200 H 510 M 525 125 H 540" fill="none" stroke="#e11d48" stroke-width="2"/>
+
+  <!-- 6. Summary text explanation -->
+  <text x="555" y="112" font-family="sans-serif" font-size="13" font-weight="bold" fill="#be123c">무작위성으로</text>
+  <text x="555" y="132" font-family="sans-serif" font-size="13" font-weight="bold" fill="#be123c">인한 수익 편차</text>
+  <text x="555" y="152" font-family="sans-serif" font-size="10" fill="#e11d48">(매 시도마다 다름)</text>
+</svg>

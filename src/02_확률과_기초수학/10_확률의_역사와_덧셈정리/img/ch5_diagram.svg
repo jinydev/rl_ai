@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #4a5568; }
+    .node { fill: #ffffff; stroke: #3182ce; stroke-width: 2; rx: 6; ry: 6; }
+    .node-end-a { fill: #ebf8ff; stroke: #2b6cb0; stroke-width: 2; rx: 6; ry: 6; }
+    .node-end-b { fill: #fff5f5; stroke: #c53030; stroke-width: 2; rx: 6; ry: 6; }
+    .arrow { stroke: #a0aec0; stroke-width: 2; fill: none; }
+    .node-text { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: bold; fill: #2d3748; text-anchor: middle; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 14px; font-style: italic; fill: #2d3748; }
+  </style>
+
+  <text class="title" x="40" y="45">분배 문제의 의사결정 트리 (Problem of Points)</text>
+  <text class="label" x="40" y="65">게임 중단 시점: A는 2승(1승 남음), B는 1승(2승 남음)</text>
+
+  <!-- Start State Node -->
+  <rect class="node" x="60" y="150" width="120" height="50" />
+  <text class="node-text" x="120" y="180">시작 (A: 2승, B: 1승)</text>
+
+  <!-- Level 1 Branches -->
+  <!-- A wins next -->
+  <path class="arrow" d="M 180 160 L 320 110" />
+  <text class="node-text" x="250" y="125" fill="#3182ce">A 승 (1/2)</text>
+
+  <rect class="node-end-a" x="320" y="80" width="150" height="50" />
+  <text class="node-text" x="395" y="110">[A 최종 우승]</text>
+
+  <!-- B wins next -->
+  <path class="arrow" d="M 180 190 L 320 240" />
+  <text class="node-text" x="250" y="230" fill="#e53e3e">B 승 (1/2)</text>
+
+  <rect class="node" x="320" y="215" width="150" height="50" />
+  <text class="node-text" x="395" y="245">A: 2승, B: 2승 (동점)</text>
+
+  <!-- Level 2 Branches from (A: 2승, B: 2승) -->
+  <!-- A wins -->
+  <path class="arrow" d="M 470 230 L 600 180" />
+  <text class="node-text" x="535" y="195" fill="#3182ce">A 승 (1/2)</text>
+
+  <rect class="node-end-a" x="600" y="150" width="140" height="50" />
+  <text class="node-text" x="670" y="180">[A 최종 우승]</text>
+
+  <!-- B wins -->
+  <path class="arrow" d="M 470 250 L 600 300" />
+  <text class="node-text" x="535" y="295" fill="#e53e3e">B 승 (1/2)</text>
+
+  <rect class="node-end-b" x="600" y="270" width="140" height="50" />
+  <text class="node-text" x="670" y="300">[B 최종 우승]</text>
+
+  <!-- Probability Summary box -->
+  <g transform="translate(60, 270)">
+    <rect x="0" y="0" width="220" height="90" fill="#f7fafc" stroke="#e2e8f0" rx="8" ry="8" />
+    <text class="node-text" x="110" y="25" fill="#2d3748">최종 우승 확률 계산</text>
+    <text class="math" x="20" y="55">P(A 우승) = 1/2 + (1/2 × 1/2) = 3/4</text>
+    <text class="math" x="20" y="75">P(B 우승) = 1/2 × 1/2 = 1/4</text>
+  </g>
+</svg>

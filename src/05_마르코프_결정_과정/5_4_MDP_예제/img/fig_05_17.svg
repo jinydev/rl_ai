@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 350" width="100%" height="100%">
+  <defs>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+
+  <!-- Vertical Axis -->
+  <line x1="140" y1="300" x2="140" y2="40" stroke="#2d3748" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <text x="125" y="35" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748">Value</text>
+
+  <!-- Horizontal Axis -->
+  <line x1="140" y1="300" x2="480" y2="300" stroke="#2d3748" stroke-width="2" marker-end="url(#axis-arrow)"/>
+  <text x="490" y="305" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748">State</text>
+
+  <!-- Horizontal Ticks & Labels (L1, L2) -->
+  <line x1="240" y1="300" x2="240" y2="305" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="240" y="325" font-family="sans-serif" font-size="15" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+  
+  <line x1="380" y1="300" x2="380" y2="305" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="380" y="325" font-family="sans-serif" font-size="15" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+
+  <!-- Vertical Ticks & Dotted alignment lines:
+       Top tick (5.26): y=90
+       Middle-low tick (-8): y=240
+       Bottom tick (-10): y=270
+       Values of dots:
+       mu2: L1=5.26 (y=90), L2=4.74 (y=105)
+       mu1: L1=-8 (y=240), L2=-10 (y=270)
+       mu4: L1=-10 (y=270), L2=-8 (y=240)
+       mu3: L1=-10 (y=270), L2=-10 (y=270) -->
+       
+  <!-- Vertical Ticks -->
+  <line x1="135" y1="90" x2="140" y2="90" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="125" y="94" font-family="sans-serif" font-size="14" fill="#2d3748" text-anchor="end">5.26</text>
+  
+  <line x1="135" y1="240" x2="140" y2="240" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="125" y="244" font-family="sans-serif" font-size="14" fill="#2d3748" text-anchor="end">-8</text>
+  
+  <line x1="135" y1="270" x2="140" y2="270" stroke="#2d3748" stroke-width="1.5"/>
+  <text x="125" y="274" font-family="sans-serif" font-size="14" fill="#2d3748" text-anchor="end">-10</text>
+
+  <!-- Horizontal Dotted Alignments -->
+  <line x1="140" y1="90" x2="240" y2="90" stroke="#718096" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="140" y1="240" x2="240" y2="240" stroke="#718096" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="140" y1="270" x2="240" y2="270" stroke="#718096" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Lines -->
+  <!-- mu2 (yellow) -->
+  <path d="M 240 90 L 380 105" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- mu1 (blue) -->
+  <path d="M 240 240 L 380 270" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round"/>
+  <!-- mu4 (red) -->
+  <path d="M 240 270 L 380 240" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+  <!-- mu3 (green) -->
+  <path d="M 240 270 L 380 270" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Dots -->
+  <circle cx="240" cy="90" r="3.5" fill="#f59e0b"/>
+  <circle cx="380" cy="105" r="3.5" fill="#f59e0b"/>
+
+  <circle cx="240" cy="240" r="3.5" fill="#3b82f6"/>
+  <circle cx="380" cy="270" r="3.5" fill="#3b82f6"/>
+
+  <circle cx="240" cy="270" r="3.5" fill="#ef4444"/>
+  <circle cx="380" cy="240" r="3.5" fill="#ef4444"/>
+
+  <circle cx="240" cy="270" r="3.5" fill="#10b981"/>
+  <circle cx="380" cy="270" r="3.5" fill="#10b981"/>
+
+  <!-- Text Labels -->
+  <!-- mu2 label -->
+  <text x="395" y="110" font-family="Georgia, serif" font-size="16" font-style="italic" font-weight="bold" fill="#2d3748">μ2</text>
+  
+  <!-- mu1 pointer label -->
+  <path d="M 330 180 Q 300 190 280 225" fill="none" stroke="#2d3748" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#arrow)"/>
+  <text x="335" y="176" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#2d3748">μ1</text>
+
+  <!-- mu4 pointer label -->
+  <path d="M 430 200 Q 400 205 350 242" fill="none" stroke="#2d3748" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#arrow)"/>
+  <text x="435" y="196" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#2d3748">μ4</text>
+
+  <!-- mu3 pointer label -->
+  <path d="M 440 290 Q 400 285 350 272" fill="none" stroke="#2d3748" stroke-width="1.2" stroke-dasharray="2,2" marker-end="url(#arrow)"/>
+  <text x="445" y="294" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#2d3748">μ3</text>
+</svg>

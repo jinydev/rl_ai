@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="100%" height="100%">
+  <!-- Definitions for shadows, gradients, and arrows -->
+  <defs>
+    <filter id="shadow" x="-8%" y="-8%" width="116%" height="116%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1a202c" flood-opacity="0.08" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#718096" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#3182ce" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38a169" />
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#dd6b20" />
+    </marker>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#805ad5" />
+    </marker>
+  </defs>
+
+  <!-- Background styling -->
+  <rect width="100%" height="100%" fill="#fcfcfd" rx="16" />
+  <rect x="2" y="2" width="716" height="356" fill="none" stroke="#edf2f7" stroke-width="2" rx="16" />
+
+  <!-- 1. POLICY Node (Top Left) -->
+  <g transform="translate(60, 60)" filter="url(#shadow)">
+    <rect width="180" height="90" rx="12" fill="#ebf8ff" stroke="#3182ce" stroke-width="2" />
+    <text x="90" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" fill="#2b6cb0" text-anchor="middle">정책 (Policy, π)</text>
+    <text x="90" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">상태를 행동으로 매핑</text>
+    <text x="90" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#718096" text-anchor="middle">"에이전트의 행동 기준"</text>
+  </g>
+
+  <!-- 2. REWARD Node (Top Right) -->
+  <g transform="translate(480, 60)" filter="url(#shadow)">
+    <rect width="180" height="90" rx="12" fill="#f0fff4" stroke="#38a169" stroke-width="2" />
+    <text x="90" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" fill="#276749" text-anchor="middle">보상 신호 (Reward, r)</text>
+    <text x="90" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">즉각적인 가치 평가</text>
+    <text x="90" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#718096" text-anchor="middle">"단기적 기쁨과 고통"</text>
+  </g>
+
+  <!-- 3. VALUE FUNCTION Node (Bottom Left) -->
+  <g transform="translate(60, 210)" filter="url(#shadow)">
+    <rect width="180" height="90" rx="12" fill="#fffaf0" stroke="#dd6b20" stroke-width="2" />
+    <text x="90" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" fill="#9c4221" text-anchor="middle">가치 함수 (Value, v)</text>
+    <text x="90" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">장기적인 보상 합의 예측</text>
+    <text x="90" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#718096" text-anchor="middle">"행동 결정을 위한 나침반"</text>
+  </g>
+
+  <!-- 4. MODEL Node (Bottom Right - Optional) -->
+  <g transform="translate(480, 210)" filter="url(#shadow)">
+    <rect width="180" height="90" rx="12" fill="#faf5ff" stroke="#805ad5" stroke-width="2" stroke-dasharray="4 3" />
+    <text x="90" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold" fill="#553c9a" text-anchor="middle">환경 모델 (Model)</text>
+    <text x="90" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#4a5568" text-anchor="middle">환경의 미래 상태 예측 (옵션)</text>
+    <text x="90" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#718096" text-anchor="middle">"가상 시뮬레이션 및 계획"</text>
+  </g>
+
+  <!-- Connection: Policy -> Reward (Behavior causes reward) -->
+  <path d="M 240 105 L 470 105" fill="none" stroke="#cbd5e0" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="290" y="93" width="140" height="24" rx="4" fill="#ffffff" stroke="#edf2f7" stroke-width="1" />
+  <text x="360" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#4a5568" text-anchor="middle">행동에 따른 환경의 반응</text>
+
+  <!-- Connection: Reward -> Value (Value sums future rewards) -->
+  <path d="M 570 150 Q 570 185, 360 185 Q 150 185, 150 200" fill="none" stroke="#38a169" stroke-width="1.5" stroke-dasharray="3 3" marker-end="url(#arrow-green)" />
+  <rect x="280" y="173" width="160" height="24" rx="4" fill="#ffffff" stroke="#e6fffa" stroke-width="1" />
+  <text x="360" y="190" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#22543d" text-anchor="middle">누적 예측 (즉각 보상의 총합)</text>
+
+  <!-- Connection: Value -> Policy (Policy updates to maximize value) -->
+  <path d="M 150 210 L 150 160" fill="none" stroke="#dd6b20" stroke-width="2" marker-end="url(#arrow-orange)" />
+  <text x="142" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" fill="#dd6b20" text-anchor="end">가치가 높은 행동 선택</text>
+
+  <!-- Connection: Model -> Policy (Planning based on model) -->
+  <path d="M 480 255 Q 360 255, 250 145" fill="none" stroke="#805ad5" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow-purple)" />
+  <rect x="300" y="243" width="120" height="24" rx="4" fill="#ffffff" stroke="#faf5ff" stroke-width="1" />
+  <text x="360" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#553c9a" text-anchor="middle">계획 수립 (Planning)</text>
+</svg>

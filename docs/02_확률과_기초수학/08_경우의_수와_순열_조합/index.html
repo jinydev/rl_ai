@@ -1,0 +1,1181 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>02.8 경우의 수와 순열/조합 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="02.8 경우의 수와 순열/조합" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/08_%EA%B2%BD%EC%9A%B0%EC%9D%98_%EC%88%98%EC%99%80_%EC%88%9C%EC%97%B4_%EC%A1%B0%ED%95%A9/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/08_%EA%B2%BD%EC%9A%B0%EC%9D%98_%EC%88%98%EC%99%80_%EC%88%9C%EC%97%B4_%EC%A1%B0%ED%95%A9/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="02.8 경우의 수와 순열/조합" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.8 경우의 수와 순열/조합","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/08_%EA%B2%BD%EC%9A%B0%EC%9D%98_%EC%88%98%EC%99%80_%EC%88%9C%EC%97%B4_%EC%A1%B0%ED%95%A9/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">심화강화학습</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            강화학습 기초: 확률과 기초수학
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/02_확률과_기초수학/01_식의_구성과_치환_교환분배법칙/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.1 식의 구성과 치환, 교환/분배법칙
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/02_지수와_거듭제곱/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.2 지수와 거듭제곱
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/03_함수의_정의와_대응/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.3 함수의 정의와 대응
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/04_일차방정식과_연립방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.4 일차방정식과 연립방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/05_수열과_등비수열의_합/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.5 수열과 등비수열의 합
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/06_시그마_기호와_합_공식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.6 시그마(Σ) 기호와 합 공식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/07_증분_평균과_재귀적_업데이트/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.7 증분 평균과 재귀적 업데이트
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/08_경우의_수와_순열_조합/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.8 경우의 수와 순열/조합
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/09_확률의_정의와_성질/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.9 확률의 정의와 성질 (수학적/실험적/기하학적 확률)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/10_확률의_역사와_덧셈정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/11_조건부_확률과_독립시행/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.11 조건부 확률과 독립시행 (몬티 홀 & 생일 패러독스)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/02_확률과_기초수학/12_행동과_상태_전이를_묶는_행렬의_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  02.12 행동과 상태 전이를 묶는 행렬의 기초
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/">02 확률과 기초수학</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">02.8 경우의 수와 순열/조합</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="028-경우의-수와-순열조합">02.8 경우의 수와 순열/조합</h1>
+
+<blockquote>
+  <p>이 장에서는 <strong>경우의 수와 순열/조합</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0281-경우의-수와-합의-법칙-곱의-법칙">02.8.1 경우의 수와 합의 법칙, 곱의 법칙</h2>
+
+<p><img src="./img/ch1_jiny_prob_ch1_cases.png" alt="경우의 수와 합/곱의 법칙 인트로" />
+<strong>그림 02-8-1</strong> 두 갈래의 갈림길(A, B)과 각 길 속 선택지의 합/곱 가짓수를 판서하며 강의해주는 지니</p>
+
+<p>경우의 수는 모험 경로에서 우리가 직면할 수 있는 모든 선택지의 수입니다. 갈림길을 차례로 덧셈하여 전체 가짓수를 알아내는 <strong>합의 법칙</strong>과, 문들을 연속해서 통과하며 선택지를 곱하는 <strong>곱의 법칙</strong>의 첫 단추를 지니와 도로시의 갈림길 판서와 함께 유쾌하게 채워봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표">1. 학습 목표</h3>
+<ul>
+  <li>사건과 경우의 수의 뜻을 이해한다.</li>
+  <li>동시에 일어나지 않는 두 사건에 대해 합의 법칙을 적용할 수 있다.</li>
+  <li>연이어 일어나는 두 사건에 대해 곱의 법칙을 적용할 수 있다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+
+<h4 id="1-사건과-경우의-수">(1) 사건과 경우의 수</h4>
+<ul>
+  <li><strong>사건 (Event)</strong>: 주사위를 던지거나 동전을 던지는 것과 같이, 같은 조건에서 반복할 수 있는 실험이나 관찰에 의해 나타나는 결과입니다.</li>
+  <li><strong>경우의 수 (Number of Cases)</strong>: 어떤 사건이 일어날 수 있는 가지 수입니다.
+    <ul>
+      <li><em>예시</em>: 주사위 한 개를 던질 때, ‘짝수의 눈이 나오는 사건’의 경우의 수는 2, 4, 6으로 총 3가지입니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/jiny_math_ch8_event_cases.png" alt="사건과 경우의 수" />
+<strong>그림 02-8-2</strong> 하나의 주사위를 던지는 사건과 짝수 눈(2, 4, 6)이 나오는 경우의 수(3가지)의 관계</p>
+
+<h4 id="2-합의-법칙-addition-rule">(2) 합의 법칙 (Addition Rule)</h4>
+<p>두 사건 <em>A</em>, <em>B</em>가 동시에 일어나지 않을 때, 사건 <em>A</em>가 일어나는 경우의 수를 <em>m</em>, 사건 <em>B</em>가 일어나는 경우의 수를 <em>n</em>이라고 하면, 사건 <em>A</em> <strong>또는</strong> 사건 <em>B</em>가 일어나는 경우의 수는 다음과 같습니다.
+<em>m</em> + <em>n</em></p>
+<ul>
+  <li><em>키워드</em>: <strong>또는(Or)</strong>, <strong>~하거나</strong></li>
+  <li><em>주의</em>: 두 사건이 동시에 발생할 수 없을 때에만 성립합니다.</li>
+</ul>
+
+<p><img src="./img/jiny_math_ch8_addition_rule.png" alt="합의 법칙" />
+<strong>그림 02-8-3</strong> 두 사건 A 또는 B가 동시에 일어나지 않을 때 두 사건의 경우의 수를 합산(m + n)하여 계산하는 원리</p>
+
+<h4 id="3-곱의-법칙-multiplication-rule">(3) 곱의 법칙 (Multiplication Rule)</h4>
+<p>사건 <em>A</em>가 일어나는 경우의 수가 <em>m</em>이고, 그 각각에 대하여 사건 <em>B</em>가 일어나는 경우의 수가 <em>n</em>일 때, 두 사건 <em>A</em>, <em>B</em>가 <strong>동시에(연이어)</strong> 일어나는 경우의 수는 다음과 같습니다.
+<em>m</em> × <em>n</em></p>
+<ul>
+  <li><em>키워드</em>: <strong>동시에</strong>, <strong>연이어</strong>, <strong>그리고(And)</strong>, <strong>~하고 나서</strong></li>
+  <li><em>주의</em>: 여기서 ‘동시에’는 물리적으로 같은 시각만을 의미하는 것이 아니라, 두 사건이 모두 빠짐없이 일어나는 상황을 뜻합니다.</li>
+</ul>
+
+<p><img src="./img/ch1_cartoon2.png" alt="상의와 하의의 옷 매칭 곱의 법칙" />
+<strong>그림 02-8-4</strong> 상의와 하의를 입는 가짓수를 곱의 법칙으로 계산하는 옷 매칭 사례</p>
+
+<ul>
+  <li>옷장에서 상의 3벌과 하의 2벌을 골라 매칭하는 경우, 상의를 고르는 각각의 경우(3가지)마다 하의를 고르는 경우(2가지)가 결합하므로 총 3 × 2 = 6가지의 조합이 생깁니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-합의-법칙과-곱의-법칙-도식">3. 시각 자료: 합의 법칙과 곱의 법칙 도식</h3>
+
+<p><img src="./img/jiny_math_ch8_cases_rule.png" alt="합의 법칙과 곱의 법칙" />
+<strong>그림 02-8-5</strong> 개별 선택의 상황(Or)을 연결하는 합의 법칙과 연속적인 짝짓기 상황(And)을 연결하는 곱의 법칙의 차이 도식</p>
+
+<hr />
+
+<h3 id="4-실전-예제">4. 실전 예제</h3>
+
+<h4 id="예제-1-합의-법칙">예제 1 (합의 법칙)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 도로시네 반에서는 현장 학습 장소로 산 3곳(설악산, 지리산, 월출산) 또는 바다 2곳(해운대, 만리포) 중 한 곳을 선택하려고 합니다. 선택할 수 있는 총 여행지의 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+산을 선택하는 사건과 바다를 선택하는 사건은 동시에 일어날 수 없습니다. 따라서 합의 법칙을 적용합니다.
+경우의 수 = 3 (산) + 2 (바다) = 5가지
+<strong>정답</strong>: 5가지</p>
+</blockquote>
+
+<h4 id="예제-2-곱의-법칙">예제 2 (곱의 법칙)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 도로시는 상의로 흰색, 빨간색, 연두색 블라우스 3벌이 있고, 하의로 핑크색 스커트, 파란색 스커트, 노란색 바지 3벌이 있습니다. 상의와 하의를 각각 하나씩 선택하여 입을 수 있는 옷차림의 총 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+상의를 고르는 사건과 하의를 고르는 사건은 연이어 일어나는(모두 만족해야 하는) 사건입니다. 따라서 곱의 법칙을 적용합니다.
+경우의 수 = 3 (상의) × 3 (하의) = 9가지
+<strong>정답</strong>: 9가지</p>
+</blockquote>
+
+<h4 id="예제-3-혼합-문제">예제 3 (혼합 문제)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 동전 한 개와 주사위 한 개를 동시에 던질 때, 일어날 수 있는 모든 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+동전을 던져 나오는 경우의 수는 2가지(앞, 뒤)이고, 주사위를 던져 나오는 경우의 수는 6가지(1부터 6까지)입니다. 두 사건이 동시에 발생하므로 곱의 법칙을 적용합니다.
+경우의 수 = 2 (동전) × 6 (주사위) = 12가지
+<strong>정답</strong>: 12가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약">5. 핵심 요약</h3>
+<ol>
+  <li><strong>경우의 수</strong>는 어떤 사건이 일어날 수 있는 가짓수이다.</li>
+  <li>사건 <em>A</em>, <em>B</em>가 동시에 일어나지 않는 <strong>선택의 상황(Or)</strong> 에서는 <strong>합의 법칙 (<em>m</em> + <em>n</em>)</strong>을 사용한다.</li>
+  <li>사건 <em>A</em>, <em>B</em>가 연이어 일어나는 <strong>조합의 상황(And)</strong> 에서는 <strong>곱의 법칙 (<em>m</em> × <em>n</em>)</strong>을 사용한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="0282-경우의-수-심화-중복이-있는-합의-법칙과-곱의-법칙">02.8.2 경우의 수 심화: 중복이 있는 합의 법칙과 곱의 법칙</h2>
+
+<p><img src="./img/ch6_jiny_prob_ch6_overlap.png" alt="경우의 수 심화 인트로" />
+<strong>그림 02-8-6</strong> 두 벤다이어그램 마법 원반의 겹친 부위를 소거하며 중복합을 계산하는 법을 설명해주는 지니와 도로시</p>
+
+<p>선택지가 서로 완전히 분리되어 있지 않고 <strong>중복</strong>이 존재할 때의 합산 요령을 다룹니다. 두 개의 동그라미(벤다이어그램)가 겹치는 영역을 마법 지우개로 쏙 빼내는 지니와 도로시의 그림 설명처럼, 중복을 확실하게 제어하여 정확한 경우의 수를 계산하는 심화 비법을 정복해보아요!</p>
+
+<hr />
+
+<h3 id="1-학습-목표-1">1. 학습 목표</h3>
+<ul>
+  <li>중복되는 경우가 있을 때 합의 법칙을 보완하여 올바른 경우의 수를 계산할 수 있다.</li>
+  <li>곱의 법칙의 활용 상황(순서쌍의 개수)을 다룰 수 있다.</li>
+  <li>수학적 확률의 분자, 분모를 구성하는 경우의 수를 엄밀히 구하는 훈련을 한다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-1">2. 핵심 개념</h3>
+
+<h4 id="1-중복이-있는-합의-법칙-sum-rule-with-overlap">(1) 중복이 있는 합의 법칙 (Sum Rule with Overlap)</h4>
+<p>두 사건 <em>A</em>와 <em>B</em>가 일어나는 경우의 수가 각각 <em>m</em>, <em>n</em>이고, 두 사건 <em>A</em>, <em>B</em>가 동시에 일어나는 경우의 수가 <em>l</em>가지 존재할 때, 사건 <em>A</em> <strong>또는</strong> 사건 <em>B</em>가 일어나는 경우의 수는 다음과 같습니다.
+경우의 수 = <em>m</em> + <em>n</em> - <em>l</em></p>
+<ul>
+  <li><strong>집합적 표현 (Venn Diagram)</strong>:
+<em>n</em>(<em>A</em> ∪ <em>B</em>) = <em>n</em>(<em>A</em>) + <em>n</em>(<em>B</em>) - <em>n</em>(<em>A</em> ∩ <em>B</em>)</li>
+  <li><em>주의</em>: 단순히 두 사건의 가짓수를 더하기만 하면 동시에 겹쳐서 일어나는 원소들을 두 번 세게 되는(중복) 오류가 발생하므로, 겹치는 부분(<em>l</em>)을 반드시 한 번 빼주어야 합니다.</li>
+</ul>
+
+<p><img src="./img/jiny_math_ch8_overlap_sum.png" alt="중복이 있는 합의 법칙" />
+<strong>그림 02-8-7</strong> 중복이 발생하는 두 사건의 합산 시 교집합의 경우의 수(l)를 제외하여 중복을 없애는 원리</p>
+
+<h4 id="2-곱의-법칙-product-rule">(2) 곱의 법칙 (Product Rule)</h4>
+<p>사건 <em>A</em>가 일어나는 경우의 수가 <em>m</em>가지이고, 그 각각에 대하여 다른 사건 <em>B</em>가 일어나는 경우의 수가 <em>n</em>가지일 때, 두 사건 <em>A</em>, <em>B</em>가 잇달아 일어나는 경우의 수는 다음과 같습니다.
+경우의 수 = <em>m</em> × <em>n</em></p>
+
+<p><img src="./img/jiny_math_ch8_multiplication_rule.png" alt="곱의 법칙" />
+<strong>그림 02-8-8</strong> 두 사건 A, B가 연속해서 일어날 때 각 사건의 경우의 수를 곱하여 전체 가짓수(m × n)를 구하는 원리</p>
+
+<p><img src="./img/ch6_cartoon2.png" alt="경로를 통한 곱의 법칙의 시각적 이해" />
+<strong>그림 02-8-9</strong> 중간 경유지를 통과하는 이동 경로의 가짓수를 곱의 법칙으로 계산하는 구조</p>
+
+<ul>
+  <li>서울에서 대전까지 가는 버스 노선이 3가지이고, 대전에서 지리산까지 가는 기차 노선이 2가지가 있을 때, 서울에서 대전을 거쳐 지리산까지 가는 총 이동 경로의 가짓수는 3 × 2 = 6가지가 됩니다. 이는 첫 번째 선택의 각 경우의 수(3가지)마다 두 번째 선택의 경우의 수(2가지)가 결합하기 때문에 곱의 법칙이 성립하는 대표적인 예입니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-벤-다이어그램을-통한-합의-법칙-도식">3. 시각 자료: 벤 다이어그램을 통한 합의 법칙 도식</h3>
+
+<p><img src="./img/jiny_math_ch8_overlap_venn.png" alt="합의 법칙 벤다이어그램" />
+<strong>그림 02-8-10</strong> 두 집합의 합집합 계산 시 겹치는 교집합 영역을 1회 감하여 중복을 제거하는 벤다이어그램 도식</p>
+
+<hr />
+
+<h3 id="4-실전-예제-1">4. 실전 예제</h3>
+
+<h4 id="예제-1-중복이-있는-합의-법칙">예제 1 (중복이 있는 합의 법칙)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 케이블 방송의 편성표를 보니 유재석이 출연하는 프로그램은 4개(무한도전, 놀러와, 해피투게더, 패밀리가 떴다)이고, 이효리가 출연하는 프로그램은 3개(체인지, 상상플러스, 패밀리가 떴다)입니다. 카르다노 선생님이 유재석 <strong>또는</strong> 이효리가 출연하는 프로그램 중 하나를 선택하여 시청하려고 할 때, 선택할 수 있는 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ul>
+    <li>유재석 출연 프로그램 개수 <em>n</em>(<em>A</em>) = 4</li>
+    <li>이효리 출연 프로그램 개수 <em>n</em>(<em>B</em>) = 3</li>
+    <li>두 연예인이 동시에 출연하는 프로그램(패밀리가 떴다) 개수 <em>n</em>(<em>A</em> ∩ <em>B</em>) = 1</li>
+  </ul>
+
+  <p>중복이 있는 합의 법칙을 적용합니다.
+경우의 수 = <em>n</em>(<em>A</em>) + <em>n</em>(<em>B</em>) - <em>n</em>(<em>A</em> ∩ <em>B</em>) = 4 + 3 - 1 = 6가지
+<strong>정답</strong>: 6가지</p>
+</blockquote>
+
+<h4 id="예제-2-곱의-법칙-1">예제 2 (곱의 법칙)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 저녁 식사 식단을 짜기 위해 찌개 한 가지와 나물요리 한 가지를 준비하려고 합니다. 준비할 수 있는 찌개가 2가지(된장찌개, 김치찌개)이고, 나물요리가 3가지(콩나물, 시금치나물, 고사리나물)일 때, 구성할 수 있는 총 식단의 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+찌개를 고르는 행위와 나물요리를 고르는 행위는 연이어 완성되는 사건입니다. 따라서 곱의 법칙을 적용합니다.
+경우의 수 = 2 (찌개) × 3 (나물) = 6가지
+<strong>정답</strong>: 6가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-1">5. 핵심 요약</h3>
+<ol>
+  <li><strong>합의 법칙</strong>을 사용할 때 두 사건이 동시에 일어나는 중복 상황(<em>A</em> ∩ <em>B</em>)이 있는지 반드시 점검하고, 중복이 있다면 <strong>$m + n - l$</strong>로 계산한다.</li>
+  <li><strong>곱의 법칙</strong>은 두 개의 대상을 각각 짝짓는 순서쌍의 개수를 구하는 데 유용하다: <strong>$m \times n$</strong>.</li>
+  <li>확률을 계산하기 위해 경우의 수를 정확히 세는 것이 선행되어야 하며, 중복 누락 등의 실수를 피하는 것이 중요하다.</li>
+</ol>
+
+<hr />
+
+<h2 id="0283-팩토리얼과-순서대로-나열하기">02.8.3 팩토리얼과 순서대로 나열하기</h2>
+
+<p><img src="./img/ch7_jiny_prob_ch7_factorial.png" alt="팩토리얼과 순서대로 나열하기 인트로" />
+<strong>그림 02-8-11</strong> 네 마리의 인형을 일렬로 세우며 팩토리얼의 재귀적 곱셈을 설명해주는 지니와 도로시</p>
+
+<p>서로 다른 대상을 빠짐없이 일렬로 세우는 경우의 수인 <strong>팩토리얼(Factorial, 계승)</strong>을 이해하고 활용하는 법을 배웁니다. 도로시가 책상 위에 오즈의 마법사 캐릭터 인형들을 여러 순서로 늘어놓으며 배우는 팩토리얼(<em>n</em>!)의 마법 같은 곱셈 원리를 지니와 함께 기분 좋게 학습해볼까요?</p>
+
+<hr />
+
+<h3 id="1-학습-목표-2">1. 학습 목표</h3>
+<ul>
+  <li>서로 다른 대상을 일렬로 나열하는 방법의 수를 구하는 원리를 이해한다.</li>
+  <li>계승을 뜻하는 팩토리얼(<em>n</em>!) 기호와 그 계산 방식을 익힌다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-2">2. 핵심 개념</h3>
+
+<h4 id="1-일렬로-나열하는-경우의-수-ordering-items-in-a-row">(1) 일렬로 나열하는 경우의 수 (Ordering Items in a Row)</h4>
+<p>서로 다른 <em>n</em>개의 대상을 일렬로 늘어놓는 경우의 수를 구할 때는 첫 번째 자리부터 순서대로 들어갈 수 있는 대상의 가짓수를 곱해 나갑니다.</p>
+<ul>
+  <li><strong>원리</strong>:
+    <ul>
+      <li>1번째 자리에 놓을 수 있는 대상: <em>n</em>가지</li>
+      <li>2번째 자리에 놓을 수 있는 대상: 첫 번째에 놓인 것을 제외한 (<em>n</em> - 1)가지</li>
+      <li>3번째 자리에 놓을 수 있는 대상: 앞선 둘을 제외한 (<em>n</em> - 2)가지</li>
+      <li>…</li>
+      <li>맨 마지막 자리에 놓을 수 있는 대상: 남은 1가지</li>
+    </ul>
+  </li>
+  <li><strong>곱의 법칙</strong>에 따라 총 경우의 수는 다음과 같습니다:
+<em>n</em> × (<em>n</em> - 1) × (<em>n</em> - 2) × … × 2 × 1</li>
+</ul>
+
+<h4 id="2-팩토리얼-factorial-계승">(2) 팩토리얼 (Factorial, 계승)</h4>
+<p>1부터 <em>n</em>까지의 모든 자연수를 곱한 것을 <strong><em>n</em>의 계승</strong>이라 하고, 기호로 <strong><em>n</em>!</strong>과 같이 나타냅니다.
+<em>n</em>! = <em>n</em> × (<em>n</em> - 1) × (<em>n</em> - 2) × … × 2 × 1</p>
+<ul>
+  <li><em>읽는 방법</em>: ‘n 팩토리얼’ 또는 ‘n의 계승’</li>
+  <li><em>특수한 값</em>: 0! = 1로 정의합니다.</li>
+</ul>
+
+<p><img src="./img/ch7_cartoon2.png" alt="영화관 좌석 배치를 통한 팩토리얼 시각화" />
+<strong>그림 02-8-12</strong> 영화관 의자에 친구들을 앉히는 가짓수를 팩토리얼 곱셉으로 구하는 원리</p>
+
+<ul>
+  <li>도로시, 토토, 프로드 세 사람이 영화관 좌석 3개에 앉는 경우의 수를 계산해 봅시다. 1번 자리에 앉을 사람을 고르는 가짓수는 3명 중 한 명이고, 2번 자리에는 남은 2명 중 한 명, 마지막 3번 자리에는 남은 1명이 자동으로 앉게 됩니다. 이 연쇄적인 결정을 수식으로 나타낸 것이 바로 3! = 3 × 2 × 1 = 6입니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-3가지를-나열하는-트리-도식">3. 시각 자료: 3가지를 나열하는 트리 도식</h3>
+
+<p><img src="./img/jiny_math_ch8_factorial_tree.png" alt="팩토리얼 나열 도식" />
+<strong>그림 02-8-13</strong> 3가지 원소를 중복 없이 나란히 늘어놓을 때 분기하는 가짓수를 묘사한 나열 트리 도식</p>
+
+<hr />
+
+<h3 id="4-실전-예제-2">4. 실전 예제</h3>
+
+<h4 id="예제-1-기본-줄-세우기">예제 1 (기본 줄 세우기)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 도로시, 카르다노, 토토 3명이 극장 매표소 앞에 나란히 줄을 서려고 합니다. 이들이 줄을 설 수 있는 총 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+서로 다른 3명을 일렬로 세우는 경우의 수이므로 3!을 계산합니다.
+경우의 수 = 3! = 3 × 2 × 1 = 6가지
+<strong>정답</strong>: 6가지</p>
+</blockquote>
+
+<h4 id="예제-2-다섯-명의-멤버-배치">예제 2 (다섯 명의 멤버 배치)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 무한도전 멤버 5명(재석, 명수, 형돈, 준하, 홍철)을 무대 위 5개의 자리에 왼쪽부터 일렬로 배치하려고 합니다. 이들을 일렬로 세울 수 있는 총 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+서로 다른 5명을 일렬로 세우는 경우의 수이므로 5!을 계산합니다.
+경우의 수 = 5! = 5 × 4 × 3 × 2 × 1 = 120가지
+<strong>정답</strong>: 120가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-2">5. 핵심 요약</h3>
+<ol>
+  <li>서로 다른 <em>n</em>개를 일렬로 줄 세우는 방법의 수는 <strong>곱의 법칙</strong>을 연속으로 적용한 것이다.</li>
+  <li>1부터 <em>n</em>까지의 자연수를 차례대로 곱한 것을 <strong><em>n</em>! (n 팩토리얼)</strong> 이라 부르며, 줄 세우기 문제의 대표적인 공식이다.</li>
+  <li>팩토리얼 연산은 수의 크기가 아주 빠르게 커지는 성질을 가지고 있다 (예: 3! = 6, 5! = 120, 10! = 3,628,800).</li>
+</ol>
+
+<hr />
+
+<h2 id="0284-순열-택하여-줄-세우기">02.8.4 순열: 택하여 줄 세우기</h2>
+
+<p><img src="./img/ch8_jiny_prob_ch8_permutation.png" alt="순열 인트로" />
+<strong>그림 02-8-14</strong> 시상대(1등, 2등, 3등 단상)에 인형들을 줄 세우며 순열 기호 <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>의 의미를 학습하는 지니와 도로시</p>
+
+<p>서로 다른 n개 중 r개를 선택해 순서를 고려하여 줄 세우는 <strong>순열(Permutation)</strong>을 공부합니다. 시상대의 각 단상에 동물 인형들을 배치하며 가짓수를 계산해내는 도로시와 지니의 놀이 학습처럼, 순열(<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>)의 원리를 탄탄히 이해해 봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표-3">1. 학습 목표</h3>
+<ul>
+  <li>서로 다른 <em>n</em>개 중에서 <em>r</em>개를 선택하여 일렬로 배열하는 경우의 수(순열)를 구하는 원리를 이해한다.</li>
+  <li>순열 기호 <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>의 의미를 알고, 팩토리얼과의 관계를 이해하며 식을 변형할 수 있다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-3">2. 핵심 개념</h3>
+
+<h4 id="1-순열-permutation">(1) 순열 (Permutation)</h4>
+<p>서로 다른 <em>n</em>개 중에서 <em>r</em>(0 &lt; <em>r</em> ≤ <em>n</em>)개를 택하여 순서대로 나열하는 것을 <strong>순열</strong>이라고 하며, 기호로 <strong><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub></strong>과 같이 나타냅니다.</p>
+<ul>
+  <li><em>읽는 방법</em>: ‘n P r’ 또는 ‘n 퍼뮤테이션 r’</li>
+  <li><strong>계산식</strong>:
+<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em> × (<em>n</em> - 1) × (<em>n</em> - 2) × … × (<em>n</em> - <em>r</em> + 1) (곱하는 개수가 <em>r</em>개)</li>
+</ul>
+
+<h4 id="2-순열의-공식과-팩토리얼">(2) 순열의 공식과 팩토리얼</h4>
+<p>순열의 계산식에 분자와 분모에 (<em>n</em> - <em>r</em>)!을 곱해 주면 다음과 같이 팩토리얼 기호만으로 공식을 나타낼 수 있습니다.
+<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em>! / (<em>n</em> - <em>r</em>)!</p>
+<ul>
+  <li><em>의미</em>: 전체 <em>n</em>개를 일렬로 줄 세우는 <em>n</em>! 중에서, 선택되지 않은 (<em>n</em> - <em>r</em>)개의 순서 나열(줄 세우기)인 (<em>n</em> - <em>r</em>)!을 나누어 제외(약분)하는 구조입니다.</li>
+  <li><em>특수한 경우</em>:
+    <ul>
+      <li><sub><em>n</em></sub><em>P</em><sub><em>n</em></sub> = <em>n</em>! / 0! = <em>n</em>! (서로 다른 <em>n</em>개 전체를 일렬로 나열하는 경우)</li>
+      <li><sub><em>n</em></sub><em>P</em><sub><em>0</em></sub> = <em>n</em>! / <em>n</em>! = 1 (아무것도 택하지 않는 것도 1가지 경우로 침)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/ch8_cartoon2.png" alt="트로피 선택을 통한 순열 시각화" />
+<strong>그림 02-8-15</strong> 전체 트로피 중 등수별 3개를 순서대로 매칭하여 배치하는 가짓수를 구하는 순열 사례</p>
+
+<ul>
+  <li>진열대에 놓인 서로 다른 5개의 트로피 중 1등, 2등, 3등(순서와 직책이 구분됨)에게 부여할 트로피 3개를 순서대로 나열해 고르는 경우의 수는 순열 공식을 사용하여 <sub>5</sub><em>P</em><sub>3</sub> = 5 × 4 × 3 = 60가지가 됩니다. 순열은 이처럼 <strong>대상을 선택하는 순서가 최종 결과에 영향을 주는 상황(Order matters)</strong>에 사용합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-순열의-자리-배치와-공식-유도">3. 시각 자료: 순열의 자리 배치와 공식 유도</h3>
+
+<p><img src="./img/jiny_math_ch8_permutation_formula.png" alt="순열 공식 도식" />
+<strong>그림 02-8-16</strong> 전체 대상 중 특정 개수를 택하고, 이들의 자리 배열 순서까지 고려한 경우의 수(순열)를 계산하는 기호식 정의도</p>
+
+<hr />
+
+<h3 id="4-실전-예제-3">4. 실전 예제</h3>
+
+<h4 id="예제-1-올림픽-메달-시나리오">예제 1 (올림픽 메달 시나리오)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 4강에 대한민국, 중국, 영국, 프랑스 4개국이 진출했습니다. 이 중 금메달, 은메달, 동메달을 획득하는 국가들의 총 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+서로 다른 4개국 중에서 순서를 생각하여(메달 종류) 3개국을 선택하여 배열하는 순열 문제입니다.
+경우의 수 = <sub>4</sub><em>P</em><sub>3</sub> = 4 × 3 × 2 = 24가지
+<strong>정답</strong>: 24가지</p>
+</blockquote>
+
+<h4 id="예제-2-학급-임원-선출">예제 2 (학급 임원 선출)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 학생 수가 30명인 학급에서 회장 1명, 부회장 1명을 선출하는 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+회장과 부회장은 직책(순서)의 구분이 있으므로 서로 다른 30명 중 2명을 뽑아 나열하는 순열 문제입니다.
+경우의 수 = <sub>30</sub><em>P</em><sub>2</sub> = 30 × 29 = 870가지
+<strong>정답</strong>: 870가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-3">5. 핵심 요약</h3>
+<ol>
+  <li><strong>순열 (<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>)</strong>은 대상을 <strong>뽑고 나서 순서대로 나열</strong>까지 하는 가짓수이다.</li>
+  <li><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> 계산은 <em>n</em>부터 시작해 1씩 줄여가며 총 <strong><em>r</em>개의 숫자</strong>를 곱한다.</li>
+  <li>팩토리얼 기호를 사용하여 순열 공식을 <strong><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em>! / (<em>n</em> - <em>r</em>)!</strong>로 표현할 수 있으며, 이는 식의 증명이나 약분에 널리 활용된다.</li>
+</ol>
+
+<hr />
+
+<h2 id="0285-조합-순서-없이-선택하기">02.8.5 조합: 순서 없이 선택하기</h2>
+
+<p><img src="./img/ch9_jiny_prob_ch9_combination.png" alt="조합 인트로" />
+<strong>그림 02-8-17</strong> 여러 과일 중 두 과일을 순서 없이 양손에 쥐며 조합 기호 <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>을 배우는 지니와 도로시</p>
+
+<p>순서와 관계없이 특정 대상을 묶음으로 골라내기만 하는 <strong>조합(Combination)</strong>을 공부합니다. 바구니에 담긴 사과, 바나나, 체리 중 도로시가 순서 없이 과일을 골라 쥐는 직관적인 놀이 과정을 통해 순열과의 명확한 차이점과 조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)의 신비로운 대칭 성질을 정복해봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표-4">1. 학습 목표</h3>
+<ul>
+  <li>순열과 조합의 차이점을 파악한다.</li>
+  <li>서로 다른 <em>n</em>개 중에서 순서를 생각하지 않고 <em>r</em>개를 선택하는 경우의 수(조합, <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)를 구하는 원리를 이해한다.</li>
+  <li>조합의 성질 <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>n-r</em></sub>을 이해하고 활용하여 복잡한 계산을 단순화한다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-4">2. 핵심 개념</h3>
+
+<h4 id="1-조합-combination">(1) 조합 (Combination)</h4>
+<p>서로 다른 <em>n</em>개 중에서 순서를 생각하지 않고 <em>r</em>(0 &lt; <em>r</em> ≤ <em>n</em>)개를 택하는 것을 <strong>조합</strong>이라고 하며, 기호로 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub></strong>과 같이 나타냅니다.</p>
+<ul>
+  <li><em>읽는 방법</em>: ‘n C r’ 또는 ‘n 콤비네이션 r’</li>
+  <li><strong>순열과의 관계</strong>:
+<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>은 대상을 뽑아서 순서대로 나열하는 것이므로, 조합으로 그냥 뽑아 놓은 <em>r</em>개의 대상을 일렬로 나열하는 가짓수(<em>r</em>!)만큼 중복이 생깁니다.
+<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> / <em>r</em>! = <em>n</em>! / (<em>r</em>!(<em>n</em> - <em>r</em>)!)</li>
+</ul>
+
+<p><img src="./img/ch9_cartoon2.png" alt="아이스크림 맛 선택을 통한 조합 시각화" />
+<strong>그림 02-8-18</strong> 맛을 고르고 컵에 담을 때 순서와 상관없이 조합으로 계산하는 사례</p>
+
+<ul>
+  <li>아이스크림 전문점에서 판매하는 5가지 맛 중에서 순서와 상관없이 3가지를 골라 하나의 큰 컵에 담는 경우를 계산해 봅시다. 콘 위에 차례대로 얹어 순서가 중요한 경우(순열)와 달리, 한 컵에 담기면 최종 결과는 동일하므로 순서가 무의미합니다. 따라서 <sub>5</sub><em>P</em><sub>3</sub> = 60가지 중 3개를 줄 세우는 가짓수(3! = 6)만큼의 중복을 나누어주어 총 <sub>5</sub><em>C</em><sub>3</sub> = 60 / 6 = 10가지의 선택을 할 수 있습니다.</li>
+</ul>
+
+<h4 id="2-조합의-유용한-성질">(2) 조합의 유용한 성질</h4>
+<ol>
+  <li><strong>여조합의 성질 (대칭성)</strong>:
+<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>n-r</em></sub>
+    <ul>
+      <li><em>의미</em>: <em>n</em>명 중에서 초대할 <em>r</em>명을 고르는 방법의 수는, 초대하지 않고 제외할 (<em>n</em> - <em>r</em>)명을 고르는 방법의 수와 완벽히 같습니다. <em>r</em>이 <em>n</em>의 절반보다 클 때 이 성질을 쓰면 계산량이 획기적으로 줄어듭니다.</li>
+    </ul>
+  </li>
+  <li><strong>특수한 값</strong>:
+    <ul>
+      <li><sub><em>n</em></sub><em>C</em><sub><em>n</em></sub> = 1</li>
+      <li><sub><em>n</em></sub><em>C</em><sub><em>0</em></sub> = 1</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="3-시각-자료-순열과-조합의-차이-및-공식-정리">3. 시각 자료: 순열과 조합의 차이 및 공식 정리</h3>
+
+<p><img src="./img/jiny_math_ch8_combination_formula.png" alt="조합 개념 도식" />
+<strong>그림 02-8-19</strong> 대상을 순서 없이 묶음으로 짝짓는 경우의 수(조합)와 순열의 나눗셈 중복 제거 관계도</p>
+
+<hr />
+
+<h3 id="4-실전-예제-4">4. 실전 예제</h3>
+
+<h4 id="예제-1-마트에서-아이스크림-고르기">예제 1 (마트에서 아이스크림 고르기)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 마트에 있는 10가지 종류의 아이스크림 중에서 서로 다른 3가지를 고르는 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+맛보는 순서는 상관없이 단순히 고르기만 하므로 조합 문제입니다.
+<sub>10</sub><em>C</em><sub>3</sub> = <sub>10</sub><em>P</em><sub>3</sub> / 3! = (10 × 9 × 8) / (3 × 2 × 1) = 120가지
+<strong>정답</strong>: 120가지</p>
+</blockquote>
+
+<h4 id="예제-2-여조합-성질을-활용한-계산">예제 2 (여조합 성질을 활용한 계산)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 학생 20명 중에서 생일파티에 초대할 친구 18명을 선택하는 경우의 수는 몇 가지인가요?</p>
+
+  <p><strong>풀이</strong>:
+18명을 순서 없이 선택하므로 <sub>20</sub><em>C</em><sub>18</sub>을 계산해야 합니다.
+하지만 조합의 성질 <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>n-r</em></sub>을 사용해 초대받지 못할 2명을 선택하는 문제로 바꾸어 풉니다.
+<sub>20</sub><em>C</em><sub>18</sub> = <sub>20</sub><em>C</em><sub>20-18</sub> = <sub>20</sub><em>C</em><sub>2</sub>
+<sub>20</sub><em>C</em><sub>2</sub> = (20 × 19) / (2 × 1) = 190가지
+<strong>정답</strong>: 190가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-4">5. 핵심 요약</h3>
+<ol>
+  <li><strong>순열</strong>은 순서가 있고(줄 세우기), <strong>조합</strong>은 순서가 없다(대표 뽑기, 묶음 만들기).</li>
+  <li>조합의 수 <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>은 순열의 수 <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>에서 대상의 순서 배열 가짓수인 <strong><em>r</em>!</strong>로 나눈 값이다.</li>
+  <li>계산할 때 아래 첨자 <em>r</em>이 클 때에는 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>n-r</em></sub></strong>을 적극 활용하여 간단하게 계산한다.</li>
+</ol>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

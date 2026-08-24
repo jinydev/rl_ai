@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .slot-body { fill: #ea4335; stroke: #202124; stroke-width: 2.5; rx: 12px; }
+      .slot-header { fill: #fbbc05; stroke: #202124; stroke-width: 2.5; }
+      .slot-screen { fill: #ffffff; stroke: #202124; stroke-width: 2; rx: 6px; }
+      .slot-lever-shaft { stroke: #5f6368; stroke-width: 4; stroke-linecap: round; }
+      .slot-lever-knob { fill: #ea4335; stroke: #202124; stroke-width: 1.5; }
+      .text-label { font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: bold; fill: #202124; text-anchor: middle; }
+      .text-title { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 12px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .text-reel { font-family: 'Impact', 'Arial Black', sans-serif; font-size: 18px; fill: #ea4335; text-anchor: middle; }
+      .dot { fill: #5f6368; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Machine 1 (x=50) -->
+  <g id="machine-1">
+    <rect x="50" y="30" width="120" height="150" class="slot-body" />
+    <path d="M 50,60 A 60,30 0 0 1 170,60 Z" class="slot-header" />
+    <text x="110" y="50" class="text-title">SLOT 1</text>
+    <rect x="62" y="75" width="96" height="50" class="slot-screen" />
+    <text x="82" y="108" class="text-reel">7</text>
+    <text x="110" y="108" class="text-reel">7</text>
+    <text x="138" y="108" class="text-reel">7</text>
+    <line x1="170" y1="105" x2="190" y2="70" class="slot-lever-shaft" />
+    <circle cx="190" cy="70" r="10" class="slot-lever-knob" />
+    <text x="110" y="205" class="text-label">슬롯머신 1</text>
+  </g>
+
+  <!-- Machine 2 (x=210) -->
+  <g id="machine-2" transform="translate(160, 0)">
+    <rect x="50" y="30" width="120" height="150" class="slot-body" />
+    <path d="M 50,60 A 60,30 0 0 1 170,60 Z" class="slot-header" />
+    <text x="110" y="50" class="text-title">SLOT 2</text>
+    <rect x="62" y="75" width="96" height="50" class="slot-screen" />
+    <text x="82" y="108" class="text-reel">7</text>
+    <text x="110" y="108" class="text-reel">3</text>
+    <text x="138" y="108" class="text-reel">7</text>
+    <line x1="170" y1="105" x2="190" y2="70" class="slot-lever-shaft" />
+    <circle cx="190" cy="70" r="10" class="slot-lever-knob" />
+    <text x="110" y="205" class="text-label">슬롯머신 2</text>
+  </g>
+
+  <!-- Machine 3 (x=370) -->
+  <g id="machine-3" transform="translate(320, 0)">
+    <rect x="50" y="30" width="120" height="150" class="slot-body" />
+    <path d="M 50,60 A 60,30 0 0 1 170,60 Z" class="slot-header" />
+    <text x="110" y="50" class="text-title">SLOT 3</text>
+    <rect x="62" y="75" width="96" height="50" class="slot-screen" />
+    <text x="82" y="108" class="text-reel">5</text>
+    <text x="110" y="108" class="text-reel">7</text>
+    <text x="138" y="108" class="text-reel">2</text>
+    <line x1="170" y1="105" x2="190" y2="70" class="slot-lever-shaft" />
+    <circle cx="190" cy="70" r="10" class="slot-lever-knob" />
+    <text x="110" y="205" class="text-label">슬롯머신 3</text>
+  </g>
+
+  <!-- Ellipsis dots -->
+  <circle cx="530" cy="110" r="5" class="dot" />
+  <circle cx="555" cy="110" r="5" class="dot" />
+  <circle cx="580" cy="110" r="5" class="dot" />
+
+  <!-- Machine N (x=610) -->
+  <g id="machine-n" transform="translate(560, 0)">
+    <rect x="50" y="30" width="120" height="150" class="slot-body" />
+    <path d="M 50,60 A 60,30 0 0 1 170,60 Z" class="slot-header" />
+    <text x="110" y="50" class="text-title">SLOT N</text>
+    <rect x="62" y="75" width="96" height="50" class="slot-screen" />
+    <text x="82" y="108" class="text-reel">7</text>
+    <text x="110" y="108" class="text-reel">7</text>
+    <text x="138" y="108" class="text-reel">7</text>
+    <line x1="170" y1="105" x2="190" y2="70" class="slot-lever-shaft" />
+    <circle cx="190" cy="70" r="10" class="slot-lever-knob" />
+    <text x="110" y="205" class="text-label">슬롯머신 N</text>
+  </g>
+</svg>

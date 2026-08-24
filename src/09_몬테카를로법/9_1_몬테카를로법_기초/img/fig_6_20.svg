@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Orange Star for Bullseye -->
+    <g id="star">
+      <path d="M 0 -6 L 2 -2 L 6 0 L 2 2 L 0 6 L -2 2 L -6 0 L -2 -2 Z" fill="#f59e0b" stroke="#ea580c" stroke-width="0.5"/>
+    </g>
+  </defs>
+  <!-- Left Side: 분산이 크다 -->
+  <g transform="translate(10, 10)">
+    <!-- Bullseye circles -->
+    <circle cx="120" cy="100" r="80" fill="none" stroke="#000000" stroke-width="8"/>
+    <circle cx="120" cy="100" r="50" fill="none" stroke="#000000" stroke-width="6"/>
+    <circle cx="120" cy="100" r="20" fill="none" stroke="#000000" stroke-width="4"/>
+
+    <!-- High variance scattered stars -->
+    <use href="#star" x="120" y="100"/>
+    <use href="#star" x="150" y="110"/>
+    <use href="#star" x="90" y="80"/>
+    <use href="#star" x="125" y="45"/>
+    <use href="#star" x="40" y="120"/>
+    <use href="#star" x="200" y="70"/>
+    <use href="#star" x="150" y="170"/>
+    <use href="#star" x="65" y="160"/>
+    <use href="#star" x="130" y="210"/>
+    <use href="#star" x="80" y="20"/>
+
+    <text x="120" y="215" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="middle">분산이 크다</text>
+  </g>
+
+  <!-- Right Side: 분산이 작다 -->
+  <g transform="translate(280, 10)">
+    <!-- Bullseye circles -->
+    <circle cx="120" cy="100" r="80" fill="none" stroke="#000000" stroke-width="8"/>
+    <circle cx="120" cy="100" r="50" fill="none" stroke="#000000" stroke-width="6"/>
+    <circle cx="120" cy="100" r="20" fill="none" stroke="#000000" stroke-width="4"/>
+
+    <!-- Low variance clustered stars -->
+    <use href="#star" x="120" y="100"/>
+    <use href="#star" x="124" y="98"/>
+    <use href="#star" x="116" y="104"/>
+    <use href="#star" x="122" y="108"/>
+    <use href="#star" x="114" y="95"/>
+    <use href="#star" x="127" y="102"/>
+    <use href="#star" x="112" y="106"/>
+    <use href="#star" x="128" y="94"/>
+    <use href="#star" x="118" y="90"/>
+    <use href="#star" x="123" y="105"/>
+
+    <text x="120" y="215" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="middle">분산이 작다</text>
+  </g>
+</svg>

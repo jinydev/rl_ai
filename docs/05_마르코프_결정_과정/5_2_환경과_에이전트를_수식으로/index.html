@@ -1,0 +1,1582 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>05.2 환경과 에이전트를 수식으로 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="05.2 환경과 에이전트를 수식으로" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/05_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EA%B2%B0%EC%A0%95_%EA%B3%BC%EC%A0%95/5_2_%ED%99%98%EA%B2%BD%EA%B3%BC_%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%A5%BC_%EC%88%98%EC%8B%9D%EC%9C%BC%EB%A1%9C/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/05_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EA%B2%B0%EC%A0%95_%EA%B3%BC%EC%A0%95/5_2_%ED%99%98%EA%B2%BD%EA%B3%BC_%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%A5%BC_%EC%88%98%EC%8B%9D%EC%9C%BC%EB%A1%9C/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="05.2 환경과 에이전트를 수식으로" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"05.2 환경과 에이전트를 수식으로","url":"https://rl.ai.jiny.dev/05_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EA%B2%B0%EC%A0%95_%EA%B3%BC%EC%A0%95/5_2_%ED%99%98%EA%B2%BD%EA%B3%BC_%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8%EB%A5%BC_%EC%88%98%EC%8B%9D%EC%9C%BC%EB%A1%9C/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">심화강화학습</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/part1/"
+            class="bd-links-link d-inline-block rounded ">
+            강화학습 Part 1 개요
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            3강 밴디트 문제
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/03_밴디트_문제/3_1_머신러닝_분류와_강화_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.1 머신러닝 분류와 강화 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_2_밴디트_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.2 밴디트 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_3_밴디트_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.3 밴디트 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_4_밴디트_알고리즘_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.4 밴디트 알고리즘 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_5_비정상_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.5 비정상 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            4강 마르코프
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/04_마르코프/4_1_마르코프_인물소개/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.1 마르코프 인물소개와 마르코프 성질
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_2_마르코프_체인/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.2 마르코프 체인 (Markov Chain)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_3_마르코프_과정/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.3 마르코프 과정 (Markov Process)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_4_은닉_마르코프/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.5 정리 (Summary)
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            5강 마르코프 결정 과정
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_1_마르코프_결정_과정_MDP_이란/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.1 마르코프 결정 과정(MDP)이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_2_환경과_에이전트를_수식으로/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.2 환경과 에이전트를 수식으로
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_3_MDP의_목표/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.3 MDP의 목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_4_MDP_예제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.4 MDP 예제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            aria-expanded="false">
+            6강 벨만 방정식
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-5">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/06_벨만_방정식/6_1_벨만_소개와_사전_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.1 벨만 소개와 사전 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_2_벨만_방정식_도출/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.2 벨만 방정식 도출
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_3_벨만_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.3 벨만 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_4_행동_가치_함수_Q_함수와_벨만_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.4 행동 가치 함수(Q 함수)와 벨만 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_5_벨만_최적_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.5 벨만 최적 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_6_벨만_최적_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.6 벨만 최적 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-6"
+            aria-expanded="false">
+            7강 동적 프로그래밍
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-6">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_1_유래/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.1 동적 프로그래밍의 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.2 동적 프로그래밍과 정책 평가
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_3_더_큰_문제를_향해/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.3 더 큰 문제를 향해
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_4_정책_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.4 정책 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_5_정책_반복법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.5 정책 반복법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_6_가치_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.6 가치 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-7"
+            aria-expanded="false">
+            9강 몬테카를로법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-7">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/09_몬테카를로법/9_0_수학적기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.0 몬테카를로법의 수학적 기초와 역사적 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_1_몬테카를로법_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.1 몬테카를로법 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_2_몬테카를로법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.2 몬테카를로법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_3_몬테카를로법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.3 몬테카를로법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_4_몬테카를로법으로_정책_제어하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.4 몬테카를로법으로 정책 제어하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_5_오프-정책과_중요도_샘플링/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.5 오프-정책과 중요도 샘플링
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-8"
+            aria-expanded="false">
+            10강 TD법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-8">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/10_TD법/10_1_TD법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.1 TD법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_2_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.2 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_3_오프-정책_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.3 오프-정책 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_4_Q_러닝/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.4 Q 러닝
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_5_분포_모델과_샘플_모델/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.5 분포 모델과 샘플 모델
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-9"
+            aria-expanded="false">
+            신경망과 Q 러닝
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-9">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_1_DeZero_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.1 DeZero 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_2_선형_회귀/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.2 선형 회귀
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_3_신경망/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.3 신경망
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_4_Q_러닝과_신경망/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.4 Q 러닝과 신경망
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-10"
+            aria-expanded="false">
+            DQN
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-10">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/12_DQN/12_1_OpenAI_Gym/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.1 OpenAI Gym
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_2_DQN의_핵심_기술/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.2 DQN의 핵심 기술
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_3_DQN과_아타리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.3 DQN과 아타리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_4_DQN_확장/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.4 DQN 확장
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-11"
+            aria-expanded="false">
+            13강 정책 경사법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-11">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/13_정책_경사법/13_1_가장_간단한_정책_경사법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.1 가장 간단한 정책 경사법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_2_REINFORCE/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.2 REINFORCE
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_3_베이스라인/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.3 베이스라인
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_4_행위자-비평자/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.4 행위자-비평자
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_5_정책_기반_기법의_장점/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.5 정책 기반 기법의 장점
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-12"
+            aria-expanded="false">
+            14강 한 걸음 더
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-12">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/14_한_걸음_더/14_1_심층_강화_학습_알고리즘_분류/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.1 심층 강화 학습 알고리즘 분류
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_2_정책_경사법_계열의_고급_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.2 정책 경사법 계열의 고급 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_3_DQN_계열의_고급_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.3 DQN 계열의 고급 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_4_사례_연구/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.4 사례 연구
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_5_심층_강화_학습이_풀어야_할_숙제와_가능성/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.5 심층 강화 학습이 풀어야 할 숙제와 가능성
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/05_%EB%A7%88%EB%A5%B4%EC%BD%94%ED%94%84_%EA%B2%B0%EC%A0%95_%EA%B3%BC%EC%A0%95/">05 마르코프 결정 과정</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">05.2 환경과 에이전트를 수식으로</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="052-환경과-에이전트를-수식으로">05.2 환경과 에이전트를 수식으로</h1>
+
+<p><strong>그림 05-2</strong> 칠판에 적어둔 상태 전이 확률 p(s’|s,a)와 정책 pi(a|s)의 수식을 설명해 주는 지니와 도로시
+<img src="./img/jiny_mdp_ch5_2_formulas.png" alt="환경과 에이전트 수식 인트로" /></p>
+
+<p>MDP의 동적 상호작용을 수학으로 기술하기 위한 핵심 수식들을 정리합니다. 상태 전이 확률, 보상 함수, 그리고 에이전트의 행동 가이드라인인 <strong>정책(Policy)</strong> 수식의 엄밀한 정의들을 지니와 도로시의 즐거운 칠판 수학 필기를 보며 머릿속에 정교하게 담아봅시다!</p>
+
+<hr />
+
+<p>MDP는 에이전트와 환경의 상호작용을 수식으로 표현합니다. 그렇게 하려면 다음의 세 요소를 수식으로 표현해야 합니다.</p>
+
+<p>• 상태 전이: 상태는 어떻게 전이되는가?
+• 보상: 보상은 어떻게 주어지는가?
+• 정책: 에이전트는 행동을 어떻게 결정하는가?</p>
+
+<p>이 세 요소를 모두 수식으로 표현한다면 MDP를 공식으로 표현했다고 볼 수 있습니다.</p>
+
+<p><img src="./img/math_elements_cartoon.png" alt="강화 학습의 3대 수학적 요소" /></p>
+
+<h3 id="0521-상태-전이">05.2.1 상태 전이</h3>
+
+<p>‘상태 전이’부터 살펴보겠습니다.</p>
+
+<p>상태 전이<sup>state transition</sup>는 에이전트가 어떤 상태에서 특정 행동을 취했을 때 다음 상태로 변화하는 물리적 또는 논리적 움직임을 의미합니다.</p>
+
+<p>이러한 상태 전이는 전이되는 규칙성에 따라 크게 두 가지 방식으로 나뉩니다.</p>
+
+<ol>
+  <li><strong>결정적 상태 전이 (Deterministic)</strong>: 에이전트가 내린 행동의 결과로 다음 상태가 항상 100% 동일하게 한 가지로 확실하게 결정되는 방식입니다.</li>
+  <li><strong>확률적 상태 전이 (Probabilistic)</strong>: 에이전트가 특정 행동을 취하더라도 바람, 마찰력, 혹은 시스템 노이즈 등 여러 무작위적인 주변 조건에 의해 여러 후보 상태 중 하나로 확률을 가지고 이동하는 방식입니다.</li>
+</ol>
+
+<p>이 두 가지 성격이 강화 학습 수식에서 어떻게 구체적으로 다루어지는지 알아보겠습니다.</p>
+
+<h4 id="05211-결정적-상태-전이와-상태-전이-함수">05.2.1.1 결정적 상태 전이와 상태 전이 함수</h4>
+
+<p>결정적 상태 전이의 예인 [그림 05-5]를 보겠습니다.</p>
+
+<p><strong>그림 05-5</strong> 결정적 상태 전이의 예</p>
+
+<p><img src="./img/fig_05_5_deterministic.svg" alt="결정적 상태 전이" /></p>
+
+<p>[그림 05-5]는 에이전트가 왼쪽으로 이동하는 행동을 선택했고, 그 결과로 에이전트가 ‘반드시’ 왼쪽으로 이동하는 모습을 보여줍니다.</p>
+
+<p>이처럼 현재 상태와 행동이 주어졌을 때 다음 상태가 항상 100% 동일하게 한 가지로만 결정되는 성질을 <strong>결정적</strong><sup>deterministic</sup>이라고 합니다.</p>
+
+<p>상태 전이가 결정적일 경우 다음 상태 <em>s’</em>는 현재 상태 <em>s</em>와 행동 <em>a</em>에 의해 ‘단 하나로’ 결정됩니다. 따라서 함수로는 다음과처럼 표현할 수 있습니다.
+\(s' = f(s, a)\)</p>
+
+<p><em>f</em>(<em>s</em>, <em>a</em>)는 상태 <em>s</em>와 행동 <em>a</em>를 입력하면 다음 상태 <em>s’</em>를 출력하는 함수입니다. 이 함수를 가리켜 상태 전이 함수<sup>state transition function</sup>라고 합니다.</p>
+
+<h4 id="05212-확률적-상태-전이와-상태-전이-확률">05.2.1.2 확률적 상태 전이와 상태 전이 확률</h4>
+
+<p>반면, 확률적<sup>stochastic</sup> 상태 전이는 특정 행동을 선택하더라도 다음 상태가 하나로 확실하게 결정되지 않고 여러 가능성을 갖습니다.</p>
+
+<p>구체적인 예인 [그림 05-6]을 보겠습니다.</p>
+
+<p><strong>그림 05-6</strong> 확률적 상태 전이의 예</p>
+
+<p><img src="./img/fig_05_5_stochastic.svg" alt="확률적 상태 전이" /></p>
+
+<p>[그림 05-6]은 에이전트가 왼쪽으로 이동하는 행동을 선택했음에도 불구하고, 0.9의 확률로만 실제로 왼쪽으로 이동하고 0.1의 확률로는 제자리에 머물러 있는 모습을 보여줍니다.</p>
+
+<p>이처럼 행동에 따른 결과가 확률적으로 달라지는 이유는 바닥이 미끄러운 물리적 환경 때문일 수도 있고, 에이전트의 모터나 센서 등 내부 제어 장치에 미세한 작동 오차가 존재하기 때문일 수도 있습니다. 이러한 현실적인 불확실성 요인들을 그림으로 표현하면 [그림 05-7]과 같습니다.</p>
+
+<p><strong>그림 05-7</strong> 확률적 상태 전이를 일으키는 현실의 불확실성 요인</p>
+
+<p><img src="./img/stochastic_transition_causes_ko.png" alt="확률적 상태 전이 요인" /></p>
+
+<p>[그림 05-7]과 같이 바닥 표면 상태(미끄러운 얼음이나 오일), 바람과 같은 외력의 방해, 혹은 기어의 유격(backlash)이나 모터 제어의 내부 진동 같은 기계 오차는 에이전트가 의도한 행동(Intended Command)을 취하더라도 결과적으로 실제 경로가 이탈하여 다른 상태로 전이되도록 만듭니다. 강화 학습은 이처럼 현실 세계에 상존하는 다양한 물리적 제어 오차와 불확실성을 모델링하기 위해 확률적 상태 전이를 기본 뼈대로 삼습니다.</p>
+
+<blockquote>
+  <p>상태 전이가 결정적이라도 확률적으로 설명하는 것이 가능합니다. 예를 들어 ‘에이전트가 왼쪽으로 이동하는 행동을 선택하면 1.0(100%)의 확률로 왼쪽으로 이동한다’라고 기술하면 결정적 전이는 확률적 전이의 특수한 케이스로 자연스럽게 포함됩니다.</p>
+</blockquote>
+
+<p>이제 확률적 상태 전이를 수식으로 표기하는 방법을 설명하겠습니다.</p>
+
+<p>에이전트가 상태 <em>s</em>에서 행동 <em>a</em>를 선택한다고 해봅시다. 이 경우 다음 상태 <em>s’</em>로 이동할 확률은 다음과 같이 조건부 확률 형태로 나타냅니다.</p>
+
+\[p(s' \mid s, a)\]
+
+<table>
+  <tbody>
+    <tr>
+      <td>기호</td>
+      <td>의 오른쪽에는 ‘조건’을 나타내는 확률 변수를 적습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>지금 식에서는 ‘상태 <em>s</em>에서 행동 <em>a</em>를 선택했다’라는 것이 조건에 해당합니다. 이 두 조건이 주어졌을 때 <em>s’</em>로 전이될 확률을 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)로 나타내며, 이때 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)를 상태 전이 확률<sup>state transition probability</sup>이라고 합니다. [그림 05-8]은 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)의 구체적인 예입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>그림 05-8</strong> 상태 전이 확률의 예</p>
+
+<p><img src="./img/fig_05_6.svg" alt="그림 05-8" /></p>
+
+<p>그림과 같이 총 5개의 칸을 왼쪽부터 순서대로 L1, L2, L3, L4, L5라고 부르기로 합니다. 또한 에이전트의 행동에 대해서는 ‘왼쪽으로 이동’을 Left, ‘오른쪽으로 이동’을 Right로 표기합니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이제 에이전트가 L3에 있을 때, 즉 상태가 L3일 때 행동으로 Left를 선택했다고 해봅시다. 그리고 이 경우의 상태 전이 확률 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em> = L3, <em>a</em> = Left)가 [그림 05-8]의 오른쪽 표와 같다고 합시다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[그림 05-8]의 표는 정확히 말하면 상태 전이의 ‘확률 분포’입니다. 확률 변수 <em>s’</em>가 취할 수 있는 ‘모든’ 값 각각의 확률을 나타내고 있기 때문입니다. 즉, 확률의 ‘분포’를 표현하였습니다.</p>
+</blockquote>
+
+<h4 id="05213-마르코프-성질markov-property-정의">05.2.1.3 마르코프 성질(Markov Property) 정의</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td><em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)가 다음 상태 <em>s’</em>를 결정하는 데는 ‘현재’ 상태 <em>s</em>와 행동 <em>a</em>만이 영향을 줍니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>다시 말해 상태 전이에서는 과거의 정보, 즉 지금까지 어떤 상태들을 거쳐 왔고 어떤 행동들을 취해 왔는지는 전혀 신경 쓰지 않습니다. 이처럼 현재의 정보만 고려하는 성질을 <strong>마르코프 성질</strong><sup>Markov property</sup>이라고 합니다. 이 개념을 시각화하면 [그림 05-9]와 같습니다.</p>
+
+<p><strong>그림 05-9</strong> 마르코프 성질의 개념 비교</p>
+
+<p><img src="./img/markov_property_concept_ko.png" alt="마르코프 성질 개념" /></p>
+
+<p>[그림 05-9]의 왼쪽처럼 마르코프 성질을 만족하는 세계에서는 에이전트가 오직 ‘현재의 위치(상태)’ 정보만을 지도에서 읽고 다음 행동 방향을 간단히 선택합니다. 반면, 오른쪽의 비마르코프 세계에서는 과거에 어디서부터 걸어왔는지 적혀 있는 거대한 무덤의 역사 책들을 머리에 짊어지고 끙끙대며 매 단계 행동을 정해야 합니다.</p>
+
+<p>강화 학습 모델인 MDP는 이처럼 마르코프 성질을 만족한다고 가정하고 설계됩니다. 마르코프 성질을 도입하는 가장 큰 현실적인 이유는 <strong>문제를 단순화하여 쉽게 해결하기 위해서</strong>입니다. 과거의 기록까지 누적해 고려해야 한다면 데이터의 크기와 상태 공간의 수가 기하급수적으로 증가(차원의 저주)하여 문제를 푸는 것 자체가 거의 불가능해지기 때문입니다.</p>
+
+<hr />
+
+<h3 id="0522-보상-함수">05.2.2 보상 함수</h3>
+
+<p>다음으로 보상에 대해 생각해봅시다.</p>
+
+<h4 id="05221-결정적-보상-함수-rs-a-s">05.2.2.1 결정적 보상 함수 r(s, a, s’)</h4>
+
+<p>설명이 복잡해지지 않도록 보상은 ‘결정적’으로 주어진다고 가정하겠습니다.</p>
+
+<p>에이전트가 상태 <em>s</em>에서 행동 <em>a</em>를 수행하여 다음 상태 <em>s’</em>가 되었을 때 얻는 보상을 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)라는 함수로 정의합니다.</p>
+
+<p>그럼 보상 함수<sup>reward function</sup>의 예로 [그림 05-10]을 보겠습니다.</p>
+
+<p><strong>그림 05-10</strong> 보상 함수의 예</p>
+
+<p><img src="./img/fig_05_7.svg" alt="그림 05-10" /></p>
+
+<p>그림에는 에이전트가 상태 L2에서(<em>s</em> = L2), 행동 Left를 선택하여 상태 L1로 전이된 예가 그려져 있습니다.</p>
+
+<p>이 경우의 보상은 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)를 통해 1임을 알 수 있습니다.</p>
+
+<p>참고로 이 예에서는 다음 상태 <em>s’</em>만 알면 보상이 결정됩니다.</p>
+
+<p>이번 문제에서는 이동한 위치에 사과가 있느냐에 의해서만 보상이 결정되기 때문입니다. 따라서 보상 함수를 <em>r</em>(<em>s’</em>)로 구현할 수도 있습니다.</p>
+
+<h4 id="05222-확률적-보상-및-보상-기댓값의-개념">05.2.2.2 확률적 보상 및 보상 기댓값의 개념</h4>
+
+<p>보상은 항상 똑같이 고정된 값이 지급되는 ‘결정적 보상’뿐 아니라, 확률 분포에 따라 지급되는 ‘확률적 보상’ 형태로 주어질 수도 있습니다. 이 차이는 [그림 05-11]을 통해 잘 이해할 수 있습니다.</p>
+
+<p><strong>그림 05-11</strong> 결정적 보상과 확률적 보상의 비교</p>
+
+<p><img src="./img/probabilistic_reward_concept_ko.png" alt="보상 유형 비교" /></p>
+
+<p>[그림 05-11]의 왼쪽처럼 ‘결정적 보상’은 해당 위치에 가기만 하면 100% 확률로 무조건 코인(+1)을 획득합니다. 반면, 오른쪽의 ‘확률적 보상’은 일종의 룰렛 판과 같아서, 80% 확률로 큰 잭팟 보상(+10)을 얻을 수 있지만 20% 확률로는 꽝(0)이 나오는 구조를 가집니다.</p>
+
+<p>강화 학습에서는 이와 같은 확률적 보상도 자연스럽게 수식으로 처리할 수 있습니다. 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)가 고정 상수가 아닌 <strong>‘보상의 평균 기댓값(Expected Reward)’</strong>을 계산하여 반환하도록 정의하면, 뒤이어 나오는 벨만 방정식 등 복잡한 MDP 유도 과정은 결정적 보상일 때와 수학적으로 완전히 동일하게 작동합니다. 다만 이번 강의의 설명 편의성을 위해 기본적으로 보상은 결정적으로 주어진다고 가정하고 이야기를 이어가겠습니다.</p>
+
+<hr />
+
+<h3 id="0523-에이전트의-정책">05.2.3 에이전트의 정책</h3>
+
+<p>다음으로 에이전트의 정책에 대해 생각해보죠.</p>
+
+<p>정책<sup>policy</sup>은 에이전트가 행동을 결정하는 방식을 말합니다.</p>
+
+<h4 id="마르코프-결정-과정에서-결정의-두-가지-본질적인-의미">‘마르코프 결정 과정’에서 ‘결정’의 두 가지 본질적인 의미</h4>
+
+<p>여기서 ‘마르코프 결정 과정’이라는 이름에 포함된 <strong>‘결정’</strong>이라는 단어의 뜻을 명확히 짚고 넘어갈 필요가 있습니다. 강화 학습에서 ‘결정’은 크게 두 가지 관점에서 핵심적인 역할을 수행합니다.</p>
+
+<ol>
+  <li><strong>에이전트의 주체적 의사결정 (Decision Making)</strong>:
+단순히 환경의 변화를 수동적으로 관찰하는 마르코프 체인(Markov Chain)과 달리, MDP에서는 에이전트가 매 순간 행동을 <strong>주체적으로 결정(의사결정)</strong>합니다. 에이전트가 어떤 결정을 내리느냐에 따라 다음 상태와 앞으로 받게 될 보상의 흐름이 역동적으로 변화합니다. 이 <strong>의사결정 규칙</strong>을 정의한 것이 바로 <strong>정책</strong>입니다.</li>
+  <li><strong>인과 관계의 결정론적 성격 (Deterministic)</strong>:
+의사결정(정책)과 그 결과(상태 전이)가 100% 확실한 하나의 결과로 고정되는지, 아니면 무작위적 확률을 따르는지를 구분하는 성질입니다.
+    <ul>
+      <li><strong>행동 결정(정책)</strong>: 특정 상태에서 에이전트가 취할 행동이 단 하나로 확정되어 있다면 <strong>결정적 정책</strong>이고, 상황에 따라 여러 행동을 확률 분포로 선택한다면 <strong>확률적 정책</strong>입니다.</li>
+      <li><strong>상태 결정(상태 전이)</strong>: 행동에 의해 다음 상태가 오직 하나로 확실하게 정해진다면 <strong>결정적 상태 전이</strong>이고, 여러 다음 상태로 갈 확률 분포가 주어져 있다면 <strong>확률적 상태 전이</strong>입니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>결국 MDP의 궁극적인 목적은 전체 타임 스텝에 걸쳐 누적 보상을 최대화할 수 있는 <strong>최선의 행동 결정(최적 정책)</strong> 규칙을 찾아내는 것입니다. 에이전트가 마주하게 될 정책의 두 가지 유형(결정적 정책 vs 확률적 정책)의 핵심 차이를 정리하면 [그림 05-12]와 같습니다.</p>
+
+<p><strong>그림 05-12</strong> 에이전트의 정책 유형 비교 (결정적 vs 확률적)</p>
+
+<p><img src="./img/agent_policy_concept_ko.png" alt="정책 유형 비교" /></p>
+
+<p>[그림 05-12]의 왼쪽과 같이 결정적 정책에서는 에이전트가 처한 상태(갈림길)에서 무조건 정해진 방향(왼쪽)으로만 이동하는 100% 확정형 행동 결정을 내립니다. 반면, 오른쪽의 확률적 정책에서는 왼쪽으로 갈 확률(40%)과 오른쪽으로 갈 확률(60%)처럼 확률 분포에 기반하여 행동 결정을 내립니다.</p>
+
+<p>정책에서 중요한 점은 에이전트는 ‘현재 상태’만으로 행동을 결정할 수 있다는 것입니다. ‘현재 상태’만으로 충분한 이유는 무엇일까요? 바로 환경의 상태 전이가 마르코프 성질에 따라 이루어지기 때문입니다.</p>
+
+<h4 id="05231-결정적-정책-μs">05.2.3.1 결정적 정책 μ(s)</h4>
+
+<p>환경의 상태 전이에서는 현재 상태 <em>s</em>와 행동 <em>a</em>만을 고려하여 다음 상태 <em>s’</em>가 결정됩니다.</p>
+
+<p>보상도 마찬가지로 현재 상태 <em>s</em>와 행동 <em>a</em> 그리고 전이된 상태 <em>s’</em>만으로 결정됩니다. 이상이 의미하는 바는 ‘환경에 대해 필요한 정보는 모두 현재 상태에 있다’는 것입니다. 따라서 에이전트가 ‘현재 상태’만으로 행동을 결정할 수 있습니다.</p>
+
+<blockquote>
+  <p>NOTE_ MDP의 마르코프 성질이라는 특성은 에이전트에 대한 제약이 아니라 ‘환경에 대한 제약’으로 볼 수 있습니다. 즉, 마르코프 성질을 만족하도록 ‘상태’를 관리하는 책임이 환경 쪽에 있다는 뜻입니다. 에이전트 관점에서 보면 최선의 선택에 필요한 정보가 모두 현재 상태에 담기기 때문에 현재만을 바라보고 행동할 수 있습니다.</p>
+</blockquote>
+
+<p>이때 행동을 결정하는 방식인 정책은 ‘결정적’ 또는 ‘확률적’인 방식으로 나뉩니다. 먼저 결정적 정책의 구체적인 구현 예인 [그림 05-13]을 보겠습니다.</p>
+
+<p><strong>그림 05-13</strong> 결정적 정책의 예</p>
+
+<p><img src="./img/fig_05_8_deterministic.svg" alt="그림 05-13" /></p>
+
+<p>[그림 05-13]과 같이 결정적 정책에서는 에이전트가 상태 L3에 있을 때 다른 대안 없이 반드시 왼쪽(Left)으로 이동하는 하나의 약속된 행동만을 수행합니다.</p>
+
+<p>이러한 결정적 정책은 함수로 다음과 같이 정의할 수 있습니다.
+\(a = \mu(s)\)</p>
+
+<p>μ(<em>s</em>)는 매개변수로 상태를 건네주면 행동 <em>a</em>를 반환하는 함수입니다.</p>
+
+<blockquote>
+  <p><strong>수학 기호 사전: μ (뮤, mu)</strong>
+그리스 문자 <strong>μ</strong>는 <strong>‘뮤’</strong>라고 읽습니다. 제어 이론(Control Theory)과 수학적 최적화 분야에서는 상태를 하나의 확실한 제어 행동으로 연결해주는 함수 규칙(매핑)을 나타낼 때 전통적으로 그리스 문자 μ를 관례적으로 사용해 왔으며, 강화 학습에서도 결정적 정책 함수를 나타낼 때 이 기호를 차용했습니다.</p>
+</blockquote>
+
+<p>이 예에서 μ(<em>s</em> = L3)은 Left를 반환합니다.</p>
+
+<h4 id="05232-확률적-정책-πa--s">05.2.3.2 확률적 정책 π(a | s)</h4>
+
+<p>반면, 확률적 정책의 구체적인 구현 예인 [그림 05-14]를 보겠습니다.</p>
+
+<p><strong>그림 05-14</strong> 확률적 정책의 예</p>
+
+<p><img src="./img/fig_05_8_stochastic.svg" alt="그림 05-14" /></p>
+
+<p>[그림 05-14]와 같이 확률적 정책에서는 에이전트가 상태 L3에 있을 때 왼쪽으로 이동할 확률은 0.4(40%), 오른쪽으로 이동할 확률은 0.6(60%)과 같이 각 행동에 대한 선택 확률 분포를 가집니다. 이렇게 에이전트의 행동이 확률 분포에 따라 결정되는 정책은</p>
+
+<p>수식으로 다음과 같이 표현할 수 있습니다.</p>
+
+\[\pi(a \mid s)\]
+
+<table>
+  <tbody>
+    <tr>
+      <td>π(<em>a</em></td>
+      <td><em>s</em>)는 상태 <em>s</em>에서 행동 <em>a</em>를 취할 확률을 나타냅니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>수학 기호 사전: π (파이, pi)</strong>
+그리스 문자 <strong>π</strong>는 <strong>‘파이’</strong>라고 읽습니다. 원주율 기호로 친숙하지만, 강화 학습에서는 <strong>정책(Policy)</strong>의 영문 첫 글자인 <strong>‘P’</strong>에 매칭되는 그리스 문자로 쓰이기 시작하여 정책을 뜻하는 표준 기호로 정착되었습니다. 또한 확률론에서 π는 상태 전이 과정의 확률 분포나 정상 분포(Stationary Distribution)를 나타낼 때 단골로 쓰이는 기호이기도 해서, 행동에 따른 확률 분포를 리턴하는 ‘확률적 정책’의 본질에 매우 잘 어울리는 수학적 기호입니다.</p>
+</blockquote>
+
+<p>[그림 05-14]의 예를 수식으로 표현하면 다음과 같습니다.</p>
+
+\[\begin{aligned}
+\pi(a = \text{Left} \mid s = L3) &amp;= 0.4 \\
+\pi(a = \text{Right} \mid s = L3) &amp;= 0.6
+\end{aligned}\]
+
+<blockquote>
+  <p>NOTE_ 결정적 정책은 확률적 정책으로도 표현할 수 있습니다. 예를 들어 결정적 정책인 <em>a</em> = μ(<em>s</em>)는 상태 <em>s</em>에서 행동 <em>a</em>를 수행할 확률이 1.0인 확률 분포로 나타낼 수 있습니다.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="0524-핵심-요약">05.2.4 핵심 요약</h3>
+
+<p>상태 전이, 보상 함수, 정책을 수식으로 표현해보았습니다.</p>
+
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>상태 전이 확률</strong>: 상태 <em>s</em>에서 행동 <em>a</em>를 선택했을 때 다음 상태 <em>s’</em>로 갈 확률 분포를 <em>p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>)로 모델링합니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>마르코프 성질</strong>: 다음 상태 <em>s’</em>의 결정이 과거의 상태/행동 기록과 독립적이고 오직 현재 상태 <em>s</em>와 현재 행동 <em>a</em>에 의해서만 결정되는 성질을 말합니다.</li>
+  <li><strong>보상 함수</strong>: 상태 <em>s</em>에서 행동 <em>a</em>를 통해 다음 상태 <em>s’</em>가 되었을 때 주어지는 고유 보상값 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)입니다.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>정책</strong>: 상태 <em>s</em>에서 행동 <em>a</em>를 선택할 행동 규칙으로, 결정적 정책 <em>a</em> = μ(<em>s</em>)와 확률적 정책 π(<em>a</em></td>
+          <td><em>s</em>)로 구분됩니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ol>
+
+<p>다음 절에서는 이 세 수식을 이용하여 MDP의 목표를 정의하겠습니다.</p>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 240" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Orange Star for Bullseye -->
+    <g id="star">
+      <path d="M 0 -6 L 2 -2 L 6 0 L 2 2 L 0 6 L -2 2 L -6 0 L -2 -2 Z" fill="#f59e0b" stroke="#ea580c" stroke-width="0.5"/>
+    </g>
+  </defs>
+  <!-- Left Chart: 수정 전 방식 -->
+  <g transform="translate(10, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <text x="25" y="110" font-family="sans-serif" font-size="12" fill="#2d3748" transform="rotate(-90 25 110)" text-anchor="middle">weight</text>
+    <line x1="40" y1="200" x2="240" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Equal height bars -->
+    <rect x="65" y="110" width="10" height="90" fill="#00bfff"/>
+    <rect x="95" y="110" width="10" height="90" fill="#00bfff"/>
+    <rect x="125" y="110" width="10" height="90" fill="#00bfff"/>
+    <rect x="175" y="110" width="10" height="90" fill="#00bfff"/>
+    <rect x="205" y="110" width="10" height="90" fill="#00bfff"/>
+
+    <circle cx="147" cy="155" r="1.5" fill="#2d3748"/>
+    <circle cx="152" cy="155" r="1.5" fill="#2d3748"/>
+    <circle cx="157" cy="155" r="1.5" fill="#2d3748"/>
+
+    <!-- Labels -->
+    <g font-family="Cambria Math, Georgia, serif" font-size="13" fill="#2d3748" text-anchor="middle">
+      <text x="70" y="218">G<tspan font-size="10" dy="3">(1)</tspan></text>
+      <text x="100" y="218">G<tspan font-size="10" dy="3">(2)</tspan></text>
+      <text x="130" y="218">G<tspan font-size="10" dy="3">(3)</tspan></text>
+      <text x="180" y="218">G<tspan font-size="10" dy="3">(n-1)</tspan></text>
+      <text x="210" y="218">G<tspan font-size="10" dy="3">(n)</tspan></text>
+    </g>
+  </g>
+
+  <!-- Right Chart: 고정값 방식 -->
+  <g transform="translate(260, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <line x1="40" y1="200" x2="240" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Exponentially increasing bars -->
+    <rect x="65" y="196" width="10" height="4" fill="#00bfff"/>
+    <rect x="95" y="190" width="10" height="10" fill="#00bfff"/>
+    <rect x="125" y="175" width="10" height="25" fill="#00bfff"/>
+    <rect x="175" y="120" width="10" height="80" fill="#00bfff"/>
+    <rect x="205" y="60" width="10" height="140" fill="#00bfff"/>
+
+    <circle cx="147" cy="185" r="1.5" fill="#2d3748"/>
+    <circle cx="152" cy="185" r="1.5" fill="#2d3748"/>
+    <circle cx="157" cy="185" r="1.5" fill="#2d3748"/>
+
+    <!-- Labels -->
+    <g font-family="Cambria Math, Georgia, serif" font-size="13" fill="#2d3748" text-anchor="middle">
+      <text x="70" y="218">G<tspan font-size="10" dy="3">(1)</tspan></text>
+      <text x="100" y="218">G<tspan font-size="10" dy="3">(2)</tspan></text>
+      <text x="130" y="218">G<tspan font-size="10" dy="3">(3)</tspan></text>
+      <text x="180" y="218">G<tspan font-size="10" dy="3">(n-1)</tspan></text>
+      <text x="210" y="218">G<tspan font-size="10" dy="3">(n)</tspan></text>
+    </g>
+  </g>
+</svg>

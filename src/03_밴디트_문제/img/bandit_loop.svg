@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #fcfcfd; }
+      .box { stroke-width: 2.5; rx: 12px; filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.06)); }
+      .agent-box { fill: #e8f0fe; stroke: #1a73e8; }
+      .env-box { fill: #fef7e0; stroke: #f9ab00; }
+      .math-box { fill: #e6f4ea; stroke: #1e8e3e; }
+      .title-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .body-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 13px; fill: #3c4043; }
+      .arrow { stroke: #5f6368; stroke-dasharray: 4; stroke-width: 2.5; fill: none; }
+      .arrow-solid { stroke: #1a73e8; stroke-width: 3; fill: none; }
+      .marker { fill: #5f6368; }
+      .marker-blue { fill: #1a73e8; }
+      .label-text { font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: bold; fill: #1a73e8; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker-blue" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Title -->
+  <text x="400" y="45" class="title-text" font-size="24">멀티-암드 밴디트 상호작용 및 가치 학습 루프</text>
+
+  <!-- Interaction Arrows (Drawn behind the text labels) -->
+  <!-- Agent to Env: Action -->
+  <path d="M 320 135 L 470 135" class="arrow-solid" marker-end="url(#arrowhead-blue)" />
+  
+  <!-- Env to Agent: Reward -->
+  <path d="M 480 215 L 330 215" class="arrow" marker-end="url(#arrowhead)" />
+
+  <!-- Masking Rectangles and Labels to keep arrows from intersecting the text -->
+  <rect x="330" y="120" width="140" height="26" rx="6" fill="#fcfcfd" />
+  <text x="400" y="137" class="label-text">행동 (Action) : 레버 당기기</text>
+
+  <rect x="330" y="200" width="140" height="26" rx="6" fill="#fcfcfd" />
+  <text x="400" y="217" class="label-text" fill="#b06000">보상 (Reward) : 코인 획득</text>
+
+  <!-- Agent Box -->
+  <rect x="50" y="90" width="270" height="150" class="box agent-box" />
+  <text x="185" y="125" class="title-text">에이전트 (배우는 사람)</text>
+  <text x="70" y="160" class="body-text">• 목적: 코인을 최대한 많이 모으기</text>
+  <text x="70" y="185" class="body-text">• 행동: 어떤 슬롯머신을 당길지 결정</text>
+  <text x="70" y="210" class="body-text">• 장부: 각 머신의 승률 장부 (Q-테이블)</text>
+
+  <!-- Environment Box -->
+  <rect x="480" y="90" width="270" height="150" class="box env-box" />
+  <text x="615" y="125" class="title-text">환경 (슬롯머신들)</text>
+  <text x="500" y="160" class="body-text">• 10대의 독립된 슬롯머신들</text>
+  <text x="500" y="185" class="body-text">• 각 머신마다 숨겨진 고유 승률 보유</text>
+  <text x="500" y="210" class="body-text">• 레버를 당기면 코인을 줄지 결정</text>
+
+  <!-- Value Update Box -->
+  <rect x="150" y="370" width="500" height="190" class="box math-box" />
+  <text x="400" y="405" class="title-text" fill="#1e8e3e">점진적(증분식) 가치 갱신 공식</text>
+  
+  <text x="400" y="450" class="title-text" font-size="22" fill="#137333">Q_new = Q_old + StepSize × (Reward - Q_old)</text>
+
+  <!-- Explanation inside math box -->
+  <text x="180" y="495" class="body-text" font-weight="bold">• Reward - Q_old : 예측 오차 (실제 얻은 것 - 내 예전 생각)</text>
+  <text x="180" y="520" class="body-text" font-weight="bold">• StepSize : 표본평균의 경우 1/n, 비정상 문제의 경우 고정값 α</text>
+
+  <!-- Connecting vertical arrows pointing straight down into the update block -->
+  <!-- Left: State/Action value feed -->
+  <path d="M 185 240 L 185 360" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Center: Reward feedback feed -->
+  <path d="M 400 226 L 400 360" class="arrow" marker-end="url(#arrowhead)" />
+
+  <!-- Right: Next State / Environment update feed -->
+  <path d="M 615 240 L 615 360" class="arrow" marker-end="url(#arrowhead)" />
+</svg>

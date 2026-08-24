@@ -1,0 +1,1573 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산) | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/10_%ED%99%95%EB%A5%A0%EC%9D%98_%EC%97%AD%EC%82%AC%EC%99%80_%EB%8D%A7%EC%85%88%EC%A0%95%EB%A6%AC/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/10_%ED%99%95%EB%A5%A0%EC%9D%98_%EC%97%AD%EC%82%AC%EC%99%80_%EB%8D%A7%EC%85%88%EC%A0%95%EB%A6%AC/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/10_%ED%99%95%EB%A5%A0%EC%9D%98_%EC%97%AD%EC%82%AC%EC%99%80_%EB%8D%A7%EC%85%88%EC%A0%95%EB%A6%AC/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">심화강화학습</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/part1/"
+            class="bd-links-link d-inline-block rounded ">
+            강화학습 Part 1 개요
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            3강 밴디트 문제
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/03_밴디트_문제/3_1_머신러닝_분류와_강화_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.1 머신러닝 분류와 강화 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_2_밴디트_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.2 밴디트 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_3_밴디트_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.3 밴디트 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_4_밴디트_알고리즘_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.4 밴디트 알고리즘 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_5_비정상_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.5 비정상 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            4강 마르코프
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/04_마르코프/4_1_마르코프_인물소개/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.1 마르코프 인물소개와 마르코프 성질
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_2_마르코프_체인/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.2 마르코프 체인 (Markov Chain)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_3_마르코프_과정/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.3 마르코프 과정 (Markov Process)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_4_은닉_마르코프/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.5 정리 (Summary)
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            5강 마르코프 결정 과정
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_1_마르코프_결정_과정_MDP_이란/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.1 마르코프 결정 과정(MDP)이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_2_환경과_에이전트를_수식으로/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.2 환경과 에이전트를 수식으로
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_3_MDP의_목표/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.3 MDP의 목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_4_MDP_예제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.4 MDP 예제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            aria-expanded="false">
+            6강 벨만 방정식
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-5">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/06_벨만_방정식/6_1_벨만_소개와_사전_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.1 벨만 소개와 사전 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_2_벨만_방정식_도출/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.2 벨만 방정식 도출
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_3_벨만_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.3 벨만 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_4_행동_가치_함수_Q_함수와_벨만_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.4 행동 가치 함수(Q 함수)와 벨만 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_5_벨만_최적_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.5 벨만 최적 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_6_벨만_최적_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.6 벨만 최적 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-6"
+            aria-expanded="false">
+            7강 동적 프로그래밍
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-6">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_1_유래/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.1 동적 프로그래밍의 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.2 동적 프로그래밍과 정책 평가
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_3_더_큰_문제를_향해/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.3 더 큰 문제를 향해
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_4_정책_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.4 정책 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_5_정책_반복법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.5 정책 반복법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_6_가치_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.6 가치 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-7"
+            aria-expanded="false">
+            9강 몬테카를로법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-7">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/09_몬테카를로법/9_0_수학적기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.0 몬테카를로법의 수학적 기초와 역사적 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_1_몬테카를로법_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.1 몬테카를로법 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_2_몬테카를로법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.2 몬테카를로법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_3_몬테카를로법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.3 몬테카를로법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_4_몬테카를로법으로_정책_제어하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.4 몬테카를로법으로 정책 제어하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_5_오프-정책과_중요도_샘플링/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.5 오프-정책과 중요도 샘플링
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-8"
+            aria-expanded="false">
+            10강 TD법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-8">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/10_TD법/10_1_TD법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.1 TD법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_2_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.2 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_3_오프-정책_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.3 오프-정책 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_4_Q_러닝/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.4 Q 러닝
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_5_분포_모델과_샘플_모델/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.5 분포 모델과 샘플 모델
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-9"
+            aria-expanded="false">
+            신경망과 Q 러닝
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-9">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_1_DeZero_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.1 DeZero 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_2_선형_회귀/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.2 선형 회귀
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_3_신경망/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.3 신경망
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_4_Q_러닝과_신경망/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.4 Q 러닝과 신경망
+                </a>
+              </li>
+              
+              <li>
+                <a href="/11_신경망과_Q_러닝/11_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  11.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-10"
+            aria-expanded="false">
+            DQN
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-10">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/12_DQN/12_1_OpenAI_Gym/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.1 OpenAI Gym
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_2_DQN의_핵심_기술/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.2 DQN의 핵심 기술
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_3_DQN과_아타리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.3 DQN과 아타리
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_4_DQN_확장/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.4 DQN 확장
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-11"
+            aria-expanded="false">
+            13강 정책 경사법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-11">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/13_정책_경사법/13_1_가장_간단한_정책_경사법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.1 가장 간단한 정책 경사법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_2_REINFORCE/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.2 REINFORCE
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_3_베이스라인/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.3 베이스라인
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_4_행위자-비평자/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.4 행위자-비평자
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_5_정책_기반_기법의_장점/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.5 정책 기반 기법의 장점
+                </a>
+              </li>
+              
+              <li>
+                <a href="/13_정책_경사법/13_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  13.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-12"
+            aria-expanded="false">
+            14강 한 걸음 더
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-12">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/14_한_걸음_더/14_1_심층_강화_학습_알고리즘_분류/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.1 심층 강화 학습 알고리즘 분류
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_2_정책_경사법_계열의_고급_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.2 정책 경사법 계열의 고급 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_3_DQN_계열의_고급_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.3 DQN 계열의 고급 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_4_사례_연구/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.4 사례 연구
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_5_심층_강화_학습이_풀어야_할_숙제와_가능성/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.5 심층 강화 학습이 풀어야 할 숙제와 가능성
+                </a>
+              </li>
+              
+              <li>
+                <a href="/14_한_걸음_더/14_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  14.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/">02 확률과 기초수학</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="0210-확률의-역사와-덧셈정리-조합-활용-확률-계산">02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)</h1>
+
+<blockquote>
+  <p>이 장에서는 <strong>확률의 역사와 덧셈정리 (조합 활용 확률 계산)</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02101-확률의-역사와-상금-분배-문제">02.10.1 확률의 역사와 상금 분배 문제</h2>
+
+<p><img src="./img/ch5_jiny_prob_ch5_history.png" alt="확률의 역사와 상금 분배 문제 인트로" />
+<strong>그림 02-10-1</strong> 중단된 보물 상자 게임의 남은 기대 점수에 맞춰 금화를 공정하게 분배하는 법을 강의해주는 지니와 도로시</p>
+
+<p>수학의 오랜 난제였던 <strong>상금 분배 문제(Problem of Points)</strong>와 확률 이론의 역사적 태동을 알아봅니다. 게임이 도중에 중단되었을 때, 지금까지의 점수가 아닌 ‘앞으로 이길 기댓값’에 비례하여 금화를 공평하게 나누는 파스칼과 페르마의 명쾌한 해법을 도로시의 보물상자 분배장과 함께 배워봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표">1. 학습 목표</h3>
+<ul>
+  <li>확률 이론의 태동과 역사적 배경을 파악한다.</li>
+  <li>파스칼과 페르마가 고민했던 ‘상금 분배 문제’를 이해하고 설명할 수 있다.</li>
+  <li>기대값과 중단된 게임에서의 공정한 상금 분배 확률을 계산할 수 있다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+
+<h4 id="1-확률의-태동과-역사">(1) 확률의 태동과 역사</h4>
+<ul>
+  <li><strong>신탁의 도구</strong>: 고대인들은 동물의 복사뼈나 주사위를 던져 신의 뜻을 묻는 데 사용하였습니다.</li>
+  <li><strong>도박과 확률</strong>: 17세기 유럽에서 도박 문제(특히 중단된 게임의 상금을 어떻게 공정하게 나눌 것인가)를 해결하는 과정에서 현대 확률론이 정립되기 시작했습니다.</li>
+  <li><strong>파스칼과 페르마</strong>: 1654년, 프랑스의 수학자 블레즈 파스칼과 피에르 드 페르마는 편지를 주고받으며 상금 분배 문제를 명쾌하게 풀어냈으며, 이것이 확률론의 시초가 되었습니다.</li>
+</ul>
+
+<p><img src="./img/jiny_math_ch10_prob_history.png" alt="확률의 역사" />
+<strong>그림 02-10-2</strong> 고대 복사뼈 주사위 던지기부터 파스칼과 페르마의 편지를 거쳐 정립된 확률의 발전 역사</p>
+
+<h4 id="2-분배-문제-problem-of-points">(2) 분배 문제 (Problem of Points)</h4>
+<ul>
+  <li><strong>개념</strong>: 실력이 비슷한 두 사람 <em>A</em>, <em>B</em>가 게임을 하여 먼저 특정 횟수(예: 3승)를 이기는 사람이 상금을 전부 갖기로 했습니다. 그런데 게임이 도중에 중단되었을 때, 지금까지의 전적을 바탕으로 상금을 어떻게 나누는 것이 가장 공평할까요?</li>
+  <li><strong>공정한 분배 기준</strong>: 단순히 지금까지 이긴 횟수의 비율로 나누는 것은 공정하지 않습니다. <strong>“만약 게임을 계속했다면 각자가 최종 우승할 확률”</strong>의 비율로 나누는 것이 공정합니다.</li>
+</ul>
+
+<p><img src="./img/jiny_math_ch10_points_problem.png" alt="상금 분배 문제" />
+<strong>그림 02-10-3</strong> 중단된 경기에서 미래의 기대 우승 확률에 근거하여 공평하게 상금을 분배하는 수학적 원리</p>
+
+<p><img src="./img/ch5_cartoon2.png" alt="갑작스럽게 중단된 게임의 상금 분배 문제" />
+<strong>그림 02-10-4</strong> 중단 시점의 전적에 의존하지 않고 미래의 기대 가치를 기반으로 공평하게 상금을 분배하는 원리</p>
+
+<ul>
+  <li>야외에서 한창 진행 중이던 게임이 비로 인해 갑자기 중단되었을 때, 지금까지 획득한 점수의 비로 상금을 단순 배분하는 것은 공정하지 못합니다. 카드라노 선생님이 보여주는 공식처럼, 게임을 지속했을 때 남은 게임에서 각 플레이어가 승리하여 최종 우승에 도달할 <strong>수학적 확률</strong>을 계산해 그 비율만큼 나누어야 정의롭습니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-상금-분배-문제-트리-다이어그램">3. 시각 자료: 상금 분배 문제 트리 다이어그램</h3>
+
+<p><img src="./img/jiny_math_ch10_points_distribution.png" alt="분배 문제 도식" />
+<strong>그림 02-10-5</strong> 3판 2선승제 게임이 중단되었을 때, 남은 판들의 가상 전개를 트리로 나타낸 확률 가치 분배도</p>
+
+<hr />
+
+<h3 id="4-실전-예제">4. 실전 예제</h3>
+
+<h4 id="예제-1-상금-분배-문제-계산">예제 1 (상금 분배 문제 계산)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 도로시와 토토가 먼저 3번 이기는 사람이 상금 100만 원을 모두 가지는 게임을 하고 있었습니다. 실력이 동등한 상황(매 게임 이길 확률이 각각 1/2)에서 현재 도로시는 2승, 토토는 1승을 거두었습니다. 이 시점에서 게임이 중단되었다면 상금을 각각 어떻게 나누어야 공평할까요?</p>
+
+  <p><strong>풀이</strong>:
+게임이 계속 진행되었을 때 각각 최종 우승할 확률을 구합니다.</p>
+  <ul>
+    <li>도로시가 우승하려면 1승이 더 필요합니다.</li>
+    <li>토토가 우승하려면 2승이 더 필요합니다.</li>
+  </ul>
+
+  <p><strong>1. 토토가 우승할 확률 <em>P</em>(토토)</strong>:
+토토가 우승하려면 다음 2번의 게임을 연속으로 이겨야 합니다. 두 게임은 독립시행이므로:
+<em>P</em>(토토) = 1/2 × 1/2 = 1/4</p>
+
+  <p><strong>2. 도로시가 우승할 확률 <em>P</em>(도로시)</strong>:
+여사건의 확률을 활용하여 쉽게 구할 수 있습니다.
+<em>P</em>(도로시) = 1 - <em>P</em>(토토) = 1 - 1/4 = 3/4</p>
+
+  <p><strong>3. 상금의 공정한 분배</strong>:
+우승 확률의 비인 <em>P</em>(도로시) : <em>P</em>(토토) = 3/4 : 1/4 = 3 : 1로 상금을 배분합니다.</p>
+  <ul>
+    <li>도로시의 몫: 100만 원 × 3/4 = 75만 원</li>
+    <li>토토의 몫: 100만 원 × 1/4 = 25만 원</li>
+  </ul>
+
+  <p><strong>정답</strong>: 도로시 75만 원, 토토 25만 원</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약">5. 핵심 요약</h3>
+<ol>
+  <li><strong>상금 분배 문제</strong>는 게임이 중단되었을 때, 게임을 계속 진행했다면 각각 최종 우승했을 확률을 구해 그 비율대로 상금을 나누는 문제이다.</li>
+  <li>각 사건이 독립적일 때, 미래에 연이어 발생할 최종 우승 확률은 <strong>확률의 곱셈</strong>과 <strong>여사건의 확률</strong>을 연립하여 해결한다.</li>
+  <li>이 분배 문제는 기대값의 원형이 되었으며, 현대 금융 및 의사결정 이론(의사결정 트리)의 시초가 되었다.</li>
+</ol>
+
+<hr />
+
+<h2 id="02102-조합을-이용한-확률-계산">02.10.2 조합을 이용한 확률 계산</h2>
+
+<p><img src="./img/ch11_jiny_prob_ch11_prob_combination.png" alt="조합을 이용한 확률 계산 인트로" />
+<strong>그림 02-10-6</strong> 구슬 주머니에서 무작위로 여러 구슬을 꺼낼 때 조합 공식과 분수로 정확한 확률을 계산해주는 지니와 도로시</p>
+
+<p>주머니에서 여러 개의 바둑돌이나 구슬을 한꺼번에 꺼낼 때의 확률처럼, 실제 강화학습에서도 복잡하게 얽힌 상태 전이 확률을 정확히 구해내기 위해 <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)을 이용한 확률 계산법</strong>이 자주 사용됩니다. 구슬 주머니를 털어 수학 공식을 칠판에 적어내는 도로시와 지니의 조언을 통해 조합 기반 확률 계산을 정교하게 훈련해봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표-1">1. 학습 목표</h3>
+<ul>
+  <li>확률의 기호적 표시법(<em>P</em>(<em>A</em>))과 여사건의 확률(<em>P</em>(<em>A</em><sup><em>c</em></sup>) = 1 - <em>P</em>(<em>A</em>))을 능숙하게 사용한다.</li>
+  <li>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>) 기호를 이용하여 복잡한 수학적 확률을 정확히 계산한다.</li>
+  <li>직관적인 판단이 실질적인 확률 계산과 어떻게 다를 수 있는지 설명할 수 있다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-1">2. 핵심 개념</h3>
+
+<h4 id="1-확률의-기호적-표현과-성질">(1) 확률의 기호적 표현과 성질</h4>
+<p>어떤 시행에서 사건 <em>A</em>가 일어날 확률을 <strong><em>P</em>(<em>A</em>)</strong>로 나타냅니다. (Probability의 앞 글자 <em>P</em>에서 따옴)</p>
+<ul>
+  <li>사건 <em>A</em>가 일어나지 않을 사건(여사건)은 <em>A</em><sup><em>c</em></sup>로 표시하며, 그 확률은 다음과 같습니다.
+<em>P</em>(<em>A</em><sup><em>c</em></sup>) = 1 - <em>P</em>(<em>A</em>)</li>
+  <li>이 성질을 활용하면 ‘적어도 한 번 ~일 확률’처럼 직접 계산하기 복잡한 문제 상황을 간단히 풀 수 있습니다.</li>
+</ul>
+
+<h4 id="2-조합을-이용한-확률의-정의">(2) 조합을 이용한 확률의 정의</h4>
+<p>표본공간 <em>S</em>의 원소의 개수가 <em>n</em>(<em>S</em>), 사건 <em>A</em>의 원소의 개수가 <em>n</em>(<em>A</em>)일 때, 조합을 이용해 각 경우의 수를 구하여 다음과 같이 확률을 정의하고 계산합니다.
+<em>P</em>(<em>A</em>) = <em>n</em>(<em>A</em>) / <em>n</em>(<em>S</em>) = 사건 <em>A</em>가 일어나는 조합의 수 / 전체 선택의 조합의 수</p>
+
+<p><img src="./img/ch11_cartoon2.png" alt="주머니 속 공 꺼내기를 통한 조합 확률 계산" />
+<strong>그림 02-10-7</strong> 구슬 상자에서 동시에 공 여러 개를 꺼내는 경우의 조합 확률 연산 사례</p>
+
+<ul>
+  <li>흰 공 3개와 검은 공 5개가 들어 있는 주머니에서 동시에 3개의 공을 꺼낼 때, 흰 공 1개와 검은 공 2개가 나올 확률을 계산해 봅시다.
+    <ul>
+      <li>분모(전체 경우의 수)는 전체 8개 중 3개를 선택하는 조합인 <sub>8</sub><em>C</em><sub>3</sub> = 56가지입니다.</li>
+      <li>분자(사건 경우의 수)는 흰 공 3개 중 1개를 고르는 조합 <sub>3</sub><em>C</em><sub>1</sub> = 3가지와, 검은 공 5개 중 2개를 고르는 조합 <sub>5</sub><em>C</em><sub>2</sub> = 10가지를 곱한 3 × 10 = 30가지입니다.</li>
+      <li>따라서 최종 확률은 (<sub>3</sub><em>C</em><sub>1</sub> × <sub>5</sub><em>C</em><sub>2</sub>) / <sub>8</sub><em>C</em><sub>3</sub> = 30 / 56 = 15 / 28가 됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-시각-자료-조합과-여사건을-이용한-확률-계산">3. 시각 자료: 조합과 여사건을 이용한 확률 계산</h3>
+
+<p><img src="./img/jiny_math_ch10_combination_prob.png" alt="음료수 당첨 확률 도식" />
+<strong>그림 02-10-8</strong> 구슬 주머니에서 동시에 여러 구슬을 임의 선택할 때 발생하는 분모/분자 조합 가짓수 관계도</p>
+
+<hr />
+
+<h3 id="4-실전-예제-1">4. 실전 예제</h3>
+
+<h4 id="예제-1-주머니에서-공-꺼내기">예제 1 (주머니에서 공 꺼내기)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 주머니 속에 공 4개가 들어 있습니다. 이 중 1개의 공에만 ‘꽝’이 적혀 있습니다. 주머니에서 동시에 2개의 공을 꺼낼 때, ‘꽝’이 아닌 공만 2개 꺼낼 확률을 구하세요.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ul>
+    <li>전체 경우의 수 (분모): 공 4개 중 2개를 동시에 꺼내는 조합
+<em>n</em>(<em>S</em>) = <sub>4</sub><em>C</em><sub>2</sub> = (4 × 3) / (2 × 1) = 6가지</li>
+    <li>꽝이 아닌 공만 2개 꺼내는 경우의 수 (분자): 꽝이 아닌 공 3개 중 2개를 꺼내는 조합
+<em>n</em>(<em>A</em>) = <sub>3</sub><em>C</em><sub>2</sub> = <sub>3</sub><em>C</em><sub>1</sub> = 3가지</li>
+    <li>따라서 구하고자 하는 확률 <em>P</em>(<em>A</em>)는:
+<em>P</em>(<em>A</em>) = <em>n</em>(<em>A</em>) / <em>n</em>(<em>S</em>) = 3 / 6 = 1 / 2
+<strong>정답</strong>: 1 / 2 (50%)</li>
+  </ul>
+</blockquote>
+
+<h4 id="예제-2-당첨-음료수-문제---직관의-파괴">예제 2 (당첨 음료수 문제 - 직관의 파괴)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 음료수 10병이 들어 있는 한 상자 속에 ‘한 병 더’(당첨) 음료수가 2병 섞여 있습니다. 이 상자에서 임의로 3병의 음료수를 살 때, 당첨 음료수를 적어도 1병 이상 구매하게 될 확률을 구하세요.</p>
+
+  <p><strong>풀이</strong>:
+‘적어도 1병 이상 당첨 음료수를 구매할 사건’을 <em>X</em>라 하면, 그 여사건 <em>X</em><sup><em>c</em></sup>는 ‘구매한 3병 모두 꽝(당첨이 아님)일 사건’입니다.</p>
+
+  <ol>
+    <li>모든 경우의 수 (분모): 10병 중 3병을 고르는 조합
+<em>n</em>(<em>S</em>) = <sub>10</sub><em>C</em><sub>3</sub> = (10 × 9 × 8) / (3 × 2 × 1) = 120가지</li>
+    <li>모두 꽝인 병만 뽑는 경우의 수 (분자): 꽝인 병 8병(10 - 2) 중 3병을 고르는 조합
+<em>n</em>(<em>X</em><sup><em>c</em></sup>) = <sub>8</sub><em>C</em><sub>3</sub> = (8 × 7 × 6) / (3 × 2 × 1) = 56가지</li>
+    <li>여사건의 확률 <em>P</em>(<em>X</em><sup><em>c</em></sup>) 계산:
+<em>P</em>(<em>X</em><sup><em>c</em></sup>) = 56 / 120 = 7 / 15</li>
+    <li>본 사건의 확률 <em>P</em>(<em>X</em>) 계산:
+<em>P</em>(<em>X</em>) = 1 - <em>P</em>(<em>X</em><sup><em>c</em></sup>) = 1 - 7 / 15 = 8 / 15 ≈ 53.3%</li>
+  </ol>
+
+  <p><strong>결론</strong>: 전체 10병 중 당첨이 2병(20%)밖에 안 되지만, 3병을 고를 때 적어도 1병 당첨될 확률은 절반이 넘는 53.3%나 됩니다.
+<strong>정답</strong>: 8 / 15</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-1">5. 핵심 요약</h3>
+<ol>
+  <li><strong><em>P</em>(<em>A</em>)</strong>는 사건 <em>A</em>가 일어날 확률을 의미한다.</li>
+  <li>‘적어도 ~일 확률’을 구할 때는 전체 확률 1에서 반대 사건의 확률을 빼는 <strong>여사건의 확률 (1 - <em>P</em>(<em>A</em><sup><em>c</em></sup>))</strong>을 적용하는 것이 훨씬 간편하다.</li>
+  <li>확률은 직관(20% 당첨이니 3개 사도 낮겠지 하는 생각 등)과 실제 계산 결과가 매우 다를 수 있으므로 반드시 <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)</strong> 등의 도구로 정확히 수치화해야 한다.</li>
+</ol>
+
+<hr />
+
+<h2 id="02103-확률의-덧셈정리">02.10.3 확률의 덧셈정리</h2>
+
+<p><img src="./img/ch12_jiny_prob_ch12_addition.png" alt="확률의 덧셈정리 인트로" />
+<strong>그림 02-10-9</strong> 두 겹쳐진 원형 융단 위를 페인트 롤러로 칠하며 덧셈공식에서 중복 부위를 삭감하는 과정을 판서해주는 지니와 도로시</p>
+
+<p>두 사건 중 하나가 터질 확률인 합사건의 확률 <em>P</em>(<em>A</em> ∪ <em>B</em>)를 정확히 합산해내는 <strong>확률의 덧셈정리</strong>를 공부합니다. 겹쳐진 두 웅덩이 영역을 롤러로 덧칠할 때 두 번 칠해진 중복 교집합(<em>P</em>(<em>A</em> ∩ <em>B</em>))을 콕 빼주는 도로시와 지니의 미술 시간 비유를 따라 직관적이고 경쾌하게 이해해봅시다!</p>
+
+<hr />
+
+<h3 id="1-학습-목표-2">1. 학습 목표</h3>
+<ul>
+  <li>합사건의 확률을 구하는 기본 원리인 <strong>확률의 덧셈정리</strong>를 이해한다.</li>
+  <li>배반사건인 경우와 배반사건이 아닌 경우를 구분하여 각각의 공식에 맞추어 해결할 수 있다.</li>
+  <li>하나의 확률 문제를 여사건을 이용한 방법과 덧셈정리를 이용한 방법 두 가지로 유연하게 해결한다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2-핵심-개념-2">2. 핵심 개념</h3>
+
+<h4 id="1-확률의-덧셈정리-addition-theorem-of-probability">(1) 확률의 덧셈정리 (Addition Theorem of Probability)</h4>
+<p>임의의 두 사건 <em>A</em>, <em>B</em>에 대하여 사건 <em>A</em> 또는 사건 <em>B</em>가 일어날 확률 <em>P</em>(<em>A</em> ∪ <em>B</em>)는 다음과 같습니다.
+<em>P</em>(<em>A</em> ∪ <em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>) - <em>P</em>(<em>A</em> ∩ <em>B</em>)</p>
+<ul>
+  <li><em>원리</em>: 경우의 수 합의 법칙 <em>n</em>(<em>A</em> ∪ <em>B</em>) = <em>n</em>(<em>A</em>) + <em>n</em>(<em>B</em>) - <em>n</em>(<em>A</em> ∩ <em>B</em>)의 양변을 표본공간의 크기 <em>n</em>(<em>S</em>)로 나누어 유도됩니다.</li>
+</ul>
+
+<p><img src="./img/ch12_cartoon2.png" alt="동아리 명단을 통한 덧셈정리 시각화" />
+<strong>그림 02-10-10</strong> 축구 동아리 A와 농구 동아리 B의 합산 가입 인원 산정 시 중복 교집합 인원을 차감하는 구조</p>
+
+<ul>
+  <li>학교 축구 동아리(<em>A</em>)와 농구 동아리(<em>B</em>) 명단을 조사했더니, 두 동아리 전체 학생의 가짓수를 구할 때 각각의 가짓수를 단순히 더하기만 하면 두 동아리에 모두 가입해 있는 학생들(<em>A</em> ∩ <em>B</em>)이 중복 계산(더블 카운팅)됩니다. 따라서 전체 가짓수를 구할 때는 반드시 중복 가입자(<em>A</em> ∩ <em>B</em>)의 수를 한번 차감해 주어야 정확한 수치가 됩니다.</li>
+</ul>
+
+<h4 id="2-배반사건일-때의-덧셈정리">(2) 배반사건일 때의 덧셈정리</h4>
+<p>두 사건 <em>A</em>, <em>B</em>가 동시에 일어날 수 없는 배반사건일 때(즉, <em>A</em> ∩ <em>B</em> = ∅ 이므로 <em>P</em>(<em>A</em> ∩ <em>B</em>) = 0), 공식은 다음과 같이 단순화됩니다.
+<em>P</em>(<em>A</em> ∪ <em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>)</p>
+
+<hr />
+
+<h3 id="3-시각-자료-일반-사건과-배반사건의-덧셈정리-벤-다이어그램">3. 시각 자료: 일반 사건과 배반사건의 덧셈정리 벤 다이어그램</h3>
+
+<p><img src="./img/jiny_math_ch10_probability_addition.png" alt="덧셈정리 벤다이어그램" />
+<strong>그림 02-10-11</strong> 교집합이 존재하는 일반적인 합사건(중복 차감 필요)과 교집합이 없는 배반사건의 덧셈정리 비교 도식</p>
+
+<hr />
+
+<h3 id="4-실전-예제-2">4. 실전 예제</h3>
+
+<h4 id="예제-1-주사위-던지기">예제 1 (주사위 던지기)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 한 개의 주사위를 던질 때, 짝수의 눈 또는 3의 배수의 눈이 나올 확률을 구하세요.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ul>
+    <li>홀수/짝수 및 배수 사건을 다음과 같이 정의합니다.
+      <ul>
+        <li>사건 <em>A</em>: 짝수 눈이 나오는 사건 ➔ <em>A</em> = {2, 4, 6} 이므로 <em>P</em>(<em>A</em>) = 3 / 6 = 1 / 2</li>
+        <li>사건 <em>B</em>: 3의 배수 눈이 나오는 사건 ➔ <em>B</em> = {3, 6} 이므로 <em>P</em>(<em>B</em>) = 2 / 6 = 1 / 3</li>
+      </ul>
+    </li>
+    <li>사건 <em>A</em>와 <em>B</em>의 교집합(곱사건): <em>A</em> ∩ <em>B</em> = {6} 이므로 <em>P</em>(<em>A</em> ∩ <em>B</em>) = 1 / 6</li>
+  </ul>
+
+  <p>두 사건이 배반사건이 아니므로 확률의 덧셈정리를 사용합니다.
+<em>P</em>(<em>A</em> ∪ <em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>) - <em>P</em>(<em>A</em> ∩ <em>B</em>) = 3 / 6 + 2 / 6 - 1 / 6 = 4 / 6 = 2 / 3
+<strong>정답</strong>: 2 / 3</p>
+</blockquote>
+
+<h4 id="예제-2-음료수-당첨-확률---덧셈정리로-직접-구하기">예제 2 (음료수 당첨 확률 - 덧셈정리로 직접 구하기)</h4>
+<blockquote>
+  <p><strong>문제</strong>: 당첨 음료수 2병과 꽝 음료수 8병이 섞인 상자에서 임의로 3병을 고를 때, 적어도 1병 이상 당첨될 확률을 확률의 덧셈정리를 이용하여 구하세요.</p>
+
+  <p><strong>풀이</strong>:
+적어도 1병 이상 당첨되는 사건 <em>X</em>는 다음 두 사건의 합사건입니다.</p>
+  <ul>
+    <li>사건 <em>A</em>: 당첨 1병, 꽝 2병을 꺼내는 사건 ➔ <em>n</em>(<em>A</em>) = <sub>2</sub><em>C</em><sub>1</sub> × <sub>8</sub><em>C</em><sub>2</sub> = 2 × 28 = 56가지
+<em>P</em>(<em>A</em>) = 56 / <sub>10</sub><em>C</em><sub>3</sub> = 56 / 120 = 7 / 15</li>
+    <li>사건 <em>B</em>: 당첨 2병, 꽝 1병을 꺼내는 사건 ➔ <em>n</em>(<em>B</em>) = <sub>2</sub><em>C</em><sub>2</sub> × <sub>8</sub><em>C</em><sub>1</sub> = 1 × 8 = 8가지
+<em>P</em>(<em>B</em>) = 8 / <sub>10</sub><em>C</em><sub>3</sub> = 8 / 120 = 1 / 15</li>
+  </ul>
+
+  <p>꺼낸 3병 중에서 당첨 음료수가 1병이면서 동시에 2병일 수는 없으므로, 두 사건 <em>A</em>와 <em>B</em>는 <strong>배반사건</strong>입니다.
+<em>P</em>(<em>X</em>) = <em>P</em>(<em>A</em> ∪ <em>B</em>) = <em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>) = 7 / 15 + 1 / 15 = 8 / 15
+<strong>정답</strong>: 8 / 15 (여사건으로 계산한 결과 1 - <sub>8</sub><em>C</em><sub>3</sub> / <sub>10</sub><em>C</em><sub>3</sub> = 8 / 15와 동일함)</p>
+</blockquote>
+
+<hr />
+
+<h3 id="5-핵심-요약-2">5. 핵심 요약</h3>
+<ol>
+  <li>두 사건 <em>A</em>, <em>B</em>가 동시에 일어날 가능성이 있다면 중복 계산을 피하기 위해 반드시 <strong><em>P</em>(<em>A</em> ∩ <em>B</em>)</strong>를 빼주어야 한다.</li>
+  <li>두 사건이 <strong>배반사건</strong>이라면 동시 발생 확률이 0이므로 단순히 두 확률을 합한다: <strong><em>P</em>(<em>A</em>) + <em>P</em>(<em>B</em>)</strong>.</li>
+  <li>확률을 풀 때, 여사건으로 푸는 방법과 배반사건의 덧셈정리로 나누어 푸는 방법 둘 다 활용하여 교차 검증할 수 있다.</li>
+</ol>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

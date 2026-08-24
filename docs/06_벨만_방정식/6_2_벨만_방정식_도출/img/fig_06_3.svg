@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 360" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Dice Box -->
+  <rect x="210" y="20" width="80" height="40" rx="6" ry="6" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+  <text x="250" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">주사위</text>
+
+  <!-- Branches -->
+  <line x1="220" y1="60" x2="140" y2="110" stroke="#2d3748" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <rect x="130" y="80" width="50" height="24" rx="4" fill="#edf2f7" stroke="#718096" stroke-width="1"/>
+  <text x="155" y="96" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">홀수</text>
+
+  <line x1="280" y1="60" x2="360" y2="110" stroke="#2d3748" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <rect x="320" y="80" width="50" height="24" rx="4" fill="#edf2f7" stroke="#718096" stroke-width="1"/>
+  <text x="345" y="96" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748" text-anchor="middle">짝수</text>
+
+  <!-- Left Coin Box -->
+  <rect x="80" y="130" width="120" height="40" rx="8" fill="#e2d9f3" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="140" y="155" font-family="sans-serif" font-size="13" font-weight="bold" fill="#5b21b6" text-anchor="middle">일반 동전</text>
+
+  <!-- Right Coin Box -->
+  <rect x="300" y="130" width="140" height="40" rx="8" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="370" y="155" font-family="sans-serif" font-size="13" font-weight="bold" fill="#92400e" text-anchor="middle">앞면이 잘 나오는 동전</text>
+
+  <!-- Left Coin branches -->
+  <line x1="120" y1="170" x2="80" y2="240" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="85" y="205" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ef4444">0.5</text>
+  <rect x="70" y="210" width="24" height="20" rx="3" fill="#ffffff" stroke="#718096" stroke-width="1"/>
+  <text x="82" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">앞</text>
+  <rect x="40" y="260" width="80" height="30" rx="15" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="80" y="280" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">주사위 눈</text>
+
+  <line x1="160" y1="170" x2="200" y2="240" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="185" y="210" width="24" height="20" rx="3" fill="#ffffff" stroke="#718096" stroke-width="1"/>
+  <text x="197" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">뒤</text>
+  <rect x="160" y="260" width="80" height="30" rx="15" fill="#edf2f7" stroke="#718096" stroke-width="1.5"/>
+  <text x="200" y="280" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="middle">0</text>
+
+  <!-- Right Coin branches -->
+  <line x1="350" y1="170" x2="310" y2="240" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="315" y="205" font-family="sans-serif" font-size="13" font-weight="bold" fill="#ef4444">0.8</text>
+  <rect x="300" y="210" width="24" height="20" rx="3" fill="#ffffff" stroke="#718096" stroke-width="1"/>
+  <text x="312" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">앞</text>
+  <rect x="270" y="260" width="80" height="30" rx="15" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="310" y="280" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">주사위 눈</text>
+
+  <line x1="390" y1="170" x2="430" y2="240" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <rect x="415" y="210" width="24" height="20" rx="3" fill="#ffffff" stroke="#718096" stroke-width="1"/>
+  <text x="427" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2d3748" text-anchor="middle">뒤</text>
+  <rect x="390" y="260" width="80" height="30" rx="15" fill="#edf2f7" stroke="#718096" stroke-width="1.5"/>
+  <text x="430" y="280" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="middle">0</text>
+
+  <!-- Labels on the side -->
+  <text x="25" y="280" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748">보상</text>
+</svg>

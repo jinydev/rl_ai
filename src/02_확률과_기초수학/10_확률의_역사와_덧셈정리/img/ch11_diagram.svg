@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #4a5568; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 15px; font-style: italic; fill: #1a202c; }
+    .math-bold { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 17px; font-weight: bold; fill: #2b6cb0; }
+    .box { fill: #ffffff; stroke: #cbd5e0; stroke-width: 1.5; rx: 8; ry: 8; }
+    .bottle-gift { fill: #fef3c7; stroke: #d97706; stroke-width: 2; rx: 6; ry: 6; }
+    .bottle-blank { fill: #edf2f7; stroke: #718096; stroke-width: 1.5; rx: 6; ry: 6; }
+    .selection-box { fill: none; stroke: #e53e3e; stroke-width: 2; stroke-dasharray: 4 4; rx: 10; ry: 10; }
+  </style>
+
+  <text class="title" x="40" y="45">조합을 활용한 확률 계산 (여사건 이용)</text>
+  <text class="label" x="40" y="65">직관과 다른 확률의 사례: 10개 중 2개만 당첨이어도, 3개를 뽑을 때 적어도 1개 당첨될 확률은 절반이 넘습니다.</text>
+
+  <!-- Left: The Box with 10 Bottles -->
+  <g transform="translate(60, 95)">
+    <rect class="box" x="0" y="0" width="320" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">상자 안의 음료수 10병</text>
+
+    <!-- 2 winning bottles (당첨) -->
+    <rect class="bottle-gift" x="30" y="60" width="50" height="70" />
+    <text font-family="Inter" font-size="10" x="55" y="100" text-anchor="middle" font-weight="bold" fill="#d97706">당첨</text>
+    
+    <rect class="bottle-gift" x="90" y="60" width="50" height="70" />
+    <text font-family="Inter" font-size="10" x="115" y="100" text-anchor="middle" font-weight="bold" fill="#d97706">당첨</text>
+
+    <!-- 8 blank bottles (꽝) -->
+    <rect class="bottle-blank" x="160" y="60" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="180" y="95" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="210" y="60" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="230" y="95" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="260" y="60" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="280" y="95" text-anchor="middle" fill="#718096">꽝</text>
+
+    <rect class="bottle-blank" x="30" y="150" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="50" y="185" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="80" y="150" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="100" y="185" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="130" y="150" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="150" y="185" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="180" y="150" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="200" y="185" text-anchor="middle" fill="#718096">꽝</text>
+    <rect class="bottle-blank" x="230" y="150" width="40" height="60" />
+    <text font-family="Inter" font-size="10" x="250" y="185" text-anchor="middle" fill="#718096">꽝</text>
+
+    <text class="label" x="20" y="240" font-size="11" fill="#718096">이 중 임의로 3병을 선택하는 조합: ₁₀C₃ = 120가지</text>
+  </g>
+
+  <!-- Right: Calculations -->
+  <g transform="translate(420, 95)">
+    <rect class="box" x="0" y="0" width="320" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">적어도 1병 당첨될 확률 P(X)</text>
+
+    <text class="label" x="20" y="65" font-weight="bold">1. 여사건: 모두 꽝일 확률 P(Xᶜ)</text>
+    <text class="math" x="30" y="90">모든 꽝(8병)에서 3병을 뽑는 조합: ₈C₃ = 56</text>
+    <text class="math" x="30" y="115">P(Xᶜ) = ₈C₃ / ₁₀C₃ = 56 / 120 = 7/15</text>
+
+    <line x1="20" y1="135" x2="300" y2="135" stroke="#edf2f7" stroke-width="1.5" />
+
+    <text class="label" x="20" y="165" font-weight="bold">2. 본 사건 확률 계산 P(X)</text>
+    <text class="math" x="30" y="190">P(X) = 1 - P(Xᶜ)</text>
+    <text class="math-bold" x="30" y="225" font-size="18">P(X) = 1 - 7/15 = 8/15 ≈ 53.3%</text>
+    <text class="label" x="30" y="245" font-size="11" fill="#2b6cb0">직관적인 예상(20%)보다 훨씬 높음!</text>
+  </g>
+</svg>

@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 270" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Pink Arrow Marker -->
+    <marker id="pink-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f472b6"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Top Formula Box -->
+  <rect x="15" y="10" width="510" height="55" rx="10" ry="10" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+  <g font-family="Cambria Math, Georgia, serif" font-size="16" fill="#2d3748">
+    <text x="35" y="42">V</text>
+    <text x="47" y="48" font-size="11">k+1</text>
+    <text x="65" y="42">(s) = ∑</text>
+    <text x="96" y="52" font-size="10" font-style="italic">a, s'</text>
+    <text x="120" y="42">π(a|s) p(s'|s, a) { r(s, a, s') + γ V</text>
+    <text x="373" y="48" font-size="11">k</text>
+    <text x="381" y="42">(s') }</text>
+    
+    <text x="460" y="42" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ea580c">[식 4.2]</text>
+  </g>
+
+  <!-- Arrow 1 down -->
+  <line x1="270" y1="65" x2="270" y2="87" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="285" y="81" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748">∑ 를 둘로 구분하여 표기</text>
+
+  <!-- Middle Formula Box -->
+  <rect x="15" y="95" width="510" height="55" rx="10" ry="10" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+  <g transform="translate(0, 85)" font-family="Cambria Math, Georgia, serif" font-size="16" fill="#2d3748">
+    <text x="35" y="42">V</text>
+    <text x="47" y="48" font-size="11">k+1</text>
+    <text x="65" y="42">(s) = ∑</text>
+    <text x="96" y="52" font-size="11" font-style="italic">a</text>
+    <text x="106" y="42">π(a|s) ∑</text>
+    <text x="154" y="52" font-size="11" font-style="italic">s'</text>
+    <text x="166" y="42">p(s'|s, a) { r(s, a, s') + γ V</text>
+    <text x="382" y="48" font-size="11">k</text>
+    <text x="390" y="42">(s') }</text>
+  </g>
+
+  <!-- Arrow 2 down -->
+  <line x1="270" y1="150" x2="270" y2="172" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="285" y="166" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2d3748">상태 전이가 결정적</text>
+
+  <!-- Bottom Formula Box -->
+  <rect x="15" y="180" width="510" height="75" rx="10" ry="10" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+  <g transform="translate(0, 170)" font-family="Cambria Math, Georgia, serif" font-size="16" fill="#2d3748">
+    <text x="35" y="32" font-weight="bold" font-family="sans-serif" font-size="13">s' = f(s, a) 일 때</text>
+    
+    <text x="35" y="60">V</text>
+    <text x="47" y="66" font-size="11">k+1</text>
+    <text x="65" y="60">(s) = ∑</text>
+    <text x="96" y="70" font-size="11" font-style="italic">a</text>
+    <text x="106" y="60">π(a|s) { r(s, a, s') + γ V</text>
+    <text x="290" y="66" font-size="11">k</text>
+    <text x="298" y="60">(s') }</text>
+
+    <text x="460" y="60" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ea580c">[식 4.3]</text>
+  </g>
+</svg>

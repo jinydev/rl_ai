@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 320" width="100%" height="320">
+  <defs>
+    <!-- Arrow definitions -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#718096"/>
+    </marker>
+    <!-- Shadow effect -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <style>
+    .node-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: bold; fill: #2D3748; text-anchor: middle; dominant-baseline: middle; }
+    .label-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 12px; fill: #4A5568; text-anchor: middle; }
+    .bold-label { font-weight: bold; fill: #1A202C; }
+    .line { stroke: #718096; stroke-width: 2.5; fill: none; }
+    .dashed-line { stroke: #A0AEC0; stroke-width: 2; stroke-dasharray: 4,4; fill: none; }
+    .state-circle { fill: #EBF8FF; stroke: #3182CE; stroke-width: 3; filter: url(#shadow); }
+    .action-circle { fill: #FEFCBF; stroke: #D69E2E; stroke-width: 3; filter: url(#shadow); }
+    .reward-circle { fill: #F0FFF4; stroke: #38A169; stroke-width: 3; filter: url(#shadow); }
+    .fail-circle { fill: #EDF2F7; stroke: #718096; stroke-width: 3; filter: url(#shadow); }
+  </style>
+
+  <!-- Connective Lines -->
+  <!-- S to A1 and A2 -->
+  <line x1="250" y1="50" x2="150" y2="120" class="line" marker-end="url(#arrow)" />
+  <line x1="250" y1="50" x2="350" y2="120" class="line" marker-end="url(#arrow)" />
+
+  <!-- A1 to Rewards -->
+  <line x1="150" y1="140" x2="90" y2="230" class="dashed-line" marker-end="url(#arrow)" />
+  <line x1="150" y1="140" x2="210" y2="230" class="dashed-line" marker-end="url(#arrow)" />
+
+  <!-- A2 to Banana -->
+  <line x1="350" y1="140" x2="350" y2="230" class="dashed-line" marker-end="url(#arrow)" />
+
+  <!-- State Node S -->
+  <circle cx="250" cy="50" r="25" class="state-circle" />
+  <text x="250" y="50" class="node-text" fill="#2B6CB0">현재 S</text>
+  <text x="250" y="18" class="label-text bold-label">시작 상태</text>
+
+  <!-- Action Nodes -->
+  <!-- A1 (동쪽) -->
+  <circle cx="150" cy="130" r="20" class="action-circle" />
+  <text x="150" y="130" class="node-text" fill="#975A16">A₁</text>
+  <text x="110" y="95" class="label-text bold-label">동쪽 선택</text>
+
+  <!-- A2 (서쪽) -->
+  <circle cx="350" cy="130" r="20" class="action-circle" />
+  <text x="350" y="130" class="node-text" fill="#975A16">A₂</text>
+  <text x="390" y="95" class="label-text bold-label">서쪽 선택</text>
+
+  <!-- Probabilities & Labels -->
+  <!-- A1 Branches -->
+  <text x="100" y="180" class="label-text">80% 확률</text>
+  <text x="200" y="180" class="label-text">20% 확률</text>
+  
+  <!-- A2 Branch -->
+  <text x="390" y="185" class="label-text">100% 확률</text>
+
+  <!-- Result / Reward States -->
+  <!-- Apple (+10) -->
+  <circle cx="90" cy="250" r="22" class="reward-circle" />
+  <text x="90" y="250" class="node-text" fill="#276749">+10</text>
+  <text x="90" y="287" class="label-text bold-label">사과 획득</text>
+
+  <!-- Empty (0) -->
+  <circle cx="210" cy="250" r="22" class="fail-circle" />
+  <text x="210" y="250" class="node-text" fill="#4A5568">0</text>
+  <text x="210" y="287" class="label-text bold-label">꽝 (보상 없음)</text>
+
+  <!-- Banana (+7) -->
+  <circle cx="350" cy="250" r="22" class="reward-circle" />
+  <text x="350" y="250" class="node-text" fill="#276749">+7</text>
+  <text x="350" y="287" class="label-text bold-label">바나나 획득</text>
+</svg>

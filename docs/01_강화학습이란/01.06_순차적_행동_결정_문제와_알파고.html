@@ -1,0 +1,706 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>01.6 순차적 행동 결정 문제와 알파고 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="01.6 순차적 행동 결정 문제와 알파고" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/01_%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9E%80/01.06_%EC%88%9C%EC%B0%A8%EC%A0%81_%ED%96%89%EB%8F%99_%EA%B2%B0%EC%A0%95_%EB%AC%B8%EC%A0%9C%EC%99%80_%EC%95%8C%ED%8C%8C%EA%B3%A0.html" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/01_%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9E%80/01.06_%EC%88%9C%EC%B0%A8%EC%A0%81_%ED%96%89%EB%8F%99_%EA%B2%B0%EC%A0%95_%EB%AC%B8%EC%A0%9C%EC%99%80_%EC%95%8C%ED%8C%8C%EA%B3%A0.html" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="01.6 순차적 행동 결정 문제와 알파고" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"01.6 순차적 행동 결정 문제와 알파고","url":"https://rl.ai.jiny.dev/01_%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9E%80/01.06_%EC%88%9C%EC%B0%A8%EC%A0%81_%ED%96%89%EB%8F%99_%EA%B2%B0%EC%A0%95_%EB%AC%B8%EC%A0%9C%EC%99%80_%EC%95%8C%ED%8C%8C%EA%B3%A0.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">심화강화학습</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/"
+            class="bd-links-link d-inline-block rounded ">
+            1강 강화학습이란?
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.01_머신러닝_딥러닝_강화학습_구분.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.1 머신러닝, 딥러닝, 강화학습 구분
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.02_왜_강화학습을_배워야_할까.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.2 왜 강화학습을 배워야 할까
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.03_스키너의_쥐_실험과_일상의_강화.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.3 스키너의 쥐 실험과 일상의 강화
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.04_강화학습의_4대_핵심_요소.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.4 강화학습의 4대 핵심 요소
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.05_탐색과_활용의_딜레마.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.5 탐색과 활용의 딜레마
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.06_순차적_행동_결정_문제와_알파고.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.6 순차적 행동 결정 문제와 알파고
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.07_맛보기_예제_틱택토와_브레이크아웃.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.7 맛보기 예제: 틱택토와 브레이크아웃
+          </a>
+          
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        <li>
+          
+          <a href="/01_강화학습이란/01.08_강화학습의_역사와_기원.html"
+            class="bd-links-link d-inline-block rounded ">
+            01.8 시행착오 학습 (심리학 학파)
+          </a>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/01_%EA%B0%95%ED%99%94%ED%95%99%EC%8A%B5%EC%9D%B4%EB%9E%80/">01 강화학습이란</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">01.6 순차적 행동 결정 문제와 알파고</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="016-순차적-행동-결정-문제와-알파고">01.6 순차적 행동 결정 문제와 알파고</h1>
+
+<blockquote>
+  <p><strong>순차적 행동 결정 문제<sup>Sequential Decision Problem</sup></strong>는 단발성 예측 문제와 달리, 에이전트의 현재 선택이 이후의 상태 전이(State Transition)와 보상 수급에 장기적인 연속 영향을 주는 문제입니다.</p>
+
+  <p>이를 수학적(확률론)으로 규격화한 상태 전이 체계를 <strong>마르코프 결정 과정<sup>MDP</sup></strong>이라고 정의합니다.</p>
+</blockquote>
+
+<p>“지니! 강화학습 마법은 어떤 형태의 모험(문제)에 가장 잘 어울리는 마법이야?”</p>
+
+<p>도로시가 바둑판처럼 복잡한 격자 세상을 내려다보며 물었습니다.</p>
+
+<p><img src="./img/rl_sequential_decision.png" alt="순차적 행동 결정과 인공신경망" />
+<strong>그림 1-6</strong> 격자판 보드게임 위에 선 도로시와 거대한 바둑판을 보며 수많은 인공 뉴런 실타래를 지휘하는 지니</p>
+
+<p>지니가 공중에 떠올라 격자 세상을 한눈에 비추는 큰 조명을 켜주었습니다.</p>
+
+<p>“강화학습 마법은 단순히 ‘이게 사과냐 오렌지냐’ 한 번만 맞히고 끝나는 마법이 아니야.</p>
+
+<p>매 순간의 선택이 다음 순간의 상황에 계속해서 영향을 미치는 <strong>‘순차적 행동 결정 문제<sup>Sequential Decision Problem</sup>‘</strong>를 풀기 위해 태어났단다.”</p>
+
+<p><img src="./img/rl_sequential_vs_single.png" alt="단발성 선택과 순차적 결정의 차이" />
+<strong>그림 1-6-a</strong> 한 번 선택하고 종료되는 단발성 문제와 매 결정이 꼬리를 물며 환경을 바꾸는 순차적 행동 결정 문제의 차이</p>
+
+<hr />
+
+<h2 id="0161-수학적-수치화와-시험-점수-비유">01.6.1 수학적 수치화와 시험 점수 비유</h2>
+
+<p>문제를 컴퓨터에게 풀게 하려면 가장 먼저 문제를 <strong>수학적으로 표현</strong>해야 합니다.</p>
+
+<p>수학적으로 정의되지 않으면 컴퓨터는 무엇이 좋고 나쁜지 계산할 수 없습니다.</p>
+
+<p><img src="./img/rl_sequential_math.png" alt="수학적 모델링 필요성" />
+<strong>그림 1-6-b</strong> 컴퓨터가 순차적 행동 결정 문제를 풀 수 있도록 수학 기호(상태, 행동, 보상)로 정의하는 과정</p>
+
+<p>“마치 우리 학교에서 학생들의 실력을 비교해서 공부 성적을 올리기 위해 ‘시험 점수’라는 수단으로 실력을 수치화하는 것과 같아.</p>
+
+<p>완벽하지는 않아도 점수라는 숫자가 있어야 내 성적 변화를 객관적으로 측정하고 더 좋은 전략을 세울 수 있으니까.”</p>
+
+<p><img src="./img/rl_sequential_score.png" alt="성적 수치화 비유" />
+<strong>그림 1-6-c</strong> 객관적인 측정과 전략 수립을 가능케 하는 시험 점수(수치화) 비유</p>
+
+<p>순차적 행동 결정 문제를 수학적으로 나타내는 도구를 <strong>MDP<sup>Markov Decision Process</sup></strong>라고 부르며, 다음과 같이 4가지 기본 틀로 정의합니다.</p>
+
+<ol>
+  <li><strong>상태 (State, <em>S</em>)</strong>: 에이전트가 처한 현재 상황의 모든 정보입니다. 공의 위치나 속도처럼 상황을 판단하기 위해 필수적인 값들입니다.</li>
+  <li><strong>행동 (Action, <em>A</em>)</strong>: 에이전트가 어떤 상태에서 취할 수 있는 움직임(상, 하, 좌, 우 등)입니다.</li>
+  <li><strong>보상 (Reward, <em>R</em>)</strong>: 행동에 대한 피드백 점수입니다.</li>
+  <li><strong>정책 (Policy, <em>π</em>)</strong>: 모든 상태에 대해 어떤 행동을 취할지 정해놓은 전체 답안지(지도)입니다.</li>
+</ol>
+
+<p><img src="./img/rl_mdp_sequence.png" alt="MDP 상태 전이 시퀀스" />
+<strong>그림 1-6-d</strong> 상태 S_0에서 행동 A_0를 지르고 보상 R_1을 받아 새로운 상태 S_1로 이동하는 MDP 전이 구조</p>
+
+<hr />
+
+<h2 id="0162-방대한-상태-공간과-바둑의-한계">01.6.2 방대한 상태 공간과 바둑의 한계</h2>
+
+<p>과거의 전통적인 계산 마법(다이내믹 프로그래밍 등)은 숲속의 갈림길이 몇 개 없을 때는 완벽하게 계산해 낼 수 있었습니다. 하지만 세상이 너무 방대해지면 계산량이 폭발하게 됩니다.</p>
+
+<p>“대표적인 예가 바로 <strong>바둑</strong>이야. 바둑판 위에서 가능한 돌의 배치는 대략 <strong>10<sup>360</sup></strong> 가지나 된단다. 우주 전체에 존재하는 모든 원자의 수(약 10<sup>80</sup>개)보다 훨씬 많은 숫자이지! 컴퓨터의 엄청난 연산 속도로도 모든 경우의 수를 하나씩 직접 계산해 최선의 수(정책)를 찾는 건 불가능했어.”</p>
+
+<p><img src="./img/rl_go_limit.png" alt="바둑의 방대한 경우의 수" />
+<strong>그림 1-6-e</strong> 우주 전체 원자 수(10^80)를 초월하는 바둑판 경우의 수(10^360)와 계산적 한계 묘사</p>
+
+<p>이 때문에 1997년 체스 챔피언을 이긴 컴퓨터가 나온 이후로도 오랫동안 바둑은 정복되지 못했습니다.</p>
+
+<hr />
+
+<h2 id="0163-인공신경망deep-learning과의-대결합">01.6.3 인공신경망(Deep Learning)과의 대결합</h2>
+
+<p>“그럼 컴퓨터가 모든 길을 직접 계산할 수 없는데, 어떻게 알파고는 이세돌 프로기사를 이길 수 있었던 거야?”</p>
+
+<p>도로시의 동그란 눈을 보며 지니가 신비롭게 미소 지었습니다.</p>
+
+<p>“그 비밀이 바로 <strong>인공신경망<sup>Artificial Neural Network</sup></strong>과의 결합이란다!
+에이전트가 모든 경로의 가치를 하나하나 정확히 외워둘 수 없으니, <strong>눈앞의 상황(상태)을 인공 뉴런 뇌에 집어넣어 대략적인 가치와 정책을 예측(근사)하는 돋보기 기술</strong>을 사용한 거지.”</p>
+
+<p><img src="./img/rl_neural_net.png" alt="인공신경망과의 대결합" />
+<strong>그림 1-6-f</strong> 방대한 상태를 입력받아 가치와 행동 확률(정책)을 예측·근사하는 인공신경망(함수 근사)의 원리</p>
+
+<ul>
+  <li><strong>함수 근사<sup>Function Approximation</sup></strong>: 방대한 상태를 가진 복잡한 문제를 풀기 위해 상태의 가치를 하나의 예측 함수(인공신경망)로 근사화하여 처리합니다.</li>
+</ul>
+
+<p>로봇의 움직임처럼 환경이 무한대에 가깝게 연속적이고 복잡한 진짜 현실 세계의 문제도, 이 인공신경망과 강화학습의 결합을 통해 로봇이 레고 블록을 쌓거나 장애물을 피해 달리는 등 복잡한 움직임을 스스로 터득해 나가고 있습니다.</p>
+
+<hr />
+
+<h2 id="-정리하자면">🌟 정리하자면!</h2>
+
+<p><strong>순차적 행동 결정 문제</strong>는 에이전트의 현재 선택이 미래에 지속적인 연쇄 영향을 주는 복잡한 문제로, 이를 확률적 수식으로 정의한 체계가 <strong>마르코프 결정 과정(MDP)</strong>입니다. 바둑이나 현실 세계처럼 가능한 상태의 수(경로)가 우주의 원자 수보다 많은 방대한 환경에서는 전통적인 방식으로 최적해를 일일이 구하는 데 한계가 있으며, 현대 강화학습은 <strong>인공신경망</strong>을 결합하여 복잡한 환경 상태의 정책과 가치를 예측·근사(심층강화학습)하는 방식으로 이 한계를 돌파하고 있습니다.</p>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

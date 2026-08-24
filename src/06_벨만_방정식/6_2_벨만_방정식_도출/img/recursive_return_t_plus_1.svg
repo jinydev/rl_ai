@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 250" width="100%" height="250">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&amp;family=Noto+Sans+KR:wght@400;700&amp;display=swap');
+      
+      .svg-bg {
+        fill: #FAFAFB;
+        stroke: #E4E7EC;
+        stroke-width: 2;
+        rx: 16px;
+      }
+      
+      .title {
+        font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        fill: #1D2939;
+      }
+      
+      .sub-title {
+        font-family: 'Outfit', 'Noto Sans KR', sans-serif;
+        font-size: 12px;
+        fill: #667085;
+      }
+      
+      .math-text {
+        font-family: 'Outfit', sans-serif;
+        font-size: 20px;
+        fill: #344054;
+      }
+      
+      .node-circle {
+        fill: #FFFFFF;
+        stroke: #6366F1;
+        stroke-width: 2;
+      }
+      
+      .node-text {
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        fill: #4F46E5;
+        text-anchor: middle;
+      }
+      
+      .timeline-axis {
+        stroke: #D0D5DD;
+        stroke-width: 2;
+        stroke-dasharray: 4 4;
+      }
+      
+      .reward-text {
+        font-family: 'Outfit', sans-serif;
+        font-size: 14px;
+        fill: #475467;
+        text-anchor: middle;
+      }
+      
+      .discount-text {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 12px;
+        fill: #D97706;
+        text-anchor: middle;
+      }
+      
+      @keyframes float-step {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      
+      .float-group {
+        animation: float-step 4s infinite ease-in-out;
+      }
+    </style>
+  </defs>
+  
+  <rect class="svg-bg" width="700" height="250" />
+  
+  <text x="35" y="40" class="title">식 06.3: Gt+1 (한 타임 뒤의 수익)의 정의</text>
+  <text x="35" y="60" class="sub-title">시간 t+1 시점에서 바라본 미래의 모든 할인된 보상의 합</text>
+  
+  <!-- Equation -->
+  <text x="35" y="110" class="math-text">
+    G<tspan font-size="13" y="115">t+1</tspan><tspan font-size="20" y="110"> = R</tspan><tspan font-size="13" y="115">t+1</tspan><tspan font-size="20" y="110"> + γ R</tspan><tspan font-size="13" y="115">t+2</tspan><tspan font-size="20" y="110"> + γ² R</tspan><tspan font-size="13" y="115">t+3</tspan><tspan font-size="20" y="110"> + ···</tspan>
+  </text>
+  
+  <!-- Timeline Axis Line -->
+  <line x1="50" y1="180" x2="600" y2="180" class="timeline-axis" />
+  
+  <!-- Step 1: t+1 -->
+  <g class="float-group" style="animation-delay: 0s;">
+    <circle cx="100" cy="180" r="16" class="node-circle" />
+    <text x="100" y="185" class="node-text">t+1</text>
+    <text x="100" y="150" class="reward-text">R<tspan font-size="9" y="153">t+1</tspan></text>
+    <text x="100" y="215" class="discount-text">할인 없음 (x 1)</text>
+  </g>
+  
+  <!-- Arrow 1 -->
+  <path d="M 130 180 L 190 180" fill="none" stroke="#98A2B3" stroke-width="1.5" />
+  
+  <!-- Step 2: t+2 -->
+  <g class="float-group" style="animation-delay: 1s;">
+    <circle cx="220" cy="180" r="16" class="node-circle" />
+    <text x="220" y="185" class="node-text">t+2</text>
+    <text x="220" y="150" class="reward-text">R<tspan font-size="9" y="153">t+2</tspan></text>
+    <text x="220" y="215" class="discount-text">1단계 할인 (x γ)</text>
+  </g>
+  
+  <!-- Arrow 2 -->
+  <path d="M 250 180 L 310 180" fill="none" stroke="#98A2B3" stroke-width="1.5" />
+  
+  <!-- Step 3: t+3 -->
+  <g class="float-group" style="animation-delay: 2s;">
+    <circle cx="340" cy="180" r="16" class="node-circle" />
+    <text x="340" y="185" class="node-text">t+3</text>
+    <text x="340" y="150" class="reward-text">R<tspan font-size="9" y="153">t+3</tspan></text>
+    <text x="340" y="215" class="discount-text">2단계 할인 (x γ²)</text>
+  </g>
+  
+  <!-- Dots -->
+  <text x="400" y="185" font-family="sans-serif" font-size="20" fill="#98A2B3">···</text>
+</svg>
