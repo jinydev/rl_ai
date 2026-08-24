@@ -7,20 +7,21 @@
       <ul class="list-unstyled fw-normal pb-2 small">
         {% assign url_parts = page.url | split: '/' %}
         {% assign top_dir = url_parts[1] %}
+        {% assign prefix_2 = top_dir | slice: 0, 2 %}
 
         {% assign part_data = site.data.navigation.main %}
         
-        {% if top_dir contains "part1" or top_dir contains "03_" or top_dir contains "04_" or top_dir contains "05_" or top_dir contains "06_" %}
+        {% if top_dir contains "part1" or prefix_2 == "03" or prefix_2 == "04" or prefix_2 == "05" or prefix_2 == "06" %}
           {% assign part_data = site.data.part1.main %}
-        {% elsif top_dir contains "part2" or top_dir contains "07_" or top_dir contains "09_" or top_dir contains "10_" %}
+        {% elsif top_dir contains "part2" or prefix_2 == "07" or prefix_2 == "09" or prefix_2 == "10" %}
           {% assign part_data = site.data.part2.main %}
-        {% elsif top_dir contains "part3" or top_dir contains "11_" or top_dir contains "12_" or top_dir contains "13_" %}
+        {% elsif top_dir contains "part3" or prefix_2 == "11" or prefix_2 == "12" or prefix_2 == "13" %}
           {% assign part_data = site.data.part3.main %}
-        {% elsif top_dir contains "part4" or top_dir contains "14_" %}
+        {% elsif top_dir contains "part4" or prefix_2 == "14" %}
           {% assign part_data = site.data.part4.main %}
-        {% elsif top_dir contains "02_" %}
+        {% elsif prefix_2 == "02" %}
           {% assign part_data = site.data.math.main %}
-        {% elsif top_dir contains "01_" %}
+        {% elsif prefix_2 == "01" %}
           {% assign part_data = site.data.intro.main %}
         {% endif %}
 
@@ -30,7 +31,7 @@
           {% if item.url == "/" %}
             {% assign show_item = false %}
           {% endif %}
-        {% elsif top_dir contains "A_" or top_dir contains "B_" or top_dir contains "C_" or top_dir contains "D_" %}
+        {% elsif prefix_2 == "A_" or prefix_2 == "B_" or prefix_2 == "C_" or prefix_2 == "D_" %}
           {% assign show_item = false %}
           {% if item.url contains "/A_" or item.url contains "/B_" or item.url contains "/C_" or item.url contains "/D_" %}
             {% assign show_item = true %}
