@@ -5,43 +5,38 @@
         강의 목차
       </strong>
       <ul class="list-unstyled fw-normal pb-2 small">
-        {% assign is_part1 = false %}
-        {% assign is_intro = false %}
-        {% if page.url contains "/part1/" or page.url contains "/03_" or page.url contains "/04_" or page.url contains "/05_" or page.url contains "/06_" or page.url contains "/07_" or page.url contains "/09_" or page.url contains "/10_" or page.url contains "/11_" or page.url contains "/12_" or page.url contains "/13_" or page.url contains "/14_" %}
-          {% assign is_part1 = true %}
-        {% elsif page.url contains "/01_" %}
-          {% assign is_intro = true %}
-        {% endif %}
+        {% assign url_parts = page.url | split: '/' %}
+        {% assign top_dir = url_parts[1] %}
 
-        {% if is_part1 %}
-          {% assign nav_items = site.data.part1.main %}
-        {% elsif is_intro %}
-          {% assign nav_items = site.data.intro.main %}
-        {% else %}
-          {% assign nav_items = site.data.navigation.main %}
-        {% endif %}
-
-        {% for item in nav_items %}
-        {% assign show_item = false %}
+        {% assign part_data = site.data.navigation.main %}
         
-        {% if is_part1 or is_intro %}
-          {% assign show_item = true %}
-        {% else %}
-          {% if page.url contains "/02_" %}
-            {% if item.url contains "/02_" %}
-              {% assign show_item = true %}
-            {% endif %}
-          {% elsif page.url == "/" %}
-            {% if item.url != "/" %}
-              {% assign show_item = true %}
-            {% endif %}
-          {% else %}
-            {% if item.url contains "/A_" or item.url contains "/B_" or item.url contains "/C_" or item.url contains "/D_" %}
-              {% assign show_item = true %}
-            {% endif %}
+        {% if top_dir contains "part1" or top_dir contains "03_" or top_dir contains "04_" or top_dir contains "05_" or top_dir contains "06_" %}
+          {% assign part_data = site.data.part1.main %}
+        {% elsif top_dir contains "part2" or top_dir contains "07_" or top_dir contains "09_" or top_dir contains "10_" %}
+          {% assign part_data = site.data.part2.main %}
+        {% elsif top_dir contains "part3" or top_dir contains "11_" or top_dir contains "12_" or top_dir contains "13_" %}
+          {% assign part_data = site.data.part3.main %}
+        {% elsif top_dir contains "part4" or top_dir contains "14_" %}
+          {% assign part_data = site.data.part4.main %}
+        {% elsif top_dir contains "02_" %}
+          {% assign part_data = site.data.math.main %}
+        {% elsif top_dir contains "01_" %}
+          {% assign part_data = site.data.intro.main %}
+        {% endif %}
+
+        {% for item in part_data %}
+        {% assign show_item = true %}
+        {% if top_dir == nil or top_dir == "" %}
+          {% if item.url == "/" %}
+            {% assign show_item = false %}
+          {% endif %}
+        {% elsif top_dir contains "A_" or top_dir contains "B_" or top_dir contains "C_" or top_dir contains "D_" %}
+          {% assign show_item = false %}
+          {% if item.url contains "/A_" or item.url contains "/B_" or item.url contains "/C_" or item.url contains "/D_" %}
+            {% assign show_item = true %}
           {% endif %}
         {% endif %}
-        
+
         {% if show_item %}
         <li>
           {% if item.subitems %}

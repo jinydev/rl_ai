@@ -2,7 +2,13 @@
   url: /01_강화학습이란/
 - title: 기초수학
   url: /02_확률과_기초수학/
-- title: 강화학습
+- title: 이론적 배경
   url: /part1/
-- title: 심화강화학습
+- title: 강화학습
+  url: /part2/
+- title: 고급강화학습
+  url: /part3/
+- title: 심화학습
+  url: /part4/
+- title: 부록
   url: /A_오프-정책_몬테카를로법/

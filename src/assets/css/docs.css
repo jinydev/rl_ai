@@ -1245,24 +1245,6 @@ details[open]>.bd-summary-link {
     }
 }
 
-@media (max-width: 991.98px) {
-    .bd-links-nav {
-        -moz-column-count: 2;
-        column-count: 2;
-        -moz-column-gap: 1.5rem;
-        column-gap: 1.5rem
-    }
-
-    .bd-links-nav .bd-links-group {
-        -moz-column-break-inside: avoid;
-        break-inside: avoid
-    }
-
-    .bd-links-nav .bd-links-span-all {
-        -moz-column-span: all;
-        column-span: all
-    }
-}
 
 .bd-links-link {
     padding: .1875rem .5rem;
