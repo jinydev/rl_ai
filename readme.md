@@ -27,6 +27,7 @@
 
 ### 2.1. 설치 단계
 
+#### macOS
 macOS의 경우 시스템 기본 Ruby 권한 문제가 발생할 수 있으므로 Homebrew를 통해 최신 버전을 설치하는 것을 권장합니다.
 
 ```bash
@@ -39,6 +40,30 @@ gem install bundler jekyll
 # 3. 프로젝트 루트 디렉토리에서 패키지 의존성 설치
 bundle install
 ```
+
+#### Windows
+Windows 환경에서는 **RubyInstaller with Devkit**을 설치하여 진행합니다.
+
+1. **Ruby 설치**:
+   - [RubyInstaller 공식 사이트](https://rubyinstaller.org/downloads/)에서 `Ruby+Devkit` (권장 버전: 3.3.x x64) 다운로드 후 설치
+   - 또는 Windows 터미널(PowerShell)에서 `winget`으로 설치:
+     ```powershell
+     winget install RubyInstallerTeam.RubyWithDevKit.3.3
+     ```
+2. **환경 변수(PATH) 확인**:
+   - Ruby 설치 경로(기본값: `C:\Ruby33-x64\bin`)가 시스템 환경 변수 `Path`에 등록되어 있는지 확인합니다.
+   - PowerShell 세션에서 임시 적용 시:
+     ```powershell
+     $env:Path = "C:\Ruby33-x64\bin;" + $env:Path
+     ```
+3. **Bundler 및 Jekyll 설치 & 의존성 설정**:
+   ```powershell
+   # Bundler 및 Jekyll 설치
+   gem install bundler jekyll
+
+   # 프로젝트 루트 디렉토리에서 패키지 의존성 설치
+   bundle install
+   ```
 
 ### 2.2. 로컬 서버 실행 및 사이트 빌드
 
@@ -59,7 +84,12 @@ bundle exec jekyll build
 - **Destination**: `docs/` (빌드 결과물 출력 경로)
 
 > **주의사항**: 빌드 대상은 `src` 폴더에 한정되며, 루트의 다른 폴더에 있는 파일은 빌드에 포함되지 않습니다. 
-> **Troubleshooting**: `bundle` 관련 명령어를 찾을 수 없다는 오류가 발생한다면, 터미널 환경 설정(`.zshrc` 등)에 Ruby 경로가 제대로 추가되었는지 확인해 주세요. (예: `export PATH="/usr/local/opt/ruby/bin:$PATH"`)
+> **Troubleshooting**:
+> - `bundle` 또는 `jekyll` 명령어를 찾을 수 없다는 오류 발생 시:
+>   - **macOS**: 터미널 환경 설정(`.zshrc` 등)에 Ruby 경로 추가 (`export PATH="/usr/local/opt/ruby/bin:$PATH"`)
+>   - **Windows**: 환경 변수 `Path`에 `C:\Ruby33-x64\bin` 추가 여부 확인
+> - Windows PowerShell에서 스크립트 실행 권한 에러 발생 시:
+>   - PowerShell(관리자 또는 현재 사용자)에서 실행 권한 부여: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
 ### 2.3. 배포 (Deployment)
 

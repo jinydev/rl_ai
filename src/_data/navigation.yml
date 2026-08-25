@@ -1,6 +1,8 @@
 main:
   - title: "홈"
     url: "/"
+  - title: "캐릭터 소개"
+    url: "/character/"
   - title: "1강 강화학습이란?"
     url: "/01_강화학습이란/"
     subitems:
