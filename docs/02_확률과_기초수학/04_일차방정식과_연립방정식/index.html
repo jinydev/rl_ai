@@ -13,14 +13,14 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
 <meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
-<link rel="canonical" href="http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/" />
-<meta property="og:url" content="http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/" />
 <meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:title" content="02.4 일차방정식과 연립방정식" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.4 일차방정식과 연립방정식","url":"http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.4 일차방정식과 연립방정식","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/04_%EC%9D%BC%EC%B0%A8%EB%B0%A9%EC%A0%95%EC%8B%9D%EA%B3%BC_%EC%97%B0%EB%A6%BD%EB%B0%A9%EC%A0%95%EC%8B%9D/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -583,10 +583,13 @@
 
 <h2 id="0241-얽히고설킨-단서들을-풀어내는-방정식의-열쇠">02.4.1 얽히고설킨 단서들을 풀어내는 방정식의 열쇠</h2>
 
-<p><strong>그림 02-4-1</strong> 두 미지수 x, y가 적힌 양팔저울의 균형을 맞추며 가감법과 대입법으로 해를 구하는 법을 유쾌하게 가르쳐주는 지니와 도로시
-<img src="./img/jiny_math_ch10_equations.png" alt="일차방정식과 연립방정식 인트로" /></p>
+<p>강화학습의 상태 가치들은 독립적으로 고정되어 있지 않고, “내 상태의 가치는 이웃한 다음 상태들의 가치와 보상의 가중합”이라는 상호 얽힌 관계를 이룹니다. 이 얽힌 가치들을 하나씩 풀어 참값을 얻기 위해서는 <strong>연립방정식</strong>이라는 비밀 열쇠가 필요합니다.</p>
 
-<p>강화학습의 상태 가치들은 독립적으로 고정되어 있지 않고, “내 상태의 가치는 이웃한 다음 상태들의 가치와 보상의 가중합”이라는 상호 얽힌 관계를 이룹니다. 이 얽힌 가치들을 하나씩 풀어 참값을 얻기 위해서는 <strong>연립방정식</strong>이라는 비밀 열쇠가 필요합니다. 지니의 요술 칠판 유도를 보며 이 수학적 해결 도구를 마스터해봅시다!</p>
+<p>“지니! 격자판에서 가치 함수를 계산할 때, 이쪽 칸의 가치가 저쪽 칸의 가치에 영향을 주고, 저쪽 칸 가치도 이쪽 칸에 다시 영향을 주니까 꼬리표처럼 수식이 계속 맞물려서 돌아가. 이걸 대체 어떻게 한꺼번에 풀 수 있는 거야?”</p>
+
+<p>도로시가 연필을 쥔 채 칠판에 적힌 공식들을 가리키며 난감한 표정을 지었습니다. 토토는 도로시의 발밑에 엎드린 채 고개를 갸웃거렸습니다. 지니는 자상하게 미소를 짓고는 양팔 저울 하나를 마법으로 만들어 띄워 보였습니다.</p>
+
+<p>“도로시, 수학에는 얽혀 있는 수식들의 실타래를 한 번에 풀어주는 마법의 열쇠가 있단다. 바로 <strong>일차방정식</strong>과 <strong>연립방정식</strong>의 성질이지! 저울의 균형을 맞추듯이 수식의 좌우 대칭 원리를 이용하면 해결할 수 있어.”</p>
 
 <hr />
 
@@ -603,99 +606,115 @@
 
 <h4 id="1-일차방정식과-이항-linear-equations-and-transposition">(1) 일차방정식과 이항 (Linear Equations and Transposition)</h4>
 <p>미지수 <em>x</em>의 차수가 1인 방정식을 일차방정식이라고 하며, 등식의 양변에 같은 수를 더하거나 빼거나 곱하거나 나누어도 등식이 성립한다는 성질을 이용해 풉니다.</p>
+
 <ul>
-  <li><strong>이항</strong>: 등식의 한 변에 있는 항을 부호를 바꾸어 다른 변으로 옮기는 것입니다.
-<em>V</em> = 2 + 0.9 <em>V</em>
-➔ <em>V</em> - 0.9 <em>V</em> = 2 (0.9<em>V</em>를 좌변으로 이항)
-➔ (1 - 0.9) <em>V</em> = 2 (분배법칙 묶기)
-➔ 0.1 <em>V</em> = 2
-➔ <em>V</em> = 2 / 0.1 = 20</li>
+  <li><strong>이항</strong>: 등식의 한 변에 있는 항을 부호를 바꾸어 다른 변으로 옮기는 것입니다. 양팔 저울 한쪽에 무거운 추를 덜어내어 반대쪽으로 옮기는 원리와 같습니다.</li>
 </ul>
 
-<p><img src="./img/jiny_math_ch10_transposition.png" alt="일차방정식과 이항" />
-<strong>그림 02-4-2</strong> 등식의 성질을 이용하여 항을 다른 변으로 옮기는 이항 과정 및 가치 함수 수식 해 구하기</p>
+<p>수식으로 살펴볼까요?</p>
+<ul>
+  <li><em>V</em> = 2 + 0.9 × <em>V</em></li>
+  <li>➔ <em>V</em> - 0.9 × <em>V</em> = 2 (0.9<em>V</em>를 좌변으로 이항하여 부호가 마이너스로 바뀜)</li>
+  <li>➔ (1 - 0.9) × <em>V</em> = 2 (분배법칙으로 묶기)</li>
+  <li>➔ 0.1 × <em>V</em> = 2</li>
+  <li>➔ <em>V</em> = 2 / 0.1 = 20</li>
+</ul>
+
+<p><img src="./img/dorothy_jiny_balance_equation_ko.jpg" alt="일차방정식과 이항" />
+<strong>그림 02-4-1</strong> 양팔 저울의 균형을 잡는 직관적인 원리를 통해 등식의 성질과 이항 연산을 공부하는 지니와 도로시, 토토</p>
+
+<p>“아! 한쪽에 더해져 있던 것을 반대쪽으로 넘기면 빼기(<code class="language-plaintext highlighter-rouge">-</code>)가 되는구나. 그렇게 해서 미지수를 한군데로 모아 풀면 되는 거네!”</p>
+
+<p>도로시가 손뼉을 치며 말했습니다.</p>
+
+<hr />
 
 <h4 id="2-연립방정식-system-of-linear-equations">(2) 연립방정식 (System of Linear Equations)</h4>
 <p>미지수가 2개인 일차방정식 2개를 한 쌍으로 묶어 놓은 것으로, 공통으로 만족하는 해를 구합니다.</p>
 <ul>
   <li><strong>가감법</strong>: 두 식을 더하거나 빼서 미지수 하나를 소거하여 푸는 방법입니다.</li>
-  <li><strong>대입법</strong>: 한 식을 다른 미지수에 대한 식으로 정리한 뒤, 그것을 다른 식에 대입하여 푸는 방법입니다.
-    <ul>
-      <li><em>예시</em>:
+  <li>
+    <p><strong>대입법</strong>: 한 식을 다른 미지수에 대한 식으로 정리한 뒤, 그것을 다른 식에 대입하여 푸는 방법입니다.</p>
+  </li>
+  <li><em>예시</em>:
 ① <em>x</em> + <em>y</em> = 10
 ② <em>x</em> - <em>y</em> = 2
-        <ul>
-          <li>①과 ②를 더하면: 2<em>x</em> = 12 ➔ <em>x</em> = 6</li>
-          <li><em>x</em> = 6을 ①에 대입하면: 6 + <em>y</em> = 10 ➔ <em>y</em> = 4</li>
-        </ul>
-      </li>
+    <ul>
+      <li>①과 ②를 더하면 (가감법): 2<em>x</em> = 12 ➔ <em>x</em> = 6</li>
+      <li><em>x</em> = 6을 ①에 대입하면 (대입법): 6 + <em>y</em> = 10 ➔ <em>y</em> = 4</li>
     </ul>
   </li>
 </ul>
 
-<p><img src="./img/jiny_math_ch10_elimination.png" alt="연립방정식 풀이" />
-<strong>그림 02-4-3</strong> 미지수가 2개인 연립방정식을 가감법(소거법)을 활용하여 순차적으로 푸는 과정</p>
-
 <hr />
 
 <h4 id="3-벨만-기대-방정식의-연립방정식적-실체">(3) 벨만 기대 방정식의 연립방정식적 실체</h4>
+<p>실제 강화학습의 벨만 기대 방정식은 연립방정식과 완전히 같은 모습을 하고 있습니다.</p>
+
 <p>격자 세상(Grid World)에 오직 두 개의 상태 <em>A</em>와 <em>B</em>만 존재하고, 할인율 <em>γ</em> = 0.9 이며, 보상 및 상태 이동 규칙이 다음과 같다고 해봅시다.</p>
 <ul>
   <li>상태 <em>A</em>에서 다음 상태는 항상 <em>B</em>이고 이때 받는 보상은 2입니다:
-<em>v</em>(<em>A</em>) = 2 + 0.9 * <em>v</em>(<em>B</em>)  … ①</li>
+<em>v</em>(<em>A</em>) = 2 + 0.9 × <em>v</em>(<em>B</em>)  … ①</li>
   <li>상태 <em>B</em>에서 다음 상태는 항상 <em>A</em>이고 이때 받는 보상은 -1입니다:
-<em>v</em>(<em>B</em>) = -1 + 0.9 * <em>v</em>(<em>A</em>) … ②
-이 두 식은 정확히 미지수가 <em>v</em>(<em>A</em>), <em>v</em>(<em>B</em>) 2개인 <strong>연립방정식</strong>입니다!</li>
-  <li><strong>풀어보기</strong>: ②를 ①에 대입(대입법)합니다.
-<em>v</em>(<em>A</em>) = 2 + 0.9 * [ -1 + 0.9 * <em>v</em>(<em>A</em>) ]
-<em>v</em>(<em>A</em>) = 2 - 0.9 + 0.81 * <em>v</em>(<em>A</em>)
-<em>v</em>(<em>A</em>) = 1.1 + 0.81 * <em>v</em>(<em>A</em>)
-<em>v</em>(<em>A</em>) - 0.81 * <em>v</em>(<em>A</em>) = 1.1 (이항)
-0.19 * <em>v</em>(<em>A</em>) = 1.1
-<em>v</em>(<em>A</em>) = 1.1 / 0.19 = 약 5.79</li>
-  <li>얻은 값을 ②에 대입하여 <em>v</em>(<em>B</em>)를 구합니다:
-<em>v</em>(<em>B</em>) = -1 + 0.9 * 5.79 = -1 + 5.21 = 4.21</li>
+<em>v</em>(<em>B</em>) = -1 + 0.9 × <em>v</em>(<em>A</em>) … ②</li>
 </ul>
 
-<p><img src="./img/jiny_math_ch10_substitution.png" alt="벨만 기대 방정식 대입법" />
-<strong>그림 02-4-4</strong> 벨만 기대 방정식 관계식을 대입법을 활용하여 상태 가치 수치로 푸는 대수적 연대 과정</p>
+<p>“와! 식 ①과 식 ②를 보니까 진짜 미지수가 <em>v</em>(<em>A</em>), <em>v</em>(<em>B</em>) 2개인 연립방정식이네!”</p>
 
-<p>이처럼 연립방정식을 풀면 얽혀 있는 격자 세상의 모든 상태 가치들의 참값을 정확하게 구출해낼 수 있습니다!</p>
+<p>도로시가 깜짝 놀란 목소리로 말했습니다.</p>
+
+<p><img src="./img/dorothy_equations_system_ko.jpg" alt="연립방정식 전이 관계도" />
+<strong>그림 02-4-2</strong> 서로 맞물려 순환하는 상태 A와 B의 가치 함수 수식 관계를 살펴보고 연립방정식의 해법을 고민하는 도로시와 토토</p>
+
+<p>지니가 요술봉을 흔들어 대입법으로 해를 풀어 나갔습니다.</p>
+<ul>
+  <li><strong>풀어보기</strong>: ②를 ①에 대입합니다.
+<em>v</em>(<em>A</em>) = 2 + 0.9 × [ -1 + 0.9 × <em>v</em>(<em>A</em>) ]
+<em>v</em>(<em>A</em>) = 2 - 0.9 + 0.81 × <em>v</em>(<em>A</em>)
+<em>v</em>(<em>A</em>) = 1.1 + 0.81 × <em>v</em>(<em>A</em>)
+<em>v</em>(<em>A</em>) - 0.81 × <em>v</em>(<em>A</em>) = 1.1 (이항)
+0.19 × <em>v</em>(<em>A</em>) = 1.1
+<em>v</em>(<em>A</em>) = 1.1 / 0.19 = 약 5.79</li>
+  <li>얻은 값을 ②에 대입하여 <em>v</em>(<em>B</em>)를 구합니다:
+<em>v</em>(<em>B</em>) = -1 + 0.9 × 5.79 = -1 + 5.21 = 4.21</li>
+</ul>
+
+<p><img src="./img/dorothy_jiny_solving_equations_ko.jpg" alt="방정식 풀이 결과" />
+<strong>그림 02-4-3</strong> 대입법을 활용하여 상태 A와 B의 정확한 가치값(5.79와 4.21)을 계산해 내는 성공적인 수식 풀이 과정</p>
+
+<p>“대단해! 이렇게 맞물린 2차 연립방정식을 푸니까 상태 <em>A</em>와 <em>B</em>의 가치 참값이 정확하게 풀리는구나!”</p>
+
+<p>도로시와 토토가 신나게 발을 구르며 기뻐했습니다.</p>
 
 <hr />
 
-<h3 id="3-시각-자료-2개-상태-가치-연립방정식-전개-관계도">3. 시각 자료: 2개 상태 가치 연립방정식 전개 관계도</h3>
+<h2 id="0242-실전-예제">02.4.2 실전 예제</h2>
 
-<p><img src="./img/jiny_math_ch10_system.png" alt="상태 가치 전이 연립방정식" />
-<strong>그림 02-4-5</strong> 서로 다음 상태의 가치를 상속받으며 2원 연립방정식을 형성하는 상태 가치 전이 시스템</p>
-
-<hr />
-
-<h3 id="4-실전-예제">4. 실전 예제</h3>
-
-<h4 id="예제-1-가치-연립방정식-풀이">예제 1 (가치 연립방정식 풀이)</h4>
+<h3 id="문제-1-가치-연립방정식-풀이">문제 1 (가치 연립방정식 풀이)</h3>
 <blockquote>
-  <p><strong>문제</strong>: 다음 연립방정식을 만족하는 <em>v</em>(<em>s</em><sub>1</sub>)과 <em>v</em>(<em>s</em><sub>2</sub>)의 해를 구하시오. (단, 소수 첫째자리까지 반올림하여 구할 것)
-① <em>v</em>(<em>s</em><sub>1</sub>) = 1 + 0.5 * <em>v</em>(<em>s</em><sub>2</sub>)
-② <em>v</em>(<em>s</em><sub>2</sub>) = 4 + 0.5 * <em>v</em>(<em>s</em><sub>1</sub>)</p>
+  <p>다음 연립방정식을 만족하는 <em>v</em>(<em>s</em><sub>1</sub>)과 <em>v</em>(<em>s</em><sub>2</sub>)의 해를 구하시오. (단, 소수 첫째자리까지 반올림하여 구할 것)
+① <em>v</em>(<em>s</em><sub>1</sub>) = 1 + 0.5 × <em>v</em>(<em>s</em><sub>2</sub>)
+② <em>v</em>(<em>s</em><sub>2</sub>) = 4 + 0.5 × <em>v</em>(<em>s</em><sub>1</sub>)</p>
 
   <p><strong>풀이</strong>:
 ②를 ①에 대입합니다:
-<em>v</em>(<em>s</em><sub>1</sub>) = 1 + 0.5 * [ 4 + 0.5 * <em>v</em>(<em>s</em><sub>1</sub>) ]
-<em>v</em>(<em>s</em><sub>1</sub>) = 1 + 2 + 0.25 * <em>v</em>(<em>s</em><sub>1</sub>)
-<em>v</em>(<em>s</em><sub>1</sub>) = 3 + 0.25 * <em>v</em>(<em>s</em><sub>1</sub>)
-<em>v</em>(<em>s</em><sub>1</sub>) - 0.25 * <em>v</em>(<em>s</em><sub>1</sub>) = 3 (이항)
-0.75 * <em>v</em>(<em>s</em><sub>1</sub>) = 3
+<em>v</em>(<em>s</em><sub>1</sub>) = 1 + 0.5 × [ 4 + 0.5 × <em>v</em>(<em>s</em><sub>1</sub>) ]
+<em>v</em>(<em>s</em><sub>1</sub>) = 1 + 2 + 0.25 × <em>v</em>(<em>s</em><sub>1</sub>)
+<em>v</em>(<em>s</em><sub>1</sub>) = 3 + 0.25 × <em>v</em>(<em>s</em><sub>1</sub>)
+<em>v</em>(<em>s</em><sub>1</sub>) - 0.25 × <em>v</em>(<em>s</em><sub>1</sub>) = 3 (이항)
+0.75 × <em>v</em>(<em>s</em><sub>1</sub>) = 3
 <em>v</em>(<em>s</em><sub>1</sub>) = 3 / 0.75 = 4</p>
 
   <p>구해진 <em>v</em>(<em>s</em><sub>1</sub>) = 4 를 ②에 대입합니다:
-<em>v</em>(<em>s</em><sub>2</sub>) = 4 + 0.5 * 4 = 4 + 2 = 6
-<strong>정답</strong>: <em>v</em>(<em>s</em><sub>1</sub>) = 4, <em>v</em>(<em>s</em><sub>2</sub>) = 6</p>
+<em>v</em>(<em>s</em><sub>2</sub>) = 4 + 0.5 × 4 = 4 + 2 = 6</p>
+
+  <p><strong>정답</strong>: <em>v</em>(<em>s</em><sub>1</sub>) = 4, <em>v</em>(<em>s</em><sub>2</sub>) = 6</p>
 </blockquote>
 
 <hr />
 
-<h3 id="5-핵심-요약">5. 핵심 요약</h3>
+<h2 id="0243-핵심-요약">02.4.3 핵심 요약</h2>
+
 <ol>
   <li><strong>일차방정식</strong>은 미지수가 들어있는 식을 이항과 등식의 성질을 통해 미지수의 값을 도출해내는 해결 도구이다.</li>
   <li>여러 상태 가치들이 순환적으로 서로에게 영향을 주는 시스템은 여러 개의 식으로 구성된 <strong>연립방정식</strong> 형태로 모델링된다.</li>

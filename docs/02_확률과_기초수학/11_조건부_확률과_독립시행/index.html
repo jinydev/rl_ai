@@ -6,21 +6,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Begin Jekyll SEO tag v2.9.0 -->
-<title>02.11 조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스) | 밑바닥부터 시작하는 딥러닝 4</title>
+<title>02.11 조건부 확률과 독립시행 | 밑바닥부터 시작하는 딥러닝 4</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="02.11 조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)" />
+<meta property="og:title" content="02.11 조건부 확률과 독립시행" />
 <meta name="author" content="Hojin" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
 <meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
-<link rel="canonical" href="http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
-<meta property="og:url" content="http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
 <meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="02.11 조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)" />
+<meta name="twitter:title" content="02.11 조건부 확률과 독립시행" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.11 조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)","url":"http://localhost:4000/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/"}</script>
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.11 조건부 확률과 독립시행","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -565,7 +565,7 @@
         
         
         
-        <li class="breadcrumb-item active" aria-current="page">02.11 조건부 확률과 독립시행 (몬티 홀 & 생일 패러독스)</li>
+        <li class="breadcrumb-item active" aria-current="page">02.11 조건부 확률과 독립시행</li>
         
         
         
@@ -573,7 +573,7 @@
 </nav>
 
         <div class="bd-content ps-lg-4">
-            <h1 id="0211-조건부-확률과-독립시행-몬티-홀--생일-패러독스">02.11 조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)</h1>
+            <h1 id="0211-조건부-확률과-독립시행">02.11 조건부 확률과 독립시행</h1>
 
 <blockquote>
   <p>이 장에서는 <strong>조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
@@ -583,17 +583,20 @@
 
 <h2 id="02111-조건부-확률과-독립종속-사건">02.11.1 조건부 확률과 독립/종속 사건</h2>
 
-<p><img src="./img/ch13_jiny_prob_ch13_conditional.png" alt="조건부 확률 인트로" />
-<strong>그림 02-11-1</strong> 특정 조건 구역 A의 비를 돋보기로 보며 조건부 확률 P(B|A)를 설명해주는 지니와 도로시</p>
+<p>어떤 사건이 이미 일어났다는 가정하에 다른 사건이 터질 비율인 <strong>조건부 확률</strong>을 배웁니다.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>어떤 사건이 이미 일어났다는 가정하에 다른 사건이 터질 비율인 <em>*조건부 확률(</em>P<em>(</em>B*</td>
-      <td><em>A</em>))**과, 두 사건의 연계 관계(독립/종속)를 배웁니다. 지니가 칠판에 적어준 조건부 영역 분석 공식과 도로시가 돋보기로 빗속에서 사과를 관찰하는 비유를 통해 조건부 확률의 진수를 깔끔하게 학습해봅시다!</td>
-    </tr>
-  </tbody>
-</table>
+<p>“지니! 안개가 자욱하게 낀 어두운 숲(전쟁 안개, Fog of War)을 지나가고 있는데, 저 멀리서 부스럭거리는 으스스한 소리가 들렸어! 이 소리가 몬스터가 내는 소리일 확률은 얼마나 될까? 아무 단서도 없을 때보다 몬스터를 마주할 확률이 더 올라간 거야?”</p>
+
+<p>도로시가 두려움에 찬 표정으로 귀를 기울이며 물었습니다. 토토도 잔뜩 긴장해서 꼬리를 감추고 주위를 경계했습니다. 지니가 허공에 마법 요술 칠판을 띄워 공식을 차근차근 그렸습니다.</p>
+
+<p>“도로시! 아무런 정보가 없을 때의 단순 확률과 달리, ‘소리가 났다’는 단서(조건 <em>A</em>)가 먼저 주어지면, 몬스터가 존재할 확률(사건 <em>B</em>)은 완전히 새롭게 업데이트된단다. 이걸 수학에서는 <strong>조건부 확률(Conditional Probability)</strong>이라고 부르지.”</p>
+
+<p><img src="./img/dorothy_jiny_conditional_probability_ko.jpg" alt="안개 속 조건부 확률" />
+<strong>그림 02-11-1</strong> 안개 속에서 들려오는 소리 정보(조건)를 기반으로 몬스터가 존재할 확률을 조건부 기호 P(몬스터|소리)로 구성하는 도로시와 지니, 토토</p>
+
+<p>“아! ‘소리’라는 단서가 발견된 구역으로 표본공간(전체 가능성)이 좁혀지니까, 그 안에서 진짜 몬스터 소리인 비율만 구하면 되는 거네!”</p>
+
+<p>도로시가 소리를 분석하며 답했습니다.</p>
 
 <hr />
 
@@ -618,400 +621,135 @@
 <h3 id="2-핵심-개념">2. 핵심 개념</h3>
 
 <h4 id="1-조건부-확률-conditional-probability">(1) 조건부 확률 (Conditional Probability)</h4>
-<p>어떤 사건 <em>A</em>가 일어났다는 전제하에(가정했을 때) 사건 <em>B</em>가 일어날 확률을 <strong>조건부 확률</strong>이라 하고, 기호로 <strong><em>P</em>(<em>B</em>|<em>A</em>)</strong>로 나타냅니다.
-<em>P</em>(<em>B</em>|<em>A</em>) = <em>P</em>(<em>A</em> ∩ <em>B</em>) / <em>P</em>(<em>A</em>)    (단, <em>P</em>(<em>A</em>) &gt; 0)</p>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>원리</strong>: 조건 <em>A</em>가 주어짐에 따라, 관심 대상인 표본공간이 전체 <em>S</em>에서 사건 <em>A</em>로 축소(제한)됩니다. 따라서 <em>P</em>(<em>B</em></td>
-          <td><em>A</em>) = <em>n</em>(<em>A</em> ∩ <em>B</em>) / <em>n</em>(<em>A</em>)로도 계산할 수 있습니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
+<p>어떤 사건 <em>A</em>가 일어났다는 전제하에(가정했을 때) 사건 <em>B</em>가 일어날 확률을 기호로 <strong><em>P(B|A)</em></strong>로 나타냅니다. (B given A 라고 읽습니다.)</p>
 
-<p><img src="./img/ch13_cartoon2.png" alt="날씨 예보를 통한 조건부 확률의 시각화" />
-<strong>그림 02-11-2</strong> 하늘에 구름이 낀 사전 조건(A)의 발생 유무에 따라 비가 올 확률(B)이 달라지는 조건부 확률 사례</p>
+<p><img src="./img/dorothy_bayes_formula_chalkboard_ko.jpg" alt="조건부 확률 공식" />
+<strong>그림 02-11-2</strong> 사전 조건 B가 일어났을 때 사건 A가 일어날 조건부 확률 공식 P(A|B) = P(A ∩ B) / P(B)를 설명하는 지니와 도로시, 토토</p>
 
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>오늘 비가 올 단순 확률은 30%이지만, 만약 ‘하늘에 구름이 잔뜩 껴 있다’는 조건(<em>A</em>)이 먼저 주어지면 비가 올 확률(<em>B</em>)은 80%로 달라질 수 있습니다. 조건부 확률 <em>P</em>(<em>B</em></td>
-          <td><em>A</em>)는 이처럼 <strong>이전 조건의 발생에 따라 대상 확률이 업데이트되는 원리</strong>를 설명해 줍니다.</td>
-        </tr>
-      </tbody>
-    </table>
+  <li><strong>조건부 확률 공식</strong>:
+<strong><em>P(B|A) = P(A ∩ B) / P(A)</em></strong> (단, <em>P</em>(<em>A</em>) &gt; 0)
+    <ul>
+      <li><em>의미</em>: 조건 <em>A</em>가 발생함에 따라 표본공간이 전체에서 <em>A</em>로 축소되며, 그 중 <em>B</em>도 동시에 만족하는 교집합 비율을 세어 줍니다.</li>
+    </ul>
   </li>
 </ul>
 
 <h4 id="2-독립사건과-종속사건">(2) 독립사건과 종속사건</h4>
-<ol>
+<ul>
   <li><strong>독립사건 (Independent Events)</strong>:
-사건 <em>A</em>가 일어나든 일어나지 않든, 사건 <em>B</em>가 일어날 확률에 아무런 영향을 주지 않을 때 두 사건 <em>A</em>, <em>B</em>는 서로 <strong>독립</strong>이라고 합니다.
-<em>P</em>(<em>B</em>|<em>A</em>) = <em>P</em>(<em>B</em>|<em>A</em><sup><em>c</em></sup>) = <em>P</em>(<em>B</em>)
+사건 <em>A</em>의 발생 여부가 사건 <em>B</em>의 확률에 전혀 영향을 주지 않는 관계입니다:
     <ul>
-      <li><em>독립사건의 필요충분조건</em>:
-<em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>)</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><em>조건식</em>: **_P(B</td>
+              <td>A) = P(B)_**</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><em>판별식</em>: <strong><em>P(A ∩ B) = P(A) × P(B)</em></strong></li>
     </ul>
   </li>
-</ol>
-
-<p><img src="./img/jiny_math_ch11_independent_events.png" alt="독립사건" />
-<strong>그림 02-11-3</strong> 한 시행의 결과가 다른 시행의 결과 확률에 아무런 간섭을 하지 않는 두 독립사건의 원리</p>
-
-<ol>
   <li><strong>종속사건 (Dependent Events)</strong>:
-한 사건이 일어나는 것이 다른 사건이 일어날 확률에 영향을 미칠 때, 즉 두 사건이 독립이 아닐 때 두 사건을 <strong>종속</strong>이라고 합니다.
- <em>P</em>(<em>B</em>|<em>A</em>) ≠ <em>P</em>(<em>B</em>)</li>
-</ol>
-
-<p><img src="./img/jiny_math_ch11_dependent_events.png" alt="종속사건" />
-<strong>그림 02-11-4</strong> 비복원추출처럼 이전 사건의 발생 여부에 따라 다음 사건의 확률이 변하여 종속되는 원리</p>
-
-<hr />
-
-<h3 id="3-시각-자료-조건부-확률의-표본공간-축소-원리">3. 시각 자료: 조건부 확률의 표본공간 축소 원리</h3>
-
-<p><img src="./img/jiny_math_ch11_conditional_prob.png" alt="조건부 확률 도식" />
-<strong>그림 02-11-5</strong> 조건 사건 A가 발생했을 때 전체 표본공간 S가 A로 좁혀지고, 그중 B의 비율(교집합)을 계산하는 조건부 확률 벤다이어그램</p>
-
-<hr />
-
-<h3 id="4-실전-예제">4. 실전 예제</h3>
-
-<h4 id="예제-1-표를-이용한-조건부-확률-계산">예제 1 (표를 이용한 조건부 확률 계산)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 볼풀장 안에 다음과 같이 300개의 공이 들어 있습니다.</p>
-
-  <table>
-    <thead>
-      <tr>
-        <th style="text-align: center">구분</th>
-        <th style="text-align: center">신상공 (<em>N</em>)</th>
-        <th style="text-align: center">구상공 (<em>O</em>)</th>
-        <th style="text-align: center">합계</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align: center"><strong>빨간공 (<em>R</em>)</strong></td>
-        <td style="text-align: center">20</td>
-        <td style="text-align: center">160</td>
-        <td style="text-align: center">180</td>
-      </tr>
-      <tr>
-        <td style="text-align: center"><strong>파란공 (<em>B</em>)</strong></td>
-        <td style="text-align: center">80</td>
-        <td style="text-align: center">40</td>
-        <td style="text-align: center">120</td>
-      </tr>
-      <tr>
-        <td style="text-align: center"><strong>합계</strong></td>
-        <td style="text-align: center">100</td>
-        <td style="text-align: center">200</td>
-        <td style="text-align: center">300</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <table>
-    <tbody>
-      <tr>
-        <td>임의로 공을 1개 꺼냈더니 <strong>파란 공</strong>이었습니다. 이 공이 <strong>신상공</strong>일 확률 <em>P</em>(<em>N</em></td>
-        <td><em>B</em>)를 구하세요.</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>풀이 1 (축소된 경우의 수 이용)</strong>:
-파란 공이라는 조건이 주어졌으므로 전체 경우의 수는 파란 공의 총 개수인 120가지입니다. 이 중 신상공은 80가지이므로:
-<em>P</em>(<em>N</em>|<em>B</em>) = <em>n</em>(<em>N</em> ∩ <em>B</em>) / <em>n</em>(<em>B</em>) = 80 / 120 = 2 / 3</p>
-
-  <p><strong>풀이 2 (공식 이용)</strong>:</p>
-  <ul>
-    <li>전체 공 중에서 파란 공일 확률: <em>P</em>(<em>B</em>) = 120 / 300 = 2 / 5</li>
-    <li>전체 공 중에서 신상 파란 공일 확률: <em>P</em>(<em>N</em> ∩ <em>B</em>) = 80 / 300 = 4 / 15</li>
-    <li>공식 적용:
-<em>P</em>(<em>N</em>|<em>B</em>) = <em>P</em>(<em>N</em> ∩ <em>B</em>) / <em>P</em>(<em>B</em>) = (4 / 15) / (2 / 5) = 4 / 15 × 5 / 2 = 2 / 3
-<strong>정답</strong>: 2 / 3</li>
-  </ul>
-</blockquote>
-
-<h4 id="예제-2-독립과-종속의-판별">예제 2 (독립과 종속의 판별)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 한 개의 주사위를 던질 때, 홀수의 눈이 나오는 사건을 <em>A</em> = {1, 3, 5}, 3 이상의 눈이 나오는 사건을 <em>B</em> = {3, 4, 5, 6}이라 합시다. 두 사건 <em>A</em>, <em>B</em>는 독립인가요, 종속인가요?</p>
-
-  <p><strong>풀이</strong>:</p>
-  <ul>
-    <li><em>P</em>(<em>A</em>) = 3 / 6 = 1 / 2</li>
-    <li><em>P</em>(<em>B</em>) = 4 / 6 = 2 / 3</li>
-    <li>두 사건의 곱사건: <em>A</em> ∩ <em>B</em> = {3, 5} ➔ <em>P</em>(<em>A</em> ∩ <em>B</em>) = 2 / 6 = 1 / 3</li>
-    <li>두 확률의 곱 계산:
-<em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>) = 1 / 2 × 2 / 3 = 1 / 3</li>
-    <li>판별: <em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>) = 1 / 3이 성립하므로, 두 사건 <em>A</em>와 <em>B</em>는 서로 독립입니다.
-<strong>정답</strong>: 독립사건</li>
-  </ul>
-</blockquote>
-
-<hr />
-
-<h3 id="5-핵심-요약">5. 핵심 요약</h3>
-<ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><em>*조건부 확률 *P</em>(<em>B</em></td>
-          <td><em>A</em>)<strong>는 사건 <em>A</em>가 이미 일어났을 때 <em>B</em>가 발생할 확률로, 전체 영역(표본공간)이 **사건 <em>A</em>의 영역</strong>으로 좁혀진다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>두 사건이 서로 영향을 주고받지 않는다면 <strong>독립사건</strong>이고, 영향을 미친다면 <strong>종속사건</strong>이다.</li>
-  <li>수식적으로 <em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>)가 성립하면 두 사건은 무조건 <strong>독립</strong>이다.</li>
-</ol>
+한 사건의 발생이 다른 사건의 확률을 변화시키는 관계입니다 (독립이 아닌 모든 사건).</li>
+</ul>
 
 <hr />
 
 <h2 id="02112-확률의-곱셈정리와-독립시행의-정리">02.11.2 확률의 곱셈정리와 독립시행의 정리</h2>
 
-<p><img src="./img/ch14_jiny_prob_ch14_independent_trials.png" alt="확률의 곱셈정리와 독립시행의 정리 인트로" />
-<strong>그림 02-11-6</strong> 여러 번 화살을 쏘아 과녁을 맞추는 독립시행의 반복을 공식을 통해 설명해주는 지니와 도로시</p>
+<p>매회 동일한 조건에서 반복하여 행동할 때의 확률 법칙을 다룹니다.</p>
 
-<p>서로 영향을 끼치지 않는 무작위 행동(시행)을 계속해서 반복할 때의 가짓수 법칙인 <strong>독립시행의 정리</strong>와 <strong>곱셈정리</strong>를 공부합니다. 활을 쏘아 과녁을 수차례 명중시키는 도로시의 양궁 연습 놀이와 칠판에 수식(<em>P</em>(<em>X</em>=<em>k</em>) = <sub><em>n</em></sub><em>C</em><sub><em>k</em></sub> · <em>p</em><sup><em>k</em></sup> · (1-<em>p</em>)<sup><em>n</em></sup><sup>-<em>r</em></sup>)을 아름답게 판서하며 설명해주는 지니의 가이드를 통해 완전히 학습해봅시다!</p>
+<p>“지니! 내가 훈련장에서 양궁 연습을 하고 있어. 매번 화살을 쏠 때 과녁을 맞힐 확률이 0.8(80%)로 항상 똑같다고 가정해 보자. 총 5번의 화살을 쐈을 때, 정확히 2번 과녁을 명중시킬 확률은 어떻게 구해야 해?”</p>
 
-<hr />
+<p>도로시가 활을 당겨 과녁판을 겨냥하며 물었습니다. 토토는 사격장 팻말 옆에서 힘차게 응원했습니다. 지니가 과녁판 옆에 수식을 적어 유도했습니다.</p>
 
-<h3 id="1-학습-목표-1">1. 학습 목표</h3>
+<p>“그건 매 시행의 성공 확률이 다른 시도에 전혀 영향을 주지 않는 대표적인 <strong>독립시행</strong>이란다. 이때는 몇 번째 시도에서 성공할 것인지 순서를 결정하는 조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)과, 성공 확률의 거듭제곱, 실패 확률의 거듭제곱을 결합하여 풀 수 있어.”</p>
+
+<p><img src="./img/dorothy_jiny_independent_trials_ko.jpg" alt="독립시행의 확률" />
+<strong>그림 02-11-3</strong> 매회 사격 성공률이 일정한 독립시행 조건에서 n번 시도 중 r번 성공할 확률을 계산하는 공식을 연습하는 도로시와 지니, 토토</p>
+
 <ul>
-  <li><strong>확률의 곱셈정리</strong>를 이해하고 종속사건과 독립사건의 경우에 맞추어 활용할 수   있다.</li>
-  <li><strong>독립시행</strong>의 뜻을 알고, <strong>독립시행의 정리</strong> 공식을 유도하고 문제에 적용할 수 있다.</li>
-  <li>여러 단계의 사건이 복합적으로 일어날 때의 확률을 구조적으로 계산한다.</li>
-</ul>
-
-<hr />
-
-<h3 id="2-핵심-개념-1">2. 핵심 개념</h3>
-
-<h4 id="1-확률의-곱셈정리-multiplication-theorem-of-probability">(1) 확률의 곱셈정리 (Multiplication Theorem of Probability)</h4>
-<p>두 사건 <em>A</em>, <em>B</em>가 동시에 일어날 확률 <em>P</em>(<em>A</em> ∩ <em>B</em>)는 다음과 같이 조건부 확률을 활용하여 구합니다.
-<em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>|<em>A</em>) = <em>P</em>(<em>B</em>) × <em>P</em>(<em>A</em>|<em>B</em>)</p>
-<ul>
-  <li><strong>독립사건의 경우</strong>:
-두 사건 <em>A</em>, <em>B</em>가 독립이면 <em>P</em>(<em>B</em>|<em>A</em>) = <em>P</em>(<em>B</em>)이므로 다음과 같이 간단한 곱으로 나타납니다.
-<em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>)</li>
-</ul>
-
-<p><img src="./img/jiny_math_ch11_multiplication_theorem.png" alt="확률의 곱셈정리" />
-<strong>그림 02-11-7</strong> 두 사건이 연이어 일어날 확률(합사건)을 직전 사건의 조건부 확률과 곱하여 구하는 곱셈정리 원리</p>
-
-<h4 id="2-독립시행의-정리-theorem-of-independent-trials">(2) 독립시행의 정리 (Theorem of Independent Trials)</h4>
-<p>매회 동일한 조건에서 반복되는 시행에서 각 시행의 결과가 서로 독립적인 시행을 <strong>독립시행</strong>이라고 합니다.</p>
-<ul>
-  <li><strong>정리</strong>:
-어떤 시행에서 사건 <em>A</em>가 일어날 확률이 <em>p</em> (단, 0 ≤ <em>p</em> ≤ 1)일 때, 이 시행을 독립적으로 <em>n</em>회 반복하는 독립시행에서 사건 <em>A</em>가 정확히 <em>r</em>회 일어날 확률은 다음과 같습니다.
-<em>P</em>(<em>X</em>=<em>r</em>) = <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> <em>p</em><sup><em>r</em></sup> (1-<em>p</em>)<sup><em>n</em></sup><sup>-<em>r</em></sup>    (<em>r</em> = 0, 1, 2, …, <em>n</em>)
+  <li><strong>독립시행의 정리 공식</strong>:
+사건이 일어날 확률이 <em>p</em>일 때, <em>n</em>번 반복하는 독립시행에서 사건이 정확히 <em>r</em>회 일어날 확률 <em>P</em>는 다음과 같습니다.
+<strong><em>P(X=r) = <sub>n</sub>C<sub>r</sub> × p<sup>r</sup> × (1-p)<sup>n-r</sup></em></strong>
     <ul>
-      <li><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>: <em>n</em>번의 시행 중 사건 <em>A</em>가 일어날 <em>r</em>개의 위치(순서)를 선택하는 조합의 수</li>
-      <li><em>p</em><sup><em>r</em></sup>: 사건 <em>A</em>가 <em>r</em>번 일어날 확률</li>
-      <li>(1-<em>p</em>)<sup><em>n</em></sup><sup>-<em>r</em></sup>: 나머지 (<em>n</em>-<em>r</em>)번 실패할 확률</li>
+      <li><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>: <em>n</em>번의 시도 중 성공할 <em>r</em>번을 고르는 경우의 수</li>
+      <li><em>p</em><sup><em>r</em></sup>: <em>r</em>번 성공할 확률</li>
+      <li>(1-<em>p</em>)<sup><em>n-r</em></sup>: 나머지 실패할 확률</li>
     </ul>
   </li>
 </ul>
-
-<p><img src="./img/ch14_cartoon2.png" alt="주사위 실험을 통한 독립시행 시각화" />
-<strong>그림 02-11-8</strong> 주사위 6의 눈이 나오는 사건처럼 매회 성공확률이 독립적으로 동일하게 주어지는 독립시행 예시</p>
-
-<ul>
-  <li>주사위를 한 번 던져서 6의 눈이 나오는 사건(<em>p</em> = 1 / 6)은 이전 시행들의 결과가 무엇이었든 전혀 영향을 받지 않고 매 던지기마다 독립적으로 유지됩니다. 이렇게 매회 확률이 똑같이 주어지는 사건을 여러 번 시도할 때 특정 횟수만큼 성공할 확률은 <strong>독립시행의 정리</strong> 공식(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> <em>p</em><sup><em>r</em></sup> (1-<em>p</em>)<sup><em>n</em></sup><sup>-<em>r</em></sup>)을 사용해 깔끔하게 계산할 수 있습니다.</li>
-</ul>
-
-<hr />
-
-<h3 id="3-시각-자료-확률의-곱셈정리와-독립시행-도식">3. 시각 자료: 확률의 곱셈정리와 독립시행 도식</h3>
-
-<p><img src="./img/jiny_math_ch11_bernoulli_trials.png" alt="곱셈정리와 독립시행 도식" />
-<strong>그림 02-11-9</strong> 반복 시행 중 r번 성공하고 n-r번 실패하는 사건의 조합 가짓수를 수형도와 식으로 나타낸 독립시행 정의도</p>
-
-<hr />
-
-<h3 id="4-실전-예제-1">4. 실전 예제</h3>
-
-<h4 id="예제-1-비복원추출에서의-곱셈정리">예제 1 (비복원추출에서의 곱셈정리)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 주머니 속에 빨간 공 2개와 파란 공 3개가 들어 있습니다. 이 주머니에서 공을 한 개씩 연속해서 두 번 꺼낼 때(꺼낸 공은 다시 넣지 않음), 두 번 모두 빨간 공이 나올 확률을 구하세요.</p>
-
-  <p><strong>풀이</strong>:</p>
-  <ul>
-    <li>사건 <em>A</em>: 첫 번째에 빨간 공을 꺼내는 사건 ➔ <em>P</em>(<em>A</em>) = 2 / 5</li>
-    <li>사건 <em>B</em>: 두 번째에 빨간 공을 꺼내는 사건
-첫 번째 빨간 공을 뽑았으므로 남은 공은 빨간 공 1개와 파란 공 3개(총 4개)입니다.</li>
-    <li>
-      <table>
-        <tbody>
-          <tr>
-            <td>첫 번째 빨간 공이 나왔다는 전제하에 두 번째 빨간 공이 나올 확률: <em>P</em>(<em>B</em></td>
-            <td><em>A</em>) = 1 / 4</td>
-          </tr>
-        </tbody>
-      </table>
-    </li>
-    <li>곱셈정리에 따라 두 번 모두 빨간 공이 나올 확률은:
-<em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>|<em>A</em>) = 2 / 5 × 1 / 4 = 1 / 10
-<strong>정답</strong>: 1 / 10 (꺼낸 공을 다시 넣는 <strong>복원추출</strong>이라면 독립사건이 되므로 2 / 5 × 2 / 5 = 4 / 25가 됩니다.)</li>
-  </ul>
-</blockquote>
-
-<h4 id="예제-2-독립시행의-정리---시험-문제-찍기">예제 2 (독립시행의 정리 - 시험 문제 찍기)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 오지선다형(5개의 보기 중 정답이 1개) 객관식 문제 5개가 있습니다. 이 중 임의로 답을 적어 넣을(찍을) 때, 정확히 2문제를 맞힐 확률을 구하세요.</p>
-
-  <p><strong>풀이</strong>:
-각 문제를 맞히는 시행은 정답률 <em>p</em> = 1 / 5인 독립시행이며, 총 <em>n</em>=5번 반복합니다. 이 중 <em>r</em>=2번 맞힐 확률은 독립시행의 정리를 이용합니다.</p>
-  <ul>
-    <li>식: <sub>5</sub><em>C</em><sub>2</sub> × (1 / 5)<sup>2</sup> × (1 - 1 / 5)<sup>5-2</sup></li>
-    <li>계산:
-10 × (1 / 25) × (4 / 5)<sup>3</sup> = 10 × 1 / 25 × 64 / 125 = 128 / 625 ≈ 0.2048
-<strong>정답</strong>: 128 / 625 (20.48%)</li>
-  </ul>
-</blockquote>
-
-<hr />
-
-<h3 id="5-핵심-요약-1">5. 핵심 요약</h3>
-<ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>곱셈정리</strong>는 두 사건이 연속해서(동시에) 발생할 때, 순차적인 조건부 확률의 곱 <em>**P</em>(<em>A</em>) × <em>P</em>(<em>B</em></td>
-          <td><em>A</em>)**로 해결한다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>두 사건이 <strong>독립사건</strong>일 때는 조건부 확률을 고민할 필요 없이 각 확률을 단순 곱하면 된다: <strong><em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>)</strong>.</li>
-  <li>동일한 조건의 확률 <em>p</em>가 독립적으로 <em>n</em>회 반복될 때 특정 횟수 <em>r</em>번 성공할 확률은 <strong>독립시행의 정리 (<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> <em>p</em><sup><em>r</em></sup> (1-<em>p</em>)<sup><em>n</em></sup><sup>-<em>r</em></sup>)</strong>로 구한다.</li>
-</ol>
 
 <hr />
 
 <h2 id="02113-생활-속의-확률과-직관의-오류">02.11.3 생활 속의 확률과 직관의 오류</h2>
 
-<p><img src="./img/ch15_jiny_prob_ch15_monty_hall.png" alt="생활 속의 확률과 직관의 오류 인트로" />
-<strong>그림 02-11-10</strong> 세 개의 굳게 닫힌 몬티 홀 마법의 문 앞에서 선택을 바꾸는 전략의 유불리를 토론하는 지니와 도로시</p>
+<p>인간의 직관적인 느낌과 실제 수학적 확률 계산이 매우 다르게 나타나는 대표적인 퍼즐들입니다.</p>
 
-<p>인간의 본능적인 느낌이 실제 정밀한 수학 계산과 어떻게 어긋나는지 <strong>직관의 오류</strong>와 실생활 확률(생일 패러독스, 몬티 홀 문제 등)을 알아봅니다. 요정 지니가 2번 문을 슬며시 열어 염소(꽝)를 보여주며 도로시에게 1번과 3번 문 중 어느 쪽을 택하는 것이 진정한 잭팟(자동차)의 기댓값을 높이는지 물어보는 몬티 홀 퍼즐을 통해, 조건부 확률의 매혹적인 세계관을 함께 정리해봅시다!</p>
+<h3 id="1-몬티-홀-딜레마-monty-hall-problem">1. 몬티 홀 딜레마 (Monty Hall Problem)</h3>
+<ul>
+  <li><strong>딜레마</strong>: 3개의 문 중 하나 뒤에만 보상(자동차)이 있고 둘은 염소(꽝)가 있습니다. 참가자가 1번 문을 고르자, 사회자가 남은 문 중 꽝인 2번 문을 열어 보여줍니다. 이때 3번 문으로 선택을 바꾸는 것이 유리할까요?</li>
+  <li><strong>정답</strong>: <strong>선택을 바꾸는 것이 승리 확률이 2/3로 상승하여 2배 더 유리</strong>합니다. (처음 선택을 고수하면 1/3 유지)</li>
+</ul>
+
+<h3 id="2-생일-패러독스-birthday-paradox">2. 생일 패러독스 (Birthday Paradox)</h3>
+<ul>
+  <li><strong>패러독스</strong>: 한 교실에 단 20명의 학생만 모여 있어도, 생일이 같은 학생이 적어도 한 쌍 이상 존재할 확률은 우리의 직관(매우 낮을 것이라는 생각)과 달리 <strong>약 60.6%</strong>나 됩니다. (여사건의 결합 법칙으로 유도)</li>
+</ul>
+
+<p>“와! 직관만 믿고 선택을 안 바꾸거나, 생일이 같을 확률이 무조건 낮을 거라고 찍으면 수학 시험에서 꽝을 뽑겠네!”</p>
+
+<p>도로시가 웃으며 토토를 안아주었습니다.</p>
 
 <hr />
 
-<h3 id="1-학습-목표-2">1. 학습 목표</h3>
-<ul>
-  <li>실생활의 여러 현상(도전, 만남, 게임 등) 속에서 어떻게 확률이 작동하는지 알아본다.</li>
-  <li>우리의 직관적인 확률 판단이 실제 계산 결과와 어떻게 다른지(직관의 오류) 배운다.</li>
-  <li><strong>몬티 홀 문제</strong>와 <strong>생일 패러독스</strong>를 통해 조건부 확률과 여사건의 유용성을 체득한다.</li>
-</ul>
+<h2 id="02114-실전-예제">02.11.4 실전 예제</h2>
 
-<hr />
-
-<h3 id="2-핵심-개념-2">2. 핵심 개념</h3>
-
-<h4 id="1-주관적-확률과-드-피네티-게임-de-finetti-game">(1) 주관적 확률과 드 피네티 게임 (De Finetti Game)</h4>
-<ul>
-  <li><strong>주관적 확률</strong>: 사람들이 직관적으로 느끼는 일어날 가능성입니다. (예: “내일 우승할 확률이 99%다”)</li>
-  <li><strong>드 피네티 게임</strong>: 주관적 확률을 정량적인 객관적 확률로 바꾸어 파악하는 게임입니다.
-    <ul>
-      <li><em>방법</em>: 확실한 확률을 가진 복권(예: 빨간 공이 <em>x</em>개인 주머니)과 주관적 예측 사건(예: 수학 100점 받기)을 저울질하게 하여, 어느 시점에서 선택이 바뀌는지를 찾아 실제 마음속의 예상 확률을 측정합니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="./img/jiny_math_ch11_subjective_probability.png" alt="주관적 확률과 드 피네티 게임" />
-<strong>그림 02-11-11</strong> 마음속의 직관적 가능성을 정량화된 수치로 측정해내는 드 피네티 게임의 저울질 모델</p>
-
-<h4 id="2-직관에-반하는-확률-모델들">(2) 직관에 반하는 확률 모델들</h4>
-
-<p><img src="./img/jiny_math_ch11_intuitive_probability.png" alt="직관에 반하는 확률" />
-<strong>그림 02-11-12</strong> 직관적인 주관적 느낌(5%)과 정밀한 수학적 계산(60%) 사이의 괴리 현상과 직관 극복 모델</p>
-
-<h4 id="1-몬티-홀-딜레마-monty-hall-problem">1) 몬티 홀 딜레마 (Monty Hall Problem)</h4>
-<ul>
-  <li><strong>상황</strong>: 3개의 문 중 하나 뒤에는 자동차가 있고, 나머지 둘 뒤에는 염소(꽝)가 있습니다. 참가자가 문을 하나 고른 후, 사회자가 남은 두 문 중 염소가 있는 문 하나를 열어 보여줍니다. 이때 참가자는 선택을 바꾸는 것이 유리할까요?</li>
-  <li><strong>진실</strong>: 선택을 <strong>바꾸는 것이 2배 유리</strong>합니다.
-    <ul>
-      <li>처음 선택한 문에 자동차가 있을 확률: 1 / 3</li>
-      <li>남은 문에 자동차가 있을 확률: 2 / 3 (사회자가 꽝인 문을 열어 제거해 줬으므로 남은 한 개의 문이 2 / 3의 확률을 전부 상속받음)</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="2-생일-패러독스-birthday-paradox">2) 생일 패러독스 (Birthday Paradox)</h4>
-<ul>
-  <li><strong>상황</strong>: 한 반에 20명의 학생이 있을 때, 생일이 같은 학생이 적어도 한 쌍 이상 있을 확률은 얼마나 될까요?</li>
-  <li><strong>진실</strong>: 직관적으로는 매우 드문 일처럼 보이지만, 실제 계산해 보면 약 <strong>60.6%</strong>로 절반이 넘는 높은 확률을 보입니다.</li>
-</ul>
-
-<p><img src="./img/ch15_cartoon2.png" alt="생일 패러독스의 직관적 이해" />
-<strong>그림 02-11-13</strong> 20명 모인 집단에서 여사건을 적용하여 생일이 같은 쌍이 존재할 확률(60.6%)을 유도하는 직관 파괴 현상</p>
-
-<ul>
-  <li>20명이 모인 교실에서 생일이 같은 두 사람이 있을 확률은 우리의 일반적인 직관(20 / 365 ≈ 5.4%)을 완전히 깨트리고, 여사건의 누적 곱셈 연산을 통해 <strong>무려 60.6%라는 압도적으로 높은 확률</strong>을 보입니다. 이처럼 직관에만 의존하는 확률 판단은 심각한 오류를 낳을 수 있으므로 수학적 검증이 중요합니다.</li>
-</ul>
-
-<hr />
-
-<h3 id="3-시각-자료-몬티-홀-딜레마와-생일-패러독스의-직관-오류-분석">3. 시각 자료: 몬티 홀 딜레마와 생일 패러독스의 직관 오류 분석</h3>
-
-<p><img src="./img/jiny_math_ch11_monty_hall_tree.png" alt="몬티홀 및 생일패러독스 도식" />
-<strong>그림 02-11-14</strong> 몬티 홀 퍼즐에서 3개 선택지 중 하나를 버린 후 선택 변경 시 승리 기대 확률이 2/3로 상승함을 분석한 분개도</p>
-
-<hr />
-
-<h3 id="4-실전-예제-2">4. 실전 예제</h3>
-
-<h4 id="예제-1-생일-패러독스-계산">예제 1 (생일 패러독스 계산)</h4>
+<h3 id="문제-1-비복원추출-곱셈정리">문제 1 (비복원추출 곱셈정리)</h3>
 <blockquote>
-  <p><strong>문제</strong>: 20명의 사람이 한 방에 모여 있을 때, 생일이 같은 사람이 적어도 1쌍 이상 존재할 확률의 계산식을 세우고 그 결과를 설명하세요. (단, 1년은 365일로 가정하고 윤년은 고려하지 않음)</p>
+  <p>주머니 속에 빨간 공 2개와 파란 공 3개가 들어 있습니다. 공을 한 개씩 연속해서 두 번 꺼낼 때(꺼낸 공은 다시 넣지 않음), 두 번 모두 빨간 공이 나올 확률을 구하시오.</p>
 
-  <p><strong>풀이</strong>:
-‘생일이 같은 사람이 적어도 1쌍 이상 있을 사건’의 여사건은 ‘20명 모두의 생일이 서로 다를 사건’입니다.</p>
+  <p><strong>풀이</strong>:</p>
   <ul>
-    <li>20명의 생일이 모두 다를 확률:
-<em>P</em>(모두 다름) = <sub>365</sub><em>P</em><sub>20</sub> / 365<sup>20</sup> = (365 × 364 × 363 × … × 346) / 365<sup>20</sup></li>
-    <li>여사건의 성질을 이용하여 적어도 1쌍의 생일이 같을 확률 <em>P</em>를 구합니다:
-<em>P</em> = 1 - <em>P</em>(모두 다름) = 1 - <sub>365</sub><em>P</em><sub>20</sub> / 365<sup>20</sup> ≈ 0.606 (60.6%)
-<strong>결론</strong>: 생일이 같은 사람이 존재할 확률이 60.6%나 되므로, 20명만 모여도 생일이 같은 사람이 나올 가능성이 그렇지 않을 가능성보다 큽니다.
-<strong>정답</strong>: 60.6%</li>
+    <li>첫 번째 빨간 공을 꺼낼 확률 <em>P</em>(<em>A</em>) = 2 / 5</li>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td>꺼낸 공을 넣지 않으므로 남은 빨간 공 1개, 파란 공 3개 중 빨간 공을 꺼낼 조건부 확률 <em>P</em>(<em>B</em></td>
+            <td><em>A</em>) = 1 / 4</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>확률의 곱셈정리에 의해:
+<em>P</em>(<em>A</em> ∩ <em>B</em>) = 2 / 5 × 1 / 4 = 1 / 10 (10%)</li>
   </ul>
-</blockquote>
 
-<h4 id="예제-2-로또의-수학적-당첨-확률">예제 2 (로또의 수학적 당첨 확률)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 1부터 45까지의 숫자 중 순서와 관계없이 서로 다른 6개의 숫자를 선택하는 로또 1등에 당첨될 확률을 계산식으로 표현하세요.</p>
-
-  <p><strong>풀이</strong>:
-전체 조합의 수 중에서 1등 당첨 번호 세트는 단 1개뿐입니다.</p>
-  <ul>
-    <li>전체 번호 선택 조합의 수: <sub>45</sub><em>C</em><sub>6</sub></li>
-    <li>1등 당첨 확률 <em>P</em>는:
-<em>P</em> = 1 / <sub>45</sub><em>C</em><sub>6</sub> = 1 / 8,145,060
-<strong>결론</strong>: 로또 1등 당첨 확률은 약 814만 분의 1(대략 0.000012%)로, 번개에 맞을 확률보다 낮습니다.
-<strong>정답</strong>: 1 / <sub>45</sub><em>C</em><sub>6</sub></li>
-  </ul>
+  <p><strong>정답</strong>: 1 / 10</p>
 </blockquote>
 
 <hr />
 
-<h3 id="5-핵심-요약-2">5. 핵심 요약</h3>
+<h2 id="02115-핵심-요약">02.11.5 핵심 요약</h2>
+
 <ol>
-  <li>확률은 실생활에서 발생하는 수많은 우연의 메커니즘을 객관적으로 분석해 주는 강력한 <strong>의사결정 도구</strong>이다.</li>
-  <li>몬티 홀 문제나 생일 패러독스처럼 사람의 <strong>직관(주관적 확률)</strong>은 실제 <strong>객관적 확률</strong>과 다를 수 있으므로, 항상 엄밀한 수학적 계산을 통해 판단을 바로잡아야 한다.</li>
-  <li>아무리 낮은 확률의 사건이라도 독립적으로 수없이 많이 반복한다면 언젠가는 실현된다. 다만 복권이나 도박처럼 대가를 지불해야 하는 경우에는 계산상 무조건 손실을 입게 됨을 잊지 말아야 한다.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>**조건부 확률 *P(B</td>
+          <td>A)<em>**는 사건 *A</em>가 발생했다는 전제하에 사건 <em>B</em>가 일어날 확률이며, 전체 표본공간이 사건 <em>A</em>의 영역으로 축소된다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>매회 시행 결과가 이전 결과에 전혀 영향을 주지 않는 시도를 <strong>독립시행</strong>이라 하며, <em>n</em>번 중 <em>r</em>번 성공할 확률은 <em>*<sub>*n*</sub></em>C<em><sub>*r*</sub> × *p</em><sup><em>r</em></sup> × (1-<em>p</em>)<sup><em>n-r</em>**&lt;/sub&gt; 공식으로 구한다.</sup></li>
+  <li>몬티 홀 문제와 생일 패러독스는 인간의 주관적 느낌(직관)이 정교한 객관적 수학 확률과 크게 어긋날 수 있음을 보여주는 대표적인 사례이다.</li>
 </ol>
 
 
