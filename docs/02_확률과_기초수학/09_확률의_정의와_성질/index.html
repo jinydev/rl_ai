@@ -576,122 +576,216 @@
             <h1 id="029-확률의-정의와-성질">02.9 확률의 정의와 성질</h1>
 
 <blockquote>
-  <p>이 장에서는 <strong>확률의 정의와 성질 (수학적/실험적/기하학적 확률)</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+  <p>이 장에서는 <strong>확률의 수학적·실험적·기하학적 정의</strong>와 기본 공리를 학습하고, 시행 횟수가 늘어남에 따라 표본 평균이 참 확률에 수렴하는 <strong>대수의 법칙(큰 수의 법칙)</strong>을 통해 강화학습 전이 확률(Transition Probability)의 수학적 기초를 다집니다.</p>
 </blockquote>
 
 <hr />
 
-<h2 id="0291-확률의-뜻과-실험적-확률">02.9.1 확률의 뜻과 실험적 확률</h2>
+<h2 id="0291-확률의-뜻과-상태-전이-확률">02.9.1 확률의 뜻과 상태 전이 확률</h2>
 
-<p>확률이란 불확실한 결과를 객관적으로 파악하기 위한 수학적 수단입니다.</p>
+<p>확률이란 불확실한 결과를 객관적이고 체계적인 수치로 다루기 위한 수학적 도구입니다.</p>
 
-<p>“지니! 격자 세상(Grid World) 게임판 위에서 캐릭터가 위로 가라고 명령을 내렸는데, 바람이 강하게 불어서 캐릭터가 옆 칸으로 자꾸 미끄러져 가버려! 내가 가라고 한 방향으로 갈 확률은 정확히 몇 퍼센트나 되는 거야?”</p>
+<p>“지니! 격자 세상(Grid World) 게임판 위에서 캐릭터에게 ‘위로 전진해!’ 하고 명령을 내렸는데, 갑자기 바람이 쌩 불어서 옆 칸으로 미끄러져 버렸어! 내가 원하는 방향으로 갈 확률은 정확히 몇 퍼센트인 거야?”</p>
 
-<p>도로시가 조이패드를 쥔 채 곤란한 표정으로 칠판의 격자지도를 보며 말했습니다. 토토도 멍멍 짖으며 바람 소리에 맞춰 고개를 저었습니다. 지니는 입체 스크린을 띄워 바람이 부는 전이 지도를 보여주었습니다.</p>
+<p>도로시가 조이패드를 쥔 채 곤란한 표정으로 격자 지도를 바라보며 물었습니다. 토토도 멍멍 짖으며 바람 소리에 맞춰 고개를 갸우뚱거렸습니다. 지니는 요술봉을 휘둘러 허공에 바람의 방향과 전이 확률 지도를 입체로 띄워 주었습니다.</p>
 
-<p>“도로시! 강화학습에서는 행동을 취했을 때 100% 성공하지 못하고 다른 상태로 이탈하는 경우가 많아. 이때 특정 칸으로 도달하게 될 가능성을 수치로 표현한 것을 <strong>전이 확률(Transition Probability)</strong>이라고 불러. 이는 불확실성을 객관적으로 수치화하는 확률의 정의와 완벽하게 닿아 있단다.”</p>
+<p>“도로시! 강화학습 환경에서는 행동(Action)을 취했을 때 100% 확정적으로 목표 칸에 도달하지 못하고 외부 요인(바람, 마찰)에 의해 다른 상태로 이탈할 수 있단다. 이때 특정 행동 후 다음 상태에 도달할 가능성을 수치화한 것을 <strong>상태 전이 확률(Transition Probability)</strong>이라고 부르지.”</p>
 
-<p><img src="./img/dorothy_jiny_transition_probability_ko.jpg" alt="전이 확률의 비유" />
-<strong>그림 02-9-1</strong> 격자 세상에서 이동 명령을 내렸을 때 바람의 세기와 방향에 따라 실제 다른 상태로 미끄러져 들어갈 전이 확률 시스템을 살펴보는 지니와 도로시, 토토</p>
+<p><img src="./img/dorothy_prob_grid_wind.png" alt="격자 세상과 전이 확률" />
+<strong>그림 02-9-1</strong> 격자 세상에서 이동 명령을 내렸을 때 전진 성공(80%)과 좌우 미끄러짐(각 10%)의 전이 확률 시스템을 살펴보는 도로시와 지니, 토토</p>
 
-<p>“아! 내가 똑바로 전진할 성공 확률이 0.8(80%)이고, 옆으로 미끄러질 확률이 각각 0.1(10%)씩 배정되어 있구나!”</p>
+<p>“아! 전진할 성공 확률이 0.8(80%)이고, 양옆으로 미끄러질 확률이 각각 0.1(10%)씩 배정되어 있구나! 세 숫자를 다 더하면 정확히 1.0(100%)이 되네!”</p>
 
-<p>도로시가 그림을 보며 설명했습니다.</p>
+<p>도로시가 환하게 웃으며 외쳤습니다. 지니가 칠판을 가리키며 덧붙였습니다.</p>
 
-<p>“그렇단다. 그리고 여기서 중요한 대원칙이 하나 있어. 에이전트가 어떤 상태에서 어떤 행동을 하든, 이동할 수 있는 모든 다음 상태들의 전이 확률을 합치면 항상 <strong>1.0 (100%)</strong>이 되어야 한단다.”</p>
-
-<p><img src="./img/dorothy_probability_sum_one_ko.jpg" alt="확률의 합은 1.0" />
-<strong>그림 02-9-2</strong> 하루 일과를 나누어 결정하는 파이 차트의 비율처럼, 일어날 수 있는 모든 사건의 개별 확률들을 전부 합산하면 정확히 1.0(100%)이 됨을 설명하는 도로시와 지니</p>
+<p>“맞아! 어떤 상태에서 어떤 행동을 하든, 이동 가능한 모든 다음 상태들의 전이 확률을 전부 합산하면 <strong>항상 1.0(100%)</strong>이 되어야 한다는 것이 확률의 가장 중요한 절대 공리란다.”</p>
 
 <hr />
 
-<h3 id="1-학습-목표">1. 학습 목표</h3>
-<ul>
-  <li>확률의 기본적 의미를 이해한다.</li>
-  <li>실험이나 관찰을 통해 얻어지는 실험적 확률(통계적 확률)의 개념을 이해한다.</li>
-  <li>대수의 법칙(Law of Large Numbers)의 의의를 파악한다.</li>
-</ul>
+<h3 id="2911-확률의-기본-성질과-콜모고로프-공리계">2.9.1.1 확률의 기본 성질과 콜모고로프 공리계</h3>
 
-<hr />
-
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
-
-<h4 id="1-확률의-의미">(1) 확률의 의미</h4>
-<ul>
-  <li><strong>확률 (Probability)</strong>: 어떤 사건이 일어날 가능성을 0과 1 사이의 수치(혹은 0%에서 100%)로 나타낸 것입니다.</li>
-</ul>
-
-<h4 id="2-실험적-확률-empirical-probability">(2) 실험적 확률 (Empirical Probability)</h4>
-<p>동일한 조건 아래에서 어떤 실험이나 관찰을 <em>N</em>번 반복할 때, 사건 <em>A</em>가 일어난 횟수를 <em>r</em>이라 하면, <em>N</em>을 충분히 크게 함에 따라 상대도수 <em>r</em> / <em>N</em>이 일어나는 비율이 일정한 값 <em>P</em>에 한없이 가까워집니다. 이 값 <em>P</em>를 사건 <em>A</em>의 <strong>실험적 확률</strong>이라고 합니다.</p>
-<ul>
-  <li><strong><em>P(A) ≈ r / N</em></strong> (단, <em>N</em>은 매우 큰 수)</li>
-</ul>
-
-<hr />
-
-<h4 id="3-대수의-법칙-law-of-large-numbers">(3) 대수의 법칙 (Law of Large Numbers)</h4>
-<p>“지니! 동전을 직접 열 번 던져봤는데, 앞면이 일곱 번이나 나왔어! 그럼 내 동전은 앞면이 나올 확률이 70%인 거야?”</p>
-
-<p>“하하, 좋은 질문이야! 던진 횟수가 적을 때는 우연의 장난으로 비율이 왜곡되어 보일 수 있지. 하지만 던진 횟수가 수천, 수만 번으로 늘어날수록 앞면이 나올 상대적 비율은 결국 이론적인 진짜 확률인 50%(0.5)에 가깝게 수렴하게 된단다. 이걸 수학에서는 <strong>대수의 법칙(큰 수의 법칙)</strong>이라고 불러.”</p>
-
-<p><img src="./img/dorothy_jiny_dice_graph_ko.jpg" alt="대수의 법칙 그래프" />
-<strong>그림 02-9-3</strong> 동전 던지기 시행 횟수(N)가 적을 때는 확률 변동이 심하나, 횟수가 만 번 가까이 늘어날수록 이론적 확률인 0.5로 일정하게 수렴하는 대수의 법칙 시뮬레이션</p>
-
-<p>“와! 시행 횟수가 엄청 많아지면 결국 참 확률로 수렴하는구나! 그래서 강화학습 에이전트도 수많은 에피소드를 겪게 해서 상태 가치를 참값으로 수렴시키는 거였어!”</p>
-
-<p>도로시가 눈을 빛내며 말했습니다.</p>
-
-<hr />
-
-<h2 id="0292-수학적-확률과-기하학적-확률">02.9.2 수학적 확률과 기하학적 확률</h2>
-
-<ul>
-  <li><strong>수학적 확률 (Mathematical Probability)</strong>: 일어날 수 있는 모든 경우의 수 <em>N</em>가지 중 사건 <em>A</em>가 일어나는 경우의 수 <em>a</em>가지의 비입니다:
-<strong><em>P(A) = a / N</em></strong></li>
-  <li><strong>기하학적 확률 (Geometric Probability)</strong>: 무한한 경우의 수가 존재하는 연속적인 영역에서 길이, 넓이, 부피의 비율로 확률을 정의하는 방식입니다:
-<strong><em>P(A) = 영역 A의 크기 / 전체 영역 S의 크기</em></strong></li>
-</ul>
-
-<hr />
-
-<h2 id="0293-독립사건과-확률의-곱셈정리">02.9.3 독립사건과 확률의 곱셈정리</h2>
-
-<ul>
-  <li><strong>독립사건 (Independent Events)</strong>: 두 사건 <em>A</em>와 <em>B</em>가 서로 일어날 확률에 전혀 영향을 주지 않는 경우를 뜻합니다.</li>
-  <li><strong>확률의 곱셈</strong>: 두 사건이 독립일 때, 동시에(혹은 연이어) 두 사건이 모두 일어날 확률은 각 확률의 곱과 같습니다:
-<strong><em>P(A ∩ B) = P(A) × P(B)</em></strong></li>
-</ul>
-
-<hr />
-
-<h2 id="0294-실전-예제">02.9.4 실전 예제</h2>
-
-<h3 id="문제-1-독립사건의-곱셈">문제 1 (독립사건의 곱셈)</h3>
-<blockquote>
-  <p>서로 다른 두 개의 주사위(빨강, 파랑)를 동시에 던질 때, 두 주사위의 눈이 모두 4 이하가 나올 확률을 구하시오.</p>
-
-  <p><strong>풀이</strong>:</p>
-  <ul>
-    <li>사건 <em>A</em> (빨강 주사위의 눈이 4 이하일 확률) = 4 / 6 = 2 / 3</li>
-    <li>사건 <em>B</em> (파랑 주사위의 눈이 4 이하일 확률) = 4 / 6 = 2 / 3</li>
-  </ul>
-
-  <p>두 사건은 독립사건이므로 확률의 곱셈정리를 적용합니다:</p>
-  <ul>
-    <li><em>P</em>(<em>A</em> ∩ <em>B</em>) = <em>P</em>(<em>A</em>) × <em>P</em>(<em>B</em>) = 2/3 × 2/3 = 4 / 9 (약 44.4%)</li>
-  </ul>
-
-  <p><strong>정답</strong>: 4 / 9</p>
-</blockquote>
-
-<hr />
-
-<h2 id="0295-핵심-요약">02.9.5 핵심 요약</h2>
+<p>수학적으로 확률은 전체 표본공간 <em>S</em>와 특정 사건 <em>A</em>에 대해 다음의 세 가지 기본 성질(공리)을 반드시 만족해야 합니다.</p>
 
 <ol>
-  <li><strong>확률</strong>은 불확실한 사건의 발생 가능성을 0과 1 사이의 수치로 나타낸 것이다.</li>
-  <li><strong>대수의 법칙</strong>에 의해 실제 시행 횟수 <em>N</em>이 무한히 커질수록 실험적 확률은 이론적인 수학적 확률에 수렴한다.</li>
-  <li>독립적인 두 사건이 연이어 발생할 확률은 각 사건의 개별 확률을 곱한 <strong>독립사건의 곱셈 (<em>P(A) × P(B)</em>)</strong>으로 간단히 구한다.</li>
+  <li>
+    <p><strong>비음수성</strong>: 모든 사건 <em>A</em>의 확률은 항상 0 이상 1 이하의 실수이다.
+\(0 \le P(A) \le 1\)</p>
+  </li>
+  <li>
+    <p><strong>전체 사건의 확률 (정규화)</strong>: 반드시 일어나는 전사건(표본공간 <em>S</em>)의 확률은 1이다.
+\(P(S) = 1\)</p>
+  </li>
+  <li>
+    <p><strong>공사건의 확률</strong>: 절대로 일어날 수 없는 사건(공사건 $\emptyset$)의 확률은 0이다.
+\(P(\emptyset) = 0\)</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="0292-확률을-정의하는-세-가지-관점">02.9.2 확률을 정의하는 세 가지 관점</h2>
+
+<p>확률은 문제를 바라보는 대상과 실험 환경에 따라 크게 세 가지 관점으로 정의됩니다.</p>
+
+<p><img src="./img/dorothy_prob_types.png" alt="확률의 3가지 정의" />
+<strong>그림 02-9-2</strong> 경우의 수 비율로 계산하는 수학적 확률, 반복 실험으로 수렴하는 실험적 확률, 연속 영역의 크기로 구하는 기하학적 확률의 3대 정의를 비교 설명하는 지니와 도로시, 토토</p>
+
+<hr />
+
+<h3 id="2921-수학적-확률-고전적-확률">2.9.2.1 수학적 확률 (고전적 확률)</h3>
+
+<p>표본공간 <em>S</em>의 각 원소(근원사건)가 일어날 가능성이 모두 동등할 때(Equally likely), 전체 경우의 수 중 사건 <em>A</em>가 일어나는 경우의 수의 비율로 정의합니다.</p>
+
+\[P(A) = \frac{n(A)}{n(S)} = \frac{\text{사건 } A\text{가 일어나는 경우의 수}}{\text{모든 가능한 경우의 수}}\]
+
+<ul>
+  <li><strong>대표 예시</strong>: 주사위 1개를 던질 때 소수의 눈(2, 3, 5)이 나올 확률:
+\(P(\text{소수}) = \frac{3}{6} = \frac{1}{2} = 0.5\)</li>
+</ul>
+
+<hr />
+
+<h3 id="2922-실험적-확률-통계적-확률-경험적-확률">2.9.2.2 실험적 확률 (통계적 확률, 경험적 확률)</h3>
+
+<p>동일한 조건에서 시행을 <em>N</em>번 독립적으로 반복할 때, 사건 <em>A</em>가 발생한 횟수를 <em>r</em>이라고 하면, 시행 횟수 <em>N</em>이 무한히 커짐에 따라 상대도수(<em>r</em> / <em>N</em>)가 수렴하는 극한값을 뜻합니다.</p>
+
+\[P(A) = \lim_{N \to \infty} \frac{r}{N}\]
+
+<ul>
+  <li><strong>특징</strong>: 주사위의 무게중심이 쏠려 있거나 기상 예측, 강화학습 에이전트의 보상 획득률처럼 이론적 계산이 불가능한 현실 데이터의 확률을 측정할 때 사용합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="2923-기하학적-확률-연속-영역-확률">2.9.2.3 기하학적 확률 (연속 영역 확률)</h3>
+
+<p>경우의 수가 무한히 많은 연속적인 공간(시간, 길이, 면적, 부피)에서 전체 영역 <em>S</em>의 크기 대비 사건 <em>A</em>에 해당하는 영역의 비율로 확률을 정의합니다.</p>
+
+\[P(A) = \frac{\text{사건 } A\text{가 차지하는 영역의 크기(넓이)}}{\text{전체 영역 } S\text{의 크기(넓이)}}\]
+
+<ul>
+  <li><strong>대표 예시</strong>: 반지름이 2인 원형 과녁에서 반지름이 1인 정중앙 원을 맞힐 확률:
+\(P(\text{정중앙}) = \frac{\pi \times 1^2}{\pi \times 2^2} = \frac{1}{4} = 0.25\)</li>
+</ul>
+
+<hr />
+
+<h2 id="0293-대수의-법칙과-표본공간의-수렴">02.9.3 대수의 법칙과 표본공간의 수렴</h2>
+
+<p>“지니! 동전을 직접 10번 던져봤는데, 앞면이 7번이나 나왔어! 그럼 내 동전은 앞면이 나올 확률이 70%인 거야?”</p>
+
+<p>도로시가 동전들을 손바닥에 올려놓으며 갸우뚱거렸습니다. 지니는 허공에 꺾은선 그래프를 띄우며 자상하게 설명했습니다.</p>
+
+<p>“던진 횟수가 적을 때는 우연한 편향이나 노이즈 때문에 비율이 요동칠 수 있단다. 하지만 던진 횟수를 1,000번, 10,000번으로 늘려갈수록 상대도수는 이론적인 참 확률(50%)에 완벽하게 수렴하게 되지. 이걸 수학에서는 <strong>대수의 법칙(Law of Large Numbers, 큰 수의 법칙)</strong>이라고 부른단다.”</p>
+
+<p><img src="./img/dorothy_prob_lln_coins.png" alt="대수의 법칙" />
+<strong>그림 02-9-3</strong> 동전 던지기 시행 횟수(N)가 적을 때는 확률 변동이 심하나, 횟수가 만 번에 도달할수록 이론적 참 확률(0.5)로 매끄럽게 수렴하는 대수의 법칙 시뮬레이션</p>
+
+\[\lim_{N \to \infty} \left| \frac{r_N}{N} - p \right| = 0\]
+
+<p>“와! 시행 횟수를 대규모로 누적하면 참 확률에 도달하는구나! 그래서 강화학습에서도 에이전트가 수만 번의 에피소드를 탐험하며 상태 가치를 참값으로 학습해 나가는 거였어!”</p>
+
+<p>도로시가 눈을 반짝이며 고개를 끄덕였습니다.</p>
+
+<hr />
+
+<h2 id="0294-파이썬으로-구현하는-대수의-법칙-시뮬레이터">02.9.4 파이썬으로 구현하는 대수의 법칙 시뮬레이터</h2>
+
+<p>파이썬의 <code class="language-plaintext highlighter-rouge">random</code> 모듈을 활용하여 동전을 던지는 시행 횟수(<em>N</em>)가 증가함에 따라 앞면이 나올 확률이 이론적 참 확률(0.5)로 수렴하는 과정을 확인합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">random</span>
+
+<span class="k">def</span> <span class="nf">simulate_law_of_large_numbers</span><span class="p">(</span><span class="n">trials_list</span><span class="p">):</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== 대수의 법칙 동전 던지기 시뮬레이션 ===</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># 재현성을 위한 시드 고정
+</span>    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">trials_list</span><span class="p">:</span>
+        <span class="n">heads_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="c1"># 1: 앞면, 0: 뒷면
+</span>            <span class="k">if</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">heads_count</span> <span class="o">+=</span> <span class="mi">1</span>
+                
+        <span class="n">relative_frequency</span> <span class="o">=</span> <span class="n">heads_count</span> <span class="o">/</span> <span class="n">n</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="nf">abs</span><span class="p">(</span><span class="n">relative_frequency</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">시행 횟수 N = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="mi">7</span><span class="p">,</span><span class="n">d</span><span class="si">}</span><span class="s"> | 앞면 횟수 = </span><span class="si">{</span><span class="n">heads_count</span><span class="si">:</span><span class="mi">7</span><span class="p">,</span><span class="n">d</span><span class="si">}</span><span class="s"> | </span><span class="sh">"</span>
+              <span class="sa">f</span><span class="sh">"</span><span class="s">상대도수 = </span><span class="si">{</span><span class="n">relative_frequency</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="s"> | 오차 = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 시행 횟수를 10회부터 1,000,000회까지 기하급수적으로 증가
+</span><span class="n">trials</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">100000</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">]</span>
+<span class="nf">simulate_law_of_large_numbers</span><span class="p">(</span><span class="n">trials</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[실행 결과]
+=== 대수의 법칙 동전 던지기 시뮬레이션 ===
+시행 횟수 N =      10 | 앞면 횟수 =       7 | 상대도수 = 0.70000 | 오차 = 0.20000
+시행 횟수 N =      50 | 앞면 횟수 =      29 | 상대도수 = 0.58000 | 오차 = 0.08000
+시행 횟수 N =     100 | 앞면 횟수 =      49 | 상대도수 = 0.49000 | 오차 = 0.01000
+시행 횟수 N =     500 | 앞면 횟수 =     248 | 상대도수 = 0.49600 | 오차 = 0.00400
+시행 횟수 N =   1,000 | 앞면 횟수 =     515 | 상대도수 = 0.51500 | 오차 = 0.01500
+시행 횟수 N =  10,000 | 앞면 횟수 =   5,023 | 상대도수 = 0.50230 | 오차 = 0.00230
+시행 횟수 N = 100,000 | 앞면 횟수 =  49,944 | 상대도수 = 0.49944 | 오차 = 0.00056
+시행 횟수 N = 1,000,000 | 앞면 횟수 = 500,317 | 상대도수 = 0.50032 | 오차 = 0.00032
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>💡 코드 해석</strong>: 시행 횟수 <em>N</em> = 10일 때는 상대도수가 0.70(오차 0.20)으로 요동치지만, <em>N</em>이 1,000,000회에 도달하면 상대도수가 0.50032로 이론적 확률 0.5와의 오차가 0.00032 수준으로 급격히 줄어드는 것을 확인할 수 있습니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0295-실전-예제">02.9.5 실전 예제</h2>
+
+<h3 id="2951-문제-1-독립사건과-확률의-곱셈">2.9.5.1 문제 1 (독립사건과 확률의 곱셈)</h3>
+
+<blockquote>
+  <p>서로 다른 두 개의 주사위(빨간색, 파란색)를 동시에 던질 때, 두 주사위의 눈이 모두 4 이하가 나올 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>빨간색 주사위에서 4 이하의 눈(1, 2, 3, 4)이 나올 사건을 <em>A</em>라 하면:
+\(P(A) = \frac{4}{6} = \frac{2}{3}\)</li>
+    <li>파란색 주사위에서 4 이하의 눈이 나올 사건을 <em>B</em>라 하면:
+\(P(B) = \frac{4}{6} = \frac{2}{3}\)</li>
+    <li>두 주사위는 서로 영향을 주지 않는 독립사건이므로 곱셈정리를 적용합니다:
+\(P(A \cap B) = P(A) \times P(B) = \frac{2}{3} \times \frac{2}{3} = \frac{4}{9} \approx 0.4444\ (44.4\%)\)</li>
+  </ol>
+
+  <p><strong>정답</strong>: 4 / 9 (약 44.4%)</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2952-문제-2-기하학적-확률과-강화학습-탐색-영역">2.9.5.2 문제 2 (기하학적 확률과 강화학습 탐색 영역)</h3>
+
+<blockquote>
+  <p>한 변의 길이가 10인 정사각형 모험 지도 구역에서, 중심에 위치한 가로 4, 세로 4인 정사각형 ‘보물 상자 구역’에 에이전트가 무작위로 착지할 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>전체 지도 영역 <em>S</em>의 넓이:
+\(\text{Area}(S) = 10 \times 10 = 100\)</li>
+    <li>보물 상자 구역 <em>A</em>의 넓이:
+\(\text{Area}(A) = 4 \times 4 = 16\)</li>
+    <li>기하학적 확률 공식에 따라 전체 면적 대비 목표 면적의 비율을 계산합니다:
+\(P(A) = \frac{\text{Area}(A)}{\text{Area}(S)} = \frac{16}{100} = 0.16\ (16\%)\)</li>
+  </ol>
+
+  <p><strong>정답</strong>: 16% (0.16)</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0296-핵심-요약">02.9.6 핵심 요약</h2>
+
+<p><img src="./img/dorothy_prob_summary.png" alt="확률의 정의와 성질 핵심 요약" />
+<strong>그림 02-9-4</strong> 전체 확률의 합 1.0 공리, 대수의 법칙에 의한 참값 수렴, 독립사건의 곱셈 등 확률의 기본기를 마스터한 도로시와 지니, 토토</p>
+
+<ol>
+  <li><strong>확률의 공리</strong>: 모든 확률값은 0 이상 1 이하이며($0 \le P(A) \le 1$), 이동 가능한 모든 다음 상태 전이 확률의 총합은 항상 <strong>1.0(100%)</strong>이다.</li>
+  <li><strong>확률의 3대 정의</strong>: 표본공간의 원소 비율로 구하는 <strong>수학적 확률</strong>, 반복 시행의 극한으로 얻는 <strong>실험적 확률</strong>, 연속 공간의 면적비로 구하는 <strong>기하학적 확률</strong>이 있다.</li>
+  <li><strong>대수의 법칙(LLN)</strong>: 시행 횟수 <em>N</em>이 커질수록 표본 상대도수는 이론적 참 확률에 반드시 수렴한다.</li>
+  <li><strong>독립사건의 곱셈</strong>: 서로 영향을 미치지 않는 독립사건들이 동시에 발생할 확률은 각 확률의 단순 곱($P(A \cap B) = P(A) \times P(B)$)으로 계산한다.</li>
 </ol>
 
 

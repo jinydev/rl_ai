@@ -576,7 +576,7 @@
             <h1 id="028-경우의-수와-순열조합">02.8 경우의 수와 순열/조합</h1>
 
 <blockquote>
-  <p>이 장에서는 <strong>경우의 수와 순열/조합</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+  <p>이 장에서는 인공지능 에이전트가 탐색할 수 있는 모든 행동 경로와 상태의 가짓수를 체계적으로 헤아리는 <strong>경우의 수(Number of Cases)</strong>와, 순서의 유무에 따라 선택지를 세는 <strong>순열(Permutation)</strong> 및 <strong>조합(Combination)</strong>의 수학적 원리를 배웁니다.</p>
 </blockquote>
 
 <hr />
@@ -587,202 +587,357 @@
 
 <p>“지니! 숲속 갈림길을 만났는데, 어느 길을 골라서 가야 안전하게 보물을 얻을 수 있을까? 그리고 내가 선택할 수 있는 총 경로의 가짓수는 전부 몇 가지야?”</p>
 
-<p>도로시가 바구니를 들고 숲길 중간에서 좌우를 둘러보았습니다. 토토는 발밑에서 두리번거리며 꼬리를 흔들었습니다. 지니는 공중에 요술봉을 휘둘러 갈림길 지도를 입체적으로 띄웠습니다.</p>
+<p>도로시가 바구니를 들고 숲길 중간에서 좌우를 둘러보았습니다. 토토는 발밑에서 두리번거리며 꼬리를 흔들었습니다.</p>
+
+<p><img src="./img/dorothy_paths_curious.png" alt="갈림길과 도로시의 궁금증" />
+<strong>그림 02-8-1</strong> 숲속 갈림길 표지판 앞에서 자신이 선택할 수 있는 경로의 가짓수(경우의 수)가 총 몇 개인지 고민에 빠진 도로시와 토토</p>
+
+<p>지니는 공중에 요술봉을 휘둘러 갈림길 지도를 입체적으로 띄웠습니다.</p>
 
 <p>“도로시! 갈림길을 지혜롭게 지나가기 위해서는 먼저 우리가 마주할 수 있는 모든 선택지, 즉 <strong>경우의 수(Number of Cases)</strong>를 정확히 셀 줄 알아야 해. 길을 선택하는 상황에 따라 덧셈을 해야 할지, 곱셈을 해야 할지 결정하는 2가지 규칙이 있단다.”</p>
 
-<p><img src="./img/dorothy_jiny_counting_paths_ko.jpg" alt="경우의 수와 합/곱의 법칙" />
-<strong>그림 02-8-1</strong> 한 번에 하나만 고를 수 있는 분리된 경로(합의 법칙)와, 차례대로 연이어 가야 하는 순차적 경로(곱의 법칙)의 차이를 이해하는 도로시와 지니, 토토</p>
+<p><img src="./img/dorothy_counting_paths.png" alt="합의 법칙과 곱의 법칙 지도" />
+<strong>그림 02-8-2</strong> 산과 바다 중 하나를 고르는 분리된 경로(합의 법칙: 3 + 2 = 5)와, 두 관문을 차례대로 연이어 통과해야 하는 연속 경로(곱의 법칙: 3 × 2 = 6)의 차이를 지도에서 설명하는 지니</p>
 
-<p>“아! 왼쪽 갈림길 A 또는 B 중 하나를 택할 때는 서로 겹치지 않으니까 단순히 더해서 구하는 <strong>합의 법칙</strong>이고, 오른쪽 길처럼 1번 문을 통과한 뒤 연이어 2번, 3번 문을 통과해야 할 때는 조합이 만들어지니까 곱해서 구하는 <strong>곱의 법칙</strong>이구나!”</p>
+<p>“아! 왼쪽 갈림길처럼 산 코스 3개 또는 바다 코스 2개 중 하나만 택할 때는 서로 겹치지 않으니까 단순히 더해서 구하는 <strong>합의 법칙(Or)</strong>이고, 오른쪽 길처럼 1번 관문을 통과한 뒤 연이어 2번 관문을 통과해야 할 때는 연쇄적인 선택이 만들어지니까 곱해서 구하는 <strong>곱의 법칙(And)</strong>이구나!”</p>
 
-<p>도로시가 지도를 보며 고개를 끄덕였습니다.</p>
+<p>도로시가 지도를 보며 환하게 웃으며 수첩에 꼼꼼히 정리하고 고개를 끄덕였습니다.</p>
+
+<p><img src="./img/dorothy_paths_enlightened.png" alt="경우의 수 규칙을 깨달은 도로시" />
+<strong>그림 02-8-3</strong> 선택은 덧셈(Or), 연속은 곱셈(And)이라는 경우의 수의 2대 핵심 연산 규칙을 명쾌하게 이해하고 수첩에 기록하는 도로시와 흐뭇해하는 지니, 토토</p>
 
 <hr />
 
-<h3 id="1-학습-목표">1. 학습 목표</h3>
+<h3 id="2811-학습-목표">2.8.1.1 학습 목표</h3>
+
 <ul>
-  <li>사건과 경우의 수의 뜻을 이해한다.</li>
-  <li>동시에 일어나지 않는 두 사건에 대해 합의 법칙을 적용할 수 있다.</li>
-  <li>연이어 일어나는 두 사건에 대해 곱의 법칙을 적용할 수 있다.</li>
+  <li>사건(Event)과 경우의 수(Number of Cases)의 수학적 의미를 이해한다.</li>
+  <li>동시에 일어나지 않는 두 사건에 대해 합의 법칙을 적용하여 계산할 수 있다.</li>
+  <li>연이어 일어나는 두 사건에 대해 곱의 법칙을 적용하여 계산할 수 있다.</li>
+  <li>중복이 존재하는 사건에서 포함-배제의 원리를 적용할 수 있다.</li>
 </ul>
 
 <hr />
 
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+<h3 id="2812-사건과-경우의-수란">2.8.1.2 사건과 경우의 수란?</h3>
 
-<h4 id="1-사건과-경우의-수">(1) 사건과 경우의 수</h4>
+<p>먼저 기본 개념에 대해서 알아 봅시다.</p>
+
+<h4 id="1-사건-event">1. 사건 (Event)</h4>
+
+<p>주사위를 굴리거나 동전을 던지는 것과 같이, 동일한 조건에서 반복할 수 있는 관찰이나 실험(시행, Trial)을 통해 나타나는 구체적인 결과들의 모임입니다.</p>
+
 <ul>
-  <li><strong>사건 (Event)</strong>: 주사위를 던지는 것과 같이, 동일한 조건에서 반복할 수 있는 관찰이나 실험의 결과입니다.</li>
-  <li><strong>경우의 수 (Number of Cases)</strong>: 사건이 일어날 수 있는 모든 가짓수입니다.
-    <ul>
-      <li><em>예</em>: 주사위 한 개를 던질 때, ‘짝수 눈이 나오는 사건’의 경우의 수는 [2, 4, 6]으로 총 3가지입니다.</li>
-    </ul>
-  </li>
+  <li><strong>대표 예시</strong>: 주사위 1개를 던질 때 ‘짝수의 눈이 나오는 사건’ = {2, 4, 6}</li>
 </ul>
 
-<h4 id="2-합의-법칙-addition-rule">(2) 합의 법칙 (Addition Rule)</h4>
-<p>두 사건 <em>A</em>, <em>B</em>가 동시에 일어나지 않을 때, 사건 <em>A</em>가 일어나는 경우의 수를 <em>m</em>, 사건 <em>B</em>가 일어나는 경우의 수를 <em>n</em>이라고 하면, 사건 <em>A</em> <strong>또는</strong> 사건 <em>B</em>가 일어나는 경우의 수는 다음과 같습니다.</p>
-<ul>
-  <li><strong><em>m + n</em></strong>
-    <ul>
-      <li><em>힌트</em>: <strong>또는(Or)</strong>, <strong>~하거나</strong>라는 조건일 때 사용합니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="3-곱의-법칙-multiplication-rule">(3) 곱의 법칙 (Multiplication Rule)</h4>
-<p>사건 <em>A</em>가 일어나는 경우의 수가 <em>m</em>이고, 그 각각에 대하여 사건 <em>B</em>가 일어나는 경우의 수가 <em>n</em>일 때, 두 사건 <em>A</em>, <em>B</em>가 <strong>동시에(연이어)</strong> 일어나는 경우의 수는 다음과 같습니다.</p>
-<ul>
-  <li><strong><em>m × n</em></strong>
-    <ul>
-      <li><em>힌트</em>: <strong>그리고(And)</strong>, <strong>동시에</strong>, <strong>~하고 나서 연이어</strong>라는 조건일 때 사용합니다.</li>
-    </ul>
-  </li>
-</ul>
+<p><img src="./img/dorothy_event_concept.png" alt="사건의 개념과 주사위 실험" />
+<strong>그림 02-8-4</strong> 동일한 조건에서 주사위를 굴려 관찰할 수 있는 결과의 모임(사건)을 탐구하는 도로시와 지니, 토토</p>
 
 <hr />
 
-<h3 id="3-실전-예제">3. 실전 예제</h3>
+<h4 id="2-경우의-수-number-of-cases">2. 경우의 수 (Number of Cases)</h4>
 
-<h4 id="예제-1-합의-법칙">예제 1 (합의 법칙)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 도로시네 반에서는 현장 학습 장소로 산 3곳(설악산, 지리산, 월출산) 또는 바다 2곳(해운대, 만리포) 중 한 곳을 선택하려고 합니다. 선택할 수 있는 총 여행지의 경우의 수는 몇 가지인가요?</p>
-
-  <p><strong>풀이</strong>:
-산을 선택하는 사건과 바다를 선택하는 사건은 동시에 고를 수 없습니다. 따라서 합의 법칙을 적용합니다.
-경우의 수 = 3 (산) + 2 (바다) = 5가지
-<strong>정답</strong>: 5가지</p>
-</blockquote>
-
-<h4 id="예제-2-곱의-법칙">예제 2 (곱의 법칙)</h4>
-<blockquote>
-  <p><strong>문제</strong>: 도로시는 상의로 흰색, 빨간색, 연두색 블라우스 3벌이 있고, 하의로 핑크색 스커트, 파란색 스커트, 노란색 바지 3벌이 있습니다. 상의와 하의를 각각 하나씩 선택하여 입을 수 있는 옷차림의 총 경우의 수는 몇 가지인가요?</p>
-
-  <p><strong>풀이</strong>:
-상의를 고르는 사건과 하의를 고르는 사건은 연이어 일어나는 사건입니다. 따라서 곱의 법칙을 적용합니다.
-경우의 수 = 3 (상의) × 3 (하의) = 9가지
-<strong>정답</strong>: 9가지</p>
-</blockquote>
-
-<hr />
-
-<h2 id="0282-경우의-수-심화-중복이-있는-합의-법칙과-곱의-법칙">02.8.2 경우의 수 심화: 중복이 있는 합의 법칙과 곱의 법칙</h2>
-
-<p>선택지가 서로 완전히 분리되어 있지 않고 <strong>중복</strong>이 존재할 때의 합산 요령을 다룹니다.</p>
-
-<p>“지니! 만약 갈림길 숲길 코스 중에서 겹치는 구간이 존재한다면, 그때는 단순 합의 법칙을 쓰면 안 되는 거지?”</p>
-
-<p>“맞아, 도로시! 겹치는 영역을 생각하지 않고 그냥 다 더해버리면 중복된 원소들을 두 번 세게 되는 오류가 발생한단다. 그래서 겹치는 교집합 부분을 반드시 한 번 빼주어야 해.”</p>
-
+<p>특정 사건이 일어날 수 있는 가능한 <strong>모든 가짓수</strong>의 총개수를 의미합니다.</p>
 <ul>
-  <li><strong>중복이 있는 합의 법칙</strong>:
-경우의 수 = <em>m</em> + <em>n</em> - <em>l</em> (여기서 <em>l</em>은 두 사건이 동시에 겹치는 경우의 수)
-    <ul>
-      <li>집합의 원소 개수 공식: <em>n</em>(<em>A</em> ∪ <em>B</em>) = <em>n</em>(<em>A</em>) + <em>n</em>(<em>B</em>) - <em>n</em>(<em>A</em> ∩ <em>B</em>)</li>
-    </ul>
-  </li>
+  <li><strong>대표 예시</strong>: 주사위 1개를 던져 ‘짝수의 눈이 나오는 사건’의 경우의 수는 2, 4, 6의 총 3가지입니다.</li>
 </ul>
 
+<p><img src="./img/dorothy_cases_count.png" alt="경우의 수와 모든 가짓수 카운팅" />
+<strong>그림 02-8-5</strong> 특정 사건에 해당하는 모든 결과의 가짓수를 하나하나 짚으며 총개수(경우의 수)를 헤아리는 도로시와 지니, 토토</p>
+
 <hr />
 
-<h2 id="0283-팩토리얼과-순서대로-나열하기">02.8.3 팩토리얼과 순서대로 나열하기</h2>
+<h3 id="2813-합의-법칙과-곱의-법칙">2.8.1.3 합의 법칙과 곱의 법칙</h3>
 
-<p>서로 다른 대상을 빠짐없이 일렬로 세우는 경우의 수인 <strong>팩토리얼(Factorial, 계승)</strong>을 배웁니다.</p>
+<h4 id="1-합의-법칙-addition-rule">1. 합의 법칙 (Addition Rule)</h4>
+
+<p>두 사건 <em>A</em>, <em>B</em>가 <strong>동시에 일어나지 않을 때</strong>, 사건 <em>A</em>가 일어나는 경우의 수를 <em>m</em>, 사건 <em>B</em>가 일어나는 경우의 수를 <em>n</em>이라고 하면, 사건 <em>A</em> <strong>또는(Or)</strong> 사건 <em>B</em>가 일어나는 총 경우의 수는 두 수를 더하여 구합니다.</p>
+
+\[\text{경우의 수} = m + n\]
+
+<ul>
+  <li><strong>핵심 키워드</strong>: <strong>또는(Or)</strong>, <strong>~하거나</strong>, <strong>택일(하나만 선택)</strong></li>
+</ul>
+
+<p><img src="./img/dorothy_addition_rule.png" alt="합의 법칙과 택일" />
+<strong>그림 02-8-6</strong> 컵케이크 3종 또는 아이스크림 2종 중 단 하나만을 선택하여 맛보는 합의 법칙(3 + 2 = 5가지)의 원리</p>
+
+<h4 id="2-곱의-법칙-multiplication-rule">2. 곱의 법칙 (Multiplication Rule)</h4>
+
+<p>사건 <em>A</em>가 일어나는 경우의 수가 <em>m</em>이고, 그 각각에 대하여 사건 <em>B</em>가 일어나는 경우의 수가 <em>n</em>일 때, 두 사건 <em>A</em>, <em>B</em>가 <strong>동시에(연이어, And)</strong> 일어나는 총 경우의 수는 두 수를 곱하여 구합니다.</p>
+
+\[\text{경우의 수} = m \times n\]
+
+<ul>
+  <li><strong>핵심 키워드</strong>: <strong>그리고(And)</strong>, <strong>동시에</strong>, <strong>연이어(순차적 진행)</strong></li>
+</ul>
+
+<p><img src="./img/dorothy_multiplication_rule.png" alt="곱의 법칙과 연속 선택" />
+<strong>그림 02-8-7</strong> 상의 3벌을 고르고 연이어 하의 3벌을 매치하여 총 9가지 코디 스타일을 연출하는 곱의 법칙(3 × 3 = 9가지)의 원리</p>
+
+<h4 id="3-중복이-있는-합의-법칙-포함-배제의-원리">3. 중복이 있는 합의 법칙 (포함-배제의 원리)</h4>
+
+<p>선택지가 서로 완전히 분리되어 있지 않고 공통으로 겹치는 영역이 존재할 때는, 단순 덧셈 후 중복된 교집합 영역을 반드시 한 번 빼주어야 합니다.</p>
+
+\[n(A \cup B) = n(A) + n(B) - n(A \cap B)\]
+
+<p><img src="./img/dorothy_inclusion_exclusion.png" alt="중복이 있는 합의 법칙" />
+<strong>그림 02-8-8</strong> 사과 과수원(A)과 배 과수원(B) 사이에 겹쳐 있는 중복된 길(교집합)을 한 번 빼주어 전체 경우의 수를 정확히 계산하는 포함-배제의 원리</p>
+
+<hr />
+
+<h2 id="0282-팩토리얼과-순열-permutation">02.8.2 팩토리얼과 순열 (Permutation)</h2>
+
+<p>서로 다른 대상들을 차례대로 줄 세우거나, 그중 몇 개를 골라 순서를 고려하여 나열하는 방법을 배웁니다.</p>
 
 <p>“지니! 내 책상 위에 빨강, 파랑, 노랑 세 개의 신비로운 보석이 있어. 이 보석들을 왼쪽부터 차례대로 배열하는 방법은 총 몇 가지일까?”</p>
 
-<p>도로시가 반짝이는 보석들을 만지작거리며 지니에게 질문했습니다. 토토는 테이블 밑에서 눈을 반짝였습니다. 지니는 요술 칠판에 수식을 적으며 설명했습니다.</p>
+<p>도로시가 반짝이는 보석들을 만지작거리며 물었습니다. 토토는 테이블 밑에서 호기심 어린 눈으로 반짝이는 보석을 바라보았습니다.</p>
 
-<p>“첫 번째 자리에 놓을 수 있는 보석은 3가지, 그 다음 두 번째 자리에는 첫 번째 자리에 놓인 것을 제외한 2가지, 마지막 자리에는 남은 1가지가 오게 되지. 이 연쇄적인 결정을 곱의 법칙으로 계산하면 3 × 2 × 1 = 6가지가 되는데, 이를 수학 기호로 <strong>3!(3 팩토리얼)</strong>이라고 부른단다.”</p>
+<p><img src="./img/dorothy_jewels_question.png" alt="보석 나열에 대한 도로시의 질문" />
+<strong>그림 02-8-9</strong> 책상 위에 놓인 3개의 신비로운 보석을 일렬로 나열하는 총 가짓수를 궁금해하는 도로시와 토토</p>
 
-<p><img src="./img/dorothy_permutations_jewels_ko.jpg" alt="팩토리얼과 순열" />
-<strong>그림 02-8-2</strong> 3개의 보석을 테이블 위에 나열하는 경우의 수를 통해 팩토리얼 및 순열(<sub>3</sub>P<sub>3</sub>) 공식을 학습하는 도로시와 지니, 토토</p>
+<p>지니는 공중에 요술 칠판을 소환하여 수식을 반짝이는 빛으로 적으며 설명했습니다.</p>
 
-<ul>
-  <li><strong>팩토리얼 (Factorial, 계승)</strong>:
-1부터 <em>n</em>까지의 모든 자연수를 차례대로 곱한 것을 뜻하며, 기호로 <strong><em>n!</em></strong>이라 씁니다.
-<em>n</em>! = <em>n</em> × (<em>n</em> - 1) × (<em>n</em> - 2) × … × 2 × 1
-    <ul>
-      <li><em>참고</em>: 0!은 1로 정의합니다.</li>
-    </ul>
-  </li>
-</ul>
+<p>“첫 번째 자리에 놓을 수 있는 보석은 3가지, 두 번째 자리에는 첫 번째 자리를 제외한 2가지, 마지막 자리에는 남은 1가지가 오게 되지. 이를 곱의 법칙으로 계산하면 3 × 2 × 1 = 6가지가 되는데, 이를 수학 기호로 <strong>3!(3 팩토리얼)</strong>이라고 부른단다.”</p>
+
+<p><img src="./img/dorothy_jewels_jiny_answer.png" alt="지니의 3 팩토리얼 칠판 설명" />
+<strong>그림 02-8-10</strong> 요술 칠판에 자리를 하나씩 채워가는 곱의 법칙(3! = 3 × 2 × 1 = 6가지) 원리를 차근차근 설명하는 지니와 필기하는 도로시</p>
 
 <hr />
 
-<h2 id="0284-순열-택하여-줄-세우기">02.8.4 순열: 택하여 줄 세우기</h2>
+<h3 id="2821-팩토리얼-factorial-계승">2.8.2.1 팩토리얼 (Factorial, 계승)</h3>
 
-<p>서로 다른 <em>n</em>개 중 <em>r</em>개를 선택해 순서를 고려하여 일렬로 줄 세우는 것을 <strong>순열(Permutation)</strong>이라고 합니다.</p>
+<p>1부터 <em>n</em>까지의 모든 자연수를 차례대로 곱한 것을 뜻하며, 기호로 <strong><em>n!</em></strong>이라 표기합니다.</p>
 
-<ul>
-  <li><strong>순열 기호</strong>: <em>*<sub>*n*</sub></em>P*<sub><em>r</em>**</sub></li>
-  <li><strong>계산식</strong>:
-<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em> × (<em>n</em> - 1) × … × (<em>n</em> - <em>r</em> + 1) (곱하는 수의 개수가 <em>r</em>개)
-<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em>! / (<em>n</em> - <em>r</em>)!</li>
-</ul>
+\[n! = n \times (n - 1) \times (n - 2) \times \dots \times 2 \times 1\]
 
-<p>“아! 5개의 트로피 중 1등, 2등, 3등 단상에 올릴 트로피 3개를 순서대로 고르는 가짓수는 <sub>5</sub><em>P</em><sub>3</sub> = 5 × 4 × 3 = 60가지구나! 뽑는 순서가 결과에 영향을 주는 상황(Order matters)에는 이 순열을 쓰는 거네!”</p>
+<blockquote>
+  <p><strong>💡 약속</strong>: 수학적으로 계산의 일관성을 위해 <strong>0! = 1</strong>로 정의합니다.</p>
+</blockquote>
+
+<p><img src="./img/dorothy_factorial_lineup.png" alt="팩토리얼과 줄 세우기" />
+<strong>그림 02-8-11</strong> 3개의 보석을 1번, 2번, 3번 자리에 차례대로 배치하며 3! = 3 × 2 × 1 = 6가지 경우의 수를 확인하는 도로시와 지니, 토토</p>
+
+<hr />
+
+<h3 id="2822-순열-permutation-순서를-고려하여-줄-세우기">2.8.2.2 순열 (Permutation): 순서를 고려하여 줄 세우기</h3>
+
+<p>서로 다른 <em>n</em>개 중에서 <em>r</em>개를 택하여 <strong>순서를 고려하여 일렬로 나열</strong>하는 경우의 수를 <strong>순열</strong>이라 하며, 기호로 <strong><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub></strong>이라 씁니다.</p>
+
+\[_nP_r = \frac{n!}{(n - r)!} = n \times (n - 1) \times \dots \times (n - r + 1)\]
+
+<p>“아! 5개의 트로피 중 1등과 2등 단상에 올릴 트로피 2개를 순서대로 고르는 가짓수는 <sub>5</sub><em>P</em><sub>2</sub> = 5 × 4 = 20가지구나! 뽑는 순서가 결과에 영향을 주는 상황(Order matters)에는 이 순열을 쓰는 거네!”</p>
 
 <p>도로시가 노트를 보며 고개를 끄덕였습니다.</p>
 
+<p><img src="./img/dorothy_permutation_trophies.png" alt="순열과 트로피 순위 단상" />
+<strong>그림 02-8-12</strong> 5개의 트로피 중 1등 단상(5가지)과 2등 단상(4가지)에 순서를 따져 올리는 순열(₅P₂ = 20가지)의 원리를 탐구하는 도로시와 지니, 토토</p>
+
 <hr />
 
-<h2 id="0285-조합-순서-없이-선택하기">02.8.5 조합: 순서 없이 선택하기</h2>
+<h2 id="0283-조합-combination-순서-없이-묶음-뽑기">02.8.3 조합 (Combination): 순서 없이 묶음 뽑기</h2>
 
-<p>순서와 관계없이 특정 대상을 묶음으로 골라내기만 하는 <strong>조합(Combination)</strong>을 공부합니다.</p>
+<p>순서와 관계없이 특정 대상을 그룹(묶음)으로 골라내기만 하는 경우의 수를 공부합니다.</p>
 
 <p>“지니! 순열은 순서대로 줄을 세우는 거였잖아. 그렇다면 순서는 전혀 상관없이, 그냥 바구니에서 과일 2개를 묶음으로 쏙 골라내기만 하는 가짓수는 어떻게 계산해?”</p>
 
-<p>도로시가 과일 바구니에서 사과와 포도를 꺼내며 물었습니다. 지니는 칠판에 나눗셈 기호를 그리며 자상하게 설명했습니다.</p>
+<p>도로시가 과일 바구니에서 사과와 귤을 꺼내며 물었습니다. 토토는 바구니 옆에서 킁킁 냄새를 맡으며 호기심 어린 눈빛을 보냈습니다.</p>
+
+<p><img src="./img/dorothy_combination_question.png" alt="순서 없는 과일 선택과 도로시의 질문" />
+<strong>그림 02-8-13</strong> 바구니에 담긴 과일 중 순서에 상관없이 2개를 묶음으로 선택하는 가짓수를 궁금해하는 도로시와 토토</p>
+
+<p>지니는 공중에 요술 칠판을 띄우고 나눗셈 기호를 그리며 자상하게 설명했습니다.</p>
 
 <p>“그때는 바로 <strong>조합(Combination, <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)</strong>을 사용한단다. 순서가 상관없으므로, 일단 순열(<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>)로 나열한 뒤 그 개수들이 자리를 바꾸는 중복 가짓수(<em>r</em>!)만큼 나누어 제외해주면 된단다.”</p>
 
-<p><img src="./img/dorothy_combinations_fruits_ko.jpg" alt="조합의 원리" />
-<strong>그림 02-8-3</strong> 과일 바구니에서 순서 상관없이 과일 2개를 묶음으로 선택하는 상황을 통해 조합(<sub>n</sub>C<sub>r</sub>) 공식의 중복 제거 원리를 파악하는 도로시와 지니, 토토</p>
-
-<ul>
-  <li><strong>조합 공식</strong>:
-<strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> / <em>r</em>! = <em>n</em>! / [ <em>r</em>! × (<em>n</em> - <em>r</em>)! ]</strong></li>
-  <li><strong>조합의 대칭성 성질</strong>:
-<em>*<sub>*n*</sub></em>C<em><sub>*r*</sub> = <sub>*n*</sub></em>C*<sub><em>n-r</em>**</sub>
-    <ul>
-      <li><em>직관적 의미</em>: 10명 중 여행에 데려갈 8명을 고르는 가짓수(<sub>10</sub><em>C</em><sub>8</sub>)는 데려가지 않고 제외할 2명을 고르는 가짓수(<sub>10</sub><em>C</em><sub>2</sub>)와 수학적으로 완전히 대칭을 이룹니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>“와! <sub>20</sub><em>C</em><sub>18</sub> 같은 큰 숫자는 대칭성 성질을 이용해 <sub>20</sub><em>C</em><sub>2</sub>로 바꾸면 식이 훨씬 간단해지는구나! 수학은 참 영리해!”</p>
-
-<p>도로시가 박수를 치며 활짝 웃었습니다.</p>
+<p><img src="./img/dorothy_combination_jiny_answer.png" alt="지니의 조합 공식 설명" />
+<strong>그림 02-8-14</strong> 요술 칠판에 순열을 중복 나열 수(2!)로 나누어 조합(₄C₂ = 6가지)을 구하는 핵심 원리를 설명하는 지니와 필기하는 도로시</p>
 
 <hr />
 
-<h2 id="0286-실전-예제">02.8.6 실전 예제</h2>
+<h3 id="2831-조합의-정의와-계산-공식">2.8.3.1 조합의 정의와 계산 공식</h3>
 
-<h3 id="문제-1-순열과-조합-계산">문제 1 (순열과 조합 계산)</h3>
+<p>서로 다른 <em>n</em>개 중에서 순서를 고려하지 않고 단지 <em>r</em>개를 <strong>선택하여 묶음을 만드는 경우의 수</strong>를 <strong>조합</strong>이라 하며, 기호로 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub></strong>이라 씁니다.</p>
+
+\[_nC_r = \frac{_nP_r}{r!} = \frac{n!}{r! (n - r)!}\]
+
+<p><img src="./img/dorothy_combination_fruits.png" alt="조합과 과일 바구니" />
+<strong>그림 02-8-15</strong> 과일 바구니의 4개 과일 중 순서에 상관없이 2개를 묶음으로 선택하는 조합(₄C₂ = 6가지)의 원리를 배우는 도로시와 지니, 토토</p>
+
+<hr />
+
+<h3 id="2832-조합의-대칭성과-계산-단순화-성질">2.8.3.2 조합의 대칭성과 계산 단순화 성질</h3>
+
+<p>조합에는 계산을 획기적으로 줄여주는 매우 아름다운 <strong>대칭성(Symmetry)</strong> 성질이 있습니다.</p>
+
+\[_nC_r = _nC_{n - r}\]
+
 <blockquote>
-  <p>학생 10명 중 회장, 부회장 2명을 뽑는 경우의 수(<em>A</em>)와, 대표 2명을 뽑는 경우의 수(<em>B</em>)를 각각 계산하시오.</p>
+  <p><strong>💡 직관적인 의미</strong>: 10개의 별 중 선물 상자에 넣을 8개의 별을 고르는 가짓수(<sub>10</sub><em>C</em><sub>8</sub>)는, 상자에 넣지 않고 밖에 남겨둘 2개의 별을 고르는 가짓수(<sub>10</sub><em>C</em><sub>2</sub>)와 수학적으로 완벽히 똑같습니다.</p>
+</blockquote>
 
-  <p><strong>풀이</strong>:</p>
-  <ul>
-    <li>회장과 부회장은 직책(순서)의 구분이 있으므로 순열입니다:
-<em>A</em> = <sub>10</sub><em>P</em><sub>2</sub> = 10 × 9 = 90가지</li>
-    <li>대표 2명은 직책(순서)의 구분이 없으므로 조합입니다:
-<em>B</em> = <sub>10</sub><em>C</em><sub>2</sub> = (10 × 9) / (2 × 1) = 45가지</li>
-  </ul>
+\[_{10}C_8 = _{10}C_{10 - 8} = _{10}C_2 = \frac{10 \times 9}{2 \times 1} = 45\]
 
-  <p><strong>정답</strong>: <em>A</em> = 90가지, <em>B</em> = 45가지</p>
+<p>“와! <sub>20</sub><em>C</em><sub>18</sub> 같은 복잡한 숫자도 대칭성 성질을 이용해 <sub>20</sub><em>C</em><sub>2</sub>로 바꾸면 단 2초 만에 계산이 끝나네!”</p>
+
+<p>도로시가 감탄하며 손뼉을 쳤습니다.</p>
+
+<p><img src="./img/dorothy_combination_symmetry.png" alt="조합의 대칭성 성질" />
+<strong>그림 02-8-16</strong> 10개의 별 중 선택할 8개를 고르는 것(₁₀C₈)과 제외할 2개를 고르는 것(₁₀C₂)이 완벽하게 대칭을 이루어 결과(45가지)가 같음을 보여주는 원리</p>
+
+<hr />
+
+<h3 id="2833-순열-vs-조합-한눈에-비교하기">2.8.3.3 순열 vs 조합 한눈에 비교하기</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구분</th>
+      <th style="text-align: left">순열 (Permutation)</th>
+      <th style="text-align: left">조합 (Combination)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>기호</strong></td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub></td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>핵심 개념</strong></td>
+      <td style="text-align: left"><strong>순서가 있다</strong> (Order Matters)</td>
+      <td style="text-align: left"><strong>순서가 없다</strong> (Order Doesn’t Matter)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>대표 상황</strong></td>
+      <td style="text-align: left">이어달리기 주자 순서, 반장/부반장 선출</td>
+      <td style="text-align: left">동아리 대표 2명 선출, 로또 번호 추첨</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>계산 공식</strong></td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <em>n</em>! / (<em>n</em> - <em>r</em>)!</td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> / <em>r</em>! = <em>n</em>! / [<em>r</em>!(<em>n</em> - <em>r</em>)!]</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>관계식</strong></td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> × <em>r</em>!</td>
+      <td style="text-align: left"><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>P</em><sub><em>r</em></sub> / <em>r</em>!</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="0284-파이썬으로-구현하는-순열과-조합-계산기">02.8.4 파이썬으로 구현하는 순열과 조합 계산기</h2>
+
+<p>파이썬의 표준 라이브러리인 <code class="language-plaintext highlighter-rouge">math</code>와 <code class="language-plaintext highlighter-rouge">itertools</code> 모듈을 사용하면 순열과 조합의 총 개수뿐만 아니라 실제 나열되는 모든 요소의 묶음 목록을 실시간으로 생성할 수 있습니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">itertools</span>
+<span class="kn">import</span> <span class="n">math</span>
+
+<span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">A</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">B</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">C</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">D</span><span class="sh">'</span><span class="p">]</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 1. math 모듈을 사용한 총 경우의 수 계산
+</span><span class="n">perm_count</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">perm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>  <span class="c1"># 4P2 = 12
+</span><span class="n">comb_count</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span>  <span class="c1"># 4C2 = 6
+</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">4개 중 2개를 순서 있게 나열하는 순열(4P2) 개수: </span><span class="si">{</span><span class="n">perm_count</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">4개 중 2개를 순서 없이 뽑는 조합(4C2) 개수: </span><span class="si">{</span><span class="n">comb_count</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 2. itertools 모듈을 사용한 실제 요소 묶음 목록 생성
+</span><span class="n">perm_list</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="nf">permutations</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+<span class="n">comb_list</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="nf">combinations</span><span class="p">(</span><span class="n">items</span><span class="p">,</span> <span class="n">r</span><span class="p">))</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">[순열 목록 (순서 있음)]:</span><span class="sh">"</span><span class="p">,</span> <span class="n">perm_list</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">[조합 목록 (순서 없음)]:</span><span class="sh">"</span><span class="p">,</span> <span class="n">comb_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[실행 결과]
+4개 중 2개를 순서 있게 나열하는 순열(4P2) 개수: 12
+4개 중 2개를 순서 없이 뽑는 조합(4C2) 개수: 6
+
+[순열 목록 (순서 있음)]: [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'A'), ('B', 'C'), ('B', 'D'), ('C', 'A'), ('C', 'B'), ('C', 'D'), ('D', 'A'), ('D', 'B'), ('D', 'C')]
+[조합 목록 (순서 없음)]: [('A', 'B'), ('A', 'C'), ('A', 'D'), ('B', 'C'), ('B', 'D'), ('C', 'D')]
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>💡 코드 해석</strong>: 순열 목록에서는 <code class="language-plaintext highlighter-rouge">('A', 'B')</code>와 <code class="language-plaintext highlighter-rouge">('B', 'A')</code>가 서로 다른 2개의 경우로 취급되지만, 조합 목록에서는 순서 구분이 없으므로 <code class="language-plaintext highlighter-rouge">('A', 'B')</code> 단 1개의 묶음으로 압축되는 것을 직관적으로 확인할 수 있습니다.</p>
 </blockquote>
 
 <hr />
 
-<h2 id="0287-핵심-요약">02.8.7 핵심 요약</h2>
+<h2 id="0285-실전-예제">02.8.5 실전 예제</h2>
+
+<h3 id="2851-문제-1-합의-법칙과-곱의-법칙">2.8.5.1 문제 1 (합의 법칙과 곱의 법칙)</h3>
+
+<p>도로시는 상의 3벌(흰색, 빨간색, 연두색)과 하의 3벌(핑크색 치마, 파란색 치마, 노란색 바지)을 가지고 있습니다.</p>
+
+<blockquote>
+  <ol>
+    <li>상의와 하의를 각각 하나씩 골라 입는 총 코디 경우의 수(<em>A</em>)를 구하시오.</li>
+    <li>현장학습 장소로 산 3곳 또는 바다 2곳 중 단 한 곳만을 여행지로 고르는 경우의 수(<em>B</em>)를 구하시오.</li>
+  </ol>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>상의를 고르고 <strong>연이어</strong> 하의를 고르므로 <strong>곱의 법칙</strong>을 적용합니다.</li>
+  </ol>
+
+</blockquote>
+
+<p>\(A = 3 \times 3 = 9\)</p>
+<blockquote>
+
+  <ol>
+    <li>산과 바다는 동시에 갈 수 없는 <strong>배타적 선택</strong>이므로 <strong>합의 법칙</strong>을 적용합니다.</li>
+  </ol>
+
+\[B = 3 + 2 = 5\]
+
+  <p><strong>정답</strong>: <em>A</em> = 9가지, <em>B</em> = 5가지</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2852-문제-2-순열과-조합-계산">2.8.5.2 문제 2 (순열과 조합 계산)</h3>
+
+<blockquote>
+  <p>인공지능 연구 동아리 학생 10명 중에서 다음을 선출하는 경우의 수를 계산하시오.</p>
+  <ol>
+    <li>회장 1명과 부회장 1명을 순서대로 선출하는 경우의 수(<em>P</em>)</li>
+    <li>연구 발표를 진행할 대표 2명을 직책 없이 선출하는 경우의 수(<em>C</em>)</li>
+  </ol>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>회장과 부회장은 직책(순서)의 구분이 있으므로 <strong>순열</strong>입니다.</li>
+  </ol>
+
+\[P = _{10}P_2 = 10 \times 9 = 90\]
+
+  <ol>
+    <li>대표 2명은 직책(순서) 구분이 없는 묶음이므로 <strong>조합</strong>입니다.</li>
+  </ol>
+
+  <p>\(C = _{10}C_2 = \frac{_{10}P_2}{2!} = \frac{10 \times 9}{2 \times 1} = 45\)
+<strong>정답</strong>: <em>P</em> = 90가지, <em>C</em> = 45가지</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0286-핵심-요약">02.8.6 핵심 요약</h2>
+
+<p><img src="./img/dorothy_perm_comb_summary.png" alt="경우의 수와 순열·조합 핵심 요약" />
+<strong>그림 02-8-17</strong> 갈림길 탐색을 위한 합의 법칙과 곱의 법칙, 순서가 있는 순열과 순서가 없는 조합의 수학적 기초를 모두 마스터한 도로시와 지니, 토토</p>
 
 <ol>
-  <li><strong>합의 법칙</strong>은 동시에 일어나지 않는 사건의 합산(Or)이며, <strong>곱의 법칙</strong>은 연속적/동시적으로 일어나는 조합(And)의 곱산이다.</li>
+  <li><strong>합의 법칙</strong>은 동시에 일어나지 않는 사건의 덧셈(Or)이며, <strong>곱의 법칙</strong>은 연속적·동시적으로 일어나는 사건의 곱셈(And)이다.</li>
   <li><strong>순열(<sub><em>n</em></sub><em>P</em><sub><em>r</em></sub>)</strong>은 서로 다른 <em>n</em>개 중 <em>r</em>개를 <strong>순서를 고려하여 나열</strong>하는 경우의 수이며, <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)</strong>은 <strong>순서 없이 선택</strong>하여 묶음을 만드는 경우의 수이다.</li>
-  <li>조합은 순열의 값에서 중복되는 나열 수인 <em>r</em>!을 나눈 값을 가지며, 대칭성 성질인 <em>*<sub>*n*</sub></em>C<em><sub>*r*</sub> = <sub>*n*</sub></em>C*<sub><em>n-r</em>**</sub>을 적극 활용하면 큰 수의 조합 계산이 단순해진다.</li>
+  <li>조합은 순열의 값에서 중복되는 나열 수인 <em>r</em>!을 나눈 값을 가지며, 대칭성 성질인 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> = <sub><em>n</em></sub><em>C</em><sub><em>n-r</em></sub></strong>을 활용하면 복잡한 조합 계산을 극적으로 단순화할 수 있다.</li>
 </ol>
 
 

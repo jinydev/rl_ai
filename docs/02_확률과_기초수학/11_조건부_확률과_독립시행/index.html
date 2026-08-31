@@ -576,180 +576,261 @@
             <h1 id="0211-조건부-확률과-독립시행">02.11 조건부 확률과 독립시행</h1>
 
 <blockquote>
-  <p>이 장에서는 <strong>조건부 확률과 독립시행 (몬티 홀 &amp; 생일 패러독스)</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+  <p>이 장에서는 새로운 정보나 단서가 주어졌을 때 표본공간이 축소되며 확률이 갱신되는 <strong>조건부 확률(Conditional Probability)</strong>의 원리를 학습하고, 매회 독립적으로 반복되는 사건의 확률을 구하는 <strong>독립시행의 정리</strong> 및 인간의 직관을 깨뜨리는 <strong>몬티 홀 딜레마(Monty Hall Problem)</strong>와 <strong>생일 패러독스</strong>를 탐구합니다.</p>
 </blockquote>
 
 <hr />
 
-<h2 id="02111-조건부-확률과-독립종속-사건">02.11.1 조건부 확률과 독립/종속 사건</h2>
+<h2 id="02111-안개-속-단서와-조건부-확률-conditional-probability">02.11.1 안개 속 단서와 조건부 확률 (Conditional Probability)</h2>
 
-<p>어떤 사건이 이미 일어났다는 가정하에 다른 사건이 터질 비율인 <strong>조건부 확률</strong>을 배웁니다.</p>
+<p>새로운 정보나 단서가 관측되면, 우리가 고려해야 할 전체 가능성의 범위(표본공간)는 단서가 일어난 영역으로 좁혀집니다.</p>
 
-<p>“지니! 안개가 자욱하게 낀 어두운 숲(전쟁 안개, Fog of War)을 지나가고 있는데, 저 멀리서 부스럭거리는 으스스한 소리가 들렸어! 이 소리가 몬스터가 내는 소리일 확률은 얼마나 될까? 아무 단서도 없을 때보다 몬스터를 마주할 확률이 더 올라간 거야?”</p>
+<p>“지니! 안개가 자욱하게 낀 어두운 숲(전쟁 안개, Fog of War)을 지나가고 있는데, 수풀 저편에서 ‘바스락’거리는 소리가 들렸어! 이 소리가 났을 때 진짜 몬스터를 마주치게 될 확률은 얼마나 돼? 아무 소리도 안 들렸을 때보다 몬스터를 만날 확률이 더 높아진 거지?”</p>
 
-<p>도로시가 두려움에 찬 표정으로 귀를 기울이며 물었습니다. 토토도 잔뜩 긴장해서 꼬리를 감추고 주위를 경계했습니다. 지니가 허공에 마법 요술 칠판을 띄워 공식을 차근차근 그렸습니다.</p>
+<p>도로시가 나무 지팡이를 짚은 채 두려움과 호기심이 섞인 눈빛으로 귀를 기울였습니다. 토토도 귀를 쫑긋 세우고 바스락거리는 수풀을 경계했습니다.</p>
 
-<p>“도로시! 아무런 정보가 없을 때의 단순 확률과 달리, ‘소리가 났다’는 단서(조건 <em>A</em>)가 먼저 주어지면, 몬스터가 존재할 확률(사건 <em>B</em>)은 완전히 새롭게 업데이트된단다. 이걸 수학에서는 <strong>조건부 확률(Conditional Probability)</strong>이라고 부르지.”</p>
+<p><img src="./img/dorothy_conditional_fog.png" alt="안개 속 단서와 조건부 확률" />
+<strong>그림 02-11-1</strong> 안개 낀 숲에서 ‘바스락’ 소리 단서(조건)를 감지했을 때 몬스터가 존재할 사후 확률을 고민하는 도로시와 토토</p>
 
-<p><img src="./img/dorothy_jiny_conditional_probability_ko.jpg" alt="안개 속 조건부 확률" />
-<strong>그림 02-11-1</strong> 안개 속에서 들려오는 소리 정보(조건)를 기반으로 몬스터가 존재할 확률을 조건부 기호 P(몬스터|소리)로 구성하는 도로시와 지니, 토토</p>
+<p>지니가 요술봉을 휘두르며 허공에 마법 칠판을 띄웠습니다.</p>
 
-<p>“아! ‘소리’라는 단서가 발견된 구역으로 표본공간(전체 가능성)이 좁혀지니까, 그 안에서 진짜 몬스터 소리인 비율만 구하면 되는 거네!”</p>
+<p>“도로시! 아무런 정보가 없을 때의 단순 사전 확률과 달리, ‘소리가 났다’는 단서(사건 <em>A</em>)가 먼저 주어지면, 표본공간은 전체 세상 <em>S</em>가 아니라 ‘소리가 난 구역(<em>A</em>)’으로 즉시 압축된단다. 이 축소된 영역 안에서 몬스터가 존재하는 비율을 새롭게 구하는 것을 <strong>조건부 확률(Conditional Probability)</strong>이라고 부르지.”</p>
 
-<p>도로시가 소리를 분석하며 답했습니다.</p>
-
-<hr />
-
-<h3 id="1-학습-목표">1. 학습 목표</h3>
-<ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>조건부 확률</strong>의 정의와 표기법(<em>P</em>(<em>B</em></td>
-          <td><em>A</em>))을 이해하고 이를 계산할 수 있다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li><strong>독립사건</strong>과 <strong>종속사건</strong>의 정의를 명확히 알고, 어떤 사건들이 독립인지 종속인지 수식으로 판별할 수 있다.</li>
-  <li>표(분할표)를 활용하여 실생활 조건부 확률 문제를 쉽게 구하는 방법을 익힌다.</li>
-</ul>
+<p><img src="./img/dorothy_conditional_formula.png" alt="표본공간 축소와 조건부 확률" />
+<strong>그림 02-11-2</strong> 전체 표본공간 S가 관측된 조건 사건 A(소리 구역)로 축소되고, 그 내부의 교집합(진짜 몬스터) 비율을 계산하는 조건부 확률 공식 유도 원리</p>
 
 <hr />
 
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+<h3 id="21111-조건부-확률의-수학적-정의와-공식">2.11.1.1 조건부 확률의 수학적 정의와 공식</h3>
 
-<h4 id="1-조건부-확률-conditional-probability">(1) 조건부 확률 (Conditional Probability)</h4>
-<p>어떤 사건 <em>A</em>가 일어났다는 전제하에(가정했을 때) 사건 <em>B</em>가 일어날 확률을 기호로 <strong><em>P(B|A)</em></strong>로 나타냅니다. (B given A 라고 읽습니다.)</p>
+<table>
+  <tbody>
+    <tr>
+      <td>사건 <em>A</em>가 일어났다는 전제하에 사건 <em>B</em>가 일어날 조건부 확률은 **_P(B</td>
+      <td>A)_** (B given A)라 표기하며 다음과 같이 정의합니다.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p><img src="./img/dorothy_bayes_formula_chalkboard_ko.jpg" alt="조건부 확률 공식" />
-<strong>그림 02-11-2</strong> 사전 조건 B가 일어났을 때 사건 A가 일어날 조건부 확률 공식 P(A|B) = P(A ∩ B) / P(B)를 설명하는 지니와 도로시, 토토</p>
+\[P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{n(A \cap B)}{n(A)} \quad (\text{단, } P(A) &gt; 0)\]
 
 <ul>
-  <li><strong>조건부 확률 공식</strong>:
-<strong><em>P(B|A) = P(A ∩ B) / P(A)</em></strong> (단, <em>P</em>(<em>A</em>) &gt; 0)
-    <ul>
-      <li><em>의미</em>: 조건 <em>A</em>가 발생함에 따라 표본공간이 전체에서 <em>A</em>로 축소되며, 그 중 <em>B</em>도 동시에 만족하는 교집합 비율을 세어 줍니다.</li>
-    </ul>
+  <li><strong>수식의 의미</strong>:
+    <ol>
+      <li>분모 $P(A)$: 조건 사건 <em>A</em>가 발생하여 새로운 전체 표본공간의 기준이 됩니다.</li>
+      <li>분자 $P(A \cap B)$: 조건 <em>A</em>를 만족하는 영역 안에서 사건 <em>B</em>도 동시에 일어나는 교집합 영역의 크기입니다.</li>
+    </ol>
   </li>
 </ul>
 
-<h4 id="2-독립사건과-종속사건">(2) 독립사건과 종속사건</h4>
+<p>“아! ‘소리가 났다’는 영역으로 전체 공간이 좁혀지니까, 그 소리 구역 안에서 진짜 몬스터가 숨어 있는 교집합 비율만 계산하면 되는구나!”</p>
+
+<p>도로시가 고개를 끄덕였습니다.</p>
+
+<hr />
+
+<h2 id="02112-독립사건과-종속사건의-판별">02.11.2 독립사건과 종속사건의 판별</h2>
+
+<h3 id="21121-독립사건-independent-events">2.11.2.1 독립사건 (Independent Events)</h3>
+
+<p>한 사건 <em>A</em>가 일어났다는 사실이 다른 사건 <em>B</em>가 일어날 확률에 아무런 영향을 주지 않는 관계를 뜻합니다.</p>
+
+\[P(B|A) = P(B) \iff P(A \cap B) = P(A) \times P(B)\]
+
 <ul>
-  <li><strong>독립사건 (Independent Events)</strong>:
-사건 <em>A</em>의 발생 여부가 사건 <em>B</em>의 확률에 전혀 영향을 주지 않는 관계입니다:
-    <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td><em>조건식</em>: **_P(B</td>
-              <td>A) = P(B)_**</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li><em>판별식</em>: <strong><em>P(A ∩ B) = P(A) × P(B)</em></strong></li>
-    </ul>
-  </li>
-  <li><strong>종속사건 (Dependent Events)</strong>:
-한 사건의 발생이 다른 사건의 확률을 변화시키는 관계입니다 (독립이 아닌 모든 사건).</li>
+  <li><strong>대표 예시 (복원추출)</strong>: 주머니에서 공을 하나 꺼내 색깔을 확인한 뒤 <strong>다시 집어넣고</strong> 두 번째 공을 뽑을 때, 첫 번째 시행과 두 번째 시행은 완벽히 독립입니다.</li>
 </ul>
 
 <hr />
 
-<h2 id="02112-확률의-곱셈정리와-독립시행의-정리">02.11.2 확률의 곱셈정리와 독립시행의 정리</h2>
+<h3 id="21122-종속사건-dependent-events">2.11.2.2 종속사건 (Dependent Events)</h3>
 
-<p>매회 동일한 조건에서 반복하여 행동할 때의 확률 법칙을 다룹니다.</p>
-
-<p>“지니! 내가 훈련장에서 양궁 연습을 하고 있어. 매번 화살을 쏠 때 과녁을 맞힐 확률이 0.8(80%)로 항상 똑같다고 가정해 보자. 총 5번의 화살을 쐈을 때, 정확히 2번 과녁을 명중시킬 확률은 어떻게 구해야 해?”</p>
-
-<p>도로시가 활을 당겨 과녁판을 겨냥하며 물었습니다. 토토는 사격장 팻말 옆에서 힘차게 응원했습니다. 지니가 과녁판 옆에 수식을 적어 유도했습니다.</p>
-
-<p>“그건 매 시행의 성공 확률이 다른 시도에 전혀 영향을 주지 않는 대표적인 <strong>독립시행</strong>이란다. 이때는 몇 번째 시도에서 성공할 것인지 순서를 결정하는 조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)과, 성공 확률의 거듭제곱, 실패 확률의 거듭제곱을 결합하여 풀 수 있어.”</p>
-
-<p><img src="./img/dorothy_jiny_independent_trials_ko.jpg" alt="독립시행의 확률" />
-<strong>그림 02-11-3</strong> 매회 사격 성공률이 일정한 독립시행 조건에서 n번 시도 중 r번 성공할 확률을 계산하는 공식을 연습하는 도로시와 지니, 토토</p>
+<p>한 사건의 발생 여부가 다른 사건의 확률에 직접적인 영향을 미치는 관계입니다.</p>
 
 <ul>
-  <li><strong>독립시행의 정리 공식</strong>:
-사건이 일어날 확률이 <em>p</em>일 때, <em>n</em>번 반복하는 독립시행에서 사건이 정확히 <em>r</em>회 일어날 확률 <em>P</em>는 다음과 같습니다.
-<strong><em>P(X=r) = <sub>n</sub>C<sub>r</sub> × p<sup>r</sup> × (1-p)<sup>n-r</sup></em></strong>
-    <ul>
-      <li><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>: <em>n</em>번의 시도 중 성공할 <em>r</em>번을 고르는 경우의 수</li>
-      <li><em>p</em><sup><em>r</em></sup>: <em>r</em>번 성공할 확률</li>
-      <li>(1-<em>p</em>)<sup><em>n-r</em></sup>: 나머지 실패할 확률</li>
-    </ul>
-  </li>
+  <li><strong>대표 예시 (비복원추출)</strong>: 주머니에서 공을 꺼낸 뒤 <strong>다시 넣지 않고</strong> 연이어 두 번째 공을 뽑을 때, 남은 공의 개수와 색상 비율이 변하므로 두 번째 사건은 첫 번째 사건에 종속됩니다.</li>
 </ul>
 
 <hr />
 
-<h2 id="02113-생활-속의-확률과-직관의-오류">02.11.3 생활 속의 확률과 직관의 오류</h2>
+<h2 id="02113-독립시행의-정리-binomial-trials">02.11.3 독립시행의 정리 (Binomial Trials)</h2>
 
-<p>인간의 직관적인 느낌과 실제 수학적 확률 계산이 매우 다르게 나타나는 대표적인 퍼즐들입니다.</p>
+<p>매회 동일한 조건에서 시행을 반복하여 매 시도의 성공 확률이 이전 결과에 영향을 받지 않는 독립적인 연쇄 시행을 <strong>독립시행</strong>이라 합니다.</p>
 
-<h3 id="1-몬티-홀-딜레마-monty-hall-problem">1. 몬티 홀 딜레마 (Monty Hall Problem)</h3>
+<p>“지니! 내가 훈련장에서 양궁 활쏘기 연습을 하고 있어. 매번 화살을 쏠 때 과녁을 맞힐 확률이 0.8(80%)로 일정하다고 해보자. 총 5발을 쐈을 때, 정확히 2발만 명중시킬 확률은 어떻게 구해?”</p>
+
+<p>도로시가 활시위를 당기며 물었습니다. 토토는 과녁 옆에서 꼬리를 흔들며 응원했습니다.</p>
+
+<p><img src="./img/dorothy_independent_trials_archery.png" alt="독립시행의 정리" />
+<strong>그림 02-11-3</strong> 매회 사격 성공률(80%)이 일정한 독립시행 환경에서 5번의 시도 중 2번 성공할 조합과 확률을 계산하는 도로시와 지니, 토토</p>
+
+<p>지니가 수식을 칠판에 적으며 설명했습니다.</p>
+
+<p>“총 5번의 시도 중 어느 2번에서 명중할 것인지 자리를 고르는 조합(<sub>5</sub><em>C</em><sub>2</sub>)에, 성공 확률 2번의 거듭제곱(0.8<sup>2</sup>)과 실패 확률 3번의 거듭제곱(0.2<sup>3</sup>)을 연이어 곱해주면 된단다.”</p>
+
+\[P(X = r) = _nC_r \times p^r \times (1 - p)^{n - r}\]
+
 <ul>
-  <li><strong>딜레마</strong>: 3개의 문 중 하나 뒤에만 보상(자동차)이 있고 둘은 염소(꽝)가 있습니다. 참가자가 1번 문을 고르자, 사회자가 남은 문 중 꽝인 2번 문을 열어 보여줍니다. 이때 3번 문으로 선택을 바꾸는 것이 유리할까요?</li>
-  <li><strong>정답</strong>: <strong>선택을 바꾸는 것이 승리 확률이 2/3로 상승하여 2배 더 유리</strong>합니다. (처음 선택을 고수하면 1/3 유지)</li>
+  <li><strong>양궁 5발 중 2발 명중 계산</strong>:
+\(P(X = 2) = _5C_2 \times (0.8)^2 \times (0.2)^3 = 10 \times 0.64 \times 0.008 = 0.0512\ (5.12\%)\)</li>
 </ul>
-
-<h3 id="2-생일-패러독스-birthday-paradox">2. 생일 패러독스 (Birthday Paradox)</h3>
-<ul>
-  <li><strong>패러독스</strong>: 한 교실에 단 20명의 학생만 모여 있어도, 생일이 같은 학생이 적어도 한 쌍 이상 존재할 확률은 우리의 직관(매우 낮을 것이라는 생각)과 달리 <strong>약 60.6%</strong>나 됩니다. (여사건의 결합 법칙으로 유도)</li>
-</ul>
-
-<p>“와! 직관만 믿고 선택을 안 바꾸거나, 생일이 같을 확률이 무조건 낮을 거라고 찍으면 수학 시험에서 꽝을 뽑겠네!”</p>
-
-<p>도로시가 웃으며 토토를 안아주었습니다.</p>
 
 <hr />
 
-<h2 id="02114-실전-예제">02.11.4 실전 예제</h2>
+<h2 id="02114-직관을-깨뜨리는-확률의-역설">02.11.4 직관을 깨뜨리는 확률의 역설</h2>
 
-<h3 id="문제-1-비복원추출-곱셈정리">문제 1 (비복원추출 곱셈정리)</h3>
+<p>인간의 직관적인 어림짐작과 실제 수학적 계산이 극명하게 갈리는 대표적인 유명 퍼즐들입니다.</p>
+
+<h3 id="21141-몬티-홀-딜레마-monty-hall-problem">2.11.4.1 몬티 홀 딜레마 (Monty Hall Problem)</h3>
+
+<p>퀴즈 쇼 무대에 닫힌 3개의 문(1번, 2번, 3번)이 있습니다. 한 문 뒤에는 ‘황금 자동차(당첨)’, 나머지 두 문 뒤에는 ‘염소(꽝)’가 있습니다.</p>
+
+<ol>
+  <li>도로시가 <strong>1번 문</strong>을 선택했습니다. (당첨 확률 1/3 = 33%)</li>
+  <li>어디에 차가 있는지 알고 있는 사회자가 남은 2번, 3번 문 중 꽝인 <strong>2번 문</strong>을 열어 염소를 보여주었습니다.</li>
+  <li>사회자가 묻습니다: <strong>“1번 문을 고수하시겠습니까, 아니면 3번 문으로 바꾸시겠습니까?”</strong></li>
+</ol>
+
+<p><img src="./img/dorothy_monty_hall_doors.png" alt="몬티 홀 딜레마" />
+<strong>그림 02-11-4</strong> 몬티 홀 퀴즈 쇼 무대에서 사회자가 2번 문의 염소(꽝)를 공개했을 때, 선택을 3번 문으로 바꾸는 것이 승리 확률을 2/3(67%)로 2배 높여줌을 보여주는 시각화</p>
+
+<p>“그냥 문이 2개 남았으니까 반반(50% : 50%) 아니야?”</p>
+
+<p>도로시가 갸우뚱거리자, 지니가 빙그레 웃으며 답했습니다.</p>
+
+<p>“아니란다! 도로시가 처음에 차를 골랐을 확률은 1/3이고, 꽝을 골랐을 확률은 2/3였어. 도로시가 처음에 꽝을 골랐다면 사회자는 남은 꽝을 열어줄 수밖에 없으므로, <strong>선택을 바꾸면 무조건 차를 얻게 된단다!</strong> 따라서 선택을 바꾸었을 때의 당첨 확률은 <strong>2/3(약 67%)</strong>로 2배나 껑충 뛰게 되지!”</p>
+
+<hr />
+
+<h3 id="21142-생일-패러독스-birthday-paradox">2.11.4.2 생일 패러독스 (Birthday Paradox)</h3>
+
+<p>한 반에 단 <strong>23명의 학생</strong>만 모여 있어도, 1년 365일 중 <strong>생일이 같은 학생이 적어도 한 쌍 이상 존재할 확률은 약 50.7%</strong>로 절반을 넘습니다. (30명이 모이면 무려 70.6%에 도달!)</p>
+
+<ul>
+  <li><strong>여사건 증명 (모두 생일이 다를 확률)</strong>:
+\(P(\text{모두 다름}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \dots \times \frac{365 - 23 + 1}{365} \approx 0.4927\)</li>
+</ul>
+
+\[P(\text{적어도 한 쌍 일치}) = 1 - P(\text{모두 다름}) = 1 - 0.4927 = 0.5073\ (50.73\%)\]
+
+<hr />
+
+<h2 id="02115-파이썬으로-구현하는-몬티-홀--독립시행-시뮬레이터">02.11.5 파이썬으로 구현하는 몬티 홀 &amp; 독립시행 시뮬레이터</h2>
+
+<p>파이썬의 <code class="language-plaintext highlighter-rouge">random</code> 모듈로 몬티 홀 게임을 100,000번 시뮬레이션하여 선택을 바꾸는 전략의 우수성을 검증합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">random</span>
+<span class="kn">import</span> <span class="n">math</span>
+
+<span class="k">def</span> <span class="nf">monty_hall_simulation</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
+    <span class="n">stay_wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">switch_wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
+        <span class="c1"># 3개의 문 중 무작위로 1곳에 자동차(1), 나머지 2곳에 염소(0) 배치
+</span>        <span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">car_door</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">player_choice</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="c1"># 사회자는 플레이어가 선택하지 않았고, 자동차도 없는 꽝 문을 열어 공개
+</span>        <span class="n">possible_host_doors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">doors</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">player_choice</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">car_door</span><span class="p">]</span>
+        <span class="n">host_door</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">possible_host_doors</span><span class="p">)</span>
+        
+        <span class="c1"># 선택을 바꿀 경우 남은 문
+</span>        <span class="n">switch_choice</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">doors</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">player_choice</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">host_door</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># 승리 카운팅
+</span>        <span class="k">if</span> <span class="n">player_choice</span> <span class="o">==</span> <span class="n">car_door</span><span class="p">:</span>
+            <span class="n">stay_wins</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">switch_choice</span> <span class="o">==</span> <span class="n">car_door</span><span class="p">:</span>
+            <span class="n">switch_wins</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">=== 몬티 홀 시뮬레이션 (</span><span class="si">{</span><span class="n">trials</span><span class="si">:</span><span class="p">,</span><span class="si">}</span><span class="s">회 시행) ===</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">1. 처음 선택 유지 시 승률: </span><span class="si">{</span><span class="n">stay_wins</span> <span class="o">/</span> <span class="n">trials</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">% (이론값 33.33%)</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">2. 다른 문으로 변경 시 승률: </span><span class="si">{</span><span class="n">switch_wins</span> <span class="o">/</span> <span class="n">trials</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">% (이론값 66.67%)</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">monty_hall_simulation</span><span class="p">()</span>
+
+<span class="c1"># 독립시행 양궁 계산
+</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.8</span>
+<span class="n">binomial_prob</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">**</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">양궁 5발 중 2발 명중 확률 (n=5, r=2, p=0.8): </span><span class="si">{</span><span class="n">binomial_prob</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">%</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[실행 결과]
+=== 몬티 홀 시뮬레이션 (100,000회 시행) ===
+1. 처음 선택 유지 시 승률: 33.36% (이론값 33.33%)
+2. 다른 문으로 변경 시 승률: 66.64% (이론값 66.67%)
+
+양궁 5발 중 2발 명중 확률 (n=5, r=2, p=0.8): 5.12%
+</code></pre></div></div>
+
 <blockquote>
-  <p>주머니 속에 빨간 공 2개와 파란 공 3개가 들어 있습니다. 공을 한 개씩 연속해서 두 번 꺼낼 때(꺼낸 공은 다시 넣지 않음), 두 번 모두 빨간 공이 나올 확률을 구하시오.</p>
+  <p><strong>💡 코드 해석</strong>: 10만 번의 컴퓨터 시뮬레이션 결과, 문을 바꾸었을 때의 승률이 정확히 66.64%(2/3)로 유지했을 때의 33.36%(1/3)보다 정확히 2배 높게 나타나 수학적 직관의 오류를 명확히 입증합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02116-실전-예제">02.11.6 실전 예제</h2>
+
+<h3 id="21161-문제-1-비복원추출-조건부-확률과-곱셈정리">2.11.6.1 문제 1 (비복원추출 조건부 확률과 곱셈정리)</h3>
+
+<blockquote>
+  <p>주머니 속에 빨간 구슬 2개와 파란 구슬 3개(총 5개)가 들어 있습니다. 구슬을 한 개씩 연속해서 두 번 꺼낼 때(꺼낸 구슬은 다시 넣지 않음), 두 번 모두 빨간 구슬이 나올 확률을 구하시오.</p>
 
   <p><strong>풀이</strong>:</p>
-  <ul>
-    <li>첫 번째 빨간 공을 꺼낼 확률 <em>P</em>(<em>A</em>) = 2 / 5</li>
-    <li>
-      <table>
-        <tbody>
-          <tr>
-            <td>꺼낸 공을 넣지 않으므로 남은 빨간 공 1개, 파란 공 3개 중 빨간 공을 꺼낼 조건부 확률 <em>P</em>(<em>B</em></td>
-            <td><em>A</em>) = 1 / 4</td>
-          </tr>
-        </tbody>
-      </table>
-    </li>
-    <li>확률의 곱셈정리에 의해:
-<em>P</em>(<em>A</em> ∩ <em>B</em>) = 2 / 5 × 1 / 4 = 1 / 10 (10%)</li>
-  </ul>
+  <ol>
+    <li>첫 번째에 빨간 구슬을 꺼낼 사건을 <em>A</em>라 하면:
+\(P(A) = \frac{2}{5}\)</li>
+    <li>첫 번째 빨간 구슬이 빠져나간 후 남은 4개(빨강 1, 파랑 3) 중 두 번째에 빨간 구슬을 꺼낼 조건부 확률은:
+\(P(B|A) = \frac{1}{4}\)</li>
+    <li>확률의 곱셈정리에 따라 두 사건이 연속으로 발생할 확률은:
+\(P(A \cap B) = P(A) \times P(B|A) = \frac{2}{5} \times \frac{1}{4} = \frac{2}{20} = \frac{1}{10}\ (10\%)\)</li>
+  </ol>
 
-  <p><strong>정답</strong>: 1 / 10</p>
+  <p><strong>정답</strong>: 1 / 10 (10%)</p>
 </blockquote>
 
 <hr />
 
-<h2 id="02115-핵심-요약">02.11.5 핵심 요약</h2>
+<h3 id="21162-문제-2-독립시행-주사위-던지기">2.11.6.2 문제 2 (독립시행 주사위 던지기)</h3>
+
+<blockquote>
+  <p>주사위 1개를 4번 던질 때, 1의 눈이 정확히 3번 나올 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>1회 시행 시 1의 눈이 나올 성공 확률 $p = 1/6$, 실패 확률 $1 - p = 5/6$</li>
+    <li>총 시행 횟수 $n = 4$, 성공 횟수 $r = 3$</li>
+    <li>독립시행 공식 적용:
+\(P(X = 3) = _4C_3 \times \left(\frac{1}{6}\right)^3 \times \left(\frac{5}{6}\right)^1 = 4 \times \frac{1}{216} \times \frac{5}{6} = \frac{20}{1296} = \frac{5}{324} \approx 0.01543\ (1.54\%)\)</li>
+  </ol>
+
+  <p><strong>정답</strong>: 5 / 324 (약 1.54%)</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02117-핵심-요약">02.11.7 핵심 요약</h2>
+
+<p><img src="./img/dorothy_conditional_summary.png" alt="조건부 확률과 독립시행 핵심 요약" />
+<strong>그림 02-11-5</strong> 표본공간의 축소를 수반하는 조건부 확률과 독립시행 공식, 몬티 홀 딜레마와 생일 패러독스의 원리를 정복한 도로시와 지니, 토토</p>
 
 <ol>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>**조건부 확률 *P(B</td>
-          <td>A)<em>**는 사건 *A</em>가 발생했다는 전제하에 사건 <em>B</em>가 일어날 확률이며, 전체 표본공간이 사건 <em>A</em>의 영역으로 축소된다.</td>
+          <td>**조건부 확률($P(B</td>
+          <td>A)$)<em>*: 새로운 단서나 조건 *A</em>가 관측되면 전체 표본공간이 사건 <em>A</em>의 영역으로 축소되며, 그 안에서 교집합의 비율($\frac{P(A \cap B)}{P(A)}$)을 구한다.</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li>매회 시행 결과가 이전 결과에 전혀 영향을 주지 않는 시도를 <strong>독립시행</strong>이라 하며, <em>n</em>번 중 <em>r</em>번 성공할 확률은 <em>*<sub>*n*</sub></em>C<em><sub>*r*</sub> × *p</em><sup><em>r</em></sup> × (1-<em>p</em>)<sup><em>n-r</em>**&lt;/sub&gt; 공식으로 구한다.</sup></li>
-  <li>몬티 홀 문제와 생일 패러독스는 인간의 주관적 느낌(직관)이 정교한 객관적 수학 확률과 크게 어긋날 수 있음을 보여주는 대표적인 사례이다.</li>
+  <li><strong>독립과 종속</strong>: 이전 사건이 다음 사건에 영향을 미치지 않으면 <strong>독립사건($P(A \cap B) = P(A)P(B)$)</strong>, 영향을 미치면 <strong>종속사건</strong>이다.</li>
+  <li><strong>독립시행의 정리</strong>: 매회 성공률 <em>p</em>가 일정한 독립 실험을 <em>n</em>번 반복하여 <em>r</em>번 성공할 확률은 <strong>$_nC_r p^r (1-p)^{n-r}$</strong>로 계산한다.</li>
+  <li><strong>확률적 직관의 교정</strong>: 몬티 홀 딜레마(선택 변경 시 2/3 승률)와 생일 문제(23명만으로 50% 돌파)는 인간의 어림짐작을 깨뜨리는 정교한 수학적 통찰을 제공한다.</li>
 </ol>
 
 

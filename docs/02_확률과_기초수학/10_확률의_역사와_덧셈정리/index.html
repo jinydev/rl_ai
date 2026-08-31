@@ -576,140 +576,231 @@
             <h1 id="0210-확률의-역사와-덧셈정리">02.10 확률의 역사와 덧셈정리</h1>
 
 <blockquote>
-  <p>이 장에서는 <strong>확률의 역사와 덧셈정리 (조합 활용 확률 계산)</strong>에 관한 기초부터 심화 개념들을 유기적으로 결합하여 학습합니다.</p>
+  <p>이 장에서는 현대 확률 이론의 기원이 된 <strong>상금 분배 문제(Problem of Points)</strong>와 미래 기대 가치(Expected Value)의 개념을 배우고, <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)을 활용한 확률 계산</strong> 및 중복을 배제하는 <strong>확률의 덧셈정리(Addition Rule of Probability)</strong>를 체계적으로 정립합니다.</p>
 </blockquote>
 
 <hr />
 
-<h2 id="02101-확률의-역사와-상금-분배-문제">02.10.1 확률의 역사와 상금 분배 문제</h2>
+<h2 id="02101-확률의-역사와-상금-분배-문제-problem-of-points">02.10.1 확률의 역사와 상금 분배 문제 (Problem of Points)</h2>
 
-<p>수학의 오랜 난제였던 <strong>상금 분배 문제(Problem of Points)</strong>와 확률 이론의 역사적 태동을 알아봅니다.</p>
+<p>확률론은 단순한 수학적 호기심이 아니라, 중단된 게임의 상금을 가장 공평하게 나누기 위한 치열한 고민에서 탄생했습니다.</p>
 
-<p>“지니! 토토랑 내가 먼저 3판을 이기면 금화 주머니를 전부 갖기로 게임을 하고 있었거든? 그런데 갑자기 소나기가 내려서 게임을 중단해야 해. 현재 전적은 내가 2승, 토토가 1승이야. 이 상태에서 금화를 어떻게 나누어야 서로 불만 없이 가장 공평하게 나눌 수 있을까?”</p>
+<p>“지니! 토토랑 내가 3판을 먼저 이기면 금화 주머니를 전부 갖기로 게임을 하고 있었거든? 그런데 갑자기 소나기가 쏟아져서 게임을 중단해야 해. 현재 스코어는 내가 2승, 토토가 1승이야. 금화를 어떻게 나누어야 서로 억울하지 않고 가장 공평하게 나눌 수 있을까?”</p>
 
-<p>도로시가 주머니 속 금화들을 세며 걱정스러운 눈빛으로 물었습니다. 토토는 자기도 많이 이기고 싶었는지 멍멍 소리를 내며 도로시 곁에 앉았습니다. 지니가 깃털 펜과 오래된 편지 한 장을 흔들어 보였습니다.</p>
+<p>도로시가 주머니 속 금화들을 만지작거리며 진지한 눈빛으로 물었습니다. 토토도 멍멍 짖으며 테이블 위의 스코어보드를 가리켰습니다.</p>
 
-<p>“도로시! 그건 아주 유명한 역사적인 질문이야. 1654년 도박사들이 고민하던 <strong>‘상금 분배 문제’</strong>라는 것인데, 천재 수학자 파스칼과 페르마가 편지를 주고받으며 멋지게 풀어냈단다. 바로 이 질문이 현대 확률론의 진정한 시작점이 되었지!”</p>
+<p><img src="./img/dorothy_points_problem.png" alt="상금 분배 문제" />
+<strong>그림 02-10-1</strong> 3승 선승제 게임에서 도로시 2승, 토토 1승 상황 중 갑작스러운 비로 게임이 중단되었을 때 금화의 공정한 분배 방식을 고민하는 도로시와 토토</p>
 
-<p><img src="./img/dorothy_jiny_pascal_letter_ko.jpg" alt="파스칼과 페르마의 서신" />
-<strong>그림 02-10-1</strong> 게임이 중단되었을 때, 지금까지의 승수 비율이 아닌 ‘미래에 우승하게 될 기대 가치(확률)’를 근거로 상금을 공평하게 배분해야 함을 설명하는 지니와 도로시, 토토</p>
+<p>“단순히 지금까지 거둔 승수 비율대로 2 : 1로 나누면 안 될까?”</p>
 
-<p>“단순히 2승 대 1승이니까 금화를 2:1로 나누면 안 돼?”</p>
+<p>도로시가 묻자, 지니가 공중에 고풍스러운 양피지 편지를 띄우며 미소 지었습니다.</p>
 
-<p>“안 된단다! 만약 게임을 계속했다면 도로시가 최종 우승할 확률과 토토가 최종 우승할 확률의 <strong>‘기대 가치’</strong> 비율대로 나누어야 정의롭지.”</p>
+<p>“그렇게 나누면 1승만 더 하면 우승하는 도로시가 손해를 보게 된단다! 1654년, 천재 수학자 블레즈 파스칼(Pascal)과 피에르 드 페르마(Fermat)는 편지를 주고받으며 <strong>‘과거의 점수 비율이 아니라, 게임을 계속 진행했을 때 각자가 최종 우승하게 될 미래의 기대 가치(확률)’</strong>대로 상금을 나누어야 한다고 명쾌하게 증명했단다.”</p>
 
-<hr />
-
-<h3 id="1-학습-목표">1. 학습 목표</h3>
-<ul>
-  <li>확률 이론의 태동과 역사적 배경을 파악한다.</li>
-  <li>파스칼과 페르마가 고민했던 ‘상금 분배 문제’를 이해하고 설명할 수 있다.</li>
-  <li>기댓값과 중단된 게임에서의 공정한 상금 분배 확률을 계산할 수 있다.</li>
-</ul>
+<p><img src="./img/dorothy_pascal_fermat_letter.png" alt="파스칼과 페르마의 서신" />
+<strong>그림 02-10-2</strong> 파스칼과 페르마의 서신에 담긴 원리를 통해 도로시 우승 확률 75%(3/4)와 토토 우승 확률 25%(1/4)에 따라 상금을 3 : 1로 공정하게 분배하는 방식을 설명하는 지니</p>
 
 <hr />
 
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+<h3 id="21011-상금-분배-문제의-수학적-유도">2.10.1.1 상금 분배 문제의 수학적 유도</h3>
 
-<h4 id="1-상금-분배-문제의-확률적-풀이">(1) 상금 분배 문제의 확률적 풀이</h4>
-<ul>
-  <li><strong>도로시가 우승할 확률</strong>: 도로시는 앞으로 1승만 더 하면 됩니다.</li>
-  <li><strong>토토가 우승할 확률</strong>: 토토는 앞으로 연이어 2승을 거두어야 합니다.
+<p>최대 앞으로 남은 게임 횟수는 2판입니다. (동전 던지기와 같이 각 판의 승률이 50% = 1/2로 같다고 가정)</p>
+
+<ol>
+  <li><strong>다음 판(4번째 판)의 전개</strong>:
     <ul>
-      <li>토토가 우승할 확률 = 1/2 × 1/2 = 1/4 (25%)</li>
-      <li>도로시가 우승할 확률 = 1 - 1/4 = 3/4 (75%)</li>
+      <li><strong>도로시 승리 (확률 1/2)</strong>: 도로시 3승 달성 ➔ <strong>도로시 최종 우승!</strong></li>
+      <li><strong>토토 승리 (확률 1/2)</strong>: 도로시 2승, 토토 2승 ➔ 5번째 판 진행</li>
     </ul>
   </li>
-</ul>
+  <li><strong>마지막 판(5번째 판)의 전개</strong>:
+    <ul>
+      <li><strong>도로시 승리 (확률 1/2 × 1/2 = 1/4)</strong>: 도로시 3승 ➔ <strong>도로시 최종 우승!</strong></li>
+      <li><strong>토토 승리 (확률 1/2 × 1/2 = 1/4)</strong>: 토토 3승 ➔ <strong>토토 최종 우승!</strong></li>
+    </ul>
+  </li>
+</ol>
 
-<p>“아! 내가 이길 확률이 75%이고 토토가 이길 확률이 25%니까, 금화 비율을 3:1로 나누는 게 공정하구나!”</p>
+\[P(\text{도로시 우승}) = \frac{1}{2} + \frac{1}{4} = \frac{3}{4}\ (75\%)\]
 
-<p>도로시가 고개를 끄덕였습니다. 이처럼 미래에 얻을 가치(상태 가치와 정책의 가치 기댓값)를 바탕으로 현재의 판단을 세우는 원리가 강화학습 가치 평가의 기초가 됩니다.</p>
+\[P(\text{토토 우승}) = \frac{1}{2} \times \frac{1}{2} = \frac{1}{4}\ (25\%)\]
+
+<p>“와! 내가 최종 우승할 확률이 75%이고 토토가 역전 우승할 확률이 25%니까, 금화를 <strong>3 : 1</strong>로 나누어 갖는 것이 완벽하게 정의로운 분배였구나!”</p>
+
+<p>도로시가 손뼉을 치며 감탄했습니다.</p>
+
+<blockquote>
+  <p><strong>💡 강화학습과의 연결</strong>: 강화학습 에이전트가 현재 상태의 가치(State Value)를 평가할 때, 과거에 지나온 경험뿐만 아니라 <strong>앞으로 미래에 받게 될 누적 보상의 기댓값(Expectation)</strong>을 바탕으로 판단을 내리는 철학이 바로 이 상금 분배 문제의 기대 가치 원리와 직결됩니다.</p>
+</blockquote>
 
 <hr />
 
 <h2 id="02102-조합을-이용한-확률-계산">02.10.2 조합을 이용한 확률 계산</h2>
 
-<p>주머니에서 여러 개의 구슬을 꺼낼 때의 확률처럼, 전체 경우의 수와 특정 사건의 경우의 수를 <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)</strong>을 사용해 세어 확률을 구하는 방법입니다.</p>
+<p>동일한 가능성을 지닌 대상들 중에서 여러 개를 동시에 뽑을 때, 표본공간의 크기와 사건의 경우의 수를 <strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>)</strong>으로 계산하여 확률을 구합니다.</p>
 
-<ul>
-  <li><strong>조합 확률 계산식</strong>:
-<em>P</em>(<em>A</em>) = <em>n</em>(<em>A</em>) / <em>n</em>(<em>S</em>) = 사건 <em>A</em>가 일어나는 조합의 수 / 전체 선택의 조합의 수
-    <ul>
-      <li><em>예</em>: 흰 공 3개와 검은 공 5개가 든 주머니에서 공 3개를 동시에 꺼낼 때, 흰 공 1개와 검은 공 2개가 나올 확률은?
-        <ul>
-          <li>분모 (전체 조합) = <sub>8</sub><em>C</em><sub>3</sub> = 56가지</li>
-          <li>분자 (흰 공 1개, 검은 공 2개 조합) = <sub>3</sub><em>C</em><sub>1</sub> × <sub>5</sub><em>C</em><sub>2</sub> = 3 × 10 = 30가지</li>
-          <li>최종 확률 = 30 / 56 = 15 / 28</li>
-        </ul>
-      </li>
-    </ul>
+\[P(A) = \frac{n(A)}{n(S)} = \frac{\text{사건 } A\text{가 일어나는 조합의 수}}{\text{전체 가능한 조합의 수}}\]
+
+<h3 id="대표-예제-구슬-주머니-추출">대표 예제: 구슬 주머니 추출</h3>
+<p>주머니 속에 <strong>흰 공 3개</strong>와 <strong>검은 공 5개</strong>(총 8개)가 들어 있을 때, 무작위로 3개의 공을 동시에 꺼낼 때 흰 공 1개와 검은 공 2개가 나올 확률:</p>
+
+<ol>
+  <li>
+    <p><strong>전체 표본공간 경우의 수</strong>: 8개 중 3개를 순서 없이 뽑는 조합
+\(n(S) = _8C_3 = \frac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56\)</p>
   </li>
-</ul>
+  <li>
+    <p><strong>사건 <em>A</em>의 경우의 수</strong>: 흰 공 3개 중 1개를 뽑고, 연이어 검은 공 5개 중 2개를 뽑는 곱의 법칙
+\(n(A) = _3C_1 \times _5C_2 = 3 \times \frac{5 \times 4}{2 \times 1} = 3 \times 10 = 30\)</p>
+  </li>
+  <li>
+    <p><strong>최종 확률 계산</strong>:
+\(P(A) = \frac{n(A)}{n(S)} = \frac{30}{56} = \frac{15}{28} \approx 0.5357\ (53.6\%)\)</p>
+  </li>
+</ol>
 
 <hr />
 
-<h2 id="02103-확률의-덧셈정리">02.10.3 확률의 덧셈정리</h2>
+<h2 id="02103-확률의-덧셈정리와-여사건">02.10.3 확률의 덧셈정리와 여사건</h2>
 
-<p>합사건(사건 <em>A</em> 또는 사건 <em>B</em>가 일어날 사건)의 확률을 정확히 더해 나가는 성질입니다.</p>
+<h3 id="21031-일반적인-확률의-덧셈정리-포함-배제의-원리">2.10.3.1 일반적인 확률의 덧셈정리 (포함-배제의 원리)</h3>
 
-<p>“지니! 만약 모험 지도에서 몬스터가 출현할 칸의 확률과 함정이 설치될 칸의 확률을 한꺼번에 고려해서 전체 위험도를 계산하고 싶어. 두 확률을 그냥 단순히 더하기만 하면 돼?”</p>
+<p>두 사건 <em>A</em>와 <em>B</em>가 동시에 일어날 가능성(교집합)이 존재할 때, 두 사건 중 적어도 하나가 일어날 합사건의 확률은 두 확률을 더한 뒤 중복된 교집합 확률을 반드시 한 번 빼주어야 합니다.</p>
 
-<p>도로시가 지도판을 가리키며 묻자, 지니가 칠판에 두 개의 겹쳐진 동그라미를 그렸습니다.</p>
+\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]
 
-<p>“조심해야 해! 몬스터와 함정이 동시에 존재하는 겹친 칸이 있다면, 단순 덧셈은 그 칸을 두 번 계산하게(더블 카운팅) 된단다. 그래서 겹쳐진 중복 영역을 반드시 한 번 빼주어야 정확한 덧셈정리가 완성되지.”</p>
+<p><img src="./img/dorothy_prob_addition_venn.png" alt="확률의 덧셈정리" />
+<strong>그림 02-10-3</strong> 격자 모험 지도에서 몬스터 출현(A, 30%)과 함정 설치(B, 20%)가 겹치는 교집합 영역(6%)을 삭감하여 참 위험률(44%)을 도출하는 확률의 덧셈정리 벤 다이어그램</p>
 
-<p><img src="./img/dorothy_venn_diagram_probability_ko.jpg" alt="확률의 덧셈정리" />
-<strong>그림 02-10-2</strong> 두 합집합 영역을 계산할 때 중복으로 들어가는 교집합(겹친 부위)을 한 번 삭감해내는 확률의 덧셈정리 공식을 설명하는 도로시와 지니</p>
+<p>“아! 몬스터 위험(30%)과 함정 위험(20%)을 그냥 더해서 50%라고 하면 두 위험이 겹쳐 있는 6% 구간이 이중 계산(Double Counting)되니까, 6%를 쏙 빼주어서 참 위험도가 44%가 되는 거구나!”</p>
+
+<p>도로시가 벤 다이어그램을 보며 명쾌하게 설명했습니다.</p>
+
+<hr />
+
+<h3 id="21032-배반사건일-때의-덧셈정리">2.10.3.2 배반사건일 때의 덧셈정리</h3>
+
+<p>두 사건 <em>A</em>, <em>B</em>가 <strong>동시에 절대로 일어날 수 없을 때(배반사건, $A \cap B = \emptyset$)</strong>, 교집합 확률이 0이 되므로 단순히 두 확률을 더합니다.</p>
+
+\[P(A \cap B) = 0 \implies P(A \cup B) = P(A) + P(B)\]
+
+<hr />
+
+<h3 id="21033-여사건의-확률">2.10.3.3 여사건의 확률</h3>
+
+<p>사건 <em>A</em>가 일어나지 않을 사건을 사건 <em>A</em>의 <strong>여사건($A^c$)</strong>이라 하며, 전체 확률(1.0)에서 사건 <em>A</em>의 확률을 빼서 구합니다.</p>
+
+\[P(A^c) = 1 - P(A)\]
 
 <ul>
-  <li><strong>확률의 덧셈정리 공식</strong>:
-<strong><em>P(A ∪ B) = P(A) + P(B) - P(A ∩ B)</em></strong></li>
-  <li><strong>배반사건일 때 (겹치지 않을 때)</strong>:
-동시에 일어날 수 없으므로 교집합 확률이 0이 되어 단순히 두 확률을 더합니다:
-<strong><em>P(A ∪ B) = P(A) + P(B)</em></strong></li>
+  <li><strong>유용한 팁</strong>: “적어도 하나는 ~일 확률”을 구할 때는 복잡하게 모든 경우를 더하는 대신, ‘모두 ~가 아닐 확률(여사건)’을 구하여 1에서 빼주면 매우 간결하게 풀립니다.</li>
 </ul>
-
-<p><img src="./img/dorothy_jiny_monster_trap_ko.jpg" alt="모험 지도 위험도 계산" />
-<strong>그림 02-10-3</strong> 격자 모험 지도 위에서 몬스터 출현(A)과 함정 설치(B) 위험 요소의 겹침 부위를 덧셈정리로 정교하게 연산하여 참 위험률(44%)을 찾아내는 예시</p>
-
-<p>“아! 몬스터 칸(30%)과 함정 칸(20%)을 단순히 더해서 50%라고 착각하기 쉽지만, 두 위험이 겹쳐서 존재하는 칸(30% × 20% = 6%)을 빼서 계산하니까 진짜 위험 확률은 44%가 되는구나!”</p>
-
-<p>도로시가 큰 소리로 설명하자, 토토가 신나게 꼬리를 흔들며 기뻐했습니다.</p>
 
 <hr />
 
-<h2 id="02104-실전-예제">02.10.4 실전 예제</h2>
+<h2 id="02104-파이썬으로-구현하는-상금-분배--조합-확률-계산기">02.10.4 파이썬으로 구현하는 상금 분배 &amp; 조합 확률 계산기</h2>
 
-<h3 id="문제-1-상금-분배-계산">문제 1 (상금 분배 계산)</h3>
+<p>파이썬의 <code class="language-plaintext highlighter-rouge">math.comb</code> 모듈을 활용하여 상금 분배 시뮬레이션 및 주머니 공 추출 확률을 계산합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">math</span>
+
+<span class="c1"># 1. 상금 분배 문제 (도로시 2승 vs 토토 1승, 3승 선승제)
+</span><span class="n">total_prize</span> <span class="o">=</span> <span class="mi">800000</span>  <span class="c1"># 총 상금 80만원
+</span><span class="n">p_dorothy_win</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="mf">0.5</span><span class="p">)</span>  <span class="c1"># 1/2 + 1/4 = 0.75
+</span><span class="n">p_toto_win</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="mf">0.5</span>             <span class="c1"># 1/4 = 0.25
+</span>
+<span class="n">dorothy_share</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">total_prize</span> <span class="o">*</span> <span class="n">p_dorothy_win</span><span class="p">)</span>
+<span class="n">toto_share</span> <span class="o">=</span> <span class="nf">int</span><span class="p">(</span><span class="n">total_prize</span> <span class="o">*</span> <span class="n">p_toto_win</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=== 1. 상금 분배 문제 계산 결과 ===</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">도로시 우승 확률: </span><span class="si">{</span><span class="n">p_dorothy_win</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">% -&gt; 배분 상금: </span><span class="si">{</span><span class="n">dorothy_share</span><span class="si">:</span><span class="p">,</span><span class="si">}</span><span class="s">원</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">토토 우승 확률: </span><span class="si">{</span><span class="n">p_toto_win</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">1</span><span class="n">f</span><span class="si">}</span><span class="s">% -&gt; 배분 상금: </span><span class="si">{</span><span class="n">toto_share</span><span class="si">:</span><span class="p">,</span><span class="si">}</span><span class="s">원</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="c1"># 2. 조합을 이용한 구슬 주머니 확률 계산 (흰 공 3, 검은 공 5 중 3개 추출)
+</span><span class="n">total_combinations</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>                <span class="c1"># 8C3 = 56
+</span><span class="n">target_combinations</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 3C1 * 5C2 = 3 * 10 = 30
+</span><span class="n">prob_balls</span> <span class="o">=</span> <span class="n">target_combinations</span> <span class="o">/</span> <span class="n">total_combinations</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">=== 2. 조합 활용 구슬 추출 확률 ===</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">전체 경우의 수 (8C3): </span><span class="si">{</span><span class="n">total_combinations</span><span class="si">}</span><span class="s">가지</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">흰 공 1개, 검은 공 2개 경우의 수 (3C1 * 5C2): </span><span class="si">{</span><span class="n">target_combinations</span><span class="si">}</span><span class="s">가지</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">최종 추출 확률: </span><span class="si">{</span><span class="n">prob_balls</span><span class="si">:</span><span class="p">.</span><span class="mi">5</span><span class="n">f</span><span class="si">}</span><span class="s"> (</span><span class="si">{</span><span class="n">prob_balls</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">%)</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[실행 결과]
+=== 1. 상금 분배 문제 계산 결과 ===
+도로시 우승 확률: 75.0% -&gt; 배분 상금: 600,000원
+토토 우승 확률: 25.0% -&gt; 배분 상금: 200,000원
+
+=== 2. 조합 활용 구슬 추출 확률 ===
+전체 경우의 수 (8C3): 56가지
+흰 공 1개, 검은 공 2개 경우의 수 (3C1 * 5C2): 30가지
+최종 추출 확률: 0.53571 (53.57%)
+</code></pre></div></div>
+
 <blockquote>
-  <p>A와 B가 먼저 3승을 거두면 우승하는 게임을 하고 있었습니다. 현재 A는 2승, B는 0승인 상황에서 게임이 중단되었습니다. 총 상금 80만 원을 어떻게 나누는 것이 공평할까요? (단, 각 경기에서 이길 확률은 1/2로 실력이 같습니다.)</p>
+  <p><strong>💡 코드 해석</strong>: 과거의 승패 비율(2:1)로 상금을 나누면 도로시가 53.3만 원을 받게 되지만, 미래 기대 가치(75%:25% = 3:1)로 계산하면 도로시가 60만 원, 토토가 20만 원을 받게 되어 수학적으로 완벽하게 공정한 분배가 이루어집니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02105-실전-예제">02.10.5 실전 예제</h2>
+
+<h3 id="21051-문제-1-상금-분배-계산">2.10.5.1 문제 1 (상금 분배 계산)</h3>
+
+<blockquote>
+  <p>A와 B가 3승을 먼저 거두면 우승하는 대결을 펼치던 중, A가 2승 0패로 앞선 상황에서 경기가 중단되었습니다. 총 상금 80만 원을 각자의 미래 우승 확률에 따라 공정하게 배분하시오.</p>
 
   <p><strong>풀이</strong>:</p>
-  <ul>
-    <li>B가 우승하려면 앞으로 남은 3번의 경기에서 연속으로 3번을 다 이겨야 합니다:
-<em>P</em>(B) = 1/2 × 1/2 × 1/2 = 1/8</li>
+  <ol>
+    <li>B가 최종 우승하려면 앞으로 남은 3경기를 모두 연속으로 이겨야 합니다:
+\(P(B) = \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8}\ (12.5\%)\)</li>
     <li>A가 우승할 확률은 그 여사건입니다:
-<em>P</em>(A) = 1 - 1/8 = 7/8</li>
-    <li>A와 B의 우승 확률의 비는 7 : 1 이므로 상금을 나눕니다:
+\(P(A) = 1 - P(B) = 1 - \frac{1}{8} = \frac{7}{8}\ (87.5\%)\)</li>
+    <li>우승 확률의 비가 7 : 1 이므로 상금을 배분합니다:
       <ul>
-        <li>A의 상금: 80만 원 × 7/8 = 70만 원</li>
-        <li>B의 상금: 80만 원 × 1/8 = 10만 원</li>
+        <li>A의 상금 = $800,000 \times \frac{7}{8} = 700,000$원</li>
+        <li>B의 상금 = $800,000 \times \frac{1}{8} = 100,000$원</li>
       </ul>
     </li>
-  </ul>
+  </ol>
 
   <p><strong>정답</strong>: A 70만 원, B 10만 원</p>
 </blockquote>
 
 <hr />
 
-<h2 id="02105-핵심-요약">02.10.5 핵심 요약</h2>
+<h3 id="21052-문제-2-확률의-덧셈정리와-배반사건">2.10.5.2 문제 2 (확률의 덧셈정리와 배반사건)</h3>
+
+<blockquote>
+  <p>1부터 50까지 적힌 50장의 카드 중 무작위로 1장을 뽑을 때, 3의 배수 또는 5의 배수가 나올 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>전체 카드 수 $n(S) = 50$</li>
+    <li>사건 <em>A</em> (3의 배수): 3, 6, …, 48 ➔ 16개 ($P(A) = 16/50$)</li>
+    <li>사건 <em>B</em> (5의 배수): 5, 10, …, 50 ➔ 10개 ($P(B) = 10/50$)</li>
+    <li>교집합 $A \cap B$ (15의 배수): 15, 30, 45 ➔ 3개 ($P(A \cap B) = 3/50$)</li>
+    <li>확률의 덧셈정리를 적용합니다:
+\(P(A \cup B) = P(A) + P(B) - P(A \cap B) = \frac{16}{50} + \frac{10}{50} - \frac{3}{50} = \frac{23}{50} = 0.46\ (46\%)\)</li>
+  </ol>
+
+  <p><strong>정답</strong>: 23 / 50 (46%)</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02106-핵심-요약">02.10.6 핵심 요약</h2>
+
+<p><img src="./img/dorothy_prob_history_summary.png" alt="확률의 역사와 덧셈정리 핵심 요약" />
+<strong>그림 02-10-4</strong> 상금 분배 문제에서 비롯된 기대 가치 계산법과 조합 기반 확률 산출, 덧셈정리의 이중 계산 방지 원리를 완벽하게 마스터한 도로시와 지니, 토토</p>
 
 <ol>
-  <li><strong>상금 분배 문제</strong>는 중단 시점의 점수 비율이 아닌 ‘미래에 우승하게 될 기대 가치(확률)’를 계산해 그 비율대로 상금을 나누어 공정성을 확립한다.</li>
-  <li>합사건의 확률을 구할 때 두 사건이 동시에 발생할 여지가 있다면 중복 셈을 배제하기 위해 교집합 확률을 차감하는 <strong>확률의 덧셈정리</strong>를 적용한다.</li>
-  <li>동시에 일어날 수 없는 <strong>배반사건</strong>은 교집합 확률이 0이므로 각각의 확률을 더해 빠르게 합산 확률을 낸다.</li>
+  <li><strong>상금 분배 문제의 교훈</strong>: 중단된 게임의 보상은 과거 점수가 아니라 <strong>미래에 발생할 우승 확률(기대 가치)</strong>에 비례하여 나누어야 공정하다.</li>
+  <li><strong>조합(<sub><em>n</em></sub><em>C</em><sub><em>r</em></sub>) 확률</strong>: 순서가 없는 다중 추출 문제는 분모(전체 조합 수)와 분자(사건 조합 수)를 각각 조합 공식으로 세어 확률을 구한다.</li>
+  <li><strong>확률의 덧셈정리</strong>: 합사건 확률 계산 시 교집합 확률을 반드시 빼주어($P(A \cup B) = P(A) + P(B) - P(A \cap B)$) 중복 계산을 배제한다.</li>
+  <li><strong>여사건의 활용</strong>: ‘적어도 하나’ 조건이 포함된 문제는 여사건 공식($P(A^c) = 1 - P(A)$)을 활용하여 빠르게 역산한다.</li>
 </ol>
 
 

@@ -587,128 +587,314 @@
 
 <p>“지니! 에이전트가 겪은 모든 수천 번의 보상 데이터를 저장해 두고 매번 평균을 다시 구하려면, 데이터 개수만큼 컴퓨터의 메모리 저장 공간이 계속 낭비되잖아. 혹시 과거 데이터를 하나도 저장하지 않고도 실시간으로 똑똑하게 평균을 구하는 방법은 없을까?”</p>
 
-<p>도로시가 책상 위에 수없이 쌓인 과거 데이터를 가리키며 한숨을 폭 쉬었습니다. 토토는 그 옆에서 꼬리를 살랑살랑 흔들며 지니를 쳐다보았습니다. 지니가 돋보기를 고쳐 쓰고는 요술봉으로 조그마한 주문 카드를 꺼내 보였습니다.</p>
+<p><img src="./img/dorothy_average_worry.png" alt="메모리 부족 경고와 쏟아지는 보상 데이터" />
+<strong>그림 02-7-1</strong> 끊임없이 쏟아지는 수천 번의 보상 데이터 때문에 메모리가 가득 차(Memory Full!) 어쩔 줄 몰라 하는 도로시와 걱정하는 토토, 그리고 마법을 준비하는 지니</p>
+
+<p>도로시가 갈색 단발머리를 쓸어 넘기며 책상 위에 수없이 쌓인 과거 데이터 장부들을 보고 한숨을 폭 쉬었습니다.</p>
+
+<p>토토는 그 옆에서 꼬리를 살랑살랑 흔들며 지니를 쳐다보았습니다.</p>
+
+<p>지니가 영리한 눈빛으로 돋보기를 고쳐 쓰고는 보랏빛 털을 털며 공중에 푸른 마법 연기와 함께 조그마한 주문 카드를 꺼내 보였습니다.</p>
+
+<p><img src="./img/dorothy_incremental_average.png" alt="단순 평균과 증분 평균 비교" />
+<strong>그림 02-7-2</strong> 모든 데이터 장부를 갖고 있어야 하는 단순 표본 평균 방식과 최소한의 요약 정보(이전 평균, 횟수, 신규 데이터) 카드로 빠르게 실시간 평균을 구하는 증분 평균 방식의 비교</p>
 
 <p>“도로시! 아주 훌륭한 통찰이야. 컴퓨터의 메모리를 거의 쓰지 않으면서도 완벽한 평균을 낼 수 있는 비장의 무기가 바로 <strong>증분 평균 공식(Incremental Mean Formula)</strong>이란다. 이전 평균값과 이번에 얻은 신규 데이터, 그리고 누적 횟수 딱 3가지만 있으면 새로운 평균을 즉시 뽑아낼 수 있어!”</p>
 
-<p><img src="./img/dorothy_jiny_incremental_average_ko.jpg" alt="단순 평균과 증분 평균 비교" />
-<strong>그림 02-7-1</strong> 모든 데이터 장부를 갖고 있어야 하는 단순 표본 평균 방식과 최소한의 요약 정보(이전 평균, 횟수, 신규 데이터) 카드로 빠르게 실시간 평균을 구하는 증분 평균 방식의 비교</p>
-
 <p>“와! 진짜 모든 과거 데이터를 다 찢어버려도 카드에 적힌 공식 하나면 평균이 바로 갱신되네!”</p>
 
-<p>도로시가 기뻐하며 물었습니다.</p>
+<p>도로시가 신기한 듯 수첩을 펼쳐 들며 반짝이는 눈으로 물었습니다.</p>
 
 <p>“어떻게 이런 기적 같은 공식이 유도되는지 칠판의 유도 과정을 차근차근 살펴보자꾸나.”</p>
 
+<p>지니가 요술봉을 흔들자 칠판 위로 마법처럼 공식과 유도 전개식이 환하게 떠올랐습니다.</p>
+
+<p><img src="./img/dorothy_derivation_blackboard.png" alt="지니가 칠판에 그려주는 증분 평균 공식" />
+<strong>그림 02-7-3</strong> 지니가 요술봉을 휘두르자 칠판 위에 마법의 빛으로 환하게 떠오르는 증분 평균 공식(Incremental Mean Formula)을 초롱초롱한 눈으로 필기하는 도로시와 구경하는 토토</p>
+
 <hr />
 
-<h3 id="1-학습-목표">1. 학습 목표</h3>
+<h3 id="2711-학습-목표">2.7.1.1 학습 목표</h3>
+
 <ul>
   <li>모든 과거 데이터를 누적 저장하여 평균을 구하는 방식(단순 표본 평균)의 메모리 및 연산 성능 한계를 이해한다.</li>
-  <li>증분 평균 공식 <em>Q</em><sub><em>n</em></sub> = <em>Q</em><sub><em>n</em>-1</sub> + (1 / <em>n</em>)(<em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n</em>-1</sub>)이 도출되는 대수적 유도 과정을 이해하고 설명할 수 있다.</li>
+  <li>증분 평균 공식이 도출되는 대수적 유도 과정을 이해하고 단계별로 설명할 수 있다.</li>
   <li>강화학습 업데이트의 기둥인 <code class="language-plaintext highlighter-rouge">새 값 = 이전 값 + 학습률 × 오차(타깃 - 이전 값)</code>의 구조와 직관을 명확히 이해한다.</li>
 </ul>
 
 <hr />
 
-<h3 id="2-핵심-개념">2. 핵심 개념</h3>
+<h3 id="2712-평균이란-무엇이며-어떤-종류가-있을까">2.7.1.2 평균이란 무엇이며 어떤 종류가 있을까?</h3>
 
-<h4 id="1-단순-표본-평균-vs-증분-표본-평균">(1) 단순 표본 평균 vs 증분 표본 평균</h4>
-<ul>
-  <li><strong>단순 표본 평균 (Naive Mean)</strong>:
-<em>Q</em><sub><em>n</em></sub> = (<em>R</em><sub>1</sub> + <em>R</em><sub>2</sub> + … + <em>R</em><sub><em>n</em></sub>) / <em>n</em>
-    <ul>
-      <li><em>단점</em>: 모든 보상값 <em>R</em><sub><em>i</em></sub>를 리스트에 담아 기억해야 하며, 데이터가 쌓일수록 합산을 구하는 <code class="language-plaintext highlighter-rouge">sum()</code>의 연산량이 기하급수적으로 늘어납니다.</li>
-    </ul>
-  </li>
-  <li><strong>증분 표본 평균 (Incremental Mean)</strong>:
-<em>Q</em><sub><em>n</em></sub> = <em>Q</em><sub><em>n</em>-1</sub> + (1 / <em>n</em>) × (<em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n</em>-1</sub>)
-    <ul>
-      <li><em>장점</em>: 과거 보상 리스트를 즉시 폐기할 수 있으며, 이전 평균 <em>Q</em><sub><em>n</em>-1</sub>과 현재 횟수 <em>n</em>, 그리고 지금 얻은 보상 <em>R</em><sub><em>n</em></sub>만 있으면 단 한 번의 사칙연산으로 실시간 갱신이 완료됩니다.</li>
-    </ul>
-  </li>
-</ul>
+<p>“지니, 그런데 우리가 보통 ‘평균’이라고 부르는 것에도 여러 종류가 있어? 단순히 다 더해서 개수로 나누는 것 말고 또 다른 방법이 있는 거지?”</p>
+
+<p>도로시가 호기심 가득한 눈으로 수첩을 펴며 물었습니다.</p>
+
+<p><img src="./img/dorothy_average_curious.png" alt="평균의 종류에 대한 호기심" />
+<strong>그림 02-7-4</strong> 수첩과 연필을 들고 단순히 모든 데이터를 더해 나누는 방법 외에 어떤 종류의 평균이 더 있는지 궁금해하는 도로시와 의아해하는 토토, 그리고 대답을 준비하는 지니</p>
+
+<p>지니는 요술봉으로 허공에 커다란 천칭 저울과 모험 지도를 띄웠습니다.</p>
+
+<p>“그럼! 평균이란 여러 데이터를 대표하는 ‘가운데 중심점’을 찾는 마법인데, 상황과 목적에 따라 계산 방식이 다양하단다. 크게 네 가지가 대표적이지.”</p>
+
+<p><img src="./img/dorothy_average_types.png" alt="평균의 종류와 직관적 이해" />
+<strong>그림 02-7-5</strong> 동일한 비중을 다루는 산술 평균, 중요도를 다르게 저울질하는 가중 평균, 최근 발자국 일부만 관찰하는 이동 평균의 차이를 공부하는 도로시와 지니, 토토</p>
 
 <hr />
 
-<h4 id="2-증분-공식의-유도-과정-derivation">(2) 증분 공식의 유도 과정 (Derivation)</h4>
-<p>이 공식은 우리가 앞서 배운 대입법과 치환, 분배법칙을 결합하여 매끄럽게 유도해낼 수 있습니다.</p>
+<h4 id="1-단순-산술-평균-simple-arithmetic-mean">1. 단순 산술 평균 (Simple Arithmetic Mean)</h4>
+
+<p>모든 데이터의 가치나 비중을 동일하게(1/<em>n</em>) 보고 전부 더해 전체 개수로 나누는 가장 보편적인 평균 계산법입니다. 예를 들어 학교에서 시험 과목들의 평균 점수를 낼 때 사용합니다.</p>
+
+\[\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i = \frac{x_1 + x_2 + \dots + x_n}{n}\]
+
+<p><img src="./img/dorothy_arithmetic_mean.png" alt="단순 산술 평균과 똑같이 나누기" />
+<strong>그림 02-7-6</strong> 4개의 동일한 사과를 4개의 접시에 똑같이 1/4씩 나누어 담아 모든 데이터에 동등한 비중(1/n)을 부여하는 단순 산술 평균의 원리</p>
+
+<hr />
+
+<h4 id="2-가중-평균-weighted-mean">2. 가중 평균 (Weighted Mean)</h4>
+
+<p>데이터마다 <strong>중요도</strong>(가중치 <em>w</em><sub><em>i</em></sub>)를 다르게 부여하여 평균을 구하는 방법입니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>예를 들어 3학점짜리 수학 과목은 1학점짜리 교양 과목보다 전체 학점 평균에 3배 큰 영향(가중치)을 미칩니다. 강화학습에서 에이전트가 행동을 고를 때 정책 확률 <em>π</em>(<em>a</em></td>
+      <td><em>s</em>)를 가중치로 곱해 기댓값을 구하는 과정도 대표적인 가중 평균입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+\[\bar{x}_w = \frac{\sum_{i=1}^{n} w_i x_i}{\sum_{i=1}^{n} w_i}\]
+
+<p>만약 모든 가중치의 합이 1(Σ <em>w</em><sub><em>i</em></sub> = 1)로 정규화되어 있다면 식은 더욱 간단해집니다.</p>
+
+\[\bar{x}_w = \sum_{i=1}^{n} w_i x_i = w_1 x_1 + w_2 x_2 + \dots + w_n x_n\]
+
+<p><img src="./img/dorothy_weighted_mean.png" alt="가중 평균과 저울질" />
+<strong>그림 02-7-7</strong> 3배의 중요도를 가진 다이아몬드와 일반 조약돌들을 저울에 올려놓고 중요도(가중치)에 따라 중심을 맞추는 가중 평균의 원리</p>
+
+<hr />
+
+<h4 id="3-이동-평균-moving-average">3. 이동 평균 (Moving Average)</h4>
+
+<p>끝없이 쏟아지는 시계열 흐름 데이터 속에서, 전체가 아닌 <strong>최근 일정 구간</strong>(<em>k</em>개의 최신 창문)의 데이터만을 골라내어 실시간으로 창을 이동시키며 구하는 평균입니다.</p>
+
+<p>주식 시장의 5일/20일 이동평균선이나 실시간 센서 신호의 잡음을 걸러낼 때 널리 쓰입니다.
+\(\text{SMA}_t = \frac{1}{k} \sum_{i=0}^{k-1} x_{t-i} = \frac{x_t + x_{t-1} + \dots + x_{t-k+1}}{k}\)</p>
+
+<p><img src="./img/dorothy_moving_average.png" alt="이동 평균과 이동 창문" />
+<strong>그림 02-7-8</strong> 지나간 오래된 발자국들은 버리고 최근 <em>k</em>=3개의 최신 발자국만을 투명 창문(Moving Window)에 담아 평균을 추적하는 이동 평균의 원리</p>
+
+<hr />
+
+<h4 id="4-지수-이동-평균-exponential-moving-average-ema">4. 지수 이동 평균 (Exponential Moving Average, EMA)</h4>
+
+<p>가장 <strong>최신의 데이터에는 가장 높은 가중치</strong>를 부여하고, 과거 데이터로 거슬러 올라갈수록 영향력을 지수함수적으로 점차 줄여나가는 평균 방식입니다.</p>
+
+<p>바로 직전의 평균값과 최신 데이터를 버무려 가볍게 갱신할 수 있어 강화학습의 <strong>재귀적 가치 갱신(TD 학습, Q-learning)</strong>의 수학적 모태가 됩니다.</p>
+
+\[\text{EMA}_t = \alpha x_t + (1 - \alpha) \text{EMA}_{t-1}\]
+
+<p>여기서 <em>α</em>(0 &lt; <em>α</em> ≤ 1)는 최신 정보를 얼마나 적극적으로 반영할지 결정하는 평활 계수(학습률)입니다.</p>
+
+<p><img src="./img/dorothy_exponential_decay.png" alt="지수 이동 평균과 지수적 감쇠" />
+<strong>그림 02-7-9</strong> 가장 최근 데이터(별)는 크고 밝은 가중치(α)를 받고, 오래된 과거로 갈수록 혜성의 꼬리처럼 기하급수적으로 영향력((1-α), (1-α)²)이 줄어드는 지수 이동 평균의 원리</p>
+
+<hr />
+
+<h3 id="2713-단순-표본-평균-vs-증분-표본-평균">2.7.1.3 단순 표본 평균 vs 증분 표본 평균</h3>
+
+<h4 id="1-단순-표본-평균-naive-mean">1. 단순 표본 평균 (Naive Mean)</h4>
+
+<p>매 시점마다 모든 보상값 <em>R</em><sub><em>i</em></sub>를 메모리에 고스란히 담아 기억해 두었다가, 총합을 구하여 데이터의 수 <em>n</em>으로 나누는 고전적인 방식입니다.</p>
+
+\[Q_n = \frac{R_1 + R_2 + \dots + R_n}{n}\]
+
+<p><img src="./img/dorothy_naive_sample_mean.png" alt="단순 표본 평균과 메모리 부담" />
+<strong>그림 02-7-10</strong> 과거의 모든 보상 기록 데이터(R₁, R₂, …, Rₙ)를 상자에 무겁게 쌓아두고 매번 합산을 계산해야 하는 단순 표본 평균 방식의 메모리 부담</p>
+
+<blockquote>
+  <p><strong>⚠️ 한계점</strong>: 데이터가 쌓일수록 합산을 구하는 <code class="language-plaintext highlighter-rouge">sum()</code> 연산의 연산 복잡도가 늘어나고, 컴퓨터 메모리가 누적 보상 데이터로 가득 차 과부하가 걸리게 됩니다.</p>
+</blockquote>
+
+<hr />
+
+<h4 id="2-증분-표본-평균-incremental-mean">2. 증분 표본 평균 (Incremental Mean)</h4>
+
+<p>과거의 개별 보상 리스트를 즉시 지워버리고, 오직 바로 <strong>직전의 평균값 <em>Q</em><sub><em>n</em>-1</sub></strong>과 이번에 획득한 보상 <em>R</em><sub><em>n</em></sub>, 그리고 현재의 누적 횟수 <em>n</em>만을 사용하여 평균을 갱신하는 실시간 평균 공식입니다.</p>
+
+\[Q_n = Q_{n-1} + \frac{1}{n} (R_n - Q_{n-1})\]
+
+<p><img src="./img/dorothy_incremental_sample_mean.png" alt="증분 표본 평균과 카드 한 장 갱신" />
+<strong>그림 02-7-11</strong> 과거의 모든 장부를 보관할 필요 없이 단 한 장의 마법 카드로 새로운 보상(Rₙ)이 들어올 때마다 실시간으로 평균을 즉시 갱신하는 증분 표본 평균 방식</p>
+
+<blockquote>
+  <p><strong>💡 장점</strong>: 과거의 개별 보상 기록들을 보관해 둘 필요가 전혀 없어 메모리 소모가 거의 제로에 수렴하며, 단 한 번의 사칙연산으로 실시간 업데이트가 끝납니다.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="2714-증분-공식의-유도-과정-derivation">2.7.1.4 증분 공식의 유도 과정 (Derivation)</h3>
+
+<p>지니가 가리키는 칠판에는 도로시가 학교에서 배웠던 치환과 분배법칙을 활용한 논리적인 식 전개 과정이 빛나고 있었습니다.</p>
 
 <ol>
-  <li><em>n</em> - 1번째 시점의 표본 평균 정의:
-<em>Q</em><sub><em>n</em>-1</sub> = (<em>R</em><sub>1</sub> + … + <em>R</em><sub><em>n</em>-1</sub>) / (<em>n</em> - 1)</li>
-  <li>분자의 합 부분만 남기고 양변에 <em>n</em> - 1을 곱해 형태를 변형시킵니다:
-<em>R</em><sub>1</sub> + … + <em>R</em><sub><em>n</em>-1</sub> = (<em>n</em> - 1) × <em>Q</em><sub><em>n</em>-1</sub></li>
-  <li><em>n</em>번째 시점의 표본 평균 정의식 분자에 위 식을 치환하여 대입합니다:
-<em>Q</em><sub><em>n</em></sub> = (<em>R</em><sub>1</sub> + … + <em>R</em><sub><em>n</em>-1</sub> + <em>R</em><sub><em>n</em></sub>) / <em>n</em>
-<em>Q</em><sub><em>n</em></sub> = [ (<em>n</em> - 1) × <em>Q</em><sub><em>n</em>-1</sub> + <em>R</em><sub><em>n</em></sub> ] / <em>n</em>
-<em>Q</em><sub><em>n</em></sub> = [ <em>n</em> × <em>Q</em><sub><em>n</em>-1</sub> - <em>Q</em><sub><em>n</em>-1</sub> + <em>R</em><sub><em>n</em></sub> ] / <em>n</em>
-<em>Q</em><sub><em>n</em></sub> = <em>Q</em><sub><em>n</em>-1</sub> + (1 / <em>n</em>) × (<em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n</em>-1</sub>) (분배하여 정리 완료!)</li>
+  <li><em>n</em> - 1번째 시점까지의 표본 평균 정의식에서 출발합니다.</li>
 </ol>
 
-<p>“와! 중학교 때 배운 분해와 대입법만으로 복잡했던 평균 수식이 저렇게 효율적인 증분 식으로 유도되다니 신기해!”</p>
+\[Q_{n-1} = \frac{R_1 + R_2 + \dots + R_{n-1}}{n-1}\]
 
-<p>도로시가 노트를 받아적으며 감탄했습니다.</p>
+<ol>
+  <li>위 식의 양변에 <em>n</em> - 1을 곱해 분자(보상들의 합) 부분만 남겨둡니다.</li>
+</ol>
+
+\[(n-1) Q_{n-1} = R_1 + R_2 + \dots + R_{n-1}\]
+
+<ol>
+  <li>이제 <em>n</em>번째 시점의 표본 평균 정의식에 위의 합산 덩어리를 통째로 대입합니다.</li>
+</ol>
+
+\[Q_n = \frac{(R_1 + R_2 + \dots + R_{n-1}) + R_n}{n}\]
+
+\[Q_n = \frac{(n-1) Q_{n-1} + R_n}{n}\]
+
+<ol>
+  <li>분자를 분배법칙을 이용해 괄호를 풀어 정리합니다.</li>
+</ol>
+
+\[Q_n = \frac{n Q_{n-1} - Q_{n-1} + R_n}{n}\]
+
+<ol>
+  <li>식을 분수별로 쪼개어 단순화하면 최종 증분 공식이 깔끔하게 완성됩니다.</li>
+</ol>
+
+\[Q_n = \frac{n Q_{n-1}}{n} + \frac{R_n - Q_{n-1}}{n}\]
+
+\[Q_n = Q_{n-1} + \frac{1}{n} (R_n - Q_{n-1})\]
+
+<p>“와! 중학교 때 배웠던 치환과 분배 법칙만으로 이렇게 효율적인 증분 평균 수식이 유도되다니 마법 같아!”</p>
+
+<p>도로시가 징검다리를 하나하나 건너듯 유도 단계를 이해하고 수첩에 꼼꼼히 받아적었습니다.</p>
+
+<p><img src="./img/dorothy_derivation_stepping_stones.png" alt="증분 공식 5단계 유도 징검다리" />
+<strong>그림 02-7-12</strong> 5단계의 대수적 치환과 분배법칙을 징검다리 건너듯 차근차근 밟아 증분 평균 공식을 유도해 내는 도로시와 지니, 토토</p>
 
 <hr />
 
-<h4 id="3-공식의-물리적-의미와-재귀적-업데이트-temporal-difference-구조">(3) 공식의 물리적 의미와 재귀적 업데이트 (Temporal Difference 구조)</h4>
-<p>지니는 칠판에 적힌 공식을 가리키며 그 직관적인 물리 법칙을 도로시에게 가르쳐 주었습니다.</p>
+<h3 id="2715-공식의-물리적-의미와-재귀적-업데이트">2.7.1.5 공식의 물리적 의미와 재귀적 업데이트</h3>
 
-<p><em>Q</em><sub><em>n</em></sub> = <em>Q</em><sub><em>n</em>-1</sub> + <em>StepSize</em> × [ <em>Target</em> - <em>Q</em><sub><em>n</em>-1</sub> ]</p>
+<p>지니는 도로시에게 이 공식이 단순한 평균 계산을 넘어 강화학습의 학습(Learning) 메커니즘 그 자체를 담고 있다고 설명했습니다.</p>
 
-<ul>
-  <li><strong>타깃 (<em>Target</em>, <em>R</em><sub><em>n</em></sub>)</strong>: 이번 시행에서 에이전트가 도달하고자 했던 실제 목표 결과값입니다.</li>
-  <li><strong>예측 오차 (<em>Error</em>, <em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n</em>-1</sub>)</strong>: 실제 일어난 일(보상)과 에이전트의 예전 예측값(<em>Q</em><sub><em>n</em>-1</sub>)의 격차(오차)입니다.</li>
-  <li><strong>학습률 (<em>StepSize</em>, 1 / <em>n</em> 또는 <em>α</em>)</strong>: 이 오차를 나의 기존 지식에 얼마나 강하게 피드백하여 수정할 것인지 결정하는 비율입니다.</li>
-</ul>
+\[Q_n = Q_{n-1} + \alpha (R_n - Q_{n-1})\]
 
-<p>“도로시, 이 수식의 진짜 의미는 다음과 같단다.”</p>
+<p>여기서 1 / <em>n</em>을 시간 흐름에 따라 변화하는 가중치 혹은 고정된 값인 학습률 <em>α</em>로 바꾸어 작성하면, 강화학습의 핵심 골격인 <strong>시간차(Temporal Difference) 업데이트 수식</strong>이 완성됩니다.</p>
+
+\[Q_n = Q_{n-1} + \text{StepSize} \times [ \text{Target} - Q_{n-1} ]\]
+
+<blockquote>
+  <p><strong>💡 수식 기호 해설:</strong></p>
+
+  <ul>
+    <li><strong>타깃 (Target, <em>R</em><sub><em>n</em></sub>)</strong>: 이번 단계에서 에이전트가 마주한 실제 환경의 보상이나 최종 목표치입니다.</li>
+    <li><strong>예측 오차 (Error, <em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n</em>-1</sub>)</strong>: 실제 발생한 사건(타깃)과 기존에 가지고 있던 내 생각(이전 예측) 간의 격차입니다.</li>
+    <li><strong>학습률 (StepSize, <em>α</em>)</strong>: 이 오차 정보를 받아들여 내 생각의 나침반을 얼마나 강하게 꺾을지 결정하는 피드백 다이얼의 크기입니다.</li>
+  </ul>
+</blockquote>
+
+<p>“도로시, 이 수식이 뜻하는 진짜 직관적인 의미는 다음과 같단다.”</p>
+
+<p>지니가 눈앞에 신비로운 학습률 다이얼을 띄워 돌려 보였습니다.</p>
 
 <blockquote>
   <p><strong>💡 직관적인 생각의 업데이트 규칙</strong>
-“에이전트의 새로운 생각은, <strong>[예전 생각]</strong>에다가 <strong>[내가 틀린 오차(진짜 보상 - 예전 예측)]</strong>의 일부(<strong>[학습률]</strong>)만큼을 버무려서 조금씩 보정해 나가는 과정이란다.”</p>
+“에이전트인 너의 새로운 생각(<em>Q</em><sub><em>n</em></sub>)은, <strong>[기존의 내 생각(<em>Q</em><sub><em>n</em>-1</sub>)]</strong>에다가 <strong>[내가 틀린 오차(진짜 보상 - 예전 예측)]</strong>의 일부(<strong>[학습률]</strong>)만큼을 곱해 보정하며 조금씩 다듬어 나가는 과정이란다.”</p>
 </blockquote>
 
-<p><img src="./img/dorothy_learning_rate_dial_ko.jpg" alt="학습률 다이얼" />
-<strong>그림 02-7-2</strong> 학습률(α) 다이얼을 돌려 새로운 오차 정보를 기존 생각에 얼마나 빠르고 강하게 피드백할 것인지 결정하는 갱신 원리</p>
+<p><img src="./img/dorothy_learning_rate_dial.png" alt="학습률 다이얼" />
+<strong>그림 02-7-13</strong> 학습률(α) 다이얼을 돌려 새로운 오차 정보를 기존 생각에 얼마나 빠르고 강하게 피드백할 것인지 결정하는 갱신 원리</p>
 
-<p>“아! 다이얼을 크게 돌리면 최신 정보 오차를 많이 반영해서 생각이 빠르게 변하고, 작게 돌리면 아주 조심스럽게 조금씩 수정하겠네!”</p>
+<p>“아! 다이얼을 높여서 크게 돌리면 최신 정보(오차)를 많이 반영해서 생각이 휙휙 빠르게 변하고, 낮게 설정하면 예전 예측을 고집하면서 아주 신중하게 보정하겠네!”</p>
 
-<p>도로시가 고개를 끄덕이자 토토도 동조하듯 다이얼을 앞발로 건드렸습니다.</p>
+<p>도로시가 고개를 끄덕이자 토토도 동조하듯 다이얼 근처를 앞발로 콕 짚었습니다.</p>
 
-<p><img src="./img/dorothy_jiny_recursive_update_ko.jpg" alt="재귀적 업데이트와 오차" />
-<strong>그림 02-7-3</strong> 수직선상에서 이전 가치 Q<sub>n-1</sub>이 예측 오차와 학습률을 곱한 크기만큼 타깃(R<sub>n</sub>) 방향으로 점진적으로 한 걸음씩 보정되는 갱신 메커니즘</p>
+<p><img src="./img/dorothy_recursive_update.png" alt="재귀적 업데이트와 오차" />
+<strong>그림 02-7-14</strong> 수직선상에서 이전 가치 Q<sub>n-1</sub>이 예측 오차와 학습률을 곱한 크기만큼 타깃(R<sub>n</sub>) 방향으로 점진적으로 한 걸음씩 보정되는 갱신 메커니즘</p>
 
-<p>“바로 그거야. 이 점진적 보정 개념이 강화학습의 시간차(Temporal Difference) 학습법의 핵심 토대란다.”</p>
+<p>“바로 그거야. 이 오차 방향으로 한 걸음씩 기존의 가치를 끌고 가는 방식이 강화학습 학습 알고리즘의 위대한 출발점이란다.”</p>
+
+<p>지니가 부드러운 목소리로 덧붙였습니다.</p>
+
+<hr />
+
+<h3 id="2716-파이썬으로-구현하는-실시간-평균-계산기">2.7.1.6 파이썬으로 구현하는 실시간 평균 계산기</h3>
+
+<p>지니가 수첩 뒤에 마법의 파이썬 코드 카드를 한 장 꽂아 주었습니다.</p>
+
+<p>이 코드는 단순 표본 평균과 증분 표본 평균이 연산 과정에서 메모리를 다루는 실제 차이를 잘 보여줍니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 단순 표본 평균(Naive)과 증분 표본 평균(Incremental) 방식 비교 시뮬레이션
+</span><span class="n">rewards</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]</span>
+
+<span class="c1"># 1. Naive 표본 평균 방식 (과거 모든 값을 보관해야 함)
+</span><span class="n">naive_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">naive_averages</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">naive_sum</span> <span class="o">+=</span> <span class="n">r</span>
+    <span class="n">q_n</span> <span class="o">=</span> <span class="n">naive_sum</span> <span class="o">/</span> <span class="n">n</span>  <span class="c1"># 모든 합을 매번 횟수 n으로 나눔
+</span>    <span class="n">naive_averages</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">q_n</span><span class="p">)</span>
+
+<span class="c1"># 2. Incremental 표본 평균 방식 (과거 리스트 폐기 가능)
+</span><span class="n">q_incremental</span> <span class="o">=</span> <span class="mf">0.0</span>  <span class="c1"># 이전 평균 Q_{n-1} (초기화 0.0)
+</span><span class="n">incremental_averages</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># 이전 평균 q_incremental and n, 신규 데이터 r만으로 즉시 계산
+</span>    <span class="n">q_incremental</span> <span class="o">=</span> <span class="n">q_incremental</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">r</span> <span class="o">-</span> <span class="n">q_incremental</span><span class="p">)</span>
+    <span class="n">incremental_averages</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">q_incremental</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Naive Averages       :</span><span class="sh">"</span><span class="p">,</span> <span class="n">naive_averages</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Incremental Averages :</span><span class="sh">"</span><span class="p">,</span> <span class="n">incremental_averages</span><span class="p">)</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>💻 실행 결과:</strong></p>
+  <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Naive Averages       : [1.0, 1.5, 2.3333333333333335, 2.5, 3.0]
+Incremental Averages : [1.0, 1.5, 2.3333333333333335, 2.5, 3.0]
+</code></pre></div>  </div>
+  <p>두 결과는 소수점 아래까지 완벽히 일치하지만, <strong>증분 표본 평균</strong>은 이전의 평균값 하나만 기억하고 있으면 되기 때문에 데이터 크기가 무제한으로 증가하더라도 리스트를 계속 키울 필요가 없습니다.</p>
+</blockquote>
 
 <hr />
 
 <h2 id="0272-실전-예제">02.7.2 실전 예제</h2>
 
-<h3 id="문제-1-증분-공식-계산">문제 1 (증분 공식 계산)</h3>
+<h3 id="2721-문제-1-증분-공식-계산">2.7.2.1 문제 1 (증분 공식 계산)</h3>
+
 <blockquote>
   <p>이전까지 계산된 코인의 표본 평균값 <em>Q</em><sub>4</sub> = 3.5 이었습니다. 5번째 기계를 플레이하여 획득한 보상 <em>R</em><sub>5</sub> = 6.0 일 때, 메모리를 절약하는 증분 평균 공식을 사용하여 새로운 표본 평균 <em>Q</em><sub>5</sub>를 계산하시오.</p>
 
   <p><strong>풀이</strong>:
-증분 표본 평균 공식을 적용합니다:</p>
-  <ul>
-    <li><em>Q</em><sub>5</sub> = <em>Q</em><sub>4</sub> + (1 / 5) × (<em>R</em><sub>5</sub> - <em>Q</em><sub>4</sub>)</li>
-  </ul>
+증분 표본 평균 공식을 적용합니다.</p>
 
-  <p>주어진 값들을 대입합니다:</p>
-  <ul>
-    <li><em>Q</em><sub>5</sub> = 3.5 + 0.2 × (6.0 - 3.5)</li>
-    <li><em>Q</em><sub>5</sub> = 3.5 + 0.2 × 2.5</li>
-    <li><em>Q</em><sub>5</sub> = 3.5 + 0.5 = 4.0</li>
-  </ul>
+\[Q_5 = Q_4 + \frac{1}{5} (R_5 - Q_4)\]
 
-  <p><strong>정답</strong>: 4.0</p>
+  <p>주어진 값들을 대입합니다.</p>
+
+\[Q_5 = 3.5 + 0.2 \times (6.0 - 3.5)\]
+
+\[Q_5 = 3.5 + 0.2 \times 2.5\]
+
+  <p>\(Q_5 = 3.5 + 0.5 = 4.0\)
+<strong>정답</strong>: 4.0</p>
 </blockquote>
 
 <hr />
 
 <h2 id="0273-핵심-요약">02.7.3 핵심 요약</h2>
+
+<p><img src="./img/dorothy_incremental_summary.png" alt="증분 평균과 재귀적 업데이트 핵심 정리" />
+<strong>그림 02-7-15</strong> 과거 데이터를 모두 기억하지 않고도 이전 지식과 새로운 오차 정보만으로 생각을 점진적으로 발전시키는 증분 평균과 재귀적 업데이트 단원의 핵심 정리</p>
 
 <ol>
   <li><strong>단순 평균</strong> 방식은 과거 모든 데이터를 저장해야 하므로 연산량과 메모리가 폭발하지만, <strong>증분 평균</strong> 방식은 최신 데이터와 이전 평균만을 사용하므로 고도로 효율적이다.</li>
