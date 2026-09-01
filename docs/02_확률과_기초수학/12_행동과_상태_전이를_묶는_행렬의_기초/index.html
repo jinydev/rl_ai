@@ -599,20 +599,27 @@
 <h3 id="21211-행렬과-벡터의-구조">2.12.1.1 행렬과 벡터의 구조</h3>
 
 <ul>
-  <li><strong>행렬(Matrix)</strong>: 수나 문자를 직사각형 모양으로 배열하여 괄호(대괄호)로 묶은 것입니다.
+  <li><strong>행렬(Matrix)</strong>: 수나 문자를 직사각형 모양으로 배열하여 대괄호(<code class="language-plaintext highlighter-rouge">[ ]</code>)로 묶은 표 형태의 수학적 상자입니다.
     <ul>
       <li><strong>행(Row, 가로줄)</strong>: 행렬의 가로 방향 줄</li>
       <li><strong>열(Column, 세로줄)</strong>: 행렬의 세로 방향 줄</li>
       <li><em>M</em>개의 행과 <em>N</em>개의 열을 가진 행렬을 <strong><em>M × N</em> 행렬</strong>이라 부릅니다.</li>
     </ul>
   </li>
-  <li><strong>벡터(Vector)</strong>: 단 한 줄로만 이루어진 특수한 행렬입니다.
+  <li><strong>벡터(Vector)</strong>: 단 한 줄(가로 또는 세로)로만 이루어진 특수한 형태의 1차원 행렬입니다.
     <ul>
-      <li><strong>행 벡터(Row Vector)</strong>: 가로로 1줄만 있는 $1 \times N$ 벡터 (예: 현재 상태 확률 분포)</li>
-      <li><strong>열 벡터(Column Vector)</strong>: 세로로 1줄만 있는 $M \times 1$ 벡터</li>
+      <li><strong>행 벡터(Row Vector)</strong>: 가로로 1줄만 있는 1 × <em>N</em> 크기의 벡터 (예: 강화학습의 현재 상태 확률 분포)</li>
+      <li><strong>열 벡터(Column Vector)</strong>: 세로로 1줄만 있는 <em>M</em> × 1 크기의 벡터</li>
     </ul>
   </li>
 </ul>
+
+<p><img src="./img/dorothy_matrix_vector_structure.png" alt="행렬과 벡터의 구조" />
+<strong>그림 02-12-2</strong> 가로 행(Row)과 세로 열(Column)로 구성된 행렬(Matrix)과 1줄짜리 행 벡터(1 × N), 열 벡터(M × 1)의 구조를 설명하는 지니와 도로시, 토토</p>
+
+<p>“아하! 가로 방향이 ‘행(Row)’이고 세로 방향이 ‘열(Column)’이구나! 현재 상태 확률 분포는 가로로 긴 ‘행 벡터’로 나타내면 딱 맞네!”</p>
+
+<p>도로시가 바둑판 칸을 짚으며 즐겁게 말했습니다.</p>
 
 <hr />
 
@@ -621,12 +628,12 @@
 <p>행렬 곱셈은 앞 벡터(또는 행렬)의 <strong>가로줄(행)</strong> 성분들과 뒤 행렬의 <strong>세로줄(열)</strong> 성분들을 순서대로 짝지어 곱한 뒤, 그 결과들을 모두 더하여 합산(내적)하는 규칙을 따릅니다.</p>
 
 <p><img src="./img/dorothy_matrix_multiplication_rule.png" alt="행렬과 벡터의 곱셈 규칙" />
-<strong>그림 02-12-2</strong> 행 벡터의 가로 행 성분과 전이 행렬의 세로 열 성분을 차례대로 짝지어 곱한 뒤 모두 더해주는 행렬-벡터 곱셈의 연산 메커니즘</p>
+<strong>그림 02-12-3</strong> 행 벡터의 가로 행 성분과 전이 행렬의 세로 열 성분을 차례대로 짝지어 곱한 뒤 모두 더해주는 행렬-벡터 곱셈의 연산 메커니즘</p>
 
 \[\mathbf{x} \mathbf{P} = \begin{bmatrix} a &amp; b \end{bmatrix} \begin{bmatrix} e &amp; f \\ g &amp; h \end{bmatrix} = \begin{bmatrix} (a \times e + b \times g) &amp; (a \times f + b \times h) \end{bmatrix}\]
 
 <ul>
-  <li><strong>곱셈의 성립 조건</strong>: 앞 행렬의 <strong>열 개수</strong>와 뒤 행렬의 <strong>행 개수</strong>가 반드시 일치해야 합니다. ($1 \times 2$ 벡터 $\times$ $2 \times 2$ 행렬 ➔ $1 \times 2$ 결과 벡터)</li>
+  <li><strong>곱셈의 성립 조건</strong>: 앞 행렬의 <strong>열 개수</strong>와 뒤 행렬의 <strong>행 개수</strong>가 반드시 일치해야 합니다. (1 × 2 벡터 × 2 × 2 행렬 ➔ 1 × 2 결과 벡터)</li>
 </ul>
 
 <hr />
@@ -639,7 +646,7 @@
 <p>어느 마법 마을의 날씨 상태가 <strong>[맑음, 비]</strong> 2가지만 존재한다고 가정합니다.</p>
 
 <ol>
-  <li><strong>상태 전이 확률 행렬 $\mathbf{P}$</strong>:
+  <li><strong>상태 전이 확률 행렬 P</strong>:
 \(\mathbf{P} = \begin{bmatrix} 0.7 &amp; 0.3 \\ 0.4 &amp; 0.6 \end{bmatrix}\)
     <ul>
       <li>1행: 오늘 맑음일 때 ➔ 내일 맑을 확률 0.7, 내일 비 올 확률 0.3</li>
@@ -647,18 +654,18 @@
       <li><strong>중요 성질</strong>: 각 행의 원소들의 합은 항상 <strong>1.0(100%)</strong>입니다.</li>
     </ul>
   </li>
-  <li><strong>오늘의 날씨 확률분포 벡터 $\mathbf{x}_0$</strong>:
+  <li><strong>오늘의 날씨 확률분포 벡터 x₀</strong>:
 \(\mathbf{x}_0 = \begin{bmatrix} 0.6 &amp; 0.4 \end{bmatrix} \quad (\text{오늘 맑을 확률 } 60\%, \text{비 올 확률 } 40\%)\)</li>
 </ol>
 
 <p><img src="./img/dorothy_markov_weather_transition.png" alt="마르코프 체인 날씨 상태 전이" />
-<strong>그림 02-12-3</strong> 오늘의 확률분포 벡터(x₀)와 전이 확률 행렬(P)을 단 한 번 곱하여 내일의 날씨 확률분포(맑음 58%, 비 42%)를 도출하는 마르코프 체인 연산</p>
+<strong>그림 02-12-4</strong> 오늘의 확률분포 벡터(<strong>x</strong>₀)와 전이 확률 행렬(<strong>P</strong>)을 단 한 번 곱하여 내일의 날씨 확률분포(맑음 58%, 비 42%)를 도출하는 마르코프 체인 연산</p>
 
 <hr />
 
 <h3 id="21232-1단계-및-다단계-상태-전이-계산">2.12.3.2 1단계 및 다단계 상태 전이 계산</h3>
 
-<p>내일 날씨의 확률분포 $\mathbf{x}_1$은 행렬 곱셈 한 번으로 가뿐히 계산됩니다.</p>
+<p>내일 날씨의 확률분포 <strong>x</strong>₁은 행렬 곱셈 한 번으로 가뿐히 계산됩니다.</p>
 
 \[\mathbf{x}_1 = \mathbf{x}_0 \mathbf{P} = \begin{bmatrix} 0.6 &amp; 0.4 \end{bmatrix} \begin{bmatrix} 0.7 &amp; 0.3 \\ 0.4 &amp; 0.6 \end{bmatrix}\]
 
@@ -667,10 +674,13 @@
 \(0.6 \times 0.7 + 0.4 \times 0.4 = 0.42 + 0.16 = \mathbf{0.58}\ (58\%)\)</li>
   <li><strong>내일 비 올 확률 (2번째 원소)</strong>:
 \(0.6 \times 0.3 + 0.4 \times 0.6 = 0.18 + 0.24 = \mathbf{0.42}\ (42\%)\)</li>
-  <li><strong>내일 날씨 벡터</strong>: $\mathbf{x}_1 = \begin{bmatrix} 0.58 &amp; 0.42 \end{bmatrix}$</li>
+  <li><strong>내일 날씨 벡터</strong>: <strong>x</strong>₁ = [0.58, 0.42]</li>
 </ul>
 
-<p>“와! 모레 날씨 $\mathbf{x}_2$를 구하고 싶으면 $\mathbf{x}_1 \mathbf{P} = \mathbf{x}_0 \mathbf{P}^2$로 행렬만 거듭제곱하면 되네! 수많은 단계의 미래 상태도 행렬의 거듭제곱으로 단숨에 풀리는구나!”</p>
+<p><img src="./img/dorothy_markov_multistep_transition.png" alt="다단계 상태 전이와 행렬 거듭제곱" />
+<strong>그림 02-12-5</strong> 내일(<strong>x</strong>₁ = <strong>x</strong>₀<strong>P</strong>), 모레(<strong>x</strong>₂ = <strong>x</strong>₀<strong>P</strong>²), 10일 후(<strong>x</strong>₁₀ = <strong>x</strong>₀<strong>P</strong>¹⁰)의 미래 확률분포를 행렬 거듭제곱으로 단숨에 계산하고 장기 정상 상태로 수렴하는 원리를 보여주는 지니와 도로시, 토토</p>
+
+<p>“와! 모레 날씨 <strong>x</strong>₂를 구하고 싶으면 <strong>x</strong>₁<strong>P</strong> = <strong>x</strong>₀<strong>P</strong>²로 행렬만 거듭제곱하면 되네! 수많은 단계의 미래 상태도 행렬의 거듭제곱으로 단숨에 풀리는구나!”</p>
 
 <p>도로시가 감탄하며 노트를 정리했습니다.</p>
 
@@ -679,6 +689,10 @@
 <h2 id="02124-파이썬-numpy로-구현하는-상태-전이-시뮬레이터">02.12.4 파이썬 NumPy로 구현하는 상태 전이 시뮬레이터</h2>
 
 <p>파이썬의 선형대수 표준 라이브러리인 <code class="language-plaintext highlighter-rouge">numpy</code>를 활용하여 상태 전이 행렬의 곱셈과 장기적 정상 상태(Stationary Distribution) 수렴을 확인합니다.</p>
+
+<ul>
+  <li><strong>예제 파일</strong>: <a href="markov_transition_matrix.py">markov_transition_matrix.py</a></li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
@@ -724,7 +738,7 @@
 </code></pre></div></div>
 
 <blockquote>
-  <p><strong>💡 코드 해석</strong>: 날이 지날수록 날씨 확률 분포는 초기 조건(맑음 60%)과 상관없이 시스템 고유의 고정점인 <strong>정상 상태 분포($\approx [0.5714, 0.4286]$)</strong>로 수렴합니다. 이는 강화학습에서 정책(Policy)이 수렴할 때의 장기 정상 상태 분석에 핵심적으로 활용됩니다.</p>
+  <p><strong>💡 코드 해석</strong>: 날이 지날수록 날씨 확률 분포는 초기 조건(맑음 60%)과 상관없이 시스템 고유의 고정점인 <strong>정상 상태 분포(≈ [0.5714, 0.4286])</strong>로 수렴합니다. 이는 강화학습에서 정책(Policy)이 수렴할 때의 장기 정상 상태 분석에 핵심적으로 활용됩니다.</p>
 </blockquote>
 
 <hr />
@@ -736,7 +750,8 @@
 <h3 id="21251-문제-1-22-행렬-벡터-곱셈-계산">2.12.5.1 문제 1 (2×2 행렬-벡터 곱셈 계산)</h3>
 
 <blockquote>
-  <p>현재 에이전트의 위치 확률분포 벡터 $\mathbf{x} = \begin{bmatrix} 0.5 &amp; 0.5 \end{bmatrix}$ 와 이동 전이 행렬 $\mathbf{P} = \begin{bmatrix} 0.8 &amp; 0.2 \ 0.3 &amp; 0.7 \end{bmatrix}$ 의 행렬 곱 $\mathbf{x} \mathbf{P}$를 계산하시오.</p>
+  <p>현재 에이전트의 위치 확률분포 벡터 <strong>x</strong> = [0.5, 0.5] 와 이동 전이 행렬 <strong>P</strong> = [[0.8, 0.2], [0.3, 0.7]] 의 행렬 곱 <strong>xP</strong>를 계산하시오:
+\(\mathbf{x} \mathbf{P} = \begin{bmatrix} 0.5 &amp; 0.5 \end{bmatrix} \begin{bmatrix} 0.8 &amp; 0.2 \\ 0.3 &amp; 0.7 \end{bmatrix}\)</p>
 
   <p><strong>풀이</strong>:
 가로 행 성분과 세로 열 성분의 내적을 전개합니다:</p>
@@ -747,7 +762,7 @@
 \(0.5 \times 0.2 + 0.5 \times 0.7 = 0.10 + 0.35 = \mathbf{0.45}\)</li>
   </ol>
 
-  <p><strong>정답</strong>: $\begin{bmatrix} 0.55 &amp; 0.45 \end{bmatrix}$</p>
+  <p><strong>정답</strong>: [0.55, 0.45]</p>
 </blockquote>
 
 <hr />
@@ -755,16 +770,16 @@
 <h3 id="21252-문제-2-2단계-후-상태-전이-확률-계산">2.12.5.2 문제 2 (2단계 후 상태 전이 확률 계산)</h3>
 
 <blockquote>
-  <p>문제 1의 시스템에서 2단계 후의 상태 확률분포 벡터 $\mathbf{x}_2$를 구하시오.</p>
+  <p>문제 1의 시스템에서 2단계 후의 상태 확률분포 벡터 <strong>x</strong>₂를 구하시오.</p>
 
   <p><strong>풀이</strong>:
-1단계 결과 벡터 $\mathbf{x}_1 = \begin{bmatrix} 0.55 &amp; 0.45 \end{bmatrix}$ 에 전이 행렬 $\mathbf{P}$를 한 번 더 곱합니다:</p>
+1단계 결과 벡터 <strong>x</strong>₁ = [0.55, 0.45] 에 전이 행렬 <strong>P</strong>를 한 번 더 곱합니다:</p>
   <ol>
     <li>1번째 원소:
 \(0.55 \times 0.8 + 0.45 \times 0.3 = 0.44 + 0.135 = \mathbf{0.575}\)</li>
     <li>2번째 원소:
 \(0.55 \times 0.2 + 0.45 \times 0.7 = 0.11 + 0.315 = \mathbf{0.425}\)
-<strong>정답</strong>: $\begin{bmatrix} 0.575 &amp; 0.425 \end{bmatrix}$</li>
+<strong>정답</strong>: [0.575, 0.425]</li>
   </ol>
 </blockquote>
 
@@ -773,12 +788,12 @@
 <h2 id="02126-핵심-요약">02.12.6 핵심 요약</h2>
 
 <p><img src="./img/dorothy_matrix_summary.png" alt="행렬과 상태 전이 핵심 요약" />
-<strong>그림 02-12-4</strong> 행렬의 가로 행과 세로 열 구조, 가로×세로 행렬 곱셈 연산법, 마르코프 체인의 상태 전이 방정식 $\mathbf{x}_1 = \mathbf{x}_0 \mathbf{P}$를 완벽히 마스터한 도로시와 지니, 토토</p>
+<strong>그림 02-12-6</strong> 행렬의 가로 행과 세로 열 구조, 가로×세로 행렬 곱셈 연산법, 마르코프 체인의 상태 전이 방정식 <strong>x</strong>₁ = <strong>x</strong>₀<strong>P</strong>를 완벽히 마스터한 도로시와 지니, 토토</p>
 
 <ol>
   <li><strong>행렬과 벡터</strong>: 행렬은 수치를 가로(행)와 세로(열)로 배열한 직사각형 상자이며, 상태 확률 분포는 1줄짜리 <strong>행 벡터</strong>로 표현한다.</li>
   <li><strong>행렬 곱셈 규칙</strong>: 앞 행렬의 <strong>가로(행)</strong> 성분과 뒤 행렬의 <strong>세로(열)</strong> 성분을 순서대로 곱해 모두 더해주는 내적 방식을 따른다.</li>
-  <li><strong>상태 전이 방정식</strong>: 현재 확률분포 $\mathbf{x}_0$에 전이 확률 행렬 $\mathbf{P}$를 곱하면 다음 상태의 확률분포 <strong>$\mathbf{x}_1 = \mathbf{x}_0 \mathbf{P}$</strong>가 단 한 줄로 도출된다.</li>
+  <li><strong>상태 전이 방정식</strong>: 현재 확률분포 <strong>x</strong>₀에 전이 확률 행렬 <strong>P</strong>를 곱하면 다음 상태의 확률분포 <strong>x</strong>₁ = <strong>x</strong>₀<strong>P</strong>가 단 한 줄로 도출된다.</li>
   <li><strong>강화학습과의 연계</strong>: 수많은 복잡한 상태 전이와 보상 구조를 선형대수의 행렬 연산으로 추상화하여 대규모 환경에서도 고속 벡터 연산을 가능하게 한다.</li>
 </ol>
 
