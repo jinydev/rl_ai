@@ -587,10 +587,14 @@
 
 <p>“지니! 안개가 자욱하게 낀 어두운 숲(전쟁 안개, Fog of War)을 지나가고 있는데, 수풀 저편에서 ‘바스락’거리는 소리가 들렸어! 이 소리가 났을 때 진짜 몬스터를 마주치게 될 확률은 얼마나 돼? 아무 소리도 안 들렸을 때보다 몬스터를 만날 확률이 더 높아진 거지?”</p>
 
-<p>도로시가 나무 지팡이를 짚은 채 두려움과 호기심이 섞인 눈빛으로 귀를 기울였습니다. 토토도 귀를 쫑긋 세우고 바스락거리는 수풀을 경계했습니다.</p>
+<p>도로시가 나무 지팡이를 짚은 채 두려움과 호기심이 섞인 눈빛으로 귀를 기울였습니다.</p>
+
+<p>토토도 귀를 쫑긋 세우고 바스락거리는 수풀을 경계했습니다.</p>
 
 <p><img src="./img/dorothy_conditional_fog.png" alt="안개 속 단서와 조건부 확률" />
 <strong>그림 02-11-1</strong> 안개 낀 숲에서 ‘바스락’ 소리 단서(조건)를 감지했을 때 몬스터가 존재할 사후 확률을 고민하는 도로시와 토토</p>
+
+<hr />
 
 <p>지니가 요술봉을 휘두르며 허공에 마법 칠판을 띄웠습니다.</p>
 
@@ -601,7 +605,7 @@
 
 <hr />
 
-<h3 id="21111-조건부-확률의-수학적-정의와-공식">2.11.1.1 조건부 확률의 수학적 정의와 공식</h3>
+<h3 id="21111-조건부-확률의-수학적-정의와-기호-해설">2.11.1.1 조건부 확률의 수학적 정의와 기호 해설</h3>
 
 <table>
   <tbody>
@@ -615,17 +619,32 @@
 \[P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{n(A \cap B)}{n(A)} \quad (\text{단, } P(A) &gt; 0)\]
 
 <ul>
-  <li><strong>수식의 의미</strong>:
-    <ol>
-      <li>분모 $P(A)$: 조건 사건 <em>A</em>가 발생하여 새로운 전체 표본공간의 기준이 됩니다.</li>
-      <li>분자 $P(A \cap B)$: 조건 <em>A</em>를 만족하는 영역 안에서 사건 <em>B</em>도 동시에 일어나는 교집합 영역의 크기입니다.</li>
-    </ol>
+  <li><strong>기호와 수식의 직관적 해설</strong>:
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>**_P(B</td>
+              <td>A)_ (조건부 확률)<em>*: “사건 *A</em>가 주어졌을 때(Given <em>A</em>), 사건 <em>B</em>가 일어날 확률”을 의미합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><strong>수직선 막대 | (Given, 조건)</strong>: 수직선 <code class="language-plaintext highlighter-rouge">|</code>의 오른쪽에 적힌 사건 <em>A</em>가 <strong>‘이미 일어난 전제 조건’</strong>임을 뜻합니다.</li>
+      <li><strong>분모 <em>P(A)</em> 또는 <em>n(A)</em> (새로운 기준)</strong>: 조건 사건 <em>A</em>가 일어남으로써, 전체 세상(표본공간 <em>S</em>) 대신 <strong>사건 <em>A</em>의 영역 전체가 새로운 전체 기준(분모)</strong>으로 축소됩니다.</li>
+      <li><strong>분자 <em>P(A ∩ B)</em> 또는 <em>n(A ∩ B)</em> (교집합 영역)</strong>: 새로운 기준인 <em>A</em> 영역 중에서 우리가 관심 있는 목표 사건 <em>B</em>도 함께 겹쳐서 일어나는 <strong>교집합 영역의 크기</strong>입니다.</li>
+      <li><strong>단, <em>P(A)</em> &gt; 0</strong>: 조건 자체가 절대로 일어날 수 없는 사건(확률 0)이면 나눌 수 없으므로(분모는 0이 될 수 없음), 전제 조건의 확률은 항상 0보다 커야 합니다.</li>
+    </ul>
   </li>
 </ul>
 
-<p>“아! ‘소리가 났다’는 영역으로 전체 공간이 좁혀지니까, 그 소리 구역 안에서 진짜 몬스터가 숨어 있는 교집합 비율만 계산하면 되는구나!”</p>
+<p><img src="./img/dorothy_conditional_symbols_breakdown.png" alt="조건부 확률 공식과 기호 해설" />
+<strong>그림 02-11-3</strong> 조건부 확률 공식 <em>P(B|A)</em>의 각 기호(수직선 |, 분모 P(A), 분자 P(A ∩ B))가 의미하는 구조와 역할을 상세히 설명하는 지니와 도로시, 토토</p>
 
-<p>도로시가 고개를 끄덕였습니다.</p>
+<p>“아! 수직선 <code class="language-plaintext highlighter-rouge">|</code> 오른쪽의 <em>A</em>가 ‘새로운 기준(분모)’이 되고, 그 안에서 <em>B</em>와 겹치는 교집합이 ‘분자’가 되는 거구나! 기호의 위치만 봐도 공식이 머릿속에 쏙 들어와!”</p>
+
+<p>도로시가 손뼉을 치며 환하게 웃었습니다.</p>
 
 <hr />
 
@@ -633,23 +652,73 @@
 
 <h3 id="21121-독립사건-independent-events">2.11.2.1 독립사건 (Independent Events)</h3>
 
-<p>한 사건 <em>A</em>가 일어났다는 사실이 다른 사건 <em>B</em>가 일어날 확률에 아무런 영향을 주지 않는 관계를 뜻합니다.</p>
-
-\[P(B|A) = P(B) \iff P(A \cap B) = P(A) \times P(B)\]
+<p>한 사건 <em>A</em>가 일어났다는 사실이 다른 사건 <em>B</em>가 일어날 확률에 아무런 영향을 주지 않는 관계를 <strong>독립사건(Independent Events)</strong>이라 부릅니다.</p>
 
 <ul>
-  <li><strong>대표 예시 (복원추출)</strong>: 주머니에서 공을 하나 꺼내 색깔을 확인한 뒤 <strong>다시 집어넣고</strong> 두 번째 공을 뽑을 때, 첫 번째 시행과 두 번째 시행은 완벽히 독립입니다.</li>
+  <li><strong>수학적 정의와 판별식</strong>:
+    <ul>
+      <li>조건부 확률 정의에 따라, 사건 <em>A</em>가 발생했다는 조건이 붙더라도 사건 <em>B</em>의 확률이 본래 확률과 완전히 동일합니다:
+\(P(B|A) = P(B)\)</li>
+      <li>이를 조건부 확률 공식과 결합하면, 두 사건이 동시에 일어날 교집합 확률은 <strong>두 확률의 단순 곱</strong>으로 표현됩니다:
+\(P(A \cap B) = P(A) \times P(B)\)</li>
+    </ul>
+  </li>
+  <li><strong>대표 예시 (동전 던지기와 복원추출)</strong>:
+    <ul>
+      <li><strong>동전 2번 던지기</strong>: 첫 번째 던지기에서 앞면(<em>A</em>)이 나왔다고 해서 두 번째 던지기에서 앞면(<em>B</em>)이 나올 확률(1/2)이 변하지 않습니다.</li>
+      <li><strong>주머니 복원추출</strong>: 주머니에서 공을 하나 꺼내 색깔을 확인한 뒤 <strong>다시 집어넣고</strong> 두 번째 공을 뽑으면, 주머니 안의 공 개수와 색상 비율이 처음 상태 그대로 유지되므로 두 시행은 완벽히 독립입니다.</li>
+    </ul>
+  </li>
 </ul>
+
+<p><img src="./img/dorothy_independent_events_concept.png" alt="독립사건의 개념과 판별식" />
+<strong>그림 02-11-4</strong> 사건 A의 발생 여부가 사건 B의 확률에 영향을 주지 않는 독립사건의 정의(P(B|A) = P(B))와 동전 던지기 복원추출 예시를 설명하는 지니와 도로시, 토토</p>
+
+<p>“아하! 첫 번째 동전에서 앞면이 나왔든 뒷면이 나왔든, 두 번째 동전에서 앞면이 나올 확률은 여전히 50%(1/2)인 것처럼 서로에게 전혀 <strong>간섭하지 않는 관계</strong>가 바로 ‘독립’이구나!”</p>
+
+<p>도로시가 고개를 끄덕였습니다.</p>
 
 <hr />
 
 <h3 id="21122-종속사건-dependent-events">2.11.2.2 종속사건 (Dependent Events)</h3>
 
-<p>한 사건의 발생 여부가 다른 사건의 확률에 직접적인 영향을 미치는 관계입니다.</p>
+<p>한 사건 <em>A</em>의 발생 여부가 다른 사건 <em>B</em>가 일어날 확률에 <strong>직접적인 영향을 미치는 관계</strong>를 <strong>종속사건(Dependent Events)</strong>이라 부릅니다.</p>
 
 <ul>
-  <li><strong>대표 예시 (비복원추출)</strong>: 주머니에서 공을 꺼낸 뒤 <strong>다시 넣지 않고</strong> 연이어 두 번째 공을 뽑을 때, 남은 공의 개수와 색상 비율이 변하므로 두 번째 사건은 첫 번째 사건에 종속됩니다.</li>
+  <li><strong>수학적 정의와 판별식</strong>:
+    <ul>
+      <li>사건 <em>A</em>가 일어났다는 조건이 주어지면, 사건 <em>B</em>의 확률이 본래 확률과 달라집니다:
+\(P(B|A) \neq P(B)\)</li>
+      <li>따라서 두 사건이 연속으로 일어날 교집합 확률은 두 번째 확률로 조건부 확률 <em>P(B|A)</em>를 곱해야 합니다 (확률의 곱셈정리):
+\(P(A \cap B) = P(A) \times P(B|A)\)</li>
+    </ul>
+  </li>
+  <li><strong>대표 예시 (비복원추출 - 구슬 주머니)</strong>:
+    <ul>
+      <li>주머니 속에 <strong>빨간 구슬 2개</strong>, <strong>파란 구슬 3개</strong>(총 5개)가 들어 있습니다.</li>
+      <li><strong>첫 번째 구슬 (사건 <em>A</em>)</strong>: 빨간 구슬을 뽑을 확률은 <em>P(A)</em> = 2/5 (40%)입니다.</li>
+      <li><strong>두 번째 구슬 (사건 <em>B</em>)</strong>: 뽑은 빨간 구슬을 <strong>다시 넣지 않고(비복원추출)</strong> 두 번째 구슬을 뽑으면, 주머니에 남은 구슬은 총 4개(빨강 1, 파랑 3)로 상태가 변합니다.</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>따라서 두 번째에도 빨간 구슬이 나올 조건부 확률은 *P(B</td>
+              <td>A)* = 1/4 (25%)로 뚝 떨어집니다. (*P(B</td>
+              <td>A)* ≠ <em>P(B)</em>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
 </ul>
+
+<p><img src="./img/dorothy_dependent_events_concept.png" alt="종속사건의 개념과 비복원추출" />
+<strong>그림 02-11-5</strong> 앞선 시행의 결과가 주머니 속 공의 구성(상태)을 변화시켜 다음 확률에 영향을 미치는 종속사건(P(B|A) ≠ P(B))의 비복원추출 원리를 설명하는 지니와 도로시, 토토</p>
+
+<p>“아하! 첫 번째에 빨간 구슬을 쏙 빼버리니까 주머니의 상태가 바뀌어서, 두 번째에 빨간 구슬이 나올 확률이 40%에서 25%로 줄어드는구나! 앞의 선택이 뒤의 확률을 바꾸는 관계가 바로 ‘종속’이네!”</p>
+
+<p>도로시가 손에 쥔 빨간 구슬을 보며 감탄했습니다.</p>
 
 <hr />
 
@@ -662,7 +731,7 @@
 <p>도로시가 활시위를 당기며 물었습니다. 토토는 과녁 옆에서 꼬리를 흔들며 응원했습니다.</p>
 
 <p><img src="./img/dorothy_independent_trials_archery.png" alt="독립시행의 정리" />
-<strong>그림 02-11-3</strong> 매회 사격 성공률(80%)이 일정한 독립시행 환경에서 5번의 시도 중 2번 성공할 조합과 확률을 계산하는 도로시와 지니, 토토</p>
+<strong>그림 02-11-6</strong> 매회 사격 성공률(80%)이 일정한 독립시행 환경에서 5번의 시도 중 2번 성공할 조합과 확률을 계산하는 도로시와 지니, 토토</p>
 
 <p>지니가 수식을 칠판에 적으며 설명했습니다.</p>
 
@@ -692,7 +761,7 @@
 </ol>
 
 <p><img src="./img/dorothy_monty_hall_doors.png" alt="몬티 홀 딜레마" />
-<strong>그림 02-11-4</strong> 몬티 홀 퀴즈 쇼 무대에서 사회자가 2번 문의 염소(꽝)를 공개했을 때, 선택을 3번 문으로 바꾸는 것이 승리 확률을 2/3(67%)로 2배 높여줌을 보여주는 시각화</p>
+<strong>그림 02-11-7</strong> 몬티 홀 퀴즈 쇼 무대에서 사회자가 2번 문의 염소(꽝)를 공개했을 때, 선택을 3번 문으로 바꾸는 것이 승리 확률을 2/3(67%)로 2배 높여줌을 보여주는 시각화</p>
 
 <p>“그냥 문이 2개 남았으니까 반반(50% : 50%) 아니야?”</p>
 
@@ -704,20 +773,44 @@
 
 <h3 id="21142-생일-패러독스-birthday-paradox">2.11.4.2 생일 패러독스 (Birthday Paradox)</h3>
 
-<p>한 반에 단 <strong>23명의 학생</strong>만 모여 있어도, 1년 365일 중 <strong>생일이 같은 학생이 적어도 한 쌍 이상 존재할 확률은 약 50.7%</strong>로 절반을 넘습니다. (30명이 모이면 무려 70.6%에 도달!)</p>
+<p>1년 365일 중, 한 방에 <strong>단 23명의 사람</strong>만 모여 있어도 <strong>생일이 같은 사람이 적어도 한 쌍 이상 존재할 확률은 약 50.7%</strong>로 절반을 훌쩍 넘습니다. (30명이 모이면 70.6%, 50명이 모이면 무려 97.0%에 도달!)</p>
+
+<p>직관적으로는 1년이 365일이나 되므로 23명 정도로는 생일이 겹치기 어려울 것 같지만, 실제로는 <strong>“비교할 수 있는 쌍(Pair)의 조합 수”</strong>가 폭발적으로 증가하기 때문입니다.</p>
 
 <ul>
-  <li><strong>여사건 증명 (모두 생일이 다를 확률)</strong>:
-\(P(\text{모두 다름}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \dots \times \frac{365 - 23 + 1}{365} \approx 0.4927\)</li>
+  <li><strong>비교 가능한 쌍의 조합 수</strong>:
+    <ul>
+      <li>23명 중에서 2명을 짝지어 생일을 비교할 수 있는 모든 쌍의 수는 조합(<sub>23</sub><em>C</em><sub>2</sub>)으로 계산됩니다:
+\(_{23}C_2 = \frac{23 \times 22}{2} = 253\text{쌍}\)</li>
+      <li>무려 <strong>253번이나 생일이 같은지 맞춰볼 기회</strong>가 생기므로 겹칠 확률이 급격히 치솟습니다.</li>
+    </ul>
+  </li>
+  <li><strong>여사건을 이용한 수학적 증명 (모두 생일이 다를 확률)</strong>:
+    <ul>
+      <li>23명의 생일이 모두 다를 확률은 비복원추출처럼 순차적으로 곱하여 구합니다:
+\(P(\text{모두 다름}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \dots \times \frac{365 - 23 + 1}{365} \approx 0.4927\ (49.27\%)\)</li>
+      <li>따라서 여사건 공식에 의해 <strong>적어도 한 쌍의 생일이 일치할 확률</strong>은:
+\(P(\text{적어도 한 쌍 일치}) = 1 - P(\text{모두 다름}) = 1 - 0.4927 = 0.5073\ (50.73\%)\)</li>
+    </ul>
+  </li>
 </ul>
 
-\[P(\text{적어도 한 쌍 일치}) = 1 - P(\text{모두 다름}) = 1 - 0.4927 = 0.5073\ (50.73\%)\]
+<p><img src="./img/dorothy_birthday_paradox_concept.png" alt="생일 패러독스" />
+<strong>그림 02-11-8</strong> 단 23명만 모여도 253개의 비교 쌍(₂₃C₂ = 253)이 생성되어 생일이 겹칠 확률이 50%를 초과하는 생일 패러독스의 원리를 설명하는 지니와 도로시, 토토</p>
+
+<p>“와! 1년 365일 중에서 나와 생일이 같은 특정 사람을 찾는 게 아니라, 23명 안에서 ‘아무나 둘이 겹치는 쌍’을 찾는 거니까 253쌍이나 비교할 수 있어서 확률이 50%를 훌쩍 넘는 거였구나!”</p>
+
+<p>도로시가 고깔모자를 쓰고 손뼉을 치며 신기해했습니다. 토토도 꼬리를 흔들었습니다.</p>
 
 <hr />
 
 <h2 id="02115-파이썬으로-구현하는-몬티-홀--독립시행-시뮬레이터">02.11.5 파이썬으로 구현하는 몬티 홀 &amp; 독립시행 시뮬레이터</h2>
 
 <p>파이썬의 <code class="language-plaintext highlighter-rouge">random</code> 모듈로 몬티 홀 게임을 100,000번 시뮬레이션하여 선택을 바꾸는 전략의 우수성을 검증합니다.</p>
+
+<ul>
+  <li><strong>예제 파일</strong>: <a href="monty_hall_and_binomial.py">monty_hall_and_binomial.py</a></li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">random</span>
 <span class="kn">import</span> <span class="n">math</span>
@@ -774,6 +867,8 @@
 
 <h2 id="02116-실전-예제">02.11.6 실전 예제</h2>
 
+<p>학습한 내용을 바탕으로 다음 문제를 직접 해결해 봅시다.</p>
+
 <h3 id="21161-문제-1-비복원추출-조건부-확률과-곱셈정리">2.11.6.1 문제 1 (비복원추출 조건부 확률과 곱셈정리)</h3>
 
 <blockquote>
@@ -786,10 +881,9 @@
     <li>첫 번째 빨간 구슬이 빠져나간 후 남은 4개(빨강 1, 파랑 3) 중 두 번째에 빨간 구슬을 꺼낼 조건부 확률은:
 \(P(B|A) = \frac{1}{4}\)</li>
     <li>확률의 곱셈정리에 따라 두 사건이 연속으로 발생할 확률은:
-\(P(A \cap B) = P(A) \times P(B|A) = \frac{2}{5} \times \frac{1}{4} = \frac{2}{20} = \frac{1}{10}\ (10\%)\)</li>
+\(P(A \cap B) = P(A) \times P(B|A) = \frac{2}{5} \times \frac{1}{4} = \frac{2}{20} = \frac{1}{10}\ (10\%)\)
+<strong>정답</strong>: 1 / 10 (10%)</li>
   </ol>
-
-  <p><strong>정답</strong>: 1 / 10 (10%)</p>
 </blockquote>
 
 <hr />
@@ -801,13 +895,12 @@
 
   <p><strong>풀이</strong>:</p>
   <ol>
-    <li>1회 시행 시 1의 눈이 나올 성공 확률 $p = 1/6$, 실패 확률 $1 - p = 5/6$</li>
-    <li>총 시행 횟수 $n = 4$, 성공 횟수 $r = 3$</li>
+    <li>1회 시행 시 1의 눈이 나올 성공 확률 <em>p</em> = 1/6, 실패 확률 1 - <em>p</em> = 5/6</li>
+    <li>총 시행 횟수 <em>n</em> = 4, 성공 횟수 <em>r</em> = 3</li>
     <li>독립시행 공식 적용:
-\(P(X = 3) = _4C_3 \times \left(\frac{1}{6}\right)^3 \times \left(\frac{5}{6}\right)^1 = 4 \times \frac{1}{216} \times \frac{5}{6} = \frac{20}{1296} = \frac{5}{324} \approx 0.01543\ (1.54\%)\)</li>
+\(P(X = 3) = _4C_3 \times \left(\frac{1}{6}\right)^3 \times \left(\frac{5}{6}\right)^1 = 4 \times \frac{1}{216} \times \frac{5}{6} = \frac{20}{1296} = \frac{5}{324} \approx 0.01543\ (1.54\%)\)
+<strong>정답</strong>: 5 / 324 (약 1.54%)</li>
   </ol>
-
-  <p><strong>정답</strong>: 5 / 324 (약 1.54%)</p>
 </blockquote>
 
 <hr />
@@ -815,21 +908,21 @@
 <h2 id="02117-핵심-요약">02.11.7 핵심 요약</h2>
 
 <p><img src="./img/dorothy_conditional_summary.png" alt="조건부 확률과 독립시행 핵심 요약" />
-<strong>그림 02-11-5</strong> 표본공간의 축소를 수반하는 조건부 확률과 독립시행 공식, 몬티 홀 딜레마와 생일 패러독스의 원리를 정복한 도로시와 지니, 토토</p>
+<strong>그림 02-11-9</strong> 표본공간의 축소를 수반하는 조건부 확률과 독립시행 공식, 몬티 홀 딜레마와 생일 패러독스의 원리를 정복한 도로시와 지니, 토토</p>
 
 <ol>
   <li>
     <table>
       <tbody>
         <tr>
-          <td>**조건부 확률($P(B</td>
-          <td>A)$)<em>*: 새로운 단서나 조건 *A</em>가 관측되면 전체 표본공간이 사건 <em>A</em>의 영역으로 축소되며, 그 안에서 교집합의 비율($\frac{P(A \cap B)}{P(A)}$)을 구한다.</td>
+          <td><em>*조건부 확률(</em>P(B</td>
+          <td>A)<em>)**: 새로운 단서나 조건 *A</em>가 관측되면 전체 표본공간이 사건 <em>A</em>의 영역으로 축소되며, 그 안에서 교집합의 비율(<em>P(A ∩ B) / P(A)</em>)을 구한다.</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>독립과 종속</strong>: 이전 사건이 다음 사건에 영향을 미치지 않으면 <strong>독립사건($P(A \cap B) = P(A)P(B)$)</strong>, 영향을 미치면 <strong>종속사건</strong>이다.</li>
-  <li><strong>독립시행의 정리</strong>: 매회 성공률 <em>p</em>가 일정한 독립 실험을 <em>n</em>번 반복하여 <em>r</em>번 성공할 확률은 <strong>$_nC_r p^r (1-p)^{n-r}$</strong>로 계산한다.</li>
+  <li><strong>독립과 종속</strong>: 이전 사건이 다음 사건에 영향을 미치지 않으면 <strong>독립사건(<em>P(A ∩ B) = P(A)P(B)</em>)</strong>, 영향을 미치면 <strong>종속사건</strong>이다.</li>
+  <li><strong>독립시행의 정리</strong>: 매회 성공률 <em>p</em>가 일정한 독립 실험을 <em>n</em>번 반복하여 <em>r</em>번 성공할 확률은 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> <em>p</em><sup><em>r</em></sup> (1-<em>p</em>)<sup><em>n-r</em></sup></strong>로 계산한다.</li>
   <li><strong>확률적 직관의 교정</strong>: 몬티 홀 딜레마(선택 변경 시 2/3 승률)와 생일 문제(23명만으로 50% 돌파)는 인간의 어림짐작을 깨뜨리는 정교한 수학적 통찰을 제공한다.</li>
 </ol>
 
