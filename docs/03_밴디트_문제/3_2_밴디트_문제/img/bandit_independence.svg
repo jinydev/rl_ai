@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { stroke-width: 2; rx: 8px; filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.03)); }
+      .box-first { fill: #e8f0fe; stroke: #1a73e8; }
+      .box-second { fill: #e6f4ea; stroke: #1e8e3e; }
+      .arrow { stroke: #ea4335; stroke-dasharray: 4; stroke-width: 2; fill: none; }
+      .text-title { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .text-body { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; fill: #3c4043; text-anchor: middle; }
+      .text-math { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: bold; fill: #ea4335; text-anchor: middle; }
+      .cross-line { stroke: #ea4335; stroke-width: 3; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Title -->
+  <text x="400" y="30" class="text-title" font-size="18">독립사건 (Independent Events) 이란?</text>
+
+  <!-- First Try Box -->
+  <rect x="80" y="55" width="220" height="120" class="box box-first" />
+  <text x="190" y="85" class="text-title" fill="#1a73e8">1번째 슬롯머신 플레이</text>
+  <text x="190" y="115" class="text-body">손잡이를 당겨서 돈을 잃음</text>
+  <text x="190" y="145" class="text-math" fill="#1a73e8">결과: 꽝 (보상 = 0)</text>
+
+  <!-- Second Try Box -->
+  <rect x="500" y="55" width="220" height="120" class="box box-second" />
+  <text x="610" y="85" class="text-title" fill="#1e8e3e">2번째 슬롯머신 플레이</text>
+  <text x="610" y="115" class="text-body">잭팟이 터질 확률은 여전히 동일</text>
+  <text x="610" y="145" class="text-math" fill="#1e8e3e">대박 확률 = 3% (그대로!)</text>
+
+  <!-- Connection Arrow with "No Influence" Cross -->
+  <g transform="translate(300, 0)">
+    <path d="M 40 115 L 160 115" class="arrow" />
+    <!-- Red X to show "No memory / No relation" -->
+    <line x1="85" y1="100" x2="115" y2="130" class="cross-line" />
+    <line x1="115" y1="100" x2="85" y2="130" class="cross-line" />
+    <text x="100" y="85" class="text-body" fill="#ea4335" font-weight="bold">서로 영향을 주지 않음</text>
+    <text x="100" y="150" class="text-body" fill="#5f6368" font-size="11">과거의 결과는 리셋!</text>
+  </g>
+</svg>

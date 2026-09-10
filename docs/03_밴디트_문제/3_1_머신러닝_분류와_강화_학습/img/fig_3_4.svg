@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .arrow { stroke: #5f6368; stroke-dasharray: 4; stroke-width: 2.5; fill: none; }
+      .arrow-solid { stroke: #1a73e8; stroke-width: 3; fill: none; }
+      .marker { fill: #5f6368; }
+      .marker-blue { fill: #1a73e8; }
+      .label-text { font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: bold; fill: #1a73e8; text-anchor: middle; }
+      .robot-footprint { fill: #5f6368; opacity: 0.85; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker-blue" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Left: Cute Vector Robot (Agent) -->
+  <g transform="translate(40, 15)">
+    <!-- Antenna -->
+    <line x1="120" y1="40" x2="120" y2="20" stroke="#1a73e8" stroke-width="2.5" />
+    <circle cx="120" cy="18" r="6" fill="#1a73e8" />
+    
+    <!-- Body -->
+    <rect x="70" y="40" width="100" height="95" rx="20" fill="#e8f0fe" stroke="#1a73e8" stroke-width="3" />
+    
+    <!-- Eyes -->
+    <circle cx="100" cy="75" r="14" fill="#ffffff" stroke="#1a73e8" stroke-width="2" />
+    <circle cx="103" cy="75" r="5" fill="#202124" />
+    
+    <circle cx="140" cy="75" r="14" fill="#ffffff" stroke="#1a73e8" stroke-width="2" />
+    <circle cx="143" cy="75" r="5" fill="#202124" />
+    
+    <!-- Mouth (Smile) -->
+    <path d="M 105,105 Q 120,115 135,105" fill="none" stroke="#1a73e8" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- Arms -->
+    <path d="M 70,80 Q 50,90 55,105" fill="none" stroke="#1a73e8" stroke-width="2.5" stroke-linecap="round" />
+    <path d="M 170,80 Q 190,90 185,105" fill="none" stroke="#1a73e8" stroke-width="2.5" stroke-linecap="round" />
+    
+    <!-- Legs -->
+    <rect x="90" y="135" width="16" height="20" rx="4" fill="#1a73e8" />
+    <rect x="134" y="135" width="16" height="20" rx="4" fill="#1a73e8" />
+  </g>
+
+  <!-- Right: Footprints Trail (Environment) -->
+  <g transform="translate(560, 50)">
+    <!-- Footprint 1 (Left foot) -->
+    <ellipse cx="40" cy="100" rx="10" ry="15" class="robot-footprint" transform="rotate(-15, 40, 100)" />
+    <ellipse cx="40" cy="118" rx="8" ry="10" class="robot-footprint" transform="rotate(-15, 40, 118)" />
+    
+    <!-- Footprint 2 (Right foot) -->
+    <ellipse cx="80" cy="70" rx="10" ry="15" class="robot-footprint" transform="rotate(15, 80, 70)" />
+    <ellipse cx="80" cy="88" rx="8" ry="10" class="robot-footprint" transform="rotate(15, 80, 88)" />
+    
+    <!-- Footprint 3 (Left foot) -->
+    <ellipse cx="120" cy="40" rx="10" ry="15" class="robot-footprint" transform="rotate(-15, 120, 40)" />
+    <ellipse cx="120" cy="58" rx="8" ry="10" class="robot-footprint" transform="rotate(-15, 120, 58)" />
+  </g>
+
+  <!-- Center Action Arrow (Agent to Env) -->
+  <path d="M 230 90 L 550 90" class="arrow-solid" marker-end="url(#arrowhead-blue)" />
+  <rect x="300" y="60" width="200" height="24" rx="4" fill="#ffffff" />
+  <text x="400" y="77" class="label-text">행동 (팔다리 움직임 조작)</text>
+
+  <!-- Center Feedback Arrow (Env to Agent) -->
+  <path d="M 550 130 L 230 130" class="arrow" marker-end="url(#arrowhead)" />
+  <rect x="290" y="142" width="220" height="24" rx="4" fill="#ffffff" />
+  <text x="400" y="159" class="label-text" fill="#b06000">보상 (전진한 거리) / 상태 (주위 환경)</text>
+</svg>

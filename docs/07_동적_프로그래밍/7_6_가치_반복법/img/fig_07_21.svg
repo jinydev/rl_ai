@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Cyan Arrow Marker -->
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#00bfff"/>
+    </marker>
+    <!-- Orange Arrow Marker -->
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ea580c"/>
+    </marker>
+  </defs>
+  <!-- Column Labels -->
+  <text x="80" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">〈개선〉</text>
+  <text x="270" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">〈평가〉</text>
+
+  <!-- Row 1 -->
+  <g transform="translate(20, 35)">
+    <!-- Left Grid -->
+    <rect x="0" y="0" width="30" height="30" fill="#fef3c7"/>
+    
+    <rect x="0" y="0" width="120" height="90" fill="none" stroke="#2d3748" stroke-width="1.2"/>
+    <line x1="30" y1="0" x2="30" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="60" y1="0" x2="60" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="90" y1="0" x2="90" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="30" x2="120" y2="30" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="60" x2="120" y2="60" stroke="#2d3748" stroke-width="0.8"/>
+    
+    <circle cx="15" cy="15" r="3.5" fill="#ea580c"/>
+
+    <!-- Right Arrow -->
+    <line x1="140" y1="45" x2="175" y2="45" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <!-- Right Grid -->
+    <g transform="translate(190, 0)">
+      
+    <rect x="0" y="0" width="120" height="90" fill="none" stroke="#2d3748" stroke-width="1.2"/>
+    <line x1="30" y1="0" x2="30" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="60" y1="0" x2="60" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="90" y1="0" x2="90" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="30" x2="120" y2="30" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="60" x2="120" y2="60" stroke="#2d3748" stroke-width="0.8"/>
+    
+      <circle cx="15" cy="15" r="3.5" fill="#00bfff"/>
+    </g>
+
+    <!-- Diagonal return arrow -->
+    <line x1="175" y1="105" x2="140" y2="135" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Row 2 -->
+  <g transform="translate(20, 185)">
+    <!-- Left Grid -->
+    <rect x="30" y="0" width="30" height="30" fill="#fef3c7"/>
+    
+    <rect x="0" y="0" width="120" height="90" fill="none" stroke="#2d3748" stroke-width="1.2"/>
+    <line x1="30" y1="0" x2="30" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="60" y1="0" x2="60" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="90" y1="0" x2="90" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="30" x2="120" y2="30" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="60" x2="120" y2="60" stroke="#2d3748" stroke-width="0.8"/>
+    
+    <circle cx="45" cy="15" r="3.5" fill="#ea580c"/>
+
+    <!-- Right Arrow -->
+    <line x1="140" y1="45" x2="175" y2="45" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+    <!-- Right Grid -->
+    <g transform="translate(190, 0)">
+      
+    <rect x="0" y="0" width="120" height="90" fill="none" stroke="#2d3748" stroke-width="1.2"/>
+    <line x1="30" y1="0" x2="30" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="60" y1="0" x2="60" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="90" y1="0" x2="90" y2="90" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="30" x2="120" y2="30" stroke="#2d3748" stroke-width="0.8"/>
+    <line x1="0" y1="60" x2="120" y2="60" stroke="#2d3748" stroke-width="0.8"/>
+    
+      <circle cx="45" cy="15" r="3.5" fill="#00bfff"/>
+    </g>
+
+    <!-- Diagonal return arrow -->
+    <line x1="175" y1="105" x2="140" y2="135" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Ellipsis -->
+  <circle cx="110" cy="335" r="2.5" fill="#2d3748"/>
+  <circle cx="120" cy="330" r="2.5" fill="#2d3748"/>
+  <circle cx="130" cy="325" r="2.5" fill="#2d3748"/>
+  <circle cx="140" cy="320" r="2.5" fill="#2d3748"/>
+</svg>

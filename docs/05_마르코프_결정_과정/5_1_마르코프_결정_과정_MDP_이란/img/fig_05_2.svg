@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 480" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Bomb Icon -->
+    <g id="bomb">
+      <circle cx="30" cy="35" r="16" fill="#31363f" stroke="#1d2228" stroke-width="2.5"/>
+      <circle cx="24" cy="29" r="4" fill="#ffffff" opacity="0.3"/>
+      <rect x="27" y="15" width="6" height="5" rx="1" fill="#495057" stroke="#1d2228" stroke-width="1.5"/>
+      <path d="M 30 15 Q 32 6 39 8" fill="none" stroke="#a0aec0" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 39 8 L 42 10 L 44 8 L 42 11 L 45 13 L 41 12 L 39 14 L 40 11 Z" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- 5-Cell Grid Frame -->
+    <g id="grid_5">
+      <rect x="0" y="0" width="300" height="60" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+      <line x1="60" y1="0" x2="60" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="120" y1="0" x2="120" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="180" y1="0" x2="180" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="240" y1="0" x2="240" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <!-- Apple on L1 (leftmost) -->
+      <use href="#apple" x="0" y="0"/>
+      <!-- Bomb on L5 (rightmost) -->
+      <use href="#bomb" x="240" y="0"/>
+    </g>
+  </defs>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+
+  <!-- Top State -->
+  <g transform="translate(230, 20)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="120" y="0"/>
+  </g>
+  
+  <!-- Diagonal Arrows -->
+  <line x1="310" y1="95" x2="190" y2="155" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="95" x2="570" y2="155" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="220" y="125" font-family="sans-serif" font-size="14" fill="#4a5568" text-anchor="middle">Left</text>
+  <text x="540" y="125" font-family="sans-serif" font-size="14" fill="#4a5568" text-anchor="middle">Right</text>
+
+  <!-- Mid Left State -->
+  <g transform="translate(60, 175)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="60" y="0"/>
+  </g>
+
+  <!-- Mid Right State -->
+  <g transform="translate(400, 175)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="180" y="0"/>
+  </g>
+
+  <!-- Down Arrows -->
+  <line x1="210" y1="250" x2="210" y2="310" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="550" y1="250" x2="550" y2="310" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Bottom Left State -->
+  <g transform="translate(60, 330)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="0" y="0"/>
+  </g>
+  <text x="90" y="315" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748">+1 (보상 획득)</text>
+
+  <!-- Bottom Right State -->
+  <g transform="translate(400, 330)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="240" y="0"/>
+  </g>
+  <text x="430" y="315" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748">-2 (보상 획득)</text>
+</svg>

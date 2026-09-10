@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 220" width="100%" height="100%">
+  <style>
+    .math-text {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 23px;
+      fill: #1a202c;
+      font-weight: 700;
+    }
+    .label-text {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      fill: #4a5568;
+      font-weight: 500;
+    }
+    .highlight-blue {
+      fill: #2b6cb0;
+    }
+    .highlight-red {
+      fill: #e53e3e;
+    }
+    
+    /* Animation Keyframes */
+    
+    /* Block 2 (Disappearing part) */
+    @keyframes fade-disappearing-block {
+      0%, 25% { opacity: 1; fill: #e53e3e; }
+      35%, 75% { opacity: 0; transform: translateY(-10px); }
+      85%, 100% { opacity: 1; fill: #e53e3e; }
+    }
+
+    /* Block 3 (Shifting part) */
+    @keyframes shift-block-left {
+      0%, 25% { transform: translateX(0px); }
+      35%, 75% { transform: translateX(-160px); }
+      85%, 100% { transform: translateX(0px); }
+    }
+    
+    /* Explanatory Labels */
+    @keyframes label-step1 {
+      0%, 5% { opacity: 0; }
+      10%, 25% { opacity: 1; }
+      30%, 100% { opacity: 0; }
+    }
+    
+    @keyframes label-step2 {
+      0%, 30% { opacity: 0; }
+      35%, 75% { opacity: 1; }
+      80%, 100% { opacity: 0; }
+    }
+
+    @keyframes label-step3 {
+      0%, 80% { opacity: 0; }
+      85%, 98% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes red-cross {
+      0%, 25% { opacity: 0; stroke-dashoffset: 60; }
+      28%, 75% { opacity: 1; stroke-dashoffset: 0; }
+      80%, 100% { opacity: 0; stroke-dashoffset: 60; }
+    }
+
+    /* Assigning Animations to classes */
+    .animated-disappearing {
+      animation: fade-disappearing-block 12s infinite ease-in-out;
+      transform-origin: 330px 75px;
+    }
+    .animated-shifting {
+      animation: shift-block-left 12s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .lbl-step1 { animation: label-step1 12s infinite ease-in-out; }
+    .lbl-step2 { animation: label-step2 12s infinite ease-in-out; }
+    .lbl-step3 { animation: label-step3 12s infinite ease-in-out; }
+    
+    .cross-line {
+      stroke: #e53e3e;
+      stroke-width: 3.5;
+      stroke-linecap: round;
+      stroke-dasharray: 60;
+      animation: red-cross 12s infinite ease-in-out;
+    }
+  </style>
+
+  <!-- Background container -->
+  <rect x="5" y="5" width="750" height="210" rx="12" ry="12" fill="#f8fafc" stroke="#cbd5e0" stroke-width="2"/>
+
+  <!-- BLOCK 1: Static left part of the math formula -->
+  <text x="30" y="80" class="math-text">
+    v<tspan dy="6" font-size="14">π</tspan><tspan dy="-6">(s) = </tspan><tspan class="highlight-blue">Σ<tspan dy="6" font-size="13">a</tspan><tspan dy="-6"> π(a|s)</tspan></tspan>
+  </text>
+
+  <!-- BLOCK 2: Disappearing summation and probability -->
+  <g class="animated-disappearing">
+    <!-- Summation s' -->
+    <text x="255" y="80" class="math-text highlight-red">Σ<tspan dy="6" font-size="13">s'</tspan></text>
+    <!-- Probability p(s'|s,a) -->
+    <text x="295" y="80" class="math-text highlight-red">p(s'|s,a)</text>
+    <!-- Red strike-out cross lines -->
+    <line x1="292" y1="83" x2="410" y2="60" class="cross-line" />
+    <line x1="292" y1="60" x2="410" y2="83" class="cross-line" />
+  </g>
+
+  <!-- BLOCK 3: Shifting brace and content group (Brace and text are in one element so they NEVER overlap) -->
+  <g class="animated-shifting">
+    <text x="415" y="80" class="math-text">
+      { r(s,a,s') + γ v<tspan dy="6" font-size="14">π</tspan><tspan dy="-6">(s') }</tspan>
+    </text>
+  </g>
+
+  <!-- Explanatory Label Boxes (Step-by-step description) -->
+  
+  <!-- Step 1: Identify that transition is deterministic -->
+  <g class="lbl-step1">
+    <rect x="30" y="130" width="700" height="60" rx="8" ry="8" fill="#ebf8ff" stroke="#bee3f8" stroke-width="1.5"/>
+    <text x="50" y="154" class="label-text" fill="#2b6cb0" font-weight="bold">1단계: 결정적 전이 규칙 대입</text>
+    <text x="50" y="176" class="label-text">상태 전이가 결정적이므로 s'=f(s,a)로 갈 확률 p(s'|s,a)는 1.0이 되고, 다른 곳은 모두 0이 됩니다.</text>
+  </g>
+
+  <!-- Step 2: Summation and probability disappear -->
+  <g class="lbl-step2">
+    <rect x="30" y="130" width="700" height="60" rx="8" ry="8" fill="#fff5f5" stroke="#fed7d7" stroke-width="1.5"/>
+    <text x="50" y="154" class="label-text highlight-red" font-weight="bold">2단계: 확률이 0인 항 소거 및 상태 합산 기호(Σ) 소멸</text>
+    <text x="50" y="176" class="label-text">확률이 0인 상태들은 합산에서 소거되어 사라지고, 100% 확률을 지닌 단 하나의 항만 남아 합산 기호가 사라집니다.</text>
+  </g>
+
+  <!-- Step 3: Loop resets to original -->
+  <g class="lbl-step3">
+    <rect x="30" y="130" width="700" height="60" rx="8" ry="8" fill="#f0fff4" stroke="#c6f6d5" stroke-width="1.5"/>
+    <text x="50" y="154" class="label-text" fill="#22543d" font-weight="bold">3단계: 간소화된 벨만 방정식 완성!</text>
+    <text x="50" y="176" class="label-text">상태 합산이 사라진 결과 [식 06.8]이 완성되어, 무한의 계산을 유한한 연립방정식으로 풀 수 있게 됩니다.</text>
+  </g>
+
+</svg>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 350" width="100%" height="100%">
+  <defs>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Left Side: pi -->
+  <g transform="translate(10, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <line x1="40" y1="200" x2="200" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Highlight Pill for 3 -->
+    <rect x="160" y="25" width="22" height="205" rx="11" ry="11" fill="#fef08a" fill-opacity="0.75"/>
+
+    <!-- Bars at 1, 2, 3 -->
+    <rect x="65" y="180" width="12" height="20" fill="#00bfff"/>
+    <rect x="115" y="180" width="12" height="20" fill="#00bfff"/>
+    <rect x="165" y="40" width="12" height="160" fill="#00bfff"/>
+
+    <line x1="40" y1="180" x2="175" y2="180" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+    <line x1="40" y1="40" x2="175" y2="40" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+
+    <!-- Y labels -->
+    <text x="30" y="185" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">0.1</text>
+    <text x="30" y="45" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">0.8</text>
+
+    <!-- X labels -->
+    <text x="71" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <text x="121" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">2</text>
+    <text x="171" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle" font-weight="bold">3</text>
+
+    <text x="110" y="15" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#2d3748" text-anchor="middle">π</text>
+  </g>
+
+  <!-- Right Side: b -->
+  <g transform="translate(240, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <line x1="40" y1="200" x2="200" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Highlight Pill for 3 -->
+    <rect x="160" y="118" width="22" height="112" rx="11" ry="11" fill="#fef08a" fill-opacity="0.75"/>
+
+    <!-- Bars at 1, 2, 3 -->
+    <rect x="65" y="133" width="12" height="67" fill="#00bfff"/>
+    <rect x="115" y="133" width="12" height="67" fill="#00bfff"/>
+    <rect x="165" y="133" width="12" height="67" fill="#00bfff"/>
+
+    <line x1="40" y1="133" x2="175" y2="133" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+
+    <!-- Y labels -->
+    <text x="30" y="130" font-family="Cambria Math, Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <line x1="20" y1="135" x2="35" y2="135" stroke="#2d3748" stroke-width="1.2"/>
+    <text x="30" y="150" font-family="Cambria Math, Georgia, serif" font-size="14" fill="#2d3748" text-anchor="middle">3</text>
+
+    <!-- X labels -->
+    <text x="71" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <text x="121" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">2</text>
+    <text x="171" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle" font-weight="bold">3</text>
+
+    <text x="110" y="15" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#2d3748" text-anchor="middle">b</text>
+  </g>
+
+  <!-- Formula block at the bottom -->
+  <g transform="translate(145, 270)">
+    <text x="10" y="25" font-family="Cambria Math, Georgia, serif" font-size="18" font-style="italic" fill="#2d3748">ρ =</text>
+    
+    <!-- First Fraction -->
+    <line x1="42" y1="18" x2="78" y2="18" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="60" y="11" font-family="Cambria Math, Georgia, serif" font-size="16" font-style="italic" fill="#2d3748" text-anchor="middle">π(x)</text>
+    <text x="60" y="34" font-family="Cambria Math, Georgia, serif" font-size="16" font-style="italic" fill="#2d3748" text-anchor="middle">b(x)</text>
+    
+    <text x="92" y="25" font-family="Cambria Math, Georgia, serif" font-size="18" fill="#2d3748">=</text>
+
+    <!-- Second Fraction -->
+    <line x1="110" y1="18" x2="140" y2="18" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="125" y="11" font-family="Georgia, serif" font-size="16" fill="#2d3748" text-anchor="middle">0.8</text>
+    <!-- 1/3 inside fraction -->
+    <text x="125" y="30" font-family="Cambria Math, Georgia, serif" font-size="12" fill="#2d3748" text-anchor="middle">1</text>
+    <line x1="118" y1="33" x2="132" y2="33" stroke="#2d3748" stroke-width="1"/>
+    <text x="125" y="44" font-family="Cambria Math, Georgia, serif" font-size="12" fill="#2d3748" text-anchor="middle">3</text>
+
+    <text x="152" y="25" font-family="Cambria Math, Georgia, serif" font-size="18" fill="#2d3748">=</text>
+    <text x="175" y="25" font-family="Georgia, serif" font-size="18" fill="#2d3748">2.4</text>
+  </g>
+
+  <!-- Dashed Curves connecting charts to formula -->
+  <!-- Left curve: from (181, 240) to (205, 270) -->
+  <path d="M 181 240 Q 181 280 200 280" fill="none" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+  <!-- Right curve: from (411, 240) to (205, 304) -->
+  <path d="M 411 240 Q 411 325 310 325 L 220 325 Q 205 325 205 308" fill="none" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+</svg>

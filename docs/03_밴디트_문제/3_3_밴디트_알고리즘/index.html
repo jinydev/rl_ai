@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>3.3 밴디트 알고리즘 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="3.3 밴디트 알고리즘" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/03_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C/3_3_%EB%B0%B4%EB%94%94%ED%8A%B8_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/03_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C/3_3_%EB%B0%B4%EB%94%94%ED%8A%B8_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="3.3 밴디트 알고리즘" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"3.3 밴디트 알고리즘","url":"https://rl.ai.jiny.dev/03_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C/3_3_%EB%B0%B4%EB%94%94%ED%8A%B8_%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">이론적 배경</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part2/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part3/">고급강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part4/">심화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">부록</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/part1/"
+            class="bd-links-link d-inline-block rounded ">
+            이론적 배경 개요
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            3강 밴디트 문제
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/03_밴디트_문제/3_1_머신러닝_분류와_강화_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.1 머신러닝 분류와 강화 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_2_밴디트_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.2 밴디트 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_3_밴디트_알고리즘/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.3 밴디트 알고리즘
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_4_밴디트_알고리즘_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.4 밴디트 알고리즘 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_5_비정상_문제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.5 비정상 문제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/03_밴디트_문제/3_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  3.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            4강 마르코프
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/04_마르코프/4_1_마르코프_인물소개/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.1 마르코프 인물소개와 마르코프 성질
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_2_마르코프_체인/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.2 마르코프 체인 (Markov Chain)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_3_마르코프_과정/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.3 마르코프 과정 (Markov Process)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_4_은닉_마르코프/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/04_마르코프/4_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  04.5 정리 (Summary)
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            5강 마르코프 결정 과정
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_1_마르코프_결정_과정_MDP_이란/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.1 마르코프 결정 과정(MDP)이란?
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_2_환경과_에이전트를_수식으로/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.2 환경과 에이전트를 수식으로
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_3_MDP의_목표/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.3 MDP의 목표
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_4_MDP_예제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.4 MDP 예제
+                </a>
+              </li>
+              
+              <li>
+                <a href="/05_마르코프_결정_과정/5_5_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  05.5 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-5"
+            aria-expanded="false">
+            6강 벨만 방정식
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-5">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/06_벨만_방정식/6_1_벨만_소개와_사전_학습/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.1 벨만 소개와 사전 학습
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_2_벨만_방정식_도출/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.2 벨만 방정식 도출
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_3_벨만_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.3 벨만 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_4_행동_가치_함수_Q_함수와_벨만_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.4 행동 가치 함수(Q 함수)와 벨만 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_5_벨만_최적_방정식/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.5 벨만 최적 방정식
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_6_벨만_최적_방정식의_예/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.6 벨만 최적 방정식의 예
+                </a>
+              </li>
+              
+              <li>
+                <a href="/06_벨만_방정식/6_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  06.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/03_%EB%B0%B4%EB%94%94%ED%8A%B8_%EB%AC%B8%EC%A0%9C/">03 밴디트 문제</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">3.3 밴디트 알고리즘</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="33-밴디트-알고리즘">3.3 밴디트 알고리즘</h1>
+
+<p>가장 우수한 결과를 내는 기계를 믿고 선택하는 <strong>활용(Exploitation)</strong>과, 더 나은 대박 기계가 숨어있을까 봐 새로운 행동을 도전해보는 <strong>탐색(Exploration)</strong>의 적절한 조화법을 알아봅니다.</p>
+
+<p><strong>그림 03-3</strong> 마법의 입체 엡실론(ε) 주사위를 쥐고서 최적의 길(활용)과 새로운 모험(탐색) 사이에서 저울질하는 도로시와 마법 고양이 지니
+<img src="./img/jiny_bandit_ch3_3_algorithm.png" alt="밴디트 알고리즘 인트로" /></p>
+
+<p>마법 고양이 지니가 선물해준 마법의 엡실론(ε) 주사위를 굴리며 최적의 보상 길을 찾아가는 <strong>ε-탐욕(Epsilon-Greedy) 알고리즘</strong>의 비결을 이번 절에서 정복해 봅시다!</p>
+
+<hr />
+
+<h2 id="331-가치-추정의-원리">3.3.1 가치 추정의 원리</h2>
+
+<p>밴디트 문제에서 플레이어는 슬롯머신 속에 감춰진 ‘진짜 가치(보상 <strong>기댓값</strong>)’를 직접 들여다볼 수 없습니다.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>• 만약 각 슬롯머신의 진짜 가치(보상 기댓값)를 안다면? 
+  → 플레이어는 망설임 없이 가장 좋은 슬롯머신만 계속 고르면 됩니다.
+• 하지만 플레이어는 각 슬롯머신의 진짜 가치를 결코 알 수 없습니다.
+• 따라서 플레이어는 직접 플레이해보며 각 슬롯머신의 가치를 '추정'해야 합니다!
+</code></pre></div></div>
+
+<p><img src="./img/bandit_value_estimation_need.png" alt="왜 가치를 추정해야 할까요? (3단계 원리)" /></p>
+
+<hr />
+
+<h3 id="1-왜-진짜-가치를-두고-추정할-수밖에-없을까요">1. 왜 진짜 가치를 두고 ‘추정’할 수밖에 없을까요?</h3>
+
+<p>슬롯머신 앞에 선 도로시가 고개를 갸우뚱하며 수첩을 들고 고민에 빠집니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야, 슬롯머신마다 평균적으로 코인을 몇 개씩 주는지 ‘진짜 가치’를 알 수 있다면 제일 좋은 기계만 골라 당길 텐데… 기계 속이 굳게 닫혀 있어서 안 보여!”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아, 도로시! 슬롯머신의 내부는 튼튼한 강철 금고로 잠긴 <strong>블랙박스(Black Box)</strong>와 같단다. 우리가 눈으로 확인할 수 있는 건 레버를 당겼을 때 튀어나오는 ‘그 판의 코인 개수(일시적 보상)’뿐이지!”</p>
+</blockquote>
+
+<p><img src="./img/dorothy_blackbox_question.png" alt="진짜 가치를 추정해야 하는 이유" /></p>
+
+<p>우리가 진짜 가치를 직접 보지 못하고 <strong>‘추정’</strong>할 수밖에 없는 본질적인 이유는 다음과 같습니다.</p>
+
+<ol>
+  <li><strong>기계의 내부는 ‘블랙박스’입니다</strong>: 
+슬롯머신 안에 프로그래밍된 참된 <strong>확률</strong>과 진짜 <strong>기댓값</strong>(참 가치 <em>q</em>)은 비밀 금고처럼 숨겨져 있어 직접 읽어낼 수 없습니다.</li>
+  <li><strong>보상은 매 판 운에 의해 요동칩니다 (확률적 노이즈)</strong>:
+참 가치가 1.05인 아주 우수한 슬롯머신이라도 어떤 판에는 꽝(0개)이 나오고, 참 가치가 0.95인 기계에서도 우연히 대박(10개)이 터질 수 있습니다. 단 한두 번의 결과만으로는 기계의 참모습을 결코 알 수 없습니다.</li>
+</ol>
+
+<hr />
+
+<h3 id="2-플레이-횟수를-늘려야-하는-이유-큰-수의-법칙">2. 플레이 횟수를 늘려야 하는 이유 (큰 수의 법칙)</h3>
+
+<p>그렇다면 어떻게 해야 블랙박스 속 진짜 가치를 알아낼 수 있을까요? 마법 고양이 지니가 칠판을 띄우며 명쾌하게 설명해 줍니다.</p>
+
+<blockquote>
+  <p>🐱 <strong>지니</strong>: “비결은 바로 통계학의 가장 위대한 마법, <strong>‘큰 수의 법칙(Law of Large Numbers)’</strong>에 있단다! 동전을 딱 두 번 던져서 앞면이 2번 나왔다고 앞면 확률이 100%일까?”</p>
+
+  <p>👧 <strong>도로시</strong>: “아니지! 1,000번, 10,000번 던지다 보면 결국 50%에 가까워지잖아!”</p>
+
+  <p>🐱 <strong>지니</strong>: “빙고! 슬롯머신도 마찬가지야. 많이 당겨서 얻은 코인들의 평균(표본 평균)을 구하면, 일시적인 행운과 불운(노이즈)이 상쇄되면서 기계의 ‘진짜 가치’가 저절로 모습을 드러내게 된단다!”</p>
+</blockquote>
+
+<p><img src="./img/jiny_law_of_large_numbers.png" alt="표본 평균과 큰 수의 법칙" /></p>
+
+<ul>
+  <li><strong>노이즈의 상쇄</strong>: 플레이 횟수(<em>n</em>)가 적을 때는 우연이라는 왜곡(노이즈)이 심하지만, 횟수를 늘릴수록 평균값은 오차 없이 기계의 참 가치(<em>q</em>)로 정확하게 수렴합니다.</li>
+  <li><strong>표본 평균(Sample Mean)</strong>: 슬롯머신을 실제로 플레이하여 얻은 보상들의 평균값을 표본 평균이라고 부르며, 이것이 곧 우리가 구하고자 하는 <strong>가치 추정치(<em>Q</em>)</strong>가 됩니다.</li>
+</ul>
+
+<hr />
+
+<h2 id="332-표본-평균-구하기와-증분-공식-유도">3.3.2 표본 평균 구하기와 증분 공식 유도</h2>
+
+<p>이제 표본 평균을 수학 공식으로 정의하고, 컴퓨터로 계산할 때 발생하는 심각한 계산량 및 메모리 한계와 이를 마법처럼 해결하는 <strong>증분 공식(Incremental Formula)</strong>의 강력한 원리를 단계별로 살펴보겠습니다.</p>
+
+<p><img src="./img/incremental_formula_intro.png" alt="표본 평균과 증분 공식의 원리" /></p>
+
+<hr />
+
+<h3 id="1-단순-표본-평균의-개념과-수식-파이썬-구현">1. 단순 표본 평균의 개념과 수식, 파이썬 구현</h3>
+
+<h4 id="-단순-표본-평균의-기본-개념">① 단순 표본 평균의 기본 개념</h4>
+<p>슬롯머신 한 대에 집중하여 레버를 계속 당기는 상황을 상상해 봅시다. 매 판 튀어나오는 코인(<em>R</em><sub>1</sub>, <em>R</em><sub>2</sub>, …, <em>R</em><sub><em>n</em></sub>)들을 투명한 상자에 모아두고, 지금까지 플레이한 총 횟수(<em>n</em>)로 공평하게 나누어 주는 것이 바로 <strong>표본 평균(Sample Mean)</strong>입니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야, 슬롯머신을 여러 번 돌렸을 때 지금까지 얻은 보상들을 어떻게 하나로 요약해서 기계의 가치로 삼는 거야?”</p>
+
+  <p>🐱 <strong>지니</strong>: “간단해, 도로시! 매 판 얻은 코인들을 전부 모아 상자에 담은 뒤, 플레이한 횟수(<em>n</em>)만큼 똑같이 나누어 ‘한 판당 평균 코인 수’를 구하면 된단다!”</p>
+</blockquote>
+
+<p><img src="./img/sample_mean_concept.png" alt="단순 표본 평균의 개념" /></p>
+
+<h4 id="-단순-표본-평균의-수식적-정의">② 단순 표본 평균의 수식적 정의</h4>
+<p>어떤 하나의 슬롯머신(행동)만을 총 <em>n</em>번 수행했을 때, <em>n</em>번째 행동 가치 추정치 <em>Q</em><sub><em>n</em></sub>은 다음과 같은 산술평균 공식으로 수학적으로 정의됩니다.</p>
+
+<p>\(Q_n = \frac{R_1 + R_2 + \dots + R_n}{n} = \frac{1}{n} \sum_{i=1}^{n} R_i\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.1 단순 표본 평균 공식]</div>
+
+<p><img src="./img/sample_mean_formula.png" alt="단순 표본 평균 수식 분해" /></p>
+
+<ul>
+  <li><strong>분자 (<em>R</em><sub>1</sub> + <em>R</em><sub>2</sub> + … + <em>R</em><sub><em>n</em></sub>)</strong>: 1회부터 <em>n</em>회까지 플레이하며 실제로 획득한 <strong>모든 보상의 총합</strong>입니다.</li>
+  <li><strong>분모 (<em>n</em>)</strong>: 지금까지 레버를 당긴 <strong>총 플레이(시도) 횟수</strong>입니다.</li>
+  <li><strong>결과 (<em>Q</em><sub><em>n</em></sub>)</strong>: <em>n</em>번의 시도를 거쳐 추정한 <strong>해당 슬롯머신의 표본 평균 가치</strong>입니다.</li>
+</ul>
+
+<h4 id="-파이썬-단순-구현-코드">③ 파이썬 단순 구현 코드</h4>
+<p>[식 3.1]을 파이썬 코드로 직관적으로 구현해 보겠습니다. 10번 플레이하면서 매 판 얻은 보상을 리스트에 추가하고, 내장 함수 <code class="language-plaintext highlighter-rouge">sum()</code>을 이용해 표본 평균을 계산합니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 일관된 실험 결과를 위한 난수 시드 고정
+</span><span class="n">rewards</span> <span class="o">=</span> <span class="p">[]</span>       <span class="c1"># 과거 보상들을 저장할 리스트
+</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>  <span class="c1"># 1부터 10까지 10번 플레이
+</span>    <span class="n">reward</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">rand</span><span class="p">()</span>  <span class="c1"># 0.0 이상 1.0 미만의 무작위 보상 발생 (시뮬레이션)
+</span>    <span class="n">rewards</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>     <span class="c1"># 새 보상을 리스트의 맨 뒤에 추가
+</span>    <span class="n">Q</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>       <span class="c1"># [식 3.1] 모든 보상의 합을 현재 판수 n으로 나눔
+</span>    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">판수 </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="mi">2</span><span class="n">d</span><span class="si">}</span><span class="s">: 최신 보상 = </span><span class="si">{</span><span class="n">reward</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s"> → 표본 평균 Q = </span><span class="si">{</span><span class="n">Q</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>판수  1: 최신 보상 = 0.5488 → 표본 평균 Q = 0.5488
+판수  2: 최신 보상 = 0.7152 → 표본 평균 Q = 0.6320
+판수  3: 최신 보상 = 0.6028 → 표본 평균 Q = 0.6223
+판수  4: 최신 보상 = 0.5449 → 표본 평균 Q = 0.6029
+판수  5: 최신 보상 = 0.4237 → 표본 평균 Q = 0.5671
+...
+판수 10: 최신 보상 = 0.3834 → 표본 평균 Q = 0.6158
+</code></pre></div></div>
+
+<h4 id="-파이썬-코드-실행-흐름-다이어그램">④ 파이썬 코드 실행 흐름 다이어그램</h4>
+<p>위 파이썬 루프가 매 판 어떻게 실행되는지 시각적인 흐름도로 살펴보겠습니다.</p>
+
+<p><img src="./img/sample_mean_code_flow.svg" alt="단순 표본 평균 파이썬 코드 실행 흐름" /></p>
+
+<hr />
+
+<h3 id="2-단순-구현의-한계-메모리와-계산량의-폭발">2. 단순 구현의 한계: 메모리와 계산량의 폭발</h3>
+
+<p>하지만 이 단순한 방식에는 심각한 문제가 숨어 있습니다. 도로시가 끝없이 쌓인 수첩을 보며 진땀을 흘립니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “으악, 지니야! 10,000판을 돌리면 10,000개의 코인 기록을 수첩에 다 적어두고, 매 판마다 10,000개를 처음부터 끝까지 다 더해야 해? 수첩도 모자라고 계산하다가 머리가 터질 것 같아!”</p>
+
+  <p>🐶 <strong>토토</strong>: “낑낑! (계산기에서 연기가 나요!)”</p>
+</blockquote>
+
+<p><img src="./img/dorothy_notebook_overload.png" alt="계산량과 메모리 폭발" /></p>
+
+<ul>
+  <li><strong>메모리 낭비</strong>: 플레이 횟수(<em>n</em>)가 늘어날수록 과거의 모든 보상을 저장하기 위한 메모리가 끝없이 증가합니다 (<em>O</em>(<em>n</em>) 공간 복잡도).</li>
+  <li><strong>계산량 폭발</strong>: 매 판마다 <code class="language-plaintext highlighter-rouge">sum(rewards)</code>로 <em>n</em>개의 숫자를 처음부터 다시 더해야 하므로, 총 계산량이 <em>O</em>(<em>n</em><sup>2</sup>)으로 폭증하여 속도가 급격히 느려집니다.</li>
+  <li></li>
+</ul>
+
+<hr />
+
+<h3 id="3-지니의-마법-해결책-증분-공식incremental-formula-유도">3. 지니의 마법 해결책: 증분 공식(Incremental Formula) 유도</h3>
+
+<p>지니가 마법 지팡이를 휘두르며 도로시를 안심시킵니다.</p>
+
+<blockquote>
+  <p>🐱 <strong>지니</strong>: “걱정 마, 도로시! 과거의 10,000개 기록을 전부 기억할 필요가 전혀 없단다. <strong>‘직전 판까지의 평균(<em>Q</em><sub><em>n-1</em></sub>)’</strong>과 <strong>‘방금 새로 얻은 보상(<em>R</em><sub><em>n</em></sub>)’</strong> 딱 2개만 있으면 새로운 평균(<em>Q</em><sub><em>n</em></sub>)을 순식간에 계산할 수 있는 마법의 공식이 있거든!”</p>
+</blockquote>
+
+<p><img src="./img/jiny_incremental_idea.png" alt="과거 기록 대신 직전 평균과 새 보상만으로 갱신" /></p>
+
+<hr />
+
+<p>수식이 유도되는 과정을 3단계로 차근차근 살펴보겠습니다.</p>
+
+<h4 id="1단계-직전-평균-qn-1에서-과거-보상-총합-유도하기">1단계: 직전 평균 <em>Q</em><sub><em>n-1</em></sub>에서 과거 보상 총합 유도하기</h4>
+<p><em>n</em> - 1번째 시점까지의 표본 평균 정의는 다음과 같습니다.</p>
+
+\[Q_{n-1} = \frac{R_1 + R_2 + \dots + R_{n-1}}{n-1}\]
+
+<p>양변에 (<em>n</em> - 1)을 곱하면, 과거에 얻었던 1번째부터 <em>n</em> - 1번째까지의 모든 보상 총합을 ‘직전 평균’ 하나로 묶어낼 수 있습니다.</p>
+
+<p>\(R_1 + R_2 + \dots + R_{n-1} = (n-1)Q_{n-1}\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.2 과거 보상들의 총합]</div>
+
+<p><img src="./img/incremental_step1_prev_sum.png" alt="1단계: 직전 평균에서 과거 보상 총합 유도" /></p>
+
+<hr />
+
+<h4 id="2단계-qn-식에-대입하여-두-부분으로-분해하기">2단계: <em>Q</em><sub><em>n</em></sub> 식에 대입하여 두 부분으로 분해하기</h4>
+<p><em>n</em>번째 표본 평균 식에서 과거 보상들의 합 부분을 방금 구한 [식 3.2]로 쏙 바꿔 대입합니다.</p>
+
+\[Q_n = \frac{R_1 + \dots + R_{n-1} + R_n}{n}\]
+
+<p>\(= \frac{(n-1)Q_{n-1} + R_n}{n}\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.3 대입 식]</div>
+
+<p>이제 분수를 ‘과거 평균 덩어리’와 ‘새 보상 덩어리’ 둘로 분해해 줍니다.</p>
+
+\[= \frac{n-1}{n}Q_{n-1} + \frac{1}{n}R_n\]
+
+<p>\(= \left(1 - \frac{1}{n}\right)Q_{n-1} + \frac{1}{n}R_n\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.4 분해 식]</div>
+
+<p><img src="./img/incremental_step2_substitute.png" alt="2단계: Q_n 식에 대입하고 두 부분으로 분해" /></p>
+
+<hr />
+
+<h4 id="3단계-최종-증분-공식-완성-오차와-갱신-구조">3단계: 최종 증분 공식 완성 (오차와 갱신 구조)</h4>
+<p>[식 3.4]의 괄호를 풀고 <em>Q</em><sub><em>n-1</em></sub>을 기준으로 예쁘게 묶어주면 기적처럼 아름다운 공식이 완성됩니다!</p>
+
+\[Q_n = Q_{n-1} - \frac{1}{n}Q_{n-1} + \frac{1}{n}R_n\]
+
+<p>\(Q_n = Q_{n-1} + \frac{1}{n}(R_n - Q_{n-1})\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.5 증분 갱신 공식]</div>
+
+<p><img src="./img/incremental_step3_final_formula.png" alt="3단계: 최종 증분 공식 완성" /></p>
+
+<hr />
+
+<h3 id="4-증분-공식의-구조와-기하학적-의미">4. 증분 공식의 구조와 기하학적 의미</h3>
+
+<p>수식을 가만히 관찰하던 도로시의 눈이 번쩍 뜨입니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 수식을 가만히 뜯어보니까, 내가 지금 서 있는 자리(<em>Q</em><sub><em>n-1</em></sub>)에서 방금 들어온 새로운 보상(<em>R</em><sub><em>n</em></sub>)이라는 목적지를 향해 한 걸음 걸어가는 느낌이야!”</p>
+
+  <p>🐱 <strong>지니</strong>: “정확해, 도로시! 바로 그게 증분 공식에 담긴 놀라운 <strong>‘기하학적 의미(Geometric Meaning)’</strong>란다! 이 수식은 단순한 평균 계산법을 넘어, 앞으로 우리가 배울 <strong>모든 강화 학습 알고리즘(TD 학습, Q-러닝 등)을 관통하는 만능 갱신 뼈대</strong>란다!”</p>
+
+  <p>🐶 <strong>토토</strong>: “멍멍! (목표 사과를 향해 꼬리를 흔들며 발걸음을 옮겨요!)”</p>
+</blockquote>
+
+<p><img src="./img/rl_general_update_structure.png" alt="강화학습의 만능 갱신 규칙" /></p>
+
+<h4 id="-강화-학습의-만능-갱신-뼈대-universal-update-rule">① 강화 학습의 만능 갱신 뼈대 (Universal Update Rule)</h4>
+<p>증분 공식 [식 3.5]를 일반적인 언어로 풀어서 쓰면 다음과 같은 형태가 됩니다.</p>
+
+<p>\(\text{새로운 추정치} \leftarrow \text{기존 추정치} + \text{학습률} \times \left[ \text{목표치} - \text{기존 추정치} \right]\)</p>
+<div style="text-align: right; color: #888; font-size: 0.9em;">[식 3.6 강화 학습 일반 갱신 형태]</div>
+
+<p>이 식을 구성하는 세 가지 핵심 요소는 다음과 같습니다:</p>
+
+<ol>
+  <li><strong>기존 추정치 (<em>Q</em><sub><em>n-1</em></sub>)</strong>:
+    <ul>
+      <li>에이전트가 지금까지의 경험을 바탕으로 믿고 있던 <strong>현재의 기준 가치(출발점)</strong>입니다.</li>
+    </ul>
+  </li>
+  <li><strong>오차 (Error, <em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n-1</em></sub>)</strong>:
+    <ul>
+      <li>“실제로 들어온 목표치(<em>R</em><sub><em>n</em></sub>)”와 “내가 기대했던 기존 추정치(<em>Q</em><sub><em>n-1</em></sub>)” 사이의 <strong>예측 빗나감(오차)</strong>입니다.</li>
+      <li>앞으로 가치를 수정해야 할 <strong>‘방향’과 ‘거리’</strong>를 가리킵니다.</li>
+      <li><strong>실제 보상이 더 좋을 때 (<em>R</em><sub><em>n</em></sub> &gt; <em>Q</em><sub><em>n-1</em></sub>)</strong>: 양(+)의 오차가 발생하여 가치를 위로 올려줍니다.</li>
+      <li><strong>실제 보상이 더 나쁠 때 (<em>R</em><sub><em>n</em></sub> &lt; <em>Q</em><sub><em>n-1</em></sub>)</strong>: 음(-)의 오차가 발생하여 가치를 아래로 깎아내립니다.</li>
+    </ul>
+  </li>
+  <li><strong>학습률 (Learning Rate / Step-size, 1/<em>n</em>)</strong>:
+    <ul>
+      <li>발생한 오차를 새로운 가치에 얼마만큼의 비율로 반영할 것인지를 정하는 <strong>보폭(Step-size)</strong>입니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="-수직선-상의-이동-기하학적-의미">② 수직선 상의 이동: 기하학적 의미</h4>
+
+<p>증분 공식을 수직선 상의 이동으로 바라보면 훨씬 더 직관적으로 이해할 수 있습니다.</p>
+
+<p><img src="./img/incremental_update_geometry.png" alt="증분 공식의 기하학적 의미" /></p>
+
+<ul>
+  <li><strong>출발점</strong>: 현재 나의 믿음인 <strong>이전 가치 <em>Q</em><sub><em>n-1</em></sub></strong>에 서 있습니다.</li>
+  <li><strong>목표점</strong>: 방금 실제로 관측된 <strong>새로운 보상 <em>R</em><sub><em>n</em></sub></strong>이 목표 지점입니다.</li>
+  <li><strong>이동 거리</strong>: 둘 사이의 간격인 <strong>오차 (<em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n-1</em></sub>)</strong>만큼 떨어져 있습니다.</li>
+  <li><strong>한 걸음 전진</strong>: 목표 지점까지 한 번에 순간이동하지 않고, <strong>학습률 1/<em>n</em>의 비율만큼 보폭을 내딛어 새로운 가치 <em>Q</em><sub><em>n</em></sub>에 도달</strong>합니다.</li>
+</ul>
+
+<blockquote>
+  <p><strong>💡 보폭(학습률 1/<em>n</em>)이 자동으로 조절되는 원리</strong></p>
+  <ul>
+    <li><strong>초반 (<em>n</em>이 작을 때, 예: <em>n</em> = 2)</strong>: 학습률 1/<em>n</em> = 50%로 매우 큽니다. 아직 경험이 적으므로 새로운 보상을 성큼성큼 큰 걸음으로 적극 수용합니다.</li>
+    <li><strong>후반 (<em>n</em>이 클 때, 예: <em>n</em> = 100)</strong>: 학습률 1/<em>n</em> = 1%로 매우 작아집니다. 이미 100번의 충분한 경험이 쌓였으므로, 한두 번의 운이나 노이즈에 휘둘리지 않고 아주 미세하게 징검다리를 건너듯 <strong>진짜 참 가치(<em>q</em>)로 안정적으로 수렴</strong>합니다.</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h3 id="5-파이썬-증분-구현-코드">5. 파이썬 증분 구현 코드</h3>
+
+<p>도로시가 과거의 무거운 수첩을 내려놓고 가벼운 미소를 짓습니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 과거 10,000개 기록을 저장하던 <code class="language-plaintext highlighter-rouge">rewards</code> 리스트를 싹 버리고, 오직 <code class="language-plaintext highlighter-rouge">Q</code> 변수 딱 하나만 사용해서 코드를 작성해 볼게!”</p>
+
+  <p>🐱 <strong>지니</strong>: “완벽해, 도로시! 매 판마다 리스트를 처음부터 다시 더하는 <code class="language-plaintext highlighter-rouge">sum()</code> 함수도 전혀 필요 없단다. 증분 공식 <code class="language-plaintext highlighter-rouge">Q += (reward - Q) / n</code> 단 한 줄이면 번개처럼 빠른 속도로 평균이 갱신된단다!”</p>
+</blockquote>
+
+<h4 id="-파이썬-증분-구현-코드">① 파이썬 증분 구현 코드</h4>
+<p>[식 3.5]를 적용하여 과거 보상 리스트 없이 단일 변수 <code class="language-plaintext highlighter-rouge">Q</code>만으로 구현한 파이썬 코드입니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 이전 단순 구현과 완벽한 비교를 위해 동일한 시드 설정
+</span><span class="n">Q</span> <span class="o">=</span> <span class="mf">0.0</span>            <span class="c1"># 과거 보상 리스트 없이, 단 하나의 가치 추정치 변수만 초기화
+</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>  <span class="c1"># 1부터 10까지 10번 플레이
+</span>    <span class="n">reward</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">rand</span><span class="p">()</span>  <span class="c1"># 슬롯머신 레버를 당겨 얻은 새 보상 (R_n)
+</span>    
+    <span class="c1"># [식 3.5] 증분 공식 적용: Q_n = Q_{n-1} + (R_n - Q_{n-1}) / n
+</span>    <span class="n">Q</span> <span class="o">+=</span> <span class="p">(</span><span class="n">reward</span> <span class="o">-</span> <span class="n">Q</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">판수 </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="mi">2</span><span class="n">d</span><span class="si">}</span><span class="s">: 최신 보상 = </span><span class="si">{</span><span class="n">reward</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="s"> → 증분 갱신된 가치 Q = </span><span class="si">{</span><span class="n">Q</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>실행 결과</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>판수  1: 최신 보상 = 0.5488 → 증분 갱신된 가치 Q = 0.5488
+판수  2: 최신 보상 = 0.7152 → 증분 갱신된 가치 Q = 0.6320
+판수  3: 최신 보상 = 0.6028 → 증분 갱신된 가치 Q = 0.6223
+판수  4: 최신 보상 = 0.5449 → 증분 갱신된 가치 Q = 0.6029
+판수  5: 최신 보상 = 0.4237 → 증분 갱신된 가치 Q = 0.5671
+판수  6: 최신 보상 = 0.6459 → 증분 갱신된 가치 Q = 0.5802
+판수  7: 최신 보상 = 0.4376 → 증분 갱신된 가치 Q = 0.5598
+판수  8: 최신 보상 = 0.8918 → 증분 갱신된 가치 Q = 0.6013
+판수  9: 최신 보상 = 0.9637 → 증분 갱신된 가치 Q = 0.6416
+판수 10: 최신 보상 = 0.3834 → 증분 갱신된 가치 Q = 0.6158
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>✨ 결과 비교</strong>: 앞서 작성했던 단순 구현 코드의 결과와 <strong>단 0.0001의 오차도 없이 100% 동일한 값</strong>을 출력합니다! 수학적으로 완전히 같은 산술평균을 구하면서도, 컴퓨터 자원은 기적처럼 가볍게 사용합니다.</p>
+</blockquote>
+
+<hr />
+
+<h4 id="-증분-구현-파이썬-코드의-실행-흐름">② 증분 구현 파이썬 코드의 실행 흐름</h4>
+<p>컴퓨터 메모리 내부에서 단 하나의 변수 <code class="language-plaintext highlighter-rouge">Q</code>가 어떻게 즉시 갱신되며 루프를 순환하는지 단계별 흐름도를 확인해 봅시다.</p>
+
+<p><img src="./img/incremental_code_flow.svg" alt="초경량 증분 공식 파이썬 코드 실행 흐름" /></p>
+
+<hr />
+
+<h4 id="-코드-핵심-연산-분해-및-복잡도-혁신">③ 코드 핵심 연산 분해 및 복잡도 혁신</h4>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Q += (reward - Q) / n</code>의 작동 원리</strong>:
+    <ol>
+      <li><strong>우변의 <code class="language-plaintext highlighter-rouge">Q</code></strong>: 직전 판까지의 가치 추정치인 <em>Q</em><sub><em>n-1</em></sub>을 의미합니다.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">(reward - Q)</code></strong>: 방금 얻은 실제 보상과 예상치의 차이인 <strong>오차(Error)</strong>입니다.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">/ n</code></strong>: 오차에 현재 판수의 학습률 <strong>1/<em>n</em></strong>을 곱해줍니다.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">+=</code> 연산</strong>: 계산된 미세 수정값을 기존 <code class="language-plaintext highlighter-rouge">Q</code>에 즉시 누적 덮어써서 새로운 추정치 <em>Q</em><sub><em>n</em></sub>을 완성합니다.</li>
+    </ol>
+  </li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">비교 항목</th>
+      <th style="text-align: left">① 단순 표본 평균 구현 (<code class="language-plaintext highlighter-rouge">sum</code>)</th>
+      <th style="text-align: left">② 증분 공식 구현 (<code class="language-plaintext highlighter-rouge">Q +=</code>)</th>
+      <th style="text-align: left">개선 효과</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>필요 메모리 (공간 복잡도)</strong></td>
+      <td style="text-align: left"><em>O</em>(<em>n</em>) (과거 모든 보상 리스트 저장)</td>
+      <td style="text-align: left"><strong>단 <em>O</em>(1)</strong> (단 1개의 float 변수 <code class="language-plaintext highlighter-rouge">Q</code>)</td>
+      <td style="text-align: left"><strong>무한대 플레이 가능 (메모리 절약 99.9%)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>계산량 (시간 복잡도)</strong></td>
+      <td style="text-align: left">매 판 <em>O</em>(<em>n</em>) 덧셈 $\rightarrow$ 총 <em>O</em>(<em>n</em><sup>2</sup>)</td>
+      <td style="text-align: left"><strong>매 판 단 1회의 연산 <em>O</em>(1)</strong></td>
+      <td style="text-align: left"><strong>1,000만 판을 돌려도 속도 저하 제로</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="333-에이전트의-행동-정책과-딜레마">3.3.3 에이전트의 행동 정책과 딜레마</h2>
+
+<p>가치를 추정하는 효율적인 방법을 알았으니, 이제 플레이어(도로시)가 여러 대의 슬롯머신 중에서 <strong>“어떤 기계를 선택하여 레버를 당길 것인가?”</strong>라는 의사결정 전략(정책)을 세워야 합니다.</p>
+
+<h3 id="1-탐욕-정책greedy-policy과-그-함정">1. 탐욕 정책(Greedy Policy)과 그 함정</h3>
+
+<p>도로시가 기발한 아이디어가 떠올랐다는 듯 외칩니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 지금까지 플레이해 본 결과 중에서 평균 점수(<em>Q</em>)가 가장 높은 최고의 슬롯머신 하나만 골라서 계속 당기면 무조건 대박이겠지? 이걸 <strong>탐욕 정책(Greedy Policy)</strong>이라고 부르자!”</p>
+
+  <p>🐱 <strong>지니</strong>: “잠깐, 도로시! 멈춰! 탐욕 정책에는 아주 무서운 함정이 도사리고 있단다!”</p>
+</blockquote>
+
+<p><img src="./img/greedy_trap_warning.png" alt="탐욕의 함정 경고" /></p>
+
+<h4 id="️-탐욕-정책의-치명적인-함정-조기-수렴의-오류">⚠️ 탐욕 정책의 치명적인 함정 (조기 수렴의 오류)</h4>
+<ul>
+  <li>상황을 가정해 봅시다:
+    <ul>
+      <li><strong>슬롯머신 A</strong>: 진짜 참 가치가 <strong>1.05</strong>인 최고의 기계 (하지만 꽝 확률 70%)</li>
+      <li><strong>슬롯머신 B</strong>: 진짜 참 가치가 <strong>0.95</strong>인 평범한 기계 (하지만 당첨률 50%)</li>
+    </ul>
+  </li>
+  <li>도로시가 두 기계를 딱 한 번씩 시험 삼아 당겨보았습니다:
+    <ul>
+      <li>슬롯머신 A를 당겼더니 하필 첫 판에 꽝이 나와 <strong>0점</strong>을 얻었습니다 (<em>Q</em>(<em>A</em>) = 0).</li>
+      <li>슬롯머신 B를 당겼더니 운 좋게 <strong>1점</strong>을 얻었습니다 (<em>Q</em>(<em>B</em>) = 1).</li>
+    </ul>
+  </li>
+  <li><strong>탐욕 정책의 비극</strong>:
+    <ul>
+      <li>탐욕 정책은 현재 추정치만 보고 <em>Q</em>(<em>B</em>) &gt; <em>Q</em>(<em>A</em>)이므로 이후 영원히 <strong>슬롯머신 B만 선택</strong>합니다.</li>
+      <li>사실은 슬롯머신 A가 훨씬 더 좋은 기계인데도, 단 한 번의 불운 때문에 A를 영원히 외면하게 되는 <strong>‘성급한 확신(조기 수렴)의 함정’</strong>에 빠지게 됩니다!</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="2-활용exploitation과-탐색exploration의-딜레마">2. 활용(Exploitation)과 탐색(Exploration)의 딜레마</h3>
+
+<p>초기의 불완전한 추정치만 믿고 탐욕스럽게 행동하면 진짜 최고의 보물을 영원히 놓칠 수 있습니다. 따라서 에이전트에게는 두 가지 상반된 행동이 필요합니다.</p>
+
+<p><img src="./img/dilemma_restaurant_metaphor.png" alt="활용과 탐색의 딜레마" /></p>
+
+<ul>
+  <li><strong>활용 (Exploitation)</strong>:
+    <ul>
+      <li>지금까지의 경험상 가장 좋았던 기계를 믿고 선택하는 행동입니다. (현재의 이익 극대화)</li>
+      <li><em>비유</em>: 늘 가던 익숙하고 맛있는 <strong>단골 맛집</strong>에 방문하기.</li>
+    </ul>
+  </li>
+  <li><strong>탐색 (Exploration)</strong>:
+    <ul>
+      <li>가치 추정치의 정확도를 높이기 위해, 다른 기계들을 호기심을 갖고 시도해보는 행동입니다. (미래의 잠재력 발굴)</li>
+      <li><em>비유</em>: 아직 가보지 않은 완전히 새로운 <strong>신상 맛집</strong>에 모험해 보기.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>⚖️ 활용-탐색의 상충관계(Trade-off)</strong></p>
+  <ul>
+    <li>활용만 하면? → 새로운 대박 기회를 평생 발견하지 못합니다.</li>
+    <li>탐색만 하면? → 꽝이 많은 나쁜 기계들을 계속 당기느라 코인을 낭비합니다.</li>
+    <li><strong>강화 학습의 핵심 과제</strong>: “언제 익숙한 것을 활용하고, 언제 새로운 것을 탐색할 것인가?”</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h3 id="3-지니의-마법-주사위-ε-탐욕epsilon-greedy-정책">3. 지니의 마법 주사위: ε-탐욕(Epsilon-Greedy) 정책</h3>
+
+<p>이 어려운 딜레마를 가장 우아하고 단순하게 해결하기 위해, 지니가 도로시에게 마법의 주사위를 건넵니다.</p>
+
+<blockquote>
+  <p>🐱 <strong>지니</strong>: “도로시, 이 딜레마를 해결하기 위해 지니가 <strong>마법의 엡실론(ε) 주사위</strong>를 선물할게! 
+평소 90%의 확률로는 지금까지 제일 좋았던 기계를 당기고(활용), 가끔 10%(ε = 0.1)의 확률로는 호기심을 발휘해 다른 기계들을 골고루 둘러보는(탐색) 거야!”</p>
+
+  <p>👧 <strong>도로시</strong>: “와! 90%는 안전하게 코인을 벌면서도, 10%의 모험으로 진짜 숨은 보물 기계를 찾아낼 수 있겠구나!”</p>
+</blockquote>
+
+<p><img src="./img/epsilon_greedy_dice.png" alt="ε-탐욕 정책" /></p>
+
+<h4 id="ε-탐욕-정책의-작동-규칙-ε--01인-경우">ε-탐욕 정책의 작동 규칙 (ε = 0.1인 경우)</h4>
+<ol>
+  <li><strong>1 - ε의 확률 (90%) → 활용(Exploitation)</strong>:
+    <ul>
+      <li>지금까지 추정된 가치 <em>Q</em>가 가장 높은 최고의 슬롯머신을 선택합니다.</li>
+    </ul>
+  </li>
+  <li><strong>ε의 확률 (10%) → 탐색(Exploration)</strong>:
+    <ul>
+      <li>모든 슬롯머신 중 하나를 무작위(Random)로 선택하여 새로운 경험을 쌓습니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>이렇게 하면 대부분의 상황에서는 최고의 기계로 안전하게 코인을 쓸어 담으면서도, 가끔씩 이루어지는 탐색 덕분에 첫 판에 꽝이 났던 진짜 최고 기계(A)의 진가를 끝내 발견해 낼 수 있습니다.</p>
+
+<hr />
+
+<h2 id="334-오늘-공부한-핵심-요약">3.3.4 오늘 공부한 핵심 요약</h2>
+
+<p><img src="./img/ch3_3_summary_jinycat.png" alt="3.3 밴디트 알고리즘 핵심 요약" /></p>
+
+<ol>
+  <li><strong>표본 평균과 큰 수의 법칙</strong>: 슬롯머신의 내부 가치는 볼 수 없는 블랙박스이지만, 플레이 횟수(<em>n</em>)를 늘려 표본 평균을 구하면 참 가치(<em>q</em>)로 정확히 수렴합니다.</li>
+  <li><strong>증분 공식의 가벼운 갱신</strong>: 과거의 모든 데이터를 저장할 필요 없이, 직전 평균 <em>Q</em><sub><em>n-1</em></sub>과 새 보상 <em>R</em><sub><em>n</em></sub>만으로 <em>Q</em><sub><em>n</em></sub> = <em>Q</em><sub><em>n-1</em></sub> + 1/<em>n</em>(<em>R</em><sub><em>n</em></sub> - <em>Q</em><sub><em>n-1</em></sub>)을 통해 초경량으로 가치를 갱신합니다.</li>
+  <li><strong>활용과 탐색의 딜레마</strong>: 눈앞의 최고만 쫓는 탐욕 정책은 조기 수렴의 함정에 빠지므로, 안전한 ‘활용’과 호기심 어린 ‘탐색’ 사이의 조화가 필수적입니다.</li>
+  <li><strong>ε-탐욕 정책의 황금 균형</strong>: 1 - ε의 확률로 활용하고 ε의 확률로 탐색하여, 안정적인 수익과 새로운 대박 발견이라는 두 마리 토끼를 모두 잡는 표준 알고리즘입니다.</li>
+</ol>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="/character/" class="text-decoration-none text-secondary me-3">캐릭터 소개</a>
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 180" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Pink Arrow Marker -->
+    <marker id="pink-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f472b6"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Left Side: Policy box with bar chart -->
+  <g transform="translate(10, 10)">
+    <rect x="0" y="0" width="160" height="140" rx="10" ry="10" fill="#ffffff" stroke="#cbd5e0" stroke-width="1.5"/>
+    
+    <!-- Axis lines -->
+    <line x1="30" y1="110" x2="140" y2="110" stroke="#2d3748" stroke-width="1.5" marker-end="url(#axis-arrow)"/>
+    <line x1="30" y1="110" x2="30" y2="25" stroke="#2d3748" stroke-width="1.5"/>
+    
+    <!-- 0.5 Tick line -->
+    <line x1="30" y1="65" x2="120" y2="65" stroke="#a0aec0" stroke-width="1" stroke-dasharray="3,3"/>
+    <text x="24" y="69" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="end">0.5</text>
+    
+    <!-- Bars -->
+    <rect x="50" y="65" width="16" height="45" fill="#3b82f6"/>
+    <text x="58" y="125" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="middle">Left</text>
+
+    <rect x="95" y="65" width="16" height="45" fill="#3b82f6"/>
+    <text x="103" y="125" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="middle">Right</text>
+  </g>
+
+  <!-- Right Side: 2-cell grid world -->
+  <g transform="translate(230, 30)">
+    <rect x="0" y="0" width="200" height="100" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+    <line x1="100" y1="0" x2="100" y2="100" stroke="#2d3748" stroke-width="2.5"/>
+    
+    <text x="50" y="-12" font-family="sans-serif" font-size="16" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    <text x="150" y="-12" font-family="sans-serif" font-size="16" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+    
+    <use href="#agent" x="0" y="20"/>
+    <use href="#apple" x="100" y="20"/>
+
+    <!-- Left Wall Hatching -->
+    <path d="M 0 0 L -15 15 M 0 20 L -15 35 M 0 40 L -15 55 M 0 60 L -15 75 M 0 80 L -15 95" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+    <!-- Right Wall Hatching -->
+    <path d="M 200 0 L 215 15 M 200 20 L 215 35 M 200 40 L 215 55 M 200 60 L 215 75 M 200 80 L 215 95" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <!-- Curved Dotted Pointer with label pi -->
+  <path d="M 280 120 Q 230 165 180 120" fill="none" stroke="#2d3748" stroke-width="1.5" stroke-dasharray="4,4" marker-end="url(#arrow)"/>
+  <circle cx="205" cy="133" r="12" fill="#ffffff" stroke="#cbd5e0" stroke-width="1"/>
+  <text x="205" y="138" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#2d3748" text-anchor="middle">π</text>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Triangle Marker for Fig 5-9 -->
+    <marker id="triangle" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2d3748"/>
+    </marker>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 40 22 C 26 15, 12 30, 20 50 C 24 64, 34 68, 40 64 C 46 68, 56 64, 60 50 C 68 30, 54 15, 40 22 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 40 22 Q 45 10 56 14" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 45 17 Q 55 12 56 22 C 52 24, 48 22, 45 17 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    <!-- Agent Icon -->
+    <g id="agent80">
+      <rect x="20" y="22" width="40" height="36" rx="14" ry="14" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="32" cy="34" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="48" cy="34" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="30" cy="34" r="3" fill="#2d3748"/>
+      <circle cx="46" cy="34" r="3" fill="#2d3748"/>
+      <path d="M 36 45 Q 40 49 44 45" fill="none" stroke="#2d3748" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 37 46 Q 40 52 43 46 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 24 58 C 24 56, 32 56, 32 58 C 32 60, 30 62, 27 62 C 22 62, 24 58, 24 58 Z" fill="#2d3748"/>
+      <path d="M 48 58 C 48 56, 56 56, 56 58 C 56 60, 54 62, 51 62 C 46 62, 48 58, 48 58 Z" fill="#2d3748"/>
+    </g>
+    <!-- Bomb Icon -->
+    <g id="bomb">
+      <circle cx="40" cy="45" r="20" fill="#2d3748" stroke="#1a202c" stroke-width="2.5"/>
+      <path d="M 50 29 Q 58 18 62 20" fill="none" stroke="#a0aec0" stroke-width="3" stroke-linecap="round"/>
+      <path d="M 62 20 L 66 16 L 62 12 L 59 16 Z" fill="#f59e0b"/>
+      <path d="M 58 12 L 64 6 M 70 14 L 76 12 M 64 22 L 70 26" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <g transform="translate(10, 10)">
+    <!-- Node A -->
+    <circle cx="40" cy="20" r="13" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.8"/>
+    <text x="40" y="25" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#0284c7" text-anchor="middle">A</text>
+    
+    <!-- Action 1 -->
+    <line x1="40" y1="33" x2="40" y2="60" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="40" cy="68" r="5" fill="#2d3748"/>
+    <rect x="52" y="68" width="28" height="18" rx="9" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1"/>
+    <text x="66" y="81" font-family="Cambria Math, Georgia, serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">R<tspan font-size="9" dy="3">0</tspan></text>
+    
+    <!-- Dotted connector -->
+    <line x1="82" y1="78" x2="115" y2="98" stroke="#718096" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <text x="125" y="105" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">보상</text>
+
+    <!-- Node B -->
+    <line x1="40" y1="73" x2="40" y2="100" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="40" cy="112" r="13" fill="#ffedd5" stroke="#ea580c" stroke-width="1.8"/>
+    <text x="40" y="117" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#ea580c" text-anchor="middle">B</text>
+
+    <!-- Action 2 -->
+    <line x1="40" y1="125" x2="40" y2="152" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="40" cy="160" r="5" fill="#2d3748"/>
+    <rect x="52" y="160" width="28" height="18" rx="9" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1"/>
+    <text x="66" y="173" font-family="Cambria Math, Georgia, serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">R<tspan font-size="9" dy="3">1</tspan></text>
+
+    <!-- Node C -->
+    <line x1="40" y1="165" x2="40" y2="192" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="40" cy="204" r="13" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/>
+    <text x="40" y="209" font-family="Georgia, serif" font-size="15" font-style="italic" fill="#15803d" text-anchor="middle">C</text>
+
+    <!-- Action 3 -->
+    <line x1="40" y1="217" x2="40" y2="244" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="40" cy="252" r="5" fill="#2d3748"/>
+    <rect x="52" y="252" width="28" height="18" rx="9" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1"/>
+    <text x="66" y="265" font-family="Cambria Math, Georgia, serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">R<tspan font-size="9" dy="3">2</tspan></text>
+
+    <!-- Terminal square -->
+    <line x1="40" y1="257" x2="40" y2="280" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <rect x="29" y="285" width="22" height="22" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+  </g>
+</svg>

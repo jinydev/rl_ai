@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>02.5 수열과 등비수열의 합 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="02.5 수열과 등비수열의 합" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/05_%EC%88%98%EC%97%B4%EA%B3%BC_%EB%93%B1%EB%B9%84%EC%88%98%EC%97%B4%EC%9D%98_%ED%95%A9/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/05_%EC%88%98%EC%97%B4%EA%B3%BC_%EB%93%B1%EB%B9%84%EC%88%98%EC%97%B4%EC%9D%98_%ED%95%A9/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="02.5 수열과 등비수열의 합" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.5 수열과 등비수열의 합","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/05_%EC%88%98%EC%97%B4%EA%B3%BC_%EB%93%B1%EB%B9%84%EC%88%98%EC%97%B4%EC%9D%98_%ED%95%A9/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">이론적 배경</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part2/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part3/">고급강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part4/">심화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">부록</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/"
+            class="bd-links-link d-inline-block rounded ">
+            2강 확률과 기초수학
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/01_식의_구성과_치환_교환분배법칙/"
+            class="bd-links-link d-inline-block rounded ">
+            02.1 식의 구성과 치환, 교환/분배법칙
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/02_지수와_거듭제곱/"
+            class="bd-links-link d-inline-block rounded ">
+            02.2 지수와 거듭제곱
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/03_함수의_정의와_대응/"
+            class="bd-links-link d-inline-block rounded ">
+            02.3 함수의 정의와 대응
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/04_일차방정식과_연립방정식/"
+            class="bd-links-link d-inline-block rounded ">
+            02.4 일차방정식과 연립방정식
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/05_수열과_등비수열의_합/"
+            class="bd-links-link d-inline-block rounded ">
+            02.5 수열과 등비수열의 합
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/06_시그마_기호와_합_공식/"
+            class="bd-links-link d-inline-block rounded ">
+            02.6 시그마(Σ) 기호와 합 공식
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/07_증분_평균과_재귀적_업데이트/"
+            class="bd-links-link d-inline-block rounded ">
+            02.7 증분 평균과 재귀적 업데이트
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/08_경우의_수와_순열_조합/"
+            class="bd-links-link d-inline-block rounded ">
+            02.8 경우의 수와 순열/조합
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/09_확률의_정의와_성질/"
+            class="bd-links-link d-inline-block rounded ">
+            02.9 확률의 정의와 성질 (수학적/실험적/기하학적 확률)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/10_확률의_역사와_덧셈정리/"
+            class="bd-links-link d-inline-block rounded ">
+            02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/11_조건부_확률과_독립시행/"
+            class="bd-links-link d-inline-block rounded ">
+            02.11 조건부 확률과 독립시행 (몬티 홀 & 생일 패러독스)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/12_행동과_상태_전이를_묶는_행렬의_기초/"
+            class="bd-links-link d-inline-block rounded ">
+            02.12 행동과 상태 전이를 묶는 행렬의 기초
+          </a>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/">02 확률과 기초수학</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">02.5 수열과 등비수열의 합</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="025-수열과-등비수열의-합">02.5 수열과 등비수열의 합</h1>
+
+<blockquote>
+  <p>이 장에서는 규칙적으로 숫자를 나열한 <strong>수열(Sequence)</strong>의 개념을 정의하고, 보상이 감쇄율에 의해 변화하는 수열들의 총합을 구할 때 사용되는 <strong>등비수열의 합</strong>을 쉽고 체계적으로 배웁니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0251-징검다리를-딛고-올라가는-수의-규칙">02.5.1 징검다리를 딛고 올라가는 수의 규칙</h2>
+
+<p>강화학습 에이전트가 <strong>매 시점</strong>마다 환경과 상호작용하며 획득하는 보상값들은 시간의 순서대로 나열된 <strong>수열</strong>과 같습니다.</p>
+
+<p>“지니! 에이전트가 앞으로 무한히 계속해서 보상을 받아 나간다면, 그 보상을 전부 다 합했을 때 값이 무한대로 커져서 에이전트 머리가 터져버리는 거 아냐? 컴퓨터가 무한대 값을 계산할 수는 없잖아!”</p>
+
+<p>도로시가 눈을 둥그렇게 뜨며 물어보았습니다. 토토도 동의한다는 듯 꼬리를 흔들며 멍멍 짖었습니다.</p>
+
+<p><img src="./img/dorothy_rewards_explosion_fear.png" alt="무한 보상 합산에 대한 두려움" />
+<strong>그림 02-5-1</strong> 미래 보상을 무한히 계속 더하면 가치가 폭발적으로 불어나 버릴까 봐 눈을 동그랗게 뜨고 걱정하는 도로시와 토토</p>
+
+<p>지니는 숲속 연못 위에 둥둥 떠 있는 둥근 징검다리들을 가리키며 마법 요술봉을 흔들었습니다.</p>
+
+<p>“후후, 도로시. 좋은 걱정이야! 하지만 징검다리 디딤돌들의 크기가 갈수록 일정한 비율로 작아진다면 어떻게 될까? 아무리 많은 디딤돌이 늘어서 있어도 건너가야 할 총길이는 결코 무한대로 커지지 않고 하나의 딱 정해진 값으로 수렴하게 된단다. 이걸 수학에서는 <strong>등비수열의 합</strong>이라고 불러.”</p>
+
+<p><img src="./img/dorothy_stepping_stones.png" alt="징검다리 규칙" />
+<strong>그림 02-5-2</strong> 미래 단계로 한 칸씩 나아갈 때마다 보상의 크기(디딤돌 크기)가 일정 비율로 작아지며 늘어선 수열의 형태를 관찰하는 도로시와 토토</p>
+
+<p>“아! 보상들이 시간 순서대로 나란히 늘어서 있으니까 진짜 징검다리 배열 같네!”</p>
+
+<p>도로시가 디딤돌을 깡충깡충 건너뛰며 외쳤습니다.</p>
+
+<hr />
+
+<h2 id="0252-수열-규칙적으로-나열된-수의-징검다리">02.5.2 수열: 규칙적으로 나열된 수의 징검다리</h2>
+
+<p>어떤 규칙에 따라 수를 차례대로 나열한 것을 <strong>수열(Sequence)</strong>이라고 합니다.</p>
+
+<p><img src="./img/dorothy_sequence_definition.png" alt="수열의 규칙적인 배열" />
+<strong>그림 02-5-3</strong> 일정한 규칙(짝수 늘어놓기)에 따라 차례대로 수를 나열한 수열의 기초적인 원리를 지니의 마법으로 재미있게 들여다보는 도로시와 토토</p>
+
+<h3 id="2521-수열과-일반항">2.5.2.1 수열과 일반항</h3>
+<p>수열에서 나열된 각 수들을 <strong>항</strong>이라고 부르며, 첫 번째 항을 <em>a</em><sub>1</sub>, 두 번째 항을 <em>a</em><sub>2</sub>, 그리고 <em>n</em>번째 항을 <strong>일반항 <em>a<sub>n</sub></em></strong>이라고 나타냅니다.</p>
+
+<p><img src="./img/dorothy_sequence_terms.png" alt="수열의 항과 일반항" />
+<strong>그림 02-5-4</strong> 첫 번째 항인 a₁부터 일반항인 an까지 수열의 구성원들을 카드로 매달아 하나씩 살펴보고 기록하는 도로시와 지니, 토토</p>
+
+<h3 id="2522-강화학습에서의-보상-수열">2.5.2.2 강화학습에서의 보상 수열</h3>
+<p>에이전트가 1회부터 <em>n</em>회까지 겪어 얻은 보상의 흐름은 수열 [<em>R</em><sub>1</sub>, <em>R</em><sub>2</sub>, …, <em>R<sub>n</sub></em>]로 표현됩니다.</p>
+
+<p><img src="./img/dorothy_rl_rewards_sequence.png" alt="보상 수열" />
+<strong>그림 02-5-5</strong> 시간의 흐름에 따라 순서대로 떨어지는 보상값들을 차곡차곡 받아내며 하나의 보상 수열을 만드는 도로시와 토토</p>
+
+<h3 id="2523-피보나치수열-번식의-원리와-황금비의-비밀">2.5.2.3 피보나치수열: 번식의 원리와 황금비의 비밀</h3>
+
+<h4 id="1-피보나치수열의-기원과-원리">1) 피보나치수열의 기원과 원리</h4>
+<p>“수열의 세상에는 아주 신비롭고, 어찌 보면 조금 무시무시한 규칙도 있단다.”
+지니가 요술봉을 휘두르자 칠판에 medieval 복장을 한 피사 출신의 12세기 수학자 <strong>레오나르도 피보나치(Leonardo Fibonacci)</strong>가 나타났습니다.</p>
+
+<p>“피보나치는 이탈리아에 아라비아 숫자를 널리 소개한 아주 훌륭한 수학자야. 그는 토끼의 번식을 간단한 수학적 모델로 설명했단다. 갓 태어난 한 쌍의 토끼가 자라서 매달 새로운 토끼 한 쌍을 낳는 규칙을 시뮬레이션해 보았지.”</p>
+<ul>
+  <li><strong>1번째 달</strong>: 처음 태어난 토끼 한 쌍 [1]</li>
+  <li><strong>2번째 달</strong>: 아직 자라나며 준비하는 단계 [1]</li>
+  <li><strong>3번째 달</strong>: 드디어 어른이 되어 새로운 토끼 한 쌍을 출산 [2]</li>
+  <li><strong>4번째 달</strong>: 첫 번째 토끼 쌍이 또 낳고, 두 번째 토끼 쌍은 성숙 대기 [3]</li>
+  <li><strong>5번째 달</strong>: 성숙한 토끼 쌍들이 번식하여 급격히 숫자가 증가 [5]</li>
+</ul>
+
+<p>“우와! 처음 두 항은 1, 1이고 세 번째 항부터는 바로 앞의 두 항을 더해나가는 규칙이네!” 도로시가 외쳤습니다.</p>
+
+<ul>
+  <li><strong>피보나치수열의 점화식</strong>: <em>a<sub>n</sub></em> = <em>a<sub>n-1</sub></em> + <em>a<sub>n-2</sub></em> (단, <em>a</em><sub>1</sub> = 1, <em>a</em><sub>2</sub> = 1)</li>
+  <li><strong>수열의 나열</strong>: [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, …]</li>
+</ul>
+
+<p>“맞아! 이전의 두 상태가 현재 상태에 영향을 주어 폭발적으로 팽창해 나가지. 그래서 이 규칙을 그대로 숲으로 가져오면…”
+지니가 손가락을 튕기자, 사방에서 귀엽고 복슬복슬한 하얀 토끼들이 튀어나와 연못 주위를 가득 메우기 시작했습니다. 1쌍에서 시작해 순식간에 수십 쌍으로 번식하며 도로시와 토토를 포위했습니다.
+“지니! 멈춰줘! 이러다간 연못이 토끼들로 꽉 차버리겠어!” 도로시가 깜짝 놀라며 토토를 안아 올렸습니다.</p>
+
+<p><img src="./img/dorothy_fibonacci_origin.png" alt="피보나치 수열의 기원" />
+<strong>그림 02-5-6</strong> 12세기 수학자 레오나르도 피보나치가 제안한 토끼 번식 모델과 수열의 기본 점화식 원리를 관찰하는 도로시와 지니, 토토</p>
+
+<h4 id="2-자연-속의-피보나치-수열">2) 자연 속의 피보나치 수열</h4>
+<p>“방금 본 토끼 군단은 조금 당황스러웠겠지만, 이 수열은 신기하게도 우리 자연계의 수많은 곳에서 꽃을 피우고 있단다.” 지니가 마법으로 토끼들을 다시 되돌려 보낸 뒤, 연못가의 해바라기와 소나무 솔방울을 가리켰습니다.</p>
+
+<p>“해바라기 씨앗이 배열된 모습을 자세히 보면 시계 방향 나선과 반시계 방향 나선이 얽혀 있단다. 이 나선의 개수를 세어보면 각각 21개와 34개, 혹은 34개와 55개처럼 정확히 피보나치수열의 이웃한 두 숫자를 이루고 있어. 솔방울의 비늘 배열이나 식물의 줄기에서 잎이 돋아나는 순서에서도 이 수열이 예외 없이 나타난단다.”</p>
+
+<p>“식물들이 햇빛을 골고루 받고, 씨앗을 가장 빽빽하고 안전하게 채우기 위해 수학적 규칙을 스스로 따르고 있는 거네요!” 도로시가 신기한 듯 돋보기를 들고 해바라기 씨앗을 자세히 관찰하며 말했습니다.</p>
+
+<p><img src="./img/dorothy_fibonacci_nature.png" alt="자연 속의 피보나치 수열" />
+<strong>그림 02-5-7</strong> 해바라기 씨앗 나선 배열과 솔방울 비늘 개수 등 자연 도처에 숨겨진 피보나치수열의 아름다운 적용 예제들을 찾아보는 도로시와 지니, 토토</p>
+
+<h4 id="3-황금비golden-ratio와의-관계">3) 황금비(Golden Ratio)와의 관계</h4>
+<p>“더 나아가서 피보나치수열은 인류가 발견한 가장 완벽한 비율인 <strong>황금비(Golden Ratio)</strong>와 맞닿아 있단다.” 지니가 마법으로 칠판 위에 신비롭고 정교한 앵무조개(Nautilus)의 껍데기 단면과 황금 나선을 그렸습니다.</p>
+
+<p>“피보나치수열에서 이웃한 두 항의 비율(<em>a<sub>n</sub></em> ÷ <em>a<sub>n-1</sub></em>)을 점점 계산해 보자. 1÷1=1, 2÷1=2, 3÷2=1.5, 5÷3=1.666…, 8÷5=1.6, 13÷8=1.625… 뒤로 갈수록 이 비율은 놀랍게도 <strong>1 : 1.618…</strong>이라는 완벽한 황금 비율로 무한히 수렴하게 된단다.”</p>
+
+<p>“아! 이 나선의 팽창 비율이 정확히 1.618이 되는군요! 앵무조개 껍데기뿐만 아니라 태풍의 눈, 은하의 소용돌이 형태에서도 이 아름다운 황금비 나선이 나타나요.” 도로시가 눈을 반짝이며 카메라로 황금 나선 그림을 찍었습니다.</p>
+
+<p>“그렇단다. 자연이 가장 안정적이면서도 아름다운 성장을 도모하기 위해 선택한 황금비가, 결국 단순한 앞뒤 항의 덧셈 수열에서 유도된다는 것이 수학의 경이로움이지.”</p>
+
+<p><img src="./img/dorothy_golden_ratio.png" alt="황금비와 황금나선" />
+<strong>그림 02-5-8</strong> 피보나치수열의 비율 수렴을 통해 유도되는 황금비(1:1.618) 및 자연계의 대표적인 기하학적 형태인 황금나선을 공부하는 도로시와 지니, 토토</p>
+
+<hr />
+
+<h2 id="0253-수열의-다양한-얼굴들-수열의-종류와-특징">02.5.3 수열의 다양한 얼굴들: 수열의 종류와 특징</h2>
+
+<p>“지니, 그런데 세상에는 숫자를 곱하기만 하는 수열만 있는 거야? 다른 규칙을 가진 수열들은 없어?”
+도로시가 궁금하다는 듯 고개를 갸웃거리며 물었습니다.</p>
+
+<p><img src="./img/dorothy_asking_other_sequences.png" alt="다른 수열에 대한 호기심" />
+<strong>그림 02-5-9</strong> 등비수열 외에 다른 규칙을 가진 수열들도 있는지 호기심 가득한 눈으로 질문하는 도로시와 토토</p>
+
+<p>“당연히 아니지! 수열은 규칙을 정하기 나름이라 아주 많은 종류가 있단다. 그중 가장 기본적이고 대표적인 것들을 칠판에 정리해 줄게.” 지니가 요술봉으로 칠판을 톡톡 두드리자 여러 규칙적인 수들이 나타났습니다.</p>
+
+<p><img src="./img/dorothy_jiny_revealing_sequences.png" alt="다양한 수열의 공개" />
+<strong>그림 02-5-10</strong> 지니가 요술봉을 휘두르자 온갖 규칙적인 수들의 배열이 화려한 마법처럼 펼쳐지는 모습을 구경하는 도로시와 토토</p>
+
+<h4 id="1-등차수열arithmetic-sequence">1. 등차수열(Arithmetic Sequence)</h4>
+<ul>
+  <li><strong>정의</strong>: 첫째항부터 시작하여 차례대로 <strong>일정한 수(공차, <em>d</em>)</strong>를 더하여 만들어지는 수열입니다.</li>
+  <li><strong>예시</strong>: [2, 4, 6, 8, 10, …] (공차 <em>d</em> = 2)</li>
+  <li><strong>상세 설명</strong>: 등차수열은 마치 일정한 간격으로 놓인 계단을 하나씩 밟고 올라가는 것과 같습니다. 첫 번째 계단이 2m 높이라면, 그 다음은 4m, 6m, 8m처럼 항상 2m씩 동일한 높이로 증가합니다. 이처럼 매 단계마다 더해지는 일정한 차이를 공통의 차이라는 의미에서 <strong>공차(<em>d</em>)</strong>라고 부릅니다.</li>
+</ul>
+
+<p><img src="./img/dorothy_arithmetic_sequence.png" alt="등차수열 개념" />
+<strong>그림 02-5-11</strong> 일정한 공차 d = 2 만큼 매번 동일하게 높아지는 계단을 오르며 등차수열의 규칙을 몸소 체험하는 도로시와 지니, 토토</p>
+
+<h4 id="2-등비수열geometric-sequence">2. 등비수열(Geometric Sequence)</h4>
+<ul>
+  <li><strong>정의</strong>: 첫째항부터 시작하여 차례대로 <strong>일정한 수(공비, <em>r</em>)</strong>를 곱하여 만들어지는 수열입니다.</li>
+  <li><strong>예시</strong>: [3, 6, 12, 24, 48, …] (공비 <em>r</em> = 2)</li>
+  <li><strong>상세 설명</strong>: 등비수열은 일정한 비율로 폭발적으로 늘어나거나 줄어드는 마법 같은 수열입니다. 예를 들어 풍선 하나가 매 단계마다 2배로 불어난다면, 1개에서 시작한 풍선은 2개, 4개, 8개로 급격하게 불어납니다. 이처럼 차례대로 곱해지는 공통의 비율을 <strong>공비(<em>r</em>)</strong>라고 부르며, 강화학습에서는 미래 보상의 가치를 시간에 따라 줄여나가는 감쇄인자(Discount Factor)로 유용하게 쓰입니다.</li>
+</ul>
+
+<p><img src="./img/dorothy_geometric_concept.png" alt="등비수열 개념" />
+<strong>그림 02-5-12</strong> 마법을 부려 도로시가 든 풍선의 개수를 매번 2배씩 늘려나가며 등비수열(공비 r = 2)의 기하급수적인 팽창을 보여주는 지니와 토토</p>
+
+<h4 id="3-조화수열harmonic-sequence">3. 조화수열(Harmonic Sequence)</h4>
+<ul>
+  <li><strong>정의</strong>: 각 항의 <strong>역수(Reciprocal)</strong>가 등차수열을 이루는 수열입니다.</li>
+  <li><strong>예시</strong>: [1, 1/2, 1/3, 1/4, 1/5, …] (역수를 취하면 [1, 2, 3, 4, 5, …]로 공차가 1인 등차수열이 됨)</li>
+  <li><strong>상세 설명</strong>: 조화수열은 자연계의 주파수나 소리의 어울림을 설명할 때 쓰이는 아름다운 규칙입니다. 실로폰이나 거문고 등의 악기에서 소리를 내는 진동체(줄이나 건반)의 길이를 1, 1/2, 1/3, 1/4배 등으로 점점 줄여나가면, 조화롭고 아름다운 음계가 연주됩니다. 이 수열 자체는 얼핏 불규칙해 보이지만, 분모와 분자를 뒤집는 역수 연산을 적용하면 분모가 예쁜 등차수열이 되는 숨겨진 수학적 질서를 가집니다.</li>
+</ul>
+
+<p><img src="./img/dorothy_harmonic_sequence.png" alt="조화수열 개념" />
+<strong>그림 02-5-13</strong> 분모가 1, 2, 3, 4, 5로 늘어나며 아름다운 화음을 만드는 실로폰 건반 길이의 조화수열을 연주하는 도로시와 지휘하는 지니, 듣고 있는 토토</p>
+
+<h4 id="4-계차수열difference-sequence">4. 계차수열(Difference Sequence)</h4>
+<ul>
+  <li><strong>정의</strong>: 어떤 수열의 이웃하는 두 항의 <strong>차(Difference)</strong>로 이루어진 새로운 수열이 특정한 규칙을 따르는 수열입니다.</li>
+  <li><strong>예시</strong>: [1, 2, 4, 7, 11, 16, …] (항들의 차이가 [1, 2, 3, 4, 5, …]인 등차수열을 이룸)</li>
+  <li><strong>상세 설명</strong>: 계차수열은 수열 속에 또 다른 규칙적인 수열이 보물찾기처럼 숨어 있는 흥미진진한 수열입니다. 예시로 나온 [1, 2, 4, 7, 11] 수열에서 이웃한 값들을 서로 빼보면 그 차이가 각각 1, 2, 3, 4로 늘어납니다. 이처럼 인접한 항들끼리의 차(계차)를 구해 늘어놓았을 때, 그 계차들이 스스로 또 다른 예쁜 수열(예: 등차수열이나 등비수열)을 이루고 있을 때 이를 계차수열이라고 합니다.</li>
+</ul>
+
+<p><img src="./img/dorothy_difference_sequence.png" alt="계차수열 개념" />
+<strong>그림 02-5-14</strong> 숫자 블록들의 차이가 +1, +2, +3, +4로 규칙적으로 늘어나는 계차의 흐름을 돋보기로 추적하며 계차수열의 구조를 확인하는 도로시와 지니, 토토</p>
+
+<p>“우와! 규칙을 다르게 주니까 완전히 다른 개성을 가진 수열들이 태어나네요! 등비수열은 그중 한 종류일 뿐이었어.”
+도로시가 칠판의 요약표를 보며 고개를 끄덕였습니다.</p>
+
+<p><img src="./img/dorothy_sequence_types.png" alt="수열의 다양한 종류" />
+<strong>그림 02-5-15</strong> 등차수열, 등비수열, 조화수열 등 수열의 여러 가지 종류와 각 수열이 가지는 독특한 특징적 변화 그래프를 지니와 함께 살펴보는 도로시와 토토</p>
+
+<hr />
+
+<h2 id="0254-등비수열-일정하게-작아지는-마법">02.5.4 등비수열: 일정하게 작아지는 마법</h2>
+
+<p>첫째항부터 시작하여 차례대로 <strong>일정한 수(공비, <em>r</em>)</strong>를 곱하여 만들어지는 수열입니다.</p>
+
+<h3 id="2541-일반항-공식">2.5.4.1 일반항 공식</h3>
+<p>첫째항이 <em>a</em>이고 공비가 <em>r</em>일 때, <em>n</em>번째 항 <em>a<sub>n</sub></em>은 다음과 같습니다:
+<em>a<sub>n</sub></em> = <em>a</em> × <em>r</em><sup><em>n</em>-1</sup></p>
+
+<p><img src="./img/dorothy_geometric_sequence.png" alt="일정한 비율의 축소" />
+<strong>그림 02-5-16</strong> 첫 번째 케이크를 기준으로 매 단계마다 2분의 1 비율로 작아지며 등비수열의 규칙을 보여주는 지니의 마법과 도로시, 토토</p>
+
+<hr />
+
+<h2 id="0255-등비수열의-합과-무한의-수렴성">02.5.5 등비수열의 합과 무한의 수렴성</h2>
+
+<h3 id="2551-등비수열의-합-공식">2.5.5.1 등비수열의 합 공식</h3>
+
+<p>첫째항이 <em>a</em>, 공비가 <em>r</em>인 등비수열의 <em>n</em>번째 항까지의 합 <em>S<sub>n</sub></em>은 다음과 같습니다:
+<em>S<sub>n</sub></em> = <em>a</em> × (1 - <em>r</em><sup><em>n</em></sup>) ÷ (1 - <em>r</em>)  (단, <em>r</em> ≠ 1)</p>
+
+<p>“지니! 만약 공비 <em>r</em>이 0.9처럼 1보다 작은 수이고 항의 개수 <em>n</em>이 무한대로 커지면 분자의 <em>r</em><sup><em>n</em></sup>은 어떻게 돼?”</p>
+
+<p>“지수가 무한히 커질수록 그 값은 급격히 작아져 결국 0이 된다고 배웠지? 따라서 <em>r</em><sup><em>n</em></sup> ➔ 0 이 되므로, 무한히 더한 등비수열의 합은 발산하지 않고 <strong><em>*a* ÷ (1 - *r*)</em></strong>로 딱 떨어지게 수렴한단다.”</p>
+
+<p><img src="./img/dorothy_geometric_series_derivation.png" alt="등비수열 합의 수렴 유도" />
+<strong>그림 02-5-17</strong> 칠판에 적힌 무한 등비수열 합산 공식을 보고, 공비 <em>r</em>이 1보다 작을 때 수식의 값들이 안전하게 수렴하는 유도 과정을 공부하는 도로시와 지니, 토토</p>
+
+<p>“오! 분자의 지수 부분이 통째로 날아가는구나! 그래서 무한히 많이 더해도 가치가 무한대로 폭발하지 않고 안전하게 계산되는 거였어!”</p>
+
+<p>도로시가 감탄했습니다.</p>
+
+<hr />
+
+<h2 id="0256-강화학습-지수-이동-평균과-가중치-보존">02.5.6 강화학습 지수 이동 평균과 가중치 보존</h2>
+
+<h3 id="2561-비정상-문제와-과거-가중치">2.5.6.1 비정상 문제와 과거 가중치</h3>
+
+<p>비정상 밴디트 문제에서 과거 보상들의 가중치 감쇄항들을 모두 더해보면 다음과 같은 등비수열의 합 형태를 이룹니다:</p>
+
+<p><em>S<sub>n</sub></em> = <em>α</em> + <em>α</em> × (1 - <em>α</em>) + <em>α</em> × (1 - <em>α</em>)<sup>2</sup> + … + <em>α</em> × (1 - <em>α</em>)<sup><em>n</em>-1</sup></p>
+
+<p>이 식은 첫째항 <em>a</em> = <em>α</em>, 공비 <em>r</em> = (1 - <em>α</em>) 인 등비수열의 합입니다.</p>
+
+<p><img src="./img/dorothy_bandit_weights.png" alt="가중치의 변화" />
+<strong>그림 02-5-18</strong> 시간이 지남에 따라 가중치의 크기가 일정 비율(1 - <em>α</em>)로 감쇄하며 줄어드는 가중치 등비수열을 지니와 함께 관찰하는 도로시와 토토</p>
+
+<h3 id="2562-가중치-합의-10-보존">2.5.6.2 가중치 합의 1.0 보존</h3>
+<p>등비수열 합 공식에 대입하면 다음과 같습니다:</p>
+
+<p><em>S<sub>n</sub></em> = <em>α</em> × [ 1 - (1 - <em>α</em>)<sup><em>n</em></sup> ] ÷ [ 1 - (1 - <em>α</em>) ]
+<em>S<sub>n</sub></em> = <em>α</em> × [ 1 - (1 - <em>α</em>)<sup><em>n</em></sup> ] ÷ <em>α</em> = <strong>1 - (1 - <em>α</em>)<sup><em>n</em></sup></strong></p>
+
+<p>만약 <em>n</em>이 무한히 커진다면 (1 - <em>α</em>)<sup><em>n</em></sup>은 0에 수렴하므로, 가중치들의 총합은 완벽하게 <strong>1.0</strong>이 됩니다. 즉, 가중치들의 합이 1로 보존되어 가치의 크기가 왜곡되지 않고 안전하게 유지됩니다.</p>
+
+<p><img src="./img/dorothy_convergent_value.png" alt="가중치 합의 보존" />
+<strong>그림 02-5-19</strong> 과거 데이터들의 가중치 수열을 무한히 더했을 때 정확히 1.0으로 수렴 보존됨을 확인하고 기뻐하는 도로시와 지니, 토토</p>
+
+<hr />
+
+<h2 id="0257-실전-예제">02.5.7 실전 예제</h2>
+
+<p>학습한 내용을 바탕으로 다음 문제를 직접 해결해 봅시다.</p>
+
+<h3 id="문제-1-등비수열의-합-계산">문제 1 (등비수열의 합 계산)</h3>
+
+<p>첫째항이 0.3 이고 공비가 0.7 인 등비수열의 3번째 항까지의 합 <em>S</em><sub>3</sub>의 값을 구하시오. (소수로 답할 것)</p>
+
+<blockquote>
+  <p><strong>풀이</strong>:
+등비수열의 3번째 항까지의 나열은 다음과 같습니다:</p>
+  <ul>
+    <li>1번째 항 = 0.3</li>
+    <li>2번째 항 = 0.3 × 0.7 = 0.21</li>
+    <li>3번째 항 = 0.3 × 0.7<sup>2</sup> = 0.3 × 0.49 = 0.147</li>
+  </ul>
+
+  <p>세 항의 합을 직접 구합니다:
+<em>S</em><sub>3</sub> = 0.3 + 0.21 + 0.147 = 0.657</p>
+
+  <p>(공식 대입 시: <em>S</em><sub>3</sub> = 0.3 × (1 - 0.7<sup>3</sup>) ÷ (1 - 0.7) = 0.3 × (1 - 0.343) ÷ 0.3 = 1 - 0.343 = 0.657)</p>
+
+  <p><strong>정답</strong>: 0.657</p>
+</blockquote>
+
+<hr />
+
+<h2 id="0258-핵심-요약">02.5.8 핵심 요약</h2>
+
+<p><img src="./img/dorothy_sequence_summary.png" alt="단원 핵심 요약" />
+<strong>그림 02-5-20</strong> 수열의 정의, 등비수열의 합 공식, 그리고 강화학습에서의 가중치 보존 수렴성까지 배움을 완수하고 졸업장을 든 지니와 도로시, 토토의 기념사진</p>
+
+<ol>
+  <li><strong>수열</strong>은 규칙적인 수의 나열로, 각 수를 항이라 부르고 첫 번째부터 <em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a<sub>n</sub></em> 형태로 쓴다.</li>
+  <li><strong>등비수열의 합</strong>은 공비 <em>r</em>이 1보다 작을 때, 항의 개수가 무한히 많아지면 결국 분모의 공비 항이 수렴하여 하나의 일정한 경계값에 다다르게 된다.</li>
+  <li>비정상 밴디트의 지수 이동 평균 가중치 합산식은 공비가 (1 - <em>α</em>) 인 등비수열의 합 구조를 띠고 있으며, 그 총합은 무한히 진행 시 항상 <strong>1.0</strong>으로 보존된다.</li>
+</ol>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="/character/" class="text-decoration-none text-secondary me-3">캐릭터 소개</a>
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

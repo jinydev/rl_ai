@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 12px; fill: #718096; }
+    .axis { stroke: #4a5568; stroke-width: 2; }
+    .grid { stroke: #e2e8f0; stroke-width: 1; stroke-dasharray: 4,4; }
+    .line-emp { stroke: #3182ce; stroke-width: 3; fill: none; }
+    .line-true { stroke: #e53e3e; stroke-width: 2; stroke-dasharray: 5,5; fill: none; }
+    .dot { fill: #3182ce; stroke: #ffffff; stroke-width: 1.5; }
+    .text-true { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: bold; fill: #e53e3e; }
+  </style>
+
+  <text class="title" x="40" y="45">대수의 법칙 (Law of Large Numbers)</text>
+  <text class="label" x="40" y="65">던지는 횟수가 늘어날수록 특정 사건(용)의 비율이 0.7(참 확률)로 수렴합니다.</text>
+
+  <!-- Grid Lines -->
+  <line class="grid" x1="100" y1="300" x2="700" y2="300" />
+  <line class="grid" x1="100" y1="230" x2="700" y2="230" />
+  <line class="grid" x1="100" y1="160" x2="700" y2="160" />
+  <line class="grid" x1="100" y1="90" x2="700" y2="90" />
+
+  <!-- Y-Axis Labels -->
+  <text class="label" x="70" y="304" text-anchor="end">0.0</text>
+  <text class="label" x="70" y="234" text-anchor="end">0.3</text>
+  <text class="label" x="70" y="164" text-anchor="end">0.6</text>
+  <text class="label" x="70" y="94" text-anchor="end">0.9</text>
+
+  <!-- True Probability Line (0.7) -->
+  <!-- 0.7 on our scale: 300 - (300-90)*0.7/0.9 = 300 - 210*0.777 = 136.6 -->
+  <line class="line-true" x1="100" y1="137" x2="700" y2="137" />
+  <text class="text-true" x="710" y="141">참 확률 (0.7)</text>
+
+  <!-- Axes -->
+  <line class="axis" x1="100" y1="300" x2="700" y2="300" /> <!-- X-axis -->
+  <line class="axis" x1="100" y1="90" x2="100" y2="300" />  <!-- Y-axis -->
+
+  <!-- X-Axis Labels (Trials) -->
+  <text class="label" x="150" y="325" text-anchor="middle">10회</text>
+  <text class="label" x="250" y="325" text-anchor="middle">20회</text>
+  <text class="label" x="350" y="325" text-anchor="middle">50회</text>
+  <text class="label" x="450" y="325" text-anchor="middle">100회</text>
+  <text class="label" x="550" y="325" text-anchor="middle">1000회</text>
+  <text class="label" x="650" y="325" text-anchor="middle">10000회</text>
+
+  <!-- Empirical Data Line Plot -->
+  <!-- 10회: 0.8 -> 300 - (0.8/0.9)*210 = 113.3 -->
+  <!-- 20회: 0.6 -> 300 - (0.6/0.9)*210 = 160 -->
+  <!-- 50회: 0.72 -> 300 - (0.72/0.9)*210 = 132 -->
+  <!-- 100회: 0.68 -> 300 - (0.68/0.9)*210 = 141.3 -->
+  <!-- 1000회: 0.709 -> 300 - (0.709/0.9)*210 = 134.5 -->
+  <!-- 10000회: 0.70 -> 300 - (0.7/0.9)*210 = 136.6 -->
+  <path class="line-emp" d="M 150 113 L 250 160 L 350 132 L 450 141 L 550 135 L 650 137" />
+
+  <!-- Data Dots -->
+  <circle class="dot" cx="150" cy="113" r="5" />
+  <circle class="dot" cx="250" cy="160" r="5" />
+  <circle class="dot" cx="350" cy="132" r="5" />
+  <circle class="dot" cx="450" cy="141" r="5" />
+  <circle class="dot" cx="550" cy="135" r="5" />
+  <circle class="dot" cx="650" cy="137" r="5" />
+</svg>

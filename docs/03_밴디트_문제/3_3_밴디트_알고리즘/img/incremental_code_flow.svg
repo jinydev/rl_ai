@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 410" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { rx: 12px; stroke-width: 2; filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.04)); }
+      .init-box { fill: #f3e8fd; stroke: #9334e8; }
+      .loop-box { fill: #e8f0fe; stroke: #1a73e8; }
+      .step-box { fill: #f8f9fa; stroke: #dadce0; }
+      .update-box { fill: #e6f4ea; stroke: #137333; }
+      .success-box { fill: #e6f4ea; stroke: #34a853; }
+      .title-text { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 15px; font-weight: 700; fill: #202124; }
+      .code-text { font-family: 'Fira Code', 'Consolas', monospace; font-size: 13px; font-weight: 600; fill: #1a73e8; }
+      .code-green { font-family: 'Fira Code', 'Consolas', monospace; font-size: 14px; font-weight: 700; fill: #137333; }
+      .desc-text { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; fill: #5f6368; }
+      .arrow-purple { stroke: #9334e8; stroke-width: 2.5; fill: none; }
+      .arrow-blue { stroke: #1a73e8; stroke-width: 2.5; fill: none; }
+      .arrow-green { stroke: #137333; stroke-width: 2.5; fill: none; }
+      .arrow-loop { stroke: #1a73e8; stroke-width: 2.5; stroke-dasharray: 5,5; fill: none; }
+    </style>
+    <marker id="arrowhead-purple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#9334e8" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1a73e8" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#137333" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Header Title -->
+  <text x="430" y="32" font-family="'Noto Sans KR', sans-serif" font-size="18" font-weight="bold" fill="#202124" text-anchor="middle">초경량 증분 공식 파이썬 코드 실행 흐름 (O(1) Memory &amp; Time)</text>
+
+  <!-- Step 0: Initialize Q -->
+  <rect x="50" y="60" width="190" height="72" class="box init-box" />
+  <rect x="62" y="70" width="55" height="18" rx="4" fill="#9334e8" />
+  <text x="89" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">초기화</text>
+  <text x="125" y="84" class="title-text">단일 변수 준비</text>
+  <text x="62" y="112" class="code-text" style="fill:#7e22ce;">Q = 0.0</text>
+
+  <!-- Arrow 0 -> 1 -->
+  <path d="M 240 96 L 275 96" class="arrow-purple" marker-end="url(#arrowhead-purple)" />
+
+  <!-- Step 1: Loop Header -->
+  <rect x="285" y="60" width="220" height="72" class="box loop-box" />
+  <rect x="297" y="70" width="50" height="18" rx="4" fill="#1a73e8" />
+  <text x="322" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">1단계</text>
+  <text x="355" y="84" class="title-text">반복 루프 시작</text>
+  <text x="297" y="112" class="code-text">for n in range(1, 11):</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 505 96 L 545 96" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 2: Random Reward -->
+  <rect x="555" y="60" width="255" height="72" class="box step-box" />
+  <rect x="567" y="70" width="50" height="18" rx="4" fill="#5f6368" />
+  <text x="592" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">2단계</text>
+  <text x="625" y="84" class="title-text">새 보상(R_n) 관측</text>
+  <text x="567" y="112" class="code-text">reward = np.random.rand()</text>
+
+  <!-- Arrow 2 -> 3 (Downwards) -->
+  <path d="M 682 132 L 682 175" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 3: Incremental Update (Core Step) -->
+  <rect x="420" y="185" width="390" height="95" class="box update-box" />
+  <rect x="432" y="197" width="55" height="18" rx="4" fill="#137333" />
+  <text x="459" y="210" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">3단계</text>
+  <text x="495" y="211" class="title-text" style="fill:#137333;">★ 증분 공식으로 Q 즉시 갱신</text>
+  <text x="432" y="238" class="code-green">Q += (reward - Q) / n</text>
+  <text x="432" y="260" class="desc-text">오차(reward - Q) × 학습률(1/n)을 이전 Q에 바로 덮어쓰기!</text>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 420 232 L 340 232" class="arrow-green" marker-end="url(#arrowhead-green)" />
+
+  <!-- Step 4: Print Output -->
+  <rect x="110" y="185" width="220" height="95" class="box step-box" />
+  <rect x="122" y="197" width="50" height="18" rx="4" fill="#5f6368" />
+  <text x="147" y="210" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">4단계</text>
+  <text x="180" y="211" class="title-text">최신 Q 출력</text>
+  <text x="122" y="238" class="code-text">print(f"판수 {n}: Q = {Q:.4f}")</text>
+  <text x="122" y="260" class="desc-text">수렴해가는 가치 확인</text>
+
+  <!-- Loop Feedback Arrow: from Step 4 back to Step 1 (Loop) -->
+  <path d="M 110 232 L 60 232 A 20 20 0 0 1 40 212 L 40 160 A 20 20 0 0 1 60 140 L 380 140 L 380 132" class="arrow-loop" marker-end="url(#arrowhead-blue)" />
+  <text x="210" y="155" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="bold" fill="#1a73e8">다음 판으로 즉시 반복 (n+1)</text>
+
+  <!-- Bottom Success Box -->
+  <rect x="50" y="305" width="760" height="85" class="box success-box" />
+  <text x="75" y="330" font-family="'Noto Sans KR', sans-serif" font-size="14" font-weight="bold" fill="#137333">✨ 증분 공식 구현의 강력한 장점 (단순 평균 방식과의 완벽한 차별화)</text>
+  <text x="75" y="354" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#202124">• <tspan font-weight="bold" fill="#137333">메모리 O(1)</tspan>: 과거 보상들을 담아두는 리스트가 전혀 필요 없으며, 오직 단 1개의 float 변수 Q(8바이트)만 유지합니다.</text>
+  <text x="75" y="374" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#202124">• <tspan font-weight="bold" fill="#137333">계산량 O(1)</tspan>: sum() 연산 없이 매 판 1번의 뺄셈, 나눗셈, 덧셈만으로 끝나므로 1,000만 번을 돌려도 초고속입니다!</text>
+</svg>

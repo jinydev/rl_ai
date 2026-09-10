@@ -1,0 +1,102 @@
+<h2 class="text-center fw-bold mb-4" style="color: #2b3947;">🗺️ 강화학습 마법 여정 로드맵</h2>
+<p class="text-center text-secondary mb-5">총 6개의 핵심 학습 파트와 부록으로 이루어진 체계적인 강화학습 교육 과정입니다.</p>
+
+<div class="row g-4">
+    <!-- 소개하기 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-intro px-3 py-2 fw-bold">01. 소개하기</span>
+            </div>
+            <h4 class="fw-bold">강화학습이란?</h4>
+            <p class="text-secondary small flex-grow-1">
+                시행착오(Trial and Error)를 거치며 보상을 최대화하는 에이전트의 메커니즘을 친근한 컷만화와 실생활 비유를 통해 쉽게 입문합니다.
+            </p>
+            <a href="{{ '/01_강화학습이란/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">학습 시작 ➔</a>
+        </div>
+    </div>
+
+    <!-- 기초수학 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-math px-3 py-2 fw-bold">02. 기초수학</span>
+            </div>
+            <h4 class="fw-bold">수학 선행학습</h4>
+            <p class="text-secondary small flex-grow-1">
+                지수와 로그, 시그마 기호, 조건부 확률 및 전이 확률 행렬까지, 강화학습 논문과 수식을 읽는 데 필요한 핵심 대수학을 정리합니다.
+            </p>
+            <a href="{{ '/02_확률과_기초수학/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">수학 정복 ➔</a>
+        </div>
+    </div>
+
+    <!-- Part 1 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-part1 px-3 py-2 fw-bold">03. Part 1</span>
+            </div>
+            <h4 class="fw-bold">이론적 배경</h4>
+            <p class="text-secondary small flex-grow-1">
+                다중 슬롯머신(Bandit) 문제를 통해 탐색/활용의 딜레마를 배우고, MDP(마르코프 결정 과정)와 핵심인 벨만 방정식을 배웁니다.
+            </p>
+            <a href="{{ '/part1/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">이론 학습 ➔</a>
+        </div>
+    </div>
+
+    <!-- Part 2 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-part2 px-3 py-2 fw-bold">04. Part 2</span>
+            </div>
+            <h4 class="fw-bold">강화학습</h4>
+            <p class="text-secondary small flex-grow-1">
+                강화학습을 해결하는 3가지 거대한 기둥인 동적 계획법(DP), 몬테카를로법(MC), 그리고 시간차 학습(TD/Q-러닝)을 밑바닥부터 구현합니다.
+            </p>
+            <a href="{{ '/part2/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">알고리즘 구현 ➔</a>
+        </div>
+    </div>
+
+    <!-- Part 3 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-part3 px-3 py-2 fw-bold">05. Part 3</span>
+            </div>
+            <h4 class="fw-bold">고급 강화학습</h4>
+            <p class="text-secondary small flex-grow-1">
+                인공신경망 프레임워크 DeZero를 바탕으로 DQN(Deep Q-Network)과 정책 경사법(Policy Gradient), Actor-Critic 모델을 완성합니다.
+            </p>
+            <a href="{{ '/part3/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">고급 강화학습 ➔</a>
+        </div>
+    </div>
+
+    <!-- Part 4 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-part4 px-3 py-2 fw-bold">06. Part 4</span>
+            </div>
+            <h4 class="fw-bold">심화학습</h4>
+            <p class="text-secondary small flex-grow-1">
+                    DDPG, TRPO, PPO 등 연속적 행동 제어 알고리즘 분류 체계를 정리하고 실제 현업의 한계와 미래 가능성을 조망합니다.
+            </p>
+            <a href="{{ '/part4/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">심화학습 ➔</a>
+        </div>
+    </div>
+
+    <!-- 부록 -->
+    <div class="col-md-6 col-lg-4">
+        <div class="card road-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="badge rounded-pill badge-appendix px-3 py-2 fw-bold">07. 부록</span>
+            </div>
+            <h4 class="fw-bold">수학적 증명 및 심화</h4>
+            <p class="text-secondary small flex-grow-1">
+                Double DQN, n-단계 TD법, 정책 경사 정리 등 수식 증명 및 알고리즘 디테일을 꼼꼼하게 채워 완성도를 높입니다.
+            </p>
+            <a href="{{ '/A_오프-정책_몬테카를로법/' | relative_url }}" class="btn btn-sm btn-road-action rounded-pill mt-3 align-self-start fw-bold">부록 탐구 ➔</a>
+        </div>
+    </div>
+</div>

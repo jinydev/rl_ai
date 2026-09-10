@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 240" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Pink Arrow Marker -->
+    <marker id="pink-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f472b6"/>
+    </marker>
+    <!-- Orange Arrow Marker -->
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f59e0b"/>
+    </marker>
+  </defs>
+  <!-- Left Side: L1 backup diagram -->
+  <g transform="translate(10, 10)">
+    <circle cx="110" cy="40" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2.5"/>
+    <text x="110" y="44" font-family="sans-serif" font-size="13" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+
+    <!-- Left action -->
+    <line x1="95" y1="52" x2="45" y2="92" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="38" cy="100" r="6" fill="#2d3748"/>
+    <text x="24" y="104" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">Left</text>
+
+    <line x1="38" y1="106" x2="38" y2="152" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="38" cy="170" r="16" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="38" y="174" font-family="sans-serif" font-size="11" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    
+    <!-- Reward Pill -->
+    <rect x="-2" y="200" width="80" height="24" rx="12" ry="12" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="38" y="216" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">보상 : -1</text>
+
+    <!-- Right action -->
+    <line x1="125" y1="52" x2="175" y2="92" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="182" cy="100" r="6" fill="#2d3748"/>
+    <text x="196" y="104" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+    <line x1="182" y1="106" x2="182" y2="152" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="182" cy="170" r="16" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="182" y="174" font-family="sans-serif" font-size="11" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+
+    <!-- Reward Pill -->
+    <rect x="157" y="200" width="50" height="24" rx="12" ry="12" fill="#e0f2fe" stroke="#3b82f6" stroke-width="1.5"/>
+    <text x="182" y="216" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">1</text>
+  </g>
+
+  <!-- Right Side: v_*(s) Table -->
+  <g transform="translate(250, 40)">
+    <!-- Label -->
+    <text x="75" y="30" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#2d3748" text-anchor="middle">
+      v<tspan dy="5" font-size="13">*</tspan><tspan dy="-5">(s)</tspan>
+    </text>
+    
+    <!-- Table Grid -->
+    <rect x="15" y="45" width="120" height="40" fill="#ffffff" stroke="#2d3748" stroke-width="1.8"/>
+    <line x1="75" y1="45" x2="75" y2="85" stroke="#2d3748" stroke-width="1.8"/>
+    
+    <!-- Values -->
+    <text x="45" y="70" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">5.26</text>
+    <text x="105" y="70" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">4.73</text>
+    
+    <!-- Cell Labels -->
+    <text x="45" y="108" font-family="sans-serif" font-size="14" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    <text x="105" y="108" font-family="sans-serif" font-size="14" font-weight="bold" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+  </g>
+</svg>

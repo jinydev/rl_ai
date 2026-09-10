@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="100%" height="100%">
+  <defs>
+    <!-- Apple Icon -->
+    <g id="apple">
+      <path d="M 30 17 C 20 12, 10 22, 15 37 C 18 47, 25 50, 30 47 C 35 50, 42 47, 45 37 C 50 22, 40 12, 30 17 Z" fill="#fc4d4d" stroke="#2d3748" stroke-width="2.5"/>
+      <path d="M 30 17 Q 34 8 42 11" fill="none" stroke="#684b35" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M 34 13 Q 41 9 42 16 C 39 18, 36 16, 34 13 Z" fill="#4ade80" stroke="#2d3748" stroke-width="1"/>
+    </g>
+    
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+  <!-- Left Side: Deterministic -->
+  <g transform="translate(40, 10)">
+    <circle cx="70" cy="40" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="70" y="44" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L1</text>
+
+    <line x1="70" y1="58" x2="70" y2="82" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="70" cy="90" r="6" fill="#2d3748"/>
+    <text x="85" y="94" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+    <line x1="70" y1="96" x2="70" y2="142" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="55" y="125" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">+1</text>
+    <circle cx="70" cy="160" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="70" y="164" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L2</text>
+
+    <line x1="70" y1="178" x2="70" y2="202" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="70" cy="210" r="6" fill="#2d3748"/>
+    <text x="85" y="214" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+    <line x1="70" y1="216" x2="70" y2="262" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="55" y="245" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">-1</text>
+    <circle cx="70" cy="280" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="70" y="284" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L2</text>
+
+    <line x1="70" y1="298" x2="70" y2="340" stroke="#2d3748" stroke-width="1.5" stroke-dasharray="3,3" marker-end="url(#arrow)"/>
+  </g>
+
+  <!-- Divider -->
+  <line x1="220" y1="20" x2="220" y2="360" stroke="#cbd5e0" stroke-width="1.5" stroke-dasharray="5,5"/>
+
+  <!-- Right Side: Stochastic -->
+  <g transform="translate(230, 10)">
+    <circle cx="170" cy="40" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="170" y="44" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L1</text>
+
+    <!-- Branch Left -->
+    <line x1="156" y1="52" x2="104" y2="92" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="95" cy="100" r="6" fill="#2d3748"/>
+    <text x="80" y="104" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">Left</text>
+
+    <line x1="95" y1="106" x2="95" y2="152" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="80" y="135" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">-1</text>
+    <circle cx="95" cy="170" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="95" y="174" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L1</text>
+
+    <!-- Branch Right -->
+    <line x1="184" y1="52" x2="236" y2="92" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="245" cy="100" r="6" fill="#2d3748"/>
+    <text x="260" y="104" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748">Right</text>
+
+    <line x1="245" y1="106" x2="245" y2="152" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="230" y="135" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2d3748" text-anchor="end">+1</text>
+    <circle cx="245" cy="170" r="18" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+    <text x="245" y="174" font-family="sans-serif" font-size="12" font-style="italic" font-weight="bold" fill="#2d3748" text-anchor="middle">L2</text>
+
+    <!-- Level 3 from L1 -->
+    <line x1="83" y1="182" x2="52" y2="222" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="45" cy="230" r="6" fill="#2d3748"/>
+    <text x="35" y="234" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">Left</text>
+    <line x1="45" y1="236" x2="45" y2="274" stroke="#2d3748" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <text x="35" y="260" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="end">-1</text>
+    <circle cx="45" cy="290" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="45" y="294" font-family="sans-serif" font-size="10" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    <line x1="45" y1="304" x2="45" y2="330" stroke="#718096" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+    <line x1="107" y1="182" x2="138" y2="222" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="145" cy="230" r="6" fill="#2d3748"/>
+    <text x="157" y="234" font-family="sans-serif" font-size="12" fill="#2d3748">Right</text>
+    <line x1="145" y1="236" x2="145" y2="274" stroke="#2d3748" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <text x="135" y="260" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="end">+1</text>
+    <circle cx="145" cy="290" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="145" y="294" font-family="sans-serif" font-size="10" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+    <line x1="145" y1="304" x2="145" y2="330" stroke="#718096" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+    <!-- Level 3 from L2 -->
+    <line x1="233" y1="182" x2="202" y2="222" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="195" cy="230" r="6" fill="#2d3748"/>
+    <text x="185" y="234" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">Left</text>
+    <line x1="195" y1="236" x2="195" y2="274" stroke="#2d3748" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <text x="185" y="260" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="end">0</text>
+    <circle cx="195" cy="290" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="195" y="294" font-family="sans-serif" font-size="10" font-style="italic" fill="#2d3748" text-anchor="middle">L1</text>
+    <line x1="195" y1="304" x2="195" y2="330" stroke="#718096" stroke-width="1.2" stroke-dasharray="2,2"/>
+
+    <line x1="257" y1="182" x2="288" y2="222" stroke="#2d3748" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <circle cx="295" cy="230" r="6" fill="#2d3748"/>
+    <text x="307" y="234" font-family="sans-serif" font-size="12" fill="#2d3748">Right</text>
+    <line x1="295" y1="236" x2="295" y2="274" stroke="#2d3748" stroke-width="1.2" marker-end="url(#arrow)"/>
+    <text x="285" y="260" font-family="sans-serif" font-size="11" fill="#2d3748" text-anchor="end">-1</text>
+    <circle cx="295" cy="290" r="14" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+    <text x="295" y="294" font-family="sans-serif" font-size="10" font-style="italic" fill="#2d3748" text-anchor="middle">L2</text>
+    <line x1="295" y1="304" x2="295" y2="330" stroke="#718096" stroke-width="1.2" stroke-dasharray="2,2"/>
+  </g>
+</svg>

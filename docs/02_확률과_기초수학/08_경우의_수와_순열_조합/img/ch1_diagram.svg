@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 14px; fill: #4a5568; text-anchor: middle; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 16px; font-style: italic; fill: #1a202c; text-anchor: middle; }
+    .box { fill: #ffffff; stroke: #cbd5e0; stroke-width: 1.5; rx: 8; ry: 8; }
+    .box-add { fill: #ebf8ff; stroke: #3182ce; }
+    .box-mul { fill: #f0fff4; stroke: #38a169; }
+    .arrow { stroke: #a0aec0; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+  </style>
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a0aec0" />
+    </marker>
+  </defs>
+
+  <!-- Left: Addition Rule -->
+  <g transform="translate(40, 40)">
+    <rect class="box box-add" x="0" y="0" width="320" height="300"/>
+    <text class="title" x="160" y="30" text-anchor="middle">합의 법칙 (Addition Rule)</text>
+    <text class="label" x="160" y="60" text-anchor="middle">동시에 일어나지 않는 사건의 가짓수</text>
+    
+    <!-- Animal Choices -->
+    <rect class="box" x="20" y="100" width="80" height="60"/>
+    <text class="label" x="60" y="130">강아지 (3)</text>
+
+    <rect class="box" x="120" y="100" width="80" height="60"/>
+    <text class="label" x="160" y="130">고양이 (4)</text>
+
+    <rect class="box" x="220" y="100" width="80" height="60"/>
+    <text class="label" x="260" y="130">햄스터 (2)</text>
+
+    <!-- Paths to Result -->
+    <path class="arrow" d="M 60 160 L 140 220"/>
+    <path class="arrow" d="M 160 160 L 160 220"/>
+    <path class="arrow" d="M 260 160 L 180 220"/>
+
+    <rect class="box box-add" x="80" y="220" width="160" height="50"/>
+    <text class="math" x="160" y="250">3 + 4 + 2 = 9가지</text>
+  </g>
+
+  <!-- Right: Multiplication Rule -->
+  <g transform="translate(440, 40)">
+    <rect class="box box-mul" x="0" y="0" width="320" height="300"/>
+    <text class="title" x="160" y="30" text-anchor="middle">곱의 법칙 (Multiplication Rule)</text>
+    <text class="label" x="160" y="60" text-anchor="middle">연이어 일어나는 사건의 가짓수</text>
+
+    <!-- Top and Bottom Choices -->
+    <rect class="box" x="30" y="100" width="100" height="60"/>
+    <text class="label" x="80" y="130">상의 (3벌)</text>
+
+    <text class="math" x="160" y="135">×</text>
+
+    <rect class="box" x="190" y="100" width="100" height="60"/>
+    <text class="label" x="240" y="130">하의 (3벌)</text>
+
+    <!-- Paths to Result -->
+    <path class="arrow" d="M 80 160 L 140 220"/>
+    <path class="arrow" d="M 240 160 L 180 220"/>
+
+    <rect class="box box-mul" x="80" y="220" width="160" height="50"/>
+    <text class="math" x="160" y="250">3 × 3 = 9가지</text>
+  </g>
+</svg>

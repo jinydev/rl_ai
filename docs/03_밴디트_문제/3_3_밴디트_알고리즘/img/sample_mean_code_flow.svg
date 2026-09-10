@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 380" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { rx: 12px; stroke-width: 2; filter: drop-shadow(0px 6px 12px rgba(0,0,0,0.04)); }
+      .start-box { fill: #e8f0fe; stroke: #1a73e8; }
+      .step-box { fill: #f8f9fa; stroke: #dadce0; }
+      .calc-box { fill: #fef7e0; stroke: #f9ab00; }
+      .warn-box { fill: #fce8e6; stroke: #ea4335; }
+      .title-text { font-family: 'Outfit', 'Noto Sans KR', sans-serif; font-size: 16px; font-weight: 700; fill: #202124; }
+      .code-text { font-family: 'Fira Code', 'Consolas', monospace; font-size: 13px; font-weight: 600; fill: #1a73e8; }
+      .desc-text { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; fill: #5f6368; }
+      .arrow { stroke: #5f6368; stroke-width: 2; fill: none; }
+      .arrow-blue { stroke: #1a73e8; stroke-width: 2.5; fill: none; }
+      .arrow-loop { stroke: #34a853; stroke-width: 2.5; stroke-dasharray: 5,5; fill: none; }
+      .badge { rx: 6px; fill: #1a73e8; font-family: 'Noto Sans KR', sans-serif; font-size: 11px; font-weight: bold; fill: #ffffff; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#5f6368" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#1a73e8" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#34a853" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Header Title -->
+  <text x="430" y="32" font-family="'Noto Sans KR', sans-serif" font-size="18" font-weight="bold" fill="#202124" text-anchor="middle">단순 표본 평균 파이썬 코드 실행 흐름 (Loop Flow)</text>
+
+  <!-- Step 1: Loop Header -->
+  <rect x="50" y="60" width="220" height="70" class="box start-box" />
+  <rect x="62" y="70" width="50" height="18" rx="4" fill="#1a73e8" />
+  <text x="87" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">1단계</text>
+  <text x="120" y="84" class="title-text">반복 루프 시작</text>
+  <text x="62" y="112" class="code-text">for n in range(1, 11):</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 270 95 L 310 95" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 2: Random Reward -->
+  <rect x="320" y="60" width="230" height="70" class="box step-box" />
+  <rect x="332" y="70" width="50" height="18" rx="4" fill="#5f6368" />
+  <text x="357" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">2단계</text>
+  <text x="390" y="84" class="title-text">새 보상 발생 (시뮬레이션)</text>
+  <text x="332" y="112" class="code-text">reward = np.random.rand()</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 550 95 L 590 95" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 3: Append to List -->
+  <rect x="600" y="60" width="220" height="70" class="box step-box" />
+  <rect x="612" y="70" width="50" height="18" rx="4" fill="#5f6368" />
+  <text x="637" y="83" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">3단계</text>
+  <text x="670" y="84" class="title-text">리스트에 보상 추가</text>
+  <text x="612" y="112" class="code-text">rewards.append(reward)</text>
+
+  <!-- Arrow 3 -> 4 (Downwards) -->
+  <path d="M 710 130 L 710 170" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 4: Sum and Average Calculation -->
+  <rect x="490" y="180" width="330" height="85" class="box calc-box" />
+  <rect x="502" y="192" width="50" height="18" rx="4" fill="#e37400" />
+  <text x="527" y="205" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">4단계</text>
+  <text x="560" y="206" class="title-text">전체 합산 및 n으로 나누기</text>
+  <text x="502" y="234" class="code-text">Q = sum(rewards) / n</text>
+  <text x="502" y="253" class="desc-text">과거 1번부터 n번까지의 모든 보상을 매번 합산!</text>
+
+  <!-- Arrow 4 -> 5 -->
+  <path d="M 490 222 L 400 222" class="arrow-blue" marker-end="url(#arrowhead-blue)" />
+
+  <!-- Step 5: Print -->
+  <rect x="170" y="180" width="220" height="85" class="box start-box" />
+  <rect x="182" y="192" width="50" height="18" rx="4" fill="#1a73e8" />
+  <text x="207" y="205" font-family="'Noto Sans KR', sans-serif" font-size="11" font-weight="bold" fill="#ffffff" text-anchor="middle">5단계</text>
+  <text x="240" y="206" class="title-text">최신 추정치 Q 출력</text>
+  <text x="182" y="234" class="code-text">print(f"판수: {Q:.4f}")</text>
+  <text x="182" y="253" class="desc-text">현재 판수의 표본 평균값 확인</text>
+
+  <!-- Loop Feedback Arrow: from Step 5 back to Step 1 -->
+  <path d="M 170 222 L 90 222 A 20 20 0 0 1 70 202 L 70 140" class="arrow-loop" marker-end="url(#arrowhead-green)" />
+  <text x="115" y="175" font-family="'Noto Sans KR', sans-serif" font-size="12" font-weight="bold" fill="#34a853">다음 판 진행 (n+1)</text>
+
+  <!-- Bottom Warning Box (Calculation & Memory Burden) -->
+  <rect x="50" y="295" width="770" height="65" class="box warn-box" />
+  <text x="75" y="322" font-family="'Noto Sans KR', sans-serif" font-size="14" font-weight="bold" fill="#c5221f">⚠️ 단순 구현 방식의 구조적 한계 (메모리와 계산량 폭발)</text>
+  <text x="75" y="344" font-family="'Noto Sans KR', sans-serif" font-size="12" fill="#5f6368">• 플레이 횟수(n)가 10,000회로 늘어나면 rewards 리스트 크기도 10,000개가 되며, sum(rewards)의 덧셈 연산도 매 판 10,000번 반복됩니다!</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 280" width="100%" height="100%">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- 1. Start Action Node (s, a) -->
+  <g transform="translate(310, 35)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="10" fill="#1e293b" stroke="#000" stroke-width="1.5"/>
+  </g>
+  <text x="310" y="18" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">행동 가치 q_π(s, a)</text>
+
+  <!-- First Level Branches (Transitions & Rewards) -->
+  <line x1="310" y1="45" x2="190" y2="105" stroke="#4b5563" stroke-width="2"/>
+  <line x1="310" y1="45" x2="430" y2="105" stroke="#4b5563" stroke-width="2"/>
+
+  <!-- Transition & Reward Labels -->
+  <text x="235" y="65" font-family="sans-serif" font-size="10" fill="#047857" font-weight="bold" text-anchor="end">p(s_1 | s, a)</text>
+  <text x="235" y="78" font-family="sans-serif" font-size="9" fill="#b45309" text-anchor="end">r(s,a,s_1)</text>
+
+  <text x="385" y="65" font-family="sans-serif" font-size="10" fill="#047857" font-weight="bold" text-anchor="start">p(s_2 | s, a)</text>
+  <text x="385" y="78" font-family="sans-serif" font-size="9" fill="#b45309" text-anchor="start">r(s,a,s_2)</text>
+
+  <!-- Next States s' -->
+  <g transform="translate(190, 115)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="0" y="4" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">s_1</text>
+  </g>
+  <text x="190" y="145" font-family="sans-serif" font-size="10" fill="#0369a1" text-anchor="middle">v_π(s_1)</text>
+
+  <g transform="translate(430, 115)" filter="url(#shadow)">
+    <circle cx="0" cy="0" r="18" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="0" y="4" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">s_2</text>
+  </g>
+  <text x="430" y="145" font-family="sans-serif" font-size="10" fill="#0369a1" text-anchor="middle">v_π(s_2)</text>
+
+  <!-- Second Level Branches (Policy π(a'|s')) -->
+  <!-- From s_1 -->
+  <line x1="190" y1="133" x2="120" y2="195" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="190" y1="133" x2="260" y2="195" stroke="#94a3b8" stroke-width="1.5"/>
+  <!-- From s_2 -->
+  <line x1="430" y1="133" x2="360" y2="195" stroke="#94a3b8" stroke-width="1.5"/>
+  <line x1="430" y1="133" x2="500" y2="195" stroke="#94a3b8" stroke-width="1.5"/>
+
+  <!-- Next Action Policy Labels -->
+  <text x="135" y="165" font-family="sans-serif" font-size="9" fill="#2563eb" text-anchor="end">π(a'_1 | s_1)</text>
+  <text x="245" y="165" font-family="sans-serif" font-size="9" fill="#2563eb" text-anchor="start">π(a'_2 | s_1)</text>
+  <text x="375" y="165" font-family="sans-serif" font-size="9" fill="#2563eb" text-anchor="end">π(a'_3 | s_2)</text>
+  <text x="485" y="165" font-family="sans-serif" font-size="9" fill="#2563eb" text-anchor="start">π(a'_4 | s_2)</text>
+
+  <!-- Next Action Nodes (s', a') Leaf Nodes -->
+  <circle cx="120" cy="198" r="6" fill="#1e293b" stroke="#000" stroke-width="1"/>
+  <text x="120" y="215" font-family="sans-serif" font-size="9" fill="#475569" text-anchor="middle">q_π(s_1, a'_1)</text>
+
+  <circle cx="260" cy="198" r="6" fill="#1e293b" stroke="#000" stroke-width="1"/>
+  <text x="260" y="215" font-family="sans-serif" font-size="9" fill="#475569" text-anchor="middle">q_π(s_1, a'_2)</text>
+
+  <circle cx="360" cy="198" r="6" fill="#1e293b" stroke="#000" stroke-width="1"/>
+  <text x="360" y="215" font-family="sans-serif" font-size="9" fill="#475569" text-anchor="middle">q_π(s_2, a'_3)</text>
+
+  <circle cx="500" cy="198" r="6" fill="#1e293b" stroke="#000" stroke-width="1"/>
+  <text x="500" y="215" font-family="sans-serif" font-size="9" fill="#475569" text-anchor="middle">q_π(s_2, a'_4)</text>
+
+  <!-- Summary Bracket & Formula Map -->
+  <path d="M 60 235 H 560" stroke="#4b5563" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="310" y="255" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">q_π(s,a) = ∑_s' p(s'|s,a) [ r(s,a,s') + γ ∑_a' π(a'|s') q_π(s',a') ]</text>
+</svg>

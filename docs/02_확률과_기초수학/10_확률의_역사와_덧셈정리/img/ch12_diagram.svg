@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #4a5568; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 15px; font-style: italic; fill: #1a202c; }
+    .math-bold { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 16px; font-weight: bold; fill: #2b6cb0; }
+    .box { fill: #ffffff; stroke: #cbd5e0; stroke-width: 1.5; rx: 8; ry: 8; }
+    .circle-a { fill: #ebf8ff; stroke: #3182ce; stroke-width: 2; fill-opacity: 0.5; }
+    .circle-b { fill: #fff5f5; stroke: #e53e3e; stroke-width: 2; fill-opacity: 0.5; }
+    .circle-mut1 { fill: #ebf8ff; stroke: #3182ce; stroke-width: 2; fill-opacity: 0.5; }
+    .circle-mut2 { fill: #fff5f5; stroke: #e53e3e; stroke-width: 2; fill-opacity: 0.5; }
+  </style>
+
+  <text class="title" x="40" y="45">확률의 덧셈정리 (Addition Theorem of Probability)</text>
+  <text class="label" x="40" y="65">두 사건의 합사건의 확률을 구할 때, 중복되는 부분의 확률을 차감해야 합니다.</text>
+
+  <!-- Left: General Case (Overlapping) -->
+  <g transform="translate(60, 95)">
+    <rect class="box" x="0" y="0" width="310" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">일반적인 경우 (배반사건이 아님)</text>
+
+    <!-- Circles -->
+    <circle class="circle-a" cx="120" cy="130" r="60" />
+    <text font-family="Inter" font-size="12" font-weight="bold" fill="#2b6cb0" x="90" y="130">A</text>
+    
+    <circle class="circle-b" cx="190" cy="130" r="60" />
+    <text font-family="Inter" font-size="12" font-weight="bold" fill="#b7791f" x="220" y="130">B</text>
+
+    <!-- Intersection text -->
+    <text font-family="Inter" font-size="10" x="155" y="133" text-anchor="middle" fill="#2d3748">A∩B</text>
+
+    <!-- Formula under diagram -->
+    <text class="math-bold" x="20" y="230" font-size="15">P(A∪B) = P(A) + P(B) - P(A∩B)</text>
+  </g>
+
+  <!-- Right: Mutually Exclusive Case -->
+  <g transform="translate(430, 95)">
+    <rect class="box" x="0" y="0" width="310" height="260" />
+    <text font-family="Inter" font-size="13" font-weight="bold" fill="#2d3748" x="20" y="30">배반사건인 경우 (동시 발생 불가)</text>
+
+    <!-- Circles -->
+    <circle class="circle-mut1" cx="95" cy="130" r="55" />
+    <text font-family="Inter" font-size="12" font-weight="bold" fill="#2b6cb0" x="95" y="135" text-anchor="middle">A</text>
+
+    <circle class="circle-mut2" cx="215" cy="130" r="55" />
+    <text font-family="Inter" font-size="12" font-weight="bold" fill="#c53030" x="215" y="135" text-anchor="middle">B</text>
+
+    <text font-family="Inter" font-size="11" x="155" y="60" text-anchor="middle" fill="#718096">A ∩ B = ∅</text>
+
+    <!-- Formula under diagram -->
+    <text class="math-bold" x="20" y="230" font-size="15" fill="#276749">P(A∪B) = P(A) + P(B)</text>
+  </g>
+</svg>

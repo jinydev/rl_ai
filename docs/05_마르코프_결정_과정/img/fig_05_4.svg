@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 350" width="100%" height="100%">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+
+  <!-- Agent Box -->
+  <rect x="175" y="40" width="200" height="60" rx="8" ry="8" fill="#ebf8ff" stroke="#3182ce" stroke-width="2.5"/>
+  <text x="275" y="76" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2b6cb0" text-anchor="middle">에이전트 (Agent)</text>
+
+  <!-- Environment Box -->
+  <rect x="175" y="240" width="200" height="60" rx="8" ry="8" fill="#fffaf0" stroke="#dd6b20" stroke-width="2.5"/>
+  <text x="275" y="276" font-family="sans-serif" font-size="18" font-weight="bold" fill="#c05621" text-anchor="middle">환경 (Environment)</text>
+
+  <!-- Right side Action path -->
+  <path d="M 375 70 L 460 70 L 460 270 L 375 270" fill="none" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="475" y="175" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="start">행동 A_t</text>
+
+  <!-- Left side State path -->
+  <path d="M 175 270 L 90 270 L 90 70 L 175 70" fill="none" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="75" y="175" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="end">상태 S_t</text>
+  <text x="75" y="295" font-family="sans-serif" font-size="15" font-weight="bold" fill="#e53e3e" text-anchor="end">상태 S_t+1</text>
+  <line x1="90" y1="250" x2="105" y2="250" stroke="#e53e3e" stroke-width="2" stroke-dasharray="3,3"/>
+
+  <!-- Middle Reward path -->
+  <path d="M 275 240 L 275 100" fill="none" stroke="#2d3748" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="285" y="175" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="start">보상 R_t</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 240" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Axis Arrow Marker -->
+    <marker id="axis-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Orange Star for Bullseye -->
+    <g id="star">
+      <path d="M 0 -6 L 2 -2 L 6 0 L 2 2 L 0 6 L -2 2 L -6 0 L -2 -2 Z" fill="#f59e0b" stroke="#ea580c" stroke-width="0.5"/>
+    </g>
+  </defs>
+  <!-- Left Side: pi -->
+  <g transform="translate(10, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <line x1="40" y1="200" x2="200" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Bars at 1, 2, 3 -->
+    <rect x="65" y="180" width="12" height="20" fill="#00bfff"/>
+    <rect x="115" y="180" width="12" height="20" fill="#00bfff"/>
+    <rect x="165" y="40" width="12" height="160" fill="#00bfff"/>
+
+    <line x1="40" y1="180" x2="175" y2="180" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+    <line x1="40" y1="40" x2="175" y2="40" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+
+    <!-- Y labels -->
+    <text x="30" y="185" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">0.1</text>
+    <text x="30" y="45" font-family="sans-serif" font-size="12" fill="#2d3748" text-anchor="end">0.8</text>
+
+    <!-- X labels -->
+    <text x="71" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <text x="121" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">2</text>
+    <text x="171" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">3</text>
+
+    <text x="110" y="15" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#2d3748" text-anchor="middle">π</text>
+  </g>
+
+  <!-- Right Side: b -->
+  <g transform="translate(240, 10)">
+    <line x1="40" y1="200" x2="40" y2="20" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+    <line x1="40" y1="200" x2="200" y2="200" stroke="#2d3748" stroke-width="1.8" marker-end="url(#axis-arrow)"/>
+
+    <!-- Bars at 1, 2, 3 -->
+    <rect x="65" y="133" width="12" height="67" fill="#00bfff"/>
+    <rect x="115" y="133" width="12" height="67" fill="#00bfff"/>
+    <rect x="165" y="133" width="12" height="67" fill="#00bfff"/>
+
+    <line x1="40" y1="133" x2="175" y2="133" stroke="#2d3748" stroke-dasharray="3,3" stroke-width="1.2"/>
+
+    <!-- Y labels -->
+    <text x="30" y="130" font-family="Cambria Math, Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <line x1="20" y1="135" x2="35" y2="135" stroke="#2d3748" stroke-width="1.2"/>
+    <text x="30" y="150" font-family="Cambria Math, Georgia, serif" font-size="14" fill="#2d3748" text-anchor="middle">3</text>
+
+    <!-- X labels -->
+    <text x="71" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">1</text>
+    <text x="121" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">2</text>
+    <text x="171" y="218" font-family="Georgia, serif" font-size="15" fill="#2d3748" text-anchor="middle">3</text>
+
+    <text x="110" y="15" font-family="Georgia, serif" font-size="22" font-style="italic" fill="#2d3748" text-anchor="middle">b</text>
+  </g>
+</svg>

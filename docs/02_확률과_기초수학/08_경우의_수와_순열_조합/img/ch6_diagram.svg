@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="15" ry="15"/>
+  <style>
+    .title { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: bold; fill: #2d3748; }
+    .label { font-family: 'Inter', sans-serif; font-size: 13px; fill: #4a5568; }
+    .set-a { fill: #3182ce; fill-opacity: 0.2; stroke: #3182ce; stroke-width: 2.5; }
+    .set-b { fill: #e53e3e; fill-opacity: 0.2; stroke: #e53e3e; stroke-width: 2.5; }
+    .set-text { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: bold; fill: #2d3748; }
+    .math { font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 15px; font-style: italic; fill: #1a202c; }
+    .box { fill: #ffffff; stroke: #e2e8f0; stroke-width: 1.5; rx: 8; ry: 8; }
+  </style>
+
+  <text class="title" x="40" y="45">중복이 있는 합의 법칙 (Venn Diagram)</text>
+  <text class="label" x="40" y="65">두 사건이 동시에 일어날 수 있는 경우, 중복된 가짓수를 한 번 빼주어야 합니다.</text>
+
+  <!-- Venn Diagram Circles -->
+  <circle class="set-a" cx="240" cy="200" r="110" />
+  <circle class="set-b" cx="380" cy="200" r="110" />
+
+  <!-- Labels on Sets -->
+  <text class="set-text" x="180" y="110" fill="#2b6cb0">사건 A: 유재석 출연작</text>
+  <text class="set-text" x="440" y="110" fill="#9b2c2c">사건 B: 이효리 출연작</text>
+
+  <!-- Elements inside Set A (exclusive) -->
+  <text class="label" x="190" y="170" text-anchor="middle">무한도전</text>
+  <text class="label" x="190" y="200" text-anchor="middle">놀러와</text>
+  <text class="label" x="190" y="230" text-anchor="middle">해피투게더</text>
+  <text class="label" x="190" y="260" text-anchor="middle" font-size="11" fill="#718096">(3가지)</text>
+
+  <!-- Intersection A and B -->
+  <text class="label" x="310" y="195" text-anchor="middle" font-weight="bold" fill="#2d3748">패밀리가</text>
+  <text class="label" x="310" y="215" text-anchor="middle" font-weight="bold" fill="#2d3748">떴다</text>
+  <text class="label" x="310" y="240" text-anchor="middle" font-size="11" fill="#e53e3e">(중복 1가지)</text>
+
+  <!-- Elements inside Set B (exclusive) -->
+  <text class="label" x="430" y="185" text-anchor="middle">체인지</text>
+  <text class="label" x="430" y="215" text-anchor="middle">상상플러스</text>
+  <text class="label" x="430" y="245" text-anchor="middle" font-size="11" fill="#718096">(2가지)</text>
+
+  <!-- Calculation Summary box -->
+  <g transform="translate(530, 130)">
+    <rect class="box" x="0" y="0" width="230" height="150" />
+    <text class="set-text" x="115" y="30" text-anchor="middle">경우의 수 계산</text>
+    <text class="math" x="20" y="65">n(A) = 4 (유재석)</text>
+    <text class="math" x="20" y="85">n(B) = 3 (이효리)</text>
+    <text class="math" x="20" y="105">n(A ∩ B) = 1 (패떴)</text>
+    <line x1="20" y1="120" x2="210" y2="120" stroke="#e2e8f0" stroke-width="1.5"/>
+    <text class="math" x="20" y="140" font-weight="bold" fill="#2b6cb0">n(A ∪ B) = 4 + 3 - 1 = 6</text>
+  </g>
+</svg>

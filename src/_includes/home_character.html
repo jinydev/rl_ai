@@ -1,0 +1,67 @@
+<!-- 캐릭터 소개 섹션 -->
+<div class="card border-0 rounded-4 p-4 p-md-5 mb-5 shadow-sm" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); border: 1px solid #e2e8f0 !important;">
+    <div class="row align-items-center mb-4">
+        <div class="col-lg-8">
+            <span class="badge rounded-pill px-3 py-2 fw-bold mb-2" style="background-color: #e0f2fe; color: #0369a1;">Characters</span>
+            <h3 class="fw-bold mb-2" style="color: #2b3947;">🧭 함께하는 모험의 주인공들을 소개합니다</h3>
+            <p class="text-secondary mb-0">
+                수학적이고 어려운 강화학습을 마법 요정 <strong>지니</strong>, 호기심 많은 소녀 <strong>도로시</strong>, 충직한 반려견 <strong>토토</strong>의 신나는 탐험 이야기로 풀어냅니다.
+            </p>
+        </div>
+        <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+            <a href="{{ '/character/' | relative_url }}" class="btn btn-hero-primary rounded-pill px-4 py-2 fw-bold">
+                캐릭터 소개 & 가이드 ➔
+            </a>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- 지니 (Jiny) -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 rounded-4 p-3 text-center bg-white shadow-sm transition-hover">
+                <div class="d-flex justify-content-center my-3">
+                    <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 110px; height: 110px; background-color: #fae8ff;">
+                        <img src="{{ '/img/jiny.png' | relative_url }}" alt="지니" style="max-height: 95px; width: auto; object-fit: contain;">
+                    </div>
+                </div>
+                <h5 class="fw-bold mb-1" style="color: #2b3947;">지니 (Jiny)</h5>
+                <p class="small text-muted mb-2"><span class="badge rounded-pill badge-part4 px-2 py-1">마법 멘토 & 환경</span></p>
+                <p class="card-text text-secondary small mb-0">
+                    요술 램프에서 나타난 지혜로운 마법 고양이! 어려운 벨만 방정식과 수식을 직관적인 마법 비유로 가르쳐줍니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 도로시 (Dorothy) -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 rounded-4 p-3 text-center bg-white shadow-sm transition-hover">
+                <div class="d-flex justify-content-center my-3">
+                    <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 110px; height: 110px; background-color: #e0f2fe;">
+                        <img src="{{ '/img/dorothy.png' | relative_url }}" alt="도로시" style="max-height: 95px; width: auto; object-fit: contain;">
+                    </div>
+                </div>
+                <h5 class="fw-bold mb-1" style="color: #2b3947;">도로시 (Dorothy)</h5>
+                <p class="small text-muted mb-2"><span class="badge rounded-pill badge-math px-2 py-1">에이전트 & 학습자</span></p>
+                <p class="card-text text-secondary small mb-0">
+                    호기심 많고 긍정적인 소녀! 격자 세상(Grid World)을 탐험하며 최적의 가치와 행동 지침(정책)을 찾아 성장합니다.
+                </p>
+            </div>
+        </div>
+
+        <!-- 토토 (Toto) -->
+        <div class="col-md-4">
+            <div class="card h-100 border-0 rounded-4 p-3 text-center bg-white shadow-sm transition-hover">
+                <div class="d-flex justify-content-center my-3">
+                    <div class="rounded-circle p-2 d-flex align-items-center justify-content-center" style="width: 110px; height: 110px; background-color: #dcfce7;">
+                        <img src="{{ '/img/toto.png' | relative_url }}" alt="토토" style="max-height: 95px; width: auto; object-fit: contain;">
+                    </div>
+                </div>
+                <h5 class="fw-bold mb-1" style="color: #2b3947;">토토 (Toto)</h5>
+                <p class="small text-muted mb-2"><span class="badge rounded-pill badge-part1 px-2 py-1">동반자 & 길잡이</span></p>
+                <p class="card-text text-secondary small mb-0">
+                    도로시의 충직한 반려견! 도로시가 고민에 빠지거나 길을 잃었을 때 달콤한 사과 보상의 방향을 알려주는 길잡이입니다.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

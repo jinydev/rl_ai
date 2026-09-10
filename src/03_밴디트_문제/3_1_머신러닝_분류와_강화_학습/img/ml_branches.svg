@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #fcfcfd; }
+      .box { stroke-width: 2.5; rx: 12px; filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.05)); }
+      .sup-box { fill: #e8f0fe; stroke: #1a73e8; }
+      .unsup-box { fill: #fef7e0; stroke: #f9ab00; }
+      .rl-box { fill: #e6f4ea; stroke: #1e8e3e; }
+      .title-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .body-text { font-family: 'Noto Sans KR', sans-serif; font-size: 13px; fill: #3c4043; }
+      .bullet-title { font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: bold; fill: #202124; }
+      .label-caption { font-family: 'Noto Sans KR', sans-serif; font-size: 12px; fill: #5f6368; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Main Title -->
+  <text x="400" y="35" class="title-text" font-size="22">머신러닝의 3가지 핵심 공부법 비교</text>
+
+  <!-- Supervised Learning Box (지도 학습) -->
+  <rect x="40" y="65" width="220" height="260" class="box sup-box" />
+  <text x="150" y="100" class="title-text" fill="#1a73e8">지도 학습</text>
+  <text x="150" y="120" class="label-caption">Supervised Learning</text>
+  
+  <text x="60" y="160" class="bullet-title">🎯 학습 힌트 (데이터)</text>
+  <text x="60" y="180" class="body-text">• 문제와 정답이 함께 주어짐</text>
+  <text x="60" y="200" class="body-text">• 예: [강아지 사진] + "강아지"</text>
+  
+  <text x="60" y="240" class="bullet-title">✏️ 공부 방법</text>
+  <text x="60" y="260" class="body-text">• 정답을 미리 알려주는</text>
+  <text x="60" y="280" class="body-text">  친절한 선생님과 학습</text>
+
+  <!-- Unsupervised Learning Box (비지도 학습) -->
+  <rect x="290" y="65" width="220" height="260" class="box unsup-box" />
+  <text x="400" y="100" class="title-text" fill="#b06000">비지도 학습</text>
+  <text x="400" y="120" class="label-caption">Unsupervised Learning</text>
+  
+  <text x="310" y="160" class="bullet-title">🎯 학습 힌트 (데이터)</text>
+  <text x="310" y="180" class="body-text">• 정답 없이 문제만 잔뜩 있음</text>
+  <text x="310" y="200" class="body-text">• 예: [정체불명의 사진 수만 장]</text>
+  
+  <text x="310" y="240" class="bullet-title">✏️ 공부 방법</text>
+  <text x="310" y="260" class="body-text">• 데이터들의 닮은꼴을 분석해</text>
+  <text x="310" y="280" class="body-text">  유사한 것끼리 스스로 분류</text>
+
+  <!-- Reinforcement Learning Box (강화 학습) -->
+  <rect x="540" y="65" width="220" height="260" class="box rl-box" />
+  <text x="650" y="100" class="title-text" fill="#1e8e3e">강화 학습</text>
+  <text x="650" y="120" class="label-caption">Reinforcement Learning</text>
+  
+  <text x="560" y="160" class="bullet-title">🎯 학습 힌트 (데이터)</text>
+  <text x="560" y="180" class="body-text">• 데이터도 정답도 없음</text>
+  <text x="560" y="200" class="body-text">• 오직 '행동'과 '보상(칭찬)'뿐</text>
+  
+  <text x="560" y="240" class="bullet-title">✏️ 공부 방법</text>
+  <text x="560" y="260" class="body-text">• 직접 부딪치고 넘어지며</text>
+  <text x="560" y="280" class="body-text">  잭팟을 향해 시행착오 학습</text>
+</svg>

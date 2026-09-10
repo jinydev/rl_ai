@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 250" width="500" height="250">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#fafafa" rx="10" ry="10" />
+
+  <!-- Hidden layer label -->
+  <rect x="15" y="45" width="80" height="25" rx="3" fill="#cfd8dc" />
+  <text x="55" y="61" font-family="sans-serif" font-size="10" font-weight="bold" fill="#37474f" text-anchor="middle">은닉 상태</text>
+
+  <!-- Observed layer label -->
+  <rect x="15" y="175" width="80" height="25" rx="3" fill="#cfd8dc" />
+  <text x="55" y="191" font-family="sans-serif" font-size="10" font-weight="bold" fill="#37474f" text-anchor="middle">관측 결과</text>
+
+  <!-- Hidden States -->
+  <!-- Sunny -->
+  <circle cx="180" cy="60" r="30" fill="#ffe0b2" stroke="#fb8c00" stroke-width="2" />
+  <text x="180" y="64" font-family="sans-serif" font-size="12" font-weight="bold" fill="#e65100" text-anchor="middle">맑음</text>
+
+  <!-- Rainy -->
+  <circle cx="340" cy="60" r="30" fill="#bbdefb" stroke="#1e88e5" stroke-width="2" />
+  <text x="340" y="64" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0d47a1" text-anchor="middle">비</text>
+
+  <!-- Transition -->
+  <path d="M 210 50 Q 260 40 308 48" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="260" y="35" font-family="sans-serif" font-size="10" fill="#333" text-anchor="middle">전이 확률</text>
+  <path d="M 310 70 Q 260 80 212 72" fill="none" stroke="#555" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Observations -->
+  <!-- Sunglasses -->
+  <rect x="140" y="160" width="80" height="40" rx="5" fill="#eceff1" stroke="#455a64" stroke-width="2" />
+  <text x="180" y="184" font-family="sans-serif" font-size="12" font-weight="bold" fill="#263238" text-anchor="middle">선글라스</text>
+
+  <!-- Umbrella -->
+  <rect x="300" y="160" width="80" height="40" rx="5" fill="#eceff1" stroke="#455a64" stroke-width="2" />
+  <text x="340" y="184" font-family="sans-serif" font-size="12" font-weight="bold" fill="#263238" text-anchor="middle">우산</text>
+
+  <!-- Emission arrows -->
+  <!-- Sunny -> Sunglasses -->
+  <path d="M 180 90 L 180 148" fill="none" stroke="#e65100" stroke-width="2" marker-end="url(#orange-arrow)" />
+  <text x="145" y="125" font-family="sans-serif" font-size="10" fill="#e65100" text-anchor="middle">방출 확률</text>
+
+  <!-- Rainy -> Umbrella -->
+  <path d="M 340 90 L 340 148" fill="none" stroke="#0d47a1" stroke-width="2" marker-end="url(#blue-arrow)" />
+  <text x="375" y="125" font-family="sans-serif" font-size="10" fill="#0d47a1" text-anchor="middle">방출 확률</text>
+
+  <!-- Definition of arrow markers -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#555" />
+    </marker>
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#e65100" />
+    </marker>
+    <marker id="blue-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 2 L 8 5 L 0 8 z" fill="#0d47a1" />
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 220" width="100%" height="100%">
+  <defs>
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+    <!-- Cyan Arrow Marker -->
+    <marker id="cyan-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#00bfff"/>
+    </marker>
+    <!-- Orange Arrow Marker -->
+    <marker id="orange-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#ea580c"/>
+    </marker>
+  </defs>
+  <g font-family="Cambria Math, Georgia, serif" fill="#2d3748">
+    <!-- Improvement Row -->
+    <text x="20" y="55" font-family="sans-serif" font-size="14" font-weight="bold">〈개선〉</text>
+    <text x="85" y="55" font-size="18">
+      μ(s) = argmax<tspan font-size="12" dy="5">a</tspan><tspan font-size="18" dy="-5"> </tspan>
+      <tspan font-size="24">∑</tspan><tspan font-size="12" dy="8">s'</tspan><tspan font-size="18" dy="-8"> </tspan>
+      p(s'|s, a) { r(s, a, s') + γV(s') }
+    </text>
+
+    <!-- Evaluation Row -->
+    <text x="20" y="135" font-family="sans-serif" font-size="14" font-weight="bold">〈평가〉</text>
+    <text x="85" y="130" font-family="sans-serif" font-size="16" font-style="italic">a = μ(s) 일 때</text>
+    
+    <text x="85" y="175" font-size="18">
+      V'(s) = <tspan font-size="24">∑</tspan><tspan font-size="12" dy="8">s'</tspan><tspan font-size="18" dy="-8"> </tspan>
+      p(s'|s, a) { r(s, a, s') + γV(s') }
+    </text>
+
+    <!-- Dashed curved connector representing same calculations -->
+    <path d="M 450 50 Q 520 110 470 170" fill="none" stroke="#2d3748" stroke-width="1.2" stroke-dasharray="3,3"/>
+    <text x="500" y="195" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">같은 계산</text>
+  </g>
+</svg>

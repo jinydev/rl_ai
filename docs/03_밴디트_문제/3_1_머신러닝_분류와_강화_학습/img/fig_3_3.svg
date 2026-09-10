@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #ffffff; }
+      .box { stroke-width: 2.5; rx: 12px; filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.04)); }
+      .agent-box { fill: #e8f0fe; stroke: #1a73e8; }
+      .env-box { fill: #fef7e0; stroke: #f9ab00; }
+      .title-text { font-family: 'Outfit', 'Inter', 'Noto Sans KR', sans-serif; font-size: 18px; font-weight: 700; fill: #202124; text-anchor: middle; }
+      .body-text { font-family: 'Noto Sans KR', sans-serif; font-size: 13px; fill: #5f6368; text-anchor: middle; }
+      .arrow { stroke: #5f6368; stroke-dasharray: 4; stroke-width: 2.5; fill: none; }
+      .arrow-solid { stroke: #1a73e8; stroke-width: 3; fill: none; }
+      .marker { fill: #5f6368; }
+      .marker-blue { fill: #1a73e8; }
+      .label-text { font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: bold; fill: #1a73e8; text-anchor: middle; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker" />
+    </marker>
+    <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" class="marker-blue" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <!-- Agent Box -->
+  <rect x="60" y="50" width="200" height="120" class="box agent-box" />
+  <text x="160" y="105" class="title-text">에이전트 (Agent)</text>
+  <text x="160" y="135" class="body-text">의사결정을 내리는 주체</text>
+
+  <!-- Environment Box -->
+  <rect x="540" y="50" width="200" height="120" class="box env-box" />
+  <text x="640" y="105" class="title-text">환경 (Environment)</text>
+  <text x="640" y="135" class="body-text">대상이 되는 세계와 대상물</text>
+
+  <!-- Action Arrow -->
+  <path d="M 260 90 L 530 90" class="arrow-solid" marker-end="url(#arrowhead-blue)" />
+  <rect x="330" y="60" width="140" height="24" rx="4" fill="#ffffff" />
+  <text x="400" y="77" class="label-text">행동 (Action)</text>
+
+  <!-- Observation/Reward Arrow -->
+  <path d="M 540 130 L 270 130" class="arrow" marker-end="url(#arrowhead)" />
+  <rect x="300" y="142" width="200" height="24" rx="4" fill="#ffffff" />
+  <text x="400" y="159" class="label-text" fill="#b06000">보상 (Reward), 상태 (State)</text>
+</svg>

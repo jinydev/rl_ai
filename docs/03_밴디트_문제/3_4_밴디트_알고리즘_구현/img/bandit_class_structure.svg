@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 540" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#EFF6FF"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="initGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F0FDF4"/>
+    </linearGradient>
+    <linearGradient id="playGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FAF5FF"/>
+    </linearGradient>
+    <linearGradient id="varGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#FEF3C7"/>
+    </linearGradient>
+    
+    <!-- Drop Shadow Filter -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1E293B" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Container Card -->
+  <rect x="20" y="20" width="880" height="500" rx="24" fill="url(#bgGrad)" stroke="#CBD5E1" stroke-width="2" filter="url(#cardShadow)"/>
+
+  <!-- Class Main Header Banner -->
+  <rect x="20" y="20" width="880" height="72" rx="24" fill="url(#headerGrad)"/>
+  <!-- Bottom square corner fix for header -->
+  <rect x="20" y="60" width="880" height="32" fill="url(#headerGrad)"/>
+  
+  <text x="50" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF">
+    class Bandit :
+  </text>
+  <text x="210" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="16" font-weight="600" fill="#E0E7FF">
+    (10대 슬롯머신 환경을 시뮬레이션하는 파이썬 클래스)
+  </text>
+
+  <!-- Member Variable Box -->
+  <g transform="translate(50, 110)">
+    <rect x="0" y="0" width="820" height="74" rx="14" fill="url(#varGrad)" stroke="#F59E0B" stroke-width="1.5"/>
+    <rect x="16" y="16" width="130" height="28" rx="8" fill="#F59E0B"/>
+    <text x="81" y="35" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      인스턴스 변수
+    </text>
+    <text x="160" y="36" font-family="'Courier New', Courier, monospace" font-size="17" font-weight="bold" fill="#B45309">
+      self.rates = np.random.rand(arms)
+    </text>
+    <text x="160" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#78350F">
+      10대 슬롯머신 각각의 고유한 참 승률(0.0 ~ 1.0)을 무작위로 저장하는 1차원 넘파이 배열
+    </text>
+  </g>
+
+  <!-- Method 1: __init__ Magic Method -->
+  <g transform="translate(50, 205)">
+    <rect x="0" y="0" width="395" height="290" rx="18" fill="url(#initGrad)" stroke="#10B981" stroke-width="1.8" filter="url(#cardShadow)"/>
+    
+    <!-- Method Header Badge -->
+    <rect x="18" y="18" width="175" height="30" rx="8" fill="#10B981"/>
+    <text x="105" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      메서드 ① 매직 메서드 (생성자)
+    </text>
+    
+    <text x="18" y="76" font-family="'Courier New', Courier, monospace" font-size="18" font-weight="bold" fill="#065F46">
+      def __init__(self, arms=10):
+    </text>
+    
+    <line x1="18" y1="92" x2="377" y2="92" stroke="#A7F3D0" stroke-width="1.2"/>
+
+    <!-- Key Points -->
+    <g transform="translate(18, 110)">
+      <circle cx="8" cy="8" r="4" fill="#10B981"/>
+      <text x="22" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#047857">
+        호출 시점: 객체 생성 시 자동 실행
+      </text>
+      <text x="22" y="32" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#374151">
+        bandit = Bandit() 실행 시 1회 자동 호출
+      </text>
+
+      <circle cx="8" cy="62" r="4" fill="#10B981"/>
+      <text x="22" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#047857">
+        매개변수: arms (슬롯머신 대수)
+      </text>
+      <text x="22" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#374151">
+        기본값 10대로 설정 (10-Armed Bandit)
+      </text>
+
+      <circle cx="8" cy="116" r="4" fill="#10B981"/>
+      <text x="22" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#047857">
+        핵심 역할: 환경 초기화
+      </text>
+      <text x="22" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#374151">
+        10대의 숨겨진 승률을 무작위로 생성하여
+      </text>
+      <text x="22" y="158" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#374151">
+        내부 변수 <tspan font-family="'Courier New'" font-weight="bold" fill="#065F46">self.rates</tspan>에 영구 저장
+      </text>
+    </g>
+  </g>
+
+  <!-- Method 2: play Operation Method -->
+  <g transform="translate(475, 205)">
+    <rect x="0" y="0" width="395" height="290" rx="18" fill="url(#playGrad)" stroke="#8B5CF6" stroke-width="1.8" filter="url(#cardShadow)"/>
+    
+    <!-- Method Header Badge -->
+    <rect x="18" y="18" width="165" height="30" rx="8" fill="#8B5CF6"/>
+    <text x="100" y="38" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      메서드 ② 동작 메서드 (플레이)
+    </text>
+    
+    <text x="18" y="76" font-family="'Courier New', Courier, monospace" font-size="18" font-weight="bold" fill="#5B21B6">
+      def play(self, arm):
+    </text>
+    
+    <line x1="18" y1="92" x2="377" y2="92" stroke="#DDD6FE" stroke-width="1.2"/>
+
+    <!-- Key Points -->
+    <g transform="translate(18, 110)">
+      <circle cx="8" cy="8" r="4" fill="#8B5CF6"/>
+      <text x="22" y="12" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#6D28D9">
+        호출 시점: 에이전트가 레버 당길 때
+      </text>
+      <text x="22" y="32" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#374151">
+        bandit.play(0) 처럼 행동마다 호출
+      </text>
+
+      <circle cx="8" cy="62" r="4" fill="#8B5CF6"/>
+      <text x="22" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#6D28D9">
+        확률 비교 로직
+      </text>
+      <text x="22" y="86" font-family="'Courier New', Courier, monospace" font-size="13.5" font-weight="bold" fill="#5B21B6">
+        rate = self.rates[arm]
+      </text>
+      <text x="22" y="106" font-family="'Courier New', Courier, monospace" font-size="13" fill="#374151">
+        if rate &gt; np.random.rand(): return 1
+      </text>
+
+      <circle cx="8" cy="130" r="4" fill="#8B5CF6"/>
+      <text x="22" y="134" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="14" font-weight="bold" fill="#6D28D9">
+        반환값 (보상)
+      </text>
+      <text x="22" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="13.5" fill="#374151">
+        승리 시 <tspan font-weight="bold" fill="#059669">코인 1개</tspan> / 패배 시 <tspan font-weight="bold" fill="#DC2626">코인 0개 (꽝)</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

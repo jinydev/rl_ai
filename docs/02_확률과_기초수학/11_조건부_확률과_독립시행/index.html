@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>02.11 조건부 확률과 독립시행 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="02.11 조건부 확률과 독립시행" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="02.11 조건부 확률과 독립시행" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"02.11 조건부 확률과 독립시행","url":"https://rl.ai.jiny.dev/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/11_%EC%A1%B0%EA%B1%B4%EB%B6%80_%ED%99%95%EB%A5%A0%EA%B3%BC_%EB%8F%85%EB%A6%BD%EC%8B%9C%ED%96%89/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">이론적 배경</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part2/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part3/">고급강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part4/">심화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">부록</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/"
+            class="bd-links-link d-inline-block rounded ">
+            2강 확률과 기초수학
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/01_식의_구성과_치환_교환분배법칙/"
+            class="bd-links-link d-inline-block rounded ">
+            02.1 식의 구성과 치환, 교환/분배법칙
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/02_지수와_거듭제곱/"
+            class="bd-links-link d-inline-block rounded ">
+            02.2 지수와 거듭제곱
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/03_함수의_정의와_대응/"
+            class="bd-links-link d-inline-block rounded ">
+            02.3 함수의 정의와 대응
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/04_일차방정식과_연립방정식/"
+            class="bd-links-link d-inline-block rounded ">
+            02.4 일차방정식과 연립방정식
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/05_수열과_등비수열의_합/"
+            class="bd-links-link d-inline-block rounded ">
+            02.5 수열과 등비수열의 합
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/06_시그마_기호와_합_공식/"
+            class="bd-links-link d-inline-block rounded ">
+            02.6 시그마(Σ) 기호와 합 공식
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/07_증분_평균과_재귀적_업데이트/"
+            class="bd-links-link d-inline-block rounded ">
+            02.7 증분 평균과 재귀적 업데이트
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/08_경우의_수와_순열_조합/"
+            class="bd-links-link d-inline-block rounded ">
+            02.8 경우의 수와 순열/조합
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/09_확률의_정의와_성질/"
+            class="bd-links-link d-inline-block rounded ">
+            02.9 확률의 정의와 성질 (수학적/실험적/기하학적 확률)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/10_확률의_역사와_덧셈정리/"
+            class="bd-links-link d-inline-block rounded ">
+            02.10 확률의 역사와 덧셈정리 (조합 활용 확률 계산)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/11_조건부_확률과_독립시행/"
+            class="bd-links-link d-inline-block rounded ">
+            02.11 조건부 확률과 독립시행 (몬티 홀 & 생일 패러독스)
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/02_확률과_기초수학/12_행동과_상태_전이를_묶는_행렬의_기초/"
+            class="bd-links-link d-inline-block rounded ">
+            02.12 행동과 상태 전이를 묶는 행렬의 기초
+          </a>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/02_%ED%99%95%EB%A5%A0%EA%B3%BC_%EA%B8%B0%EC%B4%88%EC%88%98%ED%95%99/">02 확률과 기초수학</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">02.11 조건부 확률과 독립시행</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="0211-조건부-확률과-독립시행">02.11 조건부 확률과 독립시행</h1>
+
+<blockquote>
+  <p>이 장에서는 새로운 정보나 단서가 주어졌을 때 표본공간이 축소되며 확률이 갱신되는 <strong>조건부 확률(Conditional Probability)</strong>의 원리를 학습하고, 매회 독립적으로 반복되는 사건의 확률을 구하는 <strong>독립시행의 정리</strong> 및 인간의 직관을 깨뜨리는 <strong>몬티 홀 딜레마(Monty Hall Problem)</strong>와 <strong>생일 패러독스</strong>를 탐구합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02111-안개-속-단서와-조건부-확률-conditional-probability">02.11.1 안개 속 단서와 조건부 확률 (Conditional Probability)</h2>
+
+<p>새로운 정보나 단서가 관측되면, 우리가 고려해야 할 전체 가능성의 범위(표본공간)는 단서가 일어난 영역으로 좁혀집니다.</p>
+
+<p>“지니! 안개가 자욱하게 낀 어두운 숲(전쟁 안개, Fog of War)을 지나가고 있는데, 수풀 저편에서 ‘바스락’거리는 소리가 들렸어! 이 소리가 났을 때 진짜 몬스터를 마주치게 될 확률은 얼마나 돼? 아무 소리도 안 들렸을 때보다 몬스터를 만날 확률이 더 높아진 거지?”</p>
+
+<p>도로시가 나무 지팡이를 짚은 채 두려움과 호기심이 섞인 눈빛으로 귀를 기울였습니다.</p>
+
+<p>토토도 귀를 쫑긋 세우고 바스락거리는 수풀을 경계했습니다.</p>
+
+<p><img src="./img/dorothy_conditional_fog.png" alt="안개 속 단서와 조건부 확률" />
+<strong>그림 02-11-1</strong> 안개 낀 숲에서 ‘바스락’ 소리 단서(조건)를 감지했을 때 몬스터가 존재할 사후 확률을 고민하는 도로시와 토토</p>
+
+<hr />
+
+<p>지니가 요술봉을 휘두르며 허공에 마법 칠판을 띄웠습니다.</p>
+
+<p>“도로시! 아무런 정보가 없을 때의 단순 사전 확률과 달리, ‘소리가 났다’는 단서(사건 <em>A</em>)가 먼저 주어지면, 표본공간은 전체 세상 <em>S</em>가 아니라 ‘소리가 난 구역(<em>A</em>)’으로 즉시 압축된단다. 이 축소된 영역 안에서 몬스터가 존재하는 비율을 새롭게 구하는 것을 <strong>조건부 확률(Conditional Probability)</strong>이라고 부르지.”</p>
+
+<p><img src="./img/dorothy_conditional_formula.png" alt="표본공간 축소와 조건부 확률" />
+<strong>그림 02-11-2</strong> 전체 표본공간 S가 관측된 조건 사건 A(소리 구역)로 축소되고, 그 내부의 교집합(진짜 몬스터) 비율을 계산하는 조건부 확률 공식 유도 원리</p>
+
+<hr />
+
+<h3 id="21111-조건부-확률의-수학적-정의와-기호-해설">2.11.1.1 조건부 확률의 수학적 정의와 기호 해설</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td>사건 <em>A</em>가 일어났다는 전제하에 사건 <em>B</em>가 일어날 조건부 확률은 **_P(B</td>
+      <td>A)_** (B given A)라 표기하며 다음과 같이 정의합니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+\[P(B|A) = \frac{P(A \cap B)}{P(A)} = \frac{n(A \cap B)}{n(A)} \quad (\text{단, } P(A) &gt; 0)\]
+
+<ul>
+  <li><strong>기호와 수식의 직관적 해설</strong>:
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>**_P(B</td>
+              <td>A)_ (조건부 확률)<em>*: “사건 *A</em>가 주어졌을 때(Given <em>A</em>), 사건 <em>B</em>가 일어날 확률”을 의미합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><strong>수직선 막대 | (Given, 조건)</strong>: 수직선 <code class="language-plaintext highlighter-rouge">|</code>의 오른쪽에 적힌 사건 <em>A</em>가 <strong>‘이미 일어난 전제 조건’</strong>임을 뜻합니다.</li>
+      <li><strong>분모 <em>P(A)</em> 또는 <em>n(A)</em> (새로운 기준)</strong>: 조건 사건 <em>A</em>가 일어남으로써, 전체 세상(표본공간 <em>S</em>) 대신 <strong>사건 <em>A</em>의 영역 전체가 새로운 전체 기준(분모)</strong>으로 축소됩니다.</li>
+      <li><strong>분자 <em>P(A ∩ B)</em> 또는 <em>n(A ∩ B)</em> (교집합 영역)</strong>: 새로운 기준인 <em>A</em> 영역 중에서 우리가 관심 있는 목표 사건 <em>B</em>도 함께 겹쳐서 일어나는 <strong>교집합 영역의 크기</strong>입니다.</li>
+      <li><strong>단, <em>P(A)</em> &gt; 0</strong>: 조건 자체가 절대로 일어날 수 없는 사건(확률 0)이면 나눌 수 없으므로(분모는 0이 될 수 없음), 전제 조건의 확률은 항상 0보다 커야 합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/dorothy_conditional_symbols_breakdown.png" alt="조건부 확률 공식과 기호 해설" />
+<strong>그림 02-11-3</strong> 조건부 확률 공식 <em>P(B|A)</em>의 각 기호(수직선 |, 분모 P(A), 분자 P(A ∩ B))가 의미하는 구조와 역할을 상세히 설명하는 지니와 도로시, 토토</p>
+
+<p>“아! 수직선 <code class="language-plaintext highlighter-rouge">|</code> 오른쪽의 <em>A</em>가 ‘새로운 기준(분모)’이 되고, 그 안에서 <em>B</em>와 겹치는 교집합이 ‘분자’가 되는 거구나! 기호의 위치만 봐도 공식이 머릿속에 쏙 들어와!”</p>
+
+<p>도로시가 손뼉을 치며 환하게 웃었습니다.</p>
+
+<hr />
+
+<h2 id="02112-독립사건과-종속사건의-판별">02.11.2 독립사건과 종속사건의 판별</h2>
+
+<h3 id="21121-독립사건-independent-events">2.11.2.1 독립사건 (Independent Events)</h3>
+
+<p>한 사건 <em>A</em>가 일어났다는 사실이 다른 사건 <em>B</em>가 일어날 확률에 아무런 영향을 주지 않는 관계를 <strong>독립사건(Independent Events)</strong>이라 부릅니다.</p>
+
+<ul>
+  <li><strong>수학적 정의와 판별식</strong>:
+    <ul>
+      <li>조건부 확률 정의에 따라, 사건 <em>A</em>가 발생했다는 조건이 붙더라도 사건 <em>B</em>의 확률이 본래 확률과 완전히 동일합니다:
+\(P(B|A) = P(B)\)</li>
+      <li>이를 조건부 확률 공식과 결합하면, 두 사건이 동시에 일어날 교집합 확률은 <strong>두 확률의 단순 곱</strong>으로 표현됩니다:
+\(P(A \cap B) = P(A) \times P(B)\)</li>
+    </ul>
+  </li>
+  <li><strong>대표 예시 (동전 던지기와 복원추출)</strong>:
+    <ul>
+      <li><strong>동전 2번 던지기</strong>: 첫 번째 던지기에서 앞면(<em>A</em>)이 나왔다고 해서 두 번째 던지기에서 앞면(<em>B</em>)이 나올 확률(1/2)이 변하지 않습니다.</li>
+      <li><strong>주머니 복원추출</strong>: 주머니에서 공을 하나 꺼내 색깔을 확인한 뒤 <strong>다시 집어넣고</strong> 두 번째 공을 뽑으면, 주머니 안의 공 개수와 색상 비율이 처음 상태 그대로 유지되므로 두 시행은 완벽히 독립입니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/dorothy_independent_events_concept.png" alt="독립사건의 개념과 판별식" />
+<strong>그림 02-11-4</strong> 사건 A의 발생 여부가 사건 B의 확률에 영향을 주지 않는 독립사건의 정의(P(B|A) = P(B))와 동전 던지기 복원추출 예시를 설명하는 지니와 도로시, 토토</p>
+
+<p>“아하! 첫 번째 동전에서 앞면이 나왔든 뒷면이 나왔든, 두 번째 동전에서 앞면이 나올 확률은 여전히 50%(1/2)인 것처럼 서로에게 전혀 <strong>간섭하지 않는 관계</strong>가 바로 ‘독립’이구나!”</p>
+
+<p>도로시가 고개를 끄덕였습니다.</p>
+
+<hr />
+
+<h3 id="21122-종속사건-dependent-events">2.11.2.2 종속사건 (Dependent Events)</h3>
+
+<p>한 사건 <em>A</em>의 발생 여부가 다른 사건 <em>B</em>가 일어날 확률에 <strong>직접적인 영향을 미치는 관계</strong>를 <strong>종속사건(Dependent Events)</strong>이라 부릅니다.</p>
+
+<ul>
+  <li><strong>수학적 정의와 판별식</strong>:
+    <ul>
+      <li>사건 <em>A</em>가 일어났다는 조건이 주어지면, 사건 <em>B</em>의 확률이 본래 확률과 달라집니다:
+\(P(B|A) \neq P(B)\)</li>
+      <li>따라서 두 사건이 연속으로 일어날 교집합 확률은 두 번째 확률로 조건부 확률 <em>P(B|A)</em>를 곱해야 합니다 (확률의 곱셈정리):
+\(P(A \cap B) = P(A) \times P(B|A)\)</li>
+    </ul>
+  </li>
+  <li><strong>대표 예시 (비복원추출 - 구슬 주머니)</strong>:
+    <ul>
+      <li>주머니 속에 <strong>빨간 구슬 2개</strong>, <strong>파란 구슬 3개</strong>(총 5개)가 들어 있습니다.</li>
+      <li><strong>첫 번째 구슬 (사건 <em>A</em>)</strong>: 빨간 구슬을 뽑을 확률은 <em>P(A)</em> = 2/5 (40%)입니다.</li>
+      <li><strong>두 번째 구슬 (사건 <em>B</em>)</strong>: 뽑은 빨간 구슬을 <strong>다시 넣지 않고(비복원추출)</strong> 두 번째 구슬을 뽑으면, 주머니에 남은 구슬은 총 4개(빨강 1, 파랑 3)로 상태가 변합니다.</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>따라서 두 번째에도 빨간 구슬이 나올 조건부 확률은 *P(B</td>
+              <td>A)* = 1/4 (25%)로 뚝 떨어집니다. (*P(B</td>
+              <td>A)* ≠ <em>P(B)</em>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/dorothy_dependent_events_concept.png" alt="종속사건의 개념과 비복원추출" />
+<strong>그림 02-11-5</strong> 앞선 시행의 결과가 주머니 속 공의 구성(상태)을 변화시켜 다음 확률에 영향을 미치는 종속사건(P(B|A) ≠ P(B))의 비복원추출 원리를 설명하는 지니와 도로시, 토토</p>
+
+<p>“아하! 첫 번째에 빨간 구슬을 쏙 빼버리니까 주머니의 상태가 바뀌어서, 두 번째에 빨간 구슬이 나올 확률이 40%에서 25%로 줄어드는구나! 앞의 선택이 뒤의 확률을 바꾸는 관계가 바로 ‘종속’이네!”</p>
+
+<p>도로시가 손에 쥔 빨간 구슬을 보며 감탄했습니다.</p>
+
+<hr />
+
+<h2 id="02113-독립시행의-정리-binomial-trials">02.11.3 독립시행의 정리 (Binomial Trials)</h2>
+
+<p>매회 동일한 조건에서 시행을 반복하여 매 시도의 성공 확률이 이전 결과에 영향을 받지 않는 독립적인 연쇄 시행을 <strong>독립시행</strong>이라 합니다.</p>
+
+<p>“지니! 내가 훈련장에서 양궁 활쏘기 연습을 하고 있어. 매번 화살을 쏠 때 과녁을 맞힐 확률이 0.8(80%)로 일정하다고 해보자. 총 5발을 쐈을 때, 정확히 2발만 명중시킬 확률은 어떻게 구해?”</p>
+
+<p>도로시가 활시위를 당기며 물었습니다. 토토는 과녁 옆에서 꼬리를 흔들며 응원했습니다.</p>
+
+<p><img src="./img/dorothy_independent_trials_archery.png" alt="독립시행의 정리" />
+<strong>그림 02-11-6</strong> 매회 사격 성공률(80%)이 일정한 독립시행 환경에서 5번의 시도 중 2번 성공할 조합과 확률을 계산하는 도로시와 지니, 토토</p>
+
+<p>지니가 수식을 칠판에 적으며 설명했습니다.</p>
+
+<p>“총 5번의 시도 중 어느 2번에서 명중할 것인지 자리를 고르는 조합(<sub>5</sub><em>C</em><sub>2</sub>)에, 성공 확률 2번의 거듭제곱(0.8<sup>2</sup>)과 실패 확률 3번의 거듭제곱(0.2<sup>3</sup>)을 연이어 곱해주면 된단다.”</p>
+
+\[P(X = r) = _nC_r \times p^r \times (1 - p)^{n - r}\]
+
+<ul>
+  <li><strong>양궁 5발 중 2발 명중 계산</strong>:
+\(P(X = 2) = _5C_2 \times (0.8)^2 \times (0.2)^3 = 10 \times 0.64 \times 0.008 = 0.0512\ (5.12\%)\)</li>
+</ul>
+
+<hr />
+
+<h2 id="02114-직관을-깨뜨리는-확률의-역설">02.11.4 직관을 깨뜨리는 확률의 역설</h2>
+
+<p>인간의 직관적인 어림짐작과 실제 수학적 계산이 극명하게 갈리는 대표적인 유명 퍼즐들입니다.</p>
+
+<h3 id="21141-몬티-홀-딜레마-monty-hall-problem">2.11.4.1 몬티 홀 딜레마 (Monty Hall Problem)</h3>
+
+<p>퀴즈 쇼 무대에 닫힌 3개의 문(1번, 2번, 3번)이 있습니다. 한 문 뒤에는 ‘황금 자동차(당첨)’, 나머지 두 문 뒤에는 ‘염소(꽝)’가 있습니다.</p>
+
+<ol>
+  <li>도로시가 <strong>1번 문</strong>을 선택했습니다. (당첨 확률 1/3 = 33%)</li>
+  <li>어디에 차가 있는지 알고 있는 사회자가 남은 2번, 3번 문 중 꽝인 <strong>2번 문</strong>을 열어 염소를 보여주었습니다.</li>
+  <li>사회자가 묻습니다: <strong>“1번 문을 고수하시겠습니까, 아니면 3번 문으로 바꾸시겠습니까?”</strong></li>
+</ol>
+
+<p><img src="./img/dorothy_monty_hall_doors.png" alt="몬티 홀 딜레마" />
+<strong>그림 02-11-7</strong> 몬티 홀 퀴즈 쇼 무대에서 사회자가 2번 문의 염소(꽝)를 공개했을 때, 선택을 3번 문으로 바꾸는 것이 승리 확률을 2/3(67%)로 2배 높여줌을 보여주는 시각화</p>
+
+<p>“그냥 문이 2개 남았으니까 반반(50% : 50%) 아니야?”</p>
+
+<p>도로시가 갸우뚱거리자, 지니가 빙그레 웃으며 답했습니다.</p>
+
+<p>“아니란다! 도로시가 처음에 차를 골랐을 확률은 1/3이고, 꽝을 골랐을 확률은 2/3였어. 도로시가 처음에 꽝을 골랐다면 사회자는 남은 꽝을 열어줄 수밖에 없으므로, <strong>선택을 바꾸면 무조건 차를 얻게 된단다!</strong> 따라서 선택을 바꾸었을 때의 당첨 확률은 <strong>2/3(약 67%)</strong>로 2배나 껑충 뛰게 되지!”</p>
+
+<hr />
+
+<h3 id="21142-생일-패러독스-birthday-paradox">2.11.4.2 생일 패러독스 (Birthday Paradox)</h3>
+
+<p>1년 365일 중, 한 방에 <strong>단 23명의 사람</strong>만 모여 있어도 <strong>생일이 같은 사람이 적어도 한 쌍 이상 존재할 확률은 약 50.7%</strong>로 절반을 훌쩍 넘습니다. (30명이 모이면 70.6%, 50명이 모이면 무려 97.0%에 도달!)</p>
+
+<p>직관적으로는 1년이 365일이나 되므로 23명 정도로는 생일이 겹치기 어려울 것 같지만, 실제로는 <strong>“비교할 수 있는 쌍(Pair)의 조합 수”</strong>가 폭발적으로 증가하기 때문입니다.</p>
+
+<ul>
+  <li><strong>비교 가능한 쌍의 조합 수</strong>:
+    <ul>
+      <li>23명 중에서 2명을 짝지어 생일을 비교할 수 있는 모든 쌍의 수는 조합(<sub>23</sub><em>C</em><sub>2</sub>)으로 계산됩니다:
+\(_{23}C_2 = \frac{23 \times 22}{2} = 253\text{쌍}\)</li>
+      <li>무려 <strong>253번이나 생일이 같은지 맞춰볼 기회</strong>가 생기므로 겹칠 확률이 급격히 치솟습니다.</li>
+    </ul>
+  </li>
+  <li><strong>여사건을 이용한 수학적 증명 (모두 생일이 다를 확률)</strong>:
+    <ul>
+      <li>23명의 생일이 모두 다를 확률은 비복원추출처럼 순차적으로 곱하여 구합니다:
+\(P(\text{모두 다름}) = \frac{365}{365} \times \frac{364}{365} \times \frac{363}{365} \times \dots \times \frac{365 - 23 + 1}{365} \approx 0.4927\ (49.27\%)\)</li>
+      <li>따라서 여사건 공식에 의해 <strong>적어도 한 쌍의 생일이 일치할 확률</strong>은:
+\(P(\text{적어도 한 쌍 일치}) = 1 - P(\text{모두 다름}) = 1 - 0.4927 = 0.5073\ (50.73\%)\)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/dorothy_birthday_paradox_concept.png" alt="생일 패러독스" />
+<strong>그림 02-11-8</strong> 단 23명만 모여도 253개의 비교 쌍(₂₃C₂ = 253)이 생성되어 생일이 겹칠 확률이 50%를 초과하는 생일 패러독스의 원리를 설명하는 지니와 도로시, 토토</p>
+
+<p>“와! 1년 365일 중에서 나와 생일이 같은 특정 사람을 찾는 게 아니라, 23명 안에서 ‘아무나 둘이 겹치는 쌍’을 찾는 거니까 253쌍이나 비교할 수 있어서 확률이 50%를 훌쩍 넘는 거였구나!”</p>
+
+<p>도로시가 고깔모자를 쓰고 손뼉을 치며 신기해했습니다. 토토도 꼬리를 흔들었습니다.</p>
+
+<hr />
+
+<h2 id="02115-파이썬으로-구현하는-몬티-홀--독립시행-시뮬레이터">02.11.5 파이썬으로 구현하는 몬티 홀 &amp; 독립시행 시뮬레이터</h2>
+
+<p>파이썬의 <code class="language-plaintext highlighter-rouge">random</code> 모듈로 몬티 홀 게임을 100,000번 시뮬레이션하여 선택을 바꾸는 전략의 우수성을 검증합니다.</p>
+
+<ul>
+  <li><strong>예제 파일</strong>: <a href="monty_hall_and_binomial.py">monty_hall_and_binomial.py</a></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">random</span>
+<span class="kn">import</span> <span class="n">math</span>
+
+<span class="k">def</span> <span class="nf">monty_hall_simulation</span><span class="p">(</span><span class="n">trials</span><span class="o">=</span><span class="mi">100000</span><span class="p">):</span>
+    <span class="n">stay_wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">switch_wins</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">random</span><span class="p">.</span><span class="nf">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">trials</span><span class="p">):</span>
+        <span class="c1"># 3개의 문 중 무작위로 1곳에 자동차(1), 나머지 2곳에 염소(0) 배치
+</span>        <span class="n">doors</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+        <span class="n">car_door</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">player_choice</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="c1"># 사회자는 플레이어가 선택하지 않았고, 자동차도 없는 꽝 문을 열어 공개
+</span>        <span class="n">possible_host_doors</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">doors</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">player_choice</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">car_door</span><span class="p">]</span>
+        <span class="n">host_door</span> <span class="o">=</span> <span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">possible_host_doors</span><span class="p">)</span>
+        
+        <span class="c1"># 선택을 바꿀 경우 남은 문
+</span>        <span class="n">switch_choice</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">doors</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">player_choice</span> <span class="ow">and</span> <span class="n">d</span> <span class="o">!=</span> <span class="n">host_door</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        
+        <span class="c1"># 승리 카운팅
+</span>        <span class="k">if</span> <span class="n">player_choice</span> <span class="o">==</span> <span class="n">car_door</span><span class="p">:</span>
+            <span class="n">stay_wins</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">switch_choice</span> <span class="o">==</span> <span class="n">car_door</span><span class="p">:</span>
+            <span class="n">switch_wins</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">=== 몬티 홀 시뮬레이션 (</span><span class="si">{</span><span class="n">trials</span><span class="si">:</span><span class="p">,</span><span class="si">}</span><span class="s">회 시행) ===</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">1. 처음 선택 유지 시 승률: </span><span class="si">{</span><span class="n">stay_wins</span> <span class="o">/</span> <span class="n">trials</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">% (이론값 33.33%)</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">2. 다른 문으로 변경 시 승률: </span><span class="si">{</span><span class="n">switch_wins</span> <span class="o">/</span> <span class="n">trials</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">% (이론값 66.67%)</span><span class="sh">"</span><span class="p">)</span>
+
+<span class="nf">monty_hall_simulation</span><span class="p">()</span>
+
+<span class="c1"># 독립시행 양궁 계산
+</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.8</span>
+<span class="n">binomial_prob</span> <span class="o">=</span> <span class="n">math</span><span class="p">.</span><span class="nf">comb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span> <span class="o">**</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="p">((</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span> <span class="o">**</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">r</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="se">\n</span><span class="s">양궁 5발 중 2발 명중 확률 (n=5, r=2, p=0.8): </span><span class="si">{</span><span class="n">binomial_prob</span> <span class="o">*</span> <span class="mi">100</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">%</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[실행 결과]
+=== 몬티 홀 시뮬레이션 (100,000회 시행) ===
+1. 처음 선택 유지 시 승률: 33.36% (이론값 33.33%)
+2. 다른 문으로 변경 시 승률: 66.64% (이론값 66.67%)
+
+양궁 5발 중 2발 명중 확률 (n=5, r=2, p=0.8): 5.12%
+</code></pre></div></div>
+
+<blockquote>
+  <p><strong>💡 코드 해석</strong>: 10만 번의 컴퓨터 시뮬레이션 결과, 문을 바꾸었을 때의 승률이 정확히 66.64%(2/3)로 유지했을 때의 33.36%(1/3)보다 정확히 2배 높게 나타나 수학적 직관의 오류를 명확히 입증합니다.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="02116-실전-예제">02.11.6 실전 예제</h2>
+
+<p>학습한 내용을 바탕으로 다음 문제를 직접 해결해 봅시다.</p>
+
+<h3 id="21161-문제-1-비복원추출-조건부-확률과-곱셈정리">2.11.6.1 문제 1 (비복원추출 조건부 확률과 곱셈정리)</h3>
+
+<blockquote>
+  <p>주머니 속에 빨간 구슬 2개와 파란 구슬 3개(총 5개)가 들어 있습니다. 구슬을 한 개씩 연속해서 두 번 꺼낼 때(꺼낸 구슬은 다시 넣지 않음), 두 번 모두 빨간 구슬이 나올 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>첫 번째에 빨간 구슬을 꺼낼 사건을 <em>A</em>라 하면:
+\(P(A) = \frac{2}{5}\)</li>
+    <li>첫 번째 빨간 구슬이 빠져나간 후 남은 4개(빨강 1, 파랑 3) 중 두 번째에 빨간 구슬을 꺼낼 조건부 확률은:
+\(P(B|A) = \frac{1}{4}\)</li>
+    <li>확률의 곱셈정리에 따라 두 사건이 연속으로 발생할 확률은:
+\(P(A \cap B) = P(A) \times P(B|A) = \frac{2}{5} \times \frac{1}{4} = \frac{2}{20} = \frac{1}{10}\ (10\%)\)
+<strong>정답</strong>: 1 / 10 (10%)</li>
+  </ol>
+</blockquote>
+
+<hr />
+
+<h3 id="21162-문제-2-독립시행-주사위-던지기">2.11.6.2 문제 2 (독립시행 주사위 던지기)</h3>
+
+<blockquote>
+  <p>주사위 1개를 4번 던질 때, 1의 눈이 정확히 3번 나올 확률을 구하시오.</p>
+
+  <p><strong>풀이</strong>:</p>
+  <ol>
+    <li>1회 시행 시 1의 눈이 나올 성공 확률 <em>p</em> = 1/6, 실패 확률 1 - <em>p</em> = 5/6</li>
+    <li>총 시행 횟수 <em>n</em> = 4, 성공 횟수 <em>r</em> = 3</li>
+    <li>독립시행 공식 적용:
+\(P(X = 3) = _4C_3 \times \left(\frac{1}{6}\right)^3 \times \left(\frac{5}{6}\right)^1 = 4 \times \frac{1}{216} \times \frac{5}{6} = \frac{20}{1296} = \frac{5}{324} \approx 0.01543\ (1.54\%)\)
+<strong>정답</strong>: 5 / 324 (약 1.54%)</li>
+  </ol>
+</blockquote>
+
+<hr />
+
+<h2 id="02117-핵심-요약">02.11.7 핵심 요약</h2>
+
+<p><img src="./img/dorothy_conditional_summary.png" alt="조건부 확률과 독립시행 핵심 요약" />
+<strong>그림 02-11-9</strong> 표본공간의 축소를 수반하는 조건부 확률과 독립시행 공식, 몬티 홀 딜레마와 생일 패러독스의 원리를 정복한 도로시와 지니, 토토</p>
+
+<ol>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>*조건부 확률(</em>P(B</td>
+          <td>A)<em>)**: 새로운 단서나 조건 *A</em>가 관측되면 전체 표본공간이 사건 <em>A</em>의 영역으로 축소되며, 그 안에서 교집합의 비율(<em>P(A ∩ B) / P(A)</em>)을 구한다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>독립과 종속</strong>: 이전 사건이 다음 사건에 영향을 미치지 않으면 <strong>독립사건(<em>P(A ∩ B) = P(A)P(B)</em>)</strong>, 영향을 미치면 <strong>종속사건</strong>이다.</li>
+  <li><strong>독립시행의 정리</strong>: 매회 성공률 <em>p</em>가 일정한 독립 실험을 <em>n</em>번 반복하여 <em>r</em>번 성공할 확률은 <strong><sub><em>n</em></sub><em>C</em><sub><em>r</em></sub> <em>p</em><sup><em>r</em></sup> (1-<em>p</em>)<sup><em>n-r</em></sup></strong>로 계산한다.</li>
+  <li><strong>확률적 직관의 교정</strong>: 몬티 홀 딜레마(선택 변경 시 2/3 승률)와 생일 문제(23명만으로 50% 돌파)는 인간의 어림짐작을 깨뜨리는 정교한 수학적 통찰을 제공한다.</li>
+</ol>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="/character/" class="text-decoration-none text-secondary me-3">캐릭터 소개</a>
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>

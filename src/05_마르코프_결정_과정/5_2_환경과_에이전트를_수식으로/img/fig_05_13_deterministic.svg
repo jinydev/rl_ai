@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" width="100%" height="100%">
+  <defs>
+    <!-- Agent Icon -->
+    <g id="agent">
+      <rect x="12" y="17" width="36" height="32" rx="12" ry="12" fill="#a0ecff" stroke="#2d3748" stroke-width="2.5"/>
+      <circle cx="23" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="37" cy="28" r="6" fill="#ffffff" stroke="#2d3748" stroke-width="1.5"/>
+      <circle cx="21" cy="28" r="3" fill="#2d3748"/>
+      <circle cx="35" cy="28" r="3" fill="#2d3748"/>
+      <path d="M 27 38 Q 30 41 33 38" fill="none" stroke="#2d3748" stroke-width="2" stroke-linecap="round"/>
+      <path d="M 28 39 Q 30 44 32 39 Z" fill="#ff7070" stroke="#2d3748" stroke-width="1"/>
+      <path d="M 16 49 C 16 47, 24 47, 24 49 C 24 51, 22 53, 19 53 C 15 53, 16 49, 16 49 Z" fill="#2d3748"/>
+      <path d="M 36 49 C 36 47, 44 47, 44 49 C 44 51, 42 53, 39 53 C 35 53, 36 49, 36 49 Z" fill="#2d3748"/>
+    </g>
+    
+    <!-- 5-Cell Grid Frame -->
+    <g id="grid_5">
+      <rect x="0" y="0" width="300" height="60" fill="#ffffff" stroke="#2d3748" stroke-width="2"/>
+      <line x1="60" y1="0" x2="60" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="120" y1="0" x2="120" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="180" y1="0" x2="180" y2="60" stroke="#2d3748" stroke-width="2"/>
+      <line x1="240" y1="0" x2="240" y2="60" stroke="#2d3748" stroke-width="2"/>
+    </g>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2d3748"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="180" y="25" font-family="sans-serif" font-size="15" font-weight="bold" fill="#2d3748" text-anchor="middle">결정적 정책 (Deterministic Policy)</text>
+
+  <!-- Left Side: Deterministic -->
+  <g transform="translate(30, 50)">
+    <use href="#grid_5"/>
+    <use href="#agent" x="120" y="0"/>
+    
+    <!-- Labels -->
+    <text x="30" y="-12" font-family="sans-serif" font-size="13" font-style="italic" fill="#718096" text-anchor="middle">L1</text>
+    <text x="90" y="-12" font-family="sans-serif" font-size="13" font-style="italic" fill="#718096" text-anchor="middle">L2</text>
+    <text x="150" y="-12" font-family="sans-serif" font-size="13" font-style="italic" fill="#718096" text-anchor="middle">L3</text>
+    <text x="210" y="-12" font-family="sans-serif" font-size="13" font-style="italic" fill="#718096" text-anchor="middle">L4</text>
+    <text x="270" y="-12" font-family="sans-serif" font-size="13" font-style="italic" fill="#718096" text-anchor="middle">L5</text>
+    
+    <!-- Arrow -->
+    <line x1="140" y1="80" x2="90" y2="80" stroke="#2d3748" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="140" cy="80" r="3" fill="#2d3748"/>
+    <text x="115" y="102" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2d3748" text-anchor="middle">Left</text>
+  </g>
+</svg>
