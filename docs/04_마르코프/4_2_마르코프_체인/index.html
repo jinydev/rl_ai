@@ -680,78 +680,509 @@
         <div class="bd-content ps-lg-4">
             <h1 id="042-마르코프-체인-markov-chain">04.2 마르코프 체인 (Markov Chain)</h1>
 
-<p><strong>그림 04-2</strong> 맑음(Sun)과 흐림(Rain) 플랫폼 사이의 순환 전이 확률 경로를 직접 밟으며 학습하는 도로시와 지니
-<img src="./img/jiny_markov_ch4_2_chain.png" alt="마르코프 체인 인트로" /></p>
+<p>시간에 따라 상태가 확률적으로 변화하는 과정을 모델링한 <strong>마르코프 체인(Markov Chain)</strong>을 공부합니다.</p>
 
-<p>시간에 따라 상태가 확률적으로 변화하는 것을 모델링한 <strong>마르코프 체인(Markov Chain)</strong>을 공부합니다. 오늘 날씨를 기반으로 내일 날씨를 예측하듯, 상태 간 전이 관계를 도식화하여 표현하는 요령을 도로시와 함께 밝게 풀어봅시다!</p>
+<p>오늘 날씨를 기반으로 내일과 모레의 날씨를 예측하듯, 상태 간 전이 관계를 도식화하고 행렬로 표현하는 원리를 도로시, 토토와 함께 신나게 탐험해보아요!</p>
 
-<hr />
+<p><img src="./img/jiny_markov_ch4_2_chain.png" alt="마르코프 체인 인트로" /></p>
 
-<hr />
-
-<h3 id="0421-마르코프-체인의-기초-개념">04.2.1 마르코프 체인의 기초 개념</h3>
-
-<p>우리는 앞 장에서 마르코프 성질(Markov Property)을 배웠습니다. 그렇다면 마르코프 성질을 만족하면서 시간이 지남에 따라 상태가 확률적으로 변화하는 무작위 프로세스를 무엇이라 부를까요?</p>
-
-<p>이를 바로 <strong>마르코프 체인(Markov Chain)</strong> 또는 <strong>마르코프 사슬</strong>이라고 부릅니다.</p>
-
-<p>마르코프 체인은 상태들의 집합이 유한하고, 시간의 흐름이 불연속적인 이산 타임 스텝(<em>t</em> = 0, 1, 2, …) 단위로 끊어지는 가장 단순하고도 강력한 확률 모델입니다.</p>
+<p><strong>그림 04-2-1</strong> 맑음(Sun)과 비(Rain) 플랫폼 사이의 순환 전이 확률 경로를 직접 밟으며 학습하는 도로시와 토토, 지니</p>
 
 <hr />
 
-<h3 id="0422-날씨-예제로-이해하는-상태-전이">04.2.2 날씨 예제로 이해하는 상태 전이</h3>
+<h3 id="0421-마르코프-체인이란-무엇인가요">04.2.1 마르코프 체인이란 무엇인가요?</h3>
 
-<p>하루 단위로 관측되는 날씨 시스템을 예로 들어봅시다.</p>
+<p>우리는 앞서 4.1절에서 <strong>“미래는 오직 현재에 의해서만 결정된다”</strong>는 <strong>마르코프 성질(Markov Property)</strong>을 배웠습니다.</p>
 
-<p>이 시스템은 오직 두 가지 상태인 <strong>‘맑음’</strong>과 <strong>‘비’</strong>만을 가집니다:</p>
+<p>그렇다면 이 마르코프 성질을 만족하면서, 시간이 흐름에 따라 여러 상태 사이를 <strong>확률적</strong>으로 퐁당퐁당 이동하는 전체적인 시스템(<strong>확률 과정</strong>)을 무엇이라 부를까요?</p>
 
-<ul>
-  <li><em>S</em> = {맑음, 비}</li>
-</ul>
+<p><img src="./img/dorothy_curious_weather.png" alt="도로시의 날씨 예측 호기심" /></p>
 
-<p>오늘 날씨(<em>S</em><sub><em>t</em></sub>)에 따른 내일 날씨(<em>S</em><sub><em>t</em>+1</sub>)의 확률 분포가 다음과 같다고 가정해 봅시다:</p>
+<p><strong>그림 04-2-2</strong> “오늘 날씨만 알면 내일과 모레 날씨도 사슬처럼 줄줄이 알아맞힐 수 있을까?” 궁금해하는 도로시와 토토</p>
+
+<p>도로시가 달력과 작은 노란 우산을 들고 갸우뚱하며 질문했습니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시의 궁금증</strong>:</p>
+
+  <p>“지니! 어제 마르코프 성질을 배울 때 과거의 복잡한 지나온 길은 다 잊어도 된다고 했잖아.</p>
+
+  <p>그럼 오늘 날씨가 ‘맑음’이라는 것만 알면, 내일 날씨뿐만 아니라 모레나 글피 날씨도 사슬처럼 줄줄이 이어서 확률을 계산할 수 있는 거야?”</p>
+</blockquote>
+
+<hr />
+
+<p>토토도 귀를 쫑긋 세우며 달력 위를 콩콩 짚었습니다.</p>
+
+<p>지니가 빙그레 미소를 지으며 마법 지팡이로 허공에 반짝이는 황금 사슬을 그려 보였습니다.</p>
+
+<p><img src="./img/jiny_explaining_chain.png" alt="지니의 마르코프 체인 구조 설명" /></p>
+
+<p><strong>그림 04-2-3</strong> 시간의 흐름(Time Steps)에 따라 상태들이 사슬처럼 꼬리를 물고 이어지는 마르코프 체인의 기본 구조</p>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니의 마법 노트: 상태들이 사슬처럼 엮인 세상!</strong></p>
+
+  <p>“맞아, 도로시! 바로 그것을 수학에서는 <strong>마르코프 체인(Markov Chain, 마르코프 사슬)</strong>이라고 부른단다.</p>
+
+  <p>시간의 흐름을 째깍째깍 불연속적인 타임 스텝(<i>t</i> = 0, 1, 2, 3, …)으로 나누고, 상태(State)들이 마르코프 성질을 지키며 확률적으로 다음 상태로 넘어가는 연결 고리를 의미하지!”</p>
+</blockquote>
+
+<hr />
+
+<h4 id="핵심구성-요소">핵심구성 요소</h4>
+
+<p>마르코프 체인의 핵심 구성 요소는 다음과 같습니다:</p>
 
 <ol>
-  <li><strong>오늘 맑으면</strong>: 내일도 맑을 확률이 0.7, 내일 비가 올 확률이 0.3입니다.</li>
-  <li><strong>오늘 비가 오면</strong>: 내일 맑을 확률이 0.4, 내일도 비가 올 확률이 0.6입니다.</li>
+  <li><strong>유한한 상태 공간 (State Space, <i>S</i>)</strong>: 에이전트나 환경이 놓일 수 있는 모든 가능한 상태들의 집합입니다.</li>
+  <li><strong>이산 타임 스텝 (Discrete Time Steps, <i>t</i>)</strong>: 하루, 1초, 1스텝처럼 일정한 단위로 끊어지는 시간의 흐름입니다.</li>
+  <li><strong>마르코프 성질</strong>: 내일의 상태(<i>S</i><sub><i>t</i>+1</sub>)는 오직 오늘의 상태(<i>S</i><sub><i>t</i></sub>)에 의해서만 확률적으로 결정됩니다.</li>
 </ol>
 
-<p>이를 도식으로 나타내면 아래의 <strong>상태 전이도(State Transition Diagram)</strong>가 됩니다.</p>
+<p><img src="./img/markov_chain_core_elements.png" alt="마르코프 체인의 3대 핵심 요소" /></p>
 
-<p><strong>그림 04-1</strong> 날씨 마르코프 체인의 상태 전이도
-<img src="./img/diagram.svg" alt="날씨 전이도" /></p>
+<p><strong>그림 04-2-4</strong> 마르코프 체인을 이루는 3대 핵심 기둥: 유한 상태 공간, 이산 타임 스텝, 마르코프 성질</p>
 
 <hr />
 
-<h3 id="0423-상태-전이-확률-행렬-state-transition-probability-matrix">04.2.3 상태 전이 확률 행렬 (State Transition Probability Matrix)</h3>
+<h3 id="0422-날씨-예제로-이해하는-상태-전이-state-transition">04.2.2 날씨 예제로 이해하는 상태 전이 (State Transition)</h3>
+
+<p>가장 직관적인 <strong>날씨 시스템</strong>을 예로 들어 마르코프 체인의 작동 원리를 살펴봅시다.</p>
+
+<h4 id="상태집합">상태집합</h4>
+
+<p>이 가상 마을의 날씨 시스템은 오직 두 가지 상태만을 가집니다:</p>
+
+<ul>
+  <li><strong>상태 집합</strong>: <i>S</i> = { 1: 맑음, 2: 비 }</li>
+</ul>
+
+<p><img src="./img/markov_weather_states.png" alt="날씨 시스템의 상태 공간" /></p>
+
+<p><strong>그림 04-2-5</strong> 날씨 시스템이 가질 수 있는 두 가지 기본 상태(상태 공간 S): 맑음과 비</p>
+
+<hr />
+
+<h4 id="확률규칙">확률규칙</h4>
+
+<p>오늘 날씨(<i>S</i><sub><i>t</i></sub>)가 무엇이냐에 따라 내일 날씨(<i>S</i><sub><i>t</i>+1</sub>)가 될 확률 규칙이 다음과 같다고 해봅시다:</p>
+
+<ul>
+  <li><strong>오늘 맑으면(<i>S</i><sub><i>t</i></sub> = 1)</strong>:
+    <ul>
+      <li>내일도 계속 <strong>맑을</strong> 확률: <strong>0.7 (70%)</strong></li>
+      <li>내일 날씨가 <strong>비</strong>로 바뀔 확률: <strong>0.3 (30%)</strong></li>
+    </ul>
+  </li>
+  <li><strong>오늘 비가 오면(<i>S</i><sub><i>t</i></sub> = 2)</strong>:
+    <ul>
+      <li>내일 날씨가 <strong>맑음</strong>으로 갤 확률: <strong>0.4 (40%)</strong></li>
+      <li>내일도 계속 <strong>비</strong>가 올 확률: <strong>0.6 (60%)</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h4 id="상태전이">상태전이</h4>
+
+<p>이처럼 하나의 상태에서 다른 상태(또는 자기 자신)로 시간이 지나 이동하는 과정을 <strong>상태 전이(State Transition)</strong>라고 부릅니다.</p>
+
+<p><img src="./img/markov_weather_probability_cases.png" alt="오늘 날씨에 따른 내일 전이 확률" /></p>
+
+<p><strong>그림 04-2-6</strong> 오늘 날씨(현재 상태)에 따라 결정되는 내일 날씨(다음 상태)의 4가지 전이 확률 케이스</p>
+
+<hr />
+
+<h4 id="상태전이도">상태전이도</h4>
+
+<p>이 전이 관계를 동그란 노드(Node)와 방향 화살표로 시각화한 그림을 <strong>상태 전이도(State Transition Diagram)</strong>라고 합니다.</p>
+
+<p><img src="./img/markov_weather_transition_diagram.png" alt="날씨 상태 전이도" /></p>
+
+<p><strong>그림 04-2-7</strong> 맑음과 비 두 상태 사이의 이동 확률을 화살표와 수치로 나타낸 날씨 상태 전이도</p>
+
+<ul>
+  <li><strong>자기 자신으로 돌아오는 화살표 (Self-Loop)</strong>: 상태가 다음 날에도 유지될 확률을 나타냅니다 (맑음→맑음: 0.7, 비→비: 0.6).</li>
+  <li><strong>서로를 향하는 화살표 (Transition Arrow)</strong>: 상태가 다른 상태로 바뀔 확률을 나타냅니다 (맑음→비: 0.3, 비→맑음: 0.4).</li>
+</ul>
+
+<hr />
+
+<h3 id="0423-상태-전이-확률과-기호-표기-pij">04.2.3 상태 전이 확률과 기호 표기 (<i>p</i><sub><i>ij</i></sub>)</h3>
+
+<p>상태 전이를 수학적으로 다룰 때는 조건부 확률 기호 대신 간결한 <strong>전이 확률 기호 <i>p</i><sub><i>ij</i></sub></strong>를 즐겨 사용합니다.</p>
+
+<p><img src="./img/dorothy_matrix_question.png" alt="도로시의 첨자 순서 고민" /></p>
+
+<p><strong>그림 04-2-8</strong> “<i>p</i><sub>12</sub>와 <i>p</i><sub>21</sub> 중에 누가 출발 상태이고 누가 도착 상태일까?” 고민하는 도로시와 토토</p>
+
+<p>수학 기호를 처음 접한 도로시가 연습장에 펜을 대고 고개를 갸우뚱했습니다.</p>
+
+<hr />
+
+<blockquote>
+  <p>👧 <strong>도로시의 질문</strong>:</p>
+
+  <p>“지니! <i>p</i><sub>12</sub>랑 <i>p</i><sub>21</sub>은 아래 숫자가 반대잖아.</p>
+
+  <p>맑음(1)에서 비(2)로 가는 확률은 12야, 아니면 21이야? 앞 숫자가 출발지야, 아니면 도착지야?”</p>
+</blockquote>
+
+<p>지니가 마법 칠판에 큰 글씨로 화살표를 그리며 명쾌하게 설명해 주었습니다.</p>
+
+<p><img src="./img/jiny_explaining_pij.png" alt="지니의 p_ij 첨자 규칙 설명" /></p>
+
+<p><strong>그림 04-2-9</strong> 출발 상태(현재 <i>i</i>)에서 도착 상태(다음 <i>j</i>)로 가는 규칙 <i>p</i><sub><i>ij</i></sub>를 가르쳐주는 지니와 이해한 도로시</p>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니의 명쾌한 규칙: 왼쪽(<i>i</i>)에서 오른쪽(<i>j</i>)으로!</strong></p>
+
+  <p>“도로시, 기호 <b><i>p</i><sub><i>ij</i></sub></b>에서 <strong>첫 번째 첨자 <i>i</i>는 ‘현재 출발하는 상태’</strong>이고, <strong>두 번째 첨자 <i>j</i>는 ‘다음에 도착할 상태’</strong>를 뜻한단다!</p>
+
+  <p>즉, ‘상태 <i>i</i>에서 출발하여 상태 <i>j</i>에 도착할 확률’인 셈이지!”</p>
+</blockquote>
+
+<hr />
+
+<p>수식으로 표현하면 다음과 같이 조건부 확률과 정확히 일치합니다:</p>
+
+<blockquote>
+  <h3 id="pij--p-st1--j--st--i-"><i>p</i><sub><i>ij</i></sub> = <i>P</i>( <i>S</i><sub><i>t</i>+1</sub> = <i>j</i> | <i>S</i><sub><i>t</i></sub> = <i>i</i> )</h3>
+</blockquote>
+
+<p>우리 날씨 예제의 4가지 전이 확률을 기호로 정리하면 다음과 같습니다:</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong><i>p</i><sub>11</sub></strong> = <i>P</i>(<i>S</i><sub><i>t</i>+1</sub> = 맑음</td>
+          <td><i>S</i><sub><i>t</i></sub> = 맑음) = <strong>0.7</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong><i>p</i><sub>12</sub></strong> = <i>P</i>(<i>S</i><sub><i>t</i>+1</sub> = 비</td>
+          <td><i>S</i><sub><i>t</i></sub> = 맑음) = <strong>0.3</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong><i>p</i><sub>21</sub></strong> = <i>P</i>(<i>S</i><sub><i>t</i>+1</sub> = 맑음</td>
+          <td><i>S</i><sub><i>t</i></sub> = 비) = <strong>0.4</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong><i>p</i><sub>22</sub></strong> = <i>P</i>(<i>S</i><sub><i>t</i>+1</sub> = 비</td>
+          <td><i>S</i><sub><i>t</i></sub> = 비) = <strong>0.6</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="0424-상태-전이-확률-행렬-state-transition-probability-matrix">04.2.4 상태 전이 확률 행렬 (State Transition Probability Matrix)</h3>
+
+<p>이 모든 전이 확률 <i>p</i><sub><i>ij</i></sub>들을 바둑판 모양의 2차원 표로 정갈하게 묶은 것을 <strong>상태 전이 확률 행렬(State Transition Probability Matrix)</strong>이라고 부르며, 대문자 <strong><i>P</i></strong>로 나타냅니다.</p>
+
+<p><img src="./img/markov_matrix_properties.png" alt="상태 전이 확률 행렬의 구조와 성질" /></p>
+
+<p><strong>그림 04-2-10</strong> 행(현재 상태 <i>i</i>)과 열(다음 상태 <i>j</i>)로 구성되며, 각 행의 합이 정확히 1.0(100%)이 되는 상태 전이 확률 행렬 <i>P</i></p>
+
+<hr />
+
+<p>행렬 표기:</p>
 
 <table>
+  <thead>
+    <tr>
+      <th style="text-align: center">현재 \ 다음</th>
+      <th style="text-align: center">1 (맑음)</th>
+      <th style="text-align: center">2 (비)</th>
+      <th style="text-align: center"><strong>행의 합 (Row Sum)</strong></th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td>이러한 상태 전이 확률을 수식으로 표기할 때는 <em>P</em>(<em>S</em><sub><em>t</em>+1</sub> = <em>j</em></td>
-      <td><em>S</em><sub><em>t</em></sub> = <em>i</em>)를 뜻하는 기호 <em>p</em><sub><em>ij</em></sub>를 사용합니다.</td>
+      <td style="text-align: center"><strong>1 (맑음)</strong></td>
+      <td style="text-align: center">0.7</td>
+      <td style="text-align: center">0.3</td>
+      <td style="text-align: center"><strong>0.7 + 0.3 = 1.0 (100%)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>2 (비)</strong></td>
+      <td style="text-align: center">0.4</td>
+      <td style="text-align: center">0.6</td>
+      <td style="text-align: center"><strong>0.4 + 0.6 = 1.0 (100%)</strong></td>
     </tr>
   </tbody>
 </table>
 
-<p>예를 들어 오늘 맑음(<em>S</em><sub><em>t</em></sub> = 1)에서 내일 비(<em>S</em><sub><em>t</em>+1</sub> = 2)로 갈 확률은 다음과 같습니다:
-\(p_{12} = P(S_{t+1} = 2 \mid S_t = 1) = 0.3\)</p>
+<p>수학적 행렬 표기:</p>
 
-<p>이 모든 전이 확률 <em>p</em><sub><em>ij</em></sub>를 한눈에 볼 수 있도록 바둑판 모양의 행렬로 묶어 정리한 것을 <strong>상태 전이 확률 행렬(State Transition Probability Matrix)</strong>이라고 하며, 대문자 <strong>*P*</strong>로 표기합니다:
-\(P = \begin{pmatrix}
-p_{11} &amp; p_{12} \\
-p_{21} &amp; p_{22}
-\end{pmatrix}
-= \begin{pmatrix}
-0.7 &amp; 0.3 \\
-0.4 &amp; 0.6
-\end{pmatrix}\)</p>
+<div style="text-align: center; font-size: 1.15em; font-weight: bold; margin: 20px 0;">
+<i>P</i> = 
+[ [ 0.7, 0.3 ], 
+  [ 0.4, 0.6 ] ]
+</div>
+
+<hr />
+
+<h4 id="-상태-전이-확률-행렬의-절대-원칙-각-행의-합은-항상-10이다">💡 상태 전이 확률 행렬의 절대 원칙: “각 행의 합은 항상 1.0이다!”</h4>
+
+<p>행렬 <i>P</i>를 관찰해 보면 아주 중요한 수학적 법칙을 발견할 수 있습니다:</p>
+
+<ol>
+  <li><strong>가로줄(행, Row) = 현재 상태 <i>i</i></strong>: 오늘 내가 서 있는 출발 지점입니다.</li>
+  <li><strong>세로줄(열, Column) = 다음 상태 <i>j</i></strong>: 내일 내가 도달할 도착 지점입니다.</li>
+  <li><strong>각 행의 합 = 1.0</strong>: 오늘 맑든 비가 오든, 내일은 <strong>‘맑거나’ 혹은 ‘비가 오거나’</strong> 둘 중 하나로 100% 결정되어야 하기 때문에 가로줄의 모든 확률을 더하면 언제나 정확히 1.0(100%)이 됩니다.</li>
+</ol>
+
+<blockquote>
+  <p><strong>∑<sub><i>j</i></sub> <i>p</i><sub><i>ij</i></sub> = 1.0 (모든 <i>i</i>에 대하여)</strong></p>
+</blockquote>
+
+<hr />
+
+<h3 id="0425-한-걸음-더-2일-뒤모레-날씨-예측하기-행렬-거듭제곱의-마법">04.2.5 한 걸음 더: 2일 뒤(모레) 날씨 예측하기 (행렬 거듭제곱의 마법)</h3>
+
+<p>마르코프 체인의 진정한 위력은 <strong>“먼 미래의 상태 확률을 아주 쉽게 계산할 수 있다”</strong>는 점에 있습니다!</p>
+
+<hr />
+
+<h4 id="미래의-확률">미래의 확률</h4>
+
+<p>만약 <strong>“오늘 날씨가 맑을 때, 2일 뒤(모레) 날씨도 맑을 확률”</strong>은 어떻게 구할 수 있을까요?</p>
+
+<p><img src="./img/dorothy_future_weather_question.png" alt="2일 뒤 날씨 예측 호기심" /></p>
+
+<p><strong>그림 04-2-11</strong> 오늘 맑음에서 시작하여 내일을 거쳐 2일 뒤(모레) 날씨도 맑을 확률을 어떻게 구할 수 있을지 호기심을 갖는 도로시와 토토, 그리고 지니</p>
+
+<hr />
+
+<h4 id="2가지-경로의-확률-계산-확률-가지치기">2가지 경로의 확률 계산 (확률 가지치기)</h4>
+
+<p>오늘(맑음)에서 모레(맑음)로 가는 길은 중간 날(내일)의 날씨에 따라 딱 <strong>2가지 경로</strong>가 존재합니다:</p>
+
+<p><img src="./img/markov_twostep_paths_calculation.png" alt="2가지 경로 확률 계산 다이어그램" /></p>
+
+<p><strong>그림 04-2-12</strong> 오늘 맑음에서 내일의 두 갈래 길(맑음, 비)을 거쳐 모레 맑음이 될 확률(61%)을 각각 곱하고 더하여 계산하는 2스텝 확률 가지치기 원리</p>
+
+<ol>
+  <li><strong>경로 1 [맑음 → 맑음 → 맑음]</strong>:
+    <ul>
+      <li>오늘 맑음에서 내일 맑을 확률(0.7) × 내일 맑음에서 모레 맑을 확률(0.7)</li>
+      <li>= 0.7 × 0.7 = <strong>0.49 (49%)</strong></li>
+    </ul>
+  </li>
+  <li><strong>경로 2 [맑음 → 비 → 맑음]</strong>:
+    <ul>
+      <li>오늘 맑음에서 내일 비 올 확률(0.3) × 내일 비에서 모레 맑을 확률(0.4)</li>
+      <li>= 0.3 × 0.4 = <strong>0.12 (12%)</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<p>두 경로는 서로 겹치지 않는 독립적인 경우이므로, 두 확률을 더해주면 모레 맑을 총 확률이 완벽하게 계산됩니다:</p>
+
+<blockquote>
+  <h3 id="모레-맑을-확률--049--012--061-61"><strong>모레 맑을 확률 = 0.49 + 0.12 = 0.61 (61%)</strong></h3>
+</blockquote>
+
+<hr />
+
+<h4 id="-행렬-거듭제곱의-마법-p과-pⁿ">🔮 행렬 거듭제곱의 마법 (P²과 Pⁿ)</h4>
+
+<p>도로시가 계산식을 보며 감탄하자, 지니가 빙그레 웃으며 마법 지팡이를 휘둘렀습니다.</p>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니의 마법 팁: 일일이 가지치기 계산할 필요가 없단다!</strong></p>
+
+  <p>“도로시, 모든 출발 상태와 도착 상태에 대해 매번 손으로 갈래길을 다 그리면 너무 복잡하겠지?</p>
+
+  <p>놀랍게도 상태 전이 행렬 <i>P</i>를 자기 자신과 곱하기만 하면(<i>P</i><sup>2</sup> = <i>P</i> × <i>P</i>), 2일 뒤 발생할 수 있는 <strong>모든 4가지 경우의 전이 확률이 단 한 번에 마법처럼 계산</strong>된단다!”</p>
+</blockquote>
+
+<p><img src="./img/markov_matrix_power_p2.png" alt="행렬 거듭제곱 P2과 n스텝 전이의 마법" /></p>
+
+<p><strong>그림 04-2-13</strong> 전이 행렬을 두 번 곱하는 행렬 거듭제곱(<i>P</i><sup>2</sup>)으로 2일 뒤의 모든 전이 확률을 한 번에 구하고, <i>n</i>스텝 미래 예측(<i>P</i><sup><i>n</i></sup>)으로 확장하는 원리</p>
+
+<p>행렬 곱셈(Matrix Multiplication)의 원리를 살펴보면, 방금 우리가 계산한 수식과 완전히 일치함을 알 수 있습니다:</p>
+
+<ol>
+  <li><strong>(1행 1열) 원소: [오늘 맑음 → 모레 맑음]</strong>
+    <ul>
+      <li>(행렬 <i>P</i>의 1행: [0.7, 0.3]) × (행렬 <i>P</i>의 1열: [0.7, 0.4]<sup>T</sup>)</li>
+      <li>= (0.7 × 0.7) + (0.3 × 0.4) = 0.49 + 0.12 = <strong>0.61 (61%)</strong></li>
+    </ul>
+  </li>
+  <li><strong>(1행 2열) 원소: [오늘 맑음 → 모레 비]</strong>
+    <ul>
+      <li>(행렬 <i>P</i>의 1행: [0.7, 0.3]) × (행렬 <i>P</i>의 2열: [0.3, 0.6]<sup>T</sup>)</li>
+      <li>= (0.7 × 0.3) + (0.3 × 0.6) = 0.21 + 0.18 = <strong>0.39 (39%)</strong></li>
+    </ul>
+  </li>
+  <li><strong>(2행 1열) 원소: [오늘 비 → 모레 맑음]</strong>
+    <ul>
+      <li>(행렬 <i>P</i>의 2행: [0.4, 0.6]) × (행렬 <i>P</i>의 1열: [0.7, 0.4]<sup>T</sup>)</li>
+      <li>= (0.4 × 0.7) + (0.6 × 0.4) = 0.28 + 0.24 = <strong>0.52 (52%)</strong></li>
+    </ul>
+  </li>
+  <li><strong>(2행 2열) 원소: [오늘 비 → 모레 비]</strong>
+    <ul>
+      <li>(행렬 <i>P</i>의 2행: [0.4, 0.6]) × (행렬 <i>P</i>의 2열: [0.3, 0.6]<sup>T</sup>)</li>
+      <li>= (0.4 × 0.3) + (0.6 × 0.6) = 0.12 + 0.36 = <strong>0.48 (48%)</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<p>완성된 2일 뒤 상태 전이 행렬 <i>P</i><sup>2</sup>는 다음과 같습니다:</p>
+
+<div style="text-align: center; font-size: 1.15em; font-weight: bold; margin: 20px 0;">
+<i>P</i><sup>2</sup> = 
+[ [ 0.61, 0.39 ], 
+  [ 0.52, 0.48 ] ]
+</div>
+
+<blockquote>
+  <p><strong>💡 확인 포인트</strong>: <i>P</i><sup>2</sup> 역시 각 행의 합이 <strong>0.61 + 0.39 = 1.0</strong>, <strong>0.52 + 0.48 = 1.0</strong>으로 100% 확률 보존 법칙을 완벽히 만족합니다!</p>
+</blockquote>
+
+<h4 id="-n일-뒤의-미래-예측-pⁿ">🚀 n일 뒤의 미래 예측 (Pⁿ)</h4>
+
+<p>이 원리는 3일 뒤, 10일 뒤, 100일 뒤의 먼 미래에도 그대로 확장됩니다:</p>
 
 <ul>
-  <li>행(가로줄): 현재 상태 ($i$)</li>
-  <li>열(세로줄): 다음 상태 ($j$)</li>
-  <li><strong>성질</strong>: 각 행의 확률 합은 언제나 정확히 1.0 (100%)이 되어야 합니다. 왜냐하면 어떤 상태에 있든 다음 상태 중 반드시 하나로는 이동해야 하기 때문입니다 (0.7 + 0.3 = 1.0, 0.4 + 0.6 = 1.0).</li>
+  <li><strong>3일 뒤 날씨 전이 행렬</strong>: <i>P</i><sup>3</sup> = <i>P</i> × <i>P</i> × <i>P</i></li>
+  <li><strong><i>n</i>일 뒤 날씨 전이 행렬</strong>: <i>P</i><sup><i>n</i></sup> = <i>P</i>를 <i>n</i>번 거듭제곱</li>
 </ul>
+
+<p>즉, 아무리 먼 미래라도 <strong>상태 전이 행렬을 <i>n</i>번 거듭제곱(<i>P</i><sup><i>n</i></sup>)</strong>하기만 하면 컴퓨터가 순식간에 미래의 모든 확률 지도를 완벽하게 계산해 냅니다!</p>
+
+<hr />
+
+<h3 id="0426-강화학습에서의-의의-환경의-자연스러운-흐름과-mdp로의-확장">04.2.6 강화학습에서의 의의: 환경의 자연스러운 흐름과 MDP로의 확장</h3>
+
+<p>강화학습에서 우리가 배운 <strong>마르코프 체인</strong>은 어떤 결정적인 역할을 할까요?</p>
+
+<h4 id="-1-환경의-자연스러운-물리-법칙-환경-모델의-기초">🌍 1. 환경의 자연스러운 물리 법칙 (환경 모델의 기초)</h4>
+
+<p>마르코프 체인은 에이전트(도로시)의 의지나 행동 개입 없이, <strong>바람이 불고 비가 오듯 자연적으로 흘러가는 환경의 동역학(Physics of the World)</strong>을 수학적으로 모델링한 것입니다.</p>
+
+<p><img src="./img/markov_chain_in_rl_environment.png" alt="마르코프 체인과 강화학습 환경의 관계" /></p>
+
+<p><strong>그림 04-2-14</strong> 에이전트의 개입 없이 스스로 흘러가는 자연의 물리 법칙(마르코프 체인)과 그 위에서 최적의 결정을 내리는 탐험의 무대(강화학습 환경)</p>
+
+<ul>
+  <li><strong>수동적 환경 (마르코프 체인)</strong>: 상태들이 오직 확률 규칙에 따라 저절로 흘러갑니다. 관찰자는 날씨가 맑아지거나 비가 오는 것을 그저 바라볼 뿐입니다.</li>
+  <li><strong>능동적 무대 (강화학습 환경)</strong>: 도로시가 발을 디디는 격자 세상(Grid World)의 바닥 타일, 미끄러운 얼음판, 움직이는 장애물 등 <strong>환경 자체의 고유한 상태 변화 법칙</strong>이 바로 마르코프 체인으로 구성됩니다.</li>
+</ul>
+
+<hr />
+
+<h4 id="-2-마르코프-체인에서-마르코프-결정-과정mdp으로의-확장">🧩 2. 마르코프 체인에서 마르코프 결정 과정(MDP)으로의 확장</h4>
+
+<p>우리가 다음 장들에서 본격적으로 정복하게 될 <strong>마르코프 결정 과정(MDP, Markov Decision Process)</strong>은 이 마르코프 체인의 뼈대 위에 두 가지 핵심 요소를 얹은 완성형 시스템입니다:</p>
+
+<p><img src="./img/markov_chain_to_mdp_evolution.png" alt="마르코프 체인에서 MDP로의 확장" /></p>
+
+<p><strong>그림 04-2-15</strong> 마르코프 체인의 상태(S)와 전이확률(P) 위에 에이전트의 행동(A)과 보상(R)을 결합하여 완성되는 마르코프 결정 과정(MDP)</p>
+
+<blockquote>
+  <h3 id="마르코프-체인-s-p--행동a--보상r--할인율γ--마르코프-결정-과정-mdp"><strong>마르코프 체인 (<i>S</i>, <i>P</i>) + 행동(<i>A</i>) + 보상(<i>R</i>) + 할인율(<i>γ</i>) = 마르코프 결정 과정 (MDP)</strong></h3>
+</blockquote>
+
+<ol>
+  <li><strong>행동(Action, <i>A</i>)의 추가</strong>:
+    <ul>
+      <li>마르코프 체인에서는 상태가 환경의 규칙에 의해서만 변했지만, 강화학습에서는 <strong>도로시가 내리는 발걸음(상·하·좌·우 이동 등)</strong>에 따라 다음 상태로 갈 확률이 달라집니다.</li>
+    </ul>
+  </li>
+  <li><strong>보상(Reward, <i>R</i>)의 추가</strong>:
+    <ul>
+      <li>특정 상태에 도달하거나 행동을 취했을 때 지니가 건네는 <strong>달콤한 사과(+10)나 함정(-10)</strong> 같은 즉각적인 피드백 신호가 부여됩니다.</li>
+    </ul>
+  </li>
+  <li><strong>최적의 정책(Policy, <i>π</i>) 학습</strong>:
+    <ul>
+      <li>이제 도로시는 단순히 미래 확률을 내다보는 것에 그치지 않고, <strong>“어느 길로 가야 가장 많은 보상 사과를 얻을 수 있을까?”</strong>를 스스로 학습하며 최적의 정책(<i>π</i><sup>*</sup>)을 찾아내게 됩니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>따라서 마르코프 체인의 상태 전이와 행렬 표현을 확실하게 이해하는 것이야말로, 강화학습의 최고봉인 <strong>MDP와 벨만 방정식(Bellman Equation)</strong>으로 올라가는 가장 튼튼한 디딤돌이 됩니다!</p>
+
+<hr />
+
+<h2 id="-이번-절의-핵심-요약">🧭 이번 절의 핵심 요약</h2>
+
+<p><img src="./img/markov_chain_summary.png" alt="마르코프 체인 핵심 요약" /></p>
+
+<p><strong>그림 04-2-16</strong> 도로시, 토토, 지니와 함께 완성하는 마르코프 체인 완전 정복</p>
+
+<ul>
+  <li><strong>마르코프 체인(Markov Chain)의 정의</strong>
+    <ul>
+      <li>마르코프 성질을 만족하면서, 이산 타임 스텝(<i>t</i> = 0, 1, 2, …)에 따라 상태들이 확률적으로 전이하는 시스템 모델입니다.</li>
+    </ul>
+  </li>
+  <li><strong>마르코프 체인의 3대 핵심 요소</strong>
+    <ul>
+      <li>유한 상태 공간(<i>S</i>), 이산 타임 스텝(<i>t</i>), 마르코프 성질(<i>S</i><sub><i>t</i></sub> → <i>S</i><sub><i>t</i>+1</sub>).</li>
+    </ul>
+  </li>
+  <li><strong>상태 전이도(State Transition Diagram)</strong>
+    <ul>
+      <li>각 상태를 노드(동그라미)로, 상태 간 이동 확률을 방향 화살표로 표현하여 시스템의 동적 흐름을 직관적으로 시각화한 지도입니다.</li>
+    </ul>
+  </li>
+  <li><strong>전이 확률 기호 <i>p</i><sub><i>ij</i></sub>의 규칙</strong>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><i>p</i><sub><i>ij</i></sub> = <i>P</i>(<i>S</i><sub><i>t</i>+1</sub> = <i>j</i></td>
+              <td><i>S</i><sub><i>t</i></sub> = <i>i</i>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>첫 번째 첨자 <i>i</i>는 <strong>출발 상태(현재)</strong>를, 두 번째 첨자 <i>j</i>는 <strong>도착 상태(다음)</strong>를 나타냅니다.</li>
+    </ul>
+  </li>
+  <li><strong>상태 전이 확률 행렬(<i>P</i>)의 핵심 성질</strong>
+    <ul>
+      <li>가로줄(행)은 현재 상태, 세로줄(열)은 다음 상태를 의미합니다.</li>
+      <li>모든 행의 합은 반드시 <strong>1.0 (100%)</strong>이어야 합니다 (∑<sub><i>j</i></sub> <i>p</i><sub><i>ij</i></sub> = 1.0).</li>
+    </ul>
+  </li>
+  <li><strong><i>n</i>스텝 미래 예측과 행렬 곱</strong>
+    <ul>
+      <li>2일 뒤, 3일 뒤의 상태 전이 확률은 전이 행렬의 거듭제곱(<i>P</i><sup>2</sup>, <i>P</i><sup>3</sup>, …)을 통해 수학적으로 손쉽게 계산할 수 있습니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이제 마르코프 체인과 상태 전이 행렬을 완벽하게 마스터했으니, 다음 <a href="../4_3_마르코프_과정/index.html"><strong>04.3 마르코프 과정 (Markov Process)</strong></a>으로 넘어가 상태 공간과 전이 행렬의 수학적 튜플 정의와 궤적(Trajectory)의 개념을 정복해 봅시다!</p>
 
 
             <!-- 구글 애드센스 출력 -->

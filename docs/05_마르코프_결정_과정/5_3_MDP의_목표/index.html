@@ -680,275 +680,170 @@
         <div class="bd-content ps-lg-4">
             <h1 id="053-mdp의-목표">05.3 MDP의 목표</h1>
 
-<p><strong>그림 05-3</strong> 미래로 갈수록 기하급수적으로 작아지는 보상 상자들(할인율 gamma)과 반환값 G_t 공식을 판서하며 학습하는 지니와 도로시
+<p><strong>그림 05-3-1</strong> 미래로 갈수록 할인율 <i>γ</i>에 의해 점차 가치가 할인되는 보상 상자들과 최적 정책 <i>π</i><sub>*</sub>의 목표를 설명하는 지니와 도로시
 <img src="./img/jiny_mdp_ch5_3_target.png" alt="MDP의 목표 인트로" /></p>
 
-<p>에이전트가 오즈의 세계에서 달성해야 할 최종 골인 지점인 <strong>반환값(Return, G_t)</strong>과 미래 보상의 가치를 조율하는 <strong>할인율(Discount Factor, <em>γ</em>)</strong>을 학습합니다. 지니의 명료한 수학 수업 비유를 통해, 미래 보상을 적절히 깎아서 현실의 가치로 통합하는 기법의 본질을 제대로 이해해 봅시다!</p>
+<p>에이전트가 오즈의 세계에서 달성해야 할 궁극적인 목적지인 <strong>할인 누적 수익(Discounted Return, <i>G<sub>t</sub></i>)</strong>과 미래 보상의 가치를 조율하는 <strong>할인율(Discount Factor, <i>γ</i>)</strong>, 그리고 모든 상태에서 최고의 성과를 보장하는 <strong>최적 정책(Optimal Policy, <i>π</i><sub>*</sub>)</strong>의 수학적 원리를 지니와 도로시의 즐거운 수업을 통해 정복해 봅시다!</p>
 
 <hr />
 
-<p>지금까지는 환경과 에이전트의 행동을 수식으로 표현했습니다.</p>
+<h3 id="0531-일회성-과제와-지속적-과제">05.3.1 일회성 과제와 지속적 과제</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>간단히 복습하면, 에이전트는 정책 π(<em>a</em></td>
-      <td><em>s</em>)에 따라 행동합니다.  그 행동과 상태 전이 확률 <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>)에 의해 다음 상태가 결정됩니다. 그리고 보상은 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)가 결정합니다.</td>
-    </tr>
-  </tbody>
-</table>
+<p>최적 정책을 수식으로 정확하게 정의하기 전에, 먼저 강화학습이 해결하고자 하는 문제 환경이 어떤 시간적 특성을 갖는지 구분해야 합니다. MDP 문제는 크게 <strong>‘일회성 과제’</strong>와 <strong>‘지속적 과제’</strong>로 나뉩니다.</p>
 
-<p>이 틀 안에서 최적 정책을 찾는 것이 MDP의 목표입니다.</p>
+<p><strong>그림 05-3-2</strong> MDP 과제의 두 가지 유형: 일회성 과제(에피소드 종료 및 리셋) vs 지속적 과제(무한 루프)
+<img src="./img/mdp_episodic_vs_continuous.png" alt="과제 분류 비교" /></p>
 
-<p>최적 정책<sup>optimal policy</sup>이란 수익이 최대가 되는 정책입니다(수익에 대해서는 3.05.2절 참고).</p>
+<h4 id="05311-일회성-과제-episodic-task와-에피소드episode">05.3.1.1 일회성 과제 (Episodic Task)와 에피소드(Episode)</h4>
+
+<p><strong>일회성 과제</strong>는 명확한 ‘시작 상태’와 ‘종료 상태(Terminal State)’가 존재하는 문제입니다.</p>
+
+<ul>
+  <li><strong>에피소드(Episode)</strong>: 시작 상태 <i>S</i><sub>0</sub>에서 출발하여 종료 상태 <i>S</i><sub><i>T</i></sub>에 도달할 때까지 에이전트가 겪은 모든 (상태, 행동, 보상)의 한 판 경험 시퀀스를 의미합니다.</li>
+  <li><strong>종료 후 리셋</strong>: 에피소드가 끝나면 환경은 초기 상태로 완전히 리셋되어 새로운 에피소드를 시작합니다.</li>
+  <li><strong>대표 예시</strong>: 바둑(승패 결정 시 종료), 체스, 슈퍼 마리오 게임, 미로 탈출(Goal 칸 도착 시 종료).</li>
+</ul>
+
+<h4 id="05312-지속적-과제-continuous-task">05.3.1.2 지속적 과제 (Continuous Task)</h4>
+
+<p><strong>지속적 과제</strong>는 인위적인 ‘끝’이나 종료 상태가 없이 시간 <i>t</i> → ∞ 로 영원히 이어지는 문제입니다.</p>
+
+<ul>
+  <li><strong>특징</strong>: 에이전트는 멈추지 않고 실시간으로 상태를 관찰하며 끝없는 제어 결정을 내려야 합니다.</li>
+  <li><strong>대표 예시</strong>: 스마트 팩토리의 재고 관리(품절과 과재고를 방지하며 영구 운영), 데이터센터 냉각 전력 최적 제어, 화학 플랜트의 연속 공정 제어, 로봇의 자세 균형 제어.</li>
+</ul>
+
+<hr />
+
+<h3 id="0532-수익return과-할인율-discount-factor-γ">05.3.2 수익(Return)과 할인율 (Discount Factor, <i>γ</i>)</h3>
+
+<p>강화학습에서 에이전트가 극대화해야 하는 최종 목표는 단 한 번의 즉각적인 보상 <i>R<sub>t</sub></i>가 아니라, 앞으로 받게 될 모든 보상들의 총합인 <strong>수익(Return, <i>G<sub>t</sub></i>)</strong>입니다.</p>
+
+<p><strong>그림 05-3-3</strong> 할인율 <i>γ</i>와 시간 흐름에 따른 할인 누적 보상 수익 <i>G<sub>t</sub></i>의 계산 원리
+<img src="./img/mdp_discount_factor_gamma.png" alt="할인율과 수익 타임라인" /></p>
+
+<h4 id="05321-할인-누적-보상-수익-gt의-정의">05.3.2.1 할인 누적 보상 수익 <i>G<sub>t</sub></i>의 정의</h4>
+
+<p>시간 <i>t</i> 이후 에이전트가 획득하는 할인 수익 <i>G<sub>t</sub></i>는 다음과 같이 정의됩니다.</p>
+
+<div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #1e293b; text-align: center; border-radius: 4px;">
+<i>G</i><sub><i>t</i></sub> = <i>R</i><sub><i>t</i></sub> + <i>&gamma;</i><i>R</i><sub><i>t+1</i></sub> + <i>&gamma;</i><sup>2</sup><i>R</i><sub><i>t+2</i></sub> + <i>&gamma;</i><sup>3</sup><i>R</i><sub><i>t+3</i></sub> + ... = &Sigma;<sub><i>k</i>=0</sub><sup>&infin;</sup> <i>&gamma;</i><sup><i>k</i></sup><i>R</i><sub><i>t+k</i></sub>
+</div>
+
+<ul>
+  <li><i>G<sub>t</sub></i>: 시간 <i>t</i> 시점에서 바라본 미래 총 누적 가치(Return)</li>
+  <li><i>γ</i> (감마, gamma): <strong>할인율(Discount Factor)</strong>로서 0 ≤ <i>γ</i> &lt; 1 범위의 상수 (보통 0.9 ~ 0.99 사용)</li>
+</ul>
+
+<p>만약 <i>γ</i> = 0.9 라면:</p>
+<div style="background-color: #f8fafc; padding: 10px 16px; margin: 10px 0; font-family: monospace; color: #334155; text-align: center;">
+<i>G</i><sub><i>t</i></sub> = <i>R</i><sub><i>t</i></sub> + 0.9 &middot; <i>R</i><sub><i>t+1</i></sub> + 0.81 &middot; <i>R</i><sub><i>t+2</i></sub> + 0.729 &middot; <i>R</i><sub><i>t+3</i></sub> + ...
+</div>
+
+<h4 id="05322-할인율-γ를-도입하는-2가지-결정적-이유">05.3.2.2 할인율 <i>γ</i>를 도입하는 2가지 결정적 이유</h4>
+
+<p><strong>그림 05-3-4</strong> 도로시의 궁금증과 지니의 해답: 왜 미래의 보상을 할인(<i>γ</i>)할까?
+<img src="./img/mdp_discount_dialogue.png" alt="할인율 도입 이유 대화" /></p>
 
 <blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>NOTE_ 에이전트가 결정적 정책을 따른다면 μ(<em>s</em>) 함수로 나타낼 수 있습니다. 하지만 결정적 정책은 확률적 정책으로도 표현할 수 있으니 여기서는 확률적 정책 π(<em>a</em></td>
-        <td><em>s</em>)를 가정하고 진행하겠습니다. 같은 이유로 환경의 상태 전이도 확률적이라고 가정합니다.</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>👧 <strong>도로시</strong>: “지니야! 왜 미래에 받을 보상은 <i>γ</i>를 곱해서 깎아버리는 거야? 미래의 보상도 100% 다 받으면 안 돼?”</p>
+
+  <p>🧚 <strong>지니</strong>: “아주 날카로운 질문이야 도로시! 할인율 <i>γ</i>를 넣는 데는 2가지 중요한 이유가 있어!”</p>
 </blockquote>
-
-<hr />
-
-<h3 id="3051-일회성-과제와-지속적-과제">3.05.1 일회성 과제와 지속적 과제</h3>
-
-<p>이번 절에서는 최적 정책을 수식으로 정확하게 표현하고자 합니다. 그러려면 먼저 MDP의 문제가 크게 두 가지로 나뉜다는 사실을 알아야 합니다.</p>
-
-<p>바로 <strong>‘일회성 과제’</strong>와 <strong>‘지속적 과제’</strong>입니다.</p>
-
-<p>이 두 과제의 성격 차이를 명확히 시각화한 것이 바로 [그림 05-15]입니다.</p>
-
-<p>그림 05-15 일회성 과제와 지속적 과제의 비교</p>
-
-<p><img src="./img/episodic_vs_continuous_concept_ko.png" alt="과제 분류 비교" /></p>
-
-<h4 id="30511-일회성-과제와-에피소드episode">3.05.1.1 일회성 과제와 에피소드(Episode)</h4>
-
-<p>[그림 05-15]의 왼쪽과 같이 <strong>일회성 과제</strong><sup>episodic task</sup>는 확실한 ‘시작’과 ‘끝(목표 상태)’이 존재하는 문제입니다.</p>
-
-<p>예를 들어 바둑은 대표적인 일회성 과제입니다. 대국이 시작되면 돌을 번갈아 두다가 결국 한쪽의 승리/패배/무승부 중 하나로 끝(종료)이 나며, 다음 게임은 돌이 하나도 없는 초기 상태에서 완전히 새로 시작합니다. 이처럼 일회성 과제에서 처음 시작부터 최종 종료까지 에이전트가 지나간 일련의 모든 경험 과정을 <strong>에피소드</strong><sup>episode</sup>라고 정의합니다.</p>
-
-<p>[그림 05-16]과 같은 그리드 월드 문제도 전형적인 일회성 과제입니다.</p>
-
-<p>그림 05-16 끝이 있는 문제의 예</p>
-
-<p><img src="./img/fig_05_9.svg" alt="그림 05-16" /></p>
-
-<p>이 그림에서는 특정 위치(목표 상자)가 있어서 에이전트가 그 목표에 도달하면 해당 에피소드가 즉시 끝이 납니다. 그 후에는 다시 처음 시작 상태로 돌아가 새로운 에피소드를 진행합니다.</p>
-
-<h4 id="30512-지속적-과제">3.05.1.2 지속적 과제</h4>
-
-<p>반면 지속적 과제<sup>continuous task</sup>는 ‘끝’이 없는 문제입니다.</p>
-
-<p>예를 들어 재고 관리가 있겠네요. 재고 관리에서의 에이전트는 얼마나 많은 상품을 구매할지를 결정합니다. 판매량과 재고량을 보고 최적의 구매량을 결정해야 합니다(재고가 너무 많아지지 않게 관리하면서도 상품 판매에 지장이 없도록 해야 합니다).</p>
-
-<p>이러 유형의 문제는 끝을 정하지 않고 영원히 지속될 수 있습니다.</p>
-
-<hr />
-
-<h3 id="3052-수익">3.05.2 수익</h3>
-
-<p>다음으로 새로운 용어인 <strong>수익<sup>return</sup></strong>을 소개하겠습니다.</p>
-
-<p>이 수익을 극대화하는 것이 에이전트의 <strong>목표</strong>입니다.</p>
-
-<p><img src="./img/discount_factor_cartoon.png" alt="할인율 개념 설명" /></p>
-
-<h4 id="30521-누적-보상-수익-g_t-정의">3.05.2.1 누적 보상 수익 G_t 정의</h4>
-
-<p>시간 <em>t</em>에서의 상태를 <em>S</em><sub><em>t</em></sub>라고 해보죠(<em>t</em>는 임의의 값). 그리고 에이전트가 정책 π에 따라 행동 <em>A</em><sub><em>t</em></sub>를 하고, 보상 <em>R</em><sub><em>t</em></sub>를 얻고, 새로운 상태 <em>S</em><sub><em>t+1</em></sub>로 전이하는 흐름이 이어집니다.</p>
-
-<p>그림 2-16a MDP의 단일 단계 전이 흐름</p>
-
-<p><img src="./img/mdp_step_transition.svg" alt="그림 2-16a" /></p>
-
-<p>이때 수익 <em>G</em><sub><em>t</em></sub>는 다음과 같이 정의됩니다.
-\(G_t = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \cdots\)</p>
-
-<p>[식 05.1]</p>
-
-<p>이 [식 05.1]이 정의하는 할인 누적 보상 수익 <em>G</em><sub><em>t</em></sub>를 시간의 흐름(타임라인)을 따라 가중치가 매겨지는 과정으로 시각화하면 [그림 05-17]과 같습니다.</p>
-
-<p>그림 05-17 할인 누적 보상 수익 G_t의 타임라인</p>
-
-<p><img src="./img/discounted_return_timeline_ko.png" alt="수익 타임라인" /></p>
-
-<p>[식 05.1]과 같이 수익은 에이전트가 얻는 보상의 합입니다.</p>
-
-<p>####</p>
-
-<p>하지만 시간이 지날수록 보상은 γ(감마)에 의해 기하급수적으로 줄어듭니다.</p>
-
-<p>이 γ를 할인율<sup>discount rate</sup>이라고 하며 0.0에서 1.0 사이의 실수로 설정합니다.</p>
-
-<p>예를 들어 할인율을 0.9로 설정하면 [식 05.1]은 다음처럼 됩니다.
-\(G_t = R_t + 0.9 R_{t+1} + 0.81 R_{t+2} + \cdots\)</p>
-
-<h4 id="30522-할인율-γ-도입-이유와-효과">3.05.2.2 할인율 γ 도입 이유와 효과</h4>
-
-<p>할인율을 도입하는 가장 주된 이유는 지속적 과제에서 수익이 무한대로 발산하여 계산 불가능해지는 것을 방지하기 위해서입니다. 할인율이 없다면, 즉 γ = 1이라면 영원히 끝나지 않는 지속적 과제에서 누적 보상의 합(수익)이 무한대(∞)가 되어버려 정책 간의 우열을 비교할 수 없게 됩니다.</p>
-
-<p>또한, 할인율은 가까운 미래의 보상을 먼 미래의 보상보다 더 중요하게 취급하도록 만듭니다. 이 개념은 일상생활 속 할인율의 효과인 [그림 05-18]을 통해 이해할 수 있습니다.</p>
-
-<p>그림 05-18 할인율의 효과 예시</p>
-
-<p><img src="./img/discount_factor_reason_ko.png" alt="할인율의 효과" /></p>
-
-<p>[그림 05-18]에서 보듯 에이전트(혹은 사람)에게 ‘오늘 당장 1만 원 받기’와 ‘10년 후에 2만 원 받기’라는 선택지가 주어졌다고 합시다. 비록 절대적인 액수는 미래에 받는 2만 원이 더 크지만, 할인율 <em>γ</em> = 0.9를 대입해보면 10년 후 2만 원의 현재 가치는 기하급수적으로 할인되어 0원에 가깝게 수렴합니다. 따라서 에이전트는 즉시 얻을 수 있는 보상인 1만 원을 훨씬 더 매력적인 선택지로 평가하게 됩니다. 이와 같이 할인율은 미래의 불확실성을 모델링하고 합리적인 시간 흐름상의 가치 판단을 내리는 장치 역할을 합니다.</p>
-
-<hr />
-
-<h3 id="0533-상태-가치-함수">05.3.3 상태 가치 함수</h3>
-
-<p>방금 정의한 ‘수익’을 극대화하는 것이 에이전트의 목표라고 했습니다.</p>
-
-<p>여기서 주의할 게 하나 있습니다. 에이전트와 환경이 ‘확률적’으로 동작할 수 있다는 점입니다.</p>
-
-<p>그림 2-18a 에이전트와 환경의 확률적(stochastic) 선택 예시</p>
-
-<p><img src="./img/stochastic_concept.png" alt="확률적 선택 예시" /></p>
-
-<h4 id="05331-수익의-기댓값-정의">05.3.3.1 수익의 기댓값 정의</h4>
-
-<p>에이전트는 다음 행동을 <strong>확률적</strong>으로 결정할 수 있고, 상태 역시 확률적으로 <strong>전이</strong>될 수 있습니다. 그렇다면 얻는 <strong>수익</strong>도 ‘확률적’으로 매번 달라질 것입니다.</p>
-
-<p>예를 들어 어떤 에피소드에서는 수익이 10.4이고 다른 에피소드에서는 8.7, 또 다른 에피소드에서는 9.4가 나올 수 있습니다. 비록 똑같은 상태 <em>s</em>에서 시작했더라도 무작위성 때문에 매 시도마다 획득하는 수익 <em>G</em><sub><em>t</em></sub>가 다르게 나타납니다.</p>
-
-<p>그림 2-18b 에피소드별 무작위 선택에 따른 수익 G_t의 편차</p>
-
-<p><img src="./img/stochastic_returns.svg" alt="에피소드별 수익 편차" /></p>
-
-<p>이처럼 무작위적인 확률 분포 형태로 도출되는 보상들을 평가하기 위해서는 통계적 <strong>기댓값</strong><sup>expectation</sup>, 즉 ‘수익의 평균 기댓값’을 성과의 기준 지표로 삼아야 합니다.</p>
-
-<p>이 개념을 시각화하면 [그림 05-19]와 같습니다.</p>
-
-<p>그림 05-19 상태 가치 함수 v_π(s)와 에피소드별 수익 기댓값의 개념</p>
-
-<p><img src="./img/state_value_concept_ko.png" alt="상태 가치 함수 개념" /></p>
-
-<p>[그림 05-19]와 같이 시작 상태 L3에서 여러 번 에피소드를 수행했을 때 얻은 각 수익들의 <strong>가중 평균(기댓값)</strong>을 계산하면 9.5가 되며, 이 평균값 9.5가 곧 이 상태의 가치가 됩니다.</p>
-
-<p>수식으로는 상태 <em>S</em><sub><em>t</em></sub>가 <em>s</em>이고, 에이전트가 정책 <em>π</em>를 따를 때 얻을 수 있는 기대 수익을 다음 상태 가치 함수식으로 정의합니다.</p>
-
-\[v_{\pi}(s) = \mathbb{E}[G_t \mid S_t = s, \pi]\]
-
-<p>[식 05.2]</p>
-
-<p>이처럼 수익의 기댓값을 <em>v</em><sub>π</sub>(<em>s</em>)로 표기하며 <em>v</em><sub>π</sub>(<em>s</em>)를 상태 가치 함수<sup>state-value function</sup>라고 합니다.</p>
-
-<p>[식 05.2]의 우변에서 에이전트의 정책 π는 조건으로 주어집니다.</p>
-
-<p>정책 π가 바뀌면 에이전트가 얻는 보상도 바뀌고 총합인 수익도 바뀌기 때문입니다. 이런 특성을 명시하기 위해 상태 <strong>가치 함수는 <em>v</em><sub>π</sub>(<em>s</em>)처럼 π를 <em>v</em>의 밑으로 쓰는 방식</strong>을 많이 따릅니다.</p>
-
-<p>또한 [식 05.2]를 다음처럼 쓰기도 합니다.
-\(v_{\pi}(s) = \mathbb{E}_{\pi}[G_t \mid S_t = s]\)</p>
-
-<p>[식 05.3]</p>
-
-<p>[식 05.3]에서는 우변에서 π의 위치가 𝔼<sub>π</sub>로 이동했습니다. 의미는 [식 05.2]에서와 마찬가지로 π라는 정책이 조건으로 주어져 있음을 나타냅니다.</p>
-
-<p>이 책에서는 [식 05.3] 형태로 쓰겠습니다.</p>
-
-<blockquote>
-  <p>NOTE_ 기댓값 기호 <em>𝔼</em>(E)에 대한 설명과 읽는 방법</p>
-  <ul>
-    <li><strong>의미 및 약어</strong>: <em>𝔼</em>(또는 대문자 <em>E</em>)는 통계학에서 <strong>기댓값</strong><sup>Expectation</sup>(또는 기댓값 함수 <strong>Expected Value</strong>)을 뜻하는 기호입니다. 여러 가능성이 있는 값에 각각의 확률을 곱해 합산한 ‘가중 평균값’을 의미합니다.</li>
-    <li><strong>읽는 방법 (발음)</strong>: 한국어로는 보통 <strong>“기댓값”</strong> 또는 영문 명칭 그대로 <strong>“익스펙테이션”</strong>이라고 읽습니다.</li>
-    <li>
-      <table>
-        <tbody>
-          <tr>
-            <td><strong>수식 읽기</strong>: [식 05.3]의 우변 <em>𝔼</em><sub><em>π</em></sub>[<em>G</em><sub><em>t</em></sub></td>
-            <td><em>S</em><sub><em>t</em></sub> = <em>s</em>]는 <strong>“정책 <em>π</em>를 따를 때, 시간 <em>t</em>에서의 상태 <em>S</em><sub><em>t</em></sub>가 <em>s</em>라는 조건 하에서의 수익 <em>G</em><sub><em>t</em></sub>의 기댓값”</strong>으로 해석하며, 구어로는 <strong>“정책 파이하에서 상태 에스일 때 수익 지 티의 기댓값(익스펙테이션)”</strong>으로 편하게 읽습니다.</td>
-          </tr>
-        </tbody>
-      </table>
-    </li>
-  </ul>
-</blockquote>
-
-<blockquote>
-  <p>NOTE_ 상태 가치 함수는 <em>v</em><sub>π</sub> 말고도 <em>V</em><sub>π</sub>로 표기하는 경우가 있습니다. 소문자 <em>v</em><sub>π</sub>는 실제 상태 가치 함수이고, 대문자 <em>V</em><sub>π</sub>는 추정치로서의 상태 가치 함수를 뜻합니다.</p>
-</blockquote>
-
-<hr />
-
-<h3 id="05054-최적-정책과-최적-가치-함수">05.05.4 최적 정책과 최적 가치 함수</h3>
-
-<p>강화 학습의 목표는 최적 정책을 찾는 것입니다. 이번 절에서는 <strong>최적 정책</strong>이란 무엇이며 애초에 ‘최적’을 어떻게 표현할 수 있을지를 생각해보겠습니다.</p>
-
-<h4 id="050541-정책의-우열-판정-및-최적-정책-정의">05.05.4.1 정책의 우열 판정 및 최적 정책 정의</h4>
-
-<p>먼저 두 가지 정책 π와 π’가 있다고 가정합시다.</p>
-
-<p>이때 두 정책에서 상태 가치 함수 <em>v</em><sub>π</sub>(<em>s</em>), <em>v</em><sub>π’</sub>(<em>s</em>)가 각각 결정됩니다. 이번 절에서는 모든 상태에서의 가치 함수가 [그림 05-19]처럼 결정되었다고 가정합니다.</p>
-
-<p>그림 05-19 정책 π와 π’ 각 상태에서의 상태 가치 함수 그래프(상태는 L1부터 L5까지 총 5개라고 가정)</p>
-
-<p><img src="./img/fig_05_10.svg" alt="그림 05-19" /></p>
-
-<p>그림에서 주목할 점은 어떤 상태에서는 <em>v</em><sub>π’</sub>(<em>s</em>) &gt; <em>v</em><sub>π</sub>(<em>s</em>)이고, 어떤 상태에서는 <em>v</em><sub>π’</sub>(<em>s</em>) &lt; <em>v</em><sub>π</sub>(<em>s</em>)라는 점입니다. 예를 들어 상태가 L1일 때는 정책 π’에 따라 행동하는 편이 수익의 기댓값이 더 높습니다. 하지만 상태가 L2일 때는 정책 π가 더 좋은 결과를 가져옵니다. 이처럼 상태에 따라 상태 가치 함수의 크고 작음이 달라지는 경우에는 두 정책의 우열을 가릴 수 없습니다.</p>
-
-<p>그렇다면 어떠할 때 두 정책의 우열을 가릴 수 있을까요?</p>
-
-<p>바로 [그림 05-20]과 같은 경우입니다.</p>
-
-<p>그림 05-20 모든 상태에서 <em>v</em><sub>π’</sub>(<em>s</em>) ≥ <em>v</em><sub>π</sub>(<em>s</em>)인 그래프</p>
-
-<p><img src="./img/fig_05_11.svg" alt="그림 05-20" /></p>
-
-<p>이 그림의 예에서는 모든 상태에서 <em>v</em><sub>π’</sub>(<em>s</em>) ≥ <em>v</em><sub>π</sub>(<em>s</em>)가 성립됩니다. 따라서 π’가 π보다 나은 정책이라고 할 수 있습니다. 어떤 상태에서 시작하더라도 얻을 수 있는 보상의 기댓값 총합이 π’ 쪽이 더 크거나 같기 때문입니다.</p>
-
-<p>이렇게 두 정책의 우열을 가리려면 하나의 정책이 다른 정책보다 ‘모든 상태’에서 더 좋거나 최소한 똑같아야 합니다(만약 모든 상태에서 <em>v</em><sub>π’</sub>(<em>s</em>) = <em>v</em><sub>π</sub>(<em>s</em>)라면 똑같이 좋은 정책입니다).</p>
-
-<p>이제 두 정책의 우열을 가릴 수 있게 되었습니다.</p>
-
-<p>이 생각을 발전시키면 ‘최적’인 정책이 무엇인지 정의할 수 있습니다. 최적 정책을 π<sub>*</sub>로 표현한다면 정책 π<sub>*</sub>는 다른 정책과 비교하여 모든 상태에서 상태 가치 함수 <em>v</em><sub>π*</sub>(<em>s</em>)의 값이 더 큰 정책이라는 뜻입니다.</p>
-
-<p>그래프로 표현하면 [그림 05-21]과 같습니다.</p>
-
-<p>그림 05-21 최적 정책 π<sub>*</sub>와 그 외 정책들</p>
-
-<p><img src="./img/fig_05_12.svg" alt="그림 05-21" /></p>
-
-<p>그림과 같이 모든 상태에서 상태 가치 함수의 값이 다른 어떤 정책보다 큰 정책이 최적 정책입니다.</p>
-
-<p>중요한 사실은 MDP에서는 최적 정책이 적어도 하나는 존재한다는 사실입니다. 그리고 그 최적 정책은 ‘결정적 정책’입니다. 결정적 정책에서는 각 상태에서의 행동이 유일하게 결정됩니다. 수식으로는 <em>a</em> = μ<sub>*</sub>(<em>s</em>)와 같이, 상태 <em>s</em>를 입력하면 행동 <em>a</em>를 출력하는 함수 <strong>μ<sub>*</sub>로</strong> 나타낼 수 있습니다.</p>
-
-<blockquote>
-  <p>NOTE_ MDP에서 최적의 결정적 정책이 하나 이상 존재한다는 사실은 수학적으로 증명할 수 있습니다. 어떻게 증명하는지 궁금한 분은 다른 문헌<sup>[4]</sup>을 참고하기 바랍니다. 한편, 최적 정책이 결정적인 이유는 05.4.1절에서 구체적인 예를 들어 설명합니다.</p>
-</blockquote>
-
-<h4 id="050542-최적-상태-가치-함수-v_s와-결정적-최적-정책">05.05.4.2 최적 상태 가치 함수 v_*(s)와 결정적 최적 정책</h4>
-
-<p>최적 정책의 상태 가치 함수를 최적 상태 가치 함수<sup>optimal state-value function</sup>라고 합니다. 이 가의에서는 최적 상태 가치 함수를 <em>v</em><sub>*</sub>로 표기합니다.</p>
-
-<hr />
-
-<h3 id="05055-핵심-요약">05.05.5 핵심 요약</h3>
 
 <ol>
-  <li><strong>과제 분류</strong>: MDP 문제는 에피소드로 끝나는 일회성 과제와 무한히 전이되는 지속적 과제로 분류됩니다.</li>
-  <li><strong>할인율(γ)</strong>: 기대 수익의 무한대 발산을 방지하고, 가까운 미래의 보상을 멀리 있는 보상보다 가치 있게 평가하기 위해 도입한 상수(0 ≤ γ &lt; 1)입니다.</li>
+  <li><strong>수학적 무한 발산 방지 (Convergence)</strong>:
+끝없이 이어지는 지속적 과제에서 만약 <i>γ</i> = 1.0(무할인)이라면, 매 스텝마다 +1의 보상을 받을 때 총합 <i>G<sub>t</sub></i> = 1 + 1 + 1 + … = ∞ (무한대)가 되어버립니다. 무한대끼리는 어떤 정책이 더 우수한지 크기를 비교할 수 없습니다. 하지만 <i>γ</i> &lt; 1 이면 등비급수의 합 공식에 의해:
+    <div style="text-align: center; margin: 8px 0; font-family: monospace; color: #1e40af;">
+<i>G</i><sub><i>t</i></sub> &le; <i>R</i><sub>max</sub> / (1 - <i>&gamma;</i>)
+</div>
+    <p>항상 유한한 값으로 깔끔하게 수렴하므로 수학적 계산과 최적화가 가능해집니다.</p>
+  </li>
+  <li><strong>시간 선호와 미래의 불확실성 반영 (Time Preference)</strong>:
+“오늘 당장 받는 1만 원”과 “10년 뒤에 받는 2만 원”은 가치가 다릅니다. 미래는 예측하기 어려운 돌발 상황(환경의 변화, 배터리 방전, 조기 종료 등)이 존재하므로, 합리적인 에이전트는 가까운 시점의 확실한 보상을 먼 미래의 불확실한 보상보다 더 높은 가치로 평가해야 합니다.</li>
+</ol>
+
+<hr />
+
+<h3 id="0533-상태-가치-함수-state-value-function">05.3.3 상태 가치 함수 (State-Value Function)</h3>
+
+<p>에이전트의 행동과 환경의 상태 전이는 확률적일 수 있으므로, 똑같은 상태 <i>s</i>에서 출발하더라도 매 에피소드마다 실제로 얻게 되는 수익 <i>G<sub>t</sub></i>의 값은 조금씩 다를 수 있습니다.</p>
+
+<p><strong>그림 05-3-5</strong> 상태 가치 함수 <i>v<sub>π</sub></i>(<i>s</i>): 동일한 상태 <i>s</i>에서 출발한 여러 에피소드 수익들의 통계적 가중 평균 기댓값
+<img src="./img/mdp_state_value_function.png" alt="상태 가치 함수 개념" /></p>
+
+<h4 id="05331-상태-가치-함수-vπs의-수학적-정의">05.3.3.1 상태 가치 함수 <i>v<sub>π</sub></i>(<i>s</i>)의 수학적 정의</h4>
+
+<p>상태 가치 함수 <i>v<sub>π</sub></i>(<i>s</i>)는 <strong>‘에이전트가 상태 <i>s</i>에서 출발하여 정책 <i>π</i>를 따라 끝까지 움직였을 때 기대할 수 있는 할인 누적 수익의 평균 기댓값(Expected Return)’</strong>입니다.</p>
+
+<div style="background-color: #f8fafc; border-left: 4px solid #8b5cf6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.15rem; color: #4c1d95; text-align: center; border-radius: 4px;">
+<i>v</i><sub><i>&pi;</i></sub>(<i>s</i>) = &Eopf;<sub><i>&pi;</i></sub>[ <i>G</i><sub><i>t</i></sub> | <i>S</i><sub><i>t</i></sub> = <i>s</i> ]
+</div>
+
+<ul>
+  <li><strong>𝔼<sub><i>π</i></sub> (익스펙테이션, Expectation)</strong>: 정책 <i>π</i>를 따를 때 발생하는 모든 가능한 경로 확률 가중 평균(기댓값) 연산자입니다.</li>
+  <li><strong>정책 종속성</strong>: 에이전트가 무슨 정책 <i>π</i>를 쓰느냐에 따라 미래 경로와 보상이 완전히 바뀌므로, 가치 함수 아래첨자에 반드시 정책 기호 <i>π</i>를 명시합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="0534-최적-정책π과-최적-가치-함수v">05.3.4 최적 정책(<i>π</i><sub>*</sub>)과 최적 가치 함수(<i>v</i><sub>*</sub>)</h3>
+
+<p>이제 강화학습의 궁극적인 지향점인 <strong>최적 정책</strong>을 정의할 수 있습니다.</p>
+
+<p><strong>그림 05-3-6</strong> 정책 간의 부분 순서 비교 및 모든 상태에서 최대 가치를 달성하는 결정적 최적 정책 <i>π</i><sub>*</sub>
+<img src="./img/mdp_optimal_policy_target.png" alt="최적 정책과 최적 가치 함수" /></p>
+
+<h4 id="05341-정책의-우열-비교-partial-ordering">05.3.4.1 정책의 우열 비교 (Partial Ordering)</h4>
+
+<p>두 정책 <i>π</i>와 <i>π’</i>의 우열은 모든 상태 <i>s</i>에서의 가치 함수 크기로 판정합니다.</p>
+
+<div style="background-color: #f8fafc; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.05rem; color: #78350f; text-align: center; border-radius: 4px;">
+<i>&pi;</i> &ge; <i>&pi;'</i> &nbsp;&iff;&nbsp; &forall;<i>s</i> &isin; <i>S</i>, &nbsp; <i>v</i><sub><i>&pi;</i></sub>(<i>s</i>) &ge; <i>v</i><sub><i>&pi;'</i></sub>(<i>s</i>)
+</div>
+
+<ul>
+  <li>어떤 상태에서는 <i>π</i>가 좋고 다른 상태에서는 <i>π’</i>가 좋다면 두 정책 간의 우열을 가릴 수 없습니다.</li>
+  <li><strong>모든 가능한 상태 <i>s</i>에 대하여</strong> 항상 <i>v<sub>π</sub></i>(<i>s</i>) ≥ <i>v<sub>π’</sub></i>(<i>s</i>)를 만족할 때만 “정책 <i>π</i>가 <i>π’</i>보다 우수하다”고 선언합니다.</li>
+</ul>
+
+<h4 id="05342-최적-정책-π과-최적-상태-가치-함수-vs">05.3.4.2 최적 정책 <i>π</i><sub>*</sub>과 최적 상태 가치 함수 <i>v</i><sub>*</sub>(<i>s</i>)</h4>
+
+<p>존재하는 모든 가능한 정책들 중에서 가장 높은 가치를 주는 최고의 정책을 <strong>최적 정책(Optimal Policy, <i>π</i><sub>*</sub>)</strong>이라고 합니다.</p>
+
+<div style="background-color: #f8fafc; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.15rem; color: #78350f; text-align: center; border-radius: 4px;">
+<i>v</i><sub>*</sub>(<i>s</i>) = max<sub><i>&pi;</i></sub> <i>v</i><sub><i>&pi;</i></sub>(<i>s</i>), &emsp; &forall;<i>s</i> &isin; <i>S</i>
+</div>
+
+<h4 id="mdp의-3대-핵심-정리">MDP의 3대 핵심 정리</h4>
+<ol>
+  <li><strong>최적 정책의 존재성</strong>: 모든 유한 MDP(Finite MDP)에는 다른 모든 정책보다 크거나 같은 최적 정책 <i>π</i><sub>*</sub>가 <strong>최소한 하나 이상 반드시 존재</strong>합니다.</li>
+  <li><strong>공통의 최적 가치 함수 공유</strong>: 최적 정책이 여러 개 존재하더라도, 그들이 달성하는 <strong>최적 가치 함수 <i>v</i><sub>*</sub>(<i>s</i>)는 유일하게 하나로 동일</strong>합니다.</li>
+  <li><strong>결정적 최적 정책의 존재</strong>: 여러 최적 정책 중에는 각 상태마다 최선의 행동을 100% 확정하여 선택하는 <strong>결정적 최적 정책 <i>a</i> = μ<sub>*</sub>(<i>s</i>)</strong>가 반드시 포함되어 있습니다.</li>
+</ol>
+
+<hr />
+
+<h3 id="0535-핵심-요약">05.3.5 핵심 요약</h3>
+
+<ol>
+  <li><strong>과제 분류</strong>: 에피소드로 끝나는 <strong>일회성 과제(Episodic)</strong>와 무한히 지속되는 <strong>지속적 과제(Continuous)</strong>로 구분됩니다.</li>
+  <li><strong>할인율 (0 ≤ <i>γ</i> &lt; 1)</strong>: 무한한 시간 단계에서 기대 수익이 발산하는 것을 막고, 가까운 미래 보상의 가치를 합리적으로 반영합니다.</li>
+  <li><strong>할인 누적 수익 <i>G<sub>t</sub></i></strong>: 시간 <i>t</i>부터 미래에 획득할 보상들의 할인 총합 <i>G<sub>t</sub></i> = Σ<sub><i>k</i>=0</sub><sup>∞</sup> <i>γ<sup>k</sup></i> <i>R<sub>t+k</sub></i> 입니다.</li>
   <li>
     <table>
       <tbody>
         <tr>
-          <td><strong>상태 가치 함수</strong>: 어떤 상태 <em>s</em>에서 시작하여 특정 정책 π에 따라 움직였을 때 획득할 기대 할인 수익 <em>v</em><sub>π</sub>(<em>s</em>) = 𝔼<sub>π</sub>[<em>G</em><sub><em>t</em></sub></td>
-          <td><em>S</em><sub><em>t</em></sub> = <em>s</em>] 입니다.</td>
+          <td><strong>상태 가치 함수 <i>v<sub>π</sub></i>(<i>s</i>)</strong>: 상태 <i>s</i>에서 정책 <i>π</i>를 따를 때 얻게 되는 기대 수익 <i>v<sub>π</sub></i>(<i>s</i>) = 𝔼<sub><i>π</i></sub>[<i>G<sub>t</sub></i></td>
+          <td><i>S<sub>t</sub></i> = <i>s</i>] 입니다.</td>
         </tr>
       </tbody>
     </table>
   </li>
-  <li><strong>최적 정책</strong>: 모든 상태에서 가치 함수를 극대화하는 최우수 정책 π<sub>*</sub>이며, MDP에서는 이 최적 정책이 항상 최소한 하나 이상 존재하고 이는 결정적 정책입니다.</li>
+  <li><strong>최적 정책 <i>π</i><sub>*</sub></strong>: 모든 상태에서 가치 함수를 극대화하는 왕관의 정책이며, 항상 결정적 형태 <i>a</i> = μ<sub>*</sub>(<i>s</i>)로 존재합니다.</li>
 </ol>
 
+<p>다음 <strong>05.4절</strong>에서는 구체적인 2-그리드 월드 예제를 통해 실제로 4가지 결정적 정책들의 가치를 손으로 직접 계산하고 비교해 보겠습니다!</p>
 
 
             <!-- 구글 애드센스 출력 -->

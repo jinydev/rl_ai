@@ -680,139 +680,199 @@
         <div class="bd-content ps-lg-4">
             <h1 id="051-마르코프-결정-과정mdp이란">05.1 마르코프 결정 과정(MDP)이란?</h1>
 
-<p><strong>그림 05-1</strong> 오즈의 숲길(Environment)에서 상태(노란 벽돌)를 딛고 상자 열기(Action)를 해 보상(금열쇠)을 획득하는 도로시와 지니
-<img src="./img/jiny_mdp_ch5_1_intro.png" alt="MDP 개념 인트로" /></p>
+<p>마르코프 성질(Markov Property)이라는 확률적 바닥 위에, 주체적으로 미래를 개척하는 <strong>의사결정(Decision)</strong>의 날개를 달아준 수학적 프레임워크가 바로 <strong>마르코프 결정 과정(Markov Decision Process, MDP)</strong>입니다.</p>
 
-<p>마르코프 성질 위에 주체적인 의사결정(Decision)이 결합된 강화학습의 기본 뼈대인 <strong>마르코프 결정 과정(MDP)</strong>을 배웁니다. 에이전트와 환경이 상태, 행동, 보상을 서로 교환하며 상호작용하는 다이내믹 루프를 지니 요정과 도로시의 모험 속 비유를 바탕으로 정복해보아요!</p>
+<p>에이전트와 환경이 상태, 행동, 보상을 끊임없이 주고받는 강화학습의 핵심 사이클을 지니 요정과 도로시의 모험 속 대화를 통해 쉽고 명쾌하게 정복해 봅시다!</p>
 
-<hr />
+<p><img src="./img/jiny_mdp_ch5_1_intro.png" alt="MDP 개념 인트로" /></p>
 
-<p>우리는 앞서 <strong>4강 마르코프</strong>에서 안드레이 마르코프의 생애와 마르코프 성질의 기초를 학습했습니다. 이번 장부터는 여기에 주체적인 의사결정(Decision)이 개입되는 동적 시스템으로 확장한 수학 프레임워크인 <strong>마르코프 결정 과정(MDP)</strong>을 정의하고 배웁니다.</p>
-
-<p>마르코프 결정 과정<sup>Markov Decision Process, MDP</sup>에서 ‘결정 과정’이란 ‘에이전트가 (환경과 상호작용하면서) 행동을 결정하는 과정’을 뜻합니다.</p>
-
-<p><img src="./img/mdp_concept_cartoon.png" alt="MDP 개념 설명" /></p>
+<p><strong>그림 05-1-1</strong> 오즈의 숲길(Environment)에서 상태(노란 벽돌길)를 관찰하고 행동(이동)을 결정하여 보상(황금 열쇠)을 찾아 나서는 도로시와 지니</p>
 
 <hr />
 
-<h3 id="0511-강화-학습과-환경의-변화">05.1.1 강화 학습과 환경의 변화</h3>
+<h3 id="0511-강화학습과-환경의-동적-변화">05.1.1 강화학습과 환경의 동적 변화</h3>
 
-<p>구체적인 예와 함께 MDP의 성격을 살펴봅시다.</p>
+<p>우리는 앞서 4장에서 스스로 흘러가는 구름처럼 관찰자의 개입 없이 확률적으로 상태가 바뀌는 <strong>마르코프 과정(Markov Process)</strong>을 배웠습니다.</p>
+
+<p>하지만 강화학습의 세계는 단순히 흘러가는 세상을 구경만 하는 곳이 아닙니다.</p>
 
 <blockquote>
-  <p>‘마르코프 성질’의 의미는 05.2.1절 참고</p>
+  <p>👧 <strong>도로시</strong>: “지니야! 지난 4장에서 배운 날씨 마르코프 체인은 비가 올지 맑을지 확률적으로 지켜보기만 했잖아? 그런데 강화학습에서는 내가 직접 우산을 챙기거나 길을 골라 걸어갈 수 있는 거야?”</p>
+
+  <p>🧚 <strong>지니</strong>: “맞아, 도로시! 날씨처럼 외부에서 정해진 확률대로 저절로 변하는 시스템을 <strong>마르코프 과정(MP)</strong>이라고 한다면, 우리가 <strong>‘어떤 행동(Action)을 취할 것인가’</strong>를 능동적으로 결정하여 세상의 미래 상태와 보상을 직접 바꾸어 나가는 시스템을 <strong>마르코프 결정 과정(MDP)</strong>이라고 불러!”</p>
 </blockquote>
+
+<p><img src="./img/mdp_passive_mp_vs_active_mdp.png" alt="MP와 MDP의 차이" /></p>
+
+<p><strong>그림 05-1-2</strong> 마르코프 과정(MP) vs 마르코프 결정 과정(MDP)의 핵심 차이: 수동적 관찰(날씨 구경) vs 능동적 의사결정(우산 챙기기 &amp; 길 선택)</p>
+
+<p>마르코프 결정 과정<sup>Markov Decision Process, MDP</sup>에서 <strong>‘결정 과정(Decision Process)’</strong>이란 <strong>‘에이전트가 환경과 끊임없이 상호작용하며 자신의 목표를 이루기 위해 최선의 행동을 능동적으로 결정하는 연속적인 과정’</strong>을 뜻합니다.</p>
 
 <hr />
 
-<h3 id="0512-그리드-월드-구체적-예시">05.1.2 그리드 월드 구체적 예시</h3>
+<h3 id="0512-그리드-월드로-이해하는-상태-행동-보상">05.1.2 그리드 월드로 이해하는 상태, 행동, 보상</h3>
 
-<p>에이전트가 자신의 행동에 따라 환경의 상태를 실시간으로 바꾸어 나가는 문제를 이해하기 위해 구체적인 ‘그리드 월드’ 예시로 시작해 봅시다.</p>
+<p>에이전트가 자신의 행동에 따라 환경의 상태를 실시간으로 바꾸어 나가는 원리를 이해하기 위해 가장 직관적인 <strong>그리드 월드(Grid World)</strong> 예시로 시작해 봅시다.</p>
 
 <h4 id="05121-에이전트와-환경-보상의-정의">05.1.2.1 에이전트와 환경, 보상의 정의</h4>
 
-<p>먼저 [그림 05-1]을 보죠.</p>
+<p>격자<sup>grid</sup>로 이루어진 1차원 세상에 로봇(에이전트)이 서 있습니다. 로봇은 격자 위에서 <strong>왼쪽으로 이동(Left)</strong>하거나 <strong>오른쪽으로 이동(Right)</strong>할 수 있습니다.</p>
 
-<p>세상은 격자<sup>grid</sup>로 구분되어 있고 그 안에 로봇이 있습니다. 로봇은 격자 세상에서 오른쪽 또는 왼쪽으로 이동할 수 있습니다. 이 책에서는 그림과 같은 세계를 ‘그리드 월드’라고 부르겠습니다.</p>
+<ul>
+  <li><strong>에이전트(Agent)</strong>: 의사결정의 주체인 로봇(도로시와 토토)</li>
+  <li><strong>환경(Environment)</strong>: 에이전트가 탐험하는 격자판 세계</li>
+  <li><strong>행동(Action, <i>A</i>)</strong>: 로봇이 취할 수 있는 선택지 (왼쪽 또는 오른쪽 이동)</li>
+  <li><strong>상태(State, <i>S</i>)</strong>: 로봇이 현재 위치하고 있는 격자 번호</li>
+  <li><strong>보상(Reward, <i>R</i>)</strong>: 로봇이 특정 칸에 도달했을 때 환경으로부터 주어지는 즉각적인 피드백 (사과: +1, 폭탄: -2, 빈칸: 0)</li>
+</ul>
 
-<p><strong>그림 05-1</strong> MDP 문제 예시: 그리드 월드</p>
+<p><img src="./img/mdp_gridworld_state_transitions.png" alt="그리드 월드 상태 전이와 보상" /></p>
 
-<p><img src="./img/fig_05_1.svg" alt="그림 05-1" /></p>
+<p><strong>그림 05-1-3</strong> 그리드 월드에서의 상태 정의와 보상 요소</p>
 
-<p>강화 학습 용어로 이야기하면 로봇이 에이전트<sup>agent</sup>이고 주변이 환경<sup>environment</sup>입니다.</p>
+<hr />
 
-<h4 id="에이전트는-오른쪽으로-이동하거나-왼쪽으로-이동하는-두-가지-행동을-취할-수-있습니다">에이전트는 오른쪽으로 이동하거나 왼쪽으로 이동하는 두 가지 행동을 취할 수 있습니다.</h4>
+<h4 id="05122-타임-스텝과-상태-전이state-transition">05.1.2.2 타임 스텝과 상태 전이(State Transition)</h4>
 
-<p>또한 그림에서 그리드의 가장 왼쪽 칸에는 사과가 있고 가장 오른쪽 칸에는 폭탄이 있습니다. 이들은 로봇에게 주어지는 보상<sup>reward</sup>입니다. 사과를 얻을 때의 보상은 +1, 폭탄을 얻을 때의 보상은 -2로 하겠습니다. 빈칸의 보상은 0입니다.</p>
-
-<h4 id="05122-타임-스텝과-상태-전이-개념">05.1.2.2 타임 스텝과 상태 전이 개념</h4>
-
-<p>이 문제에서는 에이전트가 행동할 때마다 상황이 변합니다.</p>
-
-<p>예를 들어 왼쪽으로 두 번 연달아 이동했다고 해보죠. 그러면 에이전트는 +1의 보상을 얻습니다. 반대로 오른쪽으로 두 번 이동하면 -2의 보상을 얻습니다.</p>
-
-<p>이러한 에이전트의 이동을 [그림 05-2]처럼 나타낼 수 있습니다.</p>
-
-<p><strong>그림 05-2</strong> MDP의 상태 전이</p>
-
-<p><img src="./img/fig_05_2.svg" alt="그림 05-2" /></p>
-
-<p>그림과 같이 에이전트의 행동에 따라 에이전트가 처하는 상황이 달라집니다.</p>
-
-<h4 id="이-상황을-강화-학습에서는-상태state라고-합니다">이 상황을 강화 학습에서는 상태<sup>state</sup>라고 합니다.</h4>
-
-<p>MDP에서는 에이전트의 행동에 따라 상태가 바뀌고, 상태가 바뀐 곳에서 새로운 행동을 하게 됩니다. 참고로 그림에서도 알 수 있듯이 지금 문제에서 에이전트에게 최선의 행동은 왼쪽으로 두 번 이동하는 것입니다. 그래야 가장 많은 보상을 얻을 수 있습니다.</p>
+<p>에이전트가 행동을 한 번 실행할 때마다 세상의 시간이 한 단위씩 흐르며, 상황(상태)이 새롭게 바뀝니다.</p>
 
 <blockquote>
-  <p>NOTE_ MDP에는 ‘시간’ 개념이 필요합니다. 특정 시간에 에이전트가 행동을 취하고, 그 결과로 새로운 상태로 전이합니다. 이때의 시간 단위를 타임 스텝<sup>time step</sup>이라고 합니다. 타임 스텝은 에이전트가 다음 행동을 결정하는 간격이기 때문에 구체적인 단위는 어떤 문제를 풀려는지에 따라 달라집니다.</p>
+  <p>⏱️ <strong>타임 스텝(Time Step, <i>t</i>)</strong>: 에이전트가 환경을 관찰하고 다음 행동을 결정하여 실행하는 이산적인 시간 단위(<i>t</i> = 0, 1, 2, …)입니다. 문제에 따라 1초일 수도, 1분일 수도, 바둑의 한 수일 수도 있습니다.</p>
 </blockquote>
 
-<p>이번에는 [그림 05-3]의 문제를 생각해봅시다.</p>
+<p><img src="./img/mdp_timestep_transitions.png" alt="타임 스텝과 상태 전이 과정" /></p>
 
-<p><strong>그림 05-3</strong> 또 다른 세계(환경)</p>
+<p><strong>그림 05-1-4</strong> 타임 스텝 <i>t</i>의 흐름에 따른 상태 전이와 보상 획득 과정 (왼쪽 이동 경로 vs 오른쪽 이동 경로)</p>
 
-<p><img src="./img/fig_05_3.svg" alt="그림 05-3" /></p>
-
-<p>이 그림에서 그리드의 왼쪽 끝에는 보상이 +1인 사과가 있고, 에이전트의 바로 오른쪽에는 보상이 -2인 폭탄이 있습니다. 그리고 그 너머 오른쪽 끝에는 보상이 +6인 사과 더미가 있습니다.</p>
-
-<p>이 문제에서 오른쪽으로 이동하면 즉시 얻는 보상은 마이너스지만, 한 번 더 오른쪽으로 이동하면 +6짜리 사과 더미를 얻을 수 있습니다. 따라서 이 문제에서 <code class="language-plaintext highlighter-rouge">최선의 행동은 오른쪽으로 두 번 이동</code>하는 것입니다.</p>
-
-<p>이 예에서 알 수 있듯이 에이전트는 <code class="language-plaintext highlighter-rouge">눈앞의 보상</code>이 아니라 미래에 얻을 수 있는 보상의 <code class="language-plaintext highlighter-rouge">총합</code>을 고려해야 합니다.</p>
-
-<p>즉, 보상의 총합을 극대화하려 노력해야 합니다.</p>
+<p>예를 들어 가운데 칸에서 시작하여 왼쪽으로 두 번 이동하면 사과를 먹고 <strong>+1</strong>의 보상을 얻습니다. 반대로 오른쪽으로 두 번 이동하면 폭탄을 밟아 <strong>-2</strong>의 손실을 입습니다.</p>
 
 <hr />
 
-<h3 id="0513-에이전트와-환경의-상호작용">05.1.3 에이전트와 환경의 상호작용</h3>
+<h4 id="05123-단기-보상-vs-장기-누적-보상의-딜레마">05.1.2.3 단기 보상 vs 장기 누적 보상의 딜레마</h4>
 
-<p>MDP에서는 에이전트와 환경 사이에 상호작용이 이루어집니다.</p>
+<p>이제 또 다른 세상(World B)을 생각해 봅시다:</p>
 
-<h4 id="05131-mdp-피드백-루프와-사이클">05.1.3.1 MDP 피드백 루프와 사이클</h4>
+<ul>
+  <li><strong>왼쪽 끝 칸</strong>: 보상 <strong>+1</strong> (작은 사과)</li>
+  <li><strong>오른쪽 바로 다음 칸</strong>: 보상 <strong>-2</strong> (위험한 가시 함정/폭탄)</li>
+  <li><strong>오른쪽 끝 칸</strong>: 보상 <strong>+6</strong> (커다란 황금 사과 더미)</li>
+</ul>
 
-<p>이때 명심해야 할 사실은 에이전트가 행동을 취함으로써 상태가 변한다는 점입니다. 그에 따라 얻을 수 있는 보상도 달라지죠.</p>
+<blockquote>
+  <p>🐶 <strong>토토</strong>: “멍멍! 오른쪽으로 한 칸 가면 -2 폭탄을 밟으니까 당장 아프잖아! 그냥 왼쪽으로 가서 안전하게 +1 사과를 먹는 게 낫지 않아?”</p>
 
-<p>그림으로 표현하면 다음과 같은 관계입니다.</p>
+  <p>👧 <strong>도로시</strong>: “하지만 토토야, 눈앞의 -2 폭탄을 참고 오른쪽으로 한 번 더 전진하면 무려 +6짜리 황금 사과를 얻을 수 있어! (-2) + (+6) = <strong>+4</strong>니까, 왼쪽으로 가서 얻는 <strong>+1</strong>보다 총합이 훨씬 크잖아!”</p>
 
-<p><strong>그림 05-4</strong> MDP의 사이클</p>
+  <p>🧚 <strong>지니</strong>: “정답이야 도로시! 강화학습의 에이전트는 <strong>‘눈앞의 즉각적인 보상’</strong>에 일희일비하지 않고, <strong>‘앞으로 얻게 될 미래 보상들의 총합(Cumulative Return)’</strong>을 극대화하도록 행동해야 해. 이것이 바로 강화학습과 단순 탐욕 알고리즘(Greedy)의 결정적 차이란다.”</p>
+</blockquote>
 
-<p><img src="./img/fig_05_4.svg" alt="그림 05-4" /></p>
+<p><img src="./img/mdp_reward_dilemma_world.png" alt="단기 보상 vs 장기 누적 보상의 딜레마" /></p>
 
-<p>[그림 05-4]에서는 시간 <em>t</em>에서의 상태가 <em>S</em><sub><em>t</em></sub>입니다.</p>
-
-<p>이 상태 <em>S</em><sub><em>t</em></sub>에서 시작하여 에이전트가 행동 <em>A</em><sub><em>t</em></sub>를 수행하여 보상 <em>R</em><sub><em>t</em></sub>를 얻고, 다음 상태인 <em>S</em><sub><em>t+1</em></sub>로 전환됩니다.</p>
-
-<p>이러한 에이전트와 환경의 상호작용은 실제로 다음과 같은 전이를 만들어냅니다.</p>
-
-\[S_0, A_0, R_0, S_1, A_1, R_1, S_2, A_2, R_2, \cdots\]
-
-<p>이 시계열 데이터는 첫 번째 상태를 <em>S</em><sub>0</sub>에서 시작합니다.</p>
-
-<p>상태 <em>S</em><sub>0</sub>에서 에이전트가 행동 <em>A</em><sub>0</sub>을 수행하여 보상 <em>R</em><sub>0</sub>을 얻고, 시간이 한 단위만큼 흘러 상태가 <em>S</em><sub>1</sub>로 변합니다. 다음 상태인 <em>S</em><sub>1</sub>에서 에이전트가 행동 <em>A</em><sub>1</sub>을 수행하여 보상 <em>R</em><sub>1</sub>을 얻고, 다음 상태인 <em>S</em><sub>2</sub>로 변하는 흐름이 계속됩니다.</p>
-
-<h4 id="05132-보상-획득-시점-정의r_t-vs-r_t1">05.1.3.2 보상 획득 시점 정의(R_t vs R_t+1)</h4>
-
-<p>강화 학습에서는 다음과 같이 보상의 시점을 <em>R</em><sub><em>t</em></sub>로 잡기도 하고 <em>R</em><sub><em>t+1</em></sub>로 잡기도 합니다.</p>
-
-<p>• 상태 <em>S</em><sub><em>t</em></sub>에서 행동 <em>A</em><sub><em>t</em></sub>를 수행하고 보상 <em>R</em><sub><em>t</em></sub>를 받고 다음 상태인 <em>S</em><sub><em>t+1</em></sub>로 전환
-• 상태 <em>S</em><sub><em>t</em></sub>에서 행동 <em>A</em><sub><em>t</em></sub>를 수행하고 보상 <em>R</em><sub><em>t+1</em></sub>을 받고 다음 상태인 <em>S</em><sub><em>t+1</em></sub>로 전환</p>
-
-<p>이처럼 보상을 <em>R</em><sub><em>t</em></sub>로 처리할 수도, <em>R</em><sub><em>t+1</em></sub>로 처리할 수도 있습니다.</p>
-
-<p>이 강의에서는 프로그래밍하기에 더 편리한 첫 번째 방식(<em>R</em><sub><em>t</em></sub>)을 택했습니다.</p>
+<p><strong>그림 05-1-5</strong> 단기 보상 vs 장기 누적 보상의 딜레마: 눈앞의 작은 사과(+1) 대신 함정(-2) 너머의 황금 사과 바구니(+6)를 얻어 총합(+4)을 극대화하는 최선의 선택</p>
 
 <hr />
 
-<h3 id="0514-핵심-요약">05.1.4 핵심 요약</h3>
+<h3 id="0513-에이전트와-환경의-상호작용-피드백-루프">05.1.3 에이전트와 환경의 상호작용 피드백 루프</h3>
 
-<p>이상으로 MDP의 기초를 익혔습니다.</p>
+<p>MDP는 에이전트와 환경이 고립되어 있지 않고 끊임없이 정보를 주고받는 <strong>동적 폐루프(Closed-Loop Feedback System)</strong>로 구성됩니다.</p>
+
+<h4 id="05131-mdp-상호작용-3단계-사이클">05.1.3.1 MDP 상호작용 3단계 사이클</h4>
+
+<p>각 타임 스텝 <i>t</i>마다 에이전트와 환경은 다음의 3단계를 끊임없이 반복합니다.</p>
 
 <ol>
-  <li><strong>상태 기반 환경</strong>: MDP에서는 에이전트의 행동에 반응하여 환경의 상태가 동적으로 변화합니다.</li>
-  <li><strong>MDP 사이클</strong>: 에이전트가 상태 <em>S</em><sub><em>t</em></sub>에서 행동 <em>A</em><sub><em>t</em></sub>를 수행하면 보상 <em>R</em><sub><em>t</em></sub>를 받고 다음 상태 <em>S</em><sub><em>t+1</em></sub>로 넘어가는 피드백 순환 구조를 이룹니다.</li>
-  <li><strong>타임 스텝</strong>: 시간 단위를 쪼개어 에이전트와 환경이 순차적으로 의사결정을 주고받는 시간 간격을 뜻합니다.</li>
+  <li><strong>상태 관찰 (State Observation)</strong>: 에이전트는 환경의 현재 상태 <i>S<sub>t</sub></i>를 관찰합니다.</li>
+  <li><strong>행동 실행 (Action Execution)</strong>: 에이전트는 정책(Policy)에 따라 선택한 행동 <i>A<sub>t</sub></i>를 환경에 가합니다.</li>
+  <li><strong>보상 및 다음 상태 반환 (Reward &amp; Next State)</strong>: 환경은 행동 <i>A<sub>t</sub></i>의 결과로 에이전트에게 보상 <i>R<sub>t</sub></i>를 지급하고, 새로운 상태 <i>S<sub>t+1</sub></i>로 전이시켜 에이전트에게 알려줍니다.</li>
 </ol>
 
-<p>다음 절에서는 MDP를 수식으로 표현해보겠습니다.</p>
+<p><img src="./img/mdp_agent_env_cycle_loop.png" alt="에이전트 환경 상호작용 루프" /></p>
+
+<p><strong>그림 05-1-6</strong> MDP 에이전트와 환경의 3단계 상호작용 폐루프 (Observation → Action → Reward &amp; Next State)</p>
+
+<hr />
+
+<h4 id="05132-시간의-흐름에-따른-상호작용-궤적-trajectory">05.1.3.2 시간의 흐름에 따른 상호작용 궤적 (Trajectory)</h4>
+
+<p>이러한 상호작용의 연속은 시간의 흐름에 따라 다음과 같은 <strong>궤적(Trajectory)</strong> 또는 <strong>에피소드 시계열 데이터</strong>를 생성합니다:</p>
+
+<div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.05rem; color: #1e293b; text-align: center; border-radius: 4px;">
+<i>S</i><sub>0</sub>, <i>A</i><sub>0</sub>, <i>R</i><sub>0</sub>, <i>S</i><sub>1</sub>, <i>A</i><sub>1</sub>, <i>R</i><sub>1</sub>, <i>S</i><sub>2</sub>, <i>A</i><sub>2</sub>, <i>R</i><sub>2</sub>, ..., <i>S</i><sub><i>T</i></sub>
+</div>
+
+<ul>
+  <li><i>S</i><sub>0</sub>: 에이전트가 처음 마주한 시작 상태</li>
+  <li><i>A</i><sub>0</sub>: 시작 상태에서 내린 첫 번째 결정 행동</li>
+  <li><i>R</i><sub>0</sub>: 첫 번째 행동으로 획득한 보상</li>
+  <li><i>S</i><sub>1</sub>: 시간 <i>t</i> = 1에서 도착한 새로운 상태</li>
+</ul>
+
+<p><img src="./img/mdp_interaction_trajectory.png" alt="상호작용 시계열 궤적" /></p>
+
+<p><strong>그림 05-1-7</strong> 시간의 흐름(<i>t</i> = 0, 1, 2, …, <i>T</i>)에 따른 상호작용 시계열 데이터와 상태-행동-보상 궤적(Trajectory)</p>
+
+<hr />
+
+<h3 id="0514-보상-획득-시점의-표기법-rt-vs-rt1">05.1.4 보상 획득 시점의 표기법 (<i>R<sub>t</sub></i> vs <i>R<sub>t+1</sub></i>)</h3>
+
+<p>강화학습 교재나 논문을 읽다 보면 보상이 <i>R<sub>t</sub></i>로 적혀 있기도 하고, <i>R<sub>t+1</sub></i>로 적혀 있기도 합니다. 이는 수학적 본질이 다른 것이 아니라 <strong>‘시간 인덱스를 붙이는 관점의 차이’</strong>일 뿐입니다.</p>
+
+<p><img src="./img/mdp_reward_timing_system.png" alt="보상 획득 시점 비교" /></p>
+
+<p><strong>그림 05-1-8</strong> 보상 표기법 비교: 행동 시점 기준(<i>R<sub>t</sub></i>) vs 도착 상태 시점 기준(<i>R<sub>t+1</sub></i>)</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구분</th>
+      <th style="text-align: left">프로그래밍 중심 표기법 (<i>R<sub>t</sub></i>)</th>
+      <th style="text-align: left">수학/이론 중심 표기법 (<i>R<sub>t+1</sub></i>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>관점</strong></td>
+      <td style="text-align: left">“시간 <i>t</i>에서 행동 <i>A<sub>t</sub></i>를 취해서 얻은 결과 보상”</td>
+      <td style="text-align: left">“행동 <i>A<sub>t</sub></i>의 결과로 시간 <i>t+1</i>에 도달하여 수령한 보상”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>전이 튜플</strong></td>
+      <td style="text-align: left">(<i>S<sub>t</sub></i>, <i>A<sub>t</sub></i>, <i>R<sub>t</sub></i>, <i>S<sub>t+1</sub></i>)</td>
+      <td style="text-align: left">(<i>S<sub>t</sub></i>, <i>A<sub>t</sub></i>, <i>R<sub>t+1</sub></i>, <i>S<sub>t+1</sub></i>)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>장점</strong></td>
+      <td style="text-align: left">파이썬 딕셔너리나 코드 루프 작성 시 <i>t</i> 인덱스가 일치하여 직관적임</td>
+      <td style="text-align: left">시간 <i>t+1</i>의 정보(상태와 보상)가 동일한 타임스탬프를 공유하여 수학적으로 깔끔함</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>대표 문헌</strong></td>
+      <td style="text-align: left">본 교재 및 다수의 강화학습 실습 코드</td>
+      <td style="text-align: left">서튼(Sutton) &amp; 바토(Barto) 강화학습 교과서 (2판)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>🧚 <strong>지니의 팁</strong>: “우리 책에서는 파이썬 코딩과 직관적인 이해를 돕기 위해 <strong><i>S<sub>t</sub></i>에서 <i>A<sub>t</sub></i>를 실행하여 <i>R<sub>t</sub></i>를 받고 <i>S<sub>t+1</sub></i>로 간다</strong>는 표기법을 기본으로 사용해! 하지만 다른 논문이나 서적에서 <i>R<sub>t+1</sub></i>을 보더라도 ‘아, 한 스텝 뒤에 도착해서 받는 보상이구나’ 하고 편안하게 이해하면 된단다.”</p>
+</blockquote>
+
+<hr />
+
+<h3 id="0515-핵심-요약">05.1.5 핵심 요약</h3>
+
+<p><img src="./img/mdp_5_1_summary.png" alt="MDP 5.1 핵심 요약" /></p>
+
+<p><strong>그림 05-1-9</strong> 05.1 마르코프 결정 과정(MDP) 핵심 개념 요약 인포그래픽</p>
+
+<ol>
+  <li><strong>마르코프 결정 과정(MDP)</strong>: 마르코프 성질에 에이전트의 주체적인 <strong>행동(Action)</strong>과 목표 달성을 위한 <strong>보상(Reward)</strong>이 결합된 의사결정 모델입니다.</li>
+  <li><strong>MDP 4대 요소</strong>: 상태(State, <i>S</i>), 행동(Action, <i>A</i>), 보상(Reward, <i>R</i>), 상태 전이(State Transition, <i>P</i> 또는 <i>f</i>)로 구성됩니다.</li>
+  <li><strong>누적 보상 극대화</strong>: 강화학습의 궁극적인 목표는 눈앞의 즉각적인 보상뿐만 아니라 미래에 얻게 될 <strong>장기적인 총 보상</strong>을 최대화하는 것입니다.</li>
+  <li><strong>상호작용 루프</strong>: 에이전트는 환경의 상태 <i>S<sub>t</sub></i>를 관찰하고 행동 <i>A<sub>t</sub></i>를 수행하며, 환경은 보상 <i>R<sub>t</sub></i>와 다음 상태 <i>S<sub>t+1</sub></i>을 반환하는 상호작용 사이클을 무한히 반복합니다.</li>
+</ol>
+
+<p>다음 <strong>05.2절</strong>에서는 이러한 에이전트와 환경의 상호작용을 수학적 기호와 수식(전이 함수, 보상 함수, 정책)으로 엄밀하게 정의해 보겠습니다!</p>
 
 
             <!-- 구글 애드센스 출력 -->

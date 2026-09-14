@@ -680,61 +680,385 @@
         <div class="bd-content ps-lg-4">
             <h1 id="043-마르코프-과정-markov-process">04.3 마르코프 과정 (Markov Process)</h1>
 
-<p><strong>그림 04-3</strong> 상태 공간과 상태 전이 확률 행렬 P의 칠판 연산을 도로시에게 가르치는 요정 지니
-<img src="./img/jiny_markov_ch4_3_process.png" alt="마르코프 과정 인트로" /></p>
+<p>우리는 앞서 4.1절에서 <strong>“미래는 오직 현재에 의해서만 결정된다”</strong>는 <strong>마르코프 성질(Markov Property)</strong>을 배웠고, 4.2절에서 상태들이 사슬처럼 연결되어 확률적으로 변화하는 <strong>마르코프 체인(Markov Chain)</strong>을 공부했습니다.</p>
 
-<p>마르코프 성질을 띤 무작위 상태 변화 프로세스 자체를 일컫는 <strong>마르코프 과정(Markov Process)</strong>을 배웁니다. 상태들의 집합인 $S$와 이들 간의 확률 지표를 담은 상태 전이 확률 행렬 $P$의 기호 정의와 계산 방법을 지니의 칠판 설명을 토대로 확실히 학습해봅시다!</p>
+<p>이번 4.3절에서는 이러한 원리들을 하나로 모아, 마르코프 성질을 띤 무작위 상태 변화 시스템 자체를 엄밀한 수학적 언어로 정립한 <strong>마르코프 과정(Markov Process, MP)</strong>을 탐험해 봅니다.</p>
+
+<p>상태들의 전체 집합인 <strong>상태 공간(<i>S</i>)</strong>과 이들 간의 확률 지도를 담은 <strong>상태 전이 확률 행렬(<i>P</i>)</strong>의 튜플 정의, 시간에 따라 이어지는 <strong>궤적(Trajectory)</strong>, 그리고 강화학습의 최고봉인 MDP로 도약하는 연결 고리를 도로시, 토토와 함께 신나게 배워보아요!</p>
+
+<p><img src="./img/jiny_markov_ch4_3_process.png" alt="마르코프 과정 인트로" /></p>
+
+<p><strong>그림 04-3-1</strong> 상태 공간 <i>S</i>와 상태 전이 확률 행렬 <i>P</i>로 구성된 마르코프 과정의 기본 수학적 튜플 모델을 공부하는 지니와 도로시, 토토</p>
 
 <hr />
 
-<h3 id="0431-마르코프-과정의-정의">04.3.1 마르코프 과정의 정의</h3>
+<h3 id="0431-마르코프-과정의-수학적-정의-튜플-mp--s-p">04.3.1 마르코프 과정의 수학적 정의 (튜플 MP = (S, P))</h3>
 
-<p><strong>마르코프 과정(Markov Process)</strong>은 마르코프 성질을 가진 무작위 상태 변화 프로세스 그 자체를 의미하는 수학적 모델입니다. 수학적으로 마르코프 과정은 다음의 두 가지 요소로 이루어진 튜플로 정의할 수 있습니다:
-\(\text{MP} = (S, P)\)</p>
+<p><strong>마르코프 과정(Markov Process, MP)</strong>은 <strong>“마르코프 성질을 만족하는 무작위 상태 전이 시스템 그 자체”</strong>를 나타내는 가장 순수하고 기초적인 확률 모델입니다.</p>
 
-<ul>
-  <li><strong><em>S</em></strong>: 에이전트가 존재할 수 있는 모든 상태들의 유한한 집합 (상태 공간, State Space)</li>
-  <li><strong><em>P</em></strong>: 상태 <em>s</em>에서 다음 상태 <em>s’</em>로 이동할 확률을 규정하는 상태 전이 확률 행렬 (State Transition Probability Matrix)</li>
-</ul>
+<p>수학에서는 복잡한 시스템을 군더더기 없이 간결하게 표현하기 위해 여러 요소를 괄호로 묶은 <strong>튜플(Tuple)</strong> 표기법을 사용합니다. 마르코프 과정은 딱 <strong>2가지 핵심 요소</strong>로 이루어진 튜플로 완벽하게 정의됩니다:</p>
 
-<p><img src="./img/markov_process_definition.png" alt="마르코프 과정의 정의: 상태 공간 S와 전이 행렬 P의 결합체 비유" /></p>
+<div style="text-align: center; font-size: 1.25em; font-weight: bold; margin: 24px 0; padding: 16px; background-color: #f8fafc; border: 2px solid #e2e8f0; border-radius: 12px;">
+MP = ( <i>S</i>, <i>P</i> )
+</div>
+
+<p><img src="./img/markov_process_definition.png" alt="마르코프 과정의 정의: 상태 공간 S와 전이 행렬 P" /></p>
+
+<p><strong>그림 04-3-2</strong> 마르코프 과정을 이루는 2대 기둥: 에이전트가 존재할 수 있는 모든 상태들의 집합인 ‘상태 공간 <i>S</i>‘와 이동 확률 규칙인 ‘상태 전이 행렬 <i>P</i>’</p>
+
+<hr />
+
+<p>튜플을 구성하는 두 기둥을 하나씩 자세히 살펴봅시다:</p>
+
+<ol>
+  <li><strong>상태 공간 (State Space, <i>S</i>)</strong>:
+    <ul>
+      <li>시스템이나 에이전트가 존재할 수 있는 <strong>모든 가능한 유한한 상태들의 전체 집합</strong>입니다.</li>
+      <li>도로시의 모험 지도에 비유하면, 발을 디딜 수 있는 모든 <strong>‘목적지 섬(Island)들의 주머니’</strong>에 해당합니다.</li>
+      <li><em>날씨 예제</em>: <i>S</i> = { 1: 맑음, 2: 비 }</li>
+    </ul>
+  </li>
+  <li><strong>상태 전이 확률 행렬 (State Transition Probability Matrix, <i>P</i>)</strong>:
+    <ul>
+      <li>현재 상태 <i>s</i>에서 다음 상태 <i>s’</i>로 시간이 지나 이동할 확률 <i>P</i><sub><i>ss’</i></sub>들을 2차원 표로 정갈하게 모아둔 행렬입니다.</li>
+      <li>목적지 섬들 사이를 이어주는 <strong>‘바람과 파도의 확률 지도’</strong>에 해당합니다.</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>수식: <i>P</i><sub><i>ss’</i></sub> = <i>P</i>( <i>S</i><sub><i>t</i>+1</sub> = <i>s’</i></td>
+              <td><i>S</i><sub><i>t</i></sub> = <i>s</i> )</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><em>날씨 예제</em>:
+        <div style="text-align: center; font-size: 1.05em; font-weight: bold; margin: 12px 0;">
+<i>P</i> = [ [ 0.7, 0.3 ], [ 0.4, 0.6 ] ]
+</div>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>💡 <strong>용어 짚고 넘어가기: 마르코프 체인 vs 마르코프 과정</strong></p>
+
+  <ul>
+    <li><strong>마르코프 체인(Markov Chain)</strong>: 주로 시간이 째깍째깍 불연속적인 타임 스텝(<i>t</i> = 0, 1, 2, …)으로 흐르고, 상태 공간이 이산적(셀 수 있음)일 때 상태들이 사슬처럼 꼬리를 물고 이어지는 <strong>‘현상과 구조’</strong>를 친근하게 부르는 이름입니다.</li>
+    <li><strong>마르코프 과정(Markov Process)</strong>: 이를 수학적이고 일반적인 확률 과정(Stochastic Process)의 관점에서 튜플 (<i>S</i>, <i>P</i>)로 엄밀하게 정의한 <strong>‘시스템 모델 자체’</strong>를 뜻합니다. 둘은 사실상 같은 대상의 수학적 동의어로 널리 혼용됩니다.</li>
+  </ul>
+</blockquote>
 
 <hr />
 
 <h3 id="0432-상태의-시퀀스-궤적-trajectory">04.3.2 상태의 시퀀스: 궤적 (Trajectory)</h3>
 
-<p>마르코프 과정은 시간의 흐름에 따라 여러 상태를 거쳐 가게 됩니다. 예를 들어 타임 스텝 <em>t</em> = 0에서의 상태 <em>S</em><sub>0</sub>부터 시작하여 <em>S</em><sub>1</sub>, <em>S</em><sub>2</sub>, <em>S</em><sub>3</sub>, … 순으로 계속해서 상태가 변화합니다.</p>
+<p>마르코프 과정이 실제로 작동하기 시작하면, 시간의 흐름(<i>t</i> = 0, 1, 2, 3, …)에 따라 에이전트는 하나의 상태에서 다음 상태로 퐁당퐁당 이동하게 됩니다.</p>
 
-<p>이렇게 에이전트가 지나간 상태들의 역사(순서)를 <strong>궤적(Trajectory)</strong> 또는 <strong>시퀀스(Sequence)</strong>라고 부릅니다.</p>
+<p>이렇게 에이전트가 시간 순서대로 지나간 <strong>상태들의 역사적 발자국 순서열(시퀀스)</strong>을 강화학습에서는 <strong>궤적(Trajectory, 트래젝터리)</strong> 또는 <strong>에피소드(Episode)</strong>, <strong>이력(History)</strong>이라고 부릅니다:</p>
 
-<p>우리가 4.2절에서 다룬 날씨 마르코프 체인을 통해 날씨 궤적을 무작위로 생성해 보면 다음과 같은 히스토리가 발생할 수 있습니다:</p>
+<div style="text-align: center; font-size: 1.15em; font-weight: bold; margin: 20px 0;">
+<i>τ</i> = ( <i>S</i><sub>0</sub>, <i>S</i><sub>1</sub>, <i>S</i><sub>2</sub>, <i>S</i><sub>3</sub>, ..., <i>S</i><sub><i>T</i></sub> )
+</div>
 
-<p><strong>그림 04-2</strong> 날씨 마르코프 과정의 시간적 궤적 예시
-<img src="./img/markov_trajectory_time_steps.png" alt="날씨 마르코프 과정의 궤적과 이산 시간 스텝 t 개념 비유" /></p>
+<p><img src="./img/markov_trajectory_time_steps.png" alt="마르코프 과정의 궤적과 확률 계산" /></p>
 
-<ul>
-  <li><strong><em>t</em> = 0</strong>: 오늘 날씨 <em>S</em><sub>0</sub> = 맑음으로 시작합니다.</li>
-  <li><strong><em>t</em> = 1</strong>: 0.3의 확률을 뚫고 내일 날씨 <em>S</em><sub>1</sub> = 비가 되었습니다.</li>
-  <li><strong><em>t</em> = 2</strong>: 0.6의 확률로 모레 날씨 <em>S</em><sub>2</sub> = 비가 계속 유지되었습니다.</li>
-  <li><strong><em>t</em> = 3</strong>: 0.4의 확률로 글피 날씨 <em>S</em><sub>3</sub> = 맑음으로 복귀했습니다.</li>
-</ul>
-
-<p>이 무작위 과정의 궤적 [맑음, 비, 비, 맑음]이 나타날 확률은 단순 확률 곱셈을 통해 다음과 같이 계산할 수 있습니다:
-\(P(S_0=\text{맑음}, S_1=\text{비}, S_2=\text{비}, S_3=\text{맑음}) = 1.0 \times 0.3 \times 0.6 \times 0.4 = 0.072 \quad (7.2\%)\)</p>
+<p><strong>그림 04-3-3</strong> 이산 타임 스텝(<i>t</i> = 0, 1, 2, 3)을 따라 징검다리를 건너듯 상태들이 이어지는 궤적(Trajectory)과 결합 확률 계산 원리</p>
 
 <hr />
 
-<h3 id="0433-마르코프-과정과-강화-학습의-연관성">04.3.3 마르코프 과정과 강화 학습의 연관성</h3>
+<h4 id="-날씨-궤적의-실제-발생-예시">🎲 날씨 궤적의 실제 발생 예시</h4>
 
-<p>강화 학습의 뼈대인 <strong>마르코프 결정 과정(MDP)</strong>은 이 마르코프 과정에 <strong>두 가지 핵심적인 요소</strong>를 추가한 것입니다:</p>
+<p>우리가 배운 날씨 마르코프 과정 (<i>S</i>, <i>P</i>)에서 오늘(<i>t</i>=0) 맑음으로 시작하여 3일간 날씨가 변화하는 궤적을 관찰했다고 해봅시다:</p>
+
+<ul>
+  <li><strong><i>t</i> = 0</strong>: 오늘 날씨 <i>S</i><sub>0</sub> = <strong>맑음 ☀️</strong> (시작 상태, 100%)</li>
+  <li><strong><i>t</i> = 1</strong>: 0.3의 확률을 뚫고 내일 날씨가 <i>S</i><sub>1</sub> = <strong>비 🌧️</strong> 로 바뀌었습니다.</li>
+  <li><strong><i>t</i> = 2</strong>: 0.6의 유지 확률로 모레 날씨도 <i>S</i><sub>2</sub> = <strong>비 🌧️</strong> 가 이어졌습니다.</li>
+  <li><strong><i>t</i> = 3</strong>: 0.4의 갤 확률로 글피 날씨가 <i>S</i><sub>3</sub> = <strong>맑음 ☀️</strong> 으로 복귀했습니다.</li>
+</ul>
+
+<p>이때 완성된 궤적은 <strong>[ 맑음 ☀️ → 비 🌧️ → 비 🌧️ → 맑음 ☀️ ]</strong> 입니다.</p>
+
+<h4 id="-궤적의-결합-확률joint-probability-계산법">🧮 궤적의 결합 확률(Joint Probability) 계산법</h4>
+
+<p>마르코프 성질 덕분에, 이 특정한 궤적이 세상에 실제로 펼쳐질 전체 결합 확률은 각 단계의 전이 확률들을 단순히 <strong>차례대로 곱하기(연쇄 법칙)</strong>만 하면 명쾌하게 계산됩니다:</p>
+
+<div style="text-align: center; font-size: 1.05em; font-weight: bold; margin: 20px 0; padding: 14px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+<i>P</i>( <i>S</i><sub>0</sub>=맑음, <i>S</i><sub>1</sub>=비, <i>S</i><sub>2</sub>=비, <i>S</i><sub>3</sub>=맑음 )<br />
+= <i>P</i>(<i>S</i><sub>0</sub>=맑음) × <i>P</i>(<i>S</i><sub>1</sub>=비 | <i>S</i><sub>0</sub>=맑음) × <i>P</i>(<i>S</i><sub>2</sub>=비 | <i>S</i><sub>1</sub>=비) × <i>P</i>(<i>S</i><sub>3</sub>=맑음 | <i>S</i><sub>2</sub>=비)<br />
+= 1.0 × 0.3 × 0.6 × 0.4 = <b>0.072 (7.2%)</b>
+</div>
+
+<p>즉, 오늘 맑음에서 시작하여 3일 동안 정확히 이 순서대로 날씨가 바뀔 확률은 정확히 <strong>7.2%</strong>입니다!</p>
+
+<hr />
+
+<h3 id="0433-마르코프-과정의-장기적-균형-정상-분포-stationary-distribution">04.3.3 마르코프 과정의 장기적 균형: 정상 분포 (Stationary Distribution)</h3>
+
+<p>도로시가 궤적 계산을 보며 지니에게 한 가지 깊은 질문을 던졌습니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시의 호기심</strong>:</p>
+
+  <p>“지니! 1일 뒤, 2일 뒤, 3일 뒤는 행렬을 곱해서 계산할 수 있잖아.</p>
+
+  <p>그럼 100일 뒤나 1000일 뒤처럼 <strong>아주 먼 미래가 되면 날씨 확률은 어떻게 될까?</strong> 끝없이 마구 요동칠까, 아니면 어떤 값에 가만히 멈출까?”</p>
+</blockquote>
+
+<p><img src="./img/dorothy_stationary_question.png" alt="100일 뒤 먼 미래의 날씨 예측 호기심" /></p>
+
+<p><strong>그림 04-3-4</strong> “100일 뒤, 1000일 뒤처럼 아주 먼 미래의 날씨 확률은 어떻게 될까? 계속 요동칠까, 멈출까?” 궁금해하는 도로시와 토토</p>
+
+<hr />
+
+<p>지니가 빙그레 미소를 지으며 마법 지팡이로 거대한 저울을 만들어 보였습니다.</p>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니의 마법 노트: 영원한 시간 끝에 찾아오는 평형의 마법!</strong></p>
+
+  <p>“놀랍게도 도로시, 전이 행렬을 10번, 50번, 100번 끝없이 거듭제곱하다 보면(<i>P</i><sup>100</sup>), 놀랍게도 <strong>오늘 날씨가 맑았든 비가 왔든 상관없이 미래의 확률이 언제나 똑같은 고정된 수치로 수렴</strong>한단다!</p>
+
+  <p>이것을 수학에서는 <strong>정상 분포(Stationary Distribution, 정지 분포)</strong>라고 부르지!”</p>
+</blockquote>
+
+<p><img src="./img/markov_stationary_distribution.png" alt="마르코프 과정의 정상 분포 장기적 평형" /></p>
+
+<p><strong>그림 04-3-5</strong> 전이 행렬을 거듭 곱할수록 오늘 날씨와 무관하게 일정한 장기적 평형 비율(맑음 57.1% vs 비 42.9%)로 수렴하는 정상 분포(π = πP)의 균형 원리</p>
+
+<hr />
+
+<h3 id="1-행렬-거듭제곱p100을-통한-장기적-수렴-확인">1) 행렬 거듭제곱(<i>P</i><sup>100</sup>)을 통한 장기적 수렴 확인</h3>
+
+<p>실제로 전이 행렬 <i>P</i>를 100번 거듭제곱해보면 다음과 같이 모든 행의 숫자가 완벽하게 동일한 값으로 수렴합니다:</p>
+
+<div style="text-align: center; font-size: 1.15em; font-weight: bold; margin: 20px 0; padding: 15px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+<i>P</i><sup>100</sup> ≈ 
+[ [ 0.5714, 0.4286 ], 
+  [ 0.5714, 0.4286 ] ]
+</div>
+
+<ul>
+  <li><strong>첫 번째 행 (오늘 맑음으로 시작했을 때)</strong>: 100일 뒤 맑을 확률 약 <strong>57.14%</strong> (정확히 4/7), 비 올 확률 약 <strong>42.86%</strong> (정확히 3/7)</li>
+  <li><strong>두 번째 행 (오늘 비로 시작했을 때)</strong>: 100일 뒤 맑을 확률 약 <strong>57.14%</strong> (정확히 4/7), 비 올 확률 약 <strong>42.86%</strong> (정확히 3/7)</li>
+</ul>
+
+<blockquote>
+  <p>💡 <strong>놀라운 사실</strong>: 오늘 날씨가 맑았든 비가 쏟아졌든 상관없이, 시간이 충분히 흐르면 과거의 기억은 깨끗이 잊혀지고 시스템 고유의 평형 비율인 <strong>57.14% : 42.86%</strong>로 완벽하게 수렴합니다!</p>
+</blockquote>
+
+<p><img src="./img/markov_matrix_power_100_convergence.png" alt="전이 행렬 100번 거듭제곱 수렴" /></p>
+
+<p><strong>그림 04-3-6</strong> 오늘 날씨(맑음 또는 비)와 무관하게 전이 행렬을 100번 거듭제곱(P¹⁰⁰)하면 동일한 확률 비율(57.14% : 42.86%)로 수렴하는 장기 기억 소멸 원리</p>
+
+<hr />
+
+<h3 id="2-정상-분포의-수학적-불변-방정식-π--π-p">2) 정상 분포의 수학적 불변 방정식: <i>π</i> = <i>π P</i></h3>
+
+<p>도로시가 고개를 갸우뚱하며 다시 물었습니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: 
+“지니! 100일 뒤에 [ 0.5714, 0.4286 ]이 되었다면, 101일 뒤에는 확률이 또 바뀌는 거야?”</p>
+</blockquote>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니</strong>: 
+“전혀 아니란다! 바로 그 이유 때문에 <strong>‘정상(Stationary - 정지해 있는, 불변의)’</strong> 분포라고 부르는 거야. 이 확률에 전이 행렬 <i>P</i>를 한 번 더 곱해도 확률은 조금도 변하지 않고 그대로 유지된단다!”</p>
+</blockquote>
+
+<p>정상 분포 벡터를 <b><i>π</i> = [ <i>π</i><sub>맑음</sub>, <i>π</i><sub>비</sub> ] = [ 0.5714, 0.4286 ]</b> 라고 할 때, 실제로 다음 날의 확률을 곱해보면:</p>
+
+<div style="text-align: center; font-size: 1.1em; line-height: 2.0; margin: 20px 0; padding: 15px; background: #fdf6e2; border-radius: 8px; border-left: 5px solid #f59e0b;">
+<b><i>π P</i></b> = [ 0.5714, 0.4286 ] × 
+[ [ 0.7, 0.3 ], 
+  [ 0.4, 0.6 ] ]<br />
+= [ (0.5714 × 0.7 + 0.4286 × 0.4),  (0.5714 × 0.3 + 0.4286 × 0.6) ]<br />
+= [ (0.4000 + 0.1714),  (0.1714 + 0.2572) ]<br />
+= <b>[ 0.5714, 0.4286 ] = <i>π</i></b>  (완벽한 불변!)
+</div>
+
+<p>즉, 정상 분포는 시간이 아무리 흘러도 스스로의 상태를 보존하는 <strong>불변의 정상 상태 방정식</strong>을 만족합니다:</p>
+
+<blockquote>
+  <h3 id="π--π-p---단-π맑음--π비--10"><b><i>π</i> = <i>π</i> <i>P</i></b>     (단, <i>π</i><sub>맑음</sub> + <i>π</i><sub>비</sub> = 1.0)</h3>
+</blockquote>
+
+<p><img src="./img/markov_stationary_invariant_equation.png" alt="정상 분포의 수학적 불변 방정식" /></p>
+
+<p><strong>그림 04-3-7</strong> 정상 분포(π = [0.5714, 0.4286])에 전이 행렬(P)을 곱해도 확률 분포가 변하지 않고 그대로 유지되는 불변 상태 방정식(π = πP)</p>
+
+<hr />
+
+<h3 id="3-3단계-연립방정식으로-정상-분포-직접-구하기">3) 3단계 연립방정식으로 정상 분포 직접 구하기</h3>
+
+<p>컴퓨터로 100번 행렬을 곱하지 않고도, 수학적으로 손쉽게 정확한 분수 값(4/7, 3/7)을 구하는 3단계 비법입니다.</p>
+
 <ol>
-  <li>에이전트가 주체적으로 개입할 수 있는 <strong>행동(Action, A)</strong></li>
-  <li>에이전트가 잘했는지 못했는지 평가할 수 있는 <strong>보상(Reward, R)</strong></li>
+  <li><strong>1단계: 방정식 전개하기</strong>
+    <ul>
+      <li>[ <i>π</i><sub>맑음</sub>, <i>π</i><sub>비</sub> ] = [ <i>π</i><sub>맑음</sub>, <i>π</i><sub>비</sub> ] × [ [0.7, 0.3], [0.4, 0.6] ]</li>
+      <li><i>π</i><sub>맑음</sub> = 0.7 <i>π</i><sub>맑음</sub> + 0.4 <i>π</i><sub>비</sub></li>
+    </ul>
+  </li>
+  <li><strong>2단계: 이항하여 두 상태의 비율 구하기</strong>
+    <ul>
+      <li><i>π</i><sub>맑음</sub> - 0.7 <i>π</i><sub>맑음</sub> = 0.4 <i>π</i><sub>비</sub></li>
+      <li>0.3 <i>π</i><sub>맑음</sub> = 0.4 <i>π</i><sub>비</sub> → <strong>3 <i>π</i><sub>맑음</sub> = 4 <i>π</i><sub>비</sub></strong></li>
+      <li>즉, <b><i>π</i><sub>맑음</sub> : <i>π</i><sub>비</sub> = 4 : 3</b>의 비율이 성립합니다!</li>
+    </ul>
+  </li>
+  <li><strong>3단계: 전체 확률의 합 = 1 적용하기</strong>
+    <ul>
+      <li><i>π</i><sub>맑음</sub> + <i>π</i><sub>비</sub> = 1.0</li>
+      <li><b><i>π</i><sub>맑음</sub> = 4 / (4 + 3) = 4/7 ≈ 57.14%</b></li>
+      <li><b><i>π</i><sub>비</sub> = 3 / (4 + 3) = 3/7 ≈ 42.86%</b></li>
+    </ul>
+  </li>
 </ol>
 
-<p>따라서, 우리가 마르코프 과정(MP)의 성질과 전이 확률을 정확하게 이해해야만, 에이전트가 개입했을 때 상태가 어떻게 바뀌고 보상을 어떻게 극대화할 수 있는지(MDP)를 탄탄하게 논리적으로 쌓아 올릴 수 있습니다.</p>
+<p><img src="./img/markov_stationary_algebraic_steps.png" alt="3단계 연립방정식 풀이" /></p>
 
-<p><img src="./img/markov_to_mdp_upgrade.png" alt="마르코프 과정(MP)에서 행동과 보상 모듈이 결합하여 MDP로 업그레이드되는 비유" /></p>
+<p><strong>그림 04-3-8</strong> 전개 → 이항 및 비율 유도 → 확률의 총합(1.0) 적용의 3단계를 거쳐 정상 분포 분수 해(4/7, 3/7)를 도출하는 과정</p>
+
+<hr />
+
+<h3 id="4-동적-평형dynamic-equilibrium의-직관적-물리-원리">4) 동적 평형(Dynamic Equilibrium)의 직관적 물리 원리</h3>
+
+<p>도로시가 손뼉을 치며 물었습니다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>:
+“아하! 그런데 날씨는 매일 맑았다가 비가 왔다가 계속 바뀌는데, 어떻게 전체 확률 비율은 딱 멈춰 있을 수 있어?”</p>
+</blockquote>
+
+<blockquote>
+  <p>🧞‍♂️ <strong>지니</strong>:
+“정말 날카로운 질문이야 도로시! 날씨 변화 자체가 멈춘(정적, Static) 것이 아니라, <strong>맑음에서 비로 바뀌는 유출량</strong>과 <strong>비에서 맑음으로 바뀌는 유입량</strong>이 완벽하게 같아졌기 때문이란다! 이를 <strong>동적 평형(Dynamic Equilibrium)</strong>이라고 불러!”</p>
+</blockquote>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>맑음 → 비로 빠져나가는 확률 흐름</strong>: <i>π</i><sub>맑음</sub> × <i>P</i>(비</td>
+          <td>맑음) = 57.14% × 30% = <strong>17.14%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>비 → 맑음으로 들어오는 확률 흐름</strong>: <i>π</i><sub>비</sub> × <i>P</i>(맑음</td>
+          <td>비) = 42.86% × 40% = <strong>17.14%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>두 상태 사이를 오가는 확률의 흐름이 정확히 17.14%로 똑같기 때문에, 전체 날씨의 거시적 비율(57.1% : 42.9%)은 마치 호수 표면처럼 잔잔하게 평형을 유지하는 것입니다.</p>
+
+<p><img src="./img/markov_dynamic_equilibrium_flow.png" alt="정상 분포의 동적 평형 원리" /></p>
+
+<p><strong>그림 04-3-9</strong> 맑음에서 비로 나가는 유출량(17.14%)과 비에서 맑음으로 들어오는 유입량(17.14%)이 완벽히 일치하여 거시적 확률을 보존하는 동적 평형(Dynamic Equilibrium)의 원리</p>
+
+<hr />
+
+<h3 id="5-정상-분포의-무한한-활용-구글-페이지랭크와-강화학습">5) 정상 분포의 무한한 활용: 구글 페이지랭크와 강화학습</h3>
+
+<p>이 정상 분포(<i>π</i> = <i>πP</i>)는 단순히 날씨를 맞히는 데 그치지 않고 현대 인공지능과 컴퓨터 과학의 토대가 되었습니다:</p>
+
+<ul>
+  <li>🌐 <strong>구글(Google)의 페이지랭크(PageRank)</strong>:
+    <ul>
+      <li>인터넷 사용자가 웹페이지의 링크를 무작위로 클릭하며 서핑하는 것을 마르코프 과정으로 모델링했습니다.</li>
+      <li>끝없이 서핑했을 때 사용자가 가장 자주 머무르는 정상 분포(<i>π</i>) 확률이 높은 웹페이지일수록 검색 순위 1위에 올려놓는 혁신을 만들어냈습니다.</li>
+    </ul>
+  </li>
+  <li>🤖 <strong>강화학습에서의 상태 방문 분포(State Visitation Distribution)</strong>:
+    <ul>
+      <li>에이전트가 어떤 고정된 정책(Policy)으로 환경을 탐험할 때, 어떤 위험한 상태나 유리한 상태에 장기적으로 얼마나 자주 도달하는지 분석하는 핵심 척도로 사용됩니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="0434-마르코프-모델의-3단계-진화-사다리-mp--mrp--mdp">04.3.4 마르코프 모델의 3단계 진화 사다리: MP → MRP → MDP</h3>
+
+<p>우리가 마르코프 과정(MP)을 배우는 진정한 이유는 무엇일까요? 바로 인공지능 강화학습의 완전체인 <strong>마르코프 결정 과정(MDP)</strong>을 정복하기 위한 첫 번째 계단이기 때문입니다.</p>
+
+<p>마르코프 이론은 다음과 같이 <strong>3단계 진화 사다리</strong>를 거쳐 완전한 강화학습으로 완성됩니다:</p>
+
+<p><img src="./img/markov_to_mrp_mdp_ladder.png" alt="마르코프 모델의 3단계 진화 사다리" /></p>
+
+<p><strong>그림 04-3-10</strong> 마르코프 과정(MP)에 보상(R)이 붙어 마르코프 보상 과정(MRP)이 되고, 에이전트의 행동(A)이 결합하여 마르코프 결정 과정(MDP)으로 도약하는 3단계 진화 사다리</p>
+
+<ol>
+  <li><strong>1단계: 마르코프 과정 (Markov Process, MP)</strong>
+    <ul>
+      <li><strong>튜플</strong>: <strong>( <i>S</i>, <i>P</i> )</strong></li>
+      <li><strong>의미</strong>: 에이전트의 개입 없이, 오직 환경의 자연스러운 물리 법칙과 상태 전이만이 존재하는 기초 세계입니다.</li>
+    </ul>
+  </li>
+  <li><strong>2단계: 마르코프 보상 과정 (Markov Reward Process, MRP)</strong>
+    <ul>
+      <li><strong>튜플</strong>: <strong>( <i>S</i>, <i>P</i>, <i>R</i>, <i>γ</i> )</strong></li>
+      <li><strong>의미</strong>: 마르코프 과정 위에 <strong>즉각 보상(<i>R</i>)</strong>과 시간의 가치를 할인하는 <strong>할인율(<i>γ</i>)</strong>을 추가한 모델입니다. 도로시가 특정 상태에 도달했을 때의 <strong>‘상태 가치(Value, <i>v</i>(<i>s</i>))’</strong>를 벨만 방정식으로 평가할 수 있게 됩니다.</li>
+    </ul>
+  </li>
+  <li><strong>3단계: 마르코프 결정 과정 (Markov Decision Process, MDP)</strong>
+    <ul>
+      <li><strong>튜플</strong>: <strong>( <i>S</i>, <i>A</i>, <i>P</i>, <i>R</i>, <i>γ</i> )</strong></li>
+      <li><strong>의미</strong>: 환경의 흐름에 에이전트의 능동적인 선택인 <strong>‘행동(Action, <i>A</i>)’</strong>을 결합한 강화학습의 완성형 모델입니다. 도로시가 어느 방향으로 발걸음을 옮겨야 보상을 극대화할 수 있는지 <strong>최적의 정책(Policy, <i>π</i><sup>*</sup>)</strong>을 찾아 스스로 학습합니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="0435-이번-절의-핵심-요약">04.3.5 이번 절의 핵심 요약</h2>
+
+<p><img src="./img/markov_process_summary.png" alt="마르코프 과정 핵심 요약" /></p>
+
+<p><strong>그림 04-3-11</strong> 도로시, 토토, 지니와 함께 완성하는 마르코프 과정(Markov Process) 완전 정복</p>
+
+<ul>
+  <li><strong>마르코프 과정(Markov Process, MP)의 튜플 정의</strong>
+    <ul>
+      <li>마르코프 성질을 만족하는 무작위 상태 변화 시스템으로, 상태 공간과 전이 행렬의 튜플 <strong>MP = ( <i>S</i>, <i>P</i> )</strong>로 엄밀하게 정의됩니다.</li>
+    </ul>
+  </li>
+  <li><strong>상태 공간(<i>S</i>)과 상태 전이 확률 행렬(<i>P</i>)</strong>
+    <ul>
+      <li><i>S</i>는 에이전트가 존재할 수 있는 모든 상태들의 유한 집합이며, <i>P</i>는 상태 <i>s</i>에서 <i>s’</i>로 넘어갈 전이 확률(<i>P</i><sub><i>ss’</i></sub>)들을 담은 2차원 정방행렬입니다.</li>
+    </ul>
+  </li>
+  <li><strong>궤적(Trajectory)과 결합 확률</strong>
+    <ul>
+      <li>시간의 흐름(<i>t</i> = 0, 1, 2, …)에 따라 에이전트가 밟아간 상태들의 순서열 <i>τ</i> = (<i>S</i><sub>0</sub>, <i>S</i><sub>1</sub>, …, <i>S</i><sub><i>T</i></sub>)을 뜻하며, 마르코프 성질에 의해 각 단계 전이 확률의 단순 연쇄 곱으로 결합 확률을 손쉽게 계산합니다.</li>
+    </ul>
+  </li>
+  <li><strong>정상 분포(Stationary Distribution, <i>π</i> = <i>πP</i>)</strong>
+    <ul>
+      <li>시간이 무한히 흐르면 초기 상태와 무관하게 장기적으로 일정하게 수렴하는 평형 확률 분포(맑음 57.1% vs 비 42.9%)입니다.</li>
+    </ul>
+  </li>
+  <li><strong>MDP로 향하는 3단계 진화 체계</strong>
+    <ul>
+      <li><strong>MP (<i>S</i>, <i>P</i>)</strong> → 보상과 할인율이 추가된 <strong>MRP (<i>S</i>, <i>P</i>, <i>R</i>, <i>γ</i>)</strong> → 에이전트의 행동이 추가된 완성형 <strong>MDP (<i>S</i>, <i>A</i>, <i>P</i>, <i>R</i>, <i>γ</i>)</strong>의 논리적 계층 구조를 이해합니다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>이제 마르코프 과정(MP)의 수학적 튜플 정의와 궤적 계산, 그리고 정상 분포의 원리까지 완벽하게 정복했습니다!</p>
+
+<p>다음 <a href="../4_4_은닉_마르코프/index.html"><strong>04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)</strong></a>으로 넘어가 상태가 장막 뒤에 숨겨져 있을 때 겉보기 관측 신호로 진실을 역추적하는 마법의 확률 모델을 정복해봅시다!</p>
 
 
             <!-- 구글 애드센스 출력 -->
