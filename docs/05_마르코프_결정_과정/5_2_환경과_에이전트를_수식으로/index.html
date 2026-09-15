@@ -483,7 +483,7 @@
               </li>
               
               <li>
-                <a href="/04_마르코프/4_4_은닉_마르코프/"
+                <a href="/04_마르코프/4_4_은닉_마르코프/"
                   class="bd-links-link d-inline-block rounded ">
                   04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)
                 </a>
@@ -532,7 +532,7 @@
               </li>
               
               <li>
-                <a href="/05_마르코프_결정_과정/5_2_환경과_에이전트를_수식으로/"
+                <a href="/05_마르코프_결정_과정/5_2_환경과_에이전트를_수식으로/"
                   class="bd-links-link d-inline-block rounded ">
                   05.2 환경과 에이전트를 수식으로
                 </a>
@@ -602,7 +602,7 @@
               </li>
               
               <li>
-                <a href="/06_벨만_방정식/6_3_벨만_방정식의_예/"
+                <a href="/06_벨만_방정식/6_3_벨만_방정식의_예/"
                   class="bd-links-link d-inline-block rounded ">
                   06.3 벨만 방정식의 예
                 </a>
@@ -686,15 +686,7 @@
 
 <p><img src="./img/jiny_mdp_ch5_2_formulas.png" alt="환경과 에이전트 수식 인트로" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>그림 05-2-1</strong> 칠판에 적힌 상태 전이 확률 <i>p</i>(<i>s’</i></td>
-      <td><i>s</i>, <i>a</i>), 보상 함수 <i>r</i>(<i>s</i>, <i>a</i>, <i>s’</i>), 정책 <i>π</i>(<i>a</i></td>
-      <td><i>s</i>)를 다정하게 설명해 주는 지니와 도로시</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>그림 05-2-1</strong> 칠판에 적힌 상태 전이 확률 <i>p</i>(<i>s’</i> | <i>s</i>, <i>a</i>), 보상 함수 <i>r</i>(<i>s</i>, <i>a</i>, <i>s’</i>), 정책 <i>π</i>(<i>a</i> | <i>s</i>)를 다정하게 설명해 주는 지니와 도로시</p>
 
 <hr />
 
@@ -767,14 +759,7 @@
 
 <p><img src="./img/mdp_stochastic_transition_toto.png" alt="토토의 의문과 상태 전이 확률" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>그림 05-2-5</strong> 토토의 걱정과 상태 전이 확률 <i>p</i>(<i>s’</i></td>
-      <td><i>s</i>, <i>a</i>): 90% 정상 도달 vs 10% 미끄러짐 제자리 잔류</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>그림 05-2-5</strong> 토토의 걱정과 상태 전이 확률 <i>p</i>(<i>s’</i> | <i>s</i>, <i>a</i>): 90% 정상 도달 vs 10% 미끄러짐 제자리 잔류</p>
 
 <p>확률적 상태 전이는 다음과 같이 <strong>조건부 확률(Conditional Probability)</strong>로 나타냅니다.</p>
 
@@ -808,21 +793,14 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 <p><strong>그림 05-2-6</strong> MDP에서의 마르코프 성질: 현재 상태만으로 충분한 가벼운 의사결정 vs 무거운 과거 기록의 짐</p>
 
+<hr />
+
 <h4 id="왜-마르코프-성질이-강화학습의-축복일까요">왜 마르코프 성질이 강화학습의 축복일까요?</h4>
-<ul>
-  <li><strong>문제의 단순화 (Memoryless)</strong>: 에이전트는 거대한 과거 역사책을 짊어지고 다닐 필요 없이, 현재 손에 쥔 나침반(현재 상태 <i>S<sub>t</sub></i>)만 보고도 항상 최적의 결정을 내릴 수 있습니다.</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><strong>차원의 저주(Curse of Dimensionality) 극복</strong>: 과거 기록의 조합을 모두 상태로 고려하면 상태 공간이 시간 흐름에 따라 기하급수적으로 폭발하지만, 마르코프 가정을 통해 현재 상태 집합</td>
-          <td><i>S</i></td>
-          <td>만으로 문제를 유한하게 정의하고 효율적인 알고리즘(DP, Q-Learning 등)을 적용할 수 있게 됩니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-</ul>
+<p><strong>문제의 단순화 (Memoryless)</strong>:<br />
+에이전트는 거대한 과거 역사책을 짊어지고 다닐 필요 없이, 현재 손에 쥔 나침반(현재 상태 <i>S<sub>t</sub></i>)만 보고도 항상 최적의 결정을 내릴 수 있습니다.</p>
+
+<p><strong>차원의 저주(Curse of Dimensionality) 극복</strong>:<br />
+과거 기록의 조합을 모두 상태로 고려하면 상태 공간이 시간 흐름에 따라 기하급수적으로 폭발하지만, 마르코프 가정을 통해 현재 상태 집합 |<i>S</i>|만으로 문제를 유한하게 정의하고 효율적인 알고리즘(DP, Q-Learning 등)을 적용할 수 있게 됩니다.</p>
 
 <hr />
 
@@ -888,14 +866,7 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 <p><img src="./img/mdp_policy_deterministic_vs_stochastic.png" alt="에이전트 정책 유형 비교" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>그림 05-2-10</strong> 에이전트의 정책 유형 비교: 100% 확정형 결정적 정책 μ(<i>s</i>) vs 확률 분포를 갖는 확률적 정책 π(<i>a</i></td>
-      <td><i>s</i>)</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>그림 05-2-10</strong> 에이전트의 정책 유형 비교: 100% 확정형 결정적 정책 μ(<i>s</i>) vs 확률 분포를 갖는 확률적 정책 π(<i>a</i> | <i>s</i>)</p>
 
 <hr />
 
@@ -931,14 +902,7 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 <blockquote>
   <p>🐶 <strong>토토</strong>: “멍멍! 항상 똑같은 길만 가면 새로운 곳에 숨겨진 황금 보물을 못 찾을 수도 있잖아?”</p>
 
-  <table>
-    <tbody>
-      <tr>
-        <td>🧚 <strong>지니</strong>: “맞아 토토야! 그래서 학습 초기에는 왼쪽으로 갈 확률 40%(0.4), 오른쪽으로 갈 확률 60%(0.6)처럼 확률적으로 행동을 골라 세상을 골고루 탐험(Exploration)할 수 있는 **확률적 정책 π(<i>a</i></td>
-        <td><i>s</i>)**를 유용하게 활용한단다!”</td>
-      </tr>
-    </tbody>
-  </table>
+  <p>🧚 <strong>지니</strong>: “맞아 토토야! 그래서 학습 초기에는 왼쪽으로 갈 확률 40%(0.4), 오른쪽으로 갈 확률 60%(0.6)처럼 확률적으로 행동을 골라 세상을 골고루 탐험(Exploration)할 수 있는 <strong>확률적 정책 π(<i>a</i> | <i>s</i>)</strong>를 유용하게 활용한단다!”</p>
 </blockquote>
 
 <div style="background-color: #f8fafc; border-left: 4px solid #8b5cf6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #4c1d95; text-align: center; border-radius: 4px;">
@@ -949,29 +913,12 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
   <li><strong>π (파이, pi)</strong>: 정책(Policy)의 첫 글자 ‘P’에 대응되는 그리스 문자이자 확률론의 기본 기호입니다.</li>
   <li>특정 상태 <i>s</i>에서 취할 수 있는 모든 행동 <i>a</i>에 대한 정책 확률의 합은 반드시 1.0입니다:
 <br />Σ<sub><i>a</i> ∈ <i>A</i></sub> π(<i>a</i> | <i>s</i>) = 1.0</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>예: 상태 <i>s</i> = L3에서 π(Left</td>
-          <td>L3) = 0.4, π(Right</td>
-          <td>L3) = 0.6.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>예: 상태 <i>s</i> = L3에서 π(Left | L3) = 0.4, π(Right | L3) = 0.6.</li>
 </ul>
 
 <p><img src="./img/mdp_stochastic_policy_pi.png" alt="확률적 정책" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td><strong>그림 05-2-12</strong> 확률적 정책 π(<i>a</i></td>
-      <td><i>s</i>): 상태 <i>s</i>에서 각 행동 후보를 선택할 확률 분포 구조 (확률의 총합 = 1.0)</td>
-    </tr>
-  </tbody>
-</table>
+<p><strong>그림 05-2-12</strong> 확률적 정책 π(<i>a</i> | <i>s</i>): 상태 <i>s</i>에서 각 행동 후보를 선택할 확률 분포 구조 (확률의 총합 = 1.0)</p>
 
 <blockquote>
   <p>🧚 <strong>지니의 꿀팁</strong>: “강화학습 초기에는 에이전트가 새로운 보상을 찾기 위해 다양한 길을 탐험(Exploration)해야 하므로 <strong>확률적 정책(π)</strong>을 많이 쓰고, 학습이 완료되어 가장 완벽한 길을 찾았을 때는 흔들림 없이 최선의 선택만 내리는 <strong>결정적 정책(μ)</strong>을 주로 사용한단다!”</p>
@@ -986,28 +933,10 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 <p><strong>그림 05-2-13</strong> 05.2 환경과 에이전트의 수식 핵심 정리 인포그래픽</p>
 
 <ol>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>**상태 전이 확률 <i>p</i>(<i>s’</i></td>
-          <td><i>s</i>, <i>a</i>)**: 현재 상태 <i>s</i>에서 행동 <i>a</i>를 수행했을 때 다음 상태 <i>s’</i>로 도달할 확률 분포입니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>상태 전이 확률 <i>p</i>(<i>s’</i> | <i>s</i>, <i>a</i>)</strong>: 현재 상태 <i>s</i>에서 행동 <i>a</i>를 수행했을 때 다음 상태 <i>s’</i>로 도달할 확률 분포입니다.</li>
   <li><strong>마르코프 성질(Markov Property)</strong>: 과거의 기록에 의존하지 않고 오직 현재의 (<i>s</i>, <i>a</i>)만으로 미래의 상태 <i>s’</i>와 보상 <i>r</i>이 결정되는 성질입니다.</li>
   <li><strong>보상 함수 <i>r</i>(<i>s</i>, <i>a</i>, <i>s’</i>)</strong>: 행동과 전이의 결과로 환경이 에이전트에게 지급하는 평가 신호입니다.</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>**정책 π(<i>a</i></td>
-          <td><i>s</i>) / μ(<i>s</i>)**: 상태 <i>s</i>에서 에이전트가 어떤 행동을 선택할지 결정하는 의사결정 알고리즘입니다.</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><strong>정책 π(<i>a</i> | <i>s</i>) / μ(<i>s</i>)</strong>: 상태 <i>s</i>에서 에이전트가 어떤 행동을 선택할지 결정하는 의사결정 알고리즘입니다.</li>
 </ol>
 
 <p>다음 <strong>05.3절</strong>에서는 이 수식들을 바탕으로 에이전트가 달성해야 할 궁극적인 목적지인 <strong>‘MDP의 목표와 가치 함수(Value Function)’</strong>를 정복해 보겠습니다!</p>
