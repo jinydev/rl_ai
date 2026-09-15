@@ -1,0 +1,3 @@
+# Reinforcement Learning 실습 의존성 패키지
+numpy>=1.26.0
+matplotlib>=3.8.0

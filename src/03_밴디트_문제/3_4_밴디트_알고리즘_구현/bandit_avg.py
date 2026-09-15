@@ -1,8 +1,13 @@
+import os
 import platform
 import numpy as np
 import matplotlib.pyplot as plt
 from bandit1 import Bandit
 from agent import Agent
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMG_DIR = os.path.join(BASE_DIR, 'img')
+os.makedirs(IMG_DIR, exist_ok=True)
 
 """
 bandit_avg.py
@@ -81,9 +86,9 @@ if __name__ == "__main__":
     plt.plot(avg_rates, color='#4A90E2', linewidth=2, label=f'ε = {epsilon} (200회 평균)')
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.legend(fontsize=10)
-    plt.tight_layout()
-    plt.savefig('img/bandit_avg_200runs_result.png', dpi=150)
-    print("평균 승률 그래프가 'img/bandit_avg_200runs_result.png'에 저장되었습니다.")
+    save_path1 = os.path.join(IMG_DIR, 'bandit_avg_200runs_result.png')
+    plt.savefig(save_path1, dpi=150)
+    print(f"평균 승률 그래프가 '{save_path1}'에 저장되었습니다.")
     # plt.show() # 대화형 창으로 확인할 때 주석 해제
 
     # 2. 다양한 ε 값 비교 실험 (0.01 vs 0.1 vs 0.3) (교재 그림 3-22)
@@ -103,6 +108,7 @@ if __name__ == "__main__":
     plt.legend(fontsize=10)
     plt.grid(True, linestyle='--', alpha=0.5)
     plt.tight_layout()
-    plt.savefig('img/bandit_epsilons_comparison.png', dpi=150)
-    print("ε 비교 그래프가 'img/bandit_epsilons_comparison.png'에 저장되었습니다.")
-    # plt.show() # 대화형 창으로 확인할 때 주석 해제
+    save_path2 = os.path.join(IMG_DIR, 'bandit_epsilons_comparison.png')
+    plt.savefig(save_path2, dpi=150)
+    print(f"ε 비교 그래프가 '{save_path2}'에 저장되었습니다.")
+    plt.show()  # 화면에 인터랙티브 그래프 창 표시

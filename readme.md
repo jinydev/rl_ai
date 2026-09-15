@@ -21,90 +21,158 @@
 - **14 한 걸음 더:** DQN 및 Policy Gradient 계열의 고급 확장 알고리즘(DDPG, PPO 등) 및 학습 과제
 - **부록:** 오프-정책 몬테카를로법, n단계 TD법, Double DQN 및 정책 경사법 수학적 증명
 
-## 2. 개발 환경 설정 및 빌드 (Jekyll)
+## 2. 강의 노트 웹사이트 개발 환경 (Ruby & Jekyll)
 
-이 웹사이트는 **Ruby**와 **Jekyll**을 사용하여 정적 사이트로 빌드됩니다. 로컬 환경에서 문서를 작성하고 사이트를 띄워보려면 아래 과정을 진행하세요.
+이 웹사이트는 **Ruby**와 **Jekyll**을 사용하여 정적 웹 문서로 빌드됩니다. 로컬 환경에서 강의 노트를 실시간으로 확인하고 편집하려면 아래 절차를 진행하세요.
 
-### 2.1. 설치 단계
+> [!IMPORTANT]
+> 모든 터미널 명령어는 반드시 **`강화학습` 프로젝트 루트 폴더**(`c:\dev\sites\강화학습`)에서 실행해야 합니다.  
+> 상위 폴더에서 실행 시 `Could not locate Gemfile` 오류가 발생합니다.
 
-#### macOS
-macOS의 경우 시스템 기본 Ruby 권한 문제가 발생할 수 있으므로 Homebrew를 통해 최신 버전을 설치하는 것을 권장합니다.
+### 2.1. 필수 도구 설치
 
-```bash
-# 1. 최신 Ruby 설치 (macOS)
-brew install ruby
-
-# 2. Bundler와 Jekyll 설치
-gem install bundler jekyll
-
-# 3. 프로젝트 루트 디렉토리에서 패키지 의존성 설치
-bundle install
-```
-
-#### Windows
-Windows 환경에서는 **RubyInstaller with Devkit**을 설치하여 진행합니다.
-
-1. **Ruby 설치**:
-   - [RubyInstaller 공식 사이트](https://rubyinstaller.org/downloads/)에서 `Ruby+Devkit` (권장 버전: 3.3.x x64) 다운로드 후 설치
+#### Windows 환경
+1. **Ruby 및 Devkit 설치**:
+   - [RubyInstaller 공식 사이트](https://rubyinstaller.org/downloads/)에서 **`Ruby+Devkit 3.3.x (x64)`** 다운로드 및 설치
    - 또는 Windows 터미널(PowerShell)에서 `winget`으로 설치:
      ```powershell
      winget install RubyInstallerTeam.RubyWithDevKit.3.3
      ```
-2. **환경 변수(PATH) 확인**:
-   - Ruby 설치 경로(기본값: `C:\Ruby33-x64\bin`)가 시스템 환경 변수 `Path`에 등록되어 있는지 확인합니다.
-   - PowerShell 세션에서 임시 적용 시:
+2. **PowerShell 스크립트 실행 권한 설정**:
+   - 처음 실행 시 스크립트 보안 정책 에러가 발생할 수 있으므로 권한을 부여합니다:
      ```powershell
-     $env:Path = "C:\Ruby33-x64\bin;" + $env:Path
+     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
      ```
-3. **Bundler 및 Jekyll 설치 & 의존성 설정**:
+3. **의존성 Gem 설치**:
    ```powershell
-   # Bundler 및 Jekyll 설치
+   cd c:\dev\sites\강화학습
    gem install bundler jekyll
-
-   # 프로젝트 루트 디렉토리에서 패키지 의존성 설치
    bundle install
    ```
 
-### 2.2. 로컬 서버 실행 및 사이트 빌드
+#### macOS 환경
+```bash
+# 1. Homebrew로 최신 Ruby 설치
+brew install ruby
 
-마크다운 문서를 작성하면서 로컬에서 실시간으로 렌더링된 결과를 확인할 수 있습니다.
+# 2. 터미널 환경설정에 Ruby 경로 추가 (~/.zshrc)
+echo 'export PATH="/usr/local/opt/ruby/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# 3. 프로젝트 루트로 이동 후 의존성 설치
+cd 강화학습
+gem install bundler jekyll
+bundle install
+```
+
+---
+
+### 2.2. 로컬 서버 실행 및 빌드
 
 ```bash
-# 로컬 개발용 서버 실행 (접속 주소: http://127.0.0.1:4000)
-bundle exec jekyll serve
-
-# 핫 리로드(Live Reload) 서버 실행 (파일 저장 시 브라우저 자동 새로고침)
+# 핫 리로드(LiveReload) 서버 실행 (파일 수정 시 브라우저 자동 새로고침)
 bundle exec jekyll serve --livereload
 
-# 사이트 전체 빌드 (docs/ 폴더에 생성됨)
+# 사이트 정적 빌드 (결과물은 docs/ 폴더에 생성)
 bundle exec jekyll build
 ```
 
-- **Source**: `src/` (작업할 마크다운 파일 경로)
-- **Destination**: `docs/` (빌드 결과물 출력 경로)
+- **로컬 접속 주소**: [http://localhost:4000](http://localhost:4000) (또는 `http://127.0.0.1:4000`)
+- **소스 디렉토리**: `src/` (강의 노트 마크다운 및 리소스)
+- **출력 디렉토리**: `docs/` (GitHub Pages 배포 타깃)
 
-> **주의사항**: 빌드 대상은 `src` 폴더에 한정되며, 루트의 다른 폴더에 있는 파일은 빌드에 포함되지 않습니다. 
-> **Troubleshooting**:
-> - `bundle` 또는 `jekyll` 명령어를 찾을 수 없다는 오류 발생 시:
->   - **macOS**: 터미널 환경 설정(`.zshrc` 등)에 Ruby 경로 추가 (`export PATH="/usr/local/opt/ruby/bin:$PATH"`)
->   - **Windows**: 환경 변수 `Path`에 `C:\Ruby33-x64\bin` 추가 여부 확인
-> - Windows PowerShell에서 스크립트 실행 권한 에러 발생 시:
->   - PowerShell(관리자 또는 현재 사용자)에서 실행 권한 부여: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+---
 
-### 2.3. 배포 (Deployment)
+### 2.3. 웹사이트 배포 (GitHub Pages)
 
-웹사이트는 GitHub Pages를 통해 배포됩니다. 배포 환경 구성 방법은 다음과 같습니다.
+1. 수정한 내용을 커밋 후 `main` 브랜치에 푸시합니다:
+   ```bash
+   git add .
+   git commit -m "docs: 강의 내용 업데이트"
+   git push origin main
+   ```
+2. GitHub 저장소 **Settings ➔ Pages** 설정:
+   - **Source**: `Deploy from a branch`
+   - **Branch**: `main` 브랜치의 `/docs` 디렉토리 선택
+3. 사용자 지정 도메인: `rl.ai.jiny.dev` (CNAME 자동 연동)
 
-1. 수정한 내용을 `git push`로 저장소에 업로드합니다.
-2. 저장소의 **Settings -> Pages** 메뉴로 이동합니다.
-3. **Build and deployment** 항목 설정:
-    - **Source**: Deploy from a branch
-    - **Branch**: `main` (또는 `master`) 브랜치의 `/docs` 폴더 지정
-4. **Custom Domain**: `rl.ai.jiny.dev`
+---
 
-설정이 완료되면 `docs` 폴더 내의 변경 사항이 자동으로 실제 사이트에 반영됩니다.
+## 3. 강화학습 실습 코드 실행 환경 (Python)
 
-## 3. 기여 가이드 (Contributing)
+강의 노트에 포함된 다양한 강화학습 알고리즘 구현 코드(`src/**/*.py`)를 직접 실행하고 실습하기 위한 환경 설정입니다.
+
+### 3.1. 권장 사양 및 필수 패키지
+- **Python 버전**: Python 3.10 ~ 3.12 권장
+- **필수 라이브러리**:
+  - `numpy` (수치 연산, 행렬 계산 및 통계 처리)
+  - `matplotlib` (강화학습 학습 곡선, 승률 그래프 시각화)
+
+### 3.2. 패키지 설치
+
+프로젝트 루트 폴더에서 다음 명령어로 필수 라이브러리를 한 번에 설치합니다:
+
+```bash
+# requirements.txt 기반 일괄 설치
+pip install -r requirements.txt
+
+# 또는 개별 설치
+pip install numpy matplotlib
+```
+
+> [!TIP]
+> **가상환경(venv) 사용을 권장하는 경우:**
+> ```bash
+> # 1. 가상환경 생성 (.venv)
+> python -m venv .venv
+>
+> # 2. 가상환경 활성화
+> # Windows PowerShell:
+> .\.venv\Scripts\Activate.ps1
+> # macOS / Linux:
+> source .venv/bin/activate
+>
+> # 3. 패키지 설치
+> pip install -r requirements.txt
+> ```
+
+---
+
+### 3.3. 실습 예제 실행 방법
+
+모든 파이썬 실습 스크립트는 프로젝트 루트나 임의의 경로에서 실행해도 내부적으로 경로를 자동 감지하도록 구성되어 있습니다.
+
+```bash
+# 예제 1: 슬롯머신 1,000단계 상호작용 및 누적 보상 시각화
+python src/03_밴디트_문제/3_4_밴디트_알고리즘_구현/bandit_play.py
+
+# 예제 2: 200회 반복 시뮬레이션을 통한 ε-탐욕 알고리즘 평균 학습 곡선 검증
+python src/03_밴디트_문제/3_4_밴디트_알고리즘_구현/bandit_avg.py
+
+# 예제 3: 비정상(Non-stationary) 밴디트 문제 비교 (표본 평균 vs 고정값 α 갱신)
+python src/03_밴디트_문제/3_5_비정상_문제/non_stationary.py
+```
+
+> [!NOTE]
+> **그래프 출력 및 저장 안내:**
+> - 스크립트를 실행하면 화면에 대화형 인터랙티브 차트 창(`plt.show()`)이 팝업됩니다.
+> - 차트 창을 닫으면 해당 실습 폴더 내의 `img/` 디렉토리에 고해상도 이미지 파일(`.png`)로도 자동 보존됩니다.
+
+---
+
+## 4. 자주 발생하는 문제 해결 (Troubleshooting FAQ)
+
+| 증상 | 원인 | 해결 방법 |
+| :--- | :--- | :--- |
+| `Could not locate Gemfile` | 터미널 작업 위치가 상위 폴더인 경우 | `cd c:\dev\sites\강화학습` 명령어로 프로젝트 폴더로 이동 후 재실행 |
+| `FileNotFoundError: ... 'img/...'` | 상대 경로 탐색 문제 | 최신 버전 코드에서는 `os.path` 절대 경로 처리가 적용되어 있으므로 저장소 최신 상태 유지 |
+| 그래프 창이 화면에 뜨지 않음 | `plt.show()` 주석 처리 상태 | 스크립트 하단의 `plt.show()` 주석이 해제되어 있는지 확인 |
+| PowerShell 스크립트 실행 불가 (`PSSecurityException`) | Windows 실행 정책 제한 | `Set-ExecutionPolicy RemoteSigned -Scope CurrentUser` 실행 후 터미널 재시작 |
+| `Faraday v2.0+` 경고 메시지 출력 | Faraday 미들웨어 알림 (무시 가능) | 사이트 빌드 및 실행에는 영향이 없으며, 필요 시 `gem install faraday-retry` 실행 |
+
+---
+
+## 5. 기여 가이드 (Contributing)
 
 본 프로젝트는 누구나 자유롭게 참여하고 개선할 수 있는 오픈소스 강의 자료를 지향합니다. 오타 수정, 내용 보강, 더 좋은 예제 추가 등 어떠한 형태의 기여도 환영합니다.
 
@@ -114,7 +182,7 @@ bundle exec jekyll build
 4. 작업한 브랜치를 원격 저장소에 푸시합니다. (`git push origin feature/new-content`)
 5. 원본 저장소에 **Pull Request(PR)**를 생성하여 변경 사항 리뷰를 요청합니다.
 
-## 4. 라이선스 (License)
+## 6. 라이선스 (License)
 
 이 프로젝트에 포함된 문서 및 소스 코드는 **MIT 라이선스 (MIT License)** 하에 배포됩니다.
 누구나 상업적 또는 비상업적 목적으로 자유롭게 활용, 복제, 수정, 배포할 수 있습니다.

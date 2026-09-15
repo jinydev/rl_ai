@@ -1,4 +1,4 @@
-images/
+/images
 
 _site/
 .sass-cache/
@@ -7,3 +7,5 @@ _site/
 vendor/
 .bundle/
 .DS_Store
+__pycache__/
+*.pyc

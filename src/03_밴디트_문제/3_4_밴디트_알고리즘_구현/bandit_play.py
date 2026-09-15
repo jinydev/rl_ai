@@ -1,8 +1,13 @@
+import os
 import platform
 import matplotlib.pyplot as plt
 import numpy as np
 from bandit1 import Bandit
 from agent import Agent
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+IMG_DIR = os.path.join(BASE_DIR, 'img')
+os.makedirs(IMG_DIR, exist_ok=True)
 
 """
 bandit_play.py
@@ -83,6 +88,7 @@ if __name__ == "__main__":
     plt.grid(True, linestyle='--', alpha=0.5)
 
     plt.tight_layout()
-    plt.savefig('img/bandit_simulation_result.png', dpi=150)
-    print("시뮬레이션 결과 그래프가 'img/bandit_simulation_result.png'에 저장되었습니다.")
-    # plt.show() # 대화형 창으로 확인할 때 주석 해제
+    save_path = os.path.join(IMG_DIR, 'bandit_simulation_result.png')
+    plt.savefig(save_path, dpi=150)
+    print(f"시뮬레이션 결과 그래프가 '{save_path}'에 저장되었습니다.")
+    plt.show()  # 화면에 인터랙티브 그래프 창 표시
