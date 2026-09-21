@@ -696,6 +696,10 @@
 
 <p>하지만 강화학습의 세계는 단순히 흘러가는 세상을 구경만 하는 곳이 아닙니다.</p>
 
+<p>마르코프 결정 과정<sup>Markov Decision Process, MDP</sup>에서 <strong>‘결정 과정(Decision Process)’</strong>이란 <strong>‘에이전트가 환경과 끊임없이 상호작용하며 자신의 목표를 이루기 위해 최선의 행동을 능동적으로 결정하는 연속적인 과정’</strong>을 뜻합니다.</p>
+
+<hr />
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니야! 지난 4장에서 배운 날씨 마르코프 체인은 비가 올지 맑을지 확률적으로 지켜보기만 했잖아? 그런데 강화학습에서는 내가 직접 우산을 챙기거나 길을 골라 걸어갈 수 있는 거야?”</p>
 
@@ -706,13 +710,30 @@
 
 <p><strong>그림 05-1-2</strong> 마르코프 과정(MP) vs 마르코프 결정 과정(MDP)의 핵심 차이: 수동적 관찰(날씨 구경) vs 능동적 의사결정(우산 챙기기 &amp; 길 선택)</p>
 
-<p>마르코프 결정 과정<sup>Markov Decision Process, MDP</sup>에서 <strong>‘결정 과정(Decision Process)’</strong>이란 <strong>‘에이전트가 환경과 끊임없이 상호작용하며 자신의 목표를 이루기 위해 최선의 행동을 능동적으로 결정하는 연속적인 과정’</strong>을 뜻합니다.</p>
-
 <hr />
 
 <h3 id="0512-그리드-월드로-이해하는-상태-행동-보상">05.1.2 그리드 월드로 이해하는 상태, 행동, 보상</h3>
 
 <p>에이전트가 자신의 <strong>행동</strong>에 따라 <strong>환경</strong>의 상태를 실시간으로 바꾸어 나가는 원리를 이해하기 위해 가장 직관적인 <strong>그리드 월드(Grid World)</strong> 예시로 시작해 봅시다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! ‘행동에 따라 환경의 상태를 실시간으로 바꾼다’는 말이 정말 흥미진진해! 세상을 가만히 관찰하기만 하는 것과 내가 행동하는 것은 구체적으로 어떻게 달라?”</p>
+
+  <p>🧚 <strong>지니</strong>: “비디오 게임을 떠올려 보면 아주 쉬워, 도로시!</p>
+  <ol>
+    <li><strong>1단계: 상태 관찰 (대기 상태, <i>S<sub>t</sub></i>)</strong>: 네가 게임패드의 조이스틱을 가만히 두고 있으면 화면 속 캐릭터도 멈춰 있고 세상의 상태도 그대로 멈춰 있지.</li>
+    <li><strong>2단계: 실시간 행동 실행 (<i>A<sub>t</sub></i>)</strong>: 하지만 네가 ‘오른쪽으로 한 걸음 이동!’ 하고 조이스틱을 꺾는 순간(행동 <i>A<sub>t</sub></i>),</li>
+    <li><strong>3단계: 실시간 상태 전이 &amp; 피드백 (<i>S<sub>t+1</sub></i>, <i>R<sub>t</sub></i>)</strong>: 그 즉시 환경 속 캐릭터의 위치 좌표가 다음 칸(<i>S<sub>t+1</sub></i>)으로 바뀌고, 그 자리에 있던 달콤한 사과(+1 보상)를 얻거나 새로운 장애물을 마주하게 된단다!</li>
+  </ol>
+
+  <p>즉, <strong>‘에이전트가 내리는 행동(<i>A<sub>t</sub></i>)이 원인이 되어 환경의 다음 상태(<i>S<sub>t+1</sub></i>)를 실시간으로 직접 바꾸고, 그렇게 바뀐 새로운 상태가 다시 나의 다음 행동을 이끄는 실시간 쌍방향 인과 관계’</strong>가 바로 강화학습의 본질이란다!”</p>
+</blockquote>
+
+<p><img src="./img/mdp_realtime_action_state_change.png" alt="행동에 따른 환경 상태의 실시간 변화" /></p>
+
+<p><strong>그림 05-1-3</strong> 행동(Action)에 따른 환경 상태의 실시간 변화 메커니즘: 상태 관찰(<i>S<sub>t</sub></i>) → 실시간 행동 실행(<i>A<sub>t</sub></i>) → 상태 전이(<i>S<sub>t+1</sub></i>) 및 즉각적 보상 피드백</p>
+
+<hr />
 
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니야! 복잡한 인공지능 강화학습 세상을 우리가 쉽게 이해할 수 있는 놀이터 같은 곳은 없을까?”</p>
@@ -722,7 +743,7 @@
 
 <p><img src="./img/mdp_gridworld_concept_intro.png" alt="그리드 월드 개념 인트로" /></p>
 
-<p><strong>그림 05-1-3</strong> 그리드 월드(Grid World)의 탐험 시작: 상태(격자 위치), 행동(이동 방향), 보상(사과와 보물)으로 구성된 강화학습의 기초 실험 환경</p>
+<p><strong>그림 05-1-4</strong> 그리드 월드(Grid World)의 탐험 시작: 상태(격자 위치), 행동(이동 방향), 보상(사과와 보물)으로 구성된 강화학습의 기초 실험 환경</p>
 
 <hr />
 
@@ -740,7 +761,7 @@
 
 <p><img src="./img/mdp_gridworld_state_transitions.png" alt="그리드 월드 상태 전이와 보상" /></p>
 
-<p><strong>그림 05-1-4</strong> 그리드 월드에서의 상태 정의와 보상 요소</p>
+<p><strong>그림 05-1-5</strong> 그리드 월드에서의 상태 정의와 보상 요소</p>
 
 <hr />
 
@@ -754,7 +775,7 @@
 
 <p><img src="./img/mdp_timestep_transitions.png" alt="타임 스텝과 상태 전이 과정" /></p>
 
-<p><strong>그림 05-1-5</strong> 타임 스텝 <i>t</i>의 흐름에 따른 상태 전이와 보상 획득 과정 (왼쪽 이동 경로 vs 오른쪽 이동 경로)</p>
+<p><strong>그림 05-1-6</strong> 타임 스텝 <i>t</i>의 흐름에 따른 상태 전이와 보상 획득 과정 (왼쪽 이동 경로 vs 오른쪽 이동 경로)</p>
 
 <p>예를 들어 가운데 칸에서 시작하여 왼쪽으로 두 번 이동하면 사과를 먹고 <strong>+1</strong>의 보상을 얻습니다. 반대로 오른쪽으로 두 번 이동하면 폭탄을 밟아 <strong>-2</strong>의 손실을 입습니다.</p>
 
@@ -780,7 +801,7 @@
 
 <p><img src="./img/mdp_reward_dilemma_world.png" alt="단기 보상 vs 장기 누적 보상의 딜레마" /></p>
 
-<p><strong>그림 05-1-6</strong> 단기 보상 vs 장기 누적 보상의 딜레마: 눈앞의 작은 사과(+1) 대신 함정(-2) 너머의 황금 사과 바구니(+6)를 얻어 총합(+4)을 극대화하는 최선의 선택</p>
+<p><strong>그림 05-1-7</strong> 단기 보상 vs 장기 누적 보상의 딜레마: 눈앞의 작은 사과(+1) 대신 함정(-2) 너머의 황금 사과 바구니(+6)를 얻어 총합(+4)을 극대화하는 최선의 선택</p>
 
 <hr />
 
@@ -796,7 +817,7 @@
 
 <p><img src="./img/mdp_agent_env_closed_loop_concept.png" alt="에이전트와 환경의 동적 폐루프 시스템" /></p>
 
-<p><strong>그림 05-1-7</strong> 에이전트와 환경의 상호작용 비교: 외부 환경의 피드백이 없는 개방 루프(Open-Loop) vs 상태와 보상을 실시간으로 주고받는 동적 폐루프(Closed-Loop)</p>
+<p><strong>그림 05-1-8</strong> 에이전트와 환경의 상호작용 비교: 외부 환경의 피드백이 없는 개방 루프(Open-Loop) vs 상태와 보상을 실시간으로 주고받는 동적 폐루프(Closed-Loop)</p>
 
 <hr />
 
@@ -812,7 +833,7 @@
 
 <p><img src="./img/mdp_agent_env_cycle_loop.png" alt="에이전트 환경 상호작용 루프" /></p>
 
-<p><strong>그림 05-1-8</strong> MDP 에이전트와 환경의 3단계 상호작용 폐루프 (Observation → Action → Reward &amp; Next State)</p>
+<p><strong>그림 05-1-9</strong> MDP 에이전트와 환경의 3단계 상호작용 폐루프 (Observation → Action → Reward &amp; Next State)</p>
 
 <hr />
 
@@ -833,7 +854,7 @@
 
 <p><img src="./img/mdp_interaction_trajectory.png" alt="상호작용 시계열 궤적" /></p>
 
-<p><strong>그림 05-1-9</strong> 시간의 흐름(<i>t</i> = 0, 1, 2, …, <i>T</i>)에 따른 상호작용 시계열 데이터와 상태-행동-보상 궤적(Trajectory)</p>
+<p><strong>그림 05-1-10</strong> 시간의 흐름(<i>t</i> = 0, 1, 2, …, <i>T</i>)에 따른 상호작용 시계열 데이터와 상태-행동-보상 궤적(Trajectory)</p>
 
 <hr />
 
@@ -843,7 +864,7 @@
 
 <p><img src="./img/mdp_reward_timing_system.png" alt="보상 획득 시점 비교" /></p>
 
-<p><strong>그림 05-1-10</strong> 보상 표기법 비교: 행동 시점 기준(<i>R<sub>t</sub></i>) vs 도착 상태 시점 기준(<i>R<sub>t+1</sub></i>)</p>
+<p><strong>그림 05-1-11</strong> 보상 표기법 비교: 행동 시점 기준(<i>R<sub>t</sub></i>) vs 도착 상태 시점 기준(<i>R<sub>t+1</sub></i>)</p>
 
 <table>
   <thead>
@@ -887,7 +908,7 @@
 
 <p><img src="./img/mdp_5_1_summary.png" alt="MDP 5.1 핵심 요약" /></p>
 
-<p><strong>그림 05-1-11</strong> 05.1 마르코프 결정 과정(MDP) 핵심 개념 요약 인포그래픽</p>
+<p><strong>그림 05-1-12</strong> 05.1 마르코프 결정 과정(MDP) 핵심 개념 요약 인포그래픽</p>
 
 <ol>
   <li><strong>마르코프 결정 과정(MDP)</strong>: 마르코프 성질에 에이전트의 주체적인 <strong>행동(Action)</strong>과 목표 달성을 위한 <strong>보상(Reward)</strong>이 결합된 의사결정 모델입니다.</li>

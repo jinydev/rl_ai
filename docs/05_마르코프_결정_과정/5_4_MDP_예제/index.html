@@ -684,19 +684,39 @@
 
 <p>상태 가치 함수의 수식 연산을 손으로 직접 유도해보고, 존재하는 4가지 결정적 정책의 가치를 고교 수학의 <strong>무한등비급수 합 공식</strong>으로 계산하여 최적 정책을 찾는 짜릿한 과정을 지니, 도로시와 함께 경험해 봅시다!</p>
 
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 지난 시간에 배운 마르코프 결정 과정(MDP) 수식들이 실제 격자 세상에서는 어떻게 계산되는 거야? 숫자로 직접 확인해보고 싶어!”</p>
+
+  <p>🧚 <strong>지니</strong>: “좋은 질문이야 도로시! 타일이 딱 2개뿐인 초미니 ‘2칸 그리드 월드’에서 우리가 직접 손으로 상태 가치를 유도하고 최적 정책을 찾아보자!”</p>
+
+  <p>🐶 <strong>토토</strong>: “멍멍! 타일 위에 맛있는 빨간 사과가 놓여 있어!”</p>
+</blockquote>
+
 <p><img src="./img/jiny_mdp_ch5_4_gridworld.png" alt="MDP 예제 인트로" /></p>
 
 <p><strong>그림 05-4-1</strong> 두 칸짜리 격자 타일(L1, L2) 위를 점프하며 타일의 가치를 수치로 풀어보는 도로시와 토토, 그리고 지니</p>
 
+<p><br /></p>
+
 <hr />
+
+<p><br /></p>
 
 <h3 id="0541-두-칸짜리-그리드-월드-문제-정의">05.4.1 두 칸짜리 그리드 월드 문제 정의</h3>
 
 <p>오즈의 숲속에 두 개의 마법 타일로 이루어진 작은 징검다리 세상이 있습니다.</p>
 
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 이 세상의 타일 규칙은 어떻게 되어 있어? 좌우로 움직일 때마다 어떤 일이 일어나는지 알려줘!”</p>
+
+  <p>🧚 <strong>지니</strong>: “L1에서 오른쪽으로 가면 사과(+1)를 얻고, L2에서 왼쪽으로 오면 사과가 다시 자라난단다! 하지만 양 끝 벽에 부딪히면 -1점의 벌점을 받게 돼!”</p>
+</blockquote>
+
 <p><img src="./img/mdp_2grid_problem_definition.png" alt="2칸 그리드 월드 환경 정의" /></p>
 
 <p><strong>그림 05-4-2</strong> 2칸 그리드 월드 문제의 환경 규칙: 상태, 행동, 보상 및 사과 재생성 규칙</p>
+
+<hr />
 
 <h4 id="환경의-구체적인-규칙">환경의 구체적인 규칙</h4>
 <ol>
@@ -713,11 +733,21 @@
   <li><strong>과제 성격</strong>: 끝이 없이 무한히 계속되는 <strong>지속적 과제(Continuous Task)</strong>이며, 할인율은 <i>γ</i> = 0.9로 설정합니다.</li>
 </ol>
 
+<p><br /></p>
+
 <hr />
+
+<p><br /></p>
 
 <h3 id="0542-백업-다이어그램-backup-diagram">05.4.2 백업 다이어그램 (Backup Diagram)</h3>
 
 <p>문제를 풀기 위해 상태, 행동, 보상의 시간적 흐름을 나무 구조로 시각화한 <strong>백업 다이어그램(Backup Diagram)</strong>을 그려봅시다.</p>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 상태와 행동, 보상이 시간에 따라 어떻게 이어지는지 한눈에 <strong>나무 그림</strong>으로 정리해볼 수 있을까?”</p>
+
+  <p>🧚 <strong>지니</strong>: “물론이지! 그걸 바로 <strong>백업 다이어그램(Backup Diagram)</strong>이라고 부른단다. 이번 문제는 100% 확실한 결정적 세상이라 가지가 갈라지지 않고 하나의 단일 경로로 쭉 뻗어나가지!”</p>
+</blockquote>
 
 <p><img src="./img/mdp_backup_diagram_tree.png" alt="백업 다이어그램 구조" /></p>
 
@@ -730,15 +760,27 @@
 
 <p>이번 예제에서는 상태 전이와 정책이 모두 결정적이므로 계산이 매우 직관적이고 깔끔한 단일 경로 다이어그램을 다룹니다.</p>
 
+<p><br /></p>
+
 <hr />
+
+<p><br /></p>
 
 <h3 id="0543-4가지-결정적-정책의-가치-계산">05.4.3 4가지 결정적 정책의 가치 계산</h3>
 
 <p>이 문제에서 상태는 2개(L1, L2), 각 상태에서 취할 수 있는 행동도 2개(Left, Right)입니다. 따라서 존재할 수 있는 모든 결정적 정책 μ(<i>s</i>)의 개수는 총 2<sup>2</sup> = <strong>4가지</strong>뿐입니다!</p>
 
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “상태가 2개(L1, L2)이고 행동도 2개(Left, Right)면, 우리가 만들 수 있는 정책은 전부 몇 개나 돼?”</p>
+
+  <p>🧚 <strong>지니</strong>: “2 × 2 = 4가지뿐이란다! μ<sub>1</sub>부터 μ<sub>4</sub>까지 4가지 정책의 점수를 전부 구해서 비교하면 진짜 1등 최적 정책을 바로 밝혀낼 수 있어!”</p>
+</blockquote>
+
 <p><img src="./img/mdp_4_policies_calculation.png" alt="4가지 결정적 정책 계산" /></p>
 
 <p><strong>그림 05-4-4</strong> 4가지 결정적 정책의 가치 계산표 및 무한등비급수 합 공식을 통한 엄밀한 해석적 해</p>
+
+<hr />
 
 <table>
   <thead>
@@ -777,7 +819,11 @@
   </tbody>
 </table>
 
+<p><br /></p>
+
 <hr />
+
+<p><br /></p>
 
 <h4 id="05431-무한등비급수-합-공식-복습">05.4.3.1 무한등비급수 합 공식 복습</h4>
 
@@ -789,15 +835,17 @@
   <p>🧚 <strong>지니</strong>: “고등학교 수학 시간에 배운 <strong>무한등비급수 합 공식(Σ <i>r<sup>k</sup></i> = 1 / (1 - <i>r</i>))</strong>을 사용하면 된단다! 공비의 절댓값이 1보다 작으면 무한히 긴 덧셈도 깔끔한 하나의 상수로 완벽하게 수렴하거든!”</p>
 </blockquote>
 
-<div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 12px 18px; margin: 16px 0; font-family: monospace; font-size: 1.1rem; color: #1e293b; text-align: center; border-radius: 4px;">
-&Sigma;<sub><i>k</i>=0</sub><sup>&infin;</sup> <i>r</i><sup><i>k</i></sup> = 1 + <i>r</i> + <i>r</i><sup>2</sup> + <i>r</i><sup>3</sup> + ... = 1 / (1 - <i>r</i>) &emsp; (|<i>r</i>| &lt; 1)
-</div>
-
 <p><img src="./img/mdp_geometric_series_formula.png" alt="무한등비급수 합 공식 복습" /></p>
 
 <p><strong>그림 05-4-5</strong> 무한등비급수 합 공식과 가치 계산: 공비 <i>r</i> = γ(0.9) 및 <i>r</i> = γ<sup>2</sup>(0.81) 대입 수렴 연산</p>
 
+\[\sum_{k=0}^{\infty} r^k = 1 + r + r^2 + r^3 + \dots = \frac{1}{1 - r} \quad (|r| &lt; 1)\]
+
+<p><br /></p>
+
 <hr />
+
+<p><br /></p>
 
 <h4 id="05432-정책-μ1-right-right-가치-계산">05.4.3.2 정책 μ<sub>1</sub> (Right, Right) 가치 계산</h4>
 
@@ -807,29 +855,39 @@
   <p>🧚 <strong>지니</strong>: “맞아 도로시야! 벽에 부딪히는 페널티 행동을 무한히 반복하면, 비록 미래 보상이 할인되더라도 누적 점수가 -8점, -10점이라는 깊은 음수의 늪에 빠지게 된단다!”</p>
 </blockquote>
 
-<ul>
-  <li><strong>상태 L1에서 출발</strong>:
-첫 스텝에서 Right를 하여 L2로 가면서 사과(+1)를 얻고, 이후 L2에서 계속 Right를 하여 매번 벽에 충돌(-1)합니다.
-    <div style="background-color: #f8fafc; padding: 12px 18px; margin: 10px 0; font-family: monospace; color: #1e293b; text-align: center;">
-<i>v</i><sub>&mu;<sub>1</sub></sub>(L1) = (+1) + 0.9 &middot; (-1) + 0.9<sup>2</sup> &middot; (-1) + 0.9<sup>3</sup> &middot; (-1) + ...<br />
-= 1 - 0.9 &middot; (1 + 0.9 + 0.9<sup>2</sup> + ...)<br />
-= 1 - 0.9 / (1 - 0.9) = 1 - 9 = <b>-8.0</b>
-</div>
-  </li>
-  <li><strong>상태 L2에서 출발</strong>:
-처음부터 계속 오른쪽 벽에 부딪히므로 매 스텝 -1의 페널티를 받습니다.
-    <div style="background-color: #f8fafc; padding: 12px 18px; margin: 10px 0; font-family: monospace; color: #1e293b; text-align: center;">
-<i>v</i><sub>&mu;<sub>1</sub></sub>(L2) = (-1) + 0.9 &middot; (-1) + 0.9<sup>2</sup> &middot; (-1) + ...<br />
-= -1 / (1 - 0.9) = <b>-10.0</b>
-</div>
-  </li>
-</ul>
-
 <p><img src="./img/mdp_policy_mu1_calc.png" alt="정책 mu_1 가치 계산" /></p>
 
 <p><strong>그림 05-4-6</strong> 정책 μ<sub>1</sub>(Right, Right)의 가치 계산: 사과 획득(+1) 후 오른쪽 벽 연속 충돌(-1)로 인한 음수 가치 수렴(<i>v</i>(L1) = -8.0, <i>v</i>(L2) = -10.0)</p>
 
 <hr />
+
+<h4 id="상태별로-계산해-보기">상태별로 계산해 보기</h4>
+
+<ul>
+  <li>
+    <p><strong>상태 L1에서 출발</strong>:
+첫 스텝에서 Right를 하여 L2로 가면서 사과(+1)를 얻고, 이후 L2에서 계속 Right를 하여 매번 벽에 충돌(-1)합니다.
+\(\begin{aligned}
+v_{\mu_1}(\text{L1}) &amp;= (+1) + 0.9 \cdot (-1) + 0.9^2 \cdot (-1) + 0.9^3 \cdot (-1) + \dots \\
+&amp;= 1 - 0.9 \cdot (1 + 0.9 + 0.9^2 + \dots) \\
+&amp;= 1 - \frac{0.9}{1 - 0.9} = 1 - 9 = \mathbf{-8.0}
+\end{aligned}\)</p>
+  </li>
+  <li>
+    <p><strong>상태 L2에서 출발</strong>:
+처음부터 계속 오른쪽 벽에 부딪히므로 매 스텝 -1의 페널티를 받습니다.
+\(\begin{aligned}
+v_{\mu_1}(\text{L2}) &amp;= (-1) + 0.9 \cdot (-1) + 0.9^2 \cdot (-1) + \dots \\
+&amp;= \frac{-1}{1 - 0.9} = \mathbf{-10.0}
+\end{aligned}\)</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
 
 <h4 id="05433-정책-μ3-right-left-핑퐁-왕복-정책-가치-계산">05.4.3.3 정책 μ<sub>3</sub> (Right, Left) [핑퐁 왕복 정책] 가치 계산</h4>
 
@@ -839,39 +897,45 @@
   <p>🧚 <strong>지니</strong>: “정답이야 도로시! 그 기가 막힌 핑퐁 정책이 바로 μ<sub>3</sub>야! 직접 수식으로 가치를 계산해볼까?”</p>
 </blockquote>
 
-<ul>
-  <li><strong>상태 L1에서 출발</strong>:
-L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 → …
-<br />보상 수열은 <strong>+1, 0, +1, 0, +1, 0, …</strong> 이 짝수 스텝마다 반복됩니다!
-    <div style="background-color: #f8fafc; border-left: 4px solid #10b981; padding: 12px 18px; margin: 10px 0; font-family: monospace; color: #065f46; text-align: center;">
-<i>v</i><sub>&mu;<sub>3</sub></sub>(L1) = 1 + 0.9 &middot; (0) + 0.9<sup>2</sup> &middot; (1) + 0.9<sup>3</sup> &middot; (0) + 0.9<sup>4</sup> &middot; (1) + ...<br />
-= 1 + (0.9<sup>2</sup>) + (0.9<sup>2</sup>)<sup>2</sup> + (0.9<sup>2</sup>)<sup>3</sup> + ...<br />
-= 1 + 0.81 + 0.81<sup>2</sup> + 0.81<sup>3</sup> + ...<br />
-= 1 / (1 - 0.81) = 1 / 0.19 &approx; <b>+5.263</b>
-</div>
-  </li>
-  <li><strong>상태 L2에서 출발</strong>:
-L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ L1 → …
-<br />보상 수열은 <strong>0, +1, 0, +1, 0, +1, …</strong> 입니다.
-    <div style="background-color: #f8fafc; border-left: 4px solid #10b981; padding: 12px 18px; margin: 10px 0; font-family: monospace; color: #065f46; text-align: center;">
-<i>v</i><sub>&mu;<sub>3</sub></sub>(L2) = 0 + 0.9 &middot; (1) + 0.9<sup>2</sup> &middot; (0) + 0.9<sup>3</sup> &middot; (1) + ...<br />
-= 0.9 &middot; [1 + 0.81 + 0.81<sup>2</sup> + ...]<br />
-= 0.9 / (1 - 0.81) = 0.9 / 0.19 &approx; <b>+4.737</b>
-</div>
-  </li>
-</ul>
-
 <p><img src="./img/mdp_policy_mu3_calc.png" alt="정책 mu_3 가치 계산" /></p>
 
 <p><strong>그림 05-4-7</strong> 정책 μ<sub>3</sub>(Right, Left) 핑퐁 왕복 정책 가치 계산: 벽 충돌 없는 무한 사과 수확 및 양수 가치 극대화(<i>v</i>(L1) = +5.263, <i>v</i>(L2) = +4.737)</p>
 
 <hr />
 
+<h4 id="상태별로-계산해-보기-1">상태별로 계산해 보기</h4>
+
+<ul>
+  <li>
+    <p><strong>상태 L1에서 출발</strong>:
+L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 → …
+<br />보상 수열은 <strong>+1, 0, +1, 0, +1, 0, …</strong> 이 짝수 스텝마다 반복됩니다!
+\(\begin{aligned}
+v_{\mu_3}(\text{L1}) &amp;= 1 + 0.9 \cdot (0) + 0.9^2 \cdot (1) + 0.9^3 \cdot (0) + 0.9^4 \cdot (1) + \dots \\
+&amp;= 1 + (0.9^2) + (0.9^2)^2 + (0.9^2)^3 + \dots \\
+&amp;= 1 + 0.81 + 0.81^2 + 0.81^3 + \dots \\
+&amp;= \frac{1}{1 - 0.81} = \frac{1}{0.19} \approx \mathbf{+5.263}
+\end{aligned}\)</p>
+  </li>
+  <li>
+    <p><strong>상태 L2에서 출발</strong>:
+L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ L1 → …
+<br />보상 수열은 <strong>0, +1, 0, +1, 0, +1, …</strong> 입니다.
+\(\begin{aligned}
+v_{\mu_3}(\text{L2}) &amp;= 0 + 0.9 \cdot (1) + 0.9^2 \cdot (0) + 0.9^3 \cdot (1) + \dots \\
+&amp;= 0.9 \cdot [1 + 0.81 + 0.81^2 + \dots] \\
+&amp;= \frac{0.9}{1 - 0.81} = \frac{0.9}{0.19} \approx \mathbf{+4.737}
+\end{aligned}\)</p>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
 <h3 id="0544-최적-정책-판정-및-학습-성과">05.4.4 최적 정책 판정 및 학습 성과</h3>
-
-<p><img src="./img/mdp_optimal_policy_result.png" alt="최적 정책 동작 원리" /></p>
-
-<p><strong>그림 05-4-8</strong> 최적 정책 μ<sub>&amp;ast;</sub>의 완벽한 핑퐁 루프 동작: 벽 충돌 없이 무한한 사과 수확</p>
 
 <p>4가지 모든 정책의 상태 가치를 나란히 비교해 봅시다:</p>
 
@@ -882,29 +946,41 @@ L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ 
   <li><strong>μ<sub>4</sub> (Left, Right)</strong>: <i>v</i>(L1) = -10.0,   <i>v</i>(L2) = -10.0</li>
 </ol>
 
+<hr />
+
 <blockquote>
   <p>🐶 <strong>토토</strong>: “멍멍! μ<sub>3</sub> 정책은 L1에서도 +5.26으로 제일 크고, L2에서도 +4.74로 제일 커! 모든 상태에서 다른 정책들을 완벽하게 이겼어!”</p>
 
   <p>🧚 <strong>지니</strong>: “맞아 토토야! 모든 상태 <i>s</i>에 대해 <i>v</i><sub>μ<sub>3</sub></sub>(<i>s</i>) ≥ <i>v</i><sub>μ</sub>(<i>s</i>)가 성립하므로, <strong>μ<sub>3</sub>가 바로 우리가 찾던 유일무이한 최적 정책 μ<sub>&amp;ast;</sub></strong>란다!”</p>
+
+  <p>👧 <strong>도로시</strong>: “와아! 사과를 무한히 따먹는 핑퐁 전략이 1등 트로피를 차지했구나!”</p>
 </blockquote>
+
+<p><img src="./img/mdp_optimal_policy_result.png" alt="최적 정책 동작 원리" /></p>
+
+<p><strong>그림 05-4-8</strong> 최적 정책 μ<sub>&amp;ast;</sub>의 완벽한 핑퐁 루프 동작과 시상대: 벽 충돌 없는 무한 사과 수확으로 압도적 1위 달성</p>
+
+<p><br /></p>
 
 <hr />
 
-<h4 id="파이썬-시뮬레이션-검증-코드">파이썬 시뮬레이션 검증 코드</h4>
+<p><br /></p>
+
+<h4 id="05441-파이썬-코드-실습-1-최적-정책-μ3-가치-검증">05.4.4.1 파이썬 코드 실습 1: 최적 정책 μ<sub>3</sub> 가치 검증</h4>
 
 <blockquote>
-  <p>👧 <strong>도로시</strong>: “지니야! 우리가 손으로 푼 무한등비급수 공식 결과(<b>+5.2632</b>)가 컴퓨터로 100번 시뮬레이션했을 때의 실제 누적 수익과 정말 똑같이 나올까?”</p>
+  <p>👧 <strong>도로시</strong>: “지니야! 우리가 손으로 푼 최적 핑퐁 정책 μ<sub>3</sub>의 무한등비급수 공식 결과(<b>+5.2632</b>)가 컴퓨터로 200번 시뮬레이션했을 때의 실제 누적 수익과 정말 똑같이 나올까?”</p>
 
   <p>🧚 <strong>지니</strong>: “직접 파이썬 코드를 실행해서 확인해 보자! 컴퓨터가 매 스텝 보상에 할인율을 곱해 차곡차곡 더한 값과 수학적 해석해가 소수점 넷째 자리까지 100% 완벽하게 일치하는 것을 볼 수 있단다!”</p>
 </blockquote>
 
-<p><img src="./img/mdp_python_simulation.png" alt="파이썬 시뮬레이션 검증" /></p>
+<p><img src="./img/mdp_python_simulation.png" alt="파이썬 실습 1: 최적 정책 mu_3 시뮬레이션 검증" /></p>
 
-<p><strong>그림 05-4-9</strong> 파이썬 시뮬레이션 검증: 100 스텝 할인 보상 누적 합산값과 무한등비급수 수식 해의 100% 완벽한 일치</p>
+<p><strong>그림 05-4-9</strong> 파이썬 실습 1: 최적 정책 μ<sub>3</sub> 시뮬레이션 누적 합산값과 무한등비급수 수식 해의 100% 완벽한 일치</p>
 
-<hr />
-
-<h4 id="파이썬코드">파이썬코드</h4>
+<ul>
+  <li><strong>실습 소스 코드 파일</strong>: <a href="./gridworld_mu3_sim.py">gridworld_mu3_sim.py</a></li>
+</ul>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ==========================================================
 # 2칸 그리드 월드: 최적 정책 mu_3 (Right, Left) 파이썬 시뮬레이션
@@ -913,8 +989,8 @@ L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ 
 <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>  <span class="c1"># 시간 할인율 (Discount Factor)
 </span><span class="n">V_L1</span> <span class="o">=</span> <span class="mf">0.0</span>   <span class="c1"># 상태 L1에서의 할인 누적 수익 합계 변수 초기화
 </span>
-<span class="c1"># 100 타임 스텝 동안 에이전트의 핑퐁 움직임 시뮬레이션
-</span><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="c1"># 200 타임 스텝 동안 에이전트의 핑퐁 움직임 시뮬레이션
+</span><span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
     <span class="c1"># 짝수 스텝 (0, 2, 4, ...): L1 -&gt; L2 이동 (사과 획득, 보상 +1.0)
 </span>    <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">reward</span> <span class="o">=</span> <span class="mf">1.0</span>
@@ -928,30 +1004,213 @@ L2 →(Left, 보상 0)→ L1 →(Right, 보상 +1)→ L2 →(Left, 보상 0)→ 
 <span class="c1"># 이론적 무한등비급수 수식 해: 1 / (1 - gamma^2)
 </span><span class="n">theoretical_value</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">))</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">파이썬 100스텝 시뮬레이션 v_mu3(L1): </span><span class="si">{</span><span class="n">V_L1</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">파이썬 시뮬레이션 v_mu3(L1): </span><span class="si">{</span><span class="n">V_L1</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">무한등비급수 이론 수식 해 1/(1-0.81) : </span><span class="si">{</span><span class="n">theoretical_value</span><span class="si">:</span><span class="p">.</span><span class="mi">4</span><span class="n">f</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
 </code></pre></div></div>
 
 <p>실행 결과:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬 100스텝 시뮬레이션 v_mu3(L1): 5.2632
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>파이썬 시뮬레이션 v_mu3(L1): 5.2632
 무한등비급수 이론 수식 해 1/(1-0.81) : 5.2632
 </code></pre></div></div>
 
-<blockquote>
-  <p>💡 <strong>전체 4가지 정책 종합 시뮬레이션 실행 파일</strong>: <a href="./gridworld_simulation.py">gridworld_simulation.py</a></p>
+<ul>
+  <li><strong>핵심 동작 원리</strong>:
+    <ul>
+      <li><strong>짝수 스텝 (0, 2, 4…)</strong>: 상태 L1에서 오른쪽(Right)으로 이동하여 사과를 획득하고 <strong>+1.0</strong>의 보상을 받습니다.</li>
+      <li><strong>홀수 스텝 (1, 3, 5…)</strong>: 상태 L2에서 왼쪽(Left)으로 이동하여 L1으로 복귀하고 사과를 재생성합니다(보상 <strong>0.0</strong>).</li>
+      <li><strong>할인 누적 수익 (<i>G<sub>t</sub></i>)</strong>: 매 스텝마다 0.9<sup>step</sup> × reward를 누적 합산하여 1 + 0.81 + 0.81<sup>2</sup> + … 의 급수를 계산합니다.</li>
+      <li><strong>결과</strong>: 200스텝 시뮬레이션 결과와 무한등비급수 수식 해 1 / (1 - 0.81)가 소수점 넷째 자리까지 <strong>5.2632</strong>로 정확히 일치합니다.</li>
+    </ul>
+  </li>
+</ul>
 
-  <p>터미널에서 다음 명령어로 4가지 모든 결정적 정책에 대한 가치 계산과 무한등비급수 이론해를 한 번에 검증할 수 있습니다:</p>
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 gridworld_simulation.py
-</code></pre></div>  </div>
-</blockquote>
+<p><br /></p>
 
 <hr />
 
+<p><br /></p>
+
+<h4 id="05442-파이썬-코드-실습-2-4가지-결정적-정책-종합-시뮬레이션-검증">05.4.4.2 파이썬 코드 실습 2: 4가지 결정적 정책 종합 시뮬레이션 검증</h4>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 최적 정책 μ<sub>3</sub>뿐만 아니라 나머지 정책들(μ<sub>1</sub>, μ<sub>2</sub>, μ<sub>4</sub>)도 컴퓨터로 상태 L1과 L2에서 전부 시뮬레이션해서 우리가 손으로 푼 값들과 한눈에 비교해볼 수 있을까?”</p>
+
+  <p>🧚 <strong>지니</strong>: “물론이지! 2칸 그리드 월드 환경 클래스를 만들고 4가지 모든 결정적 정책을 200스텝씩 시뮬레이션하여 이론 수식 해석해와 나란히 비교하는 종합 검증 코드를 작성해 보자!”</p>
+
+  <p>🐶 <strong>토토</strong>: “멍멍! 표를 보니까 μ<sub>3</sub>가 모든 상태에서 가장 높은 점수(+5.2632, +4.7368)로 완벽한 1등 최적 정책인 게 확실하게 증명됐어!”</p>
+</blockquote>
+
+<p><img src="./img/mdp_python_all_policies.png" alt="4가지 정책 종합 파이썬 시뮬레이션 검증" /></p>
+
+<p><strong>그림 05-4-10</strong> 파이썬 실습 2: 4가지 정책(μ<sub>1</sub>~μ<sub>4</sub>) 종합 시뮬레이션 및 이론 수식 해석해 100% 일치 검증 결과표</p>
+
+<hr />
+
+<ul>
+  <li><strong>실습 소스 코드 파일</strong>: <a href="./gridworld_simulation.py">gridworld_simulation.py</a></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">
+===================================================================
+05.4 2칸 그리드 월드(2-Grid World) MDP 가치 계산 및 종합 시뮬레이션
+===================================================================
+- 4가지 결정적 정책(mu_1 ~ mu_4)에 대한 상태 가치 함수 v_pi(s)를
+  1) 고교 수학의 무한등비급수 합 공식(이론 해석해)
+  2) 200스텝 할인 보상 누적 파이썬 시뮬레이션(실험치)
+  으로 각각 계산하여 최적 정책 mu_*를 검증합니다.
+===================================================================
+</span><span class="sh">"""</span>
+
+<span class="k">class</span> <span class="nc">TwoGridWorld</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">2칸 그리드 월드 환경 (상태: L1, L2 / 행동: Left, Right)</span><span class="sh">"""</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">STATES</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">ACTIONS</span> <span class="o">=</span> <span class="p">[</span><span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">step</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">행동에 따른 다음 상태와 즉각 보상 반환</span><span class="sh">"""</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">,</span> <span class="mf">1.0</span>   <span class="c1"># 사과 획득 (+1)
+</span>            <span class="k">else</span><span class="p">:</span>  <span class="c1"># Left
+</span>                <span class="k">return</span> <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>  <span class="c1"># 왼쪽 벽 충돌 페널티 (-1)
+</span>        
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">,</span> <span class="mf">0.0</span>   <span class="c1"># 사과 재생성 (보상 0)
+</span>            <span class="k">else</span><span class="p">:</span>  <span class="c1"># Right
+</span>                <span class="k">return</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>  <span class="c1"># 오른쪽 벽 충돌 페널티 (-1)
+</span>
+
+<span class="k">def</span> <span class="nf">simulate_policy</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">policy</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">주어진 정책을 따라 start_state에서 출발하여 할인 누적 보상(G_t)을 합산</span><span class="sh">"""</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">start_state</span>
+    <span class="n">total_return</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">discount</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">policy</span><span class="p">[</span><span class="n">state</span><span class="p">]</span>
+        <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">step</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
+        <span class="n">total_return</span> <span class="o">+=</span> <span class="n">discount</span> <span class="o">*</span> <span class="n">reward</span>
+        <span class="n">discount</span> <span class="o">*=</span> <span class="n">gamma</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+
+    <span class="k">return</span> <span class="n">total_return</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="nc">TwoGridWorld</span><span class="p">()</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>
+
+    <span class="c1"># 4가지 결정적 정책 정의
+</span>    <span class="n">policies</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">μ_1 (Right, Right)</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">μ_2 (Left,  Left )</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">,</span>  <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">},</span>
+        <span class="sh">'</span><span class="s">μ_3 (Right, Left )</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">},</span>   <span class="c1"># 최적 핑퐁 정책
+</span>        <span class="sh">'</span><span class="s">μ_4 (Left,  Right)</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Left</span><span class="sh">'</span><span class="p">,</span>  <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="sh">'</span><span class="s">Right</span><span class="sh">'</span><span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="c1"># 이론적 수식 해석해 (무한등비급수 합 공식 1 / (1 - r))
+</span>    <span class="n">theoretical_values</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="sh">'</span><span class="s">μ_1 (Right, Right)</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">)),</span>         <span class="c1"># 1 - 9.0 = -8.0
+</span>            <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">),</span>                  <span class="c1"># -10.0
+</span>        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">μ_2 (Left,  Left )</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">),</span>                  <span class="c1"># -10.0
+</span>            <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="mf">0.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">)),</span>         <span class="c1"># 0 - 9.0 = -9.0
+</span>        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">μ_3 (Right, Left )</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)),</span>            <span class="c1"># 1 / 0.19 ≈ +5.2632
+</span>            <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="n">gamma</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)),</span>          <span class="c1"># 0.9 / 0.19 ≈ +4.7368
+</span>        <span class="p">},</span>
+        <span class="sh">'</span><span class="s">μ_4 (Left,  Right)</span><span class="sh">'</span><span class="p">:</span> <span class="p">{</span>
+            <span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">),</span>                  <span class="c1"># -10.0
+</span>            <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gamma</span><span class="p">),</span>                  <span class="c1"># -10.0
+</span>        <span class="p">},</span>
+    <span class="p">}</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">      05.4 2칸 그리드 월드: 4가지 결정적 정책 가치 계산 및 검증</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="sh">'</span><span class="s">정책 (Policy)</span><span class="sh">'</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">22</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">상태</span><span class="sh">'</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">4</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">시뮬레이션 (200스텝)</span><span class="sh">'</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">18</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">이론 수식 해석해</span><span class="sh">'</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">16</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">일치 여부</span><span class="sh">'</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">pol</span> <span class="ow">in</span> <span class="n">policies</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">state</span> <span class="ow">in</span> <span class="p">[</span><span class="sh">'</span><span class="s">L1</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">L2</span><span class="sh">'</span><span class="p">]:</span>
+            <span class="n">sim_val</span> <span class="o">=</span> <span class="nf">simulate_policy</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">pol</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+            <span class="n">theo_val</span> <span class="o">=</span> <span class="n">theoretical_values</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">state</span><span class="p">]</span>
+            <span class="n">match</span> <span class="o">=</span> <span class="sh">"</span><span class="s">✓ 일치</span><span class="sh">"</span> <span class="k">if</span> <span class="nf">abs</span><span class="p">(</span><span class="n">sim_val</span> <span class="o">-</span> <span class="n">theo_val</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-4</span> <span class="k">else</span> <span class="sh">"</span><span class="s">불일치</span><span class="sh">"</span>
+            <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">20</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="n">state</span><span class="si">:</span><span class="o">&lt;</span><span class="mi">4</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="n">sim_val</span><span class="si">:</span><span class="o">&gt;</span><span class="mf">16.4</span><span class="n">f</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="n">theo_val</span><span class="si">:</span><span class="o">&gt;</span><span class="mf">16.4</span><span class="n">f</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="k">match</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+        <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">[★ 결론 및 최적 정책 판정]</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">1. 모든 상태(L1, L2)에서 v(L1)=+5.2632, v(L2)=+4.7368로 가장 높은 양수 가치를 기록한</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">   </span><span class="sh">'</span><span class="s">μ_3 (Right, Left)</span><span class="sh">'</span><span class="s"> 정책이 유일무이한 최적 정책(μ_*)으로 판정되었습니다!</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">2. 파이썬 시뮬레이션 결과와 무한등비급수 수식 해가 소수점 넷째 자리까지 100% 일치합니다.</span><span class="sh">"</span><span class="p">)</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">72</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="nf">main</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>실행 방법 및 결과:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 gridworld_simulation.py
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>========================================================================
+      05.4 2칸 그리드 월드: 4가지 결정적 정책 가치 계산 및 검증
+========================================================================
+정책 (Policy)            | 상태   | 시뮬레이션 (200스텝)      | 이론 수식 해석해        | 일치 여부
+------------------------------------------------------------------------
+μ_1 (Right, Right)   | L1   |          -8.0000 |          -8.0000 | ✓ 일치
+μ_1 (Right, Right)   | L2   |         -10.0000 |         -10.0000 | ✓ 일치
+------------------------------------------------------------------------
+μ_2 (Left,  Left )   | L1   |         -10.0000 |         -10.0000 | ✓ 일치
+μ_2 (Left,  Left )   | L2   |          -9.0000 |          -9.0000 | ✓ 일치
+------------------------------------------------------------------------
+μ_3 (Right, Left )   | L1   |           5.2632 |           5.2632 | ✓ 일치
+μ_3 (Right, Left )   | L2   |           4.7368 |           4.7368 | ✓ 일치
+------------------------------------------------------------------------
+μ_4 (Left,  Right)   | L1   |         -10.0000 |         -10.0000 | ✓ 일치
+μ_4 (Left,  Right)   | L2   |         -10.0000 |         -10.0000 | ✓ 일치
+------------------------------------------------------------------------
+
+[★ 결론 및 최적 정책 판정]
+1. 모든 상태(L1, L2)에서 v(L1)=+5.2632, v(L2)=+4.7368로 가장 높은 양수 가치를 기록한
+   'μ_3 (Right, Left)' 정책이 유일무이한 최적 정책(μ_*)으로 판정되었습니다!
+2. 파이썬 시뮬레이션 결과와 무한등비급수 수식 해가 소수점 넷째 자리까지 100% 일치합니다.
+========================================================================
+</code></pre></div></div>
+
+<ul>
+  <li><strong>코드 구조 및 분석</strong>:
+    <ol>
+      <li><strong><code class="language-plaintext highlighter-rouge">TwoGridWorld</code> 클래스</strong>: 격자 환경의 상태 전이와 보상 함수(사과 먹기, 재생성, 벽 충돌)를 객체 지향적으로 완벽하게 캡슐화했습니다.</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">simulate_policy()</code> 함수</strong>: 에이전트가 어떤 상태에서 어떤 정책을 따르더라도 할인율 <i>γ</i> = 0.9를 누적 곱셈하며 실제 가치 <i>v<sub>π</sub></i>(<i>s</i>)를 정확히 측정합니다.</li>
+      <li><strong>전체 정책 비교 검증</strong>: 수식으로 계산했던 음수 페널티 값(-8.0, -10.0, -9.0)과 μ<sub>3</sub>의 압도적인 양수 가치(+5.2632, +4.7368)가 8개 경우의 수 모두에서 오차 없이 완벽하게 일치함을 확인할 수 있습니다.</li>
+    </ol>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<p><br /></p>
+
 <h3 id="0545-핵심-요약">05.4.5 핵심 요약</h3>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니야! 오늘 2칸 그리드 월드에서 손으로 가치를 직접 계산해보니, 강화학습의 정책 평가와 최적 정책 원리가 한눈에 쏙 들어왔어!”</p>
+
+  <p>🧚 <strong>지니</strong>: “훌륭해 도로시! 오늘 배운 4가지 핵심 포인트를 카드로 정리해 두면 다음 시간 벨만 방정식도 아주 쉽게 정복할 수 있을 거야!”</p>
+</blockquote>
 
 <p><img src="./img/mdp_5_4_summary.png" alt="05.4 MDP 실전 예제 핵심 요약" /></p>
 
-<p><strong>그림 05-4-10</strong> 05.4 MDP 실전 예제 핵심 총정리: 2칸 그리드 환경, 백업 다이어그램, 무한등비급수 가치 계산, 최적 핑퐁 정책 μ<sub>3</sub></p>
+<p><strong>그림 05-4-11</strong> 05.4 MDP 실전 예제 핵심 총정리: 2칸 그리드 환경, 백업 다이어그램, 무한등비급수 가치 계산, 최적 핑퐁 정책 μ<sub>3</sub></p>
 
 <ol>
   <li><strong>2칸 그리드 월드 환경</strong>: 상태 2개, 행동 2개로 구성되어 총 4개의 결정적 정책 후보가 존재합니다.</li>
