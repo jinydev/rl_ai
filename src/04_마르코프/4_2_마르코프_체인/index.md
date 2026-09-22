@@ -47,6 +47,22 @@ title: "04.2 마르코프 체인 (Markov Chain)"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_2_scene1.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시의 궁금증**: 
 > 
 > "지니! 어제 마르코프 성질을 배울 때 과거의 복잡한 지나온 길은 다 잊어도 된다고 했잖아. 
@@ -212,6 +228,22 @@ title: "04.2 마르코프 체인 (Markov Chain)"
 ----
 
 
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_2_scene2.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시의 질문**: 
 > 
@@ -386,6 +418,22 @@ title: "04.2 마르코프 체인 (Markov Chain)"
 #### 🔮 행렬 거듭제곱의 마법 (P²과 Pⁿ)
 
 도로시가 계산식을 보며 감탄하자, 지니가 빙그레 웃으며 마법 지팡이를 휘둘렀습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_2_scene3.mp3" preload="none"></audio>
+</div>
 
 > 🧞‍♂️ **지니의 마법 팁: 일일이 가지치기 계산할 필요가 없단다!**
 > 

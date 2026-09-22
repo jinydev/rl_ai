@@ -13,6 +13,28 @@ title: "02.11 조건부 확률과 독립시행"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_11_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 안개가 자욱하게 낀 어두운 숲을 지나가는데, 수풀 저편에서 바스락거리는 소리가 들렸어! 이 소리만 듣고 몬스터가 숨어있는지 어떻게 알 수 있어?"
+>
+> 🐱 **지니**: "그럴 때 쓰는 마법이 바로 새로운 단서를 얻었을 때 믿음을 업데이트하는 조건부 확률과 베이즈 정리란다! 바스락 소리라는 조건이 주어지면 몬스터가 있을 확률이 완전히 달라지거든!"
+
+<br>
+
 ## 02.11.1 안개 속 단서와 조건부 확률 (Conditional Probability)
 
 새로운 정보나 단서가 관측되면, 우리가 고려해야 할 전체 가능성의 범위(표본공간)는 단서가 일어난 영역으로 좁혀집니다.
@@ -390,3 +412,30 @@ $$
 2. **독립과 종속**: 이전 사건이 다음 사건에 영향을 미치지 않으면 **독립사건(*P(A ∩ B) = P(A)P(B)*)**, 영향을 미치면 **종속사건**이다.
 3. **독립시행의 정리**: 매회 성공률 *p*가 일정한 독립 실험을 *n*번 반복하여 *r*번 성공할 확률은 **<sub>*n*</sub>*C*<sub>*r*</sub> *p*<sup>*r*</sup> (1-*p*)<sup>*n-r*</sup>**로 계산한다.
 4. **확률적 직관의 교정**: 몬티 홀 딜레마(선택 변경 시 2/3 승률)와 생일 문제(23명만으로 50% 돌파)는 인간의 어림짐작을 깨뜨리는 정교한 수학적 통찰을 제공한다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_11_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 몬티 홀 문제처럼 새로운 힌트가 주어지면 직관에 의존하지 말고 조건부 확률로 믿음을 바꿔야 승률이 올라가는구나!"
+>
+> 🐱 **지니**: "맞아 도로시! 불완전한 관측 단서 속에서 진짜 환경의 상태를 추정하는 은닉 마르코프 모델과 강화학습의 강력한 기초가 바로 이 조건부 확률이란다!"
+
+<br>

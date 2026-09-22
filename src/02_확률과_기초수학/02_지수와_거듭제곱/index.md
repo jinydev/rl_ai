@@ -13,6 +13,28 @@ title: "02.2 지수와 거듭제곱"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_2_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 이 보물상자는 열 때마다 안에 든 금화가 반으로 줄어들어! 대체 무슨 마법이 걸려 있는 거야?"
+>
+> 🐱 **지니**: "그건 바로 거듭제곱과 지수의 마법이란다! 밑이 일보다 작은 양수일 때 지수가 커질수록 값이 급격히 작아져 영으로 수렴하는 지수적 감쇄 성질이지!"
+
+<br>
+
 ## 02.2.1 거듭제곱과 지수란 무엇일까요?
 
 강화학습에서 먼 미래의 보상을 현재 가치로 깎아주는 **할인율**이나, 비정상 환경에서 과거 데이터의 반영률을 점차 낮춰주는 **지수 감쇄**를 이해하려면 먼저 지수의 기초를 탄탄하게 다져야 합니다. 
@@ -345,3 +367,30 @@ for step in range(4):
 2. 밑이 1보다 작고 0보다 큰 양수(0 < *a* < 1)일 때, 지수가 커지면 커질수록 그 값은 급격히 작아져 0에 수렴하는 **지수적 감쇄(Exponential Decay)** 성질을 가진다.
 3. 이 지수적 감쇄 성질은 강화학습에서 과거 데이터의 영향력을 점차 줄이고 최신의 환경 정보를 우선 반영하는 **시간차 가중 알고리즘**의 핵심 토대가 된다.
 
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_2_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 미래에 받을 보상에 영 점 구를 계속 거듭제곱해서 곱해주면, 너무 먼 미래의 불확실한 보상은 자연스럽게 가치가 줄어들겠네!"
+>
+> 🐱 **지니**: "정답이야 도로시! 이 지수적 감쇄 성질이 바로 강화학습에서 미래 보상의 시간적 가치를 깎아주는 할인율 감마의 핵심 원리란다!"
+
+<br>

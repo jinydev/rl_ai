@@ -544,6 +544,30 @@
 
 <hr />
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_1_5_scene1.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 보물 지도를 그릴 때, 내가 이미 알고 있는 가장 맛있는 사과나무로만 계속 가는 게 좋을까? 아니면 한 번도 가보지 않은 어두운 숲길로 모험을 떠나는 게 좋을까?”</p>
+
+  <p>🐱 <strong>지니</strong>: “그것이 바로 강화학습에서 가장 매혹적인 탐색과 활용의 딜레마란다! 이미 아는 사과를 따먹는 활용과, 더 큰 황금 사과나무를 찾으러 떠나는 탐색 사이에 완벽한 균형이 필요하지!”</p>
+</blockquote>
+
+<p><br /></p>
+
 <h2 id="0151-탐색과-활용의-정의">01.5.1 탐색과 활용의 정의</h2>
 
 <p>지니는 두 가지 모험 행동의 차이를 도로시의 수첩에 적어주었습니다.</p>
@@ -619,6 +643,34 @@
 
 <p>안전하고 확실한 현재의 최선안을 계속 취하는 <strong>활용(Exploitation)</strong>과, 당장의 이득은 낮거나 위험부담이 있더라도 장기적으로 더 우수한 대안을 찾아보기 위해 미지의 선택지를 시도하는 <strong>탐색(Exploration)</strong>을 학습 단계에 맞게 적절히 조율하는 것이 최적 행동 패턴 학습의 핵심입니다.</p>
 
+<hr />
+
+<h3 id="-이번-단원-지니의-마법-인사이트">💡 이번 단원 지니의 마법 인사이트</h3>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_1_5_scene2.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “아하! 너무 탐색만 하면 굶어 죽고, 너무 활용만 하면 더 큰 대박 기회를 놓치니까 적절하게 저울질해야 하는 거구나!”</p>
+
+  <p>🐱 <strong>지니</strong>: “정답이야 도로시! 이 딜레마를 우아하게 해결하는 주사위 기법을 삼 강 밴디트 단원에서 배우게 될 거란다!”</p>
+</blockquote>
+
+<p><br /></p>
+
 
             <!-- 구글 애드센스 출력 -->
             <div class="mt-5">
@@ -669,6 +721,9 @@
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

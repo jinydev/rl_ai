@@ -9,6 +9,28 @@ title: "02.1 식의 구성과 치환, 교환/분배법칙"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_1_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니, 이 칠판 좀 봐! 숫자가 너무 많고 복잡해서 머리가 아파. 대체 이걸 어떻게 다 계산해?"
+>
+> 🐱 **지니**: "도로시, 너무 걱정할 필요 없어! 우리에게는 아무리 길고 복잡한 식이라도 단번에 가볍게 압축하는 치환이라는 신비한 마법이 있거든. 거기에 교환 분배법칙까지 배우고 나면 순식간에 한 줄로 조립해낼 수 있단다!"
+
+<br>
+
 ## 02.1.1 복잡한 수식을 가뿐하게 요리하기
 
 수많은 숫자가 나열된 식을 보고 겁먹을 필요는 전혀 없습니다! 
@@ -439,3 +461,30 @@ title: "02.1 식의 구성과 치환, 교환/분배법칙"
 1. **분배법칙**은 괄호 밖의 수를 각 항에 나누어 곱해주거나, 각 항의 공통 문자를 묶어 괄호 밖으로 빼내는 유용한 대수 규칙이다.
 2. **치환**은 복잡한 긴 수식 덩어리를 하나의 단순한 기호로 임시 변형하는 행위로, 식의 전체적인 구조를 꿰뚫어 보게 만든다.
 3. 이 두 규칙은 강화학습의 다양한 갱신 알고리즘 수식을 유도하고, 컴퓨터 메모리를 최적화하는 데 필수적인 연산 도구이다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_1_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 복잡한 수식 덩어리를 하나의 동그라미 상자로 치환하고 분배법칙으로 묶어내니까 수식이 마법처럼 단순해졌어!"
+>
+> 🐱 **지니**: "맞아 도로시! 이렇게 식을 가볍게 요리하는 대수적 기초가 바로 다음 단계에서 배울 강화학습 알고리즘 유도와 컴퓨터 메모리 최적화의 핵심 열쇠란다!"
+
+<br>

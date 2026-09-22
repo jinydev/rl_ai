@@ -43,6 +43,22 @@ title: "3.3 밴디트 알고리즘"
 
 슬롯머신 앞에 선 도로시가 고개를 갸우뚱하며 수첩을 들고 고민에 빠집니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene1.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야, 슬롯머신마다 평균적으로 코인을 몇 개씩 주는지 '진짜 가치'를 알 수 있다면 제일 좋은 기계만 골라 당길 텐데... 기계 속이 굳게 닫혀 있어서 안 보여!"
 >
 > 🐱 **지니**: "맞아, 도로시! 슬롯머신의 내부는 튼튼한 강철 금고로 잠긴 **블랙박스(Black Box)**와 같단다. 우리가 눈으로 확인할 수 있는 건 레버를 당겼을 때 튀어나오는 '그 판의 코인 개수(일시적 보상)'뿐이지!"
@@ -65,6 +81,22 @@ title: "3.3 밴디트 알고리즘"
 ### 2. 플레이 횟수를 늘려야 하는 이유 (큰 수의 법칙)
 
 그렇다면 어떻게 해야 블랙박스 속 진짜 가치를 알아낼 수 있을까요? 마법 고양이 지니가 칠판을 띄우며 명쾌하게 설명해 줍니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene2.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "비결은 바로 통계학의 가장 위대한 마법, **'큰 수의 법칙(Law of Large Numbers)'**에 있단다! 동전을 딱 두 번 던져서 앞면이 2번 나왔다고 앞면 확률이 100%일까?"
 >
@@ -97,6 +129,22 @@ title: "3.3 밴디트 알고리즘"
 
 #### ① 단순 표본 평균의 기본 개념
 슬롯머신 한 대에 집중하여 레버를 계속 당기는 상황을 상상해 봅시다. 매 판 튀어나오는 코인(*R*<sub>1</sub>, *R*<sub>2</sub>, ..., *R*<sub>*n*</sub>)들을 투명한 상자에 모아두고, 지금까지 플레이한 총 횟수(*n*)로 공평하게 나누어 주는 것이 바로 **표본 평균(Sample Mean)**입니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene3.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야, 슬롯머신을 여러 번 돌렸을 때 지금까지 얻은 보상들을 어떻게 하나로 요약해서 기계의 가치로 삼는 거야?"
 >
@@ -158,6 +206,22 @@ for n in range(1, 11):  # 1부터 10까지 10번 플레이
 
 하지만 이 단순한 방식에는 심각한 문제가 숨어 있습니다. 도로시가 끝없이 쌓인 수첩을 보며 진땀을 흘립니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene4.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "으악, 지니야! 10,000판을 돌리면 10,000개의 코인 기록을 수첩에 다 적어두고, 매 판마다 10,000개를 처음부터 끝까지 다 더해야 해? 수첩도 모자라고 계산하다가 머리가 터질 것 같아!"
 >
 > 🐶 **토토**: "낑낑! (계산기에서 연기가 나요!)"
@@ -175,6 +239,22 @@ for n in range(1, 11):  # 1부터 10까지 10번 플레이
 ### 3. 지니의 마법 해결책: 증분 공식(Incremental Formula) 유도
 
 지니가 마법 지팡이를 휘두르며 도로시를 안심시킵니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene5.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "걱정 마, 도로시! 과거의 10,000개 기록을 전부 기억할 필요가 전혀 없단다. **'직전 판까지의 평균(*Q*<sub>*n-1*</sub>)'**과 **'방금 새로 얻은 보상(*R*<sub>*n*</sub>)'** 딱 2개만 있으면 새로운 평균(*Q*<sub>*n*</sub>)을 순식간에 계산할 수 있는 마법의 공식이 있거든!"
 
@@ -251,6 +331,22 @@ $$
 
 수식을 가만히 관찰하던 도로시의 눈이 번쩍 뜨입니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene6.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야! 수식을 가만히 뜯어보니까, 내가 지금 서 있는 자리(*Q*<sub>*n-1*</sub>)에서 방금 들어온 새로운 보상(*R*<sub>*n*</sub>)이라는 목적지를 향해 한 걸음 걸어가는 느낌이야!"
 >
 > 🐱 **지니**: "정확해, 도로시! 바로 그게 증분 공식에 담긴 놀라운 **'기하학적 의미(Geometric Meaning)'**란다! 이 수식은 단순한 평균 계산법을 넘어, 앞으로 우리가 배울 **모든 강화 학습 알고리즘(TD 학습, Q-러닝 등)을 관통하는 만능 갱신 뼈대**란다!"
@@ -303,6 +399,22 @@ $$
 ### 5. 파이썬 증분 구현 코드
 
 도로시가 과거의 무거운 수첩을 내려놓고 가벼운 미소를 짓습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene7.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 과거 10,000개 기록을 저장하던 `rewards` 리스트를 싹 버리고, 오직 `Q` 변수 딱 하나만 사용해서 코드를 작성해 볼게!"
 >
@@ -377,6 +489,22 @@ for n in range(1, 11):  # 1부터 10까지 10번 플레이
 
 도로시가 기발한 아이디어가 떠올랐다는 듯 외칩니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene8.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야! 지금까지 플레이해 본 결과 중에서 평균 점수(*Q*)가 가장 높은 최고의 슬롯머신 하나만 골라서 계속 당기면 무조건 대박이겠지? 이걸 **탐욕 정책(Greedy Policy)**이라고 부르자!"
 >
 > 🐱 **지니**: "잠깐, 도로시! 멈춰! 탐욕 정책에는 아주 무서운 함정이 도사리고 있단다!"
@@ -427,6 +555,22 @@ for n in range(1, 11):  # 1부터 10까지 10번 플레이
 ### 3. 지니의 마법 주사위: ε-탐욕(Epsilon-Greedy) 정책
 
 이 어려운 딜레마를 가장 우아하고 단순하게 해결하기 위해, 지니가 도로시에게 마법의 주사위를 건넵니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_3_scene9.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 이 딜레마를 해결하기 위해 지니가 **마법의 엡실론(ε) 주사위**를 선물할게! 
 > 평소 90%의 확률로는 지금까지 제일 좋았던 기계를 당기고(활용), 가끔 10%(ε = 0.1)의 확률로는 호기심을 발휘해 다른 기계들을 골고루 둘러보는(탐색) 거야!"

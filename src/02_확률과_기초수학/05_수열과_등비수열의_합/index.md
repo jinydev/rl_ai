@@ -13,6 +13,28 @@ title: "02.5 수열과 등비수열의 합"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_5_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 에이전트가 앞으로 무한히 계속해서 보상을 받아 나간다면, 그 보상을 전부 다 합했을 때 값이 무한대로 커져서 에이전트 머리가 터져버리는 것 아냐?"
+>
+> 🐱 **지니**: "걱정 마 도로시! 우리에게는 무한등비급수의 합 공식이 있거든! 할인율이 일보다 작다면 무한히 많은 보상을 다 더해도 마법처럼 유한한 상한선 값으로 얌전하게 수렴한단다!"
+
+<br>
+
 ## 02.5.1 징검다리를 딛고 올라가는 수의 규칙
 
 강화학습 에이전트가 **매 시점**마다 환경과 상호작용하며 획득하는 보상값들은 시간의 순서대로 나열된 **수열**과 같습니다.
@@ -338,3 +360,30 @@ title: "02.5 수열과 등비수열의 합"
 1. **수열**은 규칙적인 수의 나열로, 각 수를 항이라 부르고 첫 번째부터 *a*<sub>1</sub>, *a*<sub>2</sub>, *a<sub>n</sub>* 형태로 쓴다.
 2. **등비수열의 합**은 공비 *r*이 1보다 작을 때, 항의 개수가 무한히 많아지면 결국 분모의 공비 항이 수렴하여 하나의 일정한 경계값에 다다르게 된다.
 3. 비정상 밴디트의 지수 이동 평균 가중치 합산식은 공비가 (1 - *α*) 인 등비수열의 합 구조를 띠고 있으며, 그 총합은 무한히 진행 시 항상 **1.0**으로 보존된다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_5_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 공비가 영 점 구일 때 무한히 더해도 결국 일 마이너스 공비 분의 첫째항으로 깔끔하게 수렴하니까 안심하고 학습할 수 있겠어!"
+>
+> 🐱 **지니**: "정확해 도로시! 이 등비수열의 수렴 마법 덕분에 강화학습은 영원히 멈추지 않는 지속적 과제에서도 수학적 안정성을 굳건히 지킬 수 있는 거란다!"
+
+<br>

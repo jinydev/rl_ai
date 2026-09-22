@@ -581,6 +581,30 @@
 
 <hr />
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_7_scene1.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 에이전트가 겪은 수천 번의 보상 데이터를 다 저장해 두고 매번 평균을 다시 구하려면, 컴퓨터 메모리가 꽉 차서 터져버릴 것 같아!”</p>
+
+  <p>🐱 <strong>지니</strong>: “과거의 모든 데이터를 짊어지고 다닐 필요가 전혀 없단다 도로시! 이전 평균값과 새로 들어온 보상 하나만 있으면 새로운 평균을 즉시 계산하는 증분 업데이트 공식이 있거든!”</p>
+</blockquote>
+
+<p><br /></p>
+
 <h2 id="0271-메모리를-아끼는-마법의-실시간-평균-공식">02.7.1 메모리를 아끼는 마법의 실시간 평균 공식</h2>
 
 <p>데이터가 수백만 개 쌓였을 때 매번 합산을 다시 구해 평균을 내는 것은 컴퓨터 메모리와 연산에 극심한 과부하를 줍니다.</p>
@@ -904,6 +928,34 @@ Incremental Averages : [1.0, 1.5, 2.3333333333333335, 2.5, 3.0]
   <li>이 공식은 강화학습 갱신 알고리즘의 근간인 <strong><code class="language-plaintext highlighter-rouge">새 가치 = 이전 가치 + 학습률 × 오차</code></strong> 형태를 띠며, 이는 오차 방향으로 기존 지식을 점진적으로 보정하는 학습 규칙을 정의한다.</li>
 </ol>
 
+<hr />
+
+<h3 id="-이번-단원-지니의-마법-인사이트">💡 이번 단원 지니의 마법 인사이트</h3>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_7_scene2.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “와! 새 가치는 이전 가치 더하기 학습률 곱하기 오차라는 단 한 줄의 공식으로 가벼운 배낭을 메고 실시간으로 학습할 수 있네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “완벽해 도로시! 이 증분 업데이트가 바로 티디 학습과 큐러닝 등 모든 현대 강화학습을 관통하는 가장 위대한 갱신 엔진이란다!”</p>
+</blockquote>
+
+<p><br /></p>
+
 
             <!-- 구글 애드센스 출력 -->
             <div class="mt-5">
@@ -954,6 +1006,9 @@ Incremental Averages : [1.0, 1.5, 2.3333333333333335, 2.5, 3.0]
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

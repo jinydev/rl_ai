@@ -680,16 +680,69 @@
         <div class="bd-content ps-lg-4">
             <h1 id="063-벨만-방정식의-예">06.3 벨만 방정식의 예</h1>
 
-<p><strong>그림 06-3</strong> X와 Y 블록이 얹혀 있는 마법 저울들의 수평을 지팡이로 정교하게 맞추어 연립방정식을 연산하는 도로시와 지니
-<img src="./img/jiny_bellman_ch6_3_algebra_example.png" alt="벨만 방정식 예 인트로" /></p>
+<p>벨만 방정식 점화식을 기반으로 상태 가치 함수들을 구하기 위해 실제로 <strong>연립방정식(Simultaneous Equations)</strong>을 구축하고 해결하는 예제를 배웁니다.</p>
 
-<p>벨만 방정식 점화식을 기반으로 상태 가치 함수들을 구하기 위해 실제로 <strong>연립방정식(Simultaneous Equations)</strong>을 구축하고 해결하는 예제를 배웁니다. 도로시의 블록 저울 조율 마법과 지니의 대수학 칠판 계산법을 통해 벨만 방정식의 수치적 해법을 통쾌하게 정복해봅시다!</p>
+<p>도로시의 블록 저울 조율 마법과 지니의 대수학 칠판 계산법을 통해 벨만 방정식의 수치적 해법을 통쾌하게 정복해봅시다!</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene1.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 지난번에 유도한 벨만 방정식으로 진짜 상태 가치를 구할 수 있는 거야?”</p>
+
+  <p>🐱 <strong>지니</strong>: “그럼 도로시! 벨만 방정식은 미지수가 들어있는 연립방정식이라서, 대수학 마법으로 정확한 수치를 척척 풀어낼 수 있단다!”</p>
+</blockquote>
+
+<p><img src="./img/jiny_bellman_ch6_3_algebra_example.png" alt="그림 06-3 X와 Y 블록이 얹혀 있는 마법 저울들의 수평을 지팡이로 정교하게 맞추어 연립방정식을 연산하는 도로시와 지니" /></p>
+
+<p><strong>그림 06-3</strong> X와 Y 블록이 얹혀 있는 마법 저울들의 수평을 지팡이로 정교하게 맞추어 연립방정식을 연산하는 도로시와 지니</p>
 
 <hr />
 
-<p>벨만 방정식은 강화 학습 문제를 풀기 위한 중요한 기초를 제공합니다. 벨만 방정식을 이용하면 상태 가치 함수를 구할 수 있죠.</p>
+<p>벨만 방정식은 강화 학습 문제를 풀기 위한 중요한 기초를 제공합니다.</p>
+
+<p>벨만 방정식을 이용하면 상태 가치 함수를 구할 수 있죠.</p>
 
 <p>이번 절에서는 그 ‘위력’을 보여주기 위해 벨만 방정식을 이용해 실제로 문제를 풀어보겠습니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene2.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “벨만 방정식의 위력을 직접 눈으로 확인해보고 싶어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “좋아! 복잡한 미래의 무한한 길을 단 두 개의 깔끔한 연립방정식으로 압축하는 마법을 보여줄게!”</p>
+</blockquote>
+
+<p><img src="./img/bellman_power_intro.png" alt="벨만 방정식의 위력: 실제 숫자로 상태 가치 풀기" /></p>
+
+<hr />
 
 <h3 id="0631-두-칸짜리-그리드-월드">06.3.1 두 칸짜리 그리드 월드</h3>
 
@@ -697,13 +750,63 @@
 
 <p>그림 06-7 두 칸짜리 그리드 월드(벽에 부딪히면 -1, 사과를 얻으면 +1, 사과는 계속 생성)</p>
 
-<p><img src="./img/fig_06_7.svg" alt="그림 06-7" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene3.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L1과 L2, 딱 두 칸짜리 격자 세상이네? 룰은 어떻게 돼?”</p>
+
+  <p>🐱 <strong>지니</strong>: “벽에 쾅 부딪히면 벌점 -1점이고, 탐스러운 사과를 따먹으면 보너스 +1점이야! 사과는 먹어도 계속 새로 열린단다!”</p>
+</blockquote>
+
+<p><img src="./img/fig_06_7_grid_world.png" alt="그림 06-7 두 칸짜리 그리드 월드" /></p>
+
+<hr />
+
+<h4 id="문제의-시작">문제의 시작</h4>
 
 <p>이번에는 에이전트가 무작위로 움직인다고 가정합니다.</p>
 
 <p>즉 50%의 확률로는 오른쪽, 나머지 50%의 확률로 왼쪽으로 이동합니다.</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene4.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “여기서 내가 왼쪽이나 오른쪽으로 반반의 확률로 걸어간다는 거지?”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아! 반반, 즉 50% 확률로 왼쪽이나 오른쪽을 고르는 무작위 정책을 따르는 거야!”</p>
+</blockquote>
+
 <p><img src="./img/grid_world_intro.png" alt="그림 06-7a 두 칸짜리 그리드 월드 문제의 직관적 개념" /></p>
+
+<hr />
 
 <h4 id="l1-기대수익">L1 기대수익</h4>
 
@@ -711,21 +814,95 @@
 
 <p>이 기대 수익은 앞으로 <strong>무한히</strong> 지속되는 <strong>보상의 총합</strong>입니다.</p>
 
-<p>백업 다이어그램부터 살펴보죠.</p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene5.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L1에서 출발해서 영원히 움직이면 받을 수 있는 기대 수익은 어떻게 계산할까?”</p>
+
+  <p>🐱 <strong>지니</strong>: “앞으로 무한히 계속해서 받을 미래 보상들의 총합인데, 끝없이 이어져서 직접 더하기는 불가능해 보여!”</p>
+</blockquote>
+
+<p><img src="./img/l1_infinite_return.png" alt="L1의 기대 수익: 무한히 이어지는 미래 보상의 총합" /></p>
+
+<hr />
+
+<h4 id="백업-다이어그램부터-살펴보죠">백업 다이어그램부터 살펴보죠</h4>
 
 <p>그림 06-8 넓게 퍼져나가는 백업 다이어그램(이번 문제에서 상태는 결정적으로 전이됨)</p>
 
-<p><img src="./img/fig_06_8.svg" alt="그림 06-8" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene6.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “우와, 백업 다이어그램을 그려보니까 가지가 끝도 없이 퍼져나가네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “한 걸음 걸을 때마다 두 갈래씩 영원히 뻗어나가니까, 나무처럼 거대해지는 무한 분기란다!”</p>
+</blockquote>
+
+<p><img src="./img/fig_06_8_backup_tree.png" alt="그림 06-8 넓게 퍼져나가는 백업 다이어그램" /></p>
 
 <p>[그림 06-8]과 같이 지금 문제는 무한히 분기되어 뻗어나가는 계산입니다.</p>
+
+<hr />
 
 <h4 id="무한한-분기">무한한 분기</h4>
 
 <p>이처럼 <strong>무한히 분기</strong>하는 계산을 벨만 방정식을 이용하여 구할 수 있습니다.</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene7.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “다람쥐 쳇바퀴처럼 끝없는 무한 계산의 굴레에서 어떻게 빠져나오지?”</p>
+
+  <p>🐱 <strong>지니</strong>: “바로 벨만 방정식이라는 마법 열쇠를 쓰면, 무한한 미래가 단 하나의 징검다리 점화식으로 쏙 정리된단다!”</p>
+</blockquote>
+
 <p><img src="./img/infinite_to_finite.png" alt="무한의 굴레에서 빠져나오는 벨만 방정식" /></p>
 
-<p>그럼 벨만 방정식을 이용하여 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 표현해봅시다.</p>
+<hr />
+
+<h4 id="그럼-벨만-방정식을-이용하여-vπl1을-표현해봅시다">그럼 벨만 방정식을 이용하여 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 표현해봅시다</h4>
 
 <p>06.2.2절의 [식 06.7]에서 보았듯이 벨만 방정식은 다음과 같이 나타냅니다.</p>
 
@@ -736,11 +913,69 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>[식 06.7]</p>
 
-<p>[식 06.7]의 첫 번째 식에서 두 번째 식으로 넘어가는 과정은, 모든 조합에 대한 총합 기호인 <em>Σ</em><sub><em>a</em>, <em>s’</em></sub>를 행동에 대한 합 <em>Σ</em><sub><em>a</em></sub>와 다음 상태에 대한 합 <em>Σ</em><sub><em>s’</em></sub>로 분리해 적은 것입니다. 이는 행동과 상태의 결합 기댓값을 단계적으로 계산하기 위한 준비 단계입니다.</p>
+<p>[식 06.7]의 첫 번째 식에서 두 번째 식으로 넘어가는 과정은, 모든 조합에 대한 총합 기호인 <em>Σ</em><sub><em>a</em>, <em>s’</em></sub>를 행동에 대한 합 <em>Σ</em><sub><em>a</em></sub>와 다음 상태에 대한 합 <em>Σ</em><sub><em>s’</em></sub>로 분리해 적은 것입니다.</p>
 
-<p>또한, 이번 그리드 월드 예제처럼 <strong>상태 전이가 결정적(deterministic)</strong>일 때는 수식이 아주 큰 폭으로 간소화됩니다. 결정적 전이란 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 도달할 다음 상태가 확률적으로 나뉘지 않고, 오직 하나의 상태 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 100% 확실하게 정해지는 상황을 뜻합니다.</p>
+<p>이는 행동과 상태의 결합 기댓값을 단계적으로 계산하기 위한 준비 단계입니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene8.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “벨만 방정식의 시그마 기호가 행동과 다음 상태 둘 다 더하고 있네?”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아! 행동에 대한 합과 다음 상태에 대한 합을 둘로 똑 떨어지게 분리하면 단계별로 계산하기 아주 쉬워져!”</p>
+</blockquote>
+
+<p><img src="./img/bellman_double_sum_split.png" alt="이중 합산의 분리와 순차 계산" /></p>
+
+<hr />
+
+<h4 id="결정적-상태전이">결정적 상태전이</h4>
+
+<p>또한, 이번 그리드 월드 예제처럼 <strong>상태 전이가 결정적(deterministic)</strong>일 때는 수식이 아주 큰 폭으로 간소화됩니다.</p>
+
+<p>결정적 전이란 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 도달할 다음 상태가 확률적으로 나뉘지 않고, 오직 하나의 상태 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 100% 확실하게 정해지는 상황을 뜻합니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene9.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “이번 격자 세상은 발을 헛디딜 확률 없이, 내가 걸어간 칸으로 정확히 이동하지?”</p>
+
+  <p>🐱 <strong>지니</strong>: “빙고! 바람이나 미끄러짐이 없는 결정적 전이라서, 다음 상태가 100% 확실하게 정해진단다!”</p>
+</blockquote>
 
 <p><img src="./img/deterministic_vs_stochastic.png" alt="결정적 전이와 확률적 전이의 비교" /></p>
+
+<hr />
+
+<h4 id="상태전이-함수">상태전이 함수</h4>
 
 <table>
   <tbody>
@@ -776,9 +1011,63 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
   </li>
 </ul>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene10.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “다음 칸이 100% 확실하다면, 전이 확률은 어떻게 바뀌어?”</p>
+
+  <p>🐱 <strong>지니</strong>: “도착할 한 곳의 확률만 1이고, 나머지 다른 곳으로 갈 확률은 몽땅 0이 된단다!”</p>
+</blockquote>
+
+<p><img src="./img/transition_function_f.png" alt="상태 전이 함수 f(s, a)의 마법" /></p>
+
+<hr />
+
+<h4 id="합산-기호의-소멸">합산 기호의 소멸</h4>
+
 <p>따라서 [식 06.7]의 상태 합(<em>Σ</em><sub><em>s’</em></sub>) 부분에서는 확률이 0인 항들이 모두 사라지고, 오직 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)인 항 하나만 살아남아 합산 기호(<em>Σ</em><sub><em>s’</em></sub>) 자체가 완전히 사라지게 됩니다.</p>
 
-<p><img src="./img/sum_disappearing.svg" alt="합산 기호가 사라지는 과정" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene11.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “확률이 0인 항들을 지우니까 다음 상태 시그마 기호가 통째로 사라졌어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “그렇지! 오직 확실한 한 칸만 남으니, 복잡했던 상태 합산 기호가 마법처럼 펑 하고 사라진 거야!”</p>
+</blockquote>
+
+<p><img src="./img/sum_disappearing.png" alt="합산 기호가 사라지는 과정" /></p>
+
+<hr />
+
+<h4 id="간소화">간소화</h4>
 
 <p>결과적으로 식을 다음과 같이 간소화할 수 있습니다.</p>
 
@@ -788,15 +1077,67 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>[식 06.8]</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene12.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “결정적 환경의 벨만 방정식 식 06.8이 이렇게나 간단해지다니!”</p>
+
+  <p>🐱 <strong>지니</strong>: “각 행동을 고를 확률에, 그때 얻는 즉각 보상과 다음 상태 가치만 쏙 곱해서 더해주면 끝이란다!”</p>
+</blockquote>
+
+<p><img src="./img/simplified_bellman_deterministic.png" alt="결정적 환경의 간소화된 벨만 방정식" /></p>
+
+<hr />
+
+<h4 id="문제대입">문제대입</h4>
+
 <p>이제 [식 06.8]에 이번 문제를 대입해보죠.</p>
 
 <p>[그림 06-9]의 백업 다이어그램을 참고하면서 진행하겠습니다.</p>
 
 <p>[그림 06-9] <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 구하기 위한 백업 다이어그램</p>
 
-<p><img src="./img/fig_06_9.svg" alt="그림 06-9" /></p>
-
 <p>[그림 06-9]를 보면 백업 다이어그램이 두 갈래로 나뉘어 있습니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene13.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “이제 L1의 백업 다이어그램을 보면서 수식을 조립해볼까?”</p>
+
+  <p>🐱 <strong>지니</strong>: “좋아! L1에서는 왼쪽으로 벽을 들이받는 길과, 오른쪽으로 사과를 향해 가는 딱 두 갈래 길만 보면 돼!”</p>
+</blockquote>
+
+<p><img src="./img/fig_06_9_l1_backup.png" alt="그림 06-9 v_π(L1)을 구하기 위한 백업 다이어그램" /></p>
+
+<hr />
 
 <h4 id="l1의-left-이동">L1의 Left 이동</h4>
 
@@ -804,31 +1145,109 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>보상은 -1입니다.</p>
 
-<p>이때 할인율 <em>γ</em>를 0.9로 설정하면 [식 06.8]에서 Left를 선택하는 경우는 다음과 같습니다.
-\(0.5 \{ -1 + 0.9 v_{\pi}(L1) \}\)</p>
+<p>이때 할인율 <em>γ</em>를 0.9로 설정하면 [식 06.8]에서 Left를 선택하는 경우는 다음과 같습니다.</p>
+
+\[0.5 \{ -1 + 0.9 v_{\pi}(L1) \}\]
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene14.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L1에서 왼쪽으로 가면 벽에 쿵 부딪혀서 제자리 L1에 남고 감점 -1이네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아, 50% 확률에 보상 -1 더하기 할인율 0.9 곱하기 v(L1)을 묶어주면 돼!”</p>
+</blockquote>
 
 <p><img src="./img/l1_left_action.png" alt="L1에서 왼쪽 행동 수식과 흐름" /></p>
+
+<hr />
 
 <h4 id="l1의-right-이동">L1의 Right 이동</h4>
 
 <p>[그림 06-9]에서 또 다른 가능성은 0.5의 확률로 행동 Right를 선택하여, <strong>상태 <em>L2</em>로 전이</strong>하고 보상 1을 얻는 경우입니다.</p>
 
-<p>이로부터 다음 식을 얻을 수 있습니다.
-\(0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\)</p>
+<p>이로부터 다음 식을 얻을 수 있습니다.</p>
+
+\[0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene15.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “오른쪽으로 가면 L2로 넘어가면서 달콤한 사과 보너스 +1을 받네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “정답이야! 50% 확률에 보상 1 더하기 할인율 0.9 곱하기 v(L2)를 곱해주면 되지!”</p>
+</blockquote>
 
 <p><img src="./img/l1_right_action.png" alt="L1에서 오른쪽 행동 수식과 흐름" /></p>
 
+<hr />
+
 <h4 id="l1에서의-벨만-방정식"><em>L1</em>에서의 벨만 방정식</h4>
 
-<p>지금까지의 내용을 벨만 방정식으로 나타내면 다음과 같습니다.
-\(v_{\pi}(L1) = 0.5 \{ -1 + 0.9 v_{\pi}(L1) \} + 0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\)</p>
+<p>지금까지의 내용을 벨만 방정식으로 나타내면 다음과 같습니다.</p>
+
+\[v_{\pi}(L1) = 0.5 \{ -1 + 0.9 v_{\pi}(L1) \} + 0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
 
 <p>이 식이 상태 <em>L1</em>에서의 벨만 방정식입니다.</p>
 
-<p>다음과 같이 정리할 수도 있습니다.
-\(-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0\)</p>
+<p>다음과 같이 정리할 수도 있습니다.</p>
+
+\[-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0\]
 
 <p>[식 06.9]</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene16.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “두 가지 행동을 더해서 정리하니까, -0.55 v(L1) + 0.45 v(L2) = 0이 됐어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “훌륭해 도로시! 미지수가 두 개인 멋진 첫 번째 일차방정식 [식 06.9]가 완성되었어!”</p>
+</blockquote>
+
+<p><img src="./img/l1_equation_complete.png" alt="L1의 벨만 방정식 정리: 균형 잡힌 1차 방정식" /></p>
+
+<hr />
 
 <h4 id="l2에서의-벨만-방정식"><em>L2</em>에서의 벨만 방정식</h4>
 
@@ -838,55 +1257,255 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>그림 06-10 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)를 구하기 위한 백업 다이어그램</p>
 
-<p><img src="./img/fig_06_10.svg" alt="그림 06-10" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene17.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “이번에는 L2 칸에 서 있을 때의 백업 다이어그램을 볼 차례야!”</p>
+
+  <p>🐱 <strong>지니</strong>: “L2에서도 똑같이 왼쪽과 오른쪽, 두 갈래 행동의 기대 가치를 합쳐주면 된단다!”</p>
+</blockquote>
+
+<p><img src="./img/fig_06_10_l2_backup.png" alt="그림 06-10 v_π(L2)를 구하기 위한 백업 다이어그램" /></p>
+
+<hr />
+
+<h4 id="l2에서-left-이동">L2에서 Left 이동</h4>
+
+<p>상태 <em>L2</em>에서 0.5의 확률로 행동 Left를 선택하면 <strong>상태 <em>L1</em>로 전이</strong>하고, 이 경로에는 사과가 없으므로 보상은 0입니다.</p>
+
+<p>이때 할인율 <em>γ</em>를 0.9로 설정하면 Left를 선택하는 경우는 다음과 같습니다.</p>
+
+\[0.5 \{ 0 + 0.9 v_{\pi}(L1) \}\]
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene18.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L2에서 왼쪽으로 가면 L1으로 돌아가는데, 이때 사과가 없으니 보상은 0이네?”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아! 보상은 0점이고 다음 상태는 L1이니, 50%에 0.9 곱하기 v(L1)을 곱하면 돼!”</p>
+</blockquote>
+
+<p><img src="./img/l2_left_action.png" alt="L2에서 Left 이동: 보상 0과 상태 L1 복귀" /></p>
+
+<hr />
+
+<h4 id="l2에서-right-이동">L2에서 Right 이동</h4>
+
+<p>상태 <em>L2</em>에서 0.5의 확률로 행동 Right를 선택하면 <strong>오른쪽 벽에 부딪혀 상태가 전이되지 않고 <em>L2</em>에 머물며</strong>, 보상은 -1입니다.</p>
+
+<p>이로부터 다음 식을 얻을 수 있습니다.</p>
+
+\[0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene19.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L2에서 오른쪽으로 가면 벽에 부딪혀서 제자리 L2에 남고 감점 -1점이군!”</p>
+
+  <p>🐱 <strong>지니</strong>: “그렇지! 50%에 -1 더하기 0.9 곱하기 v(L2)를 곱해주면 오른쪽 경로 완성!”</p>
+</blockquote>
+
+<p><img src="./img/l2_right_action.png" alt="L2에서 Right 이동: 오른쪽 벽 충돌과 감점 (-1)" /></p>
+
+<hr />
+
+<h4 id="l2-식의-정리"><em>L2</em> 식의 정리</h4>
+
+<p>이 두 행동의 기댓값을 합치면 상태 <em>L2</em>에서의 벨만 방정식이 됩니다.</p>
 
 \[v_{\pi}(L2) = 0.5 \{ 0 + 0.9 v_{\pi}(L1) \} + 0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
 
-<p>이식을 구성하는 두 행동의 흐름은 다음과 같습니다.</p>
-
-<h5 id="-l2에서-왼쪽-행동-수식과-흐름">① L2에서 왼쪽 행동 수식과 흐름</h5>
-<p><img src="./img/l2_left_action.png" alt="L2에서 왼쪽 행동 수식과 흐름" /></p>
-
-<h5 id="-l2에서-오른쪽-행동-수식과-흐름">② L2에서 오른쪽 행동 수식과 흐름</h5>
-<p><img src="./img/l2_right_action.png" alt="L2에서 오른쪽 행동 수식과 흐름" /></p>
-
-<p>이 식을 정리하면 다음과 같습니다.</p>
+<p>이 식을 전개하여 정리하면 다음과 같습니다.</p>
 
 \[0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5\]
 
 <p>[식 06.10]</p>
 
-<p><img src="./img/equation_consolidation.png" alt="L1 및 L2 벨만 연립방정식 도출과 정리" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene20.mp3" preload="none"></audio>
+</div>
 
-<h4 id="벨만-방정식-계산">벨만 방정식 계산</h4>
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “L2의 식도 괄호를 풀고 정리하니까, 0.45 v(L1) - 0.55 v(L2) = 0.5가 나왔어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “완벽해! 이렇게 해서 두 번째 일차방정식 [식 06.10]까지 완벽하게 손에 넣었단다!”</p>
+</blockquote>
+
+<p><img src="./img/equation_consolidation.png" alt="L2 벨만 방정식 정리: [식 06.10] 완성" /></p>
+
+<hr />
+
+<h4 id="벨만-방정식-연립">벨만 방정식 연립</h4>
 
 <p>이렇게 하여 모든 상태에서의 벨만 방정식을 구했습니다.</p>
 
 <p>이제 알고 싶은 변수는 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)과 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)가 남았습니다.</p>
 
-<p>그리고 다음의 두 방정식을 얻었습니다([식 06.9]와 [식 06.10]).
-\(\begin{cases}
+<p>그리고 다음의 두 방정식을 얻었습니다([식 06.9]와 [식 06.10]).</p>
+
+\[\begin{cases}
 -0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0 \\
 0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5
-\end{cases}\)</p>
+\end{cases}\]
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene21.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “미지수는 v(L1)과 v(L2) 두 개고, 식도 딱 두 개니까 중학교 연립방정식이네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아 도로시! 가감법이나 대입법으로 두 식을 묶어서 풀기만 하면 진짜 가치 숫자가 튀어나온단다!”</p>
+</blockquote>
+
+<p><img src="./img/simultaneous_equations_setup.png" alt="두 벨만 방정식의 결합: 2원 1차 연립방정식 완성" /></p>
+
+<hr />
+
+<h4 id="연립방정식-풀이">연립방정식 풀이</h4>
 
 <p>보다시피 연립방정식이며, 이번처럼 단순한 문제라면 직접 계산하여 풀 수 있을 것입니다.</p>
 
-<p><img src="./img/grid_world_equation_solve.png" alt="두 칸짜리 그리드 월드의 연립방정식 해결 과정" /></p>
+<p>첫 번째 식에서 $v_{\pi}(L2) = \frac{0.55}{0.45} v_{\pi}(L1) = \frac{11}{9} v_{\pi}(L1)$을 두 번째 식에 대입하면:</p>
 
-<p>참고로 답은 다음과 같습니다.
-\(\begin{cases}
+\[0.45 v_{\pi}(L1) - 0.55 \left( \frac{11}{9} v_{\pi}(L1) \right) = 0.5\]
+
+<p>양변에 9를 곱하고 정리하면:</p>
+
+\[4.05 v_{\pi}(L1) - 6.05 v_{\pi}(L1) = 4.5 \implies -2.0 v_{\pi}(L1) = 4.5 \implies v_{\pi}(L1) = -2.25\]
+
+<p>이를 대입하면 $v_{\pi}(L2) = \frac{11}{9} (-2.25) = -2.75$를 얻을 수 있습니다.</p>
+
+<p>참고로 답은 다음과 같습니다.</p>
+
+\[\begin{cases}
 v_{\pi}(L1) = -2.25 \\
 v_{\pi}(L2) = -2.75
-\end{cases}\)</p>
+\end{cases}\]
 
-<p>이는 무작위 정책의 상태 가치 함수입니다.</p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene22.mp3" preload="none"></audio>
+</div>
 
-<p>즉, 상태 <em>L1</em>에서 무작위로 행동하면 앞으로 -2.25의 수익을 기대할 수 있다는 뜻입니다. 무작위로 행동하다 보면 벽에 부딪힐 수도 있으니 미래의 보상이 마이너스가 될 수도 있다는 건 충분히 이해할 것입니다.</p>
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “연립방정식을 계산해보니 v(L1)은 -2.25, v(L2)는 -2.75가 나왔어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “정확해! 무한히 이어지던 기대 수익이 드디어 딱 떨어지는 실수 숫자로 명쾌하게 풀려났단다!”</p>
+</blockquote>
+
+<p><img src="./img/grid_world_equation_solve.png" alt="연립방정식 풀이 완료: 상태 가치 계산 성공" /></p>
+
+<hr />
+
+<h4 id="이는-무작위-정책의-상태-가치-함수입니다">이는 무작위 정책의 상태 가치 함수입니다</h4>
+
+<p>즉, 상태 <em>L1</em>에서 무작위로 행동하면 앞으로 -2.25의 수익을 기대할 수 있다는 뜻입니다.</p>
+
+<p>무작위로 행동하다 보면 벽에 부딪힐 수도 있으니 미래의 보상이 마이너스가 될 수도 있다는 건 충분히 이해할 것입니다.</p>
 
 <p>또한 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)의 값이 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)보다 큰 이유도 <em>L1</em> 옆에 사과가 있고 첫 번째 행동에서 그 사과를 얻을 확률이 50%이기 때문에 역시 이해할 수 있습니다.</p>
 
-<p><img src="./img/value_comparison.png" alt="상태 가치 비교의 직관적 원리" /></p>
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene23.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “둘 다 마이너스인 것도 신기하고, L1이 L2보다 더 큰 것도 재밌어!”</p>
+
+  <p>🐱 <strong>지니</strong>: “벽에 부딪히기 쉬워서 마이너스지만, L1 옆에는 바로 사과가 있어서 첫 판에 딸 확률이 50%나 되니까 더 가치 있는 거야!”</p>
+</blockquote>
+
+<p><img src="./img/value_comparison.png" alt="상태 가치 비교: v(L1) &gt; v(L2) 직관적 원리" /></p>
 
 <hr />
 
@@ -900,9 +1519,122 @@ v_{\pi}(L2) = -2.75
   <p>NOTE_ 상태 가치 함수는 기대 수익이며 ‘무한히 이어지는’ 보상의 합으로 정의됩니다. 하지만 [식 06.7]에서 보듯 벨만 방정식에는 ‘무한’이라는 개념이 없습니다. 벨만 방정식 덕분에 무한의 굴레에서 빠져나온 셈입니다.</p>
 </blockquote>
 
-<p><img src="./img/bellman_3step_summary.png" alt="벨만 최적 연립방정식을 해결하는 3단계 요약" /></p>
-
 <p>또한 이번 문제는 매우 단순했지만 복잡한 문제라도 벨만 방정식을 이용해 연립방정식으로 표현할 수 있습니다. 그리고 연립방정식을 푸는 알고리즘을 이용하면 자동으로 상태 가치 함수를 구할 수 있습니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene24.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “벨만 방정식을 세우고, 정리하고, 연립방정식으로 푸는 3단계로 모든 게 해결되는구나!”</p>
+
+  <p>🐱 <strong>지니</strong>: “바로 그거야! 아무리 거대한 세상이라도 벨만 방정식을 쓰면 컴퓨터가 자동으로 모든 가치를 풀어낼 수 있단다!”</p>
+</blockquote>
+
+<p><img src="./img/bellman_3step_summary.png" alt="벨만 방정식 해결 3단계 요약" /></p>
+
+<hr />
+
+<h3 id="0633-핵심정리">06.3.3 핵심정리</h3>
+
+<p>이번 절에서 배운 두 칸짜리 그리드 월드 벨만 방정식의 핵심 내용을 목록으로 깔끔하게 정리합니다.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_3_scene25.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “오늘 배운 두 칸짜리 그리드 월드 벨만 예제를 마음속에 쏙 정리해두자!”</p>
+
+  <p>🐱 <strong>지니</strong>: “결정적 전이의 간소화부터 연립방정식 해법까지, 핵심 정리 목록으로 확실하게 복습해보렴!”</p>
+</blockquote>
+
+<p><img src="./img/bellman_6_3_core_summary.png" alt="06.3절 벨만 방정식의 예 핵심정리" /></p>
+
+<ul>
+  <li><strong>무한 분기에서 유한한 연립방정식으로의 변환</strong>:
+    <ul>
+      <li>상태 가치 함수는 본래 무한히 이어지는 미래 보상의 기댓값의 합이지만, 벨만 방정식을 이용하면 미지수가 포함된 유한한 연립 1차 방정식으로 변환할 수 있습니다.</li>
+    </ul>
+  </li>
+  <li><strong>결정적 상태 전이 환경에서의 식 간소화</strong>:
+    <ul>
+      <li>상태 전이가 결정적($s’ = f(s, a)$)인 환경에서는 특정 다음 상태로 갈 확률만 1이고 나머지는 0이 되므로, 다음 상태에 대한 시그마 기호($\sum_{s’}$)가 사라져 식이 간소화됩니다.</li>
+    </ul>
+
+\[v_{\pi}(s) = \sum_a \pi(a \mid s) \{ r(s, a, s') + \gamma v_{\pi}(s') \}\]
+  </li>
+  <li><strong>두 칸짜리 그리드 월드에서의 벨만 방정식 도출</strong>:
+    <ul>
+      <li>할인율 $\gamma = 0.9$ 및 무작위 정책($\pi = 0.5$) 조건에서 각 상태의 벨만 방정식은 다음과 같이 세워집니다.</li>
+      <li>
+        <p><strong>상태 <em>L1</em>에서의 벨만 방정식</strong>:</p>
+
+\[v_{\pi}(L1) = 0.5 \{ -1 + 0.9 v_{\pi}(L1) \} + 0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
+
+        <p>정리하면:</p>
+
+\[-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0\]
+      </li>
+      <li>
+        <p><strong>상태 <em>L2</em>에서의 벨만 방정식</strong>:</p>
+
+\[v_{\pi}(L2) = 0.5 \{ 0 + 0.9 v_{\pi}(L1) \} + 0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
+
+        <p>정리하면:</p>
+
+\[0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5\]
+      </li>
+    </ul>
+  </li>
+  <li><strong>연립방정식의 해법과 상태 가치 계산 결과</strong>:
+    <ul>
+      <li>도출된 두 1차 방정식을 연립하여 풀면 다음의 유일한 해를 얻습니다.</li>
+    </ul>
+
+\[\begin{cases}
+v_{\pi}(L1) = -2.25 \\
+v_{\pi}(L2) = -2.75
+\end{cases}\]
+  </li>
+  <li><strong>상태 가치 수치의 직관적 의미</strong>:
+    <ul>
+      <li><strong>음수 가치</strong>: 무작위 정책에서는 양쪽 벽에 50% 확률로 계속 부딪혀 -1의 감점을 누적하므로 기대 수익이 음수가 됩니다.</li>
+      <li><strong>$v_\pi(L1) &gt; v_\pi(L2)$</strong>: 상태 <em>L1</em> 바로 오른쪽 칸에 사과(+1)가 위치하여 첫 번째 행동에서 사과를 즉시 획득할 확률(50%)이 존재하므로, <em>L1</em>의 가치가 <em>L2</em>보다 0.5만큼 더 높습니다.</li>
+    </ul>
+  </li>
+  <li><strong>벨만 방정식 해결의 3단계 프로세스</strong>:
+    <ol>
+      <li><strong>1단계 (모델 수립)</strong>: 각 상태별 벨만 방정식 작성</li>
+      <li><strong>2단계 (식 정리)</strong>: 동류항을 모아 표준 연립 1차 방정식 형태로 정리</li>
+      <li><strong>3단계 (해 계산)</strong>: 가감법/대입법(또는 행렬 역행렬 계산 알고리즘)으로 최종 상태 가치 $v_\pi(s)$ 산출</li>
+    </ol>
+  </li>
+</ul>
 
 
             <!-- 구글 애드센스 출력 -->
@@ -954,6 +1686,9 @@ v_{\pi}(L2) = -2.75
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

@@ -25,6 +25,22 @@ title: "3.5 비정상 문제"
 
 ![정상 문제와 비정상 문제 비교](./img/stationary_vs_nonstationary.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene1.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 어제까지 1등이었던 슬롯머신이 오늘은 꼴등으로 바뀌고, 꼴등이었던 머신이 갑자기 대박 머신으로 바뀐다면 에이전트는 어떻게 대처해야 할까?"
 >
 > 👧 **도로시**: "와! 예전의 오래된 기억만 믿고 있으면 안 되겠네요! 최근에 얻은 새로운 보상을 더 민감하게 관찰하고 판단해야겠어요!"
@@ -53,6 +69,22 @@ title: "3.5 비정상 문제"
 > **정상 문제**란 보상의 확률 분포가 변하지 않는 문제입니다. 
 
 ![정상 문제의 정의](./img/stationary_problem_definition.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene2.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "정상(Stationary, 靜常)이라는 단어는 '고요할 정(靜)'에 '항상 상(常)'을 써서 **시간이 흘러도 상태가 고요하게 항상 일정하다**는 뜻이야. 즉, 1번째 판이든 10,000번째 판이든 각 슬롯머신의 당첨 확률 분포는 절대로 변하지 않고 한결같이 유지된단다."
 >
@@ -104,6 +136,22 @@ class Bandit:
 
 ![Bandit 클래스의 __init__ 초기화와 play() 읽기 전용 메커니즘](./img/bandit_init_fixed_rates_code.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene3.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "이 코드가 왜 '정상 문제'를 만드는지 파이썬 객체 지향 관점에서 두 가지 결정적인 이유를 정리해볼까?
 > 1. **객체 생성 시 `__init__()` 매직 메서드 1회 실행**: `bandit = Bandit(10)`으로 객체를 생성할 때, 파이썬의 매직 메서드인 `__init__()`이 **단 한 번만 실행**되어 `self.rates`에 10개 머신의 당첨 확률(`rates`)을 생성하고 자물쇠로 굳게 잠그듯 메모리에 고정(Lock)해 둔단다.
 > 2. **`play()` 메서드의 읽기 전용(Read-Only) 동작**: 에이전트가 1,000번, 10,000번 `play(arm)`을 호출하더라도, `rate = self.rates[arm]` 문장은 고정된 승률 배열을 **오직 읽기(Read-Only)만** 할 뿐 `self.rates` 값을 수정하지 않는단다!"
@@ -138,6 +186,22 @@ class Bandit:
    - 에이전트가 레버를 당겨 `play(arm)`을 수천 번 호출해도, 승률을 조회만 할 뿐 승률 자체를 바꾸는 코드가 일절 없었습니다.
 3. **표본 평균(1/*n*) 갱신 공식과의 완벽한 궁합**:
    - 슬롯머신의 실제 승률이 영구 불변하기 때문에, 과거의 모든 보상을 공평하게 1/*n*로 누적하여 평균 내는 표본 평균 방식이 **대수의 법칙에 따라 진짜 참값(승률)으로 완벽하게 수렴**할 수 있었습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene4.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "아하! 우리가 3.4절에서 만들었던 `Bandit` 클래스는 `self.rates`를 생성자에서 딱 한 번 만들고 자물쇠로 굳게 잠가두었기 때문에 '정상 문제'였던 거군요!"
 >
@@ -198,6 +262,22 @@ NonStatBandit 클래스는 Bandit 클래스에 코드를 한 줄 추가하여 �
 2. **랜덤 워크(Random Walk) 현상**:
    - 어떤 머신은 승률이 `+0.05` 오르고, 어떤 머신은 `-0.08` 떨어지는 등 매 스텝마다 승률이 주가나 날씨처럼 끊임없이 출렁이며 이동합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene5.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "와! `self.rates`에 `+=` 연산자로 정규분포 난수를 계속 더해주니까, 슬롯머신의 승률 게이지 바늘이 살아 움직이는 생물처럼 시시각각 위아래로 흔들리네요!"
 >
 > 🐱 **지니**: "맞아 도로시! 바로 이 한 줄의 코드가 정적인 슬롯머신을 '살아 숨 쉬며 급변하는 현실 세계의 환경'으로 탈바꿈시키는 마법의 열쇠란다!"
@@ -227,6 +307,22 @@ NonStatBandit 클래스는 Bandit 클래스에 코드를 한 줄 추가하여 �
 * **새로운 적응 전략의 필요성**:
   - 따라서 비정상 세상에서는 "오래된 옛날 기억은 과감히 잊어버리고, **가장 최근에 획득한 따끈따끈한 보상에 더 높은 가중치를 두는 새로운 가치 갱신 전략**"이 반드시 필요합니다!
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene6.mp3" preload="none"></audio>
+</div>
+
 > 🐶 **토토**: "멍멍! (어제 1등이었던 가게만 고집하다간 오늘 맛없는 음식을 먹게 돼요! 최신 맛집 트렌드를 재빠르게 반영해야 해요!)"
 
 
@@ -246,6 +342,22 @@ NonStatBandit 클래스는 Bandit 클래스에 코드를 한 줄 추가하여 �
 앞 절에서는 슬롯머신의 **가치를 추정**하기 위해 **표본 평균**을 계산했습니다. 
 
 ![비정상 문제 해결을 위한 이론적 접근과 새로운 시도](./img/theoretical_approach_new_strategy.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene7.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 승률이 영구히 고정되어 있던 '정상 문제'에서는 과거의 모든 경험을 똑같이 1/*n* 로 공평하게 모으는 **표본 평균**이 최고의 무기였어. 하지만 승률이 시시각각 출렁이는 '비정상 문제'에서는 어떻게 해야 할까?"
 >
@@ -280,6 +392,22 @@ $$
 
 ![표본 평균 공식 복습](./img/sample_average_formula_review.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene8.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "우리가 3.2절부터 3.4절까지 줄곧 사용해 온 **표본 평균(Sample Average)** 공식을 다시 한 번 복습해볼까? 에이전트가 슬롯머신을 당겨 얻은 모든 보상들을 총합한 뒤, 플레이한 횟수 *n* 으로 나누는 가장 기초적이고 직관적인 가치 추정 방식이란다."
 >
 > 👧 **도로시**: "아하! 식을 오른쪽처럼 곱셈 형태로 풀어서 보면, 첫 번째 보상 *R*<sub>1</sub>부터 마지막 *R*<sub>*n*</sub>까지 **모든 보상 앞에 똑같이 1/*n* 이라는 가중치**가 곱해져 있네요! 즉, 5번 플레이했다면 모든 과거 보상이 공평하게 1/5(20%)씩 지분을 나누어 갖는 셈이에요!"
@@ -300,6 +428,22 @@ $$
 
 ![도로시가 돋보기로 관찰하는 1/n 가중치](./img/dorothy_inspecting_1_over_n_weight.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene9.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "(돋보기로 수식을 유심히 들여다보며) 지니님! 수식을 자세히 보니 정말로 *R*<sub>1</sub>부터 *R*<sub>*n*</sub>까지 모든 보상 앞에 똑같이 1/*n* 이라는 분수가 찰싹 달라붙어 있어요! 이 1/*n* 이 바로 각 보상의 중요도를 결정하는 **가중치(Weight)**라는 거군요!"
 >
 > 🐱 **지니**: "맞아 도로시! 가중치란 **해당 데이터가 전체 계산 결과에 얼마만큼의 비중(영향력)을 미치는가**를 뜻한단다. 모든 보상 앞에 똑같은 1/*n* 이 붙어 있다는 것은, 가장 처음 얻은 보상이든 방금 얻은 최신 보상이든 **차별 없이 완전히 동등한 자격**으로 평가받고 있다는 증거야!"
@@ -317,6 +461,22 @@ $$
 실제로 플레이 횟수가 늘어남에 따라 개별 보상에 할당되는 가중치 1/*n*의 크기는 줄어듭니다. 
 
 ![플레이 횟수 n 증가에 따른 1/n 가중치 크기 변화](./img/shrinking_weight_fractions.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene10.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "케이크 1판(총 가중치 100%)을 나누어 먹는 사람 수(*n*)가 늘어나는 것과 똑같네요!
 > * *n* = 2일 때: 1조각 = **1/2 (50%)**
@@ -340,6 +500,22 @@ $$
 하지만 어느 한 `시점` *n*을 기준으로 보면, 과거에 받았던 모든 보상들(*R*<sub>1</sub>, *R*<sub>2</sub>, ..., *R*<sub>*n*</sub>)이 가지는 가중치는 모두 1/*n*로 균등합니다. 
 
 ![특정 시점 스냅샷에서 바라본 1/n 균등 가중치](./img/snapshot_fixed_n_flat_weights.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene11.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, '시간의 흐름'과 '특정 시점의 정지 화면(스냅샷)'을 구분해서 생각하면 아주 명쾌해진단다!
 > 1. **시간이 흐르는 동안 (동적 관점)**: 플레이 횟수 *n* 이 늘어날수록 개별 가중치(1/*n*)의 크기는 0.5 → 0.33 → 0.25 → 0.1 처럼 점점 줄어들어.
@@ -378,6 +554,22 @@ $$
 
 
 ![표본 평균의 1/n 균등 가중치](./img/sample_average_flat_weights_concept.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene12.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "결국 표본 평균은 특정 시점 *n* 에서 가장 오래된 옛날 기억(*R*<sub>1</sub>)이나 방금 얻은 최신 기억(*R*<sub>*n*</sub>)이나 아무런 차별 없이 **완벽하게 똑같은 1/*n* 의 비중**으로 대우한다는 뜻이군요!"
 
@@ -444,6 +636,22 @@ $$
   - 비정상 환경에서는 **오래된 보상은 잊고 최근에 얻은 새로운 보상에 더 큰 가중치**를 부여해야 합니다.
   - 하지만 [식 3.5]는 플레이 횟수 *n* 이 1,000번, 10,000번으로 커질수록 최신 보상의 반영 비율인 **1/*n* 이 0으로 소멸(1/*n* ➔ 0)**해버려 최신 보상의 변화를 전혀 받아들이지 못하고 마비(동결)됩니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene13.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "아하! 3.3절에서 배운 [식 3.5]는 과거 데이터를 일일이 저장하지 않아 시스템 부하를 크게 줄여주는 훌륭한 계산식이었지만, 그 본질이 '모든 보상을 똑같이 1/*n* 로 취급하는 표본 평균'에 묶여 있었기 때문에 최신 데이터에 가중치를 주어야 하는 비정상 문제에는 맞지 않았던 거군요!"
 >
 > 🐱 **지니**: "정확하게 짚었어 도로시! 가볍고 효율적인 '증분 갱신 프레임워크'는 그대로 유지하되, 0으로 줄어드는 **1/*n* 가중치 자리만 최신 보상을 중시하는 새로운 도구**로 바꿔 끼워야 한단다!"
@@ -461,6 +669,22 @@ $$
 [식 3.5]에서 가중치인 1/*n*을 α라는 **고정값**으로 바꿉니다. 
 
 ![수식 업그레이드: 1/n을 고정값 α로 교체](./img/replacing_1_over_n_with_alpha.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene14.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 기존 증분 갱신의 가볍고 빠른 장점은 그대로 살리면서, 0으로 줄어들던 1/*n* 자리에 언제나 일정한 고정값 **α(알파, 학습률)**를 쏙 끼워 넣는 마법이야! 이렇게 하면 게임을 1,000번, 10,000번 플레이한 뒤에도 에이전트가 최신 보상의 변화를 둔감하게 놓치지 않고 민첩하게 반응할 수 있단다."
 >
@@ -542,6 +766,22 @@ $$
 
 ![도로시의 궁금증: 단순한 고정값 α가 어떻게 기하급수적 가중치를 만들까?](./img/dorothy_curious_about_ema_mystery.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene15.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "(고개를 갸우뚱하며) 지니님! 우리는 단순히 1/*n* 대신 고정된 상수 α 하나를 넣었을 뿐인데, 수식 어디에도 거듭제곱(지수) 기호가 안 보이잖아요? 그런데 왜 과거로 갈수록 가중치가 기하급수적으로 스르륵 줄어들고 최신 보상만 크게 살아남는 [그림 3-26] 같은 마법의 그래프가 나오는 건가요? 수식 속에 어떤 비밀이 숨겨져 있는 건가요?"
 >
 > 🐱 **지니**: "후후, 도로시의 호기심 가득한 관찰력이 정말 대단하구나! 겉보기에는 단순한 1차식 같지만, 과거의 *Q* 값들을 양파 껍질 벗기듯 하나씩 거슬러 올라가 대입해보면 놀라운 지수적 곱셈의 비밀이 펼쳐진단다! 지금부터 나와 함께 마법의 수식을 단계별로 풀어볼까?"
@@ -581,6 +821,22 @@ $$
 2. **가중치의 합은 언제나 완벽한 1.0 (100%)**
    - 두 가중치를 더하면 *α* + (1 - *α*) = 1.0 이 되므로, 전체 가치 추정치의 총합 비중 100%를 최신 경험과 과거 기억이 나누어 갖는 **가중 평균(내분점)** 구조를 가집니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene16.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "괄호를 풀어서 *Q*<sub>*n*-1</sub>끼리 묶어주니 수식의 숨겨진 의미가 한눈에 들어오지? 현재 가치 *Q*<sub>*n*</sub>은 **새로운 최신 보상 *R*<sub>*n*</sub>을 *α*만큼 받아들이고**, **과거의 기억 *Q*<sub>*n*-1</sub>을 (1 - *α*)만큼 물려받는** 아름다운 균형식이야!"
 >
 > 👧 **도로시**: "와! 만약 *α* = 0.1(10%)이라면, 방금 얻은 최신 보상을 10% 반영하고 이전까지의 경험을 90% 보존하면서 자연스럽게 가치를 갱신하는 거였군요!"
@@ -608,6 +864,22 @@ $$
  
 
 ![시간 인덱스 1단계 이전 이동과 Q_{n-1} 분해](./img/time_shift_n_minus_one_derivation.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene17.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "모든 시간 단계에는 똑같은 수학적 갱신 규칙이 적용된단다! [식 3.7]의 모든 *n* 을 (*n* - 1)로 한 단계 뒤로 물려주면, 직전 가치 *Q*<sub>*n*-1</sub> 속에 **어떤 보상(*R*<sub>*n*-1</sub>)과 더 이전 기억(*Q*<sub>*n*-2</sub>)**이 숨어 있는지 명확하게 분해할 수 있어."
 >
@@ -648,6 +920,22 @@ $$
   - 0 < *α* < 1 이므로 항상 (1 - *α*) < 1 입니다.
   - 따라서 *α*(1 - *α*)는 *α*보다 항상 작아지며, 과거로 1스텝 물러설 때마다 가중치가 **(1 - *α*)배만큼 감소**합니다.
   - 예를 들어 *α* = 0.1 이라면, 최신 보상 *R*<sub>*n*</sub>은 10%(0.10)가 반영되지만 한 단계 전 보상 *R*<sub>*n*-1</sub>은 9%(0.09)로 비중이 줄어듭니다!
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene18.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 대입을 한 번 거쳤을 뿐인데 놀라운 규칙이 드러났지? 최신 보상 *R*<sub>*n*</sub>은 온전한 *α*의 힘을 받지만, 과거 보상 *R*<sub>*n*-1</sub>에는 (1 - *α*)가 한 번 더 곱해져서 비중이 살짝 줄어들었단다!"
 >
@@ -710,6 +998,22 @@ $$
 * 과거의 모든 보상 기록(*R*<sub>1</sub>, *R*<sub>2</sub>, ..., *R*<sub>*n*</sub>)을 리스트에 다 보관하고 지수 곱을 일일이 계산할 필요가 전혀 없습니다.
 * 단지 매 시점 최신 보상 *R*<sub>*n*</sub>과 이전 추정치 *Q*<sub>*n*-1</sub> 하나만 가지고 *Q*<sub>*n*</sub> = *Q*<sub>*n*-1</sub> + *α*(*R*<sub>*n*</sub> - *Q*<sub>*n*-1</sub>)을 계산하는 것만으로, 이 정교한 지수 가중 이동 평균이 매 스텝 완벽히 달성됩니다!
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene19.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 드디어 [식 3.10]의 완전한 모습을 만났구나! 단지 갱신 수식에서 1/*n*을 고정값 *α*로 바꿨을 뿐인데, 매 스텝마다 최신 보상은 *α*만큼 강하게 새기고 오래된 과거 보상들은 (1 - *α*)씩 부드럽게 지수 감쇠시켜 잊어버리는 놀라운 마법이 완성된 거야!"
 >
 > 👧 **도로시**: "와! 과거의 모든 보상 데이터를 메모리에 다 쌓아둘 필요도 없이, 단 하나의 수식 *Q*<sub>*n*</sub> = *Q*<sub>*n*-1</sub> + *α*(*R*<sub>*n*</sub> - *Q*<sub>*n*-1</sub>)으로 이 멋진 지수 감쇠 곡선이 자동으로 계산된다니 정말 경이로워요! 이제 슬롯머신의 확률이 중간에 확 바뀌어도 최신 보상을 빠르게 따라잡을 수 있겠어요!"
@@ -752,6 +1056,22 @@ $$
 | **초기 스텝의 편향(Bias)** | 전혀 없음 (초깃값과 무관하게 첫 보상으로 직행) | 초기 몇 스텝 동안 초깃값 설정에 따른 **편향 잔존** |
 | **시간 경과 후 (*n* 증가)** | 과거의 모든 데이터가 균등하게 누적 | (1 - *α*)<sup>*n*</sup> → 0 이 되어 **편향 소멸 및 최신 트렌드 반영** |
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene20.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "고정값 α 방식에서는 초기 가치 *Q*<sub>0</sub>의 영향력이 (1 - *α*)<sup>*n*</sup>의 비율로 서서히 지수 감쇠하면서 잊혀지지만, 초반 몇 번의 스텝 동안에는 초깃값 설정에 따른 편향(Bias)이 남아있단다!"
 >
 > 👧 **도로시**: "하지만 단계 수 *n*이 커질수록 (1 - *α*)<sup>*n*</sup>은 0에 가까워지니까, 시간이 흐르면 결국 실제 보상들의 최신 트렌드만 정확하게 남게 되는군요!"
@@ -769,6 +1089,22 @@ $$
 비정상인 밴디트 문제를 실제로 풀어보죠. 
 
 ![비정상 밴디트 문제 실전 해결 도전](./img/dorothy_ready_to_solve_nonstationary_bandit.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene21.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니! 우리가 유도한 지수 이동 평균(EMA)의 수학적 원리가 정말 든든해요. 이제 고정값 *α*를 사용하는 똑똑한 `AlphaAgent`를 파이썬 코드로 직접 만들어서, 확률이 시시각각 출렁이는 비정상 슬롯머신 문제를 정복해 봐요!"
 >
@@ -833,6 +1169,22 @@ class AlphaAgent:
    - `Agent`: `self.Qs[action] += (reward - self.Qs[action]) / self.ns[action]`
    - `AlphaAgent`: `self.Qs[action] += (reward - self.Qs[action]) * self.alpha`
    - 나눗셈(/) 연산 대신 고정값 곱셈(*)을 수행하여 연산 효율을 높이고, 최신 보상을 언제나 일정한 비율(*α*)로 가치 추정치에 반영합니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene22.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 코드의 변화를 살펴보렴! 복잡한 행동 횟수 카운팅(`self.ns`)이 싹 사라지고, `update` 메서드에서 단지 `self.alpha`를 곱해주는 것만으로 우리가 수학에서 유도했던 지수 감쇠 가중치가 완벽하게 동작한단다!"
 >
@@ -900,6 +1252,22 @@ class AlphaAgent:
 이번 절에서는 환경 자체가 동적으로 움직이는 비정상 문제를 해결하는 방식을 배웠습니다. 
 
 ![3.5 비정상 문제 핵심 총정리](./img/ch3_5_summary.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_5_scene23.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 정적인 세상에서는 과거의 모든 경험을 공평하게 모으는 '표본 평균'이 정답이지만, 끊임없이 변하는 비정상 세상에서는 '오래된 과거를 지우고 최신 트렌드에 집중하는 고정값 α'가 최고의 지혜라는 걸 배웠어!"
 >

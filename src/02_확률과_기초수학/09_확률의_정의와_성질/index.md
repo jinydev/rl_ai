@@ -13,6 +13,28 @@ title: "02.9 확률의 정의와 성질"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_9_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 격자 세상 게임판 위에서 캐릭터에게 위로 전진하라고 명령을 내렸는데, 갑자기 바람이 쌩 불어서 옆 칸으로 미끄러져 버렸어!"
+>
+> 🐱 **지니**: "그게 바로 우리가 사는 현실 환경의 확률적 불확실성이란다! 주사위처럼 모든 결과의 확률 합은 일백 퍼센트가 되고, 대수의 법칙에 따라 반복할수록 참 확률에 다가서게 되지!"
+
+<br>
+
 ## 02.9.1 확률의 뜻과 상태 전이 확률
 
 확률이란 불확실한 결과를 객관적이고 체계적인 수치로 다루기 위한 수학적 도구입니다.
@@ -413,3 +435,30 @@ $$
 2. **확률의 3대 정의**: 표본공간의 원소 비율로 구하는 **수학적 확률**, 반복 시행의 극한으로 얻는 **실험적 확률**, 연속 공간의 면적비로 구하는 **기하학적 확률**이 있다.
 3. **대수의 법칙(LLN)**: 시행 횟수 *N*이 커질수록 표본 상대도수는 이론적 참 확률에 반드시 수렴한다.
 4. **독립사건의 곱셈**: 서로 영향을 미치지 않는 독립사건들이 동시에 발생할 확률은 각 확률의 단순 곱(*P(A ∩ B) = P(A) × P(B)*)으로 계산한다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_9_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 한두 번 미끄러졌다고 실망할 필요 없이, 수천 번 경험을 쌓다 보면 환경의 진짜 전이 확률을 정확하게 파악할 수 있겠네!"
+>
+> 🐱 **지니**: "정답이야 도로시! 확률의 수학적 성질을 믿고 꾸준히 데이터를 모으는 것이 바로 강화학습 에이전트가 환경을 정복하는 비결이란다!"
+
+<br>

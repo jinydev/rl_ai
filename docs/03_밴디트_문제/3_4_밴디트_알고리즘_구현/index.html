@@ -682,6 +682,22 @@
 
 <p>밴디트 문제를 푸는 알고리즘을 코드로 구현할 차례입니다. 이론으로 공부한 밴디트 솔루션을 실제 파이썬 코드로 이식해 봅니다.</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene1.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니야! 3.3장에서 배운 <strong>증분 공식</strong>과 <strong>ε-탐욕 정책</strong>을 내 손으로 직접 파이썬 코드로 만들어보고 싶어! 어디서부터 시작하면 좋을까?”</p>
 
@@ -709,6 +725,22 @@
 
 <p><img src="./img/bandit_binary_reward.png" alt="이진 보상 규칙 (승리 1, 패배 0)" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene2.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 우리는 문제를 아주 단순하고 직관적으로 만들기 위해 슬롯머신의 보상을 <strong>오직 1개(승리) 또는 0개(패배)</strong>로만 정했단다. 이것을 <strong>‘이진 보상(Binary Reward)’</strong> 규칙이라고 해!”</p>
 
@@ -728,6 +760,22 @@
 \[\mathbb{E}[R] = (1 \times 0.6) + (0 \times 0.4) = 0.6\]
 
 <p>승률이 그대로 슬롯머신의 가치가 되는 것이죠.</p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene3.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>👧 <strong>도로시</strong>: “아하! 동전을 넣고 당겼을 때 1원 아니면 0원만 나오니까, 슬롯머신의 승률이 0.6이면 기댓값도 1 × 0.6 + 0 × 0.4 = 0.6이 되는 거구나!”</p>
@@ -749,6 +797,22 @@
 
 <p><img src="./img/find_best_bandit_by_experience.png" alt="경험을 통한 최고 머신 찾기" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene4.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “10대의 슬롯머신 중에서 어느 기계가 승률이 높은지 겉으로는 전혀 알 수가 없어! 기계마다 직접 레버를 당겨보고 결과를 기록해 봐야겠어!”</p>
 
@@ -762,6 +826,22 @@
 <p>다음은 에이전트(플레이어)와 밴디트(환경)가 어떻게 맞물려 돌아가는지 전체적인 학습 루프를 도식화한 그림입니다.</p>
 
 <p><img src="./img/bandit_simulation_workflow.png" alt="밴디트 시뮬레이션 반복 과정" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene5.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 강화 학습의 심장은 바로 이 <strong>‘상호작용 루프(Interaction Loop)’</strong>란다. 에이전트가 행동을 고르면, 환경이 보상을 돌려주고, 에이전트는 그 보상을 보고 똑똑해지는 3단계 사이클이지!”</p>
@@ -780,6 +860,22 @@
 <p>단, 승률은 무작위로 설정하겠습니다.</p>
 
 <p><img src="./img/bandit_class_implementation.png" alt="Bandit 클래스 구현 (슬롯머신 환경)" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene6.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니야! 슬롯머신 10대를 파이썬 코드로 묶으려면 <code class="language-plaintext highlighter-rouge">Bandit</code>이라는 클래스를 만들면 되는 거지?”</p>
@@ -812,6 +908,22 @@
 
 <p><img src="./img/bandit_two_methods_explanation.png" alt="Bandit 클래스의 2가지 핵심 메서드" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene7.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">Bandit</code> 클래스는 딱 <strong>2가지 핵심 메서드</strong>만 기억하면 돼!”</p>
 
@@ -835,6 +947,22 @@
 
 <p><img src="./img/python_magic_method_init.png" alt="파이썬 매직 메서드 __init__의 비밀" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene8.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 우리가 파이썬에서 <code class="language-plaintext highlighter-rouge">bandit = Bandit()</code>이라고 코드를 실행하면, 백그라운드에서 파이썬이 자동으로 <code class="language-plaintext highlighter-rouge">__init__()</code> 메서드를 딱 한 번 불러준단다!”</p>
 
@@ -854,6 +982,22 @@
 <p>arms는 ‘팔의 개수’를 의미하며 이 문제에서는 ‘슬롯머신의 대수’에 해당합니다. 기본값은 10대로 설정했습니다.</p>
 
 <p><img src="./img/bandit_init_parameter_passing.png" alt="객체 생성과 매개변수 전달 원리" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene9.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">def __init__(self, arms=10):</code> 코드에서 <code class="language-plaintext highlighter-rouge">arms=10</code>은 <strong>‘기본 매개변수(Default Argument)’</strong>란다!”</p>
@@ -876,6 +1020,22 @@
 
 <p><img src="./img/bandit_arms_random_rates.png" alt="매개변수 arms와 무작위 난수 np.random.rand()" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene10.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “<code class="language-plaintext highlighter-rouge">np.random.rand(10)</code>을 부르면 [0.55, 0.72, 0.60, …]처럼 0.0~1.0 사이의 10개 실수가 골고루 뽑혀서 <code class="language-plaintext highlighter-rouge">self.rates</code>에 쏙 들어가는 거구나!”</p>
 
@@ -895,6 +1055,22 @@
 <p>앞서 살펴본 <code class="language-plaintext highlighter-rouge">__init__()</code>처럼 언어 차원에서 특수 기능을 위해 기본 제공하는 <strong>매직 메서드(Magic Method)</strong>와, 개발자가 프로그램 목적에 맞게 직접 설계하여 동작시키는 <strong>사용자 정의 일반 메서드(Custom Instance Method)</strong>입니다.</p>
 
 <p><img src="./img/class_methods_magic_vs_custom.png" alt="클래스의 2가지 메서드 종류" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene11.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 파이썬 클래스 속 메서드는 크게 2가지로 분류할 수 있단다!”</p>
@@ -948,6 +1124,22 @@
   </li>
 </ol>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene12.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 코드 세 줄이 각각 ‘어떤 머신을(arm)’, ‘그 머신의 승률을 꺼내서(rate)’, ‘난수 주사위와 겨뤄서 보상을 돌려주는(if-else)’ 3단계로 완벽히 맞아떨어지지?”</p>
 
@@ -963,6 +1155,22 @@
 <p><strong>그림 3-18</strong> play 메서드의 확률적 보상 판단 원리</p>
 
 <p><img src="./img/bandit_play_mechanics.png" alt="play 메서드의 확률적 보상 판단 원리" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene13.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 왜 <code class="language-plaintext highlighter-rouge">rate &gt; np.random.rand()</code> 조건문이 정확히 승률만큼의 확률을 만들어낼까?”</p>
@@ -1021,6 +1229,22 @@
   <li><strong><code class="language-plaintext highlighter-rouge">for i in range(3):</code></strong>: 0번째 슬롯머신을 3번 연속으로 당겨 각각의 보상 결과를 터미널 화면에 출력합니다.</li>
 </ol>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene14.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 화면에 출력된 <code class="language-plaintext highlighter-rouge">1, 0, 0</code>은 슬롯머신을 실행할 때마다 매번 다르게 나올 수 있단다!”</p>
 
@@ -1043,6 +1267,22 @@
 
 <p><img src="./img/agent_player_concept_intro.png" alt="강화학습의 두 주역: 환경(슬롯머신)과 에이전트(플레이어)" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene15.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 앞서 만든 <code class="language-plaintext highlighter-rouge">Bandit</code>이 슬롯머신 ‘환경’이었다면, 이제 그 환경을 공략하여 가장 돈을 많이 주는 최고의 슬롯머신을 찾아내는 똑똑한 플레이어인 ‘에이전트(Agent)’를 만들 차례란다!”</p>
 
@@ -1064,6 +1304,22 @@
 <p>이 복잡해 보이는 수학 수식을 파이썬 코드로 변환하면 놀랍게도 단 한 줄인 <code class="language-plaintext highlighter-rouge">Q += (reward - Q) / n</code>이 됩니다.</p>
 
 <p><img src="./img/formula_to_python_code_mapping.png" alt="수학 수식과 파이썬 코드의 1:1 매핑" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene16.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 수학 공식에서 좌변의 새로운 가치 <em>Q<sub>n</sub></em>과 우변의 이전 가치 <em>Q<sub>n-1</sub></em>이 파이썬에서는 복합 대입 연산자 <code class="language-plaintext highlighter-rouge">+=</code> 하나로 깔끔하게 합쳐진단다!”</p>
@@ -1115,6 +1371,22 @@
   <li><strong>슬롯머신 플레이 및 보상 관측 (<code class="language-plaintext highlighter-rouge">reward = bandit.play(0)</code>)</strong>: 0번 머신을 당겨 코인을 얻으면 <code class="language-plaintext highlighter-rouge">1</code>, 얻지 못하면 <code class="language-plaintext highlighter-rouge">0</code>을 받습니다.</li>
   <li><strong>증분 가치 갱신 (<code class="language-plaintext highlighter-rouge">Q += (reward - Q) / n</code>)</strong>: 앞서 유도했던 증분 공식인 <em>Q<sub>n</sub></em> = <em>Q<sub>n-1</sub></em> + (1 / <em>n</em>)(<em>R<sub>n</sub></em> - <em>Q<sub>n-1</sub></em>)을 코드로 그대로 구현한 것입니다. 매 시행마다 오차(<code class="language-plaintext highlighter-rouge">reward - Q</code>)를 시행 횟수 <code class="language-plaintext highlighter-rouge">n</code>으로 나누어 기존 <code class="language-plaintext highlighter-rouge">Q</code>에 누적 더함으로써, 과거의 모든 보상 기록을 배열에 일일이 저장하지 않고도 정확한 표본 평균을 실시간으로 계산합니다.</li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene17.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">Q += (reward - Q) / n</code> 한 줄이 실행될 때마다 <code class="language-plaintext highlighter-rouge">Q</code>가 과거 모든 보상의 평균값으로 정확히 계산되는 마법을 눈으로 확인했지?”</p>
@@ -1196,6 +1468,22 @@
 
 <p><img src="./img/bandit_multi_val_code_4steps.png" alt="10대 슬롯머신 가치 추정 코드의 4단계 실행 원리" /></p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene18.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">[action]</code> 인덱스를 사용하니까 10대의 슬롯머신 중 내가 실제로 당긴 머신의 가치와 횟수만 쏙쏙 골라서 갱신할 수 있지?”</p>
 
@@ -1223,6 +1511,22 @@
   <li><strong>보상 반환(Reward)</strong>: <code class="language-plaintext highlighter-rouge">Bandit</code>은 선택된 슬롯머신의 실제 승률에 따라 레버를 동작시키고(<code class="language-plaintext highlighter-rouge">play(action)</code>), 결과 보상(<code class="language-plaintext highlighter-rouge">1</code> 또는 <code class="language-plaintext highlighter-rouge">0</code>)을 <code class="language-plaintext highlighter-rouge">Agent</code>에게 돌려줍니다.</li>
   <li><strong>경험 학습(Update)</strong>: <code class="language-plaintext highlighter-rouge">Agent</code>는 돌려받은 보상을 바탕으로 자신의 내부 기억(<code class="language-plaintext highlighter-rouge">Qs[action]</code>)을 증분 공식으로 최신화(<code class="language-plaintext highlighter-rouge">update(action, reward)</code>)합니다.</li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene19.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">Bandit</code>이 문제를 내는 ‘출제자(환경)’라면, <code class="language-plaintext highlighter-rouge">Agent</code>는 문제를 풀고 경험을 쌓아가는 ‘응시자(학습자)’라고 볼 수 있단다!”</p>
@@ -1257,6 +1561,22 @@
     </ul>
   </li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene20.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, <code class="language-plaintext highlighter-rouge">Agent</code> 클래스는 두 개의 기억 장치(<code class="language-plaintext highlighter-rouge">Qs</code>, <code class="language-plaintext highlighter-rouge">ns</code>)와 두 개의 핵심 뇌(<code class="language-plaintext highlighter-rouge">get_action</code>, <code class="language-plaintext highlighter-rouge">update</code>)를 가지고 있단다. 기억 장치는 지금까지 얻은 경험을 저장하고, 뇌는 ε-탐욕 정책으로 행동을 결정하고 새 보상을 학습하지!”</p>
@@ -1321,6 +1641,22 @@
   <li><strong>가치 추정치 갱신</strong>: 증분 공식에 따라 오차(<code class="language-plaintext highlighter-rouge">reward - self.Qs[action]</code>)를 횟수(<code class="language-plaintext highlighter-rouge">self.ns[action]</code>)로 나누어 기존 가치 <code class="language-plaintext highlighter-rouge">self.Qs[action]</code>에 더해 갱신합니다.</li>
 </ul>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene21.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “<code class="language-plaintext highlighter-rouge">__init__</code>으로 기억 장치를 만들고, <code class="language-plaintext highlighter-rouge">get_action</code>으로 행동을 결정하고, <code class="language-plaintext highlighter-rouge">update</code>로 경험을 학습하는 이 3단계 사이클이 바로 인공지능 에이전트의 완전한 뇌 구조란다!”</p>
 
@@ -1338,6 +1674,22 @@
 <p>이제 Bandit 클래스와 Agent 클래스를 이용하여 행동을 취해봅시다.</p>
 
 <p><img src="./img/bandit_agent_simulation_start.png" alt="Bandit과 Agent의 신나는 1,000번 상호작용" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene22.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 환경인 <code class="language-plaintext highlighter-rouge">Bandit</code>과 똑똑한 학습자 <code class="language-plaintext highlighter-rouge">Agent</code>가 드디어 모두 준비되었단다! 이제 두 객체를 연결해 1,000번의 상호작용 모험을 돌려볼 시간이야!”</p>
@@ -1410,6 +1762,22 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>859
 </code></pre></div></div>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene23.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 1,000번 동안 에이전트가 열심히 탐색하고 학습한 덕분에 무려 850점 이상의 높은 보상을 얻었단다!”</p>
 
@@ -1443,6 +1811,22 @@
   <li><strong>결과</strong>: 선택된 머신의 인덱스 번호(<code class="language-plaintext highlighter-rouge">action</code>: 0~9 중 하나)가 반환됩니다.</li>
 </ul>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene24.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 주사위를 던져 10%는 새로운 가능성을 찾고, 90%는 최고 머신을 공략하는 지혜로운 결정 단계란다!”</p>
 
@@ -1465,6 +1849,22 @@
   </li>
   <li><strong>결과</strong>: 즉각적인 보상 값(<code class="language-plaintext highlighter-rouge">reward</code>: 1 또는 0)이 에이전트에게 주어집니다.</li>
 </ul>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene25.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “슬롯머신은 자신의 속마음(승률)을 직접 알려주지 않고, 오직 ‘당첨(1)’과 ‘꽝(0)’이라는 결과로만 답해준단다!”</p>
@@ -1490,6 +1890,22 @@
   <li><strong>결과</strong>: 다음 단계에서 더 정확하고 유리한 판단을 내릴 수 있도록 가치 추정치(<code class="language-plaintext highlighter-rouge">self.Qs[action]</code>)가 최신 경험으로 갱신됩니다.</li>
 </ul>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene26.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “경험이 쌓일수록 1/<em>n</em>의 크기가 줄어들면서 점수가 안정적으로 진짜 승률에 수렴하게 된단다!”</p>
 
@@ -1511,6 +1927,22 @@
   <li><strong>무작위 선택과의 비교</strong>: 만약 에이전트가 학습하지 않고 아무 머신이나 무작위로 계속 골랐다면, 10대 머신의 평균 승률(약 50% 가정 시)에 수렴하여 대략 <strong>500점 안팎</strong>에 머물렀을 것입니다.</li>
   <li><strong>ε-탐욕 학습의 위력</strong>: 에이전트는 초반 몇 차례의 탐색(10% 확률)을 통해 10대 중 가장 승률이 높은 최고 머신(승률 약 85~90%)을 빠르게 감지해 냈고, 이후 90%의 시행에서 그 최고 머신을 집중적으로 공략(활용)했기 때문에 무려 <strong>859점(승률 85.9%)</strong>이라는 압도적인 고득점을 달성할 수 있었습니다.</li>
 </ul>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene27.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 10대의 슬롯머신 중 어떤 녀석이 대박 머신인지 전혀 모른 채 시작했는데도, 스스로 탐색하고 학습해서 859점이라는 엄청난 보상을 모아냈단다!”</p>
@@ -1553,6 +1985,22 @@
     </ul>
   </li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene28.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 누적 보상 그래프는 ‘총 얼마나 벌었는가’는 잘 보여주지만, ‘점점 실력이 늘고 있는가’를 세밀하게 들여다보기엔 조금 부족하단다.”</p>
@@ -1607,6 +2055,22 @@
   </li>
 </ol>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene29.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 승률 그래프의 S자 모양 상승 곡선이야말로 ‘에이전트가 경험을 통해 점점 똑똑해졌다’는 가장 명확한 증거란다!”</p>
 
@@ -1622,6 +2086,22 @@
 <p>방금 구현한 코드는 실행할 때마다 결과가 달라집니다.</p>
 
 <p><img src="./img/randomness_single_run_trap.png" alt="단 1회 실험의 함정과 200회 평균 검증의 필요성" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene30.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>👧 <strong>도로시</strong>: “어라? 1회차에서는 승률이 0.85까지 쭉쭉 올라갔는데, 2회차에서는 0.6에서 헤매고 있어! 왜 실행할 때마다 결과가 이렇게 들쭉날쭉할까?”</p>
@@ -1660,6 +2140,22 @@
     </ul>
   </li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene31.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 강화학습 세상에는 ‘환경의 우연’과 ‘에이전트의 모험’이라는 2가지 무작위성이 공존한단다. 그래서 단 한 번의 실행 결과만 보고 알고리즘 전체를 평가하면 큰 오판을 할 수 있지!”</p>
@@ -1703,6 +2199,22 @@
     </ul>
   </li>
 </ol>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene32.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 주사위를 1번 던져서 6이 나왔다고 ‘이 주사위는 항상 6만 나온다’고 단정할 수 없는 것과 같단다. 수백 번 굴려 평균을 내봐야 진짜 확률을 알 수 있지!”</p>
@@ -1779,6 +2291,22 @@
 <span class="n">plt</span><span class="p">.</span><span class="nf">show</span><span class="p">()</span>
 </code></pre></div></div>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene33.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🐱 <strong>지니</strong>: “도로시, 200번의 독립된 실험을 돌려 (200, 1000) 크기의 거대한 데이터 시트를 만들고, <code class="language-plaintext highlighter-rouge">axis=0</code>으로 세로 평균을 구하면 개별 시행의 운과 불운이 완벽하게 지워진단다!”</p>
 
@@ -1798,6 +2326,22 @@
 <p>그런 다음 <strong>2</strong>에서 axis=0으로 지정하면 단계별 평균을 계산합니다.</p>
 
 <p><img src="./img/bandit_all_rates_axis0_average.png" alt="2차원 배열 all_rates와 axis=0 세로 평균 계산 원리" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene34.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐱 <strong>지니</strong>: “<code class="language-plaintext highlighter-rouge">all_rates</code>는 가로 1,000칸(단계별 승률), 세로 200줄(실험 횟수)을 가진 <code class="language-plaintext highlighter-rouge">(200, 1000)</code> 크기의 2차원 행렬이란다. 여기서 <code class="language-plaintext highlighter-rouge">np.average(all_rates, axis=0)</code>을 실행하면 세로 방향(열 기준)으로 200개의 데이터를 싹 더해 200으로 나누어, 1단계부터 1,000단계까지의 <strong>‘200회 평균 승률’ 1차원 배열(1000,)</strong>이 완성되는 거지!”</p>
@@ -1876,6 +2420,22 @@
 
 <h4 id="-왜-최종-승률은-10100이나-1등-머신-승률이-아닌-약-083일까요">💡 왜 최종 승률은 1.0(100%)이나 1등 머신 승률이 아닌 약 0.83일까요?</h4>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene35.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니님! 600단계 이후에는 에이전트가 1등 머신을 확실히 찾았을 텐데, 왜 승률이 1등 머신의 승률(~0.88)에 도달하지 않고 약 0.83에 멈추나요?”</p>
 
@@ -1908,6 +2468,22 @@
 <p>이처럼 시뮬레이션 결과로 얻은 <strong>0.83</strong>이라는 숫자는 에이전트의 ‘학습 부족’ 때문이 아니라, <strong>탐색(<em>ε</em>=0.1)과 활용(1-<em>ε</em>=0.9)의 균형에 따른 정확한 수학적 수렴값</strong>입니다.</p>
 
 <p><img src="./img/bandit_math_convergence_toto.png" alt="단일 실험 vs 200회 평균의 수학적 수렴 검증" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene36.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>🐶 <strong>토토</strong>: “멍멍! (1회 실험에서는 운에 따라 0.859도 나오고 0.60도 나왔지만, 200번 평균을 내니 이론적 기대치인 0.83에 정확하게 수렴하는 게 정말 신기해요!)”</p>
@@ -2033,6 +2609,22 @@
   </tbody>
 </table>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene37.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시</strong>: “아하! 시험 시간이 10분밖에 없을 땐(단기전: 100단계) 빠르게 여러 문제를 훑어보는 <em>ε</em>=0.3이 유리하지만, 시험 시간이 1시간일 땐(장기전: 1000단계) 차분히 좋은 문제를 집중 공략하는 <em>ε</em>=0.1이 최고 점수를 내는 거군요!”</p>
 
@@ -2048,6 +2640,22 @@
 <h2 id="347-정리-및-요약">3.4.7 정리 및 요약</h2>
 
 <p><img src="./img/ch3_4_summary.png" alt="3.4 밴디트 알고리즘 구현 핵심 총정리" /></p>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene38.mp3" preload="none"></audio>
+</div>
 
 <blockquote>
   <p>👧 <strong>도로시</strong>: “지니야! 오늘 슬롯머신 환경과 에이전트를 내 손으로 직접 구현하고, 200회 평균 실험까지 해보니까 강화 학습의 흐름이 정말 선명해졌어!”</p>
@@ -2124,6 +2732,9 @@
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

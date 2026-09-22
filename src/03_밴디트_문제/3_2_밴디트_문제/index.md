@@ -25,6 +25,28 @@ title: "3.2 밴디트 문제"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_2_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! 슬롯머신을 왜 무시무시한 도적이라는 뜻의 '밴디트'라고 부르는 거야?"
+>
+> 🐱 **지니**: "손잡이가 하나만 달린 외팔이 모습인 데다가, 당길 때마다 돈을 도둑맞듯 잃을 수 있어서 '외팔이 강도(One-armed bandit)'라고 불렀단다! 하지만 우리 에이전트는 기계들의 진짜 승률을 꿰뚫어 보고 가장 많은 코인을 획득하는 비법을 배울 거란다!"
+
+<br>
+
 ## 3.2.1 밴디트 문제란 무엇일까요
 
 **밴디트**<sup>bandit</sup>는 오락실이나 카지노에서 흔히 볼 수 있는 **'슬롯머신'**의 또 다른 이름입니다. 
@@ -628,6 +650,29 @@ $$
   * 따라서 장기적인 수익을 극대화하려면 망설임 없이 **슬롯머신 a를 선택**해야 합니다.
 
 ![두 슬롯머신의 기댓값 계산과 행동 가치](./img/two_slots_expected_val_calc.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_2_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 비(b) 기계는 꽝이 적어서 더 좋아 보였는데, 진짜 수학적인 기댓값을 계산해 보니까 대박 점수가 있는 에이(a) 기계가 평균 1.05개로 더 우수한 기계였네!"
+>
+> 🐱 **지니**: "정확해 도로시! 사람의 단순한 감이나 눈앞의 작은 당첨에 속지 않고, 모든 보상과 확률을 곱해 합산한 '진짜 기댓값'을 기준으로 판단하는 것이 강화학습의 수학적 눈이란다!"
+
+<br>
+
 
 > **NOTE_ 행동 가치(Action Value)와의 연결**
 > 강화 학습에서는 특정 행동(*A = a*)을 취했을 때 얻게 될 보상(*R*)의 기댓값을 특별히 **행동 가치**<sup>action value</sup> 또는 **가치**<sup>value</sup>라고 부르며, 수식으로는 보통 *Q*(*a*) 또는 *q*<sub>*</sub>(*a*)로 표기합니다.

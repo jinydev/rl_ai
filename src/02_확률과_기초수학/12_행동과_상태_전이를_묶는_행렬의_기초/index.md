@@ -11,6 +11,28 @@ title: "02.12 행동과 상태 전이를 묶는 행렬의 기초"
 
 ---
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_12_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 에이전트가 탐험할 수 있는 방이 열 개로 늘어나니까, 방마다 어디로 미끄러질지 적어놓은 화살표와 확률 숫자들이 너무 복잡하게 엉켜버렸어!"
+>
+> 🐱 **지니**: "그 수많은 화살표들을 네모난 바둑판 모양의 칸에 가지런히 담는 마법 상자가 바로 행렬이란다! 가로 행과 세로 열로 상태 전이 확률을 한눈에 깔끔하게 묶어낼 수 있지!"
+
+<br>
+
 ## 02.12.1 상태들의 지도를 한 상자에 담는 행렬의 연금술
 
 강화학습의 격자 세상이나 마르코프 의사결정 과정(MDP)에서 환경의 방(상태)이 10개, 100개로 늘어나면, 각 상태 사이의 조건부 전이 확률을 수식으로 하나하나 나열하기가 불가능해집니다.
@@ -228,3 +250,30 @@ $$
 2. **행렬 곱셈 규칙**: 앞 행렬의 **가로(행)** 성분과 뒤 행렬의 **세로(열)** 성분을 순서대로 곱해 모두 더해주는 내적 방식을 따른다.
 3. **상태 전이 방정식**: 현재 확률분포 **x**₀에 전이 확률 행렬 **P**를 곱하면 다음 상태의 확률분포 **x**₁ = **x**₀**P**가 단 한 줄로 도출된다.
 4. **강화학습과의 연계**: 수많은 복잡한 상태 전이와 보상 구조를 선형대수의 행렬 연산으로 추상화하여 대규모 환경에서도 고속 벡터 연산을 가능하게 한다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_12_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 현재 상태 확률 벡터에 전이 행렬 피를 곱하기만 하면 다음 상태의 모든 확률이 단 한 번에 계산되네!"
+>
+> 🐱 **지니**: "완벽해 도로시! 이 행렬 연산 덕분에 수백 개, 수천 개의 복잡한 상태를 가진 거대한 게임에서도 컴퓨터가 초고속으로 최적의 길을 찾아낼 수 있는 거란다!"
+
+<br>

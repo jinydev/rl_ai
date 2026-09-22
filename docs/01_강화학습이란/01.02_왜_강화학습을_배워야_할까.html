@@ -538,6 +538,30 @@
 
 <hr />
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_1_2_scene1.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! AI 마법은 정말 멋지지만, 거대한 마법 상자나 수많은 요정 일꾼들이 있어야만 쓸 수 있는 것 아니야?”</p>
+
+  <p>🐱 <strong>지니</strong>: “전혀 그렇지 않단다 도로시! 지도학습은 사람이 만든 수만 개의 정답 라벨이 필요하지만, 강화학습은 스스로 환경과 부딪치며 데이터를 만들어내기 때문에 작은 컴퓨터 한 대로도 무한히 성장할 수 있단다!”</p>
+</blockquote>
+
+<p><br /></p>
+
 <h2 id="0121-데이터-라벨링의-늪과-자본의-장벽">01.2.1 데이터 라벨링의 늪과 자본의 장벽</h2>
 
 <p>기존의 지도 학습(Supervised Learning)이나 비지도 학습 마법을 부리기 위해서는 엄청난 규모의 <strong>자원</strong>과 사전 <strong>노동</strong>이 필요합니다.</p>
@@ -610,6 +634,34 @@
 
 <p>자, 그럼 우리도 도로시와 함께 스스로 데이터를 만들며 성장하는 강화학습 마법의 기초를 본격적으로 배우러 떠나볼까요?</p>
 
+<hr />
+
+<h3 id="-이번-단원-지니의-마법-인사이트">💡 이번 단원 지니의 마법 인사이트</h3>
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_1_2_scene2.mp3" preload="none"></audio>
+</div>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “와! 게임을 하듯 스스로 데이터를 만들고 배우니까 정답 라벨 없이도 최적의 행동을 찾아내는 거네!”</p>
+
+  <p>🐱 <strong>지니</strong>: “맞아 도로시! 미래의 의사결정 인공지능의 주역이 바로 스스로 데이터를 창조하며 성장하는 강화학습이란다!”</p>
+</blockquote>
+
+<p><br /></p>
+
 
             <!-- 구글 애드센스 출력 -->
             <div class="mt-5">
@@ -660,6 +712,9 @@
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

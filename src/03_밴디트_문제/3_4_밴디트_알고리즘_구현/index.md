@@ -9,6 +9,22 @@ title: "3.4 밴디트 알고리즘 구현"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene1.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야! 3.3장에서 배운 **증분 공식**과 **ε-탐욕 정책**을 내 손으로 직접 파이썬 코드로 만들어보고 싶어! 어디서부터 시작하면 좋을까?"
 >
 > 🐱 **지니**: "좋은 자세야, 도로시! 강화 학습은 **'환경(Environment)'**과 **'에이전트(Agent)'**라는 두 주체가 끊임없이 대화하며 발전하는 학문이란다. 슬롯머신 10대를 담당하는 `Bandit` 클래스와 똑똑한 플레이어인 `Agent` 클래스를 객체 지향으로 멋지게 분리해서 코딩해 보자!"
@@ -42,6 +58,22 @@ title: "3.4 밴디트 알고리즘 구현"
 
 ![이진 보상 규칙 (승리 1, 패배 0)](./img/bandit_binary_reward.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene2.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 우리는 문제를 아주 단순하고 직관적으로 만들기 위해 슬롯머신의 보상을 **오직 1개(승리) 또는 0개(패배)**로만 정했단다. 이것을 **'이진 보상(Binary Reward)'** 규칙이라고 해!"
 >
 > 👧 **도로시**: "레버를 당겼을 때 코인이 1개 나오거나 아예 안 나오는 두 가지 경우밖에 없으니, 계산하기가 훨씬 명확하겠어!"
@@ -65,6 +97,22 @@ $$
 $$
 
 승률이 그대로 슬롯머신의 가치가 되는 것이죠.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene3.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "아하! 동전을 넣고 당겼을 때 1원 아니면 0원만 나오니까, 슬롯머신의 승률이 0.6이면 기댓값도 1 × 0.6 + 0 × 0.4 = 0.6이 되는 거구나!"
 >
@@ -90,6 +138,22 @@ $$
 
 ![경험을 통한 최고 머신 찾기](./img/find_best_bandit_by_experience.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene4.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "10대의 슬롯머신 중에서 어느 기계가 승률이 높은지 겉으로는 전혀 알 수가 없어! 기계마다 직접 레버를 당겨보고 결과를 기록해 봐야겠어!"
 >
 > 🐱 **지니**: "그렇지! 사전에 확률을 모르는 블랙박스 상태에서는 **'직접 겪은 시행착오와 플레이 경험(Trial and Error)'**만이 최고의 머신을 찾는 유일한 열쇠란다!"
@@ -107,6 +171,22 @@ $$
 
 
 ![밴디트 시뮬레이션 반복 과정](./img/bandit_simulation_workflow.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene5.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 강화 학습의 심장은 바로 이 **'상호작용 루프(Interaction Loop)'**란다. 에이전트가 행동을 고르면, 환경이 보상을 돌려주고, 에이전트는 그 보상을 보고 똑똑해지는 3단계 사이클이지!"
 >
@@ -129,6 +209,22 @@ $$
 단, 승률은 무작위로 설정하겠습니다. 
 
 ![Bandit 클래스 구현 (슬롯머신 환경)](./img/bandit_class_implementation.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene6.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 슬롯머신 10대를 파이썬 코드로 묶으려면 `Bandit`이라는 클래스를 만들면 되는 거지?"
 >
@@ -164,6 +260,22 @@ class Bandit:
 
 ![Bandit 클래스의 2가지 핵심 메서드](./img/bandit_two_methods_explanation.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene7.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, `Bandit` 클래스는 딱 **2가지 핵심 메서드**만 기억하면 돼!"
 >
 > 1. **`__init__()` (매직 메서드)**: 객체를 만들 때 파이썬이 자동으로 딱 1번 실행해 주는 생성자야. 10대 슬롯머신의 비밀 승률(`self.rates`)을 무작위로 세팅해 둔단다.
@@ -189,6 +301,22 @@ class Bandit:
 
 ![파이썬 매직 메서드 __init__의 비밀](./img/python_magic_method_init.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene8.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 우리가 파이썬에서 `bandit = Bandit()`이라고 코드를 실행하면, 백그라운드에서 파이썬이 자동으로 `__init__()` 메서드를 딱 한 번 불러준단다!"
 >
 > 👧 **도로시**: "내가 `bandit.__init__()`이라고 직접 호출하지 않아도 자동으로 실행되는 거네? 그래서 이름이 '매직(Magic)'이구나!"
@@ -210,6 +338,22 @@ class Bandit:
 arms는 '팔의 개수'를 의미하며 이 문제에서는 '슬롯머신의 대수'에 해당합니다. 기본값은 10대로 설정했습니다. 
 
 ![객체 생성과 매개변수 전달 원리](./img/bandit_init_parameter_passing.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene9.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, `def __init__(self, arms=10):` 코드에서 `arms=10`은 **'기본 매개변수(Default Argument)'**란다!"
 >
@@ -234,6 +378,22 @@ arms는 '팔의 개수'를 의미하며 이 문제에서는 '슬롯머신의 대
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene10.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "`np.random.rand(10)`을 부르면 [0.55, 0.72, 0.60, ...]처럼 0.0~1.0 사이의 10개 실수가 골고루 뽑혀서 `self.rates`에 쏙 들어가는 거구나!"
 >
 > 🐱 **지니**: "그렇지! 이렇게 설정된 10개의 무작위 승률은 에이전트에게는 철저히 감춰진 **'비밀 참 가치 *q*'**가 되어, 본격적인 밴디트 게임의 무대를 완성한단다!"
@@ -255,6 +415,22 @@ arms는 '팔의 개수'를 의미하며 이 문제에서는 '슬롯머신의 대
  앞서 살펴본 `__init__()`처럼 언어 차원에서 특수 기능을 위해 기본 제공하는 **매직 메서드(Magic Method)**와, 개발자가 프로그램 목적에 맞게 직접 설계하여 동작시키는 **사용자 정의 일반 메서드(Custom Instance Method)**입니다.
 
 ![클래스의 2가지 메서드 종류](./img/class_methods_magic_vs_custom.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene11.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 파이썬 클래스 속 메서드는 크게 2가지로 분류할 수 있단다!"
 >
@@ -298,6 +474,22 @@ arms는 '팔의 개수'를 의미하며 이 문제에서는 '슬롯머신의 대
    - `if rate > np.random.rand(): return 1 else: return 0`
    - `np.random.rand()`로 0.0~1.0 미만의 무작위 수를 하나 생성합니다. 이 무작위 수와 `arm`번째 슬롯머신의 승률을 비교하여, 승률이 무작위 수보다 크면 보상으로 1(승리)을 반환하고 그렇지 않으면 0(패배)을 반환합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene12.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 코드 세 줄이 각각 '어떤 머신을(arm)', '그 머신의 승률을 꺼내서(rate)', '난수 주사위와 겨뤄서 보상을 돌려주는(if-else)' 3단계로 완벽히 맞아떨어지지?"
 >
 > 👧 **도로시**: "와! 코드를 한 줄씩 뜯어보니까 `play()` 함수가 어떻게 확률대로 코인을 주는지 정말 명확하게 이해돼!"
@@ -315,6 +507,22 @@ arms는 '팔의 개수'를 의미하며 이 문제에서는 '슬롯머신의 대
 **그림 3-18** play 메서드의 확률적 보상 판단 원리
 
 ![play 메서드의 확률적 보상 판단 원리](./img/bandit_play_mechanics.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene13.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 왜 `rate > np.random.rand()` 조건문이 정확히 승률만큼의 확률을 만들어낼까?"
 >
@@ -385,6 +593,22 @@ for i in range(3):
 2. **`bandit.play(0)`**: 0번째 슬롯머신의 레버를 당깁니다. `play()` 메서드 내부에서 0번 머신의 실제 승률과 새롭게 뽑은 난수를 비교하여 이기면 `1`(코인 획득), 지면 `0`(꽝)을 반환합니다.
 3. **`for i in range(3):`**: 0번째 슬롯머신을 3번 연속으로 당겨 각각의 보상 결과를 터미널 화면에 출력합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene14.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 화면에 출력된 `1, 0, 0`은 슬롯머신을 실행할 때마다 매번 다르게 나올 수 있단다!"
 >
 > 👧 **도로시**: "맞아! 슬롯머신의 승률이 70%로 고정되어 있더라도, 레버를 당길 때마다 무작위 난수 주사위를 굴리기 때문에 어떤 날은 `1, 1, 1`이 나올 수도 있고 어떤 날은 `0, 0, 1`이 나올 수도 있는 거지!"
@@ -410,6 +634,22 @@ for i in range(3):
 3.4.2절에서 표본 평균을 구하는 효율적인 구현 방법, 즉 증분 구현을 배웠습니다. 에이전트는 레버를 당기는 **행동(Action)**을 하고, 그 결과로 얻은 **보상(Reward)**을 바탕으로 각 슬롯머신의 가치 추정치(*Q*)를 메모리 낭비 없이 실시간으로 갱신해 나갑니다.
 
 ![강화학습의 두 주역: 환경(슬롯머신)과 에이전트(플레이어)](./img/agent_player_concept_intro.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene15.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 앞서 만든 `Bandit`이 슬롯머신 '환경'이었다면, 이제 그 환경을 공략하여 가장 돈을 많이 주는 최고의 슬롯머신을 찾아내는 똑똑한 플레이어인 '에이전트(Agent)'를 만들 차례란다!"
 >
@@ -438,6 +678,22 @@ $$
 이 복잡해 보이는 수학 수식을 파이썬 코드로 변환하면 놀랍게도 단 한 줄인 `Q += (reward - Q) / n`이 됩니다.
 
 ![수학 수식과 파이썬 코드의 1:1 매핑](./img/formula_to_python_code_mapping.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene16.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 수학 공식에서 좌변의 새로운 가치 *Q<sub>n</sub>*과 우변의 이전 가치 *Q<sub>n-1</sub>*이 파이썬에서는 복합 대입 연산자 `+=` 하나로 깔끔하게 합쳐진단다!"
 >
@@ -495,6 +751,22 @@ for n in range(1, 11):  # 10번 반복 (n = 1, 2, ..., 10)
 1. **가치 추정치 초기화 (`Q = 0`)**: 슬롯머신에 대한 사전 정보가 전혀 없으므로 초기 가치 추정치를 `0`으로 설정합니다.
 2. **슬롯머신 플레이 및 보상 관측 (`reward = bandit.play(0)`)**: 0번 머신을 당겨 코인을 얻으면 `1`, 얻지 못하면 `0`을 받습니다.
 3. **증분 가치 갱신 (`Q += (reward - Q) / n`)**: 앞서 유도했던 증분 공식인 *Q<sub>n</sub>* = *Q<sub>n-1</sub>* + (1 / *n*)(*R<sub>n</sub>* - *Q<sub>n-1</sub>*)을 코드로 그대로 구현한 것입니다. 매 시행마다 오차(`reward - Q`)를 시행 횟수 `n`으로 나누어 기존 `Q`에 누적 더함으로써, 과거의 모든 보상 기록을 배열에 일일이 저장하지 않고도 정확한 표본 평균을 실시간으로 계산합니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene17.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, `Q += (reward - Q) / n` 한 줄이 실행될 때마다 `Q`가 과거 모든 보상의 평균값으로 정확히 계산되는 마법을 눈으로 확인했지?"
 >
@@ -590,6 +862,22 @@ for n in range(10):
 
 ![10대 슬롯머신 가치 추정 코드의 4단계 실행 원리](./img/bandit_multi_val_code_4steps.png)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene18.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, `[action]` 인덱스를 사용하니까 10대의 슬롯머신 중 내가 실제로 당긴 머신의 가치와 횟수만 쏙쏙 골라서 갱신할 수 있지?"
 >
 > 👧 **도로시**: "맞아! 단일 머신일 때의 수식 `Q += (reward - Q) / n`에서 `Q`와 `n` 뒤에 `[action]`만 붙여주니 10대 머신 전체로 손쉽게 확장되는구나!"
@@ -617,6 +905,22 @@ for n in range(10):
 1. **행동 선택(Action)**: `Agent`가 ε-탐욕 정책(`get_action()`)에 따라 10대 슬롯머신 중 하나를 선택하여 `Bandit`에게 전달합니다.
 2. **보상 반환(Reward)**: `Bandit`은 선택된 슬롯머신의 실제 승률에 따라 레버를 동작시키고(`play(action)`), 결과 보상(`1` 또는 `0`)을 `Agent`에게 돌려줍니다.
 3. **경험 학습(Update)**: `Agent`는 돌려받은 보상을 바탕으로 자신의 내부 기억(`Qs[action]`)을 증분 공식으로 최신화(`update(action, reward)`)합니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene19.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, `Bandit`이 문제를 내는 '출제자(환경)'라면, `Agent`는 문제를 풀고 경험을 쌓아가는 '응시자(학습자)'라고 볼 수 있단다!"
 >
@@ -646,6 +950,22 @@ Agent 클래스는 ε-탐욕 정책을 따라 행동을 선택하도록 할 것�
 2. **핵심 메서드 (Core Methods)**:
    - **`get_action()`**: **ε-탐욕 정책**을 통해 행동을 결정합니다. ε 확률로 무작위 슬롯머신을 고르고(탐색), 1 - ε 확률로는 현재까지의 가치 추정치 `Qs` 중 최댓값을 가진 머신(`np.argmax(Qs)`)을 선택(활용)합니다.
    - **`update(action, reward)`**: 선택한 슬롯머신(`action`)과 그 결과로 얻은 보상(`reward`)을 전달받아 `ns` 횟수를 늘리고 `Qs` 가치 추정치를 증분 공식으로 갱신합니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene20.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, `Agent` 클래스는 두 개의 기억 장치(`Qs`, `ns`)와 두 개의 핵심 뇌(`get_action`, `update`)를 가지고 있단다. 기억 장치는 지금까지 얻은 경험을 저장하고, 뇌는 ε-탐욕 정책으로 행동을 결정하고 새 보상을 학습하지!"
 >
@@ -711,6 +1031,22 @@ class Agent:
 * **시행 횟수 증가**: `self.ns[action] += 1`로 플레이한 머신의 플레이 횟수를 1 늘립니다.
 * **가치 추정치 갱신**: 증분 공식에 따라 오차(`reward - self.Qs[action]`)를 횟수(`self.ns[action]`)로 나누어 기존 가치 `self.Qs[action]`에 더해 갱신합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene21.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "`__init__`으로 기억 장치를 만들고, `get_action`으로 행동을 결정하고, `update`로 경험을 학습하는 이 3단계 사이클이 바로 인공지능 에이전트의 완전한 뇌 구조란다!"
 >
 > 👧 **도로시**: "와! 3개의 메서드가 각자 자기 역할을 맡아서 [기억 -> 행동 -> 학습]으로 물 흐르듯 이어지니까 코드가 훨씬 이해하기 쉬워요!"
@@ -730,6 +1066,22 @@ class Agent:
 이제 Bandit 클래스와 Agent 클래스를 이용하여 행동을 취해봅시다.
 
 ![Bandit과 Agent의 신나는 1,000번 상호작용](./img/bandit_agent_simulation_start.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene22.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 환경인 `Bandit`과 똑똑한 학습자 `Agent`가 드디어 모두 준비되었단다! 이제 두 객체를 연결해 1,000번의 상호작용 모험을 돌려볼 시간이야!"
 >
@@ -806,6 +1158,22 @@ plt.show()
 859
 ```
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene23.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 1,000번 동안 에이전트가 열심히 탐색하고 학습한 덕분에 무려 850점 이상의 높은 보상을 얻었단다!"
 >
 > 👧 **도로시**: "와! `total_rewards`는 계속 위로 쭉쭉 뻗어 올라가고, `rates`는 초반에 탐색을 거치더니 가장 승률이 좋은 머신의 승률 근처로 쑥 올라가네요!"
@@ -838,6 +1206,22 @@ plt.show()
   - 1 - *ε* (예: 90%)의 확률로 탐욕적 활용(Exploitation)을 수행하여 현재까지 가치 추정치(`self.Qs`)가 가장 높은 머신(`np.argmax`)을 선택합니다.
 * **결과**: 선택된 머신의 인덱스 번호(`action`: 0~9 중 하나)가 반환됩니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene24.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 주사위를 던져 10%는 새로운 가능성을 찾고, 90%는 최고 머신을 공략하는 지혜로운 결정 단계란다!"
 >
 > 👧 **도로시**: "상황에 안주하지 않고 가끔 새로운 길을 탐험하는 균형 감각이 핵심이군요!"
@@ -857,6 +1241,22 @@ plt.show()
   - 슬롯머신 환경(`Bandit`)은 해당 머신에 숨겨진 고유 승률(`rates[action]`)을 기반으로 난수를 발생시킵니다.
   - 승리하면 `1`(황금 코인/사과 당첨), 실패하면 `0`(꽝)의 보상(`reward`)을 에이전트에게 전달합니다.
 * **결과**: 즉각적인 보상 값(`reward`: 1 또는 0)이 에이전트에게 주어집니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene25.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "슬롯머신은 자신의 속마음(승률)을 직접 알려주지 않고, 오직 '당첨(1)'과 '꽝(0)'이라는 결과로만 답해준단다!"
 >
@@ -879,6 +1279,22 @@ plt.show()
     `self.Qs[action] += (reward - self.Qs[action]) / self.ns[action]`
 * **결과**: 다음 단계에서 더 정확하고 유리한 판단을 내릴 수 있도록 가치 추정치(`self.Qs[action]`)가 최신 경험으로 갱신됩니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene26.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "경험이 쌓일수록 1/*n*의 크기가 줄어들면서 점수가 안정적으로 진짜 승률에 수렴하게 된단다!"
 >
 > 👧 **도로시**: "기록하고, 계산하고, 수정하면서 슬롯머신의 비밀 승률을 밝혀내는 진정한 학습의 과정이네요!"
@@ -900,6 +1316,22 @@ plt.show()
 #### 859점 획득이 갖는 놀라운 의미
 * **무작위 선택과의 비교**: 만약 에이전트가 학습하지 않고 아무 머신이나 무작위로 계속 골랐다면, 10대 머신의 평균 승률(약 50% 가정 시)에 수렴하여 대략 **500점 안팎**에 머물렀을 것입니다.
 * **ε-탐욕 학습의 위력**: 에이전트는 초반 몇 차례의 탐색(10% 확률)을 통해 10대 중 가장 승률이 높은 최고 머신(승률 약 85~90%)을 빠르게 감지해 냈고, 이후 90%의 시행에서 그 최고 머신을 집중적으로 공략(활용)했기 때문에 무려 **859점(승률 85.9%)**이라는 압도적인 고득점을 달성할 수 있었습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene27.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 10대의 슬롯머신 중 어떤 녀석이 대박 머신인지 전혀 모른 채 시작했는데도, 스스로 탐색하고 학습해서 859점이라는 엄청난 보상을 모아냈단다!"
 >
@@ -941,6 +1373,22 @@ plt.show()
 2. **누적 그래프가 갖는 한계점**:
    - 그래프가 전반적으로 완만한 직선(Linear) 형태를 띠고 있어, **"에이전트가 초반 몇 번의 탐색을 거쳤는지"**, **"언제부터 최적의 슬롯머신을 본격적으로 공략하기 시작했는지"**와 같은 학습의 세부적인 질적 변화를 파악하기 어렵습니다.
    - 즉, 누적 보상 총합만으로는 에이전트의 **순간적인 승률 변화나 학습 속도(수렴 시점)**를 정밀하게 평가하기에 한계가 있습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene28.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 누적 보상 그래프는 '총 얼마나 벌었는가'는 잘 보여주지만, '점점 실력이 늘고 있는가'를 세밀하게 들여다보기엔 조금 부족하단다."
 >
@@ -992,6 +1440,22 @@ plt.show()
    - 최고 승률 머신에 대한 확신을 바탕으로 500단계를 넘어 1,000단계까지 0.8 이상의 고승률을 든든하게 유지합니다.
    - 탐색 확률 *ε* = 0.1 때문에 가끔(10%) 다른 머신을 시험해보지만, 90%는 검증된 최고 머신을 당기므로 꾸준한 고수익을 확보합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene29.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 승률 그래프의 S자 모양 상승 곡선이야말로 '에이전트가 경험을 통해 점점 똑똑해졌다'는 가장 명확한 증거란다!"
 >
 > 👧 **도로시**: "와! 100단계 전에는 주춤하다가, 최고 머신을 알아낸 뒤 0.8 넘게 쑥 치솟는 모습이 마치 내가 시험공부를 마스터하는 과정 같아요!"
@@ -1013,6 +1477,22 @@ plt.show()
 
 
 ![단 1회 실험의 함정과 200회 평균 검증의 필요성](./img/randomness_single_run_trap.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene30.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "어라? 1회차에서는 승률이 0.85까지 쭉쭉 올라갔는데, 2회차에서는 0.6에서 헤매고 있어! 왜 실행할 때마다 결과가 이렇게 들쭉날쭉할까?"
 >
@@ -1051,6 +1531,22 @@ plt.show()
 2. **에이전트 정책의 무작위성 (Policy Randomness)**:
    - `Agent`의 `get_action()` 메서드에서 탐색 확률 *ε* (10%)에 당첨될 때마다 `np.random.randint(0, 10)`으로 임의의 슬롯머신을 무작위 선택합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene31.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 강화학습 세상에는 '환경의 우연'과 '에이전트의 모험'이라는 2가지 무작위성이 공존한단다. 그래서 단 한 번의 실행 결과만 보고 알고리즘 전체를 평가하면 큰 오판을 할 수 있지!"
 >
 > 👧 **도로시**: "아하! 마치 마법 주사위를 굴리는 것과 같군요! `np.random.seed(0)`으로 주사위의 미래를 똑같이 고정할 수도 있지만, 알고리즘의 진짜 실력을 평가하려면 여러 번 실험해서 평균을 내보는 게 제일 확실하겠네요!"
@@ -1088,6 +1584,22 @@ plt.show()
 2. **다중 반복과 평균의 힘 (대수의 법칙)**:
    - 200회처럼 여러 번 독립된 환경에서 동일한 실험을 반복한 뒤 각 스텝별 승률을 평균내면, 개별 시행의 들쭉날쭉한 무작위 노이즈가 서로 상쇄됩니다.
    - 그 결과, 알고리즘이 가진 **'진정한 학습 속도와 평균 기대 승률'**이 매끄러운 곡선으로 투명하게 드러납니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene32.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 주사위를 1번 던져서 6이 나왔다고 '이 주사위는 항상 6만 나온다'고 단정할 수 없는 것과 같단다. 수백 번 굴려 평균을 내봐야 진짜 확률을 알 수 있지!"
 >
@@ -1167,6 +1679,22 @@ plt.tight_layout()
 plt.show()
 ```
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene33.mp3" preload="none"></audio>
+</div>
+
 > 🐱 **지니**: "도로시, 200번의 독립된 실험을 돌려 (200, 1000) 크기의 거대한 데이터 시트를 만들고, `axis=0`으로 세로 평균을 구하면 개별 시행의 운과 불운이 완벽하게 지워진단다!"
 >
 > 👧 **도로시**: "와! 2중 for 루프 안에서 매번 새로운 `Bandit()`과 `Agent()`를 만들어서 200번 완전히 독립적으로 테스트하니까 정말 공정한 통계가 완성되네요!"
@@ -1190,6 +1718,22 @@ plt.show()
 ![2차원 배열 all_rates와 axis=0 세로 평균 계산 원리](./img/bandit_all_rates_axis0_average.png)
 
 
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니, 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene34.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "`all_rates`는 가로 1,000칸(단계별 승률), 세로 200줄(실험 횟수)을 가진 `(200, 1000)` 크기의 2차원 행렬이란다. 여기서 `np.average(all_rates, axis=0)`을 실행하면 세로 방향(열 기준)으로 200개의 데이터를 싹 더해 200으로 나누어, 1단계부터 1,000단계까지의 **'200회 평균 승률' 1차원 배열(1000,)**이 완성되는 거지!"
 >
@@ -1260,6 +1804,22 @@ plt.show()
 
 #### 💡 왜 최종 승률은 1.0(100%)이나 1등 머신 승률이 아닌 약 0.83일까요?
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene35.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니님! 600단계 이후에는 에이전트가 1등 머신을 확실히 찾았을 텐데, 왜 승률이 1등 머신의 승률(~0.88)에 도달하지 않고 약 0.83에 멈추나요?"
 >
 > 🐱 **지니**: "아주 날카로운 질문이야 도로시! 그 이유는 바로 우리가 설정한 **탐색 확률 *ε* = 0.1 (10%)** 때문이란다!"
@@ -1290,6 +1850,22 @@ $$
 
 
 ![단일 실험 vs 200회 평균의 수학적 수렴 검증](./img/bandit_math_convergence_toto.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene36.mp3" preload="none"></audio>
+</div>
 
 > 🐶 **토토**: "멍멍! (1회 실험에서는 운에 따라 0.859도 나오고 0.60도 나왔지만, 200번 평균을 내니 이론적 기대치인 0.83에 정확하게 수렴하는 게 정말 신기해요!)"
 
@@ -1393,6 +1969,22 @@ $$
 | **장기전** | **1,000단계 이상** (시간이 넉넉함) | **ε = 0.05 ~ 0.1** (적절한 탐색) | • 충분한 시간이 있으므로 차분히 최고 머신을 탐색<br>• 최고 머신을 찾은 후 90~95%의 긴 시간 동안 최고 머신만 집중 활용(Exploitation)하여 누적 점수를 극대화 |
 | **실전 고급 전략** | **시간에 따른 점진적 변화** | **감쇠 ε-탐욕 (Decaying ε)** | • **초반**: *ε* = 0.5 (호기심 가득하게 탐색)<br>• **후반**: *ε* ➔ 0.01 (탐색을 점차 줄이고 1등 머신만 확정 활용) |
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene37.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "아하! 시험 시간이 10분밖에 없을 땐(단기전: 100단계) 빠르게 여러 문제를 훑어보는 *ε*=0.3이 유리하지만, 시험 시간이 1시간일 땐(장기전: 1000단계) 차분히 좋은 문제를 집중 공략하는 *ε*=0.1이 최고 점수를 내는 거군요!"
 >
 > 🐱 **지니**: "정확해 도로시! 강화학습에서는 '무조건 하나의 만능 정답 *ε*'이 존재하는 것이 아니라, **환경의 복잡도와 주어진 기회(단계 수)에 맞춰 최적의 균형점 *ε*을 찾는 실험적 탐색**이 핵심이란다!"
@@ -1412,6 +2004,22 @@ $$
 ## 3.4.7 정리 및 요약
 
 ![3.4 밴디트 알고리즘 구현 핵심 총정리](./img/ch3_4_summary.png)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_4_scene38.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 오늘 슬롯머신 환경과 에이전트를 내 손으로 직접 구현하고, 200회 평균 실험까지 해보니까 강화 학습의 흐름이 정말 선명해졌어!"
 >

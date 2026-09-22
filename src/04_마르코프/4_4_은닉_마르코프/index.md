@@ -39,24 +39,33 @@ title: "04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_4_scene1.mp3" preload="none"></audio>
+</div>
+
 #### 👧 **도로시의 궁금증**:
 
 > "지니! 만약 내가 창문이 하나도 없는 밀실 방에 갇혀서 공부하고 있다면 어떻게 해? 
 > 
 > 바깥 날씨가 맑은지 비가 오는지 직접 볼 수 없는데도, 오늘 날씨를 알아맞힐 수 있는 방법이 있을까?"
 
-
 ![창문 없는 방과 날씨 예측에 대한 도로시의 호기심](./img/dorothy_hidden_state_question.png)
-
-
 
 **그림 04-4-2** "창문이 하나도 없는 밀실 방에 있다면, 바깥 날씨(맑음/비)를 어떻게 알아맞힐 수 있을까?" 궁금해하는 도로시와 토토
 
-
-
 ---
-
-
 
 #### 🧞‍♂️ **지니의 마법 노트: 겉으로 드러난 단서로 진실을 역추적하라!**
 
@@ -165,6 +174,22 @@ title: "04.4 은닉 마르코프 모델 (Hidden Markov Model, HMM)"
 
 
 #### 2) 베이즈 정리를 이용한 단일 관측 역추정
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_4_scene2.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시의 질문**: 
 > "지니! 오늘 첫날인데 친구 민우가 문을 열고 들어오면서 손에 **'우산'**을 들고 나타났어! 

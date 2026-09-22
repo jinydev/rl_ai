@@ -31,7 +31,21 @@ title: "05.1 마르코프 결정 과정(MDP)이란?"
 
 ---
 
-
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene1.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 지난 4장에서 배운 날씨 마르코프 체인은 비가 올지 맑을지 확률적으로 지켜보기만 했잖아? 그런데 강화학습에서는 내가 직접 우산을 챙기거나 길을 골라 걸어갈 수 있는 거야?"
 >
@@ -53,6 +67,22 @@ title: "05.1 마르코프 결정 과정(MDP)이란?"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene2.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야! '행동에 따라 환경의 상태를 실시간으로 바꾼다'는 말이 정말 흥미진진해! 세상을 가만히 관찰하기만 하는 것과 내가 행동하는 것은 구체적으로 어떻게 달라?"
 >
 > 🧚 **지니**: "비디오 게임을 떠올려 보면 아주 쉬워, 도로시!
@@ -69,6 +99,22 @@ title: "05.1 마르코프 결정 과정(MDP)이란?"
 
 
 ---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene3.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! 복잡한 인공지능 강화학습 세상을 우리가 쉽게 이해할 수 있는 놀이터 같은 곳은 없을까?"
 >
@@ -118,6 +164,22 @@ title: "05.1 마르코프 결정 과정(MDP)이란?"
 * **오른쪽 바로 다음 칸**: 보상 **-2** (위험한 가시 함정/폭탄)
 * **오른쪽 끝 칸**: 보상 **+6** (커다란 황금 사과 더미)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene4.mp3" preload="none"></audio>
+</div>
+
 > 🐶 **토토**: "멍멍! 오른쪽으로 한 칸 가면 -2 폭탄을 밟으니까 당장 아프잖아! 그냥 왼쪽으로 가서 안전하게 +1 사과를 먹는 게 낫지 않아?"
 >
 > 👧 **도로시**: "하지만 토토야, 눈앞의 -2 폭탄을 참고 오른쪽으로 한 번 더 전진하면 무려 +6짜리 황금 사과를 얻을 수 있어! (-2) + (+6) = **+4**니까, 왼쪽으로 가서 얻는 **+1**보다 총합이 훨씬 크잖아!"
@@ -133,6 +195,22 @@ title: "05.1 마르코프 결정 과정(MDP)이란?"
 ### 05.1.3 에이전트와 환경의 상호작용 피드백 루프
 
 MDP는 에이전트와 환경이 고립되어 있지 않고 끊임없이 정보를 주고받는 **동적 폐루프(Closed-Loop Feedback System)**로 구성됩니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene5.mp3" preload="none"></audio>
+</div>
 
 > 👧 **도로시**: "지니야! '동적 폐루프'라는 말이 조금 어렵게 들려. 그냥 혼자서 정해진 길을 가는 것과 무엇이 다른 거야?"
 >
@@ -192,6 +270,22 @@ MDP는 에이전트와 환경이 고립되어 있지 않고 끊임없이 정보�
 | **장점** | 파이썬 딕셔너리나 코드 루프 작성 시 <i>t</i> 인덱스가 일치하여 직관적임 | 시간 <i>t+1</i>의 정보(상태와 보상)가 동일한 타임스탬프를 공유하여 수학적으로 깔끔함 |
 | **대표 문헌** | 본 교재 및 다수의 강화학습 실습 코드 | 서튼(Sutton) & 바토(Barto) 강화학습 교과서 (2판) |
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">지니의 팁 음성 듣기</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_1_scene6.mp3" preload="none"></audio>
+</div>
+
 > 🧚 **지니의 팁**: "우리 책에서는 파이썬 코딩과 직관적인 이해를 돕기 위해 **<i>S<sub>t</sub></i>에서 <i>A<sub>t</sub></i>를 실행하여 <i>R<sub>t</sub></i>를 받고 <i>S<sub>t+1</sub></i>로 간다**는 표기법을 기본으로 사용해! 하지만 다른 논문이나 서적에서 <i>R<sub>t+1</sub></i>을 보더라도 '아, 한 스텝 뒤에 도착해서 받는 보상이구나' 하고 편안하게 이해하면 된단다."
 
 ---
@@ -208,3 +302,4 @@ MDP는 에이전트와 환경이 고립되어 있지 않고 끊임없이 정보�
 4. **상호작용 루프**: 에이전트는 환경의 상태 <i>S<sub>t</sub></i>를 관찰하고 행동 <i>A<sub>t</sub></i>를 수행하며, 환경은 보상 <i>R<sub>t</sub></i>와 다음 상태 <i>S<sub>t+1</sub></i>을 반환하는 상호작용 사이클을 무한히 반복합니다.
 
 다음 **05.2절**에서는 이러한 에이전트와 환경의 상호작용을 수학적 기호와 수식(전이 함수, 보상 함수, 정책)으로 엄밀하게 정의해 보겠습니다!
+

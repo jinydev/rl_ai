@@ -9,6 +9,28 @@ title: "02.3 함수의 정의와 대응"
 
 ---
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_3_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 코딩할 때 데프로 함수를 정의해서 써보긴 했는데, 수학책에 나오는 함수랑은 뭐가 다르고 왜 강화학습에서 이렇게 중요하게 다뤄지는 거야?"
+>
+> 🐱 **지니**: "수학의 함수는 자판기처럼 입력값을 넣으면 오직 하나의 출력값으로 대응되는 완벽한 규칙이란다! 프로그래밍 함수와 달리 부작용 없이 수학적 참값을 보장하지!"
+
+<br>
+
 ## 02.3.1 함수와 대응이란 무엇일까요?
 
 강화학습 책을 읽다 보면 *v*(*s*), *q*(*s*, *a*)처럼 괄호로 둘러싸인 기호들이 쉴 새 없이 나타납니다. 이들은 모두 입력(상태나 행동)을 넣으면 특정 출력(기댓값)을 뱉어내는 **함수**입니다.
@@ -322,3 +344,30 @@ title: "02.3 함수의 정의와 대응"
 1. **함수**는 한 집합(정의역)의 모든 원소가 다른 집합(공역)의 원소에 오직 하나씩 매칭되는 대응 규칙을 뜻한다.
 2. 강화학습의 **가치 함수** *v*(*s*)는 격자판 상태 집합의 각 타일들을 실수 수치(예측 보상)로 짝지어주는 수학적 대응 상자이다.
 3. **수학 함수**는 부작용이 없고 언제나 결정적이지만, **프로그래밍 함수**는 상태를 보존하고 출력의 무작위성이나 시스템 값 변경(부작용)을 동반할 수 있는 실제 실행 명령 단위라는 결정적 차이가 있다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_3_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 격자판의 각 타일 상태를 입력하면 예상 수익 점수를 알려주는 가치 함수와, 어떤 행동을 할지 결정해 주는 정책 함수가 모두 이 함수의 대응 상자였구나!"
+>
+> 🐱 **지니**: "완벽하게 꿰뚫었어 도로시! 에이전트의 지능은 결국 최적의 정책 함수와 가치 함수를 찾아내는 여정이란다!"
+
+<br>

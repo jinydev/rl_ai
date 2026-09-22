@@ -11,6 +11,28 @@ title: "02.8 경우의 수와 순열/조합"
 
 ---
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_8_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 숲속 갈림길을 만났는데, 어느 길을 골라야 안전할까? 그리고 내가 선택할 수 있는 총 경로의 가짓수는 전부에 몇 개나 되는 거야?"
+>
+> 🐱 **지니**: "그건 바로 경우의 수와 순열, 조합의 마법으로 셀 수 있단다! 순서가 중요한지, 단순히 모으기만 하는지에 따라 체계적으로 가짓수를 계산할 수 있지!"
+
+<br>
+
 ## 02.8.1 경우의 수와 합의 법칙, 곱의 법칙
 
 경우의 수는 모험 경로에서 우리가 직면할 수 있는 모든 선택지의 수입니다.
@@ -473,3 +495,30 @@ $$
 1. **합의 법칙**은 동시에 일어나지 않는 사건의 덧셈(Or)이며, **곱의 법칙**은 연속적·동시적으로 일어나는 사건의 곱셈(And)이다.
 2. **순열(<sub>*n*</sub>*P*<sub>*r*</sub>)**은 서로 다른 *n*개 중 *r*개를 **순서를 고려하여 나열**하는 경우의 수이며, **조합(<sub>*n*</sub>*C*<sub>*r*</sub>)**은 **순서 없이 선택**하여 묶음을 만드는 경우의 수이다.
 3. 조합은 순열의 값에서 중복되는 나열 수인 *r*!을 나눈 값을 가지며, 대칭성 성질인 **<sub>*n*</sub>*C*<sub>*r*</sub> = <sub>*n*</sub>*C*<sub>*n-r*</sub>**을 활용하면 복잡한 조합 계산을 극적으로 단순화할 수 있다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_8_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 바둑이나 체스처럼 단계가 늘어날수록 경우의 수가 우주 원자 수보다 많아지기 때문에, 모든 길을 다 가보지 않고 스마트하게 가치 함수로 가지치기를 해야 하는 거구나!"
+>
+> 🐱 **지니**: "놀라운 통찰이야 도로시! 경우의 수의 폭발을 이해해야만 왜 강화학습의 지능적인 탐색과 가치 평가가 필수적인지 깊이 깨달을 수 있는 거란다!"
+
+<br>

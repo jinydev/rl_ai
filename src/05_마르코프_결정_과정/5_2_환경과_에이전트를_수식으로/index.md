@@ -25,6 +25,24 @@ MDP에서 에이전트와 환경이 주고받는 모든 상호작용은 다음�
 2. **보상 함수 (Reward Function)**: 에이전트가 행동을 취했을 때 보상은 어떻게 지급되는가?
 3. **정책 (Policy)**: 에이전트는 상태를 보고 어떤 기준으로 행동을 결정하는가?
 
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene1.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니야! 앞선 4장 마르코프 과정에서는 그냥 상태 <i>P</i><sub><i>ij</i></sub> 행렬 하나만 있었는데, MDP에서는 왜 이렇게 3개나 필요한 거야?"
 >
 > 🧚 **지니**: "마르코프 과정에서는 상태가 저절로 흘러갔지만, MDP에서는 **'에이전트가 무슨 행동(<i>a</i>)을 골랐는가'**에 따라 세상의 다음 상태(<i>s'</i>)도 달라지고 받는 보상(<i>r</i>)도 달라지기 때문이야! 그래서 에이전트의 선택 기준인 **정책(&pi;)**, 환경의 반응인 **전이 확률(<i>p</i>)**, 결과로 얻는 **보상(<i>r</i>)**이라는 삼총사가 꼭 필요하단다!"
@@ -49,16 +67,38 @@ MDP에서 에이전트와 환경이 주고받는 모든 상호작용은 다음�
 
 **결정적 상태 전이(Deterministic Transition)**는 현재 상태 <i>s</i>에서 행동 <i>a</i>를 취했을 때, 다음 상태 <i>s'</i>가 100% 확실하게 단 하나로 결정되는 경우입니다.
 
-> 👧 **도로시**: "지니야! 내가 L3 타일에서 '왼쪽으로 한 칸 걷기'를 하면, 바람이나 미끄러짐 없이 무조건 L2 타일에 정확히 도착하는 세상인 거지?"
->
-> 🧚 **지니**: "맞아 도로시야! 어떤 우연이나 오차도 없이, 상태와 행동을 넣으면 다음 상태가 자판기 버튼 누르듯 100% 하나로 튀어나오는 완벽한 함수 <i>f</i>(<i>s</i>, <i>a</i>)로 정의된단다!"
-
 <div style="background-color: #f8fafc; border-left: 4px solid #3b82f6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #1e293b; text-align: center; border-radius: 4px;">
 <i>s'</i> = <i>f</i>(<i>s</i>, <i>a</i>)
 </div>
 
 * <i>f</i>(<i>s</i>, <i>a</i>): 현재 상태 <i>s</i>와 에이전트의 행동 <i>a</i>를 입력받아 다음 상태 <i>s'</i>를 하나로 확정하여 출력하는 함수입니다. 이를 **상태 전이 함수**라고 부릅니다.
 * 예: 체스나 바둑처럼 플레이어가 말을 움직이면 말이 놓이는 위치가 100% 확실하게 정해지는 완벽한 환경.
+
+
+
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! 내가 L3 타일에서 '왼쪽으로 한 칸 걷기'를 하면, 바람이나 미끄러짐 없이 무조건 L2 타일에 정확히 도착하는 세상인 거지?"
+>
+> 🧚 **지니**: "맞아 도로시야! 어떤 우연이나 오차도 없이, 상태와 행동을 넣으면 다음 상태가 자판기 버튼 누르듯 100% 하나로 튀어나오는 완벽한 함수 <i>f</i>(<i>s</i>, <i>a</i>)로 정의된단다!"
+
+
 
 ![결정적 상태 전이 함수](./img/mdp_deterministic_transition_function.png)
 
@@ -70,6 +110,22 @@ MDP에서 에이전트와 환경이 주고받는 모든 상호작용은 다음�
 
 현실 세계의 로봇이나 자율주행차는 바닥의 미끄러움(마찰력 변화), 강한 돌풍(외력), 모터의 기어 유격이나 센서 노이즈(내부 오차) 때문에 의도한 대로 완벽하게 움직이지 못할 수 있습니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene3.mp3" preload="none"></audio>
+</div>
+
 > 🐶 **토토**: "멍멍! 내가 앞으로 똑바로 달리려고 했는데, 빙판길이라 미끄러져서 옆으로 갈 수도 있다는 뜻이야?"
 >
 > 🧚 **지니**: "맞아 토토야! '왼쪽으로 이동' 행동을 실행해도 90%(0.9)의 확률로만 왼쪽 칸에 안착하고, 10%(0.1)의 확률로는 얼음에 미끄러져 제자리에 머물 수 있어. 이처럼 현실의 불확실성을 담아낸 것이 바로 **상태 전이 확률**이란다!"
@@ -77,6 +133,8 @@ MDP에서 에이전트와 환경이 주고받는 모든 상호작용은 다음�
 ![토토의 의문과 상태 전이 확률](./img/mdp_stochastic_transition_toto.png)
 
 **그림 05-2-5** 토토의 걱정과 상태 전이 확률 <i>p</i>(<i>s'</i> \| <i>s</i>, <i>a</i>): 90% 정상 도달 vs 10% 미끄러짐 제자리 잔류
+
+---
 
 확률적 상태 전이는 다음과 같이 **조건부 확률(Conditional Probability)**로 나타냅니다.
 
@@ -131,15 +189,35 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 에이전트가 상태 <i>s</i>에서 행동 <i>a</i>를 하여 상태 <i>s'</i>로 전이되었을 때 지급받는 실수(Real Number) 보상값입니다.
 
-> 👧 **도로시**: "지니야! L3 타일에서 왼쪽으로 이동해서 L2 타일(사과 칸)에 도착하면, 의심할 여지 없이 무조건 +1 사과를 얻는 거지?"
->
-> 🧚 **지니**: "맞아 도로시야! 행동의 결과로 특정 상태에 도달했을 때 정해진 수치(+1 또는 -2)가 100% 확실하게 주어지는 함수를 **결정적 보상 함수 <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>)**라고 한단다!"
-
 <div style="background-color: #f8fafc; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #78350f; text-align: center; border-radius: 4px;">
 <i>R</i><sub><i>t</i></sub> = <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>)
 </div>
 
 * 예를 들어 그리드 월드에서 어떤 칸(<i>s'</i>)에 도착했는지만으로 사과(+1)나 폭탄(-2)이 정해진다면, 단순화하여 <i>r</i>(<i>s'</i>) 형태로 쓸 수도 있습니다.
+
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene4.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! L3 타일에서 왼쪽으로 이동해서 L2 타일(사과 칸)에 도착하면, 의심할 여지 없이 무조건 +1 사과를 얻는 거지?"
+>
+> 🧚 **지니**: "맞아 도로시야! 행동의 결과로 특정 상태에 도달했을 때 정해진 수치(+1 또는 -2)가 100% 확실하게 주어지는 함수를 **결정적 보상 함수 <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>)**라고 한단다!"
+
+
 
 ![결정적 보상 함수](./img/mdp_deterministic_reward_function.png)
 
@@ -151,13 +229,36 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 보물상자를 열었을 때 80% 확률로 황금 열쇠(+10)가 나오고 20% 확률로는 꽝(0)이 나오는 것처럼 보상이 확률적으로 주어질 수도 있습니다. 이 경우 우리는 **보상의 기댓값(Expected Reward)**을 계산하여 다룹니다.
 
-> 🐶 **토토**: "멍멍! 보물상자를 열었을 때 어떤 때는 황금 열쇠(+10)가 나오고, 어떤 때는 먼지만 풀풀 날리는 꽝(0)이 나오면 보상을 몇 점이라고 해야 해?"
->
-> 🧚 **지니**: "그럴 때는 각 결과가 나올 확률을 곱해서 더한 **보상의 기댓값(Expected Reward)**을 계산하면 돼! 80% 확률의 +10과 20% 확률의 0점을 합산하면 평균적으로 8.0점의 가치가 있는 상자라고 평가할 수 있단다!"
+
+
+
 
 <div style="background-color: #f8fafc; border-left: 4px solid #f59e0b; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.05rem; color: #78350f; text-align: center; border-radius: 4px;">
 &Ropf;(<i>s</i>, <i>a</i>) = &Eopf;[ <i>R</i><sub><i>t</i></sub> | <i>S</i><sub><i>t</i></sub> = <i>s</i>, <i>A</i><sub><i>t</i></sub> = <i>a</i> ] = &Sigma;<sub><i>s'</i> &isin; <i>S</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) &middot; <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>)
 </div>
+
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene5.mp3" preload="none"></audio>
+</div>
+
+> 🐶 **토토**: "멍멍! 보물상자를 열었을 때 어떤 때는 황금 열쇠(+10)가 나오고, 어떤 때는 먼지만 풀풀 날리는 꽝(0)이 나오면 보상을 몇 점이라고 해야 해?"
+>
+> 🧚 **지니**: "그럴 때는 각 결과가 나올 확률을 곱해서 더한 **보상의 기댓값(Expected Reward)**을 계산하면 돼! 80% 확률의 +10과 20% 확률의 0점을 합산하면 평균적으로 8.0점의 가치가 있는 상자라고 평가할 수 있단다!"
+
 
 ![확률적 보상과 보상 기댓값 함수](./img/mdp_stochastic_expected_reward.png)
 
@@ -181,16 +282,43 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 상태 <i>s</i>가 주어지면 에이전트가 수행할 행동 <i>a</i>가 단 하나로 100% 확정되는 규칙입니다.
 
-> 👧 **도로시**: "지니야! L3 상태에 서면 망설임 없이 무조건 '왼쪽(Left)'으로만 가도록 정해둔 나침반 규칙이 바로 **결정적 정책(&mu;)**인 거지?"
->
-> 🧚 **지니**: "맞아 도로시야! 어떤 상황(<i>s</i>)에서도 고민이나 확률 없이 단 하나의 최선의 행동(<i>a</i>)을 100% 확정하여 실행하는 규칙을 **결정적 정책 <i>a</i> = &mu;(<i>s</i>)**라고 부른단다!"
+
+
+
 
 <div style="background-color: #f8fafc; border-left: 4px solid #8b5cf6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #4c1d95; text-align: center; border-radius: 4px;">
 <i>a</i> = &mu;(<i>s</i>)
 </div>
 
+
 * **&mu; (뮤, mu)**: 제어 이론에서 상태를 제어 입력으로 1:1 대응시키는 제어 함수(Controller)를 나타낼 때 전통적으로 사용하는 그리스 문자입니다.
 * 예: 상태 <i>s</i> = L3일 때 &mu;(L3) = Left (무조건 왼쪽으로만 이동).
+
+
+
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene6.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! L3 상태에 서면 망설임 없이 무조건 '왼쪽(Left)'으로만 가도록 정해둔 나침반 규칙이 바로 **결정적 정책(&mu;)**인 거지?"
+>
+> 🧚 **지니**: "맞아 도로시야! 어떤 상황(<i>s</i>)에서도 고민이나 확률 없이 단 하나의 최선의 행동(<i>a</i>)을 100% 확정하여 실행하는 규칙을 **결정적 정책 <i>a</i> = &mu;(<i>s</i>)**라고 부른단다!"
+
+
 
 ![결정적 정책](./img/mdp_deterministic_policy_mu.png)
 
@@ -202,22 +330,63 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 
 상태 <i>s</i>가 주어졌을 때 여러 행동 후보들 각각을 선택할 **확률 분포(Probability Distribution)**를 반환하는 규칙입니다.
 
-> 🐶 **토토**: "멍멍! 항상 똑같은 길만 가면 새로운 곳에 숨겨진 황금 보물을 못 찾을 수도 있잖아?"
->
-> 🧚 **지니**: "맞아 토토야! 그래서 학습 초기에는 왼쪽으로 갈 확률 40%(0.4), 오른쪽으로 갈 확률 60%(0.6)처럼 확률적으로 행동을 골라 세상을 골고루 탐험(Exploration)할 수 있는 **확률적 정책 &pi;(<i>a</i> \| <i>s</i>)**를 유용하게 활용한단다!"
+
 
 <div style="background-color: #f8fafc; border-left: 4px solid #8b5cf6; padding: 14px 18px; margin: 18px 0; font-family: monospace; font-size: 1.1rem; color: #4c1d95; text-align: center; border-radius: 4px;">
 &pi;(<i>a</i> | <i>s</i>) = Pr(<i>A</i><sub><i>t</i></sub> = <i>a</i> | <i>S</i><sub><i>t</i></sub> = <i>s</i>)
 </div>
+
 
 * **&pi; (파이, pi)**: 정책(Policy)의 첫 글자 'P'에 대응되는 그리스 문자이자 확률론의 기본 기호입니다.
 * 특정 상태 <i>s</i>에서 취할 수 있는 모든 행동 <i>a</i>에 대한 정책 확률의 합은 반드시 1.0입니다:
   <br>&Sigma;<sub><i>a</i> &isin; <i>A</i></sub> &pi;(<i>a</i> \| <i>s</i>) = 1.0
 * 예: 상태 <i>s</i> = L3에서 &pi;(Left \| L3) = 0.4, &pi;(Right \| L3) = 0.6.
 
+
+
+---
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene7.mp3" preload="none"></audio>
+</div>
+
+> 🐶 **토토**: "멍멍! 항상 똑같은 길만 가면 새로운 곳에 숨겨진 황금 보물을 못 찾을 수도 있잖아?"
+>
+> 🧚 **지니**: "맞아 토토야! 그래서 학습 초기에는 왼쪽으로 갈 확률 40%(0.4), 오른쪽으로 갈 확률 60%(0.6)처럼 확률적으로 행동을 골라 세상을 골고루 탐험(Exploration)할 수 있는 **확률적 정책 &pi;(<i>a</i> \| <i>s</i>)**를 유용하게 활용한단다!"
+
+
+
 ![확률적 정책](./img/mdp_stochastic_policy_pi.png)
 
 **그림 05-2-12** 확률적 정책 &pi;(<i>a</i> \| <i>s</i>): 상태 <i>s</i>에서 각 행동 후보를 선택할 확률 분포 구조 (확률의 총합 = 1.0)
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">지니의 꿀팁 음성 듣기 (지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_5_2_scene8.mp3" preload="none"></audio>
+</div>
 
 > 🧚 **지니의 꿀팁**: "강화학습 초기에는 에이전트가 새로운 보상을 찾기 위해 다양한 길을 탐험(Exploration)해야 하므로 **확률적 정책(&pi;)**을 많이 쓰고, 학습이 완료되어 가장 완벽한 길을 찾았을 때는 흔들림 없이 최선의 선택만 내리는 **결정적 정책(&mu;)**을 주로 사용한단다!"
 
@@ -235,3 +404,4 @@ Pr(<i>S</i><sub><i>t+1</i></sub> = <i>s'</i> | <i>S</i><sub><i>t</i></sub> = <i>
 4. **정책 &pi;(<i>a</i> \| <i>s</i>) / &mu;(<i>s</i>)**: 상태 <i>s</i>에서 에이전트가 어떤 행동을 선택할지 결정하는 의사결정 알고리즘입니다.
 
 다음 **05.3절**에서는 이 수식들을 바탕으로 에이전트가 달성해야 할 궁극적인 목적지인 **'MDP의 목표와 가치 함수(Value Function)'**를 정복해 보겠습니다!
+

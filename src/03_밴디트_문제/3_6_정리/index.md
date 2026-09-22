@@ -12,6 +12,30 @@ title: "3.6 정리"
 
 ---
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_6_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! 우리가 슬롯머신 10대에서 엡실론 탐욕 주사위로 탐색과 활용의 균형을 맞추고, 표본 평균과 지수 이동 평균까지 직접 파이썬으로 구현해서 3장을 마스터했어!"
+>
+> 🐶 **토토**: "멍멍! 나도 이제 환경이 변해도 지수 이동 평균으로 과거를 잊고 새 보상을 쫓아갈 수 있어! 멍멍!"
+>
+> 🐱 **지니**: "둘 다 정말 자랑스러워! 밴디트 문제를 통해 강화학습의 에이전트와 환경, 보상의 상호작용 원리를 완벽하게 꿰뚫었으니, 이제 다음 4장 마르코프 세상으로 당당하게 떠나보자꾸나!"
+
+<br>
+
 이번 장에서는 먼저 강화 학습의 기초를 알아보았습니다. 강화 학습은 머신러닝의 한 분야지만 '지도 학습'이나 '비지도 학습'과는 분명한 차이가 있습니다. 
 
 
@@ -50,3 +74,26 @@ title: "3.6 정리"
 • **지수 이동 평균**: *Q*<sub>*n*</sub> = *Q*<sub>*n-1*</sub> + α(*R*<sub>*n*</sub> - *Q*<sub>*n-1*</sub>)
 
 이와 같이 표본 평균은 1/*n*로, 지수 이동 평균은 고정값 α로 갱신합니다.
+
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_6_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! 밴디트 문제는 슬롯머신 레버를 한 번 당기면 게임이 끝나는 단판 승부였잖아? 4장 마르코프 세상에서는 뭐가 달라지는 거야?"
+>
+> 🐱 **지니**: "단판 승부를 넘어, 내 행동이 다음 상태로 이어지고 또 다음 상태로 사슬처럼 연결되는 '연속적인 상태 변화'의 세계로 들어간단다! 훨씬 흥미진진한 모험이 기다리고 있지!"
+
+<br>

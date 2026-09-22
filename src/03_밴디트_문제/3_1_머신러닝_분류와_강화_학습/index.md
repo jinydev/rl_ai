@@ -18,7 +18,29 @@ title: "3.1 머신러닝 분류와 강화 학습"
 
 ---
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 토토 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_1_scene1.mp3" preload="none"></audio>
+</div>
 
+> 👧 **도로시**: "지니야! 머신러닝 안에도 지도 학습, 비지도 학습, 강화 학습처럼 여러 가지 공부법이 있다고 들었어. 컴퓨터가 배우는 방식이 어떻게 다른 거야?"
+>
+> 🐶 **토토**: "멍멍! 나도 간식을 줄 때 앉는 걸 배웠는데, 이것도 강화 학습이야? 멍멍!"
+>
+> 🐱 **지니**: "정답이야 도로시, 토토! 정답 해설지를 보고 공부하는 건 지도 학습, 짝짓기 퍼즐을 맞추는 건 비지도 학습, 그리고 토토처럼 행동에 따른 보상 사탕을 받으며 실전 노하우를 터득하는 게 바로 강화 학습이란다!"
+
+<br>
 
 #### 기계학습
 
@@ -162,6 +184,27 @@ title: "3.1 머신러닝 분류와 강화 학습"
 
 ## 3.1.4 강화 학습: 스스로 부딪히며 배우는 시행착오 학습
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_3_1_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니야! 지도학습은 정답을 알려주는 선생님이 있고 비지도학습은 스스로 패턴을 찾지만, 강화학습은 문제집 대신 세상에 직접 뛰어들어 온몸으로 부딪쳐서 배우는 거네?"
+>
+> 🐱 **지니**: "정확해 도로시! 에이전트가 환경 속에서 행동을 시도하고, 환경이 주는 보상을 바탕으로 시행착오를 겪으며 스스로 최선의 행동 패턴을 완성해 나가는 것이 강화학습의 진짜 매력이란다!"
+
+<br>
  **강화 학습**은 앞서 배운 지도학습, 비지도학습과는  전혀 다르게 합습을 합니다. 
 
 

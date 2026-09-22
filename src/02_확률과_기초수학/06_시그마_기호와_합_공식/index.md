@@ -13,6 +13,28 @@ title: "02.6 시그마(Σ) 기호와 합 공식"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_6_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 책에 나오는 공식을 보는데 수식이 너무 길고 복잡해! 덧셈 기호가 끝도 없이 늘어서 있어서 보는 것만으로도 머리가 어지러워."
+>
+> 🐱 **지니**: "그럴 땐 시그마라는 거대한 집게손 마법 기호를 쓰면 된단다! 백 개, 천 개 늘어선 긴 덧셈식도 시그마 기호 딱 하나로 단숨에 압축할 수 있지!"
+
+<br>
+
 ## 02.6.1 덧셈 상자 속으로: 합의 기호 시그마(Σ)와의 만남
 
 수십, 수만 개의 행동 가치나 상태 가치들의 합을 구해야 할 때, 식을 길게 늘어놓는 것은 매우 지루하고 복잡한 일입니다.
@@ -487,3 +509,30 @@ $$
 2. 아래첨자는 합산을 시작하는 변수의 초깃값(시작 항 번호)을 나타내고, 위첨자는 합산을 멈추는 최종 경계값(끝 항 번호)을 의미한다.
 3. 자연수의 거듭제곱 합은 일일이 더하지 않고 공식(Σ k, Σ k², Σ k³)을 이용하여 빠른 연산이 가능하며, 이는 다양한 강화학습 수식 증명 및 전개에 활용된다.
 4. 시그마는 곱해진 상수를 기호 밖으로 분리하거나, 덧셈/뺄셈을 쪼개어 처리할 수 있는 대수적 선형 성질을 가지며, 이는 벨만 방정식의 상태/행동 가중합 계산에 직결된다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_6_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "아하! 시그마 기호 덕분에 수천 개의 보상 합산식도 한 줄로 간결해지고, 상수 곱셈이나 덧셈도 마음대로 쪼개어 계산할 수 있구나!"
+>
+> 🐱 **지니**: "맞아 도로시! 이 시그마의 선형성이 앞으로 배울 상태 가치 함수와 기댓값 수식을 전개하는 가장 든든한 붓이 되어줄 거란다!"
+
+<br>

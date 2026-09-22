@@ -13,6 +13,28 @@ title: "02.4 일차방정식과 연립방정식"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_4_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 격자판에서 가치를 계산하려고 하는데, 에이 방의 가치는 비 방에 영향을 받고, 비 방의 가치는 다시 에이 방에 영향을 줘서 실타래처럼 얽혀버렸어!"
+>
+> 🐱 **지니**: "그럴 때 필요한 마법 도구가 바로 미지수가 여러 개인 연립방정식이란다! 가감법과 대입법으로 얽힌 실타래를 한 올씩 풀어내면 방들의 진짜 가치를 오차 없이 찾아낼 수 있지!"
+
+<br>
+
 ## 02.4.1 얽히고설킨 단서들을 풀어내는 방정식의 열쇠
 
 강화학습에서 상태 가치들은 독립적으로 외따로 떨어져 있지 않습니다. 
@@ -384,3 +406,30 @@ title: "02.4 일차방정식과 연립방정식"
 2. 강화학습의 상태 가치들이 순환하며 서로에게 영향을 미칠 때는 각 상태들의 가치 관계를 **연립방정식** 형태로 나타낼 수   있다.
 3. **가감법**과 **대입법**은 맞물린 벨만 기대 방정식의 상태 가치 참값을 대수적으로 오차 없이 풀어내는 마법의 열쇠이다.
 4. **방정식의 종류와 해의 역사**에서 1차부터 4차 다항방정식은 일반적인 대수적 해법(근의 공식)이 존재하지만, 5차 이상의 방정식은 대수적으로 풀 수 없음이 아벨과 갈루아에 의해 밝혀졌다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_4_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 이웃한 방들의 가치를 연립일차방정식으로 세워서 푸니까 수식의 참값이 마법처럼 딱 떨어지네!"
+>
+> 🐱 **지니**: "맞아 도로시! 이 연립방정식 해법이 바로 육 장에서 배울 벨만 기대 방정식을 손으로 직접 풀어내는 가장 정확한 기초 대수학이란다!"
+
+<br>

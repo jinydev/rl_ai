@@ -724,6 +724,22 @@
 
 <p>도로시가 모험을 떠날 때, 1번째 칸부터 99번째 칸까지 어떤 길을 굽이굽이 걸어왔는지는 중요하지 않습니다. 오직 지금 발을 딛고 서 있는 <strong>100번째 돌판(<i>S</i><sub><i>t</i></sub>)</strong>이 어디인가에 따라 다음에 내디딜 <strong>101번째 돌판(<i>S</i><sub><i>t</i>+1</sub>)</strong>의 운명이 결정됩니다.</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (지니 &amp; 도로시)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_1_scene1.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>🧞‍♂️ <strong>지니의 마법 노트: 왜 마르코프 성질이 강화학습의 구원자일까요?</strong></p>
 
@@ -792,18 +808,30 @@
 
 <p>도로시가 수식을 가만히 들여다보더니 호기심 가득한 눈으로 질문했습니다.</p>
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 &amp; 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_4_1_scene2.mp3" preload="none"></audio>
+</div>
+
 <blockquote>
   <p>👧 <strong>도로시의 궁금증</strong>:</p>
 
   <p>“지니! 그럼 세상의 모든 일들이 다 마르코프 성질을 만족하는 거야?</p>
 
   <p>과거에 일어났던 일들을 꼭 기억해야만 미래를 알 수 있는 상황은 없어?”</p>
-</blockquote>
 
-<p>지니가 빙그레 미소를 지으며 고개를 끄덕였습니다.</p>
-
-<blockquote>
-  <p>🧞‍♂️ <strong>지니의 명쾌한 해설: 과거의 기억이 꼭 필요한 ‘비마르코프’ 세상!</strong></p>
+  <p>🧞‍♂️ <strong>지니의 명쾌한 해설</strong>:</p>
 
   <p>“아주 날카로운 질문이야, 도로시! 현실 세계에는 <strong>‘현재 상태’만으로는 부족하고, 과거의 지나온 기록(히스토리)을 반드시 알아야만 하는 비마르코프(Non-Markovian)</strong> 현상들이 아주 많단다!”</p>
 </blockquote>
@@ -977,6 +1005,9 @@
 </div>
     </main>
 </div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
 
   <footer class="container">
   <hr class="mt-5 mb-3">

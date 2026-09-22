@@ -13,6 +13,28 @@ title: "02.10 확률의 역사와 덧셈정리"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_10_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 토토랑 내가 삼 판을 먼저 이기면 금화를 다 갖기로 게임을 하고 있었는데, 소나기가 와서 중단됐어. 내가 이 승, 토토가 일 승인데 상금을 어떻게 공정하게 나눠야 해?"
+>
+> 🐱 **지니**: "바로 그것이 십칠 세기 파스칼과 페르마가 확률론을 탄생시킨 유명한 상금 분배 문제란다! 단순히 지금까지 이긴 횟수가 아니라, 앞으로 게임을 계속했을 때 각자가 최종 승리할 미래 확률을 계산해 나눠야 공정하단다!"
+
+<br>
+
 ## 02.10.1 확률의 역사와 상금 분배 문제 (Problem of Points)
 
 확률론은 단순한 수학적 호기심이 아니라, 중단된 게임의 상금을 가장 공평하게 나누기 위한 치열한 고민에서 탄생했습니다.
@@ -370,3 +392,30 @@ $$
 2. **조합(<sub>*n*</sub>*C*<sub>*r*</sub>) 확률**: 순서가 없는 다중 추출 문제는 분모(전체 조합 수)와 분자(사건 조합 수)를 각각 조합 공식으로 세어 확률을 구한다.
 3. **확률의 덧셈정리**: 합사건 확률 계산 시 교집합 확률을 반드시 빼주어(*P*(*A* ∪ *B*) = *P*(*A*) + *P*(*B*) - *P*(*A* ∩ *B*)) 중복 계산을 배제한다.
 4. **여사건의 활용**: '적어도 하나' 조건이 포함된 문제는 여사건 공식(*P*(*A*<sup>*c*</sup>) = 1 - *P*(*A*))을 활용하여 빠르게 역산한다.
+
+
+---
+
+### 💡 이번 단원 지니의 마법 인사이트
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시 & 지니)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_2_10_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "와! 과거의 결과뿐 아니라 앞으로 남은 게임의 미래 확률까지 내다보고 가치를 매긴다는 점이 강화학습의 미래 수익 계산과 정말 똑같네!"
+>
+> 🐱 **지니**: "정확해 도로시! 눈앞의 과거에 머무르지 않고 미래의 모든 가능성을 확률적으로 합산하는 통찰이 바로 수학과 강화학습의 위대한 눈이란다!"
+
+<br>
