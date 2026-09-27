@@ -680,60 +680,361 @@
         <div class="bd-content ps-lg-4">
             <h1 id="067-정리">06.7 정리</h1>
 
-<p><strong>그림 06-7</strong> 벨만 최적의 메달을 목에 걸고, 지니 요정이 선물해 준 7장 동적 계획법 마법 책을 힘차게 여는 도로시와 토토
-<img src="./img/jiny_bellman_ch6_7_summary.png" alt="6장 정리 인트로" /></p>
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 복잡해 보이던 벨만 방정식과 벨만 최적 방정식을 드디어 다 배웠어! 머릿속에 수식이 빙글빙글 돌지만, 정말 뿌듯해!”</p>
 
-<p>벨만 방정식과 벨만 최적 방정식의 뼈대 공식을 최종적으로 대조 정리합니다. 상태 가치와 행동 가치 계산법을 정복하여 금빛 메달을 얻은 도로시처럼, 이제 수동 계산을 뛰어넘어 컴퓨터가 스스로 가치를 갱신해 나갈 거대한 7장 동적 계획법(Dynamic Programming) 세계의 출발선 앞에 지니와 함께 서봅시다!</p>
+  <p>🐱 <strong>지니</strong>: “정말 대견하구나, 도로시! 6강은 강화학습 전체를 통틀어 가장 중요한 수학적 기둥이란다. 오늘 배운 공식들의 연결고리를 깔끔하게 정리해 두면, 앞으로 펼쳐질 7장 동적 계획법과 딥러닝 강화학습(DQN)도 술술 풀릴 거야!”</p>
 
-<hr />
+  <p>🐶 <strong>토토</strong>: “멍멍! 벨만 최적 메달을 땄으니 이제 신나게 다음 모험으로 가자!”</p>
+</blockquote>
 
-<p>이번 장에서는 벨만 방정식을 알아보았습니다. 벨만 방정식을 도출하고 단순한 문제를 벨만 방정식을 이용하여 풀었습니다. 구체적으로는 벨만 방정식을 이용해 연립방정식을 얻고 이를 통해 가치 함수를 구할 수 있었습니다. 안타깝게도 실용적인 문제에서는 상태 공간이 커질수록 계산량이 너무 많아져서 연립방정식을 직접 푸는 방법은 적용하기 힘듭니다. 하지만 벨만 방정식은 앞으로 배울 수많은 강화 학습 알고리즘의 뼈대이자 출발점 역할을 합니다.</p>
+<p><img src="./img/jiny_bellman_ch6_7_summary.png" alt="6장 정리 인트로: 벨만 최적의 메달을 목에 걸고 7장 동적 계획법 마법 책을 힘차게 여는 도로시와 토토, 지니" /></p>
 
-<p>강화 학습의 궁극적인 목표는 최적 정책을 찾는 것입니다. 이를 위해 최적 정책에서 성립하는 특별한 벨만 방정식인 벨만 최적 방정식에 대해서도 배웠습니다. 최적 정책의 가치 함수를 구할 수만 있다면, 우리는 아주 간단하게(다음 상태들의 가치만을 비교하는 방식으로) 최적 정책을 즉시 얻을 수 있습니다.</p>
+<p><strong>그림 06-7</strong> 벨만 최적의 메달을 목에 걸고, 지니 요정이 선물해 준 7장 동적 계획법 마법 책을 힘차게 여는 도로시와 토토</p>
 
-<p>마지막으로 이번 장에서 배운 가장 핵심적인 세 가지 식들을 다시 한번 대조하여 정리해 봅니다.</p>
-
-<hr />
-
-<h3 id="1-벨만-기댓값-방정식-bellman-expectation-equation">1. 벨만 기댓값 방정식 (Bellman Expectation Equation)</h3>
-
-<p>특정 정책 <em>π</em>를 따를 때, 현재 상태/행동의 가치와 다음 상태/행동의 가치 사이의 일관된 기대 관계를 나타냅니다.</p>
-
-<p><strong>상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)</strong>
-\(v_{\pi}(s) = \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \}\)</p>
-
-<p><strong>행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)</strong>
-\(q_{\pi}(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi(a' \mid s') q_{\pi}(s', a') \right\}\)</p>
+<p>벨만 방정식과 벨만 최적 방정식의 뼈대 공식을 최종적으로 대조 정리합니다. 상태 가치와 행동 가치 계산법을 정복하여 금빛 메달을 얻은 도로시처럼, 이제 수동 계산을 뛰어넘어 컴퓨터가 스스로 가치를 갱신해 나갈 거대한 <strong>7장 동적 계획법(Dynamic Programming)</strong> 세계의 출발선 앞에 지니와 함께 서봅시다!</p>
 
 <hr />
 
-<h3 id="2-벨만-최적-방정식-bellman-optimality-equation">2. 벨만 최적 방정식 (Bellman Optimality Equation)</h3>
+<h2 id="1-6강에서-배운-핵심-벨만-방정식이란-무엇인가">1. 6강에서 배운 핵심: 벨만 방정식이란 무엇인가?</h2>
+
+<p>우리가 5강에서 배웠던 <strong>가치 함수(Value Function)</strong>는 “지금 이 상태에서 시작하면 앞으로 끝까지 얻을 보상의 합(기댓값)이 얼마나 될까?”를 나타내는 성적표였습니다.</p>
+
+<p>하지만 끝없이 펼쳐지는 무한한 미래의 보상을 매 순간 처음부터 끝까지 다 더하는 것은 불가능에 가깝습니다. 이때 20세기의 위대한 수학자 리처드 벨만 교수가 제시한 해결책이 바로 <strong>벨만 방정식(Bellman Equation)</strong>입니다.</p>
+
+<blockquote>
+  <p>💡 <strong>벨만 방정식의 한 줄 핵심 원리</strong><br />
+<strong>“현재 상태의 가치 = 당장 한 걸음 내딛으며 얻는 즉각 보상(오늘의 사과) + 할인율이 적용된 다음 상태의 가치(내일의 보물상자)”</strong></p>
+</blockquote>
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b>현재 상태의 참 가치 <i>v</i>(<i>s</i>) = E [ <i>R</i><sub><i>t</i>+1</sub> + <i>γ</i> <i>v</i>(<i>S</i><sub><i>t</i>+1</sub>) | <i>S</i><sub><i>t</i></sub> = <i>s</i> ]</b>
+</div>
+
+<p>이 간단한 <strong>재귀적(Recursive) 관계식</strong> 덕분에, 우리는 까마득한 미래를 전부 헤매고 다니지 않아도 <strong>“바로 이웃한 다음 상태들의 가치”</strong>만 알면 현재의 가치를 완벽하게 계산할 수 있게 되었습니다!</p>
+
+<hr />
+
+<h2 id="2-벨만-방정식-2--2-완전-정복-지도">2. 벨만 방정식 2 × 2 완전 정복 지도</h2>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 벨만 방정식이 4개나 되니까 머릿속에서 헷갈려. 이걸 한눈에 쏙 들어오게 정리할 수는 없을까?”</p>
+
+  <p>🐱 <strong>지니</strong>: “후후, 걱정 마 도로시! 상태 가치와 행동 가치, 그리고 평균(기댓값)과 최선(최댓값)이라는 2가지 축만 알면 칠판 하나에 완벽하게 정리된단다!”</p>
+</blockquote>
+
+<p><img src="./img/bellman_four_equations_matrix.png" alt="4대 벨만 방정식 요약 칠판" /></p>
+
+<p><strong>그림 06-7a</strong> 상태 가치(<em>v</em>)와 행동 가치(<em>q</em>), 그리고 기댓값(평균)과 최적(최댓값 max)으로 구성된 4대 벨만 방정식의 대칭 구조를 칠판으로 정리하는 지니와 도로시, 토토</p>
+
+<p>6강에서 등장한 수식들은 언뜻 보면 기호가 복잡해 보이지만, 사실 딱 <strong>2가지 질문의 조합(2 × 2 매트릭스)</strong>으로 완벽히 분류할 수 있습니다.</p>
+
+<h3 id="질문-1-누구의-가치를-평가하는가">질문 1: 누구의 가치를 평가하는가?</h3>
+<ol>
+  <li><strong>상태 가치 함수 <em>v</em>(<em>s</em>)</strong>: 내가 발을 디디고 서 있는 <strong>땅(위치 <em>s</em>)의 잠재력</strong>을 평가합니다.</li>
+  <li><strong>행동 가치 함수 <em>q</em>(<em>s</em>, <em>a</em>)</strong>: 그 땅에서 특정 방향으로 <strong>발걸음(행동 <em>a</em>)을 뗐을 때의 성적표</strong>를 평가합니다.</li>
+</ol>
+
+<h3 id="질문-2-어떤-정책을-따르는가">질문 2: 어떤 정책을 따르는가?</h3>
+<ol>
+  <li><strong>벨만 기댓값 방정식 (Expectation)</strong>: 정해진 규칙(임의의 정책 <em>π</em>)대로 움직일 때, 여러 갈래길의 <strong>가중 평균(기댓값, ∑)</strong>을 구합니다.</li>
+  <li><strong>벨만 최적 방정식 (Optimality)</strong>: 가장 현명한 최적 정책(<em>π</em><sub>*</sub>)을 따를 때, 주사위를 굴리지 않고 <strong>가장 큰 보물(최댓값, <em>max</em>)</strong>만을 쏙 골라냅니다.</li>
+</ol>
+
+<p>이 2가지 기준을 결합하면 아래처럼 깔끔한 4개의 핵심 방정식이 완성됩니다.</p>
 
 <table>
+  <thead>
+    <tr>
+      <th style="text-align: left">구분</th>
+      <th style="text-align: left">1. 벨만 기댓값 방정식 (평균 / ∑ <em>π</em>)</th>
+      <th style="text-align: left">2. 벨만 최적 방정식 (최선 / <em>max</em>)</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td>모든 정책 중 가장 가치가 높은 최적 정책 <em>π</em><sub>*</sub> 하에서 성립하는 비선형 방정식입니다. 정책에 의한 행동 선택 확률 <em>∑</em><sub><em>a</em></sub> <em>π</em>(<em>a</em></td>
-      <td><em>s</em>)가 최댓값 선택 연산인 <em>max</em><sub><em>a</em></sub>로 단순화되는 것이 가장 큰 특징입니다.</td>
+      <td style="text-align: left"><strong>상태 가치 (<em>v</em>)</strong><br /><em>(내가 서 있는 땅의 가치)</em></td>
+      <td style="text-align: left"><strong>[식 06.7]</strong> <em>v</em><sub><em>π</em></sub>(<em>s</em>)<br />도로시의 정책 주사위(<em>π</em>)와 환경의 규칙(<em>p</em>)을 모두 고려한 <strong>평균 상태 가치</strong></td>
+      <td style="text-align: left"><strong>[식 06.16]</strong> <em>v</em><sub><em>&lt;/sub&gt;(</em>s<em>)<br />가장 높은 보상을 주는 최고의 행동 하나만을 고른 <strong>최적 상태 가치</strong> (</em>max*<sub><em>a</em></sub>)</sub></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>행동 가치 (<em>q</em>)</strong><br /><em>(취한 행동의 가치)</em></td>
+      <td style="text-align: left"><strong>[식 06.14]</strong> <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)<br />첫 행동 <em>a</em>를 취한 뒤, 다음 땅(<em>s’</em>)부터 정책 주사위(<em>π</em>)를 굴리는 <strong>평균 행동 가치</strong></td>
+      <td style="text-align: left"><strong>[식 06.18]</strong> <em>q</em><sub><em>&lt;/sub&gt;(</em>s<em>, *a</em>)<br />첫 행동 <em>a</em>를 취한 뒤, 다음 땅(<em>s’</em>)에서 최선의 행동(<em>a’</em>)을 고르는 <strong>최적 행동 가치</strong> (<em>max</em><sub><em>a’</em></sub>)</sub></td>
     </tr>
   </tbody>
 </table>
 
-<p><strong>최적 상태 가치 함수 <em>v</em><sub>*</sub>(<em>s</em>)</strong>
-\(v_*(s) = \max_a \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}\)</p>
+<hr />
 
-<p><strong>최적 행동 가치 함수 <em>q</em><sub>*</sub>(<em>s</em>, <em>a</em>)</strong>
-\(q_*(s, a) = \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma \max_{a'} q_*(s', a') \}\)</p>
+<h2 id="3-4대-핵심-공식의-직관적-분해">3. 4대 핵심 공식의 직관적 분해</h2>
+
+<p>지니의 마법 돋보기로 각 수식이 품고 있는 의미를 하나씩 분해해 보겠습니다.</p>
+
+<h3 id="1-상태-가치-함수의-벨만-기댓값-방정식">1) 상태 가치 함수의 벨만 기댓값 방정식</h3>
+<p>어떤 정책 <em>π</em>를 따를 때, 상태 <em>s</em>의 가치는 다음과 같이 2단계로 계산됩니다.</p>
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b><i>v</i><sub><i>π</i></sub>(<i>s</i>) = ∑<sub><i>a</i></sub> <i>π</i>(<i>a</i> | <i>s</i>) ∑<sub><i>s'</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) { <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>) + <i>γ</i> <i>v</i><sub><i>π</i></sub>(<i>s'</i>) }</b>
+</div>
+
+<blockquote>
+  <p>🔍 <strong>지니의 수식 분해 현미경</strong></p>
+  <ol>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td><em>*∑<sub>*a*</sub> *π</em>(<em>a</em></td>
+            <td><em>s</em>) (에이전트의 영역)<em>*: 도로시가 정책 주사위를 굴려 행동 *a</em>를 고를 확률입니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td><em>*∑<sub>*s’*</sub> *p</em>(<em>s’</em></td>
+            <td><em>s</em>, <em>a</em>) (환경의 영역)<em>*: 발걸음을 내디뎠을 때 바람이 불거나 미끄러져 다음 상태 *s’</em>에 도착할 확률입니다.</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li><strong><em>r</em>(<em>s</em>, <em>a</em>, *s’)</strong>: 그 상태로 넘어가며 당장 베어무는 <strong>달콤한 사과(+즉각 보상)</strong>입니다.</li>
+    <li><strong><em>γ</em> <em>v</em><sub><em>π</em></sub>(<em>s’)**: 다음 상태 *s’</em>에 도착한 뒤 앞으로 누리게 될 **미래 보물상자의 할인된 가치</strong>입니다.</li>
+  </ol>
+</blockquote>
 
 <hr />
 
-<h3 id="3-최적-정책-구하기-finding-the-optimal-policy">3. 최적 정책 구하기 (Finding the Optimal Policy)</h3>
+<h3 id="2-행동-가치-함수q-함수의-벨만-기댓값-방정식">2) 행동 가치 함수(Q 함수)의 벨만 기댓값 방정식</h3>
+<p>상태 <em>s</em>에서 특정한 첫 행동 <em>a</em>를 이미 저질렀을 때의 가치입니다.</p>
 
-<p>최적 상태 가치 함수 <em>v</em><sub>*</sub>(<em>s</em>) 또는 최적 행동 가치 함수 <em>q</em><sub>*</sub>(<em>s</em>, <em>a</em>)를 알고 있을 때, 에이전트가 취할 수 있는 최적의 결정적 정책 <em>μ</em><sub>*</sub>는 다음과 같이 정의됩니다.</p>
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b><i>q</i><sub><i>π</i></sub>(<i>s</i>, <i>a</i>) = ∑<sub><i>s'</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) { <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>) + <i>γ</i> ∑<sub><i>a'</i></sub> <i>π</i>(<i>a'</i> | <i>s'</i>) <i>q</i><sub><i>π</i></sub>(<i>s'</i>, <i>a'</i>) }</b>
+</div>
 
-\[\begin{aligned}
-\mu_*(s) &amp;= \operatorname{argmax}_a q_*(s, a) \\
-&amp;= \operatorname{argmax}_a \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}
-\end{aligned}\]
+<blockquote>
+  <p>🔍 <strong>지니의 수식 분해 현미경</strong></p>
+  <ul>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td>첫 번째 행동 <em>a</em>는 이미 선택되어 시작하므로, <em>*바깥쪽의 ∑<sub>*a*</sub> *π</em>(<em>a</em></td>
+            <td><em>s</em>)가 사라집니다.**</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td>대신 환경이 도로시를 다음 상태 <em>s’</em>로 이끈 후, 그곳에서 다시 다음 행동 <em>a’</em>를 고를 때 비로소 안쪽에서 정책 주사위 <em>*∑<sub>*a’*</sub> *π</em>(<em>a’</em></td>
+            <td><em>s’</em>)**를 굴립니다!</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h3 id="3-최적-상태-가치-함수의-벨만-최적-방정식">3) 최적 상태 가치 함수의 벨만 최적 방정식</h3>
+<p>세상의 모든 정책 중 가장 우수한 최적 정책(<em>π</em><sub>*</sub>) 아래에서 성립하는 상태 가치입니다.</p>
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b><i>v</i><sub>*</sub>(<i>s</i>) = <i>max</i><sub><i>a</i></sub> ∑<sub><i>s'</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) { <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>) + <i>γ</i> <i>v</i><sub>*</sub>(<i>s'</i>) } = <i>max</i><sub><i>a</i></sub> <i>q</i><sub>*</sub>(<i>s</i>, <i>a</i>)</b>
+</div>
+
+<blockquote>
+  <p>🔍 <strong>지니의 수식 분해 현미경</strong></p>
+  <ul>
+    <li>
+      <table>
+        <tbody>
+          <tr>
+            <td>바깥쪽에 있던 정책 주사위 ∑<sub><em>a</em></sub> <em>π</em>(<em>a</em></td>
+            <td><em>s</em>)가 감쪽같이 사라지고, 그 자리에 <strong><i>max</i><sub><i>a</i></sub> 마법 깔때기</strong>가 들어섰습니다!</td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+    <li>최적 정책은 어설프게 확률적으로 행동하지 않고, 오직 <strong>가장 점수가 높은 단 하나의 행동만을 100% 선택</strong>하기 때문입니다.</li>
+    <li>따라서 **<em>v</em><sub><em>&lt;/sub&gt;(</em>s<em>) = *max</em><sub><em>a</em></sub> <em>q</em><sub><em>&lt;/sub&gt;(</em>s<em>, *a</em>)**라는 아름다운 관계가 성립합니다.</sub></sub></li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h3 id="4-최적-행동-가치-함수의-벨만-최적-방정식">4) 최적 행동 가치 함수의 벨만 최적 방정식</h3>
+<p>최적 정책 아래에서 상태 <em>s</em>와 첫 행동 <em>a</em>를 취했을 때의 가치입니다.</p>
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b><i>q</i><sub>*</sub>(<i>s</i>, <i>a</i>) = ∑<sub><i>s'</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) { <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>) + <i>γ</i> <i>max</i><sub><i>a'</i></sub> <i>q</i><sub>*</sub>(<i>s'</i>, <i>a'</i>) }</b>
+</div>
+
+<blockquote>
+  <p>🔍 <strong>지니의 수식 분해 현미경</strong></p>
+  <ul>
+    <li>첫 행동 <em>a</em>를 취해 환경이 다음 상태 <em>s’</em>로 안내하면 즉시 보상 <em>r</em>을 받습니다.</li>
+    <li>그다음 도착한 <em>s’</em>에서는 주사위를 굴릴 필요 없이 <strong>가장 높은 Q값을 주는 최선의 다음 행동 <em>a’</em>를 선택(<i>max</i><sub><i>a’</i></sub>)하여 더합니다!</strong></li>
+    <li>이 공식은 훗날 인공지능이 아타리 비디오 게임을 정복하고 알파고를 만든 <strong>Q-러닝(Q-Learning)</strong>과 <strong>DQN(Deep Q-Network)</strong>의 절대적인 뿌리가 됩니다.</li>
+  </ul>
+</blockquote>
+
+<hr />
+
+<h2 id="4-최적-가치-표로부터-최적-정책μ-손에-쥐기">4. 최적 가치 표로부터 최적 정책(<em>μ</em><sub>*</sub>) 손에 쥐기</h2>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 최적 가치를 다 구했으면, 이제 도로시는 어느 쪽으로 발걸음을 옮겨야 해?”</p>
+
+  <p>🐱 <strong>지니</strong>: “max는 가장 높은 ‘점수’가 얼마인지를 뜻하고, argmax는 그 최고 점수를 주는 ‘행동 방향’을 콕 집어 가리키는 황금 나침반이란다!”</p>
+</blockquote>
+
+<p><img src="./img/optimal_policy_argmax_compass.png" alt="최적 행동을 가리키는 황금 나침반(argmax)" /></p>
+
+<p><strong>그림 06-7b</strong> 최적 가치 표를 바탕으로 가장 높은 보상을 주는 최적 행동(argmax)을 가리키는 황금 나침반을 든 도로시와 지니, 토토</p>
+
+<p>우리가 벨만 최적 방정식을 풀어 최적 가치 함수 <em>v</em><sub><em>&lt;/sub&gt;(</em>s<em>)나 *q</em><sub><em>&lt;/sub&gt;(</em>s<em>, *a</em>)를 알아냈다면, 도로시는 어떻게 행동해야 할까요?</sub></sub></p>
+
+<p>정답은 아주 간단합니다. <strong>가장 점수가 높은 쪽으로 고개를 돌려 성큼 발을 내딛는 것(탐욕적 선택, Greedy Action)</strong>입니다!</p>
+
+<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; margin: 14px 0; text-align: center; font-size: 1.05rem; overflow-x: auto;">
+  <b><i>μ</i><sub>*</sub>(<i>s</i>) = <i>argmax</i><sub><i>a</i></sub> <i>q</i><sub>*</sub>(<i>s</i>, <i>a</i>) = <i>argmax</i><sub><i>a</i></sub> ∑<sub><i>s'</i></sub> <i>p</i>(<i>s'</i> | <i>s</i>, <i>a</i>) { <i>r</i>(<i>s</i>, <i>a</i>, <i>s'</i>) + <i>γ</i> <i>v</i><sub>*</sub>(<i>s'</i>) }</b>
+</div>
+
+<blockquote>
+  <p>💡 <strong><i>max</i>와 <i>argmax</i>의 차이를 기억하세요!</strong></p>
+  <ul>
+    <li><strong><i>max</i><sub><i>a</i></sub></strong>: “가장 높은 <strong>점수가 몇 점</strong>인가?” (점수 값 자체를 반환)</li>
+    <li><strong><i>argmax</i><sub><i>a</i></sub></strong>: “그 최고 점수를 얻으려면 <strong>어느 방향으로 움직여야 하는가?</strong>” (최고 점수를 만든 <strong>행동 <em>a</em></strong>를 반환)</li>
+  </ul>
+</blockquote>
+
+<p>도로시에게 최적 가치 표가 쥐어져 있다면, 굳이 먼 미래의 복잡한 시나리오를 계산하지 않아도 됩니다. <strong>바로 눈앞의 다음 한 걸음 중 점수가 가장 높은 곳으로만 걸어가면, 그것이 곧 전체 여정에서 완벽한 최적 정책이 됩니다.</strong></p>
+
+<hr />
+
+<h2 id="5-왜-우리는-손으로-연립방정식을-계속-풀지-않을까">5. 왜 우리는 손으로 연립방정식을 계속 풀지 않을까?</h2>
+
+<blockquote>
+  <p>👧 <strong>도로시</strong>: “지니! 연립방정식으로 답이 딱 떨어지니까 정말 신기했어! 그럼 바둑이나 자율주행차 문제도 연립방정식을 세워서 풀면 되는 거야?”</p>
+
+  <p>🐱 <strong>지니</strong>: “아쉽게도 현실 세상은 그렇게 호락호락하지 않단다, 도로시! 2가지 커다란 장벽이 가로막고 있거든.”</p>
+</blockquote>
+
+<p><img src="./img/bellman_to_dp_bridge.png" alt="7장 동적 계획법으로 향하는 도로시와 컴퓨터 친구" /></p>
+
+<p><strong>그림 06-7c</strong> 작은 2칸 세상을 넘어 수많은 타일이 펼쳐진 광활한 격자 세상 앞에서, 연립방정식 손계산을 넘어 컴퓨터 친구와 함께 제7장 동적 계획법(DP)의 세계로 나아가는 도로시와 토토, 지니</p>
+
+<p>06.3절과 06.6절에서 우리는 두 칸짜리 그리드월드(<em>L1</em>, <em>L2</em>)에 벨만 방정식을 세우고, 중학교 때 배운 연립방정식을 손으로 풀어 가치를 구했습니다. 그렇다면 현실의 모든 강화학습 문제도 연립방정식으로 풀 수 있을까요?</p>
+
+<h3 id="1-상태-수의-폭발-차원의-저주">1) 상태 수의 폭발 (차원의 저주)</h3>
+<ul>
+  <li>우리가 푼 문제는 상태가 딱 <strong>2개</strong>뿐이었습니다.</li>
+  <li>하지만 체스 게임의 상태는 약 10<sup>40</sup>개, 바둑판의 상태는 무려 10<sup>170</sup>개에 달합니다.</li>
+  <li>상태가 10,000개만 되어도 <strong>1만 원 1차 연립방정식</strong>을 풀어야 하는데, 이는 슈퍼컴퓨터로도 역행렬을 계산하기 벅찬 양입니다.</li>
+</ul>
+
+<h3 id="2-벨만-최적-방정식의-비선형성">2) 벨만 최적 방정식의 ‘비선형성’</h3>
+<ul>
+  <li>일반 벨만 기댓값 방정식은 일차 결합(선형)이라 역행렬 공식으로 풀 수 있습니다.</li>
+  <li>하지만 최적 방정식에는 <strong><i>max</i> 연산자</strong>가 들어있습니다. 최댓값 선택은 꺾인 선을 만드는 <strong>비선형(Non-linear)</strong> 연산이므로, 일반적인 가우스 소거법이나 행렬 곱셈으로는 한 번에 해를 구할 수 없습니다.</li>
+</ul>
+
+<h3 id="-그래서-등장하는-마법-제7장-동적-계획법dp">🚀 그래서 등장하는 마법: 제7장 동적 계획법(DP)!</h3>
+<blockquote>
+  <p>“수식을 한 방에 풀 수 없다면, <strong>컴퓨터에게 어림짐작한 가치를 주고 계속 반복해서 다듬게(갱신하게) 하자!</strong>”</p>
+</blockquote>
+
+<p>다음 <strong>7장 동적 계획법(Dynamic Programming)</strong>에서는 거대한 연립방정식을 사람이 손으로 풀지 않습니다. 대신 벨만 방정식을 <strong>가치 갱신 규칙(Update Rule)</strong>으로 탈바꿈시켜, 컴퓨터가 스스로 여러 번 반복 계산하며 오차를 0으로 줄여나가는 놀라운 반복 알고리즘을 배우게 됩니다!</p>
+
+<hr />
+
+<h2 id="6-핵심-요약-및-도로시의-모험-수첩">6. 핵심 요약 및 도로시의 모험 수첩</h2>
+
+<h3 id="-4대-벨만-방정식-완전-비교표">📋 4대 벨만 방정식 완전 비교표</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">공식 명칭</th>
+      <th style="text-align: center">대상 함수</th>
+      <th style="text-align: center">사용 정책</th>
+      <th style="text-align: left">핵심 특징</th>
+      <th style="text-align: center">수학적 연산자</th>
+      <th style="text-align: left">주된 역할 및 용도</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>상태 가치 벨만 기댓값 방정식</strong></td>
+      <td style="text-align: center"><em>v</em><sub><em>π</em></sub>(<em>s</em>)</td>
+      <td style="text-align: center">임의의 정책 <em>π</em></td>
+      <td style="text-align: left">현재 땅과 다음 땅들의 평균 가치 연결</td>
+      <td style="text-align: center">∑<sub><em>a</em></sub> <em>π</em>(<em>a</em> | <em>s</em>)</td>
+      <td style="text-align: left">주어진 정책의 참 가치를 평가할 때 사용 (정책 평가)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>행동 가치 벨만 기댓값 방정식</strong></td>
+      <td style="text-align: center"><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)</td>
+      <td style="text-align: center">임의의 정책 <em>π</em></td>
+      <td style="text-align: left">첫 행동을 취한 후의 평균 기대 보상 연결</td>
+      <td style="text-align: center">∑<sub><em>a’</em></sub> <em>π</em>(<em>a’</em> | <em>s’</em>)</td>
+      <td style="text-align: left">상태 가치와 행동 가치를 상호 변환하고 정책을 개선할 때 사용</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>최적 상태 가치 벨만 최적 방정식</strong></td>
+      <td style="text-align: center"><em>v</em><sub><em>&lt;/sub&gt;(</em>s*)</sub></td>
+      <td style="text-align: center">최적 정책 <em>π</em><sub>*</sub></td>
+      <td style="text-align: left">모든 행동 중 최선의 점수 하나만 선택</td>
+      <td style="text-align: center"><em>max</em><sub><em>a</em></sub></td>
+      <td style="text-align: left">환경 내에서 도달 가능한 궁극적인 최고 가치 기준선 제시</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>최적 행동 가치 벨만 최적 방정식</strong></td>
+      <td style="text-align: center"><em>q</em><sub><em>&lt;/sub&gt;(</em>s<em>, *a</em>)</sub></td>
+      <td style="text-align: center">최적 정책 <em>π</em><sub>*</sub></td>
+      <td style="text-align: left">첫 행동 후 다음 단계부터 최선의 행동만 선택</td>
+      <td style="text-align: center"><em>max</em><sub><em>a’</em></sub></td>
+      <td style="text-align: left"><strong>Q-러닝 및 DQN</strong> 등 최신 강화학습 알고리즘의 핵심 토대</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h3 id="-도로시의-모험-수첩-꼭-기억해야-할-3가지">🎒 도로시의 모험 수첩: 꼭 기억해야 할 3가지!</h3>
+
+<ol>
+  <li><strong>벨만 방정식의 본질은 ‘재귀(Recursion)’이다!</strong><br />
+현재의 가치는 ‘지금 얻는 사과’와 ‘다음에 도달할 땅의 가치’를 더한 것과 정확히 균형을 이룹니다.</li>
+  <li><strong>최적의 세계에서는 주사위(∑)가 깔때기(<i>max</i>)로 바뀐다!</strong><br />
+최적 정책은 머뭇거리지 않고 오직 최고 가치를 보장하는 단 하나의 행동만을 선택하므로 수식이 <em>max</em>로 단순화됩니다.</li>
+  <li><strong>최적 가치를 얻었다면 최적 정책은 공짜다!</strong><br />
+<em>argmax</em>를 이용해 바로 다음 한 단계만 탐욕적(Greedy)으로 가장 높은 길을 고르면, 전체 모험 경로가 완벽한 최적 정책으로 완성됩니다.</li>
+</ol>
+
+<hr />
+
+<h2 id="7-6강-수료식-동적-계획법의-세계로">7. 6강 수료식: 동적 계획법의 세계로!</h2>
+
+<blockquote>
+  <p>🐱 <strong>지니</strong>: “도로시, 토토! 6강 벨만 방정식의 모든 시험을 훌륭하게 통과했어. 이제 머릿속에 장착한 4개의 마법 공식을 들고, 컴퓨터가 스스로 세상을 학습하는 <strong>제7장 동적 계획법(Dynamic Programming)</strong>의 세계로 힘차게 떠나보자!”</p>
+
+  <p>👧 <strong>도로시</strong>: “응! 지니, 토토, 출발하자!”</p>
+
+  <p>🐶 <strong>토토</strong>: “왕왕! 🐾”</p>
+</blockquote>
+
+<p><img src="./img/bellman_master_celebration.png" alt="벨만 방정식 마스터 수료식을 축하하는 도로시와 지니, 토토" /></p>
+
+<p><strong>그림 06-7d</strong> 6강 벨만 방정식의 4대 마법 공식을 완벽히 마스터하고 수료증을 들며 환호하는 도로시와 지니, 토토</p>
 
 
             <!-- 구글 애드센스 출력 -->

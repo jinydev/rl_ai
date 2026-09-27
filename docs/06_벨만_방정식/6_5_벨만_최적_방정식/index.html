@@ -680,180 +680,541 @@
         <div class="bd-content ps-lg-4">
             <h1 id="065-벨만-최적-방정식">06.5 벨만 최적 방정식</h1>
 
-<p><strong>그림 06-5</strong> 여러 점수의 카드를 “MAX” 마법 깔때기에 통과시켜 가장 우수한 최댓값 점수 카드만을 추출하는 도로시와 지니
-<img src="./img/jiny_bellman_ch6_5_optimality.png" alt="벨만 최적 방정식 인트로" /></p>
+<p>수많은 정책 중 가장 영리하게 작동하는 최적 정책(<i>π</i><sub>&amp;ast;</sub>) 하에서 가치 함수가 만족하는 특별한 공식인 <strong>벨만 최적 방정식(Bellman Optimality Equation)</strong>을 공부합니다.</p>
 
-<p>수많은 정책 중 가장 영리하게 작동하는 최적 정책($\pi^*$) 하에서 가치 함수가 만족하는 특별한 공식인 <strong>벨만 최적 방정식(Bellman Optimality Equation)</strong>을 공부합니다. 기댓값 기호 대신 최선의 행동 하나만을 쏙 골라내는 <strong>최댓값(max)</strong> 깔때기 비유를 통해 최적 수식의 매혹적인 정의를 쉽게 이해해 봅시다!</p>
+<p><strong>기댓값</strong> 기호 대신 최선의 행동 하나만을 쏙 골라내는 <strong>최댓값(max)</strong> 깔때기 비유를 통해 최적 수식의 매혹적인 정의를 쉽게 이해해 봅시다!</p>
+
+<p><img src="./img/jiny_bellman_ch6_5_optimality.png" alt="벨만 최적 방정식 인트로" /></p>
+
+<p><strong>그림 06-5</strong> 여러 점수 카드(60, 92, 75)를 “MAX” 마법 깔때기에 통과시켜 가장 우수한 최댓값 점수 카드(92)만을 추출하는 도로시와 지니, 토토</p>
 
 <hr />
 
-<p>벨만 방정식은 어떤 정책 <em>π</em>에 대해 성립하는 방정식입니다. 하지만 우리가 궁극적으로 찾으려는 것은 최적 정책입니다.</p>
+<h4 id="최적정책이란">최적정책이란?</h4>
 
-<p>최적 정책이란 모든 상태에서 상태 가치 함수가 최대인 정책입니다.</p>
+<p>벨만 방정식은 어떤 정책 <em>π</em>에 대해 성립하는 방정식입니다.</p>
 
-<p>물론 최적 정책도 벨만 방정식을 만족합니다. 게다가 정책이 ‘최적이다’라는 성질을 이용하면 벨만 방정식을 더 간단하게 표현할 수 있습니다.</p>
+<p>하지만 우리가 궁극적으로 찾으려는 것은 최적 정책입니다.</p>
+
+<p>최적 정책이란 모든 상태에서 <strong>상태 가치 함수</strong>가 최대인 정책입니다.</p>
+
+<p>물론 최적 정책도 벨만 방정식을 만족합니다.</p>
+
+<p>게다가 정책이 ‘최적이다’라는 성질을 이용하면 벨만 방정식을 더 간단하게 표현할 수 있습니다.</p>
 
 <p><img src="./img/optimality_intro_cover.png" alt="벨만 최적화 단원 커버" /></p>
-
-<p>이번 절에서는 최적 정책에 대해 성립하는 방정식, 즉 벨만 최적 방정식<sup>bellman optimality equation</sup>에 대해 알아보겠습니다.</p>
 
 <hr />
 
 <h3 id="0651-상태-가치-함수의-벨만-최적-방정식">06.5.1 상태 가치 함수의 벨만 최적 방정식</h3>
 
-<p>먼저 벨만 방정식부터 시작하겠습니다.</p>
+<p>최적 정책에 대해 성립하는 방정식, 즉 벨만 최적 방정식<sup>bellman optimality equation</sup>에 대해 알아보겠습니다.</p>
 
-<p>앞서 다음과 같은 식을 확인했습니다.
-\(\begin{aligned}
+<p><img src="./img/v_optimal_equation_intro.png" alt="벨만 방정식에 최적이 더해진 벨만 최적 방정식 인트로" /></p>
+
+<p><strong>그림 06-5a</strong> 이미 잘 알고 있는 ‘벨만 방정식’에 가장 우수한 가치를 찾는 ‘최적(Optimal)’ 개념이 더해져 ‘벨만 최적 방정식’이 탄생하는 직관적 결합 원리</p>
+
+<hr />
+
+<h4 id="먼저-벨만-방정식부터-시작하겠습니다">먼저 벨만 방정식부터 시작하겠습니다.</h4>
+
+<p>앞서 06.2절에서 유도했던 <strong>상태 가치 함수의 벨만 기대 방정식([식 06.7])</strong>을 다시 떠올려 보겠습니다.</p>
+
+\[\begin{aligned}
 v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \} \\
 &amp;= \sum_a \pi(a \mid s) \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \}
-\end{aligned}\)</p>
+\end{aligned}\]
 
 <p>[식 06.7]</p>
 
-<p>이번에도 식 전개를 감안하여 <em>∑</em><sub><em>a, s’</em></sub>를 <em>∑</em><sub><em>a</em></sub>와 <em>∑</em><sub><em>s’</em></sub>로 분리했습니다. 벨만 방정식은 어떠한 정책에서도 성립합니다.</p>
+<p>수식을 보면 하나의 덩어리로 묶여 있던 시그마 기호 <em>∑</em><sub><em>a, s’</em></sub>를 바깥쪽의 <em>∑</em><sub><em>a</em></sub>와 안쪽의 <em>∑</em><sub><em>s’</em></sub>로 명확하게 분리했습니다.</p>
 
-<p>따라서 최적 정책을 <em>π</em><sub>*</sub>(<em>a</em> | <em>s</em>)라고 하면 다음과 같은 벨만 방정식이 성립합니다.
-\(v_*(s) = \sum_a \pi_*(a \mid s) \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}\)</p>
+<p><img src="./img/bellman_equation_06_7_review.png" alt="벨만 기대 방정식 [식 06.7] 복습과 시그마 분리" /></p>
+
+<hr />
+
+<h4 id="이렇게-분리하는-데는-매우-중요한-직관적-이유가-있습니다">이렇게 분리하는 데는 매우 중요한 직관적 이유가 있습니다.</h4>
+
+<ol>
+  <li><strong>바깥쪽 시그마 (<em>∑</em><sub><em>a</em></sub> <em>π</em>(<em>a</em> | <em>s</em>)) — 에이전트의 주도 영역</strong>:<br />
+상태 <em>s</em>에서 어떤 행동 <em>a</em>를 고를지는 전적으로 에이전트의 생각과 판단(정책 <em>π</em>)에 달려 있습니다.</li>
+  <li><strong>안쪽 시그마 (<em>∑</em><sub><em>s’</em></sub> <em>p</em>(<em>s’</em> | <em>s</em>, <em>a</em>) { … }) — 환경의 반응 영역</strong>:<br />
+에이전트가 행동 <em>a</em>를 일단 저지르고 나면, 그다음 어떤 다음 상태 <em>s’</em>로 이동하고 어떤 즉시 보상 <em>r</em>을 받게 될지는 환경의 물리 법칙과 규칙(전이 확률 <em>p</em>)에 의해 결정됩니다. 즉, 이 안쪽 부분이 바로 ‘행동 <em>a</em>를 취했을 때의 가치인 Q 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)’입니다.</li>
+</ol>
+
+<p><img src="./img/bellman_split_sigma.png" alt="벨만 방정식 시그마 분리: 에이전트의 행동 선택과 환경의 전이 및 보상" /></p>
+
+<p><strong>그림 06-6</strong> [식 06.7]의 2단계 분리 구조: 바깥쪽 시그마(에이전트의 행동 선택 <em>π</em>)와 안쪽 시그마(환경의 전이 확률 <em>p</em> 및 보상)의 역할 구분</p>
+
+<p>이처럼 에이전트가 통제하는 ‘행동 선택’과 환경이 통제하는 ‘상태 전이’를 둘로 깔끔하게 갈라놓아야, 뒤에서 에이전트의 정책을 <strong>가장 똑똑한 최고의 행동 하나만 100% 쏙 골라내는 최댓값(<em>max</em><sub><em>a</em></sub>) 형태</strong>로 손쉽게 최적화할 수 있습니다.</p>
+
+<hr />
+
+<h4 id="벨만-방정식은-어떠한-정책에서도-성립합니다">벨만 방정식은 어떠한 정책에서도 성립합니다.</h4>
+
+<p>벨만 방정식의 가장 강력한 특징 중 하나는 <strong>‘보편성’</strong>입니다.</p>
+
+<p>에이전트가 엉뚱하고 미숙한 정책을 따르든, 동전을 던져 무작위로 움직이는 정책을 따르든, 아니면 세상에서 가장 영리하게 행동하는 정책을 따르든 상관없이, 벨만 방정식은 <strong>세상에 존재하는 그 어떤 정책 <i>π</i>에 대해서도 예외 없이 100% 성립</strong>합니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>따라서 세상의 무수한 정책 중 가장 이상적이고 뛰어난 <strong>최적 정책</strong> <i>π</i><sub>&amp;ast;</sub>(<i>a</i></td>
+      <td><i>s</i>) 역시 벨만 방정식을 당연히 완벽하게 만족합니다!</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="./img/bellman_universality_all_policies.png" alt="어떠한 정책에서도 성립하는 벨만 방정식의 보편성" /></p>
+
+<p><strong>그림 06-6a</strong> 엉뚱한 초보 정책, 주사위를 굴리는 무작위 정책, 최고의 최적 정책(<i>π</i><sub>&amp;ast;</sub>) 등 그 어떤 정책 카드를 제시해도 100% 완벽하게 성립하는 벨만 방정식의 놀라운 보편성</p>
+
+<hr />
+
+<p>그러므로 일반 벨만 방정식([식 06.7])의 정책 자리 <i>π</i>에 최적 정책 <i>π</i><sub>&amp;ast;</sub>를 그대로 대입하면 다음과 같은 식이 성립합니다.</p>
+
+\[v_*(s) = \sum_a \pi_*(a \mid s) \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}\]
 
 <p>[식 06.15]</p>
 
-<p>이 식에서 최적 정책의 가치 함수는 <em>v</em><sub>*</sub>(<em>s</em>)입니다.</p>
+<p><img src="./img/bellman_universal_optimal.png" alt="벨만 방정식의 최적 정책 대입" /></p>
+
+<p><strong>그림 06-7</strong> 세상의 모든 정책에 통하는 벨만 방정식의 보편성과 최적 정책(<i>π</i><sub>&amp;ast;</sub>) 대입 원리</p>
+
+<hr />
+
+<h4 id="최적-정책-πast로-지정">최적 정책 <i>π</i><sub>&amp;ast;</sub>로 지정</h4>
+
+<p>이 식에서 정책을 최적 정책 <i>π</i><sub>&amp;ast;</sub>로 지정했으므로, 좌변의 현재 상태 가치와 우변의 다음 상태 가치 역시 저절로 최적 상태 가치 함수인 <strong><i>v</i><sub>&amp;ast;</sub>(<i>s</i>)</strong>와 <strong><i>v</i><sub>&amp;ast;</sub>(<i>s’</i>)</strong>로 바뀝니다.</p>
+
+<p>[식 06.15]는 최적 정책 하에서의 가치를 다루고 있지만, 아직 겉모습은 일반 벨만 방정식처럼 여러 행동들을 확률적으로 더하는 시그마(<i>∑</i><sub><i>a</i></sub> <i>π</i><sub>&amp;ast;</sub>) 형태를 유지하고 있습니다.</p>
+
+<p>이 식은 곧바로 살펴볼 진정한 <strong>벨만 최적 방정식([식 06.16])</strong>으로 건너가기 위한 결정적인 <strong>징검다리</strong> 역할을 합니다.</p>
+
+<p><img src="./img/bellman_optimal_stepping_stone.png" alt="벨만 최적 방정식으로 건너가는 징검다리 가교 [식 06.15]" /></p>
+
+<p><strong>그림 06-8</strong> 벨만 기대 방정식([식 06.7])에서 최적 정책 대입([식 06.15])을 거쳐 벨만 최적 방정식([식 06.16], max_a)으로 건너가는 징검다리 가교 원리</p>
+
+<hr />
+
+<h4 id="수학이나-강화-학습에서-별표는-최적optimal을-뜻하는-약속입니다">수학이나 강화 학습에서 별표(<code class="language-plaintext highlighter-rouge">*</code>)는 <strong>‘최적(Optimal)’</strong>을 뜻하는 약속입니다.</h4>
+
+<p>세상에는 무수히 많은 정책(행동 습관) <em>π</em><sub>1</sub>, <em>π</em><sub>2</sub>, <em>π</em><sub>3</sub> 등이 존재하고, 각 정책을 따랐을 때 얻는 가치도 제각각 다를 것입니다.</p>
+
+<p>이 무수한 별들 중에서 <strong>모든 상태에서 가장 큰 가치(최댓값)를 얻어내는 가장 밝고 이상적인 타겟</strong>을 가리키기 위해 관례적으로 별표(<code class="language-plaintext highlighter-rouge">*</code>)를 붙여서 <strong><i>π</i><sub>&amp;ast;</sub>(최적 정책)</strong>와 <strong><i>v</i><sub>&amp;ast;</sub>(최적 상태 가치 함수)</strong>로 표기합니다. 이는 밤하늘의 무수한 별들 중 길을 찾아주는 가장 밝은 북극성과 같습니다.</p>
+
+<p><img src="./img/optimality_asterisk_meaning.png" alt="별표(*) 기호의 수학적 의미와 북극성 비유" /></p>
+
+<p><strong>그림 06-9</strong> 무수한 일반 정책들(<i>π</i><sub>1</sub>, <i>π</i><sub>2</sub>, <i>π</i><sub>3</sub>) 중에서 가장 밝게 빛나는 북극성처럼 최적의 가치를 안내하는 별표(<code class="language-plaintext highlighter-rouge">*</code>) 기호의 수학적 의미</p>
+
+<hr />
+
+<h4 id="최적의-행동-가장-높은-점수를-주는-행동을-골라내기">최적의 행동: 가장 높은 점수를 주는 행동을 골라내기</h4>
+
+<p>이제 우리가 마주한 핵심 질문은 아주 명확합니다.</p>
 
 <blockquote>
-  <p>수학이나 강화 학습에서 별표(<code class="language-plaintext highlighter-rouge">*</code>)는 <strong>‘최적(Optimal)’</strong>을 뜻하는 약속입니다. 세상에는 무수히 많은 정책(행동 습관) <em>π</em><sub>1</sub>, <em>π</em><sub>2</sub>, <em>π</em><sub>3</sub> 등이 존재하고, 각 정책을 따랐을 때 얻는 가치도 제각각 다를 것입니다. 이 무수한 별들 중에서 <strong>모든 상태에서 가장 큰 가치(최댓값)를 얻어내는 가장 밝고 이상적인 타겟</strong>을 가리키기 위해 관례적으로 별표(<code class="language-plaintext highlighter-rouge">*</code>)를 붙여서 <strong>*π*<sub>*</sub>(최적 정책)</strong>와 <strong>*v*<sub>*</sub>(최적 상태 가치 함수)</strong>로 표기합니다. 이는 밤하늘의 무수한 별들 중 길을 찾아주는 가장 밝은 북극성과 같습니다.</p>
-
-  <p><img src="./img/optimality_asterisk_meaning.png" alt="별표(*) 기호의 수학적 의미와 북극성 비유" /></p>
+  <table>
+    <tbody>
+      <tr>
+        <td>**“과연 최적 정책 <i>π</i><sub>&amp;ast;</sub>(<i>a</i></td>
+        <td><i>s</i>)는 현재 상태 <i>s</i>에서 어떤 행동 <i>a</i>를 선택해야 할까요?”**</td>
+      </tr>
+    </tbody>
+  </table>
 </blockquote>
 
-<h4 id="최적의-행동">최적의 행동</h4>
+<p><img src="./img/optimal_action_choice_question.png" alt="최적 정책의 핵심 질문: 상태 s에서 어떤 행동을 선택해야 할까?" /></p>
+
+<p><strong>그림 06-9a</strong> 현재 상태 <i>s</i>에서 어떤 행동 <i>a</i>를 골라야 할지 고민하는 도로시에게, “가장 높은 점수를 주는 행동이 바로 최적 행동”임을 알려주는 지니와 토토</p>
+
+<hr />
+
+<p>앞서 [식 06.15]의 <strong>우변</strong>에 등장한 수식 덩어리를 다시 살펴보겠습니다:
+\(\sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}\)</p>
+
+<p>이 수식은 기호가 길어서 복잡해 보이지만, 그 본질은 매우 단순합니다.</p>
+
+<p>바로 <strong>“현재 상태 <i>s</i>에서 특정 행동 <i>a</i>를 딱 실행했을 때, 뒤따라올 ‘즉시 보상’과 ‘다음 상태에서의 미래 최적 가치 할인합’을 환경 전이 확률에 따라 가중평균한 기대 성적표(즉, 최적 행동 가치 <i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>))”</strong>를 뜻합니다.</p>
+
+<p><img src="./img/action_score_formula_breakdown.png" alt="행동 a를 취했을 때의 기대 성적표 분해" /></p>
+
+<p><strong>그림 06-9b</strong> 행동 <em>a</em>를 취했을 때 뒤따라올 [즉시 보상 <em>r</em>]과 [미래 최적 가치 γ<em>v</em><sub>&amp;ast;</sub>(<i>s’</i>)]의 기대 가치 합을 직관적으로 분해하여 설명하는 지니와 도로시</p>
+
+<hr />
+
+<p>이제 상태 <i>s</i>에 서 있는 에이전트(도로시) 앞에 세 가지 갈림길(행동 후보 {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>})이 놓여 있고, 각 행동을 실행했을 때의 기대 성적표가 다음과 같다고 가정해 보겠습니다.</p>
+
+<ul>
+  <li><strong>행동 <em>a</em><sub>1</sub> 선택 시 기대 가치</strong>: <code class="language-plaintext highlighter-rouge">-2.0점</code> (가시덤불에 걸려 감점을 받는 손해의 길)</li>
+  <li><strong>행동 <em>a</em><sub>2</sub> 선택 시 기대 가치</strong>: <code class="language-plaintext highlighter-rouge">0.0점</code> (이득도 손해도 없는 평범한 본전의 길)</li>
+  <li><strong>행동 <em>a</em><sub>3</sub> 선택 시 기대 가치</strong>: <code class="language-plaintext highlighter-rouge">+4.0점</code> (가장 달콤하고 풍성한 보물을 얻는 대박의 길!)</li>
+</ul>
+
+<p><img src="./img/optimal_action_three_choices.png" alt="3가지 행동 후보 중 어떤 행동을 선택해야 할까?" /></p>
+
+<p><strong>그림 06-10</strong> 상태 <em>s</em>에서 마주한 세 가지 행동 후보 {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>}의 기대 점수 비교와 에이전트의 선택 고민</p>
+
+<hr />
+
+<h4 id="백업-다이어그램">백업 다이어그램</h4>
+
+<p>아래 [그림 06-12]의 백업 다이어그램을 통해서도 이 세 갈래 행동의 기대 점수 구조를 명확하게 확인할 수 있습니다.</p>
+
+<p><img src="./img/fig_06_12.svg" alt="그림 06-12 세 가지 행동 중 어떤 행동을 선택할까?" /></p>
+
+<p><strong>그림 06-12</strong> 세 가지 행동 후보 노드와 각각의 기대 가치(-2.0, 0.0, 4.0) 분기 구조</p>
+
+<hr />
+
+<h4 id="1단계-최선의-행동에-100-몰빵-확률-정책에서-결정적-정책으로의-변신">1단계: 최선의 행동에 100% 몰빵! 확률 정책에서 결정적 정책으로의 변신</h4>
+
+<p>앞서 살펴본 것처럼 세 가지 행동 {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>}의 기대 점수가 각각 <code class="language-plaintext highlighter-rouge">-2.0점</code>, <code class="language-plaintext highlighter-rouge">0.0점</code>, <code class="language-plaintext highlighter-rouge">+4.0점</code>으로 매겨져 있다면, 최적 정책 <i>π</i><sub>&amp;ast;</sub>는 어떤 <strong>확률 분포</strong>로 행동을 선택해야 할까요?</p>
+
+<ul>
+  <li>상식적으로 에이전트의 목표는 미래 수익을 <strong>최대화</strong>하는 것입니다.</li>
+  <li>그렇다면 손해를 보는 <em>a</em><sub>1</sub>(-2점)이나 본전인 <em>a</em><sub>2</sub>(0점)에 조금이라도 확률을 낭비할 이유가 전혀 없습니다!</li>
+  <li>따라서 가장 큰 보상을 안겨주는 최고의 행동 <strong>a<sub>3</sub>(+4.0점)</strong>에 <strong>100%(확률 1.0)를 전부 집중</strong>하고, 나머지 행동에는 0%를 배정하는 것이 가장 합리적입니다.</li>
+</ul>
+
+\[\pi_*(a_1 \mid s) = 0, \quad \pi_*(a_2 \mid s) = 0, \quad \pi_*(a_3 \mid s) = 1.0\]
 
 <table>
   <tbody>
     <tr>
-      <td>이제 우리가 고민하고 싶은 문제는 최적 정책 <em>π</em><sub>*</sub>(<em>a</em></td>
-      <td><em>s</em>)에 의해 선택되는 행동 <em>a</em>입니다.</td>
+      <td>이처럼 확률적 정책 <i>π</i><sub>&amp;ast;</sub>(<i>a</i></td>
+      <td><i>s</i>)는 <strong>특정 상태 <i>s</i>에서 단 하나의 행동만을 100% 실행</strong>하는 <strong>결정적 정책(Deterministic Policy, <i>μ</i><sub>&amp;ast;</sub>(<i>s</i>) = <em>a</em><sub>3</sub>)</strong>으로 자연스럽게 귀결됩니다.</td>
     </tr>
   </tbody>
 </table>
+
+<p>그 결과 상태 <i>s</i>의 최적 가치 <i>v</i><sub>&amp;ast;</sub>(<i>s</i>)는 복잡한 확률 계산 없이, 선택된 행동 <em>a</em><sub>3</sub>의 점수인 <strong>4.0</strong>이 그대로 됩니다.</p>
+
+\[v_*(s) = (0 \times -2) + (0 \times 0) + (1.0 \times 4) = 4.0\]
+
+<p><img src="./img/optimality_deterministic_choice.png" alt="최선의 행동에 100% 몰빵: 결정적 정책으로의 변신" /></p>
+
+<p><strong>그림 06-11</strong> 세 가지 행동 후보 중 최선인 <em>a</em><sub>3</sub>에만 확률 100%를 집중하여 <strong>결정적 정책 <i>μ</i><sub>&amp;ast;</sub>(<i>s</i>)</strong>이 되고 상태 가치가 4.0으로 확정되는 원리</p>
+
+<hr />
+
+<h4 id="2단계-시그마-가중평균에서-최댓값max으로-식-0616-벨만-최적-방정식의-완성">2단계: 시그마(∑) 가중평균에서 최댓값(max)으로! [식 06.16] 벨만 최적 방정식의 완성</h4>
+
+<p>이제 특정 숫자(-2, 0, 4)를 넘어 <strong>일반적인 모든 상태와 행동에 대해 공식화</strong>해 보겠습니다.</p>
+
+<p>앞서 확인했듯이, 최적 정책은 여러 행동들의 가치를 확률대로 섞어 더하는 가중평균(<i>∑</i><sub><i>a</i></sub> <i>π</i><sub>&amp;ast;</sub>)을 계산할 필요가 없습니다.</p>
+
+<p>그저 <strong>가능한 모든 행동 후보들 중 기대 가치가 가장 큰 것 하나만 최댓값(<code class="language-plaintext highlighter-rouge">max</code>)으로 쏙 골라내면 그만</strong>입니다!</p>
+
+<p><img src="./img/sigma_to_max_transformation.png" alt="시그마 가중평균에서 최댓값(max)으로의 변신" /></p>
+
+<p><strong>그림 06-11a</strong> 여러 행동의 가치를 확률로 곱해 섞던 시그마(<i>∑</i>) 가중평균에서, 가장 높은 1등 가치만을 쏙 뽑아내는 <em>max</em><sub><em>a</em></sub> 연산자로 변신하는 원리</p>
+
+<hr />
 
 <table>
   <tbody>
     <tr>
-      <td>최적 정책 <em>π</em><sub>*</sub>(<em>a</em></td>
-      <td><em>s</em>)는 어떤 행동을 선택할까요?</td>
+      <td>따라서 [식 06.15]의 바깥쪽 시그마 가중합 <i>∑</i><sub><i>a</i></sub> <i>π</i><sub>&amp;ast;</sub>(<i>a</i></td>
+      <td><i>s</i>) 부분이 단 하나의 수학 연산자인 <strong><i>max</i><sub><i>a</i></sub>(최댓값 연산자)</strong>로 깔끔하게 치환됩니다.</td>
     </tr>
   </tbody>
 </table>
 
-<p>[그림 06-12]의 예를 보며 생각해보죠.</p>
-
-<p>그림 06-12 세 가지 행동 중 어떤 행동을 선택할까?</p>
-
-<p><img src="./img/fig_06_12.svg" alt="그림 06-12" /></p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>그림에서는 세 개의 행동 후보 {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>}이 있고 <em>∑</em><sub><em>s’</em></sub> <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>) { <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>) + <em>γ v</em><sub>*</sub>(<em>s’</em>) }의 값이 각각 -2, 0, 4라고 가정합니다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="이때-어떤-확률-분포로-행동을-선택해야-할까요">이때 어떤 확률 분포로 행동을 선택해야 할까요?</h4>
-
-<p>물론 최적 정책이기 때문에 값이 최대인 행동 <em>a</em><sub>3</sub>을 100% 확률로 선택해야 합니다.</p>
-
-<p>결정적 정책인 셈이죠.</p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>따라서 확률적 정책 <em>π</em><sub>*</sub>(<em>a</em></td>
-      <td><em>s</em>)는 결정적 정책 <em>μ</em><sub>*</sub>(<em>s</em>)로 나타낼 수 있습니다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>그리고 항상 <em>a</em><sub>3</sub>을 선택하기 때문에 <em>v</em><sub>*</sub>(<em>s</em>)의 값은 4가 됩니다.</p>
-
-<p><img src="./img/optimality_max_select.png" alt="최댓값을 지닌 최적 행동의 선택 비유" /></p>
-
-<table>
-  <tbody>
-    <tr>
-      <td>이 예에서 최적 정책은 <em>∑</em><sub><em>s’</em></sub> <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>) { <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>) + <em>γ v</em><sub>*</sub>(<em>s’</em>) }의 값이 가장 큰 행동을 선택하고 그 최댓값이 그대로 <em>v</em><sub>*</sub>(<em>s</em>)가 됨을 알 수 있습니다.</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>수식으로 표현하면 다음과 같습니다.
-\(v_*(s) = \max_a \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_*(s') \}\)</p>
+\[v_*(s) = \max_a \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma v_*(s') \right\}\]
 
 <p>[식 06.16]</p>
 
-<p>이 식과 같이 최댓값은 <code class="language-plaintext highlighter-rouge">max</code> 연산자를 사용하여 표현할 수 있습니다.</p>
+<p>이 [식 06.16]이 바로 강화학습 이론의 최고 핵심 공식 중 하나인 <strong>상태 가치 함수의 벨만 최적 방정식(Bellman Optimality Equation for State-Value Function)</strong>입니다!</p>
 
-<p>그리고 [식 06.16]이 바로 벨만 최적 방정식입니다.</p>
+<p><img src="./img/optimality_bellman_equation_v.png" alt="벨만 최적 방정식의 완성 [식 06.16]" /></p>
+
+<p><strong>그림 06-12a</strong> 바깥쪽의 시그마 확률 가중합이 가장 큰 가치를 하나만 쏙 골라내는 <em>max</em><sub><em>a</em></sub> 연산자로 대체되어 벨만 최적 방정식이 완성되는 원리</p>
 
 <blockquote>
-  <p>NOTE_ <code class="language-plaintext highlighter-rouge">max</code>는 값이 가장 큰 원소를 하나 선택하는 연산자입니다. 예를 들어 원소가 4개인 집합 <em>x</em> = {1, 2, 3, 4}가 있다고 해보죠. 이 집합에 대해 함수 <em>g</em>(<em>x</em>) = <em>x</em><sup>2</sup>의 최댓값을 구하는 식은 다음과 같이 작성합니다.</p>
+  <p><strong>벨만 최적 방정식([식 06.16])의 놀라운 특징</strong>:<br />
+수식을 가만히 살펴보면 <strong>정책 기호(<i>π</i>)가 완전히 자취를 감추었습니다!</strong><br />
+일반 벨만 방정식에서는 에이전트의 현재 정책 <i>π</i>가 어떻게 정의되어 있는지 알아야 가치를 구할 수 있었지만, 벨만 최적 방정식은 환경의 전이 규칙(<em>p, r</em>)과 미래의 최적 가치(<i>v</i><sub>&amp;ast;</sub>)만으로 현재 상태의 최적 가치(<i>v</i><sub>&amp;ast;</sub>(<i>s</i>))가 완벽하게 결정됩니다.</p>
+</blockquote>
+
+<hr />
+
+<h4 id="3단계-max-연산자의-직관적-의미와-작동-원리-마법-깔때기-비유">3단계: ‘max’ 연산자의 직관적 의미와 작동 원리 (마법 깔때기 비유)</h4>
+
+<p>수식에 새롭게 등장한 <strong><code class="language-plaintext highlighter-rouge">max</code> (최댓값 연산자)</strong>는 컴퓨터 프로그래밍과 수학에서 가장 널리 쓰이는 연산자 중 하나로, <strong>“주어진 여러 후보들 중 가장 큰 값을 하나만 쏙 뽑아낸다”</strong>는 직관적인 의미를 갖습니다.</p>
+
+<p>마치 여러 크기의 구슬이나 카드들을 <strong>‘MAX’ 마법 깔때기(Funnel)</strong>에 한꺼번에 쏟아부었을 때, 오직 1등 점수 카드 하나만을 아래로 통과시켜 주는 원리와 같습니다.</p>
+
+<p><img src="./img/optimality_max_funnel_concept.png" alt="max 연산자 마법 깔때기 비유" /></p>
+
+<p><strong>그림 06-13</strong> 여러 점수의 후보 카드(-2, 0, 4)를 ‘MAX’ 깔때기에 통과시켜 오직 최댓값 4만을 추출하는 직관적 비유</p>
+
+<blockquote>
+  <p>NOTE_ <code class="language-plaintext highlighter-rouge">max</code>는 집합이나 함수에서 값이 가장 큰 원소를 선택하는 연산자입니다.<br />
+예를 들어 원소가 4개인 집합 <em>x</em> = {1, 2, 3, 4}가 있고, 각 원소의 제곱을 계산하는 함수 <em>g</em>(<em>x</em>) = <em>x</em><sup>2</sup>이 있다고 해보겠습니다.</p>
+  <ul>
+    <li><em>g</em>(1) = 1, <em>g</em>(2) = 4, <em>g</em>(3) = 9, <em>g</em>(4) = 16<br />
+이 중 가장 큰 값(최댓값)을 구하는 수식은 <code class="language-plaintext highlighter-rouge">max</code> 기호를 사용하여 다음과 같이 표기합니다.</li>
+  </ul>
 
 \[\max_x g(x) = 16\]
 
-  <p>함수 <em>g</em>(<em>x</em>)는 <em>x</em> = 4일 때 <em>g</em>(<em>x</em>) = <em>x</em><sup>2</sup> = 16이 되어 값이 가장 큽니다. 이 계산을 <code class="language-plaintext highlighter-rouge">max</code> 연산자를 이용하여 이와 같이 나타낼 수 있습니다.</p>
+  <p>이와 마찬가지로 벨만 최적 방정식의 <em>max</em><sub><em>a</em></sub> 역시 상태 <em>s</em>에서 선택할 수 있는 모든 행동 <em>a</em>에 대해 뒤따라올 점수를 각각 계산한 뒤, 그중 가장 큰 점수를 쏙 뽑아내어 현재 상태의 최적 가치 <i>v</i><sub>&amp;ast;</sub>(<i>s</i>)로 삼는 연산입니다.</p>
 </blockquote>
 
 <hr />
 
 <h3 id="0652-행동-가치-함수의-벨만-최적-방정식">06.5.2 행동 가치 함수의 벨만 최적 방정식</h3>
 
-<p>행동 가치 함수(Q 함수)에 대해서도 마찬가지로 벨만 최적 방정식을 구할 수 있습니다.</p>
+<p>상태 가치 함수(V 함수)와 마찬가지로, <strong>행동 가치 함수(Q 함수)</strong>에 대해서도 동일한 논리로 벨만 최적 방정식을 유도할 수 있습니다.</p>
 
-<p>지금까지와 같은 흐름으로 Q 함수의 벨만 최적 방정식도 구해보겠습니다.</p>
+<p><img src="./img/q_optimal_equation_intro.png" alt="Q 함수 벨만 최적 방정식 소개" /></p>
 
-<blockquote>
-  <p>NOTE_ 최적 정책에서의 행동 가치 함수를 <strong>최적 행동 가치 함수</strong>라고 합니다. 이 책에서는 최적 행동 가치 함수를 <em>q</em><sub>*</sub>로 표기합니다.</p>
-</blockquote>
+<p><strong>그림 06-13a</strong> 이미 정복한 상태 가치 함수(<i>v</i><sub>&amp;ast;</sub>)의 벨만 최적 방정식 원리를 바탕으로, 새로운 목표인 행동 가치 함수(<i>q</i><sub>&amp;ast;</sub>)의 벨만 최적 방정식 유도에 나서는 도로시와 지니</p>
 
-<p>먼저 Q 함수의 벨만 방정식을 봅시다.
-\(q_{\pi}(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi(a' \mid s') q_{\pi}(s', a') \right\}\)</p>
+<hr />
 
-<p>이 벨만 방정식은 모든 정책 <em>π</em>에 성립합니다.</p>
+<h4 id="최적-행동-가치-함수">최적 행동 가치 함수</h4>
 
-<p>물론 최적 정책 <em>π</em><sub>*</sub>에도 성립하므로 최적 정책 <em>π</em><sub>*</sub>를 대입할 수 있습니다.
+<p>어떤 상태 <i>s</i>에서 특정 행동 <i>a</i>를 취한 뒤, 그 이후의 모든 선택을 최적 정책(<i>π</i><sub>&amp;ast;</sub>)에 따라 진행했을 때 얻게 되는 최고의 기대 수익을 <strong>최적 행동 가치 함수(Optimal Action-Value Function)</strong>라고 부르며, <i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>)로 표기합니다.</p>
+
+\[q_*(s, a) = \max_{\pi} q_{\pi}(s, a)\]
+
+<p>이제 V 함수 때와 동일하게 2단계의 논리적 전개를 거쳐 Q 함수의 벨만 최적 방정식을 완성해 보겠습니다.</p>
+
+<p><img src="./img/optimal_q_function_definition.png" alt="최적 행동 가치 함수의 정의" /></p>
+
+<p><strong>그림 06-13b</strong> 상태 <i>s</i>에서 첫 행동 <i>a</i>를 실행한 후, 황금빛 최적 정책(<i>π</i><sub>&amp;ast;</sub>)의 길을 따라 얻을 수 있는 최고의 기대 성적표: 최적 행동 가치 함수 <i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>)의 정의</p>
+
+<hr />
+
+<h4 id="1단계-q-함수-벨만-기대-방정식에-최적-정책πast-대입">1단계: Q 함수 벨만 기대 방정식에 최적 정책(<i>π</i><sub>&amp;ast;</sub>) 대입</h4>
+
+<p>먼저 앞서 배운 일반 정책 <i>π</i>에 대한 Q 함수의 벨만 기대 방정식([식 06.14])을 떠올려 봅니다.</p>
+
+\[q_{\pi}(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi(a' \mid s') q_{\pi}(s', a') \right\}\]
+
+<p>이 벨만 기대 방정식은 세상에 존재하는 <strong>모든 정책 <i>π</i>에 대해 항상 성립</strong>하는 일반 공식입니다.</p>
+
+<p>따라서 최고의 정책인 <strong>최적 정책 <i>π</i><sub>&amp;ast;</sub></strong>를 대입해도 당연히 그대로 성립합니다.</p>
+
+<p><img src="./img/q_bellman_expectation_review.png" alt="Q 함수 벨만 기대 방정식과 정책의 자리" /></p>
+
+<p><strong>그림 06-13c</strong> 일반 정책 <i>π</i>에 대해 성립하는 Q 함수 벨만 기대 방정식([식 06.14])과 최적 정책(<i>π</i><sub>&amp;ast;</sub>) 카드를 대입할 준비를 하는 도로시와 지니</p>
+
+<hr />
+
+<p>모든 <i>π</i> 자리에 최적 정책 기호 <i>π</i><sub>&amp;ast;</sub>와 최적 Q 함수 기호 <i>q</i><sub>&amp;ast;</sub>를 대입하면 다음과 같은 식을 얻습니다.
 \(q_*(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi_*(a' \mid s') q_*(s', a') \right\}\)</p>
 
 <p>[식 06.17]</p>
 
-<p>다음 전개는 4.06.2절에서 설명한 것과 같습니다.</p>
+<p><img src="./img/optimality_q_substitute_pi.png" alt="최적 정책 대입 단계" /></p>
 
-<p>여기서 <em>π</em><sub>*</sub>는 최적 정책이므로 <code class="language-plaintext highlighter-rouge">max</code> 연산자로 단순화할 수 있습니다.</p>
+<p><strong>그림 06-14</strong> 일반 Q 함수 벨만 기대 방정식의 정책 자리에 최적 정책 <i>π</i><sub>&amp;ast;</sub> 카드를 대입하여 [식 06.17]을 유도하는 과정</p>
 
-<p>즉 <em>∑</em><sub><em>a’</em></sub> <em>π</em><sub>*</sub>(<em>a’</em> | <em>s’</em>) … 부분을 <em>max</em><sub><em>a’</em></sub> … 로 바꿀 수 있습니다. 따라서 다음 식이 성립합니다.
-\(q_*(s, a) = \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma \max_{a'} q_*(s', a') \}\)</p>
+<blockquote>
+  <p><strong>여기서 잠깐! 왜 식의 시작 부분(바깥쪽)에는 <i>max</i>가 붙지 않을까요?</strong><br />
+상태 가치 함수 <i>v</i>(<i>s</i>)는 시작점부터 “어떤 행동을 고를까?”를 에이전트가 직접 결정해야 하므로 바깥쪽에 <em>max</em><sub><em>a</em></sub>가 붙었습니다.<br />
+하지만 행동 가치 함수 <i>q</i>(<i>s</i>, <i>a</i>)는 <strong>“상태 <i>s</i>에서 이미 행동 <i>a</i>를 취했다!”</strong>는 사실이 함수 입력값으로 못 박혀 있습니다. 따라서 첫 번째 행동 <i>a</i>는 선택의 여지가 없으며, 에이전트가 최적의 선택(<i>max</i>)을 내리는 시점은 다음 상태 <i>s’</i>에 도달한 후 <strong>그다음 행동 <i>a’</i>를 고를 때</strong>부터 시작됩니다.</p>
+</blockquote>
+
+<hr />
+
+<h4 id="2단계-안쪽-시그마-가중합이-maxa로-변신-식-0618">2단계: 안쪽 시그마 가중합이 <em>max</em><sub><em>a’</em></sub>로 변신! [식 06.18]</h4>
+
+<p>다음 전개는 앞서 06.5.1절에서 상태 가치 함수를 유도했던 논리와 완벽하게 같습니다.</p>
+
+<p>다음 상태 <i>s’</i>에 도달한 최적 에이전트는 여러 가능한 다음 행동 <i>a’</i>들의 가치를 확률적으로 섞는 가중평균(<em>∑</em><sub><em>a’</em></sub> <em>π</em><sub>&amp;ast;</sub>)을 계산하지 않습니다. 대신 <strong>가장 큰 Q 가치를 가져다줄 행동 하나만을 100% 확률로 쏙 선택(<code class="language-plaintext highlighter-rouge">max</code>)</strong>합니다.</p>
+
+<p><img src="./img/q_next_state_max_choice.png" alt="다음 상태 s'에서 최고의 다음 행동 선택" /></p>
+
+<p><strong>그림 06-14a</strong> 다음 상태 <i>s’</i>에 도달한 최적 에이전트가 확률 가중합 대신 가장 높은 Q 가치를 가져다주는 다음 행동 <i>a’</i> 하나만을 100% 최선의 선택(<i>max</i><sub><i>a’</i></sub>)으로 골라내는 원리</p>
+
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>따라서 [식 06.17] 안쪽 괄호의 <em>∑</em><sub><em>a’</em></sub> <em>π</em><sub>&amp;ast;</sub>(<i>a’</i></td>
+      <td><i>s’</i>) <i>q</i><sub>&amp;ast;</sub>(<i>s’</i>, <i>a’</i>) 부분이 단 하나의 최댓값 연산자 <strong><em>max</em><sub><em>a’</em></sub> <i>q</i><sub>&amp;ast;</sub>(<i>s’</i>, <i>a’</i>)</strong>로 깔끔하게 치환됩니다!</td>
+    </tr>
+  </tbody>
+</table>
+
+\[q_*(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \max_{a'} q_*(s', a') \right\}\]
 
 <p>[식 06.18]</p>
 
-<p><img src="./img/optimality_q_recursion.png" alt="Q 함수 벨만 최적 방정식의 재귀적 미래 가치 max 선점 원리" /></p>
+<p><img src="./img/optimality_q_max_equation.png" alt="Q 함수 벨만 최적 방정식의 완성" /></p>
 
-<p>[식 06.18]이 바로 Q 함수에 대한 벨만 최적 방정식입니다.</p>
+<p><strong>그림 06-15</strong> 안쪽의 복잡한 정책 확률 가중합이 미래 행동의 최고치를 쏙 뽑아내는 <em>max</em><sub><em>a’</em></sub> 연산자로 압축되어 완성된 Q 함수 벨만 최적 방정식 [식 06.18]</p>
+
+<hr />
+
+<p>[식 06.18]이 바로 강화학습에서 널리 쓰이는 <strong>Q 함수(행동 가치 함수)의 벨만 최적 방정식(Bellman Optimality Equation for Q-function)</strong>입니다!</p>
+
+<p>이 방정식은 나중에 배울 대표적인 강화학습 알고리즘인 <strong>Q-러닝(Q-Learning)</strong>과 <strong>DQN(Deep Q-Network)</strong>의 굳건한 수학적 토대가 됩니다.</p>
+
+<p><img src="./img/q_optimality_foundation_qlearning_dqn.png" alt="Q-러닝과 DQN의 수학적 토대" /></p>
+
+<p><strong>그림 06-15a</strong> Q-러닝(Q-Learning)과 DQN(Deep Q-Network) 등 현대 강화학습의 최고 핵심 알고리즘들을 든든하게 떠받치는 Q 함수 벨만 최적 방정식의 수학적 토대</p>
 
 <blockquote>
-  <p>NOTE_ MDP에서는 결정적 최적 정책이 하나 이상 존재합니다. 결정적 정책이란 특정 상태에서는 반드시 특정 행동을 선택하는 정책입니다. 따라서 최적 정책은 <em>μ</em><sub>*</sub>(<em>s</em>)와 같이 함수로 나타낼 수 있습니다. 또한 문제에 따라 최적 정책이 여러 개일 수도 있지만, 그 가치 함수들의 값은 모두 같습니다(모두가 최적이므로). 따라서 최적 정책의 가치 함수는 <em>v</em><sub>*</sub>(<em>s</em>)라는 하나의 기호로 나타낼 수 있습니다. 마찬가지로 최적 정책의 Q 함수도 <em>q</em><sub>*</sub>(<em>s</em>, <em>a</em>)로 하나만 존재합니다.</p>
+  <p>NOTE_ <strong>MDP에서 결정적 최적 정책과 가치 함수의 유일성</strong><br />
+모든 마르코프 결정 과정(MDP)에서는 항상 <strong>최소 하나 이상의 결정적 최적 정책(Deterministic Optimal Policy)</strong>이 존재합니다. 결정적 정책이란 어떤 상태 <i>s</i>에서 주사위를 굴리지 않고 특정 행동 <i>a</i>를 100% 확실하게 선택하는 정책으로, <i>μ</i><sub>&amp;ast;</sub>(<i>s</i>)와 같이 단일 함수 형태로 나타낼 수 있습니다.<br />
+만약 보상이 똑같은 여러 갈래의 길이 존재한다면 최적 정책 자체는 여러 개가 될 수 있지만, 그 어떤 최적 정책을 따르더라도 <strong>달성할 수 있는 최적 가치의 크기(<i>v</i><sub>&amp;ast;</sub>와 <i>q</i><sub>&amp;ast;</sub>)는 완벽하게 동일하고 유일</strong>합니다. 따라서 최적 가치 함수는 복수 개가 아니라 <i>v</i><sub>&amp;ast;</sub>와 <i>q</i><sub>&amp;ast;</sub>라는 단 하나의 기호로 고유하게 정의됩니다.</p>
 </blockquote>
 
-<h4 id="백업-다이어그램">백업 다이어그램</h4>
+<hr />
 
-<p>벨만 최적 방정식인 [식 06.16]을 백업 다이어그램 형태로 각 수식의 항과 매칭하여 시각화하면 다음과 같습니다.</p>
+<h3 id="0653-벨만-최적-백업-다이어그램-분석과-대칭성">06.5.3 벨만 최적 백업 다이어그램 분석과 대칭성</h3>
 
-<p>그림 06-12a 상태 가치 함수의 벨만 최적 방정식 백업 다이어그램 구조</p>
+<p>상태 가치 함수(<i>v</i><sub>&amp;ast;</sub>)와 행동 가치 함수(<i>q</i><sub>&amp;ast;</sub>)의 벨만 최적 방정식은 서로 완벽한 짝을 이루는 <strong>거울 같은 대칭 구조</strong>를 가지고 있습니다.</p>
 
-<p><img src="./img/optimality_backup_explained.svg" alt="벨만 최적 방정식 백업 다이어그램" /></p>
+<p>두 방정식의 백업 다이어그램을 나란히 놓고 비교해 보면 그 직관을 한눈에 파악할 수 있습니다.</p>
 
-<p>위 [그림 06-12a]에서 보듯, 벨만 최적 방정식은 모든 행동들에 대한 가치의 가중 기대 평균을 구하는 대신, 다음 단계에서 얻을 수 있는 가치합이 가장 높은 행동 <em>a</em><sub>2</sub>만을 선택하는 <strong><em>max</em><sub><em>a</em></sub> 비선형 연산자</strong>의 작동 원리(빨간색 max_a 아크 및 굵은 노란색 행동 활성화 연결선)를 명확하게 묘사하고 있습니다.</p>
+<p><img src="./img/optimality_backup_comparison.png" alt="백업 다이어그램 비교" /></p>
+
+<p><strong>그림 06-16</strong> 상태 가치 함수(<i>v</i><sub>&amp;ast;</sub>)와 행동 가치 함수(<i>q</i><sub>&amp;ast;</sub>)의 최적 백업 다이어그램 비교: 최적 의사결정(<em>max</em>)이 일어나는 위치와 환경의 상태 전이 확률(<em>∑</em><sub><em>s’</em></sub> <em>p</em>)의 대칭 구조</p>
+
+<hr />
+
+<h4 id="두-최적-가치-함수의-백업-다이어그램-대칭-구조">두 최적 가치 함수의 백업 다이어그램 대칭 구조</h4>
+
+<ol>
+  <li><strong>상태 가치 함수 <i>v</i><sub>&amp;ast;</sub>(<i>s</i>)의 흐름</strong>:
+    <ul>
+      <li>출발점: 상태 <i>s</i> (흰색 원)</li>
+      <li>1단계 (에이전트의 선택): 에이전트가 최선의 행동 <i>a</i>를 선택함 → <strong><em>max</em><sub><em>a</em></sub> 아크 발생</strong></li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>2단계 (환경의 반응): 선택된 행동에 대해 환경이 다음 상태 <i>s’</i>를 확률적으로 결정 → <em>∑</em><sub><em>s’</em></sub> <em>p</em>(<i>s’</i></td>
+              <td><i>s</i>, <i>a</i>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/backup_flow_v_optimal.png" alt="상태 가치 함수 v*(s)의 최적 백업 흐름" /></p>
+
+<p><strong>그림 06-16a</strong> 상태 가치 함수 <i>v</i><sub>&amp;ast;</sub>(<i>s</i>)의 최적 백업 다이어그램 흐름: 상태 <i>s</i> 출발 → 에이전트의 <em>max</em><sub><em>a</em></sub> 최적 행동 선택 → 환경의 확률적 전이</p>
+
+<ol>
+  <li><strong>행동 가치 함수 <i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>)의 흐름</strong>:
+    <ul>
+      <li>출발점: 상태-행동 쌍 (<i>s</i>, <i>a</i>) (검은색 원)</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>1단계 (환경의 반응): 이미 주어진 행동 <i>a</i>에 대해 환경이 다음 상태 <i>s’</i>로 전이 → <em>∑</em><sub><em>s’</em></sub> <em>p</em>(<i>s’</i></td>
+              <td><i>s</i>, <i>a</i>)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>2단계 (에이전트의 선택): 도착한 다음 상태 <i>s’</i>에서 최고의 다음 행동 <i>a’</i>를 선택함 → <strong><em>max</em><sub><em>a’</em></sub> 아크 발생</strong></li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/backup_flow_q_optimal.png" alt="행동 가치 함수 q*(s, a)의 최적 백업 흐름" /></p>
+
+<p><strong>그림 06-16b</strong> 행동 가치 함수 <i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>)의 최적 백업 다이어그램 흐름: 상태-행동 (<i>s</i>, <i>a</i>) 출발 → 환경의 상태 전이 → 다음 상태 <i>s’</i>에서의 <em>max</em><sub><em>a’</em></sub> 최적 행동 선택</p>
+
+<p>이처럼 두 방정식은 단지 <strong>‘에이전트의 선택(<i>max</i>)’과 ‘환경의 전이(확률 <i>p</i>)’가 일어나는 순서만 뒤바뀌어 있을 뿐</strong>, 동일한 최적 원리를 담고 있습니다.</p>
+
+<hr />
+
+<h4 id="상태-가치-함수-벨만-최적-방정식-백업-다이어그램-상세-분석">상태 가치 함수 벨만 최적 방정식 백업 다이어그램 상세 분석</h4>
+
+<p>벨만 최적 방정식인 [식 06.16]을 수식의 각 항과 매칭하여 구체적인 백업 다이어그램으로 시각화하면 다음과 같습니다.</p>
+
+<p><img src="./img/optimality_backup_mapping_chibi.png" alt="벨만 최적 방정식 백업 다이어그램 상세 매핑" /></p>
+
+<p><strong>그림 06-17</strong> 상태 가치 함수 벨만 최적 방정식의 수식 항과 백업 다이어그램 가지의 1:1 대응 원리를 설명하는 도로시와 지니</p>
+
+<p><img src="./img/optimality_backup_explained.svg" alt="벨만 최적 방정식 백업 다이어그램 상세 벡터 다이어그램" /></p>
+
+<p><strong>그림 06-18</strong> 상태 가치 함수의 벨만 최적 방정식 백업 다이어그램 상세 구조와 수식 각 항의 매핑 관계</p>
+
+<p>위 [그림 06-17]과 [그림 06-18]을 통해 벨만 최적 방정식의 작동 구조를 세 가지 핵심 포인트로 정리해 보겠습니다.</p>
+
+<ol>
+  <li><strong>수식 항과 다이어그램 가지의 1:1 대응</strong>:
+    <ul>
+      <li><strong><i>v</i><sub>&amp;ast;</sub>(<i>s</i>)</strong>: 다이어그램 맨 꼭대기의 출발점인 현재 상태 노드(흰색 원)입니다.</li>
+      <li><strong>빨간색 원호(<em>max</em><sub><em>a</em></sub> 아크)</strong>: 에이전트의 여러 행동 갈림길을 가로지르는 빨간 곡선 호입니다. 모든 가능한 행동들의 가치를 확률대로 섞는 가중평균(시그마)을 취하지 않고, 가장 점수가 높은 1등 행동 하나만 단독으로 통과시키는 ‘최댓값 깔때기’ 역할을 합니다.</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><em>*환경 전이 가지(</em>∑<em><sub>*s’*</sub> *p</em>(<i>s’</i></td>
+              <td><i>s</i>, <i>a</i>))**: 선택된 최적 행동 노드(검은색 원) 아래로 환경의 물리 법칙에 따라 다음 상태 <i>s’</i>들로 갈라지는 분기입니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li><strong>즉시 보상과 미래 가치 (<em>r</em> + γ<i>v</i><sub>&amp;ast;</sub>(<i>s’</i>))</strong>: 환경 전이를 거치며 얻는 즉각적인 보상 <em>r</em>과, 도착한 다음 상태 <i>s’</i>에 누적되어 있는 미래의 최적 가치 합입니다.</li>
+    </ul>
+  </li>
+  <li><strong>황금빛 활성화 경로와 탈락한 회색 점선의 대비</strong>:
+    <ul>
+      <li>후보 행동 <em>a</em><sub>1</sub>(-2.0점)과 <em>a</em><sub>2</sub>(+4.0점) 중, 더 큰 보상을 안겨주는 행동 <em>a</em><sub>2</sub> 가지에만 굵은 황금빛 불이 켜지며 선택됩니다.</li>
+      <li>반면 점수가 낮은 열등한 행동 <em>a</em><sub>1</sub>은 확률을 전혀 받지 못해(확률 0%) 회색 점선으로 탈락하며 가치 계산에서 완전히 배제됩니다.</li>
+    </ul>
+  </li>
+  <li><strong>벨만 최적 방정식이 ‘비선형(Non-linear)’인 이유</strong>:
+    <ul>
+      <li>일반 벨만 기대 방정식은 단순 가중합(<em>∑</em>)으로만 이루어져 있어 덧셈과 곱셈만으로 표현되는 <strong>선형 연립방정식(Linear Equation)</strong>이었습니다. 따라서 행렬의 역행렬을 계산하여 수학적으로 단번에 해를 구할 수 있었습니다.</li>
+      <li>하지만 벨만 최적 방정식은 여러 갈래 중 최고치 하나만을 조건문처럼 골라내는 <strong><em>max</em> 연산자</strong>가 포함되어 있기 때문에 <strong>비선형 연립방정식(Non-linear Equation)</strong>이 됩니다.</li>
+      <li>비선형 방정식은 단순 역행렬 계산으로 한 번에 풀리지 않으며, 바로 다음 장부터 배울 <strong>가치 반복(Value Iteration)</strong>이나 <strong>정책 반복(Policy Iteration)</strong> 같은 동적 프로그래밍(Dynamic Programming) 알고리즘을 통해 반복적으로 계산을 갱신하며 최적해를 찾아가게 됩니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="0654-학습-정리">06.5.4 학습 정리</h3>
+
+<p><img src="./img/chapter_06_5_summary.png" alt="06.5장 학습 정리: 벨만 최적 방정식 완전 정복" /></p>
+
+<p><strong>그림 06-19</strong> 상태 가치 함수(<i>v</i><sub>&amp;ast;</sub>)와 행동 가치 함수(<i>q</i><sub>&amp;ast;</sub>)의 벨만 최적 방정식 및 <em>max</em> 연산자의 핵심 원리를 완벽하게 정복한 도로시와 지니, 토토</p>
+
+<ol>
+  <li>
+    <p><strong>최적 정책(<i>π</i><sub>&amp;ast;</sub>)과 최적 가치 함수의 정의</strong>:<br />
+모든 상태에서 상태 가치를 최대로 달성하는 정책을 <strong>최적 정책(<i>π</i><sub>&amp;ast;</sub>)</strong>이라 합니다. 최적 정책을 따랐을 때 얻게 되는 최고의 기대 수익을 각각 <strong>최적 상태 가치 함수(<i>v</i><sub>&amp;ast;</sub>(<i>s</i>) = max<sub><i>π</i></sub> <i>v</i><sub><i>π</i></sub>(<i>s</i>))</strong>와 <strong>최적 행동 가치 함수(<i>q</i><sub>&amp;ast;</sub>(<i>s</i>, <i>a</i>) = max<sub><i>π</i></sub> <i>q</i><sub><i>π</i></sub>(<i>s</i>, <i>a</i>))</strong>라고 부릅니다.</p>
+  </li>
+  <li>
+    <p><strong>벨만 방정식의 보편성과 결정적 최적 정책(Deterministic Policy)</strong>:<br />
+벨만 방정식은 초보/무작위 정책부터 최적 정책까지 <strong>세상의 모든 정책에 대해 예외 없이 100% 성립</strong>합니다. 최적 에이전트는 기대 점수를 최대화하기 위해 여러 행동 중 가장 높은 기대 수익을 주는 최선의 행동 하나에만 <strong>확률 100%를 전부 집중(몰빵)</strong>하므로, 확률적 정책은 자연스럽게 단 하나의 행동만을 선택하는 <strong>결정적 정책(<i>μ</i><sub>&amp;ast;</sub>(<i>s</i>))</strong>으로 귀결됩니다.</p>
+  </li>
+  <li>
+    <p><strong>상태 가치 함수의 벨만 최적 방정식 [식 06.16]</strong>:<br />
+최적 정책 하에서는 행동들을 확률대로 섞는 가중평균(<i>∑</i><sub><i>a</i></sub> <i>π</i><sub>&amp;ast;</sub>)을 구할 필요 없이, 가능한 행동 후보들 중 기대 가치가 가장 큰 것 하나만 <strong>최댓값 연산자(<em>max</em><sub><em>a</em></sub>)</strong>로 쏙 골라냅니다. 이로 인해 수식에서 정책 기호(<i>π</i>)가 완전히 사라지고 환경의 규칙(<em>p, r</em>)과 미래의 최적 가치(<i>v</i><sub>&amp;ast;</sub>)만으로 현재 상태의 최적 가치가 결정됩니다.
+\(v_*(s) = \max_a \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma v_*(s') \right\}\)</p>
+  </li>
+  <li>
+    <p><strong>행동 가치 함수의 벨만 최적 방정식 [식 06.18]</strong>:<br />
+Q 함수는 상태 <i>s</i>에서 이미 행동 <i>a</i>를 취한 상태에서 출발하므로 시작 시점에는 <em>max</em>가 붙지 않으며, 환경 전이를 거쳐 다음 상태 <i>s’</i>에 도착한 후 그다음 행동 <i>a’</i>를 선택할 때 <strong>*max*<sub><em>a’</em></sub></strong>가 적용됩니다. 이 식은 현대 강화학습의 최고 핵심 알고리즘인 <strong>Q-러닝(Q-Learning)</strong>과 <strong>DQN(Deep Q-Network)</strong>의 탄탄한 수학적 모태가 됩니다.
+\(q_*(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \max_{a'} q_*(s', a') \right\}\)</p>
+  </li>
+  <li>
+    <p><strong>백업 다이어그램의 거울 대칭성과 비선형 연립방정식</strong>:</p>
+    <ul>
+      <li><i>v</i><sub>&amp;ast;</sub>는 <code class="language-plaintext highlighter-rouge">상태 s 출발 → 에이전트의 max_a 선택 → 환경의 상태 전이 p</code> 순서로 흐르고, <i>q</i><sub>&amp;ast;</sub>는 <code class="language-plaintext highlighter-rouge">상태-행동 (s, a) 출발 → 환경의 상태 전이 p → 에이전트의 max_{a'} 선택</code> 순서로 흘러 완벽한 거울 대칭을 이룹니다.</li>
+      <li>또한 벨만 최적 방정식은 최고치 하나만을 골라내는 <strong><em>max</em> 연산자</strong>로 인해 <strong>비선형 연립방정식(Non-linear Equation)</strong>이 되므로, 단순 행렬 연산 대신 다음 장부터 배울 동적 프로그래밍(가치 반복/정책 반복)과 같은 반복적 최적화 기법을 통해 해를 구하게 됩니다.</li>
+    </ul>
+  </li>
+</ol>
+
 
 
             <!-- 구글 애드센스 출력 -->

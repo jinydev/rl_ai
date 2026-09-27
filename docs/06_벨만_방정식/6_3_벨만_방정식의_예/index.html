@@ -712,7 +712,7 @@
 
 <hr />
 
-<p>벨만 방정식은 강화 학습 문제를 풀기 위한 중요한 기초를 제공합니다.</p>
+<p>벨만 방정식은 강화 학습 문제를 풀기 위한 중요한 <strong>기초</strong>를 제공합니다.</p>
 
 <p>벨만 방정식을 이용하면 상태 가치 함수를 구할 수 있죠.</p>
 
@@ -748,6 +748,8 @@
 
 <p>여기서 다룰 문제는 [그림 06-7]의 ‘두 칸짜리 그리드 월드’입니다.</p>
 
+<h4 id="문제의-정의-그리드-월드">문제의 정의, 그리드 월드</h4>
+
 <p>그림 06-7 두 칸짜리 그리드 월드(벽에 부딪히면 -1, 사과를 얻으면 +1, 사과는 계속 생성)</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
@@ -778,7 +780,7 @@
 
 <h4 id="문제의-시작">문제의 시작</h4>
 
-<p>이번에는 에이전트가 무작위로 움직인다고 가정합니다.</p>
+<p>이번에는 에이전트가 <strong>무작위</strong>로 움직인다고 가정합니다.</p>
 
 <p>즉 50%의 확률로는 오른쪽, 나머지 50%의 확률로 왼쪽으로 이동합니다.</p>
 
@@ -801,14 +803,14 @@
 <blockquote>
   <p>👧 <strong>도로시</strong>: “여기서 내가 왼쪽이나 오른쪽으로 반반의 확률로 걸어간다는 거지?”</p>
 
-  <p>🐱 <strong>지니</strong>: “맞아! 반반, 즉 50% 확률로 왼쪽이나 오른쪽을 고르는 무작위 정책을 따르는 거야!”</p>
+  <p>🐱 <strong>지니</strong>: “맞아! 반반, 즉 50% 확률로 왼쪽이나 오른쪽을 고르는 <strong>무작위 정책</strong>을 따르는 거야!”</p>
 </blockquote>
 
 <p><img src="./img/grid_world_intro.png" alt="그림 06-7a 두 칸짜리 그리드 월드 문제의 직관적 개념" /></p>
 
 <hr />
 
-<h4 id="l1-기대수익">L1 기대수익</h4>
+<h4 id="l1-에서-시작시-기대수익">L1 에서 시작시 기대수익</h4>
 
 <p><em>v</em><sub><em>π</em></sub>(<em>L1</em>)은 상태 <em>L1</em>에서 무작위 정책 <em>π</em>에 따라 행동했을 때 얻을 수 있는 기대 수익입니다.</p>
 
@@ -840,7 +842,7 @@
 
 <hr />
 
-<h4 id="백업-다이어그램부터-살펴보죠">백업 다이어그램부터 살펴보죠</h4>
+<h4 id="그럼-l1-에-대해서-백업-다이어그램부터-살펴보죠">그럼, L1 에 대해서 백업 다이어그램부터 살펴보죠</h4>
 
 <p>그림 06-8 넓게 퍼져나가는 백업 다이어그램(이번 문제에서 상태는 결정적으로 전이됨)</p>
 
@@ -872,9 +874,9 @@
 
 <hr />
 
-<h4 id="무한한-분기">무한한 분기</h4>
+<h4 id="무한한-분기-벨만-방정식의-필요성">무한한 분기, 벨만 방정식의 필요성</h4>
 
-<p>이처럼 <strong>무한히 분기</strong>하는 계산을 벨만 방정식을 이용하여 구할 수 있습니다.</p>
+<p>이처럼 <strong>무한히 분기</strong>하는 계산을 <strong>벨만 방정식</strong>을 이용하여 구할 수 있습니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -915,7 +917,7 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>[식 06.7]의 첫 번째 식에서 두 번째 식으로 넘어가는 과정은, 모든 조합에 대한 총합 기호인 <em>Σ</em><sub><em>a</em>, <em>s’</em></sub>를 행동에 대한 합 <em>Σ</em><sub><em>a</em></sub>와 다음 상태에 대한 합 <em>Σ</em><sub><em>s’</em></sub>로 분리해 적은 것입니다.</p>
 
-<p>이는 행동과 상태의 결합 기댓값을 단계적으로 계산하기 위한 준비 단계입니다.</p>
+<p>이는 행동과 상태의 결합 <strong>기댓값</strong>을 단계적으로 계산하기 위한 준비 단계입니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -947,7 +949,7 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p>또한, 이번 그리드 월드 예제처럼 <strong>상태 전이가 결정적(deterministic)</strong>일 때는 수식이 아주 큰 폭으로 간소화됩니다.</p>
 
-<p>결정적 전이란 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 도달할 다음 상태가 확률적으로 나뉘지 않고, 오직 하나의 상태 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 100% 확실하게 정해지는 상황을 뜻합니다.</p>
+<p>결정적 전이란 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 도달할 다음 상태가 확률적으로 나뉘지 않고, 오직 하나의 상태 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 <strong>100%</strong> 확실하게 정해지는 상황을 뜻합니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1069,7 +1071,72 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <h4 id="간소화">간소화</h4>
 
-<p>결과적으로 식을 다음과 같이 간소화할 수 있습니다.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>결과적으로 <strong>확률적(stochastic)</strong> 환경에서 <strong>결정적(deterministic)</strong> 환경으로 넘어가면서, 다음 상태에 대한 확률 합산 부분인 <em>Σ</em><sub><em>s’</em></sub> <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)가 완전히 사라지게 됩니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>이 과정을 수식으로 구체적으로 살펴보면 다음과 같습니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>일반적인 벨만 방정식 [식 06.7]에서는 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 <strong>바람이나 미끄러짐 등으로 인해 도달할 수 있는</strong> 여러 다음 상태 <em>s’</em>들의 가중 평균(기댓값)을 구하기 위해 다음 상태에 대한 합산 <em>Σ</em><sub><em>s’</em></sub> <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)를 사용했습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+\[\sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \}\]
+
+<p>하지만 <strong>결정적 환경</strong>에서는 상태 <em>s</em>에서 행동 <em>a</em>를 취했을 때 도달하는 다음 상태가 <strong>상태 전이 함수 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 100%</strong> 확실히 정해집니다. 따라서 상태 전이 확률은 다음과 같이 단순해집니다.</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>) 일 때: <em>p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>) = 1</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>s’</em> ≠ <em>f</em>(<em>s</em>, <em>a</em>) 일 때: <em>p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>) = 0</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>이를 다음 상태 합산식에 대입하여 전개하면, 확률이 0인 다른 모든 상태의 항들은 전부 0이 되어 사라지고, 오직 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)인 단 하나의 항만 남게 됩니다.</p>
+
+\[\begin{aligned}
+\sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \}
+&amp;= 1 \cdot \{ r(s, a, f(s, a)) + \gamma v_{\pi}(f(s, a)) \} + 0 + 0 + \cdots \\
+&amp;= r(s, a, s') + \gamma v_{\pi}(s') \quad (\text{단, } s' = f(s, a))
+\end{aligned}\]
+
+<table>
+  <tbody>
+    <tr>
+      <td>즉, <strong>환경의 불확실성이 사라졌기 때문</strong>에 다음 상태에 대한 합산 기호 <em>Σ</em><sub><em>s’</em></sub>와 전이 확률 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)가 통째로 사라지고(소멸하고), 오직 에이전트가 어떤 행동을 선택할지에 대한 정책 확률 <em>Σ</em><sub><em>a</em></sub> <em>π</em>(<em>a</em></td>
+      <td><em>s</em>)만 남게 되는 것입니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>결과적으로 벨만 방정식 [식 06.8]은 다음과 같이 매우 단순한 형태로 정리됩니다.</p>
 
 <p><em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>) 일 때,</p>
 
@@ -1139,15 +1206,22 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <hr />
 
-<h4 id="l1의-left-이동">L1의 Left 이동</h4>
+<h4 id="그럼-l1에서-left-이동-할때를-생각해-보자">그럼, L1에서 Left 이동 할때를 생각해 보자</h4>
 
-<p>하나는 0.5의 확률로 행동 Left를 선택하고 <strong>상태는 전이되지 않습니다</strong>.</p>
+<p>먼저 에이전트가 상태 <em>L1</em>에서 <strong>왼쪽(Left)</strong>으로 이동하는 첫 번째 갈래 길을 살펴보겠습니다.</p>
 
-<p>보상은 -1입니다.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>무작위 정책에 따라 에이전트는 <strong>0.5의 확률</strong>(<em>π</em>(Left</td>
+      <td><em>L1</em>) = 0.5)로 왼쪽 행동을 선택합니다.</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>이때 할인율 <em>γ</em>를 0.9로 설정하면 [식 06.8]에서 Left를 선택하는 경우는 다음과 같습니다.</p>
+<p><img src="./img/l1_left_hypothetical.png" alt="L1에서 Left를 선택하는 가정 (확률 50%)" /></p>
 
-\[0.5 \{ -1 + 0.9 v_{\pi}(L1) \}\]
+<p>하지만 <em>L1</em>의 왼쪽은 막혀 있는 벽이기 때문에, 에이전트는 앞으로 나아가지 못하고 벽에 부딪혀 <strong>제자리인 <em>L1</em>에 그대로 남게 됩니다</strong>(상태가 전이되지 않고 <em>s’</em> = <em>L1</em>). 이때 벽에 부딪힌 대가로 <strong>-1의 즉각 보상</strong>(<em>r</em> = -1)을 받습니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1173,15 +1247,46 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p><img src="./img/l1_left_action.png" alt="L1에서 왼쪽 행동 수식과 흐름" /></p>
 
+<p>이제 앞서 유도한 간소화된 벨만 방정식 [식 06.8]의 항에 이 값들을 하나씩 차근차근 대입해볼까요?</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>행동 선택 확률</strong>: <em>π</em>(Left</td>
+          <td><em>L1</em>) = 0.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>즉각 보상</strong>: <em>r</em>(<em>L1</em>, Left, <em>L1</em>) = -1</li>
+  <li><strong>할인율</strong>: <em>γ</em> = 0.9</li>
+  <li><strong>다음 상태 가치</strong>: 제자리로 돌아왔으므로 <em>v</em><sub><em>π</em></sub>(<em>s’</em>) = <em>v</em><sub><em>π</em></sub>(<em>L1</em>)</li>
+</ul>
+
+<p>따라서 행동 Left를 선택했을 때 얻게 되는 기대 수익 부분은 다음과 같이 깔끔하게 정리됩니다.</p>
+
+\[0.5 \{ -1 + 0.9 v_{\pi}(L1) \}\]
+
 <hr />
 
-<h4 id="l1의-right-이동">L1의 Right 이동</h4>
+<h4 id="다음으로-l1에서-right-이동-할때">다음으로 L1에서 Right 이동 할때</h4>
 
-<p>[그림 06-9]에서 또 다른 가능성은 0.5의 확률로 행동 Right를 선택하여, <strong>상태 <em>L2</em>로 전이</strong>하고 보상 1을 얻는 경우입니다.</p>
+<p>이번에는 [그림 06-9]의 두 번째 갈래 길인 <strong>오른쪽(Right)</strong>으로 이동하는 경우를 살펴보겠습니다.</p>
 
-<p>이로부터 다음 식을 얻을 수 있습니다.</p>
+<table>
+  <tbody>
+    <tr>
+      <td>마찬가지로 무작위 정책에 따라 에이전트는 <strong>0.5의 확률</strong>(<em>π</em>(Right</td>
+      <td><em>L1</em>) = 0.5)로 오른쪽 행동을 선택합니다.</td>
+    </tr>
+  </tbody>
+</table>
 
-\[0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
+<p><img src="./img/l1_right_hypothetical.png" alt="L1에서 Right를 선택하는 가정 (확률 50%)" /></p>
+
+<p>상태 <em>L1</em>의 오른쪽에는 이동을 가로막는 벽이 없고, 대신 탐스러운 사과가 놓여 있는 상태 <em>L2</em>가 있습니다. 따라서 에이전트는 아무런 방해 없이 <strong>상태 <em>L2</em>로 전이</strong>(<em>s’</em> = <em>L2</em>)하게 되며, 맛있는 사과를 획득한 보상으로 <strong>+1의 즉각 보상</strong>(<em>r</em> = 1)을 받습니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1207,17 +1312,64 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p><img src="./img/l1_right_action.png" alt="L1에서 오른쪽 행동 수식과 흐름" /></p>
 
+<p>이제 앞서 유도한 간소화된 벨만 방정식 [식 06.8]의 항에 이 값들을 하나씩 차근차근 대입해볼까요?</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>행동 선택 확률</strong>: <em>π</em>(Right</td>
+          <td><em>L1</em>) = 0.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>즉각 보상</strong>: <em>r</em>(<em>L1</em>, Right, <em>L2</em>) = 1</li>
+  <li><strong>할인율</strong>: <em>γ</em> = 0.9</li>
+  <li><strong>다음 상태 가치</strong>: 다음 칸인 <em>L2</em>에 도달했으므로 <em>v</em><sub><em>π</em></sub>(<em>s’</em>) = <em>v</em><sub><em>π</em></sub>(<em>L2</em>)</li>
+</ul>
+
+<p>따라서 행동 Right를 선택했을 때 얻게 되는 기대 수익 부분은 다음과 같이 깔끔하게 정리됩니다.</p>
+
+\[0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
+
 <hr />
 
-<h4 id="l1에서의-벨만-방정식"><em>L1</em>에서의 벨만 방정식</h4>
+<h4 id="l1에서의-벨만-방정식-정리하기"><em>L1</em>에서의 벨만 방정식 정리하기</h4>
 
-<p>지금까지의 내용을 벨만 방정식으로 나타내면 다음과 같습니다.</p>
+<p>앞서 우리는 상태 <em>L1</em>에서 갈 수 있는 두 가지 행동(Left, Right)의 기대 수익을 각각 구해보았습니다.</p>
+
+<ul>
+  <li><strong>Left 이동 시</strong>: 0.5 { -1 + 0.9 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) }</li>
+  <li><strong>Right 이동 시</strong>: 0.5 { 1 + 0.9 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) }</li>
+</ul>
+
+<p>이제 벨만 방정식 [식 06.8]에 따라, 상태 <em>L1</em>에서 가능한 이 두 갈래 길의 식을 <strong>하나로 합쳐주기만 하면</strong> 상태 <em>L1</em>의 벨만 방정식이 완성됩니다.</p>
 
 \[v_{\pi}(L1) = 0.5 \{ -1 + 0.9 v_{\pi}(L1) \} + 0.5 \{ 1 + 0.9 v_{\pi}(L2) \}\]
 
-<p>이 식이 상태 <em>L1</em>에서의 벨만 방정식입니다.</p>
+<p><img src="./img/l1_bellman_combine.png" alt="L1의 벨만 방정식: 두 갈래 길(Left + Right)의 결합" /></p>
 
-<p>다음과 같이 정리할 수도 있습니다.</p>
+<p>이 식을 우리가 풀기 쉬운 연립 1차 방정식 형태로 단계별로 차근차근 정리해보겠습니다.</p>
+
+<p><strong>1단계: 우변의 괄호 풀기</strong></p>
+
+<p>각 항의 계수를 괄호 안으로 곱해 전개합니다.</p>
+
+\[v_{\pi}(L1) = \underbrace{-0.5 + 0.45 v_{\pi}(L1)}_{\text{Left 항}} + \underbrace{0.5 + 0.45 v_{\pi}(L2)}_{\text{Right 항}}\]
+
+<p><strong>2단계: 상수항 계산하기</strong></p>
+
+<p>왼쪽 벽 충돌 감점(-0.5)과 오른쪽 사과 획득 보상(+0.5)이 서로 상쇄되어 상수항이 <strong>0</strong>이 됩니다.</p>
+
+\[v_{\pi}(L1) = 0.45 v_{\pi}(L1) + 0.45 v_{\pi}(L2)\]
+
+<p><strong>3단계: 동류항 모으기</strong></p>
+
+<p>좌변의 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 우변으로 이항하여 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)끼리 묶어 정리합니다.</p>
+
+\[0 = -v_{\pi}(L1) + 0.45 v_{\pi}(L1) + 0.45 v_{\pi}(L2)\]
 
 \[-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0\]
 
@@ -1251,11 +1403,15 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <h4 id="l2에서의-벨만-방정식"><em>L2</em>에서의 벨만 방정식</h4>
 
-<p>이제 상태 <em>L2</em>에서의 벨만 방정식을 구해보겠습니다.</p>
+<p>앞서 상태 <em>L1</em>을 통해 미지수가 2개(<em>v</em><sub><em>π</em></sub>(<em>L1</em>), <em>v</em><sub><em>π</em></sub>(<em>L2</em>))인 <strong>첫 번째 1차 방정식</strong> [식 06.9]를 얻었습니다.</p>
 
-<p>조금 전과 마찬가지로 참고용 백업 다이어그램을 준비했습니다.</p>
+<p>연립방정식을 완벽히 풀어 두 상태의 구체적인 가치를 계산하려면 <strong>방정식이 하나 더 필요</strong>합니다. 이제 에이전트가 오른쪽 칸인 <strong>상태 <em>L2</em></strong>에 서 있을 때의 상황을 살펴보고, <em>L2</em>에서의 벨만 방정식을 유도해보겠습니다.</p>
 
-<p>그림 06-10 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)를 구하기 위한 백업 다이어그램</p>
+<p><img src="./img/l2_equation_intro.png" alt="두 번째 방정식: L2의 벨만 방정식 찾기" /></p>
+
+<p>상태 <em>L2</em>에서도 마찬가지로 에이전트가 선택할 수 있는 행동은 <strong>Left(왼쪽)</strong>와 <strong>Right(오른쪽)</strong> 두 가지뿐입니다. 이때 에이전트가 겪게 될 상태 전이와 보상의 흐름을 [그림 06-10]의 백업 다이어그램을 통해 먼저 확인해보겠습니다.</p>
+
+<p>[그림 06-10] <em>v</em><sub><em>π</em></sub>(<em>L2</em>)를 구하기 위한 백업 다이어그램</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1285,11 +1441,14 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <h4 id="l2에서-left-이동">L2에서 Left 이동</h4>
 
-<p>상태 <em>L2</em>에서 0.5의 확률로 행동 Left를 선택하면 <strong>상태 <em>L1</em>로 전이</strong>하고, 이 경로에는 사과가 없으므로 보상은 0입니다.</p>
+<p>먼저 에이전트가 상태 <em>L2</em>에서 <strong>왼쪽(Left)</strong>으로 이동하는 첫 번째 갈래 길을 살펴보겠습니다.
+무작위 정책에 따라 에이전트는 <strong>0.5의 확률</strong>(<em>π</em>(Left | <em>L2</em>) = 0.5)로 왼쪽 행동을 선택합니다.</p>
 
-<p>이때 할인율 <em>γ</em>를 0.9로 설정하면 Left를 선택하는 경우는 다음과 같습니다.</p>
+<p><img src="./img/l2_left_hypothetical.png" alt="L2에서 Left를 선택하는 가정 (확률 50%)" /></p>
 
-\[0.5 \{ 0 + 0.9 v_{\pi}(L1) \}\]
+<p>상태 <em>L2</em>에서 왼쪽으로 이동하면 이전 칸인 <strong>상태 <em>L1</em>로 전이</strong>(<em>s’</em> = <em>L1</em>)하게 됩니다.</p>
+
+<p>이때 <em>L2</em>에서 <em>L1</em>으로 돌아가는 경로에는 사과가 없으므로 <strong>즉각 보상은 0</strong>(<em>r</em> = 0)을 받습니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1315,15 +1474,40 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p><img src="./img/l2_left_action.png" alt="L2에서 Left 이동: 보상 0과 상태 L1 복귀" /></p>
 
+<p>이제 앞서 유도한 간소화된 벨만 방정식 [식 06.8]의 항에 이 값들을 하나씩 차근차근 대입해볼까요?</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>행동 선택 확률</strong>: <em>π</em>(Left</td>
+          <td><em>L2</em>) = 0.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>즉각 보상</strong>: <em>r</em>(<em>L2</em>, Left, <em>L1</em>) = 0</li>
+  <li><strong>할인율</strong>: <em>γ</em> = 0.9</li>
+  <li><strong>다음 상태 가치</strong>: 왼쪽 칸인 <em>L1</em>으로 되돌아왔으므로 <em>v</em><sub><em>π</em></sub>(<em>s’</em>) = <em>v</em><sub><em>π</em></sub>(<em>L1</em>)</li>
+</ul>
+
+<p>따라서 행동 Left를 선택했을 때 얻게 되는 기대 수익 부분은 다음과 같이 깔끔하게 정리됩니다.</p>
+
+\[0.5 \{ 0 + 0.9 v_{\pi}(L1) \}\]
+
 <hr />
 
 <h4 id="l2에서-right-이동">L2에서 Right 이동</h4>
 
-<p>상태 <em>L2</em>에서 0.5의 확률로 행동 Right를 선택하면 <strong>오른쪽 벽에 부딪혀 상태가 전이되지 않고 <em>L2</em>에 머물며</strong>, 보상은 -1입니다.</p>
+<p>이번에는 상태 <em>L2</em>에서 <strong>오른쪽(Right)</strong>으로 이동하는 두 번째 갈래 길을 살펴보겠습니다.
+무작위 정책에 따라 에이전트는 <strong>0.5의 확률</strong>(<em>π</em>(Right | <em>L2</em>) = 0.5)로 오른쪽 행동을 선택합니다.</p>
 
-<p>이로부터 다음 식을 얻을 수 있습니다.</p>
+<p><img src="./img/l2_right_hypothetical.png" alt="L2에서 Right를 선택하는 가정 (확률 50%)" /></p>
 
-\[0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
+<p>하지만 상태 <em>L2</em>의 오른쪽은 단단한 외벽으로 가로막혀 있습니다.</p>
+
+<p>따라서 에이전트는 앞으로 나아가지 못하고 벽에 부딪혀 <strong>제자리인 <em>L2</em>에 머무르게 됩니다</strong>(<em>s’</em> = <em>L2</em>). 이때 벽 충돌에 대한 벌칙으로 <strong>-1의 즉각 보상</strong>(<em>r</em> = -1)을 받습니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1349,15 +1533,70 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <p><img src="./img/l2_right_action.png" alt="L2에서 Right 이동: 오른쪽 벽 충돌과 감점 (-1)" /></p>
 
+<p>이제 앞서 유도한 간소화된 벨만 방정식 [식 06.8]의 항에 이 값들을 하나씩 차근차근 대입해볼까요?</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>행동 선택 확률</strong>: <em>π</em>(Right</td>
+          <td><em>L2</em>) = 0.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>즉각 보상</strong>: <em>r</em>(<em>L2</em>, Right, <em>L2</em>) = -1</li>
+  <li><strong>할인율</strong>: <em>γ</em> = 0.9</li>
+  <li><strong>다음 상태 가치</strong>: 제자리인 <em>L2</em>에 머물렀으므로 <em>v</em><sub><em>π</em></sub>(<em>s’</em>) = <em>v</em><sub><em>π</em></sub>(<em>L2</em>)</li>
+</ul>
+
+<p>따라서 행동 Right를 선택했을 때 얻게 되는 기대 수익 부분은 다음과 같이 깔끔하게 정리됩니다.</p>
+
+\[0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
+
 <hr />
 
-<h4 id="l2-식의-정리"><em>L2</em> 식의 정리</h4>
+<h4 id="l2에서의-벨만-방정식-정리하기"><em>L2</em>에서의 벨만 방정식 정리하기</h4>
 
-<p>이 두 행동의 기댓값을 합치면 상태 <em>L2</em>에서의 벨만 방정식이 됩니다.</p>
+<p>앞서 우리는 상태 <em>L2</em>에서 갈 수 있는 두 가지 행동(Left, Right)의 기대 수익을 각각 구해보았습니다.</p>
+
+<ul>
+  <li><strong>Left 이동 시</strong>: 0.5 { 0 + 0.9 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) }</li>
+  <li><strong>Right 이동 시</strong>: 0.5 { -1 + 0.9 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) }</li>
+</ul>
+
+<p>이제 벨만 방정식 [식 06.8]의 원리에 따라, 상태 <em>L2</em>에서 가능한 두 갈래 길의 식을 <strong>하나로 합쳐주기만 하면</strong> 상태 <em>L2</em>의 벨만 방정식이 완성됩니다.</p>
 
 \[v_{\pi}(L2) = 0.5 \{ 0 + 0.9 v_{\pi}(L1) \} + 0.5 \{ -1 + 0.9 v_{\pi}(L2) \}\]
 
-<p>이 식을 전개하여 정리하면 다음과 같습니다.</p>
+<p><img src="./img/l2_bellman_combine.png" alt="L2의 벨만 방정식: 두 갈래 길(Left + Right)의 결합" /></p>
+
+<p>이 식을 우리가 풀기 쉬운 연립 1차 방정식 형태로 단계별로 차근차근 정리해보겠습니다.</p>
+
+<p><strong>1단계: 우변의 괄호 풀기</strong></p>
+
+<p>각 항의 계수를 괄호 안으로 곱해 전개합니다.</p>
+
+\[v_{\pi}(L2) = \underbrace{0 + 0.45 v_{\pi}(L1)}_{\text{Left 항}} + \underbrace{(-0.5) + 0.45 v_{\pi}(L2)}_{\text{Right 항}}\]
+
+\[v_{\pi}(L2) = 0.45 v_{\pi}(L1) - 0.5 + 0.45 v_{\pi}(L2)\]
+
+<p><strong>2단계: 동류항 묶기</strong></p>
+
+<p>좌변의 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)를 우변으로 이항하여 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)끼리 묶어 정리합니다.</p>
+
+\[0 = 0.45 v_{\pi}(L1) - 0.5 + (0.45 - 1) v_{\pi}(L2)\]
+
+\[0 = 0.45 v_{\pi}(L1) - 0.5 - 0.55 v_{\pi}(L2)\]
+
+<p><strong>3단계: 상수항을 좌변으로 이항하여 두 번째 방정식 완성하기</strong></p>
+
+<p>상수항 -0.5를 좌변으로 넘기면, 마침내 연립방정식을 풀기 위한 <strong>두 번째 1차 방정식 [식 06.10]</strong>이 깔끔하게 완성됩니다!</p>
+
+\[0.5 = 0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2)\]
+
+<p>보기 좋게 좌우 변을 맞추어 쓰면 다음과 같습니다.</p>
 
 \[0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5\]
 
@@ -1391,15 +1630,24 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <h4 id="벨만-방정식-연립">벨만 방정식 연립</h4>
 
-<p>이렇게 하여 모든 상태에서의 벨만 방정식을 구했습니다.</p>
+<p>이렇게 하여 2개 상태(<em>L1</em>, <em>L2</em>)에 대한 벨만 방정식을 모두 구했습니다.</p>
 
-<p>이제 알고 싶은 변수는 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)과 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)가 남았습니다.</p>
+<p>우리가 최종적으로 알아내고자 하는 미지수는 두 상태의 참된 가치인 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)과 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) 딱 2개입니다.</p>
 
-<p>그리고 다음의 두 방정식을 얻었습니다([식 06.9]와 [식 06.10]).</p>
+<p><img src="./img/two_equations_ready.png" alt="두 방정식 준비 완료: L1 식과 L2 식" /></p>
+
+<p>앞서 구한 상태 <em>L1</em>의 식 [식 06.9]와 상태 <em>L2</em>의 식 [식 06.10]을 나란히 모아보겠습니다.</p>
+
+<ul>
+  <li><strong>식 ① (<em>L1</em>의 벨만 방정식)</strong>: -0.55 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) + 0.45 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) = 0</li>
+  <li><strong>식 ② (<em>L2</em>의 벨만 방정식)</strong>: 0.45 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) - 0.55 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) = 0.5</li>
+</ul>
+
+<p><strong>미지수가 2개이고, 서로 독립된 1차 방정식도 2개</strong>이므로, 우리가 중학교 수학 시간에 배운 <strong>2원 1차 연립방정식(System of Linear Equations)</strong>을 세워 정확한 유일해를 완벽히 풀어낼 수 있습니다!</p>
 
 \[\begin{cases}
--0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0 \\
-0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5
+-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0 &amp; \text{--- (식 ①, L1)} \\
+0.45 v_{\pi}(L1) - 0.55 v_{\pi}(L2) = 0.5 &amp; \text{--- (식 ②, L2)}
 \end{cases}\]
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
@@ -1430,19 +1678,67 @@ v_{\pi}(s) &amp;= \sum_{a, s'} \pi(a \mid s) p(s' \mid s, a) \{ r(s, a, s') + \g
 
 <h4 id="연립방정식-풀이">연립방정식 풀이</h4>
 
-<p>보다시피 연립방정식이며, 이번처럼 단순한 문제라면 직접 계산하여 풀 수 있을 것입니다.</p>
+<p>이제 완성된 2원 1차 연립방정식을 <strong>대입법(Substitution Method)</strong>을 이용하여 단계별로 차근차근 풀어보겠습니다.</p>
 
-<p>첫 번째 식에서 $v_{\pi}(L2) = \frac{0.55}{0.45} v_{\pi}(L1) = \frac{11}{9} v_{\pi}(L1)$을 두 번째 식에 대입하면:</p>
+<p><img src="./img/substitution_roadmap.png" alt="연립방정식 풀이 전략: 대입법 3단계 로드맵" /></p>
+
+<hr />
+
+<p><strong>1단계: 식 ①에서 한 미지수를 다른 미지수로 나타내기</strong></p>
+
+<p>첫 번째 식에서 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)를 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)에 대한 식으로 정리합니다.</p>
+
+\[-0.55 v_{\pi}(L1) + 0.45 v_{\pi}(L2) = 0\]
+
+<p>-0.55 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) 항을 우변으로 이항하면:</p>
+
+\[0.45 v_{\pi}(L2) = 0.55 v_{\pi}(L1)\]
+
+<p>양변을 0.45로 나누고, 분모와 분자에 100을 곱한 뒤 5로 약분합니다.</p>
+
+\[v_{\pi}(L2) = \frac{0.55}{0.45} v_{\pi}(L1) = \frac{55}{45} v_{\pi}(L1) = \frac{11}{9} v_{\pi}(L1)\]
+
+<p><img src="./img/simultaneous_step1.png" alt="1단계: 대입 관계식 v(L2) = 11/9 × v(L1)" /></p>
+
+<p>즉, <strong>상태 <em>L2</em>의 가치는 상태 <em>L1</em> 가치의 (11/9)배</strong>라는 중요한 관계식을 얻었습니다!</p>
+
+<hr />
+
+<p><strong>2단계: 관계식을 식 ②에 대입하여 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) 계산하기</strong></p>
+
+<p>방금 구한 관계식 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) = (11/9) <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 두 번째 식의 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) 자리에 그대로 대입합니다.</p>
 
 \[0.45 v_{\pi}(L1) - 0.55 \left( \frac{11}{9} v_{\pi}(L1) \right) = 0.5\]
 
-<p>양변에 9를 곱하고 정리하면:</p>
+<p>분모 9를 없애기 위해 <strong>양변에 9를 곱합니다</strong>.</p>
 
-\[4.05 v_{\pi}(L1) - 6.05 v_{\pi}(L1) = 4.5 \implies -2.0 v_{\pi}(L1) = 4.5 \implies v_{\pi}(L1) = -2.25\]
+\[9 \times 0.45 v_{\pi}(L1) - 0.55 \times 11 v_{\pi}(L1) = 9 \times 0.5\]
 
-<p>이를 대입하면 $v_{\pi}(L2) = \frac{11}{9} (-2.25) = -2.75$를 얻을 수 있습니다.</p>
+\[4.05 v_{\pi}(L1) - 6.05 v_{\pi}(L1) = 4.5\]
 
-<p>참고로 답은 다음과 같습니다.</p>
+<p>좌변의 동류항을 계산합니다.</p>
+
+\[-2.0 v_{\pi}(L1) = 4.5\]
+
+<p>양변을 -2.0으로 나누면, 마침내 첫 번째 미지수인 <strong>상태 <em>L1</em>의 가치</strong>가 완벽하게 계산됩니다!</p>
+
+\[v_{\pi}(L1) = \frac{4.5}{-2.0} = -2.25\]
+
+<p><img src="./img/simultaneous_step2.png" alt="2단계: 대입 계산으로 v(L1) = -2.25 구하기" /></p>
+
+<hr />
+
+<p><strong>3단계: 구해낸 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)을 대입하여 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) 구하기</strong></p>
+
+<p>이제 1단계에서 구해두었던 관계식 <em>v</em><sub><em>π</em></sub>(<em>L2</em>) = (11/9) <em>v</em><sub><em>π</em></sub>(<em>L1</em>)에 방금 얻은 <em>v</em><sub><em>π</em></sub>(<em>L1</em>) = -2.25를 대입합니다.</p>
+
+\[v_{\pi}(L2) = \frac{11}{9} \times (-2.25)\]
+
+<p>-2.25는 분수로 -(9/4)이므로, 분모 9가 서로 깔끔하게 약분됩니다.</p>
+
+\[v_{\pi}(L2) = \frac{11}{9} \times \left( -\frac{9}{4} \right) = -\frac{11}{4} = -2.75\]
+
+<p>이로써 두 상태의 참된 가치가 모두 명쾌하게 계산되었습니다!</p>
 
 \[\begin{cases}
 v_{\pi}(L1) = -2.25 \\
@@ -1477,11 +1773,40 @@ v_{\pi}(L2) = -2.75
 
 <h4 id="이는-무작위-정책의-상태-가치-함수입니다">이는 무작위 정책의 상태 가치 함수입니다</h4>
 
-<p>즉, 상태 <em>L1</em>에서 무작위로 행동하면 앞으로 -2.25의 수익을 기대할 수 있다는 뜻입니다.</p>
+<p>우리가 연립방정식을 풀어 얻은 해는 <strong>무작위 정책(<em>π</em>)을 따를 때 각 상태의 참된 가치</strong>를 뜻합니다.</p>
 
-<p>무작위로 행동하다 보면 벽에 부딪힐 수도 있으니 미래의 보상이 마이너스가 될 수도 있다는 건 충분히 이해할 것입니다.</p>
+\[v_{\pi}(L1) = -2.25, \quad v_{\pi}(L2) = -2.75\]
 
-<p>또한 <em>v</em><sub><em>π</em></sub>(<em>L1</em>)의 값이 <em>v</em><sub><em>π</em></sub>(<em>L2</em>)보다 큰 이유도 <em>L1</em> 옆에 사과가 있고 첫 번째 행동에서 그 사과를 얻을 확률이 50%이기 때문에 역시 이해할 수 있습니다.</p>
+<p>즉, 에이전트가 상태 <em>L1</em>에서 출발하여 무작위로 계속 움직이면 앞으로 얻게 될 할인 누적 보상(기대 수익)의 평균값이 <strong>-2.25</strong>이고, 상태 <em>L2</em>에서 출발하면 <strong>-2.75</strong>라는 의미입니다.</p>
+
+<p><img src="./img/state_value_map.png" alt="무작위 정책의 상태 가치 지도 (Value Map)" /></p>
+
+<hr />
+
+<p>이 계산 결과는 강화학습 환경의 물리적 특성을 아주 정밀하게 반영하고 있으며, 두 가지 중요한 직관적 이유가 숨어 있습니다.</p>
+
+<p><strong>1. 왜 기대 수익이 모두 음수(-)일까요?</strong></p>
+
+<p>“사과를 먹으면 +1점을 얻는데, 왜 두 상태 모두 가치가 마이너스일까?” 하는 의문이 들 수 있습니다.</p>
+
+<p>에이전트는 50%의 확률로 무작위 행동을 취하므로, 길을 헤매다 보면 좌우 양 끝의 외벽에 부딪혀 <strong>-1점의 감점 벌칙</strong>을 반복해서 받게 됩니다. 사과를 얻는 보상(+1)의 기회보다 벽에 쿵 부딪혀 깎이는 벌칙(-1)의 가능성이 더 크고 계속 누적되기 때문에, 장기적으로 누적되는 전체 수익은 자연스럽게 음수가 됩니다.</p>
+
+<p><img src="./img/negative_value_reason.png" alt="왜 기대 수익이 음수(-)일까요?" /></p>
+
+<p><strong>2. 왜 상태 <em>L1</em>의 가치가 상태 <em>L2</em>보다 더 클까요?</strong></p>
+
+<p>두 상태 모두 음수이지만, -2.25 &gt; -2.75로 <strong>상태 <em>L1</em>의 가치가 상태 <em>L2</em>보다 0.5만큼 더 큽니다</strong>. 그 이유는 사과와의 물리적 거리 때문입니다.</p>
+
+<ul>
+  <li><strong>상태 <em>L1</em>에 서 있을 때</strong>: 바로 오른쪽에 탐스러운 사과가 놓여 있어, 첫 번째 행동에서 오른쪽(Right)을 선택하면 <strong>50%의 높은 확률로 즉시 사과 보너스(+1점)</strong>를 손에 쥘 수 있습니다.</li>
+  <li><strong>상태 <em>L2</em>에 서 있을 때</strong>: 오른쪽으로 가면 즉시 벽에 부딪혀 -1점을 받고, 왼쪽으로 가더라도 사과가 없어 즉각 보상은 0점입니다. 사과를 다시 먹으려면 최소 2번의 스텝(<em>L2</em> ➔ <em>L1</em> ➔ <em>L2</em>)을 거쳐야 합니다.</li>
+</ul>
+
+<p><img src="./img/l1_vs_l2_distance.png" alt="L1이 L2보다 가치가 더 큰 이유: 사과와의 거리" /></p>
+
+<hr />
+
+<p>따라서 달콤한 보상이 눈앞에 있는 <strong>상태 <em>L1</em>이 상태 <em>L2</em>보다 훨씬 유리하고 가치 있는 상태</strong>라는 사실을 벨만 방정식의 계산 결과가 수학적으로 명쾌하게 증명해줍니다.</p>
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1511,15 +1836,66 @@ v_{\pi}(L2) = -2.75
 
 <h3 id="0632-벨만-방정식의-의의">06.3.2 벨만 방정식의 의의</h3>
 
-<p>지금까지 살펴본 바와 같이 벨만 방정식을 통해 무한히 계속되는 계산을 유한한 연립방정식으로 변환할 수 있었습니다.</p>
+<p>지금까지 우리는 두 칸짜리 그리드 월드라는 작은 환경을 통해 벨만 방정식이 실제로 어떻게 유도되고 풀리는지 전 과정을 생생하게 살펴보았습니다. 그렇다면 강화학습 전체의 관점에서 <strong>벨만 방정식이 갖는 진정한 의의</strong>는 무엇일까요?</p>
 
-<p>이번처럼 행동이 무작위로 이루어지더라도 벨만 방정식을 이용하면 상태 가치 함수를 구할 수 있습니다.</p>
+<p>크게 세 가지 핵심으로 정리할 수 있습니다.</p>
+
+<hr />
+
+<h4 id="1-무한의-굴레에서-벗어나기-무한한-시간의-1스텝-압축">1. 무한의 굴레에서 벗어나기 (무한한 시간의 1스텝 압축)</h4>
+
+<p>원래 상태 가치 함수는 에이전트가 앞으로 무한히 살아가면서 받게 될 <strong>모든 보상의 할인 누적합</strong>(기대 수익 <em>G</em><sub><em>t</em></sub>)으로 정의됩니다.</p>
+
+\[G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots\]
+
+<p>만약 이 정의 그대로 가치를 구하려면 영원히 끝나지 않는 미래를 끝까지 시뮬레이션해야 하므로, 컴퓨터로 계산하는 것이 사실상 불가능합니다.</p>
+
+<p>하지만 리처드 벨만(Richard Bellman)은 놀라운 발상의 전환을 보여주었습니다. 끝없는 미래 전체를 한꺼번에 내다볼 필요 없이, <strong>“지금 당장 얻는 즉각 보상(1스텝)”과 “바로 다음 상태에서 누릴 가치”</strong>라는 단 한 걸음의 <strong>재귀적(Recursive) 관계로 문제</strong>를 깔끔하게 압축해낸 것입니다.</p>
 
 <blockquote>
-  <p>NOTE_ 상태 가치 함수는 기대 수익이며 ‘무한히 이어지는’ 보상의 합으로 정의됩니다. 하지만 [식 06.7]에서 보듯 벨만 방정식에는 ‘무한’이라는 개념이 없습니다. 벨만 방정식 덕분에 무한의 굴레에서 빠져나온 셈입니다.</p>
+  <p>NOTE_ 상태 가치 함수는 기대 수익이며 ‘무한히 이어지는’ 보상의 합으로 정의됩니다. 하지만 [식 06.7]에서 보듯 벨만 방정식에는 ‘무한’이라는 개념이 없습니다. 오직 현재 상태와 다음 상태의 1스텝 연결만 존재할 뿐입니다. 벨만 방정식 덕분에 우리는 비로소 끝없는 시간의 사슬, 즉 ‘무한의 굴레’에서 완벽하게 빠져나온 셈입니다.</p>
 </blockquote>
 
-<p>또한 이번 문제는 매우 단순했지만 복잡한 문제라도 벨만 방정식을 이용해 연립방정식으로 표현할 수 있습니다. 그리고 연립방정식을 푸는 알고리즘을 이용하면 자동으로 상태 가치 함수를 구할 수 있습니다.</p>
+<p><img src="./img/escape_infinity.png" alt="무한의 굴레 탈출: 1스텝 재귀적 압축" /></p>
+
+<hr />
+
+<h4 id="2-유한한-연립-1차-방정식으로의-변환">2. 유한한 연립 1차 방정식으로의 변환</h4>
+
+<p>벨만 방정식의 가장 강력한 마법은 <strong>무한한 시계열 계산 문제를 우리가 아주 잘 아는 유한한 연립방정식 문제로 바꾸어 놓는다는 점</strong>입니다.</p>
+
+<ul>
+  <li><strong>미지수의 개수</strong>: 환경에 존재하는 각 상태의 참된 가치 <em>v</em>(<em>s</em>) 총 <em>N</em>개</li>
+  <li><strong>방정식의 개수</strong>: 각 상태마다 세워지는 1스텝 벨만 방정식 총 <em>N</em>개</li>
+</ul>
+
+<p>미지수가 <em>N</em>개일 때 독립된 1차 방정식도 정확히 <em>N</em>개가 주어지므로, 선형대수학의 <strong>연립 1차 방정식(행렬 방정식)</strong> 체계가 완벽하게 성립합니다.</p>
+
+<p>이번 예제에서는 상태가 2개뿐이어서 우리가 연필로 대입법을 써서 직접 손으로 풀었지만, 상태가 100개, 1만 개인 거대한 환경이라도 원리는 완전히 동일합니다. 컴퓨터에게 가우스 소거법이나 행렬 연산 알고리즘을 맡기면, 아무리 복잡한 세상이라도 모든 상태의 참된 가치를 눈 깜짝할 사이에 자동으로 찾아낼 수 있습니다.</p>
+
+<p><img src="./img/system_of_equations_n.png" alt="유한한 연립 1차 방정식: N개 상태 = N개 식" /></p>
+
+<hr />
+
+<h4 id="3-모든-강화학습-알고리즘의-든든한-뿌리">3. 모든 강화학습 알고리즘의 든든한 뿌리</h4>
+
+<p>행동이 무작위로 선택되는 정책이든, 특정한 목적을 가진 정교한 정책이든 상관없이 벨만 방정식만 세울 수 있다면 그 정책의 진짜 가치를 객관적인 숫자로 평가할 수 있습니다.</p>
+
+<p>또한 벨만 방정식의 가치는 단순한 수학적 정리에 머무르지 않습니다.</p>
+
+<p>앞으로 우리가 배우게 될 거의 모든 핵심 알고리즘이 바로 이 벨만 방정식에서 출발합니다:</p>
+
+<ul>
+  <li><strong>동적 프로그래밍(DP)</strong>: 벨만 방정식을 반복적으로 갱신하여 최적의 가치와 정책을 찾아냅니다.</li>
+  <li><strong>시간차 학습(TD)</strong>: 벨만 방정식의 좌변(현재 추정치)과 우변(1스텝 후 추정치)의 차이인 ‘벨만 오차’를 줄여나가며 학습합니다.</li>
+  <li><strong>Q-러닝(Q-Learning) &amp; DQN</strong>: 최적 벨만 방정식을 바탕으로 인공지능이 스스로 최고의 행동을 학습하도록 만듭니다.</li>
+</ul>
+
+<p>즉, 벨만 방정식은 현대 강화학습이라는 거대한 건물이 흔들림 없이 우뚝 설 수 있도록 받쳐주는 <strong>가장 튼튼하고 위대한 주춧돌</strong>인 셈입니다.</p>
+
+<p><img src="./img/rl_algorithms_root.png" alt="벨만 방정식: 강화학습의 든든한 주춧돌" /></p>
+
+<hr />
 
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
@@ -1583,14 +1959,14 @@ v_{\pi}(L2) = -2.75
   </li>
   <li><strong>결정적 상태 전이 환경에서의 식 간소화</strong>:
     <ul>
-      <li>상태 전이가 결정적($s’ = f(s, a)$)인 환경에서는 특정 다음 상태로 갈 확률만 1이고 나머지는 0이 되므로, 다음 상태에 대한 시그마 기호($\sum_{s’}$)가 사라져 식이 간소화됩니다.</li>
+      <li>상태 전이가 결정적(<em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>))인 환경에서는 특정 다음 상태로 갈 확률만 1이고 나머지는 0이 되므로, 다음 상태에 대한 시그마 기호(<em>Σ</em><sub><em>s’</em></sub>)가 사라져 식이 간소화됩니다.</li>
     </ul>
 
 \[v_{\pi}(s) = \sum_a \pi(a \mid s) \{ r(s, a, s') + \gamma v_{\pi}(s') \}\]
   </li>
   <li><strong>두 칸짜리 그리드 월드에서의 벨만 방정식 도출</strong>:
     <ul>
-      <li>할인율 $\gamma = 0.9$ 및 무작위 정책($\pi = 0.5$) 조건에서 각 상태의 벨만 방정식은 다음과 같이 세워집니다.</li>
+      <li>할인율 <em>γ</em> = 0.9 및 무작위 정책(<em>π</em> = 0.5) 조건에서 각 상태의 벨만 방정식은 다음과 같이 세워집니다.</li>
       <li>
         <p><strong>상태 <em>L1</em>에서의 벨만 방정식</strong>:</p>
 
@@ -1624,14 +2000,14 @@ v_{\pi}(L2) = -2.75
   <li><strong>상태 가치 수치의 직관적 의미</strong>:
     <ul>
       <li><strong>음수 가치</strong>: 무작위 정책에서는 양쪽 벽에 50% 확률로 계속 부딪혀 -1의 감점을 누적하므로 기대 수익이 음수가 됩니다.</li>
-      <li><strong>$v_\pi(L1) &gt; v_\pi(L2)$</strong>: 상태 <em>L1</em> 바로 오른쪽 칸에 사과(+1)가 위치하여 첫 번째 행동에서 사과를 즉시 획득할 확률(50%)이 존재하므로, <em>L1</em>의 가치가 <em>L2</em>보다 0.5만큼 더 높습니다.</li>
+      <li><strong><em>v</em><sub><em>π</em></sub>(<em>L1</em>) &gt; <em>v</em><sub><em>π</em></sub>(<em>L2</em>)</strong>: 상태 <em>L1</em> 바로 오른쪽 칸에 사과(+1)가 위치하여 첫 번째 행동에서 사과를 즉시 획득할 확률(50%)이 존재하므로, <em>L1</em>의 가치가 <em>L2</em>보다 0.5만큼 더 높습니다.</li>
     </ul>
   </li>
   <li><strong>벨만 방정식 해결의 3단계 프로세스</strong>:
     <ol>
       <li><strong>1단계 (모델 수립)</strong>: 각 상태별 벨만 방정식 작성</li>
       <li><strong>2단계 (식 정리)</strong>: 동류항을 모아 표준 연립 1차 방정식 형태로 정리</li>
-      <li><strong>3단계 (해 계산)</strong>: 가감법/대입법(또는 행렬 역행렬 계산 알고리즘)으로 최종 상태 가치 $v_\pi(s)$ 산출</li>
+      <li><strong>3단계 (해 계산)</strong>: 가감법/대입법(또는 행렬 역행렬 계산 알고리즘)으로 최종 상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>) 산출</li>
     </ol>
   </li>
 </ul>

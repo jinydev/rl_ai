@@ -680,116 +680,240 @@
         <div class="bd-content ps-lg-4">
             <h1 id="064-행동-가치-함수q-함수와-벨만-방정식">06.4 행동 가치 함수(Q 함수)와 벨만 방정식</h1>
 
-<p><strong>그림 06-4</strong> 상태 가치 V(s)와 특정 행동까지 취한 상태의 가치 Q(s,a)의 핵심적 가치 개념 대조를 칠판으로 설명하는 지니와 도로시
-<img src="./img/jiny_bellman_ch6_4_q_function.png" alt="행동 가치 함수 인트로" /></p>
+<p>상태만을 고려한 상태 가치 함수 <em>v</em>(<em>s</em>)를 넘어, 특정 상태에서 임의의 행동을 실행했을 때 얻는 기대 가치를 정의하는 <strong>행동 가치 함수(Q 함수, <em>q</em>(<em>s</em>, <em>a</em>))</strong>와 그 벨만 방정식을 공부합니다.</p>
 
-<p>상태만을 고려한 상태 가치 함수 $V(s)$를 넘어, 특정 상태에서 임의의 행동을 실행했을 때 얻는 기대 가치를 정의하는 <strong>행동 가치 함수(Q 함수, $Q(s, a)$)</strong>와 그 벨만 방정식을 공부합니다. 요정 지니와 도로시의 기분 좋은 판서 정리를 보며 두 가치 함수의 신비로운 연결 구조를 완벽하게 해부해봅시다!</p>
+<p>요정 지니와 도로시의 기분 좋은 판서 정리를 보며 두 가치 함수의 신비로운 연결 구조를 완벽하게 해부해봅시다!</p>
+
+<p><img src="./img/jiny_bellman_ch6_4_q_function.png" alt="행동 가치 함수 인트로" /></p>
+
+<p><strong>그림 06-4</strong> 상태 가치 V(s)와 특정 행동까지 취한 상태의 가치 Q(s,a)의 핵심적 가치 개념 대조를 칠판으로 설명하는 지니와 도로시</p>
 
 <hr />
 
-<p>이번 절에서는 행동 가치 함수<sup>action-value function</sup>를 새롭게 소개합니다.</p>
+<p>이번 절에서는 <strong>행동 가치 함수<sup>action-value function</sup></strong>를 새롭게 소개합니다.</p>
 
-<p>행동 가치 함수는 상태 가치 함수와 마찬가지로 강화 학습 이론에 자주 등장하는 중요한 함수입니다. 지금까지는 상태 가치 함수를 사용하여 벨만 방정식을 도출했습니다.</p>
+<p><strong>행동 가치 함수</strong>는 상태 가치 함수와 마찬가지로 강화 학습 이론에 자주 등장하는 중요한 함수입니다.</p>
+
+<p>지금까지는 상태 가치 함수를 사용하여 벨만 방정식을 도출했습니다.</p>
 
 <p><img src="./img/q_intro_cover.png" alt="행동 가치 함수 장 단원 커버" /></p>
 
 <p>이번 절에서는 행동 가치 함수의 정의식을 살펴본 후 행동 가치 함수를 이용한 벨만 방정식을 도출하겠습니다.</p>
 
 <blockquote>
-  <p>NOTE_ 이 책에서는 설명을 간결하게 하고자 상태 가치 함수를 단순히 ‘가치 함수’라고 줄여 쓰기도 합니다. 또한 행동 가치 함수는 관례적으로 Q 함수<sup>Q-function</sup>라고 부릅니다. 그래서 이 책에서도 행동 가치 함수를 Q 함수로 표기하기도 합니다.</p>
+  <p>NOTE_ 이 강의에서는 설명을 간결하게 하고자 상태 가치 함수를 단순히 ‘가치 함수’라고 줄여 쓰기도 합니다. 또한 행동 가치 함수는 관례적으로 Q 함수<sup>Q-function</sup>라고 부릅니다. 그래서 이 책에서도 행동 가치 함수를 Q 함수로 표기하기도 합니다.</p>
 </blockquote>
 
 <hr />
 
 <h3 id="0641-행동-가치-함수">06.4.1 행동 가치 함수</h3>
 
-<p>먼저 상태 가치 함수를 복습하겠습니다.</p>
+<p>먼저 이전 절에서 깊이 있게 배웠던 <strong>상태 가치 함수(State-Value Function)</strong>를 다시 한번 복습해보겠습니다.</p>
 
 \[v_{\pi}(s) = \mathbb{E}_{\pi}[G_t \mid S_t = s]\]
 
-<p>상태 가치 함수의 조건은 ‘상태가 <em>s</em>일 것’과 ‘정책이 <em>π</em>일 것’ 두 가지입니다. 그리고 조건에 <strong>‘행동 <em>a</em>‘를 추가</strong>할 수 있는데 이것이 바로 <strong>행동 가치 함수(Q 함수)</strong>입니다.</p>
+<p>수식을 자세히 들여다보면, 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)에는 두 가지 핵심 전제 조건이 걸려 있습니다.</p>
 
-<p><img src="./img/q_condition_detail.png" alt="상태 가치 함수와 행동 가치 함수의 조건 비교 비유" /></p>
+<ul>
+  <li><strong>조건 1 (현재 위치)</strong>: 시간 <em>t</em>일 때 에이전트가 위치한 <strong>현재 상태가 <em>s</em></strong>이어야 합니다(<em>S</em><sub><em>t</em></sub> = <em>s</em>). 즉, 평가의 시작점이 상태 <em>s</em>로 고정됩니다.</li>
+  <li><strong>조건 2 (행동 기준)</strong>: 앞으로 에이전트가 취할 모든 행동은 <strong>현재의 정책 <em>π</em></strong>를 충실히 따라야 합니다(기댓값 기호의 아래첨자 <em>π</em>).</li>
+</ul>
 
-<p>수식으로는 다음과 같습니다.
+<p>즉, 상태 가치 함수는 <strong>“내가 지금 상태 <em>s</em>에 서 있다면, 앞으로 현재 정책 <em>π</em>대로 살아갈 때 평균적으로 얼마의 총 보상(기대 수익)을 얻을 수 있는가?”</strong>를 평가하는 상태 자체의 종합 성적표입니다.</p>
+
+<p><img src="./img/state_value_review.png" alt="상태 가치 함수 복습: 2가지 필수 조건" /></p>
+
+<hr />
+
+<p>그리고 이 상태 가치 함수의 조건에 <strong>‘지금 취할 특정 행동 <em>a</em>‘를 조건으로 추가</strong>할 수 있는데, 이것이 바로 강화학습에서 가장 중요한 <strong>행동 가치 함수(Action-Value Function, Q 함수)</strong>입니다!</p>
+
+<p><img src="./img/q_condition_detail.png" alt="행동 가치 Q 함수: 조건에 행동 a 추가!" /></p>
+
+<p>수식으로는 다음과 같이 조건절에 <em>A</em><sub><em>t</em></sub> = <em>a</em>를 덧붙여 정의합니다.
 \(q_{\pi}(s, a) = \mathbb{E}_{\pi}[G_t \mid S_t = s, A_t = a]\)</p>
 
-<p>Q 함수는 시간 <em>t</em>일 때 상태 <em>s</em>에서 행동 <em>a</em>를 취하고, 시간 <em>t</em> + 1부터는 정책 <em>π</em>에 따라 행동을 결정합니다. 이때 얻을 수 있는 기대 수익이 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)입니다.</p>
+<hr />
+
+<p>상태 가치 함수가 단지 “내가 지금 교실(<em>s</em>)에 있으면 평균 몇 점일까?”라는 <strong>장소 자체의 가치</strong>를 묻는다면, 행동 가치 함수는 한 걸음 더 나아가 <strong>“내가 지금 교실(<em>s</em>)에서 ‘공부하기(<em>a</em>)’를 실천하면 앞으로 평균 몇 점을 얻을 수 있을까?”</strong>라는 <strong>구체적인 행동의 가치</strong>를 묻습니다.</p>
+
+<p>이처럼 조건에 행동 <em>a</em>가 추가됨으로써, 에이전트는 각 상태에서 선택할 수 있는 여러 행동들의 가치를 하나하나 따로따로 분리하여 평가할 수 있게 됩니다.</p>
+
+<p><img src="./img/state_vs_action_value.png" alt="장소의 가치 vs 행동의 가치: 상태 가치 v(s)와 행동 가치 q(s, a)의 차이" /></p>
+
+<hr />
+
+<p>Q 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 핵심 메커니즘은 다음과 같은 <strong>2단계 시간 전개</strong>로 이루어집니다.</p>
+
+<ol>
+  <li><strong>시간 <em>t</em> (첫 번째 행동)</strong>: 상태 <em>s</em>에서 지정된 특정 행동 <em>a</em>를 취합니다.</li>
+  <li><strong>시간 <em>t</em> + 1부터 (이후의 행동들)</strong>: 방금 취한 행동의 결과를 맞이한 다음 상태부터는 다시 평소의 정책 <em>π</em>에 따라 행동을 결정합니다.</li>
+</ol>
+
+<p>이때 시간 <em>t</em>부터 미래로 이어지는 모든 보상의 할인 누적합(기대 수익)의 평균값이 바로 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)입니다.</p>
+
+<p><img src="./img/q_free_first_action.png" alt="Q 함수의 핵심: 첫 행동 a는 자유로운 선택!" /></p>
 
 <blockquote>
-  <p>CAUTION_ <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 행동 <em>a</em>는 정책 <em>π</em>와 무관하다는 점에 주의합시다. 즉, <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 행동 <em>a</em>는 자유롭게 결정할 수 있으며, ‘다음 행동부터’ 정책 <em>π</em>를 따릅니다.</p>
+  <p>CAUTION_ <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 <strong>첫 번째 행동 <em>a</em>는 현재 정책 <em>π</em>와 완전히 무관하게 자유롭게 선택할 수 있다</strong>는 점이 가장 중요합니다! 현재 정책 <em>π</em>가 특정 행동을 선호하든 기피하든 상관없이, 우리는 “만약 이 행동 <em>a</em>를 강제로 질러보면 어떻게 될까?”를 마음껏 가상으로 시도해볼 수 있습니다. 그리고 그 첫 행동의 결과로 넘어간 다음 스텝(<em>t</em> + 1)부터 비로소 원래 정책 <em>π</em>를 성실히 따르게 됩니다.</p>
 </blockquote>
 
-<h4 id="q-함수는-상태-가치-함수에-행동-a를-조건으로-추가한-것입니다">Q 함수는 상태 가치 함수에 행동 <em>a</em>를 조건으로 추가한 것입니다.</h4>
+<hr />
 
-<p>백업 다이어그램으로 비교하면 더 명확하게 알 수 있습니다.</p>
+<h4 id="백업-다이어그램으로-보는-두-가치-함수의-결정적-차이">백업 다이어그램으로 보는 두 가치 함수의 결정적 차이</h4>
 
-<p>그림 06-11 상태 가치 함수와 Q 함수의 백업 다이어그램</p>
+<p>Q 함수가 상태 가치 함수에 ‘행동 <em>a</em>‘를 조건으로 추가한 것이라는 사실은 <strong>백업 다이어그램(Backup Diagram)</strong>을 통해 시각적으로 비교해 보면 그 차이가 확연하게 드러납니다.</p>
+
+<p><strong>그림 06-11</strong> 상태 가치 함수와 Q 함수의 백업 다이어그램 구조 비교</p>
 
 <p><img src="./img/fig_06_11.svg" alt="그림 06-11" /></p>
 
-<p>상태 가치 함수에서의 행동 <em>a</em>는 정책 <em>π</em>에 따라 선택됩니다.</p>
+<p>백업 다이어그램에서 <strong>흰색 원(○)은 상태 노드</strong>를 나타내고, <strong>검은색 점(●)은 행동 노드</strong>를 의미합니다.</p>
 
-<p>반면 Q 함수에서 행동 <em>a</em>는 자유롭게 선택할 수 있습니다.</p>
+<p>위 [그림 06-11]의 두 다이어그램을 비교해 보면 시작 지점과 첫 분기에서 매우 흥미로운 차이를 발견할 수 있습니다.</p>
 
-<p>즉, <strong>첫 번째 행동만큼은 현재 정책 <em>π</em>와 무관하게 학습자가 임의로 지정하여 강행해 보고, 두 번째 단계부터 정책 <em>π</em>를 따랐을 때의 기대 가치</strong>를 평가합니다.</p>
+<hr />
 
-<p>이 차이를 일상적인 예시로 비유해 보겠습니다.</p>
+<p><strong>1. 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>) (그림 왼쪽)</strong></p>
 <ul>
-  <li><strong>상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>) (처음부터 정책대로)</strong>:
-오늘 아침 교실(<em>s</em>)에 등교했을 때 오늘 하루 동안 얻을 평균 점수입니다. 교실에 들어서자마자 1교시 첫 행동부터 내 평소 공부 습관(정책 <em>π</em>, 예: 공부 80%, 매점 20%)에 따라 확률적으로 움직입니다.</li>
-  <li><strong>행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) (첫 행동은 고집대로 질러보기)</strong>:
-오늘 교실(<em>s</em>)에 등교했을 때, 평소 습관과는 무관하게 <strong>일단 1교시만큼은 내 고집대로 ‘매점 가기(<em>a</em>)’라는 행동을 강제 실행</strong>하고, 그다음 2교시부터 평소 습관(정책 <em>π</em>)을 충실히 따랐을 때의 하루 기댓값입니다.</li>
+  <li>최상단의 출발점이 <strong>상태 노드 <em>s</em></strong>입니다.</li>
+  <li>상태 <em>s</em>에서 아래의 여러 행동 노드(검은 점)들로 여러 갈래의 화살표가 뻗어나갑니다.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>이 화살표들은 <em>*현재 정책 *π</em>의 확률 분포(<em>π</em>(<em>a</em></td>
+          <td><em>s</em>))에 따라 확률적으로 선택<strong>됩니다. 즉, **어떤 행동을 할지</strong>가 에이전트의 평소 습관(정책)에 완전히 종속되어 결정되며, <strong>특정 행동을 일부러 고를 수 없습니다.</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
 </ul>
 
+<p><img src="./img/backup_diagram_v_focus.png" alt="상태 가치 백업: 정책 π에 따른 확률적 분기" /></p>
+
+<hr />
+
+<p><strong>2. 행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) (그림 오른쪽)</strong></p>
+<ul>
+  <li>최상단에서 상태 <em>s</em>와 특정 행동 노드 <em>a</em>(검은 점)가 <strong>단일 선으로 직결</strong>되어 있습니다.</li>
+  <li>여기서는 여러 갈래의 확률적 분기가 없습니다. 왜냐하면 행동 <em>a</em>는 정책 <em>π</em>의 확률에 따라 뽑히는 것이 아니라, <strong>우리가 평가하고자 하는 특정 행동을 ‘자유롭게 지정’하여 강제 선택</strong>한 것이기 때문입니다.</li>
+  <li>따라서 에이전트는 정책 <em>π</em>와 상관없이 <strong>자신이 원하는 임의의 행동 <em>a</em></strong>를 일단 저질러보고, 그 행동의 결과로 도착한 다음 상태 <em>s’</em>부터 비로소 정책 <em>π</em>를 따르게 됩니다.</li>
+</ul>
+
+<p><img src="./img/backup_diagram_q_focus.png" alt="Q 함수 백업: 특정 행동 a로의 단일 직결!" /></p>
+
+<hr />
+
+<h4 id="첫-번째-행동의-강제-실행과-교실-일상-비유">첫 번째 행동의 강제 실행과 교실 일상 비유</h4>
+
+<p>즉, <strong>첫 번째 행동만큼은 현재 정책 <em>π</em>와 무관하게 학습자가 임의로 지정하여 강행해 보고, 두 번째 단계부터 정책 <em>π</em>를 충실히 따랐을 때의 기대 가치</strong>를 평가하는 것이 바로 Q 함수(행동 가치 함수)의 본질입니다.</p>
+
+<p>이 차이를 일상적인 교실 생활 예시로 비유해 보겠습니다.</p>
+
+<ul>
+  <li><strong>상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>) (처음부터 평소 습관대로)</strong>:
+오늘 아침 교실(<em>s</em>)에 등교했을 때 오늘 하루 동안 얻을 평균 점수입니다. 교실에 들어서자마자 1교시 첫 행동부터 내 평소 공부 습관(정책 <em>π</em>, 예: 공부 80%, 매점 20%)에 따라 확률적으로 움직이며 하루를 보냅니다.</li>
+  <li><strong>행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) (첫 시간은 내 고집대로 질러보기!)</strong>:
+오늘 교실(<em>s</em>)에 등교했을 때, 평소 습관과는 무관하게 <strong>일단 1교시만큼은 내 고집대로 ‘매점 가기(<em>a</em>)’라는 특정 행동을 강제 실행</strong>하고, 그다음 2교시부터 평소 습관(정책 <em>π</em>)을 충실히 따랐을 때 누리게 될 하루 만족도의 기댓값입니다.</li>
+</ul>
+
+<p><img src="./img/classroom_analogy_timeline.png" alt="교실 일상 비유: 평소 습관 vs 1교시 일탈 강행" /></p>
+
+<hr />
+
 <h4 id="왜-행동-a를-임의로-지정해서-평가할까요-정책-개선의-열쇠">왜 행동 <em>a</em>를 임의로 지정해서 평가할까요? (정책 개선의 열쇠)</h4>
-<p>강화 학습의 목적은 ‘더 좋은 행동 방식(정책)’을 찾아 정책을 업그레이드하는 것입니다.</p>
+<p>강화 학습의 목적은 <strong>‘더 좋은 행동 방식(정책)’</strong>을 찾아 정책을 업그레이드하는 것입니다.</p>
 
 <p>평균 점수판인 <em>v</em><sub><em>π</em></sub>(<em>s</em>)만 봐서는 “오늘 공부를 늘려야 할지, 매점 가기를 늘려야 할지” 알 수 없습니다.
 하지만 Q 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)를 통해 각 행동을 임의로 대입해 보면, “교실(<em>s</em>)에서 공부하기(<em>a</em><sub>1</sub>)는 60점, 매점가기(<em>a</em><sub>2</sub>)는 90점, 게임하기(<em>a</em><sub>3</sub>)는 75점”이라는 <strong>행동별 성적표</strong>를 따로 받아볼 수 있습니다.</p>
+
+<p><img src="./img/q_action_report_card.png" alt="행동 가치 Q(s, a): 정책 개선을 위한 행동별 성적표" /></p>
+
+<hr />
 
 <p>이렇게 개별 가치를 따로 구해놓아야, “아! 가치가 가장 높은 90점짜리 매점 가기(<em>a</em><sub>2</sub>)의 행동 확률을 높이도록 내 정책(<em>π</em>)을 개선해야겠구나!” 하고 <strong>정책 개선(Policy Improvement)</strong>을 할 수 있게 됩니다.</p>
 
 <p><img src="./img/q_policy_improvement_concept.png" alt="정책 개선을 위한 Q-값 행동 성적표 비교" /></p>
 
-<h4 id="상태-가치-함수와-q-함수의-차이는-바로-이-점입니다">상태 가치 함수와 Q 함수의 차이는 바로 이 점입니다.</h4>
+<hr />
 
-<p>따라서 만약 Q 함수의 행동 <em>a</em>를 정책 <em>π</em>에 따라 선택하도록 설계하면 Q 함수와 상태 가치 함수는 완전히 같아집니다.</p>
+<h3 id="0642-상태-가치와-q-함수의-관계-가중합-원리">06.4.2 상태 가치와 Q 함수의 관계 (가중합 원리)</h3>
+
+<h4 id="상태-가치-함수와-q-함수의-본질적-연결">상태 가치 함수와 Q 함수의 본질적 연결</h4>
+
+<p>따라서 만약 Q 함수의 행동 <em>a</em>를 정책 <em>π</em>에 따라 <strong>선택하도록 설계</strong>하면 Q 함수와 상태 가치 함수는 완전히 같아집니다.</p>
 
 <p><img src="./img/v_vs_q_concept.png" alt="상태 가치 함수와 Q 함수의 직관적 비교" /></p>
 
-<h4 id="예를-들어">예를 들어</h4>
+<hr />
 
-<p>상태 <em>s</em>에서 취할 수 있는 행동 후보가 {<em>a</em><sub>1</sub>, <em>a</em><sub>2</sub>, <em>a</em><sub>3</sub>} 세 가지가 있다고 가정하고 이때 정책 <em>π</em>에 따라 행동한다고 해보죠.</p>
+<h4 id="예를-들어-교실에서의-세-가지-행동과-정책-가중합">예를 들어: 교실에서의 세 가지 행동과 정책 가중합</h4>
 
-<p>즉, 다음과 같은 상황입니다.</p>
+<p>앞서 살펴본 교실 예시를 통해 구체적으로 이해해 보겠습니다.</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>• <em>π</em>(<em>a</em><sub>1</sub></td>
-      <td><em>s</em>)의 확률로 행동 <em>a</em><sub>1</sub>을 선택하는 경우 Q 함수는 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>1</sub>)</td>
-    </tr>
-    <tr>
-      <td>• <em>π</em>(<em>a</em><sub>2</sub></td>
-      <td><em>s</em>)의 확률로 행동 <em>a</em><sub>2</sub>을 선택하는 경우 Q 함수는 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>2</sub>)</td>
-    </tr>
-    <tr>
-      <td>• <em>π</em>(<em>a</em><sub>3</sub></td>
-      <td><em>s</em>)의 확률로 행동 <em>a</em><sub>3</sub>을 선택하는 경우 Q 함수는 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>3</sub>)</td>
-    </tr>
-  </tbody>
-</table>
+<p>상태 <em>s</em>(교실)에서 에이전트가 선택할 수 있는 행동 후보가 {<em>a</em><sub>1</sub>(공부하기), <em>a</em><sub>2</sub>(매점가기), <em>a</em><sub>3</sub>(게임하기)} 세 가지가 있고, 각 행동을 강제로 실행했을 때의 Q-값(행동별 성적표)이 다음과 같이 이미 매겨져 있다고 해보겠습니다.</p>
 
-<p>이 경우 기대 수익은 Q 함수의 가중 합으로 구할 수 있습니다.</p>
+<ul>
+  <li><em>a</em><sub>1</sub>(공부하기)의 행동 가치: <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>1</sub>) = 60점</li>
+  <li><em>a</em><sub>2</sub>(매점가기)의 행동 가치: <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>2</sub>) = 90점</li>
+  <li><em>a</em><sub>3</sub>(게임하기)의 행동 가치: <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em><sub>3</sub>) = 75점</li>
+</ul>
 
-<p><img src="./img/v_from_q_weighted_sum.png" alt="Q 함수들로부터 상태 가치를 도출하는 가중합 원리" /></p>
+<p>이제 에이전트가 특정 행동을 강제하지 않고, <strong>자신의 평소 습관인 정책 <em>π</em>의 확률 분포에 따라 행동을 선택</strong>한다고 가정해 보죠.</p>
 
-<p>수식으로는 다음과 같습니다.
-\(\begin{aligned}
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>π</em>(<em>a</em><sub>1</sub></td>
+          <td><em>s</em>) = 0.5 (50% 확률로 공부하기 <em>a</em><sub>1</sub> 선택)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>π</em>(<em>a</em><sub>2</sub></td>
+          <td><em>s</em>) = 0.3 (30% 확률로 매점가기 <em>a</em><sub>2</sub> 선택)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>π</em>(<em>a</em><sub>3</sub></td>
+          <td><em>s</em>) = 0.2 (20% 확률로 게임하기 <em>a</em><sub>3</sub> 선택)</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>그렇다면 오늘 아침 교실(<em>s</em>)에 등교했을 때 기대할 수 있는 <strong>종합 평균 점수(상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>))</strong>는 어떻게 구할 수 있을까요?</p>
+
+<p>바로 <strong>“각 행동을 고를 확률”에 “그 행동의 점수(Q-값)”를 곱한 뒤 모두 더한 가중 합(가중 평균, Weighted Sum)</strong>으로 간단히 구해집니다.</p>
+
+<ul>
+  <li><strong>교실의 기대 수익(평균 점수)</strong> = (0.5 × 60점) + (0.3 × 90점) + (0.2 × 75점) = 30 + 27 + 15 = <strong>72점</strong></li>
+</ul>
+
+<p>즉, <strong>상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>)</strong>는 완전히 별개의 새로운 값이 아니라, <strong>각각의 개별 행동 가치 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)들을 현재 정책 <em>π</em>의 선택 확률 비율대로 골고루 섞어 합친 평균값</strong>에 불과합니다.</p>
+
+<p><img src="./img/v_from_q_weighted_sum.png" alt="Q값 가중합: 행동별 점수와 확률로 구하는 평균 점수" /></p>
+
+<hr />
+
+<h4 id="가중합-수식-도출-식-0611">가중합 수식 도출 [식 06.11]</h4>
+
+\[\begin{aligned}
 &amp;\pi(a_1 \mid s) q_{\pi}(s, a_1) + \pi(a_2 \mid s) q_{\pi}(s, a_2) + \pi(a_3 \mid s) q_{\pi}(s, a_3) \\
 &amp;= \sum_{a = \{a_1, a_2, a_3\}} \pi(a \mid s) q_{\pi}(s, a)
-\end{aligned}\)</p>
+\end{aligned}\]
 
 <p>그리고 이 식은 상태 가치 함수와 똑같은 조건에서의 기대 수익입니다.</p>
 
@@ -798,45 +922,116 @@
 
 <p>[식 06.11]</p>
 
+<p><img src="./img/v_from_q_formula.png" alt="상태 가치 v_π(s): Q 함수들의 확률 가중합" /></p>
+
 <hr />
 
-<h3 id="0642-행동-가치-함수를-이용한-벨만-방정식">06.4.2 행동 가치 함수를 이용한 벨만 방정식</h3>
+<h3 id="0643-행동-가치-함수를-이용한-벨만-방정식">06.4.3 행동 가치 함수를 이용한 벨만 방정식</h3>
 
-<p>이어서 행동 가치 함수(Q 함수)를 이용한 벨만 방정식을 도출하겠습니다.</p>
+<p>이어서 행동 가치 함수(Q 함수)를 이용한 벨만 방정식을 본격적으로 도출해 보겠습니다.</p>
 
-<p>먼저 다음과 같이 Q 함수를 전개합니다.
-\(\begin{aligned}
+<p>앞서 06.2절에서 상태 가치 함수의 벨만 방정식을 유도할 때, 가장 중요한 출발점은 <strong>“전체 수익 <em>G</em><sub><em>t</em></sub>를 ‘지금 당장 손에 쥐는 보상 <em>R</em><sub><em>t</em></sub>‘과 ‘다음 스텝부터 얻을 미래 수익 할인합 <em>γG</em><sub><em>t</em>+1</sub>‘의 재귀적 형태로 쪼개는 것(<em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub>)”</strong>이었습니다.</p>
+
+<p><img src="./img/return_split_review.png" alt="수익의 재귀적 분해: 오늘 보상과 미래 수익" /></p>
+
+<hr />
+
+<h4 id="조건부-행동-a가-추가된-수익의-재귀적-분해">조건부 행동 <em>a</em>가 추가된 수익의 재귀적 분해</h4>
+
+<p>단, 상태 가치 함수와의 <strong>결정적인 차이점</strong>은 조건부에 <strong>상태 <em>S</em><sub><em>t</em></sub> = <em>s</em>뿐만 아니라 내가 지정한 행동 <em>A</em><sub><em>t</em></sub> = <em>a</em>까지 함께 주어져 있다</strong>는 점입니다.</p>
+
+<p><img src="./img/v_vs_q_condition_difference.png" alt="상태 가치 vs Q 함수: 조건부 행동 a의 유무" /></p>
+
+<hr />
+
+<h4 id="식-0612-q-함수의-1단계-분해식-도출">[식 06.12] Q 함수의 1단계 분해식 도출</h4>
+
+\[\begin{aligned}
 q_{\pi}(s, a) &amp;= \mathbb{E}_{\pi}[G_t \mid S_t = s, A_t = a] \\
 &amp;= \mathbb{E}_{\pi}[R_t + \gamma G_{t+1} \mid S_t = s, A_t = a]
-\end{aligned}\)</p>
+\end{aligned}\]
 
 <p>[식 06.12]</p>
 
-<p>여기서 상태 <em>s</em>와 행동 <em>a</em>는 정해져 있습니다.</p>
+<p><img src="./img/q_return_split.png" alt="Q 함수의 1단계 분해: 행동 a 실행 후 보상과 미래 수익" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>그렇다면 다음 상태 <em>s’</em>로의 전이 확률은 <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>)이고 보상은 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>) 함수에 의해 주어집니다.</td>
-    </tr>
-  </tbody>
-</table>
+<hr />
 
-<p><img src="./img/q_one_step_expansion.png" alt="Q 함수의 1단계 시간 전개 과정" /></p>
+<h4 id="1단계-시간-전개-상태-전이-확률과-다음-상태-가치-vπs의-결합">1단계 시간 전개: 상태 전이 확률과 다음 상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)의 결합</h4>
 
-<p>이 점을 고려하면 [식 06.12]는 다음과 같이 전개를 이어갈 수 있습니다.
+<p>[식 06.12]에서 상태 <em>s</em>와 <strong>내가 실행한 행동 <em>a</em></strong>는 이미 명확히 정해져 있습니다.</p>
+
+<p>에이전트가 상태 <em>s</em>에서 행동 <em>a</em>를 취하면, 환경의 규칙에 따라 다음 상태 <em>s’</em>로 넘어가게 됩니다. 이때:</p>
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>다음 상태 <em>s’</em>로 이동할 확률은 <em>*상태 전이 확률 *p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>)**로 주어집니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>그 결과 에이전트가 받게 되는 즉시 보상은 <strong>보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)</strong>에 의해 결정됩니다.</li>
+</ul>
+
+<p><img src="./img/q_one_step_expansion.png" alt="Q 함수의 1스텝 전개: 전이 확률과 다음 상태 가치" /></p>
+
+<hr />
+
+<h4 id="식-0613-q-함수-1스텝-전개식의-단계별-유도">[식 06.13] Q 함수 1스텝 전개식의 단계별 유도</h4>
+
+<p><strong>1단계: 기댓값 기호의 분배 (선형성)</strong><br />
+기댓값 연산자 𝔼를 <strong>덧셈 기호</strong>를 기준으로 <strong>‘당장의 보상’</strong>과 <strong>‘미래 수익’</strong>으로 각각 분리합니다.
+\(q_{\pi}(s, a) = \mathbb{E}_{\pi}[R_t \mid S_t = s, A_t = a] + \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_t = s, A_t = a]\)</p>
+
+<p><img src="./img/q_step1_linearity.png" alt="1단계: 기댓값 연산자의 덧셈 분배" /></p>
+
+<p><strong>2단계: 즉시 보상과 미래 수익을 확률 전이로 표현</strong></p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>첫 번째 항 (즉시 보상의 기댓값)</strong>: 행동 <em>a</em>를 취했을 때 환경 규칙에 따라 도달할 수 있는 모든 다음 상태 <em>s’</em>에 대해, 이동할 전이 확률 <em>p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>)과 그때 받게 되는 보상 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)을 곱해 합산합니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+\[\mathbb{E}_{\pi}[R_t \mid S_t = s, A_t = a] = \sum_{s'} p(s' \mid s, a) r(s, a, s')\]
+
+<ul>
+  <li><strong>두 번째 항 (미래 수익의 기댓값)</strong>: 다음 상태 <em>s’</em>에 도착한 순간부터(<em>S</em><sub><em>t</em>+1</sub> = <em>s’</em>) 에이전트는 평소 정책 <em>π</em>를 따릅니다. 따라서 상태 <em>s’</em>에서 앞으로 얻게 될 기대 수익(기댓값)은 다름 아닌 <strong>다음 상태의 가치 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)</strong>입니다!</li>
+</ul>
+
+\[\gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_t = s, A_t = a] = \gamma \sum_{s'} p(s' \mid s, a) \mathbb{E}_{\pi}[G_{t+1} \mid S_{t+1} = s'] = \gamma \sum_{s'} p(s' \mid s, a) v_{\pi}(s')\]
+
+<p><img src="./img/q_step2_transition_split.png" alt="2단계: 확률 전이와 다음 상태 가치 연결" /></p>
+
+<p><strong>3단계: 공통 확률 가중치로 묶기 ([식 06.13] 도출)</strong></p>
+
+<p>앞서 구한 두 항은 모두 공통으로 상태 전이 확률 합 기호를 가지고 있습니다.</p>
+
+<p>따라서 공통 인수인 전이 확률을 바깥으로 묶어내면 최종적으로 다음 식이 완성됩니다.
 \(\begin{aligned}
-q_{\pi}(s, a) &amp;= \mathbb{E}_{\pi}[R_t + \gamma G_{t+1} \mid S_t = s, A_t = a] \\
-&amp;= \mathbb{E}_{\pi}[R_t \mid S_t = s, A_t = a] + \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_t = s, A_t = a] \\
-&amp;= \sum_{s'} p(s' \mid s, a) r(s, a, s') + \gamma \sum_{s'} p(s' \mid s, a) \mathbb{E}_{\pi}[G_{t+1} \mid S_{t+1} = s'] \\
-&amp;= \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_{t+1} = s'] \} \\
-&amp;= \sum_{s'} p(s' \mid s, a) \{ r(s, a, s') + \gamma v_{\pi}(s') \}
+q_{\pi}(s, a) &amp;= \sum_{s'} p(s' \mid s, a) r(s, a, s') + \gamma \sum_{s'} p(s' \mid s, a) v_{\pi}(s') \\
+&amp;= \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma v_{\pi}(s') \right\}
 \end{aligned}\)</p>
 
 <p>[식 06.13]</p>
 
-<p>여기서는 식을 한 번에 변형했지만 06.2절에서 진행한 방식과 같습니다(식 전개가 잘 이해되지 않으면 06.2절을 참고하면서 한 단계씩 도전해보세요).</p>
+<p><img src="./img/q_step3_common_factor.png" alt="3단계: 공통 전이 확률 묶기" /></p>
+
+<p>즉, [식 06.13]은 <strong>“내가 고른 행동 <em>a</em>를 실행했을 때의 Q-값은, 그로 인해 도착할 수 있는 모든 다음 상태 <em>s’</em>에 대해 [지금 받는 즉시 보상 + 다음 상태의 할인된 가치 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)]를 전이 확률에 따라 가중평균한 것”</strong>이라는 매우 직관적인 물리적 의미를 담고 있습니다.</p>
+
+<p><img src="./img/q_step_physical_meaning.png" alt="식 06.13의 물리적 의미: 보상과 미래 가치의 전이 가중평균" /></p>
+
+<hr />
 
 <p>또한 [식 06.11]을 이용하면 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)는 Q 함수를 사용하여 다음처럼 쓸 수 있습니다.
 \(q_{\pi}(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi(a' \mid s') q_{\pi}(s', a') \right\}\)</p>
@@ -849,25 +1044,117 @@ q_{\pi}(s, a) &amp;= \mathbb{E}_{\pi}[R_t + \gamma G_{t+1} \mid S_t = s, A_t = a
 
 <p>이 [식 06.14]가 바로 행동 가치 함수(Q 함수)를 이용한 벨만 방정식입니다.</p>
 
-<h4 id="백업-다이어그램">백업 다이어그램</h4>
+<hr />
 
-<p>Q 함수의 벨만 방정식인 [식 06.14]를 백업 다이어그램 형태로 도출 관계를 매칭하여 시각화하면 다음과 같습니다.</p>
+<h3 id="0644-백업-다이어그램-q-함수-벨만-방정식의-재귀적-흐름">06.4.4 백업 다이어그램: Q 함수 벨만 방정식의 재귀적 흐름</h3>
 
-<p>그림 06-11a 행동 가치 함수(Q 함수) 벨만 방정식의 백업 다이어그램 구조</p>
+<p>행동 가치 함수(Q 함수)의 벨만 방정식인 [식 06.14]를 백업 다이어그램(Backup Diagram)으로 시각화하면, 수식에 담긴 기호들이 실제로 어떤 순서로 상호작용하고 가치를 거슬러 올려보내는지 한눈에 파악할 수 있습니다.</p>
 
-<p><img src="./img/q_backup_explained.svg" alt="Q 함수 벨만 방정식 백업 다이어그램" /></p>
+<p><img src="./img/q_backup_diagram.png" alt="Q 함수 벨만 방정식: 백업 다이어그램 구조" /></p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>위 [그림 06-11a]에서 보듯, 행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 백업 다이어그램은 상단의 행동 노드 (<em>s</em>, <em>a</em>)에서 시작하여 환경의 전이 <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>)에 따라 다음 상태 <em>s’</em>로 가고, 그 상태에서 다시 에이전트의 정책 <em>π</em>(<em>a’</em></td>
-      <td><em>s’</em>)에 따라 다음 행동 <em>a’</em>를 선택하는 흐름을 보여줍니다.</td>
-    </tr>
-  </tbody>
-</table>
+<hr />
 
-<p>이는 상태 가치 함수의 백업 다이어그램과 시작 노드의 종류 및 한 스텝 뒤의 노드 구성이 대칭을 이룹니다.</p>
+<p>위 다이어그램에서 정보가 위아래로 흐르는 과정은 다음과 같습니다.</p>
+
+<ol>
+  <li><strong>출발점: 최상단 행동 노드 (<em>s</em>, <em>a</em>) (검은 점)</strong><br />
+우리가 지금 평가하고자 하는 기준점으로, 상태 <em>s</em>에서 임의로 특정 행동 <em>a</em>를 딱 선택한 순간의 가치인 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)를 나타냅니다.</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>*1단계 분기: 환경 전이 확률과 즉시 보상 (</em>p<em>(</em>s’*</td>
+          <td><em>s</em>, <em>a</em>) + <em>r</em>)**</td>
+        </tr>
+        <tr>
+          <td>에이전트가 행동 <em>a</em>를 실행했으므로 이제 공은 환경에게 넘어갑니다. 환경의 물리 법칙과 규칙(상태 전이 확률 <em>p</em>(<em>s’</em></td>
+          <td><em>s</em>, <em>a</em>))에 따라 다음 상태 <em>s’</em>(흰색 원)들로 갈라지며, 이때 이동에 따른 즉시 보상 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)을 받습니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><em>*2단계 분기: 정책에 따른 다음 행동 선택 (</em>π<em>(</em>a’*</td>
+          <td><em>s’</em>))**</td>
+        </tr>
+        <tr>
+          <td>다음 상태 <em>s’</em>에 도착한 이후부터 에이전트는 평소 습관(정책 <em>π</em>)을 따릅니다. 정책의 확률 분포 <em>π</em>(<em>a’</em></td>
+          <td><em>s’</em>)에 따라 다음 행동들(<em>a’</em>)로 나뭇가지처럼 분기되며, 맨 아래 리프 노드에 도달하게 됩니다. 이 말단 노드가 바로 다음 시점의 행동 가치인 <em>q</em><sub><em>π</em></sub>(<em>s’</em>, <em>a’</em>)(검은 점)입니다.</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><strong>아래에서 위로 거슬러 올라오는 백업(Backup) 계산</strong>
+    <ul>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>안쪽 가중합(정책)</strong>: 맨 아래의 다음 행동 가치 <em>q</em><sub><em>π</em></sub>(<em>s’</em>, <em>a’</em>)들을 정책 확률 <em>π</em>(<em>a’</em></td>
+              <td><em>s’</em>)로 곱해 더하면, 다음 상태의 가치 <em>v</em><sub><em>π</em></sub>(<em>s’</em>) = ∑ <em>π</em>(<em>a’</em></td>
+              <td><em>s’</em>) <em>q</em><sub><em>π</em></sub>(<em>s’</em>, <em>a’</em>)가 복원됩니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td><strong>바깥쪽 가중합(환경)</strong>: 여기에 할인율 <em>γ</em>를 곱하고 즉시 보상 <em>r</em>을 더한 뒤, 환경 전이 확률 <em>p</em>(<em>s’</em></td>
+              <td><em>s</em>, <em>a</em>)로 한 번 더 곱해 더해주면 최종적으로 최상단의 행동 가치 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)가 완성됩니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p><strong>상태 가치 백업 다이어그램과의 완벽한 대칭성</strong></p>
+
+<ul>
+  <li><strong>상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)의 백업 다이어그램</strong>:<br />
+상태 노드(○) → [정책 <em>π</em>] → 행동 노드(●) → [환경 <em>p</em>] → 다음 상태 노드(○)</li>
+  <li><strong>행동 가치 함수 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 백업 다이어그램</strong>:<br />
+행동 노드(●) → [환경 <em>p</em>] → 상태 노드(○) → [정책 <em>π</em>] → 다음 행동 노드(●)</li>
+</ul>
+
+<p>이처럼 Q 함수의 백업 다이어그램은 상태 가치의 백업 다이어그램과 시작 노드의 종류(검은 점 vs 흰 원)와 전이 순서가 서로 반대로 맞물리는 아름다운 대칭을 이루고 있습니다.</p>
+
+<hr />
+
+<h3 id="0645-학습-정리">06.4.5 학습 정리</h3>
+
+<p><img src="./img/q_chapter_summary.png" alt="06.4장 학습 정리: Q 함수와 벨만 방정식 정복" /></p>
+
+<ol>
+  <li>
+    <p><strong>상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>)와 행동 가치 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)의 본질적 차이</strong>:
+상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>)는 상태 <em>s</em>에 진입하자마자 첫 행동부터 평소 정책 <em>π</em>의 확률 분포대로 움직였을 때의 ‘종합 평균 점수’입니다. 반면 행동 가치(Q 함수) <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)는 <strong>첫 번째 행동만큼은 현재 정책과 무관하게 학습자가 원하는 임의의 특정 행동 <em>a</em>를 강제로 실행</strong>해보고, 그 다음 두 번째 단계부터 정책 <em>π</em>를 따랐을 때의 기대 수익을 평가하는 ‘행동별 세부 성적표’입니다.</p>
+  </li>
+  <li>
+    <p><strong>Q 함수가 정책 개선(Policy Improvement)의 나침반이 되는 이유</strong>:
+종합 평균 점수(<em>v</em><sub><em>π</em></sub>(<em>s</em>))만 알아서는 어떤 행동을 늘리고 줄여야 할지 알 수 없습니다. 하지만 각 행동 후보에 대한 Q-값(예: 공부하기 60점, 매점가기 90점, 게임하기 75점)을 구비해 두면, 가치가 가장 높은 90점짜리 행동의 선택 확률을 높이도록 내 정책을 더 나은 방향으로 업그레이드(정책 개선)할 수 있습니다.</p>
+  </li>
+  <li>
+    <p><strong>상태 가치와 Q 함수의 확률 가중합 관계 [식 06.11]</strong>:
+상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s</em>)는 완전히 새로운 물리량이 아니라, 상태 <em>s</em>에서 가능한 모든 행동 가치 <em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>)들을 현재 정책의 행동 선택 확률 <em>π</em>(<em>a</em> | <em>s</em>)로 곱해 전부 합산한 가중 평균(가중합)입니다.
+\(v_{\pi}(s) = \sum_a \pi(a \mid s) q_{\pi}(s, a)\)</p>
+  </li>
+  <li>
+    <p><strong>행동 가치 함수(Q 함수)의 벨만 방정식 [식 06.14]</strong>:
+수익 <em>G</em><sub><em>t</em></sub>를 즉시 보상 <em>R</em><sub><em>t</em></sub>과 미래 수익 할인합 <em>γG</em><sub><em>t</em>+1</sub>로 재귀 분해하고, 환경 전이 확률 <em>p</em>(<em>s’</em> | <em>s</em>, <em>a</em>)과 다음 상태 가치 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)를 결합한 뒤, 다시 <em>v</em><sub><em>π</em></sub>(<em>s’</em>)를 다음 시점의 Q 함수 가중합으로 치환함으로써 현재의 Q-값과 다음 시점의 Q-값들이 맞물리는 벨만 방정식이 완성됩니다.
+\(q_{\pi}(s, a) = \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma \sum_{a'} \pi(a' \mid s') q_{\pi}(s', a') \right\}\)</p>
+  </li>
+  <li>
+    <p><strong>백업 다이어그램의 순환 구조와 대칭성</strong>:
+Q 함수의 백업 다이어그램은 상단의 행동 노드 (●)에서 출발하여 환경 전이 확률 <em>p</em>를 통해 다음 상태 노드 (○)들로 가고, 다시 에이전트의 정책 <em>π</em>에 의해 아래의 다음 행동 노드 (●)들로 나뭇가지처럼 갈라집니다. 맨 아래의 다음 Q-값들이 위로 거슬러 올라와(Backup) 현재의 Q-값을 계산하며, 이는 상태 가치 함수의 백업 다이어그램(<code class="language-plaintext highlighter-rouge">상태 ○ → 정책 π → 행동 ● → 환경 p → 다음 상태 ○</code>)과 시작 노드 및 전이 순서가 완벽한 대칭을 이룹니다.</p>
+  </li>
+</ol>
 
 
             <!-- 구글 애드센스 출력 -->
