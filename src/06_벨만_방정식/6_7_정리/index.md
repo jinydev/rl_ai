@@ -5,6 +5,22 @@ title: "06.7 정리"
 
 # 06.7 정리
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_7_scene1.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니! 복잡해 보이던 벨만 방정식과 벨만 최적 방정식을 드디어 다 배웠어! 머릿속에 수식이 빙글빙글 돌지만, 정말 뿌듯해!"
 > 
 > 🐱 **지니**: "정말 대견하구나, 도로시! 6강은 강화학습 전체를 통틀어 가장 중요한 수학적 기둥이란다. 오늘 배운 공식들의 연결고리를 깔끔하게 정리해 두면, 앞으로 펼쳐질 7장 동적 계획법과 딥러닝 강화학습(DQN)도 술술 풀릴 거야!"
@@ -38,9 +54,27 @@ title: "06.7 정리"
 
 ## 2. 벨만 방정식 2 × 2 완전 정복 지도
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_7_scene2.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니! 벨만 방정식이 4개나 되니까 머릿속에서 헷갈려. 이걸 한눈에 쏙 들어오게 정리할 수는 없을까?"
 > 
 > 🐱 **지니**: "후후, 걱정 마 도로시! 상태 가치와 행동 가치, 그리고 평균(기댓값)과 최선(최댓값)이라는 2가지 축만 알면 칠판 하나에 완벽하게 정리된단다!"
+> 
+> 🐶 **토토**: "멍멍! 2 곱하기 2 마법 격자판이네!"
 
 ![4대 벨만 방정식 요약 칠판](./img/bellman_four_equations_matrix.png)
 
@@ -127,9 +161,27 @@ title: "06.7 정리"
 
 ## 4. 최적 가치 표로부터 최적 정책(*μ*<sub>*</sub>) 손에 쥐기
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_7_scene3.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니! 최적 가치를 다 구했으면, 이제 도로시는 어느 쪽으로 발걸음을 옮겨야 해?"
 > 
 > 🐱 **지니**: "max는 가장 높은 '점수'가 얼마인지를 뜻하고, argmax는 그 최고 점수를 주는 '행동 방향'을 콕 집어 가리키는 황금 나침반이란다!"
+> 
+> 🐶 **토토**: "멍멍! 나침반 바늘이 가리키는 최고의 길로 달려가자!"
 
 ![최적 행동을 가리키는 황금 나침반(argmax)](./img/optimal_policy_argmax_compass.png)
 
@@ -153,9 +205,27 @@ title: "06.7 정리"
 
 ## 5. 왜 우리는 손으로 연립방정식을 계속 풀지 않을까?
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_7_scene4.mp3" preload="none"></audio>
+</div>
+
 > 👧 **도로시**: "지니! 연립방정식으로 답이 딱 떨어지니까 정말 신기했어! 그럼 바둑이나 자율주행차 문제도 연립방정식을 세워서 풀면 되는 거야?"
 > 
 > 🐱 **지니**: "아쉽게도 현실 세상은 그렇게 호락호락하지 않단다, 도로시! 2가지 커다란 장벽이 가로막고 있거든."
+> 
+> 🐶 **토토**: "멍멍! 상태가 수억 개면 손으로 풀다가 쓰러지겠어!"
 
 ![7장 동적 계획법으로 향하는 도로시와 컴퓨터 친구](./img/bellman_to_dp_bridge.png)
 
@@ -204,6 +274,22 @@ title: "06.7 정리"
 ---
 
 ## 7. 6강 수료식: 동적 계획법의 세계로!
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_7_scene5.mp3" preload="none"></audio>
+</div>
 
 > 🐱 **지니**: "도로시, 토토! 6강 벨만 방정식의 모든 시험을 훌륭하게 통과했어. 이제 머릿속에 장착한 4개의 마법 공식을 들고, 컴퓨터가 스스로 세상을 학습하는 **제7장 동적 계획법(Dynamic Programming)**의 세계로 힘차게 떠나보자!"
 > 

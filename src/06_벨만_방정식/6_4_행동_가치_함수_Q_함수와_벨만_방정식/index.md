@@ -14,6 +14,28 @@ title: "06.4 행동 가치 함수(Q 함수)와 벨만 방정식"
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 여태껏 배운 브이 함수 말고도 또 다른 가치 함수가 있어?"
+> 
+> 🐱 **지니**: "그럼 도로시! 서 있는 땅의 가치를 보는 브이 함수뿐만 아니라, 특정 행동을 저질렀을 때의 가치를 재는 큐 함수가 있단다!"
+> 
+> 🐶 **토토**: "멍멍! 행동의 가치라니 큐 함수가 궁금해!"
+
 ![행동 가치 함수 인트로](./img/jiny_bellman_ch6_4_q_function.png)
 
 **그림 06-4** 상태 가치 V(s)와 특정 행동까지 취한 상태의 가치 Q(s,a)의 핵심적 가치 개념 대조를 칠판으로 설명하는 지니와 도로시
@@ -31,6 +53,28 @@ title: "06.4 행동 가치 함수(Q 함수)와 벨만 방정식"
 지금까지는 상태 가치 함수를 사용하여 벨만 방정식을 도출했습니다. 
 
 
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene2.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "행동 가치 함수, 큐 함수는 왜 강화학습에서 그렇게 중요한 거야?"
+> 
+> 🐱 **지니**: "어떤 행동이 더 좋은지 직접 비교해야 정책을 업그레이드할 수 있기 때문이란다!"
+> 
+> 🐶 **토토**: "멍멍! 좋은 행동을 쏙쏙 골라낼 수 있는 비결이구나!"
 
 ![행동 가치 함수 장 단원 커버](./img/q_intro_cover.png)
 
@@ -67,6 +111,28 @@ $$
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene3.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "먼저 배웠던 상태 가치 함수 브이 파이 에스의 두 가지 조건을 다시 떠올려볼까?"
+> 
+> 🐱 **지니**: "현재 상태 에스에 서 있다는 조건 하나, 그리고 앞으로 평소 정책 파이대로만 행동한다는 조건 둘이란다!"
+> 
+> 🐶 **토토**: "멍멍! 평소 습관대로 끝까지 걸어가는 거였어!"
+
 ![상태 가치 함수 복습: 2가지 필수 조건](./img/state_value_review.png)
 
 
@@ -78,6 +144,28 @@ $$
 그리고 이 상태 가치 함수의 조건에 **'지금 취할 특정 행동 *a*'를 조건으로 추가**할 수 있는데, 이것이 바로 강화학습에서 가장 중요한 **행동 가치 함수(Action-Value Function, Q 함수)**입니다!
 
 
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene4.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "여기에 '지금 당장 취할 첫 번째 행동 에이'를 조건절에 쏙 추가하는 거네?"
+> 
+> 🐱 **지니**: "맞아! 조건에 행동 에이가 붙어서 큐 파이 에스 콤마 에이라는 멋진 행동 가치 함수가 탄생한단다!"
+> 
+> 🐶 **토토**: "멍멍! 조건에 행동이 하나 더 쏙 들어갔네!"
 
 ![행동 가치 Q 함수: 조건에 행동 a 추가!](./img/q_condition_detail.png)
 
@@ -100,6 +188,28 @@ $$
 
 이처럼 조건에 행동 *a*가 추가됨으로써, 에이전트는 각 상태에서 선택할 수 있는 여러 행동들의 가치를 하나하나 따로따로 분리하여 평가할 수 있게 됩니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene5.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "장소 자체의 가치와 구체적인 행동의 가치는 느낌이 완전히 달라!"
+> 
+> 🐱 **지니**: "교실에 있는 것 자체의 점수와, 교실에서 공부하기를 실천했을 때의 점수 차이라고 생각하면 아주 쉽단다!"
+> 
+> 🐶 **토토**: "멍멍! 운동장에 있는 거랑 공놀이하는 거의 차이구나!"
+
 ![장소의 가치 vs 행동의 가치: 상태 가치 v(s)와 행동 가치 q(s, a)의 차이](./img/state_vs_action_value.png)
 
 
@@ -114,6 +224,28 @@ Q 함수 *q*<sub>*π*</sub>(*s*, *a*)의 핵심 메커니즘은 다음과 같은
 2.  **시간 *t* + 1부터 (이후의 행동들)**: 방금 취한 행동의 결과를 맞이한 다음 상태부터는 다시 평소의 정책 *π*에 따라 행동을 결정합니다.
 
 이때 시간 *t*부터 미래로 이어지는 모든 보상의 할인 누적합(기대 수익)의 평균값이 바로 *q*<sub>*π*</sub>(*s*, *a*)입니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene6.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "큐 함수에서는 첫 번째 행동만큼은 내 맘대로 자유롭게 고를 수 있다는 게 정말 놀라워!"
+> 
+> 🐱 **지니**: "빙고! 평소 정책이 뭐든 상관없이 일단 특정 행동을 질러보고, 그 뒤부터 정책을 따르는 가상 시뮬레이션이란다!"
+> 
+> 🐶 **토토**: "멍멍! 첫 발걸음은 내 고집대로 쿵 찍어보는 거야!"
 
 ![Q 함수의 핵심: 첫 행동 a는 자유로운 선택!](./img/q_free_first_action.png)
 
@@ -150,6 +282,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 *   상태 *s*에서 아래의 여러 행동 노드(검은 점)들로 여러 갈래의 화살표가 뻗어나갑니다.
 *   이 화살표들은 **현재 정책 *π*의 확률 분포(*π*(*a* | *s*))에 따라 확률적으로 선택**됩니다. 즉, **어떤 행동을 할지**가 에이전트의 평소 습관(정책)에 완전히 종속되어 결정되며, **특정 행동을 일부러 고를 수 없습니다.**
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene7.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "상태 가치 백업 다이어그램은 맨 위 하얀 원에서 여러 행동 검은 점들로 정책 확률만큼 갈라지네?"
+> 
+> 🐱 **지니**: "평소 습관대로 움직이니까 에이전트가 특정 행동을 골라볼 수 없고 확률에 맡겨지는 거란다!"
+> 
+> 🐶 **토토**: "멍멍! 주사위를 굴려서 나뭇가지처럼 갈라지는군!"
+
 ![상태 가치 백업: 정책 π에 따른 확률적 분기](./img/backup_diagram_v_focus.png)
 
 
@@ -162,6 +316,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 *   최상단에서 상태 *s*와 특정 행동 노드 *a*(검은 점)가 **단일 선으로 직결**되어 있습니다.
 *   여기서는 여러 갈래의 확률적 분기가 없습니다. 왜냐하면 행동 *a*는 정책 *π*의 확률에 따라 뽑히는 것이 아니라, **우리가 평가하고자 하는 특정 행동을 '자유롭게 지정'하여 강제 선택**한 것이기 때문입니다.
 *   따라서 에이전트는 정책 *π*와 상관없이 **자신이 원하는 임의의 행동 *a***를 일단 저질러보고, 그 행동의 결과로 도착한 다음 상태 *s'*부터 비로소 정책 *π*를 따르게 됩니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene8.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "반면에 큐 함수 백업 다이어그램은 상태 노드와 특정 행동 검은 점이 단일 선으로 직결되어 있어!"
+> 
+> 🐱 **지니**: "내가 지정한 특정 행동 하나로 직진하니까 갈래길 없이 단번에 이어지는 거란다!"
+> 
+> 🐶 **토토**: "멍멍! 한 가닥 줄로 곧장 이어져 있어!"
 
 ![Q 함수 백업: 특정 행동 a로의 단일 직결!](./img/backup_diagram_q_focus.png)
 
@@ -182,6 +358,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 *   **행동 가치 함수 *q*<sub>*π*</sub>(*s*, *a*) (첫 시간은 내 고집대로 질러보기!)**:
     오늘 교실(*s*)에 등교했을 때, 평소 습관과는 무관하게 **일단 1교시만큼은 내 고집대로 '매점 가기(*a*)'라는 특정 행동을 강제 실행**하고, 그다음 2교시부터 평소 습관(정책 *π*)을 충실히 따랐을 때 누리게 될 하루 만족도의 기댓값입니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene9.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "교실에서 평소 습관대로 보내는 하루와, 1교시에 매점 가기를 강행해보는 하루의 차이구나!"
+> 
+> 🐱 **지니**: "정확해! 1교시 일탈을 강행해 보고 2교시부터 평소대로 했을 때 하루 만족도가 얼마나 될지 계산하는 거지!"
+> 
+> 🐶 **토토**: "멍멍! 1교시에 맛있는 빵을 사 먹으면 기분이 어떨까?"
+
 ![교실 일상 비유: 평소 습관 vs 1교시 일탈 강행](./img/classroom_analogy_timeline.png)
 
 
@@ -198,6 +396,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 평균 점수판인 *v*<sub>*π*</sub>(*s*)만 봐서는 "오늘 공부를 늘려야 할지, 매점 가기를 늘려야 할지" 알 수 없습니다.
 하지만 Q 함수 *q*<sub>*π*</sub>(*s*, *a*)를 통해 각 행동을 임의로 대입해 보면, "교실(*s*)에서 공부하기(*a*<sub>1</sub>)는 60점, 매점가기(*a*<sub>2</sub>)는 90점, 게임하기(*a*<sub>3</sub>)는 75점"이라는 **행동별 성적표**를 따로 받아볼 수 있습니다. 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene10.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "공부하기 60점, 매점가기 90점, 게임하기 75점처럼 행동별 성적표를 따로 받는 거네!"
+> 
+> 🐱 **지니**: "그렇지! 이렇게 행동별로 점수가 매겨져 있어야 어떤 행동이 가장 이득인지 한눈에 알 수 있단다!"
+> 
+> 🐶 **토토**: "멍멍! 90점짜리 매점 가기가 일등이야!"
+
 ![행동 가치 Q(s, a): 정책 개선을 위한 행동별 성적표](./img/q_action_report_card.png)
 
 
@@ -207,6 +427,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 
 
 이렇게 개별 가치를 따로 구해놓아야, "아! 가치가 가장 높은 90점짜리 매점 가기(*a*<sub>2</sub>)의 행동 확률을 높이도록 내 정책(*π*)을 개선해야겠구나!" 하고 **정책 개선(Policy Improvement)**을 할 수 있게 됩니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene11.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "성적표를 보고 점수가 높은 행동을 더 자주 하도록 정책을 업그레이드하면 정책 개선이네!"
+> 
+> 🐱 **지니**: "바로 그거야 도로시! 큐 함수가 바로 강화학습에서 정책을 더 좋게 개선하는 황금 나침반이란다!"
+> 
+> 🐶 **토토**: "멍멍! 더 똑똑한 정책으로 레벨 업!"
 
 ![정책 개선을 위한 Q-값 행동 성적표 비교](./img/q_policy_improvement_concept.png)
 
@@ -223,6 +465,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 #### 상태 가치 함수와 Q 함수의 본질적 연결
 
 따라서 만약 Q 함수의 행동 *a*를 정책 *π*에 따라 **선택하도록 설계**하면 Q 함수와 상태 가치 함수는 완전히 같아집니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene12.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "만약 큐 함수의 행동들을 정책 확률대로 섞어서 고르면 상태 가치 함수와 같아지겠네?"
+> 
+> 🐱 **지니**: "정답이야! 큐 함수들의 가중평균이 곧 상태 가치 함수 브이가 되는 본질적인 연결고리란다!"
+> 
+> 🐶 **토토**: "멍멍! 두 가치 함수가 쌍둥이처럼 연결되어 있어!"
 
 ![상태 가치 함수와 Q 함수의 직관적 비교](./img/v_vs_q_concept.png)
 
@@ -266,6 +530,28 @@ Q 함수가 상태 가치 함수에 '행동 *a*'를 조건으로 추가한 것�
 
 즉, **상태 가치 *v*<sub>*π*</sub>(*s*)**는 완전히 별개의 새로운 값이 아니라, **각각의 개별 행동 가치 *q*<sub>*π*</sub>(*s*, *a*)들을 현재 정책 *π*의 선택 확률 비율대로 골고루 섞어 합친 평균값**에 불과합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene13.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "공부하기 50%, 매점가기 30%, 게임하기 20% 확률을 곱해서 더하니까 평균 72점이 나왔어!"
+> 
+> 🐱 **지니**: "완벽해! 각 행동의 점수에 선택 확률을 곱해 합치면 상태의 종합 평균 점수가 뚝딱 완성되지!"
+> 
+> 🐶 **토토**: "멍멍! 곱하고 더하니까 평균 점수가 짠 나타났어!"
+
 ![Q값 가중합: 행동별 점수와 확률로 구하는 평균 점수](./img/v_from_q_weighted_sum.png)
 
 
@@ -294,6 +580,28 @@ $$
 
 [식 06.11]
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene14.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "식 6.11! 브이 파이 에스는 파이와 큐의 시그마 곱으로 깔끔하게 표현되는구나!"
+> 
+> 🐱 **지니**: "아주 우아한 공식이지! 행동 가치 큐들을 정책 비율대로 묶으면 상태 가치 브이가 완벽히 복원된단다!"
+> 
+> 🐶 **토토**: "멍멍! 시그마 기호 하나로 쏙 묶였네!"
+
 ![상태 가치 v_π(s): Q 함수들의 확률 가중합](./img/v_from_q_formula.png)
 
 
@@ -312,6 +620,28 @@ $$
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene15.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "이제 큐 함수의 벨만 방정식을 유도할 차례야! 전체 수익 지 티를 오늘 보상과 미래 수익으로 쪼개야겠지?"
+> 
+> 🐱 **지니**: "맞아! 오늘 받는 즉시 보상 알 티와 다음 시간 할인 수익 감마 지 티 플러스 일의 재귀적 분해부터 출발하자!"
+> 
+> 🐶 **토토**: "멍멍! 오늘의 사과와 내일의 보물상자로 나누자!"
+
 ![수익의 재귀적 분해: 오늘 보상과 미래 수익](./img/return_split_review.png)
 
 
@@ -323,6 +653,28 @@ $$
 #### 조건부 행동 *a*가 추가된 수익의 재귀적 분해
 
 단, 상태 가치 함수와의 **결정적인 차이점**은 조건부에 **상태 *S*<sub>*t*</sub> = *s*뿐만 아니라 내가 지정한 행동 *A*<sub>*t*</sub> = *a*까지 함께 주어져 있다**는 점입니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene16.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "상태 가치와 다른 점은 조건부에 상태 에스뿐만 아니라 내가 지정한 행동 에이도 들어있다는 점이네!"
+> 
+> 🐱 **지니**: "그렇지! 행동 에이가 이미 조건으로 딱 고정되어 있으니 바깥쪽에는 행동 선택 확률이 필요 없단다!"
+> 
+> 🐶 **토토**: "멍멍! 행동 에이가 열쇠처럼 조건에 꽂혀 있어!"
 
 ![상태 가치 vs Q 함수: 조건부 행동 a의 유무](./img/v_vs_q_condition_difference.png)
 
@@ -344,6 +696,28 @@ $$
 
 [식 06.12]
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene17.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "식 6.12처럼 기댓값 안에서 알 티 더하기 감마 지 티 플러스 일로 나눴어!"
+> 
+> 🐱 **지니**: "훌륭해 도로시! 이제 기댓값 연산자의 마법으로 두 덩어리를 차근차근 펼쳐보자꾸나!"
+> 
+> 🐶 **토토**: "멍멍! 덧셈 기호를 중심으로 두 조각으로 쪼개자!"
+
 ![Q 함수의 1단계 분해: 행동 a 실행 후 보상과 미래 수익](./img/q_return_split.png)
 
 
@@ -361,6 +735,28 @@ $$
 에이전트가 상태 *s*에서 행동 *a*를 취하면, 환경의 규칙에 따라 다음 상태 *s'*로 넘어가게 됩니다. 이때:
 *   다음 상태 *s'*로 이동할 확률은 **상태 전이 확률 *p*(*s'* | *s*, *a*)**로 주어집니다.
 *   그 결과 에이전트가 받게 되는 즉시 보상은 **보상 함수 *r*(*s*, *a*, *s'*)**에 의해 결정됩니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene18.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "상태 에스에서 행동 에이를 취하면, 환경이 전이 확률 피에 따라 다음 상태 에스 프라임으로 이끄네!"
+> 
+> 🐱 **지니**: "그리고 그 순간 즉시 보상 알을 손에 쥐고, 다음 상태에서는 미래 가치 브이가 기다리고 있단다!"
+> 
+> 🐶 **토토**: "멍멍! 발을 디디면 환경이 다음 칸으로 데려다줘!"
 
 ![Q 함수의 1스텝 전개: 전이 확률과 다음 상태 가치](./img/q_one_step_expansion.png)
 
@@ -380,6 +776,28 @@ $$
 q_{\pi}(s, a) = \mathbb{E}_{\pi}[R_t \mid S_t = s, A_t = a] + \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_t = s, A_t = a]
 $$
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene19.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "1단계! 기댓값 기호를 덧셈 기준으로 즉시 보상의 기댓값과 미래 수익의 기댓값 둘로 분배했어!"
+> 
+> 🐱 **지니**: "기댓값의 선형성 덕분에 복잡한 수식을 두 개의 단순한 조각으로 깔끔하게 쪼갤 수 있단다!"
+> 
+> 🐶 **토토**: "멍멍! 양쪽으로 반반씩 나누어 담았어!"
+
 ![1단계: 기댓값 연산자의 덧셈 분배](./img/q_step1_linearity.png)
 
 
@@ -397,6 +815,28 @@ $$
 $$
 \gamma \mathbb{E}_{\pi}[G_{t+1} \mid S_t = s, A_t = a] = \gamma \sum_{s'} p(s' \mid s, a) \mathbb{E}_{\pi}[G_{t+1} \mid S_{t+1} = s'] = \gamma \sum_{s'} p(s' \mid s, a) v_{\pi}(s')
 $$
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene20.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "2단계! 즉시 보상은 전이 확률과 보상의 곱으로, 미래 수익은 다음 상태 가치 브이 파이로 연결됐어!"
+> 
+> 🐱 **지니**: "다음 칸에 도착한 순간부터는 평소 정책을 따르니까, 미래의 기대 수익이 바로 다음 상태 가치 브이가 되는 거지!"
+> 
+> 🐶 **토토**: "멍멍! 다음 칸의 가치 브이가 쏙 들어왔네!"
 
 ![2단계: 확률 전이와 다음 상태 가치 연결](./img/q_step2_transition_split.png)
 
@@ -416,11 +856,55 @@ $$
 
 [식 06.13]
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene21.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "3단계! 공통 인수인 상태 전이 확률 피를 바깥으로 묶어내니까 식 6.13이 완성됐어!"
+> 
+> 🐱 **지니**: "즉시 보상 알과 할인된 미래 가치 감마 브이를 묶어서 전이 확률로 평균 내면 큐 함수가 딱 나온단다!"
+> 
+> 🐶 **토토**: "멍멍! 괄호 안으로 쏙 묶이니까 정말 보기 좋아!"
+
 ![3단계: 공통 전이 확률 묶기](./img/q_step3_common_factor.png)
 
 
 
 즉, [식 06.13]은 **"내가 고른 행동 *a*를 실행했을 때의 Q-값은, 그로 인해 도착할 수 있는 모든 다음 상태 *s'*에 대해 [지금 받는 즉시 보상 + 다음 상태의 할인된 가치 *v*<sub>*π*</sub>(*s'*)]를 전이 확률에 따라 가중평균한 것"**이라는 매우 직관적인 물리적 의미를 담고 있습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene22.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "식 6.13의 물리적 의미가 정말 명쾌해! 내가 고른 행동의 보상과 다음 땅의 가치를 가중평균한 거잖아!"
+> 
+> 🐱 **지니**: "바로 그거야 도로시! 어떤 다음 상태로 흩어지든, 그 길들의 평균값을 더하면 행동의 참 가치가 된단다!"
+> 
+> 🐶 **토토**: "멍멍! 머릿속에 그림이 확 그려져!"
 
 ![식 06.13의 물리적 의미: 보상과 미래 가치의 전이 가중평균](./img/q_step_physical_meaning.png)
 
@@ -439,6 +923,28 @@ $$
 
 
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene23.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "브이 자리에 다시 정책 파이와 다음 행동 큐를 대입하니까, 현재 큐와 다음 큐가 이어지는 식 6.14 완성!"
+> 
+> 🐱 **지니**: "대단해! 현재의 큐와 다음 시점의 큐가 꼬리를 물고 이어지는 완벽한 큐 함수 벨만 방정식이란다!"
+> 
+> 🐶 **토토**: "멍멍! 큐에서 출발해서 다음 큐로 이어지는 마법의 순환 고리야!"
+
 ![Q 함수 벨만 방정식의 핵심 순환 구조](./img/q_bellman_loop.png)
 
 
@@ -456,6 +962,28 @@ $$
 ### 06.4.4 백업 다이어그램: Q 함수 벨만 방정식의 재귀적 흐름
 
 행동 가치 함수(Q 함수)의 벨만 방정식인 [식 06.14]를 백업 다이어그램(Backup Diagram)으로 시각화하면, 수식에 담긴 기호들이 실제로 어떤 순서로 상호작용하고 가치를 거슬러 올려보내는지 한눈에 파악할 수 있습니다.
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene24.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "백업 다이어그램을 보니 맨 위 검은 점에서 환경 전이, 그리고 정책 분기를 거쳐 아래 검은 점으로 가네!"
+> 
+> 🐱 **지니**: "상태 가치 백업 다이어그램과 검은 점, 흰 원의 순서가 반대로 뒤집힌 아름다운 거울 대칭이란다!"
+> 
+> 🐶 **토토**: "멍멍! 거울을 보듯 완벽한 짝꿍 다이어그램이네!"
 
 ![Q 함수 벨만 방정식: 백업 다이어그램 구조](./img/q_backup_diagram.png)
 
@@ -489,6 +1017,28 @@ $$
 
 
 ### 06.4.5 학습 정리
+
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_4_scene25.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "오늘 배운 큐 함수의 정의와 가중합 원리, 그리고 큐 벨만 방정식까지 확실히 마스터했어!"
+> 
+> 🐱 **지니**: "훌륭해 도로시, 토토! 이제 행동 가치 큐를 바탕으로 다음 절에서 최고의 최적 방정식으로 나아가자꾸나!"
+> 
+> 🐶 **토토**: "멍멍! 큐 함수를 정복했으니 최적의 세계로 출발!"
 
 ![06.4장 학습 정리: Q 함수와 벨만 방정식 정복](./img/q_chapter_summary.png)
 

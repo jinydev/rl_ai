@@ -11,6 +11,27 @@ title: "06.6 벨만 최적 방정식의 예"
 
 도로시가 가시덤불을 완벽히 피하면서 탐스러운 황금사과를 무한히 수확하는 최적의 행동 규칙을 찾는 과정을 지니와 토토와 함께 단계별로 따라가 보겠습니다!
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene1.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 벨만 최적 방정식으로 두 칸짜리 그리드월드의 최적 가치를 직접 손으로 계산할 수 있을까?"
+> 
+> 🐱 **지니**: "물론이지 도로시! 가시덤불 벌점을 피하고 사과만 쏙쏙 따먹는 최고의 길을 연립방정식으로 시원하게 풀어보자꾸나!"
+> 
+> 🐶 **토토**: "멍멍! 사과를 배부르게 먹을 수 있는 최적의 길을 찾아줘!"
 
 ![벨만 최적 방정식 예 인트로](./img/jiny_bellman_ch6_6_optimal_example.png)
 
@@ -60,8 +81,27 @@ $$
 
 [식 06.16]
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene2.mp3" preload="none"></audio>
+</div>
 
-
+> 👧 **도로시**: "식 6.16을 보니까 max 기호랑 시그마 전이 확률이 함께 들어있네?"
+> 
+> 🐱 **지니**: "맞아! 에이전트의 현명한 선택인 max와, 환경의 불확실성을 나타내는 시그마가 조화롭게 결합한 구조란다!"
+> 
+> 🐶 **토토**: "멍멍! 내가 최고를 골라도 환경이 어디로 보낼지 따져봐야 해!"
 
 ![일반적인 벨만 최적 방정식의 구조 분해](./img/bellman_opt_eq_general_breakdown.png)
 
@@ -92,6 +132,27 @@ $$
 
 즉, 어떤 상태 <i>s</i>에서 행동 <i>a</i>를 취하면 다음 상태 <i>s'</i>가 100% 확률로 오직 하나로 정해집니다. (<i>s'</i> = <i>f</i>(<i>s</i>, <i>a</i>))
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene3.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "두 칸 그리드월드는 미끄러짐이 없는 결정적 환경이니까 훨씬 간단해지겠네?"
+> 
+> 🐱 **지니**: "빙고! 바람이나 미끄러짐이 없으니 시그마가 사라지고, 단 하나의 목적지로 쏙 축약된단다!"
+> 
+> 🐶 **토토**: "멍멍! 원하는 방향으로 백 퍼센트 도착하니까 너무 신나!"
 
 ![결정적 환경에서의 벨만 최적 방정식 단순화](./img/deterministic_bellman_simplification.png)
 
@@ -164,6 +225,27 @@ v_*(L2) &= \max \begin{cases} 0.9 v_*(L1), \\ -1 + 0.9 v_*(L2) \end{cases}
 \end{aligned}
 $$
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene4.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "L1과 L2 두 상태의 벨만 최적 방정식을 세우니까 두 개의 비선형 연립방정식이 나왔어!"
+> 
+> 🐱 **지니**: "훌륭해 도로시! max 연산자가 들어있어 비선형이지만, 상식적인 직관을 쓰면 쉽게 풀 수 있단다!"
+> 
+> 🐶 **토토**: "멍멍! 왼쪽과 오른쪽 중 어느 쪽 점수가 더 큰지 골라보자!"
 
 ![두 칸짜리 그리드 월드에서의 벨만 최적 연립 비선형 방정식 도출](./img/optimality_grid_equations.png)
 
@@ -213,6 +295,27 @@ $$
 v_*(L2) = 0.9 \times 5.263 \approx 4.737
 $$
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene5.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "상식적으로 L1에서는 사과가 있는 오른쪽, L2에서는 벽을 피하는 왼쪽을 고르는 게 당연하지!"
+> 
+> 🐱 **지니**: "정확해! 그 직관대로 max에서 큰 값을 고르면, 깔끔한 1차 연립방정식이 되어 브이 스타 엘원은 약 5.26, 엘투는 4.74가 풀린단다!"
+> 
+> 🐶 **토토**: "멍멍! 양변을 정리하니까 숫자가 딱 떨어져서 신기해!"
 
 ![벨만 최적 연립방정식의 단계별 손풀이 과정](./img/grid_equations_solution_steps.png)
 
@@ -263,6 +366,27 @@ $$
 
 여기서 바로 `max`와 `argmax`의 결정적인 차이가 등장합니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene6.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 최적 가치를 구했으니 이제 진짜 최적 행동을 찾을 차례네! max와 argmax는 어떻게 달라?"
+> 
+> 🐱 **지니**: "max는 얻을 수 있는 '최고 점수 숫자'를 꺼내오고, argmax는 그 최고 점수를 주는 '행동 방향'을 콕 집어준단다!"
+> 
+> 🐶 **토토**: "멍멍! 최고 점수 5.26점을 주는 행동은 바로 오른쪽이야!"
 
 ![max와 argmax의 차이점 시각화](./img/max_vs_argmax_concept.png)
 
@@ -319,8 +443,27 @@ $$
 
 우리가 계산해 둔 <i>v</i><sub>&ast;</sub>(<i>L1</i>) = 5.26과 <i>v</i><sub>&ast;</sub>(<i>L2</i>) = 4.74를 [식 06.21]에 대입하여 각 상태의 최적 행동을 확정해 보겠습니다.
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene7.mp3" preload="none"></audio>
+</div>
 
-
+> 👧 **도로시**: "L1과 L2에서 각 행동의 가치를 직접 숫자로 대입해서 비교해보자!"
+> 
+> 🐱 **지니**: "L1에서는 사과를 먹는 오른쪽이 5.26점으로 압승이고, L2에서는 돌아오는 왼쪽이 4.74점으로 압승이란다!"
+> 
+> 🐶 **토토**: "멍멍! 나쁜 길은 버리고 좋은 길만 쏙 골랐어!"
 
 ![L1과 L2 상태에서의 행동 가치 정밀 비교](./img/optimality_grid_l1_action_compare.png)
 
@@ -350,6 +493,27 @@ $$
 
 ![그림 06-16](./img/fig_06_16.svg)
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene8.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "L1에서는 오른쪽, L2에서는 왼쪽으로 왔다 갔다 하는 무한 왕복 최적 정책이 완성됐어!"
+> 
+> 🐱 **지니**: "맞아! 이 규칙대로만 움직이면 벽에 부딪힐 일 없이 황금사과만 무한히 먹는 최고의 플레이어가 된단다!"
+> 
+> 🐶 **토토**: "멍멍! 왔다 갔다 하면서 사과를 끝없이 먹자!"
 
 ![두 칸짜리 그리드 월드의 최종 최적 정책 형태](./img/optimality_final_optimal_policy.png)
 
@@ -376,14 +540,31 @@ $$
 
 ### 06.6.4 학습 정리
 
+<div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <span style="font-size: 1.1rem;">🎧</span>
+    <span style="font-weight: 600; font-size: 0.9rem; color: #0369a1;">대화 음성 듣기 (도로시, 지니, 토토)</span>
+  </div>
+  <div style="display: flex; align-items: center; gap: 6px;">
+    <button type="button" class="btn-audio-play" style="background: #0284c7; color: #ffffff; border: none; border-radius: 16px; padding: 5px 13px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(2,132,199,0.3);">
+      <span>▶️ 재생</span>
+    </button>
+    <button type="button" class="btn-audio-stop" style="background: #e2e8f0; color: #475569; border: none; border-radius: 16px; padding: 5px 11px; font-size: 0.82rem; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+      <span>⏹️ 정지</span>
+    </button>
+  </div>
+  <audio src="./audio/dialogue_6_6_scene9.mp3" preload="none"></audio>
+</div>
+
+> 👧 **도로시**: "지니! 복잡해 보이던 벨만 최적 방정식이 직접 L1과 L2 연립방정식으로 풀어보니 정말 속 시원하게 이해돼요! v_*(L1) ≈ 5.26과 v_*(L2) ≈ 4.74를 구하니까 어떤 행동을 골라야 할지 argmax로 한눈에 보였어요!"  
+> 
+> 🐱 **지니**: "맞아요, 도로시! 하지만 상태가 수천, 수만 개로 늘어난다면 사람이 일일이 손으로 연립방정식을 풀 수는 없겠죠? 그래서 컴퓨터가 스스로 반복 계산을 통해 최적 가치와 최적 정책을 찾아내는 마법, 바로 **07장 다이내믹 프로그래밍(Dynamic Programming)**으로 나아갈 차례랍니다!"  
+> 
+> 🐶 **토토**: "멍멍! 다음 07장 모험도 정말 기대돼요, 멍멍!"
 
 ![06장 벨만 최적 방정식 완성 축하 기념](./img/chapter_06_6_summary.png)
 
-
-
 **그림 06-6-H** 벨만 최적 방정식의 이론부터 구체적인 그리드월드 수치 풀이까지 완벽하게 정복한 도로시, 지니, 토토의 축하 졸업식!
-
-
 
 06장 '벨만 방정식'의 모든 여정을 마쳤습니다! 이번 06.6절에서 배운 핵심 내용을 5가지 포인트로 정리합니다.
 
@@ -392,7 +573,3 @@ $$
 3. **손풀이를 통한 최적 가치 도출**: 두 칸 그리드월드에서 연립방정식을 전개한 결과, `v_*(L1) ≈ 5.26`, `v_*(L2) ≈ 4.74`라는 구체적인 최적 가치를 유도해 냈습니다.
 4. **`max` vs `argmax`**: `max`는 최선의 상태 가치 점수 숫자를 알려주는 반면, `argmax`는 그 최선 점수를 획득하기 위해 취해야 할 실제 최적 행동을 반환합니다.
 5. **최적 상태 가치 함수로부터 최적 정책 도출**: 상태 가치 함수 <i>v</i><sub>&ast;</sub>를 알고 있다면, 단 한 번의 국소적 탐욕 선택(`argmax`)만으로도 전체 환경을 아우르는 최적 정책 &mu;<sub>&ast;</sub>(<i>s</i>)를 즉시 완성할 수 있습니다.
-
-> **도로시**: "지니! 복잡해 보이던 벨만 최적 방정식이 직접 <i>L1</i>과 <i>L2</i> 연립방정식으로 풀어보니 정말 속 시원하게 이해돼요! <i>v</i><sub>&ast;</sub>(<i>L1</i>) &approx; 5.26과 <i>v</i><sub>&ast;</sub>(<i>L2</i>) &approx; 4.74를 구하니까 어떤 행동을 골라야 할지 `argmax`로 한눈에 보였어요!"  
-> **지니**: "맞아요, 도로시! 하지만 상태가 수천, 수만 개로 늘어난다면 사람이 일일이 손으로 연립방정식을 풀 수는 없겠죠? 그래서 컴퓨터가 스스로 반복 계산을 통해 최적 가치와 최적 정책을 찾아내는 마법, 바로 **07장 다이내믹 프로그래밍(Dynamic Programming)**으로 나아갈 차례랍니다!"  
-> **토토**: "멍멍! 다음 07장 모험도 정말 기대돼요, 멍멍!"
