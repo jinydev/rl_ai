@@ -8,4 +8,18 @@ vendor/
 .bundle/
 .DS_Store
 __pycache__/
-*.pyc
+*.pyc
+
+# Generated PPTX presentations (generated on demand locally)
+*.pptx
+
+# Generated Professor AI lecture audio (generated on demand locally)
+**/audio/prof_*.mp3
+**/prof_*.mp3
+prof_*.mp3
+
+# Scratch & temporary development files
+scratch/
+test_*
+build_error.txt
+cleanup_for_commit.py
