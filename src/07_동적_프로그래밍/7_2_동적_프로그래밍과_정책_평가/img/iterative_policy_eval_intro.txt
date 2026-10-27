@@ -1,0 +1,33 @@
+# iterative_policy_eval_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: iterative_policy_eval_intro.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 반복적 정책 평가 알고리즘 로드맵
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 1단계 초깃값 설정(V=0) -> 2단계 벨만 갱신 반복 -> 3단계 수렴 검사(Delta < theta)로 이어지는 완벽한 3단계 순환 로드맵 지도를 펼쳐놓고 학습 전략을 세우는 팀 도로시.
+- **주요 구성**:
+  - 중앙: 3개의 원형 정거장이 황금 화살표로 연결된 커다란 작전 지도
+  - 도로시: 깃발 핀을 첫 번째 정거장에 꽂으며 출발 준비를 마친 도로시
+  - 지니: 작전 지도 위에서 나침반을 짚어주는 턱시도 고양이 지니
+  - 토토: 지도의 완주 깃발 마크를 밟고 서 있는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 복장, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 알고리즘 전체의 큰 그림(Big Picture)을 머릿속에 먼저 그리고 세부 계산으로 들어가도록 안내.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, crisp line art, warm cel shading, pure solid white background (#FFFFFF). A parchment planning map on a small table showing a neat 3-stage looping roadmap with colorful circular checkpoints. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, placing a little pin flag on the first checkpoint. Tuxedo cat Jiny with round wire glasses holding a brass compass, pure white puppy Toto with sky-blue bandana with front paws on the table edge. Exactly one girl, one cat, one dog. Pure white background, clear planning scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "초깃값 설정, 벨만 갱신, 수렴 검사라는 명쾌한 3단계를 거치면 알고리즘이 완성됩니다."

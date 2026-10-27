@@ -1,0 +1,48 @@
+# [이미지 분석 및 프롬프트 명세서] gridworld_class_blueprint.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `gridworld_class_blueprint.png`
+- **교재 챕터**: 07.3.2 GridWorld 클래스 구현 - 초기화 코드 (`index.md` 라인 53-96)
+- **캡션**: `GridWorld 클래스의 설계도: 행동 공간, 보상 맵, 시작/목표/벽 상태의 체계적 초기화`
+- **교육적 목표**: 
+  그리드 월드 환경을 파이썬 객체지향 클래스(`GridWorld`)로 모델링하는 구조적 청사진을 시각화합니다. 
+  `__init__` 메서드에서 설정되는 4가지 핵심 요소(행동 공간 `action_space`, 보상 지도 `reward_map`, 시작점 `start_state`, 목표점 `goal_state`, 벽 `wall_state`)가 
+  완전한 강화학습 가상 세계를 이루는 설계도면(블루프린트)을 교수님과 도로시가 함께 설계하는 지적인 분위기를 연출합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 환경(Environment)의 OOP(객체 지향) 모델링, `__init__` 초기화 인스턴스 변수들의 유기적 결합.
+- **시각적 은유**: 
+  - 원목 테이블 위에 넓게 펼쳐진 청사진(Blueprint) 설계도면.
+  - 도면 위에 `action_space`, `reward_map`, `start (2,0)`, `goal (0,3)`, `wall (1,1)` 기호들이 깔끔하게 제도되어 있음.
+  - 이호진 교수님이 제도용 삼각자와 연필을 들고 자상하게 설계 구조를 설명하고, 도로시가 작은 몽키스패너를 들고 열정적으로 귀 기울임.
+- **유지해야 할 필수 콘텐츠**:
+  - 도면 속 3x4 격자와 파이썬 변수명 심볼들.
+  - 순백색 배경, 슬라이드 프레임 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님 (Prof. Hojin)**: 40대 초반 동안의 온화한 교수님 (매끄러운 피부, 주름 없음, 솔트앤페퍼 헤어, 얇은 메탈 안경, 무지 네이비 폴로, 블루진). 도면을 짚으며 클래스 아키텍처를 온화하게 지도.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 작은 공구와 펜을 쥐고 눈을 반짝이며 도면을 바라봄.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 테이블 옆에 서서 호기심 어린 눈으로 도면을 쳐다봄.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An inspiring engineering blueprint design scene for an AI environment. Standing by a wooden drafting table, Professor Hojin (youthful friendly Korean professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper hair, thin minimalist round metal wire-rim glasses, plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers) holds a wooden ruler and points warmly to an architectural blueprint spread on the table. The blueprint displays a clean architectural schematic of a 3x4 grid labeled "GridWorld Class Architecture" with neat symbols for "Action Space", "Reward Map", and "Goal State". 
+
+Beside him, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) holds a small brass wrench and a pencil, eyes sparkling with maker enthusiasm as she studies the blueprint. At their feet, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) watches the blueprint inquisitively with bright eyes. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

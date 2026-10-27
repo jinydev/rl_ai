@@ -1,0 +1,54 @@
+# [이미지 분석 및 프롬프트 명세서] action_space_meaning.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `action_space_meaning.png`
+- **교재 챕터**: 07.3.2 step2 행동 공간 (`index.md` 라인 115-121)
+- **캡션**: `선택할 수 있는 4가지 행동의 방향과 번호!`
+- **교육적 목표**: 
+  강화학습 알고리즘에서 에이전트가 선택하는 4가지 물리적 행동(상/하/좌/우)을 컴퓨터가 빠르게 계산할 수 있도록 정수 인덱스(`0, 1, 2, 3`)로 추상화하고, 이를 사람이 읽기 편한 텍스트(`'UP', 'DOWN', 'LEFT', 'RIGHT'`)로 매핑하는 2단계 행동 공간 구조를 설명합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 행동 공간 `action_space = [0, 1, 2, 3]`과 사전 매핑 `action_meaning = {0: 'UP', 1: 'DOWN', 2: 'LEFT', 3: 'RIGHT'}`.
+- **시각적 은유**: 
+  - 중앙의 클래식 나무 이정표 기둥에 꽂힌 4개의 방향 화살표 푯말:
+    * `0: UP ↑`
+    * `1: DOWN ↓`
+    * `2: LEFT ←`
+    * `3: RIGHT →`
+  - 츤데레 냥이 조교 지니가 지휘봉을 들고 "기계는 번호로, 사람은 이름으로!" 꼼꼼하게 강의하는 모습.
+  - 도로시가 손가락을 짚어가며 4가지 방향과 숫자의 짝을 맞추어 보는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - 4개의 명확한 방향 표지(상하좌우 화살표와 정수 인덱스 `0, 1, 2, 3`, 영문 이름 `UP, DOWN, LEFT, RIGHT`).
+  - 상단 텍스트 상자 배너 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 수석 연구 조교. 작은 나무 지휘봉(포인터)을 들고 이정표의 `0: UP` 화살표를 톡톡 두드리며 똑 부러지게 코드 매핑의 원리를 설명.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커. 턱을 살짝 괴고 눈을 동그랗게 뜬 채 "아하, 컴퓨터는 0부터 세는구나!" 하고 고개를 끄덕이는 표정.
+- **토토 (Toto)**: 크림화이트 강아지. 이정표 발치에 앉아 호기심 가득한 눈으로 위쪽 화살표를 쳐다보며 고개를 갸우뚱거림.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`), 소프트 접지 그림자.
+- **텍스트 원칙**: 이정표 푯말 안의 `0: UP`, `1: DOWN`, `2: LEFT`, `3: RIGHT` 영문 및 기호만 깔끔하게 유지. 슬라이드 카드 프레임 배제.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An educational concept scene explaining action space mapping. In the center stands a charming rustic wooden multi-directional signpost with 4 neat pastel wooden arrow signs pointing in different directions, clearly carved with minimal text:
+- Top sign pointing up: "0: UP ↑"
+- Second sign pointing down: "1: DOWN ↓"
+- Third sign pointing left: "2: LEFT ←"
+- Bottom sign pointing right: "3: RIGHT →"
+
+Jiny the lab assistant cat (chubby black-and-white tuxedo cat with cow pattern fur, olive-green eyes, pink nose, tiny scholar glasses on his nose, red collar with gold bell) stands smartly on his hind legs holding a miniature wooden pointer stick, tapping on the top sign to explain the code logic with intellectual pride. Beside the signpost, young Dorothy (9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) points thoughtfully at the signs, smiling in sudden understanding. Toto the fluffy cream-white puppy with his sky-blue neckerchief bandana sits cheerfully at the base of the pole, looking up with a cute tilted head. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

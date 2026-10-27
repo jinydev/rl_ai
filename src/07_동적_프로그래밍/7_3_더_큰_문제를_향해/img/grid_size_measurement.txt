@@ -1,0 +1,49 @@
+# [이미지 분석 및 프롬프트 명세서] grid_size_measurement.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `grid_size_measurement.png`
+- **교재 챕터**: 07.3.2.1 그리드 월드 크기 측정 (`index.md` 라인 225-235)
+- **캡션**: `그리드 월드 크기 측정: Height(세로)=3, Width(가로)=4, Shape(형상)=(3, 4)`
+- **교육적 목표**: 
+  넘파이 2차원 배열 보상 맵에서 축(Axis)을 기반으로 계산되는 그리드의 물리적 치수 `env.height` (세로 높이 3칸), `env.width` (가로 너비 4칸), 그리고 이를 튜플로 묶은 `env.shape` `(3, 4)`의 개념을 물리적 줄자 측정 활동으로 친근하게 체감시키는 것입니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 2차원 배열 차원 측정:
+  * `env.height = len(self.reward_map)` $\rightarrow 3$
+  * `env.width = len(self.reward_map[0])` $\rightarrow 4$
+  * `env.shape = (self.height, self.width)` $\rightarrow (3, 4)$
+- **시각적 은유**: 
+  - 도로시가 커다란 노란 줄자를 들고 $3 \times 4$ 격자 블록의 세로 높이(3)를 재는 모습.
+  - 토토가 가로 너비(4) 쪽에서 줄자 끝을 야무지게 입에 물고 팽팽하게 잡아당겨 주는 조수 역할.
+  - 이호진 교수님이 인자한 미소로 작은 아크릴 차트 `shape = (3, 4)`를 보여주며 칭찬하는 협동 씬.
+- **유지해야 할 필수 콘텐츠**:
+  - $3 \times 4$ 격자판, 노란색 줄자, `shape = (3, 4)` 명확한 수치 표기.
+  - 상단 안내 프레임 박스 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 똑 부러진 표정으로 노란 롤러 줄자를 잡고 격자 블록의 3칸 세로 길이를 측정.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 줄자 끝의 고리를 입에 살짝 물고 가로 4칸 쪽으로 엉금엉금 걸어가며 줄자를 팽팽히 유지해 주는 충실한 메이커 파트너.
+- **이호진 교수님 (Prof. Hojin)**: 40대 초반 동안의 온화한 교수님 (단정한 솔트앤페퍼 헤어, 얇은 메탈 안경, 무지 네이비 폴로, 청바지, 스니커즈). 작은 핸드헬드 화이트보드에 "shape = (3, 4)"를 적어 들고 흐뭇하게 엄지척을 해줌.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 소프트 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 상자 배제, 갈색 푸들 금지, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A collaborative maker measurement scene. Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) cheerfully kneels beside a neat isometric 3x4 wooden grid board (3 rows high, 4 columns wide). She holds a vibrant yellow rolling tape measure, measuring the height of 3 rows. At the horizontal edge, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) playfully holds the metal tip of the yellow measuring tape in his mouth, pulling it taut across the 4 columns with wagging tail. 
+
+Standing warmly behind them, Professor Hojin (youthful friendly Korean professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper hair, thin round wire-rim glasses, plain dark charcoal navy polo shirt with NO badges or logos, blue jeans, grey sneakers) holds a small sleek acrylic whiteboard clearly inscribed with "shape = (3, 4)", giving an encouraging warm smile and gentle nod of praise. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

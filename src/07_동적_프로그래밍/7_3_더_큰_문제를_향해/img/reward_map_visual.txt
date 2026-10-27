@@ -1,0 +1,54 @@
+# [이미지 분석 및 프롬프트 명세서] reward_map_visual.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `reward_map_visual.png`
+- **교재 챕터**: 07.3.2 step3 보상맵 (`index.md` 라인 124-129)
+- **캡션**: `보상 맵의 각 격자 칸의 보상 값과 벽의 위치!`
+- **교육적 목표**: 
+  $3 \times 4$ 그리드 월드의 넘파이 2차원 배열 보상 맵(`self.reward_map`)의 물리적 의미를 시각화합니다. 대부분의 일반 타일은 보상이 `0.0`, 사과가 놓인 목표 지점 (0, 3)은 `+1.0`, 위험한 폭탄이 묻힌 (1, 3)은 `-1.0`, 진입할 수 없는 중앙의 벽 (1, 1)은 `None`으로 구성되어 있음을 한눈에 명확히 이해하도록 돕습니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 보상 맵(Reward Map) 2차원 배열 구조:
+  * Goal Tile: (0, 3) $\rightarrow$ 빨간 사과 (`+1.0`)
+  * Trap Tile: (1, 3) $\rightarrow$ 만화풍 폭탄 (`-1.0`)
+  * Obstacle Wall: (1, 1) $\rightarrow$ 회색 벽돌 블록 (`None`)
+  * Normal Tiles: 나머지 9개 칸 $\rightarrow$ 숫자 `0`
+- **시각적 은유**: 
+  - 정교하게 제작된 원목 $3 \times 4$ 격자 게임 트레이.
+  - 이호진 교수님이 테이블 위에 놓인 격자 트레이를 가리키며 보상 체계를 다정하게 해설.
+  - 도로시와 토토가 트레이 주변에서 각 칸의 사과, 폭탄, 벽돌 소품을 관찰.
+- **유지해야 할 필수 콘텐츠**:
+  - 격자 칸 위에 놓인 사과(+1.0), 폭탄(-1.0), 벽돌(None)의 물리적 배치.
+  - 상단 안내판이나 팻말 텍스트 배제, 격자 타일 내 직관적 소품으로 표현.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님 (Prof. Hojin)**: 40대 초반의 온화하고 스마트한 AI 공학 멘토 (젊고 생기 있는 얼굴, 얇은 메탈 안경, 무지 네이비 반팔 폴로, 블루진, 스니커즈). 원목 격자 보드 위 (0, 3) 사과 칸을 손가락으로 가리키며 "여기가 우리의 최고 목표이자 +1.0의 보상을 주는 곳이란다"라고 격려하듯 설명.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 (양갈래 머리, 'STEM HERO' 데님 멜빵바지). 돋보기를 손에 들고 벽돌 블록과 폭탄 칸을 조심스럽게 들여다보며 흥미진진해함.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 테이블 옆에 앞발을 딛고 서서 맛있는 빨간 사과 모형을 향해 꼬리를 흔들며 침을 꼴깍 삼키는 귀여운 모습.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 발밑과 테이블 아래 부드러운 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리, 슬라이드 카드, 허스키/얼룩 강아지 금지, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An educational learning scene demonstrating a reinforcement learning reward map. Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper hair, thin minimalist round metal wire-rim glasses, kind intelligent brown eyes, encouraging warm smile, dressed in a plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers), stands by a low wooden workshop table. On the table sits an isometric 3x4 grid board tray (3 rows, 4 columns). 
+- At cell (0, 3) (top right) rests a shiny red apple marked with a tiny golden "+1.0" tag.
+- At cell (1, 3) (middle right) sits a cute cartoon black round bomb with a spark marked with "-1.0".
+- At cell (1, 1) (middle) stands a solid gray brick wall block.
+- Other grid cells are marked with a soft neat number "0".
+
+Professor Hojin gently points his hand toward the apple tile, explaining the reward values. Young Dorothy (adorable 9-year-old girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' chest patch, red sneakers) peers closely with a magnifying glass in hand, smiling curiously. Toto the fluffy cream-white puppy (uniform solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) rests his front paws on the table edge, looking excitedly at the shiny apple. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

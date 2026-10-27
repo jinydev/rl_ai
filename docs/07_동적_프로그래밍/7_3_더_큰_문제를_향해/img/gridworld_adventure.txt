@@ -1,0 +1,44 @@
+# [이미지 분석 및 프롬프트 명세서] gridworld_adventure.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `gridworld_adventure.png`
+- **교재 챕터**: 07.3.1 좀더 큰 과제 (`index.md` 라인 20-25)
+- **캡션**: `더 넓은 세계로! 3x4 그리드 월드 모험`
+- **교육적 목표**: 
+  1차원이나 2칸짜리 극도로 제한된 토이 문제를 넘어서서, 2차원 평면 격자 구조($3 \times 4$)를 지닌 실질적인 마르코프 결정 과정(MDP) 환경으로 나아가는 전체 전경을 제시합니다. 멘토인 이호진 교수님이 모험의 무대 규칙을 소개하고 도로시가 새로운 학습 과제를 자신감 있게 받아들이는 감정선을 형성합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: $3 \times 4$ 격자 공간의 지형학적 특성, 환경(Environment)과 에이전트(Agent)의 상호작용 무대.
+- **시각적 은유**: 
+  - 테이블 위에 펼쳐진 아기자기한 파스텔톤 $3 \times 4$ 입체 지형 블록 디오라마.
+  - 이호진 교수님이 온화하고 든든한 멘토로서 격자 타일들을 손으로 가리키며 설명.
+  - 도로시가 배낭을 메고 작은 황금 나침반을 든 채 타일 모형을 들여다보는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - $3 \times 4$ 격자 블록 구조(12개의 칸, 한 칸은 벽돌 장애물, 한 칸은 사과, 한 칸은 작은 폭탄).
+  - 스크롤 배너나 슬라이드 테두리 없이 순수 캐릭터와 모형 소품만 표현.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님 (Prof. Hojin)**: 40대 초반의 동안이자 온화한 공학 멘토 (매끄러운 피부, 주름 없음, 단정한 솔트앤페퍼 숏헤어, 얇은 메탈 라운드 안경, 로고 없는 무지 다크네이비 반팔 카라 폴로 셔츠, 블루 청바지, 그레이 스니커즈). 부드러운 미소와 함께 손을 뻗어 $3 \times 4$ 격자 타일을 짚어주며 설명.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 (밤색 웨이브 양갈래 머리, 구슬 머리끈, 'STEM HERO' 뱃지 블루 데님 오버롤, 빨간 스니커즈). 손에 든 황금 나침반을 보며 눈을 반짝이며 새로운 과제에 대한 도전 의지를 불태움.
+- **토토 (Toto)**: 단색 크림화이트 강아지 (얼룩 없음, 하늘색 반다나). 테이블 옆에 앉아 반짝이는 흑진주 눈으로 교수님과 도로시를 올려다보며 긍정 에너지를 발산.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 따뜻하고 선명한 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 발밑 및 테이블 아래 부드러운 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 상자 배제, SNU 로고/명찰 절대 금지, 노인 주름 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An inspiring mentorship scene in an engineering learning environment. Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short hair, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, warm encouraging smile, dressed in a plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers), stands by a low wooden workshop table. He gently gestures with an open hand toward a charming 3D isometric tabletop model of a 3x4 pastel grid world (12 tiles: featuring a miniature red apple reward tile, a gray brick obstacle block, and a tiny toy bomb). Beside him, young Dorothy (adorable 9-year-old girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with a 'STEM HERO' chest patch, red canvas sneakers) holds a brass golden compass, looking up at the model with keen curiosity. At her feet, Toto the fluffy cream-white puppy (solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) sits happily with an open doggy smile. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

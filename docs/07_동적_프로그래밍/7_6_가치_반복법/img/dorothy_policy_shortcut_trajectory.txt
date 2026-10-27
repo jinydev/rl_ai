@@ -1,0 +1,33 @@
+# dorothy_policy_shortcut_trajectory.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_policy_shortcut_trajectory.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 벽에 닿기 전 공중에서 꺾이는 변형 궤적 (GPI 지름길)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 공이 평가 벽 끝까지 다 닿지 않고도 공중에서 바로 방향을 틀어 앞으로 나아가는 기적의 궤적을 목격하고 깜짝 놀라는 도로시 일러스트.
+- **주요 구성**:
+  - 중앙: 마법 공이 벽까지 반만 가다가 공중에서 90도로 꺾여 훨씬 빠르게 전진하는 화려한 빛의 호선
+  - 도로시: 눈을 크게 뜨고 '아하! 저렇게 바로 꺾으면 훨씬 빠르잖아!' 깨달음을 얻는 도로시
+  - 지니: 미소를 지으며 '바로 그것이 가치 반복법의 비밀이야'라고 알려주는 지니
+  - 토토: 놀라 귀를 쫑긋 세운 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 놀라는 표정, 지니 미소, 토토 귀 쫑긋. 표준 캐릭터 가이드 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 완전한 가치 수렴을 기다리지 않고 단 1회 갱신 후 바로 개선으로 전환하는 Truncated Policy Iteration의 핵심 원리를 감각적으로 각인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm vivid cel colors, pure white background (#FFFFFF). A glowing magical trajectory curve turning sharply mid-air before hitting the wall, finding a brilliant glowing shortcut forward. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, looking amazed with eyes wide in a eureka moment. Tuxedo cat Jiny with round glasses proudly nodding, pure white puppy Toto with sky-blue bandana excitedly standing on hind legs. Exactly one girl, one cat, one dog. Pure white background, dynamic, educational, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "벽 끝까지 가지 않고 중간에서 바로 방향을 꺾어도 여전히 최적점을 향해 갈 수 있습니다."

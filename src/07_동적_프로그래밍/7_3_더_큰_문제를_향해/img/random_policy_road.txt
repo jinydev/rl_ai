@@ -1,0 +1,45 @@
+# [이미지 분석 및 프롬프트 명세서] random_policy_road.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `random_policy_road.png`
+- **교재 챕터**: 07.3.3 무작위 정책 이정표 비유 (`index.md` 라인 537-546)
+- **캡션**: `무작위 정책 이정표 비유: 4개의 이정표 모두 0.25 확률이 적혀 있는 길을 신나게 걸어가는 도로시와 토토`
+- **교육적 목표**: 
+  에이전트가 탐색 초기 단계에서 채택하는 '무작위 정책(Random Policy)'의 균등 확률 분포를 직관적으로 전달합니다. 어떤 상태에 있든 상/하/좌/우 네 방향 중 어느 하나를 특별히 편애하지 않고, 4방향 모두 정확히 4분의 1인 0.25(25%)의 동일한 확률로 발걸음을 내딛는 물리적 상황을 사거리의 공평한 이정표로 비유합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 균등 무작위 정책 $\pi(a|s) = 0.25$ (모든 $a \in \{\text{UP, DOWN, LEFT, RIGHT}\}$에 대해 동등).
+- **시각적 은유**: 
+  - 사거리 십자로(Crossroad) 중앙에 세워진 클래식 우든 포스트.
+  - 네 갈래 방향(동, 서, 남, 북)을 가리키는 4개의 나무 푯말에 예외 없이 동일하게 깔끔한 `0.25` 숫자가 적혀 있음.
+  - 도로시와 토토가 가방을 메고 주사위를 굴리듯 신나게 어느 방향이든 나아갈 준비를 하는 발걸음.
+- **유지해야 할 필수 콘텐츠**:
+  - 네 방향 화살표 푯말마다 명확히 각인된 숫자 `0.25`.
+  - 갈색 푸들 금지 $\rightarrow$ 크림화이트 토토 규격 준수.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 줄무늬 티셔츠, 빨간 스니커즈). 작은 가죽 크로스백을 메고, 4갈래 이정표를 보며 밝게 미소 지으며 발걸음을 뗌.
+- **토토 (Toto)**: 단색 크림화이트 강아지 (하늘색 반다나). 입에 귀여운 파스텔 주사위를 가볍게 물고 도로시 옆에서 꼬리를 흔들며 활기차게 걸어감.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 발밑의 보도블록 타일과 부드러운 접지 그림자.
+- **제약 사항**: 도로시 교복 치마 금지, 슬라이드 프레임 배제.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A cheerful outdoor exploration scene explaining a random policy in reinforcement learning. At a neat pastel cobblestone crossroad intersection stands a rustic wooden signpost with 4 arrow signs pointing in all four directions (North, South, East, West). Every single arrow sign is neatly painted with the exact same probability: "0.25". 
+
+Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt underneath, red canvas sneakers) walks cheerfully across the intersection with a brown leather shoulder bag, smiling brightly without hesitation. Beside her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) trots happily with an open dog smile, gently carrying a colorful toy four-sided dice in his mouth with a cheerfully wagging tail. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow under characters and road tile, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

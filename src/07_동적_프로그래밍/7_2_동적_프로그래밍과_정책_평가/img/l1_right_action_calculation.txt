@@ -1,0 +1,33 @@
+# l1_right_action_calculation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l1_right_action_calculation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 L1에서 오른쪽 행동: L2 전진 및 황금 사과 보상 +1 계산
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 도로시가 L1 칸에서 오른쪽 L2 칸으로 사뿐히 전진하여 반짝이는 황금 사과 보상(+1)을 획득하고, 지니가 '0.5 * (+1 + 0) = +0.5'를 기분 좋게 필기하는 장면.
+- **주요 구성**:
+  - 그리드 칸: L1 타일에서 오른쪽 L2 타일로 이어지는 밝은 경로
+  - 도로시: L2 타일 위에 놓인 탐스러운 황금 사과(+1 보상)를 두 손으로 높이 들고 기뻐하는 도로시
+  - 지니: 칠판에 플러스 기호를 큼직하게 그리며 미소 짓는 지니
+  - 토토: 도로시 다리 옆에서 폴짝 뛰며 반기는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 황금 사과 들고 기뻐하는 포즈, 지니 플러스 기호, 토토 점프.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 오른쪽 전진 시 즉각적인 양의 보상(+1) 획득 및 50% 확률 반영 계산 과정을 밝고 직관적으로 묘사.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, vibrant warm cel colors, pure solid white background (#FFFFFF). Two connected stone tiles L1 and L2. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, stepping onto tile L2 holding up a gleaming golden apple reward with a bright smile. Tuxedo cat Jiny with round glasses writing with chalk happily, milk-white puppy Toto with sky-blue bandana jumping joyfully beside her. Exactly one girl, one cat, one dog. Pure white background, joyful success, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "오른쪽으로 나아가면 탐스러운 플러스 일의 보상을 얻게 됩니다."

@@ -1,0 +1,45 @@
+# [이미지 분석 및 프롬프트 명세서] jiny_dorothy_gridworld_expansion.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `jiny_dorothy_gridworld_expansion.png`
+- **교재 챕터**: 07.3 더 큰 문제를 향해 (`index.md` 라인 8-12)
+- **캡션**: `그림 07-7-1 좁은 2칸의 방을 벗어나 3x4 격자 숲속으로 모험 영역을 확장하는 지니, 도로시, 토토`
+- **교육적 목표**: 
+  이전 절(07.2)에서 다루었던 단순한 '2칸짜리 방' 환경에서 벗어나, 총 12칸으로 구성된 '3×4 격자 월드'라는 본격적인 강화학습 무대로 확장하는 도입부입니다. 상태(State)와 행동(Action)의 수가 대폭 증가하더라도 '반복적 정책 평가 알고리즘(DP)'을 통해 효율적으로 가치를 계산할 수 있음을 선언하며 모험의 설렘을 부여합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 상태 공간의 확장 ($2 \rightarrow 12$), 3×4 그리드 월드로의 전환, 반복적 정책 평가라는 알고리즘 지도의 습득.
+- **시각적 은유**: 
+  - 좁은 방 문을 열고 나와 마주한 넓은 3×4 격자 지형 타일들.
+  - 조교 지니가 도로시에게 건네주는 큼직한 '3×4 격자 양피지 지도'(출발점, 벽, 사과, 폭탄이 표시됨).
+  - 도로시의 배낭에 꽂힌 'DP 알고리즘 마법 스크롤'.
+- **유지해야 할 필수 콘텐츠**:
+  - 3×4 격자가 그려진 보물 지도(또는 청사진 롤).
+  - 미지의 세계로 첫발을 내딛는 모험과 탐험의 분위기.
+  - 슬라이드 템플릿, 헤더 박스, 배너 테두리 절대 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **조교 지니 (Jiny the TA Cat)**: 학자 안경을 코끝에 걸치고 빨간 방울 목걸이를 맨 턱시도 고양이. 3×4 격자 지도를 두 앞발로 바닥에 쫙 펼치며 길잡이 조교로서 도로시에게 새로운 환경의 규칙을 당당하게 안내.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커. 'STEM HERO' 뱃지가 달린 블루 데님 멜빵바지와 빨간 캔버스 운동화 착용. 눈을 반짝이며 양갈래 머리를 흔들고, 지니의 지도에 손가락을 얹으며 호기심 가득한 미소를 지음.
+- **토토 (Toto)**: 얼룩 없는 순백색 크림빛 털과 하늘색 반다나를 맨 강아지. 꼬리를 살랑살랑 흔들며 도로시 옆에서 신나게 입을 벌리고 웃으며 출발 준비를 마침.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 따뜻하고 선명한 플랫 셀 채색 (2-3단계 음영).
+- **배경**: 완벽한 순백색 (`#FFFFFF`, Solid Pure White), 발밑에만 은은하고 부드러운 접지 타원형 그림자 (`soft contact shadow`).
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 상자 생성 금지, 일본어 문자(한자, 가나) 일체 배제, 영문/한국어 핵심 레이블만 허용.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A heartwarming adventure kickoff scene. Dorothy, an adorable 9-year-old anime girl (4.5 heads tall, chestnut brown twin pigtails with colorful round beads, warm amber eyes, cheerful bright smile, wearing blue denim overalls with a 'STEM HERO' round patch, orange striped t-shirt, red canvas sneakers), crouches down enthusiastically. Beside her, Jiny the lab assistant cat (chubby black-and-white bicolor tuxedo cat with cow pattern fur, olive-green eyes, pink nose, tiny round wire-rim scholar glasses, red collar with gold bell) stands smartly on his hind legs, unrolling a large parchment map across a wooden stool. The map clearly displays a clean 3x4 grid world blueprint with cute icons: a green start flag, a gray wall block, an apple, and a tiny bomb. Toto the puppy (fluffy uniform cream-white coat without spots, floppy ears, black button eyes, black button nose, sky-blue neckerchief bandana) wags his tail excitedly beside them with a happy open-mouthed dog smile. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow under characters and stool, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

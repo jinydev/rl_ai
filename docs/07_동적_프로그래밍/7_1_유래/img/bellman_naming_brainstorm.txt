@@ -1,0 +1,32 @@
+# [이미지 분석 및 프롬프트 명세서] bellman_naming_brainstorm.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: bellman_naming_brainstorm.png
+- 교재 챕터: 07.1.2 연구비를 지켜내기 위한 벨만의 기발한 잔머리 (index.md 라인 38-42)
+- 캡션: 리처드 벨만의 기발한 이름 짓기 브레인스토밍: 장관이 극도로 싫어하는 단어인 '수학', '연구'를 과감히 지우고, '동적', '프로그래밍'이라는 멋진 이름을 브레인스토밍해 내는 리처드 벨만
+- 교육적 목표: 1950년대 RAND 연구소의 수학자 리처드 벨만이 국방부의 연구비 삭감을 피하기 위해 연구 제안서에서 '수학'과 '연구'를 과감히 지우고, 정치가들이 반박할 수 없는 '동적(Dynamic)'과 '프로그래밍(Programming)'을 번뜩이는 아이디어로 착안해 내는 위트 있는 브레인스토밍 순간을 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 연구비 보존을 위한 전략적 명명법, 정치적 반대를 무력화하는 긍정적 키워드 발굴.
+- 시각적 은유: 1950년대 클래식 원목 책상에 앉은 날카롭고 유쾌한 지식인 수학자 리처드 벨만. 머리 위에 번뜩이는 노란 백열전구 아이콘이 켜져 있고, 책상 왼쪽에는 붉은 사선(X)이 그어진 서류 "수학(Mathematics)", "연구(Research)"가 놓여 있으며, 오른편에는 금빛 후광을 두른 둥근 말풍선 안에 "동적(Dynamic)"과 "프로그래밍(Programming)" 글자가 찬란하게 떠오르는 모습.
+- 유지해야 할 필수 콘텐츠: 책상 위의 서류들(수학/연구 X표시), 번뜩이는 아이디어 전구, 동적/프로그래밍 키워드, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 리처드 벨만 (Richard Bellman): 1950년대 분위기의 30대 후반~40대 스마트한 미국 수학자, 세련된 숏헤어, 얇은 뿔테 안경, 깔끔한 셔츠와 조끼(vest) 차림. 턱을 괴고 펜을 쥔 채 의미심장하고 영리한 미소를 짓는 표정.
+- 소품: 원목 책상, 만년필, 연구 계획서 서류, 아이디어 전구.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻한 원목 톤과 부드러운 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+책상 소품 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A witty historic brainstorming eureka moment. In a 1950s academic setting, mathematician Richard Bellman (a sharp intellectual man in his late 30s with neatly combed dark hair, thin stylish vintage round spectacles, light grey collared shirt, and a brown knit vest) sits at a classic oak desk, resting his chin playfully on his hand and holding a vintage fountain pen with a clever, triumphant grin. 
+Above his head, a bright golden electric light bulb radiates with sparkling idea rays. 
+On the left side of the desk, two white paper proposals have bold red X marks crossed over the printed words "Mathematics" and "Research". 
+Floating on the right side in glowing golden oval aura bubbles are two brilliant new keywords: "Dynamic" and "Programming". 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow under desk legs, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

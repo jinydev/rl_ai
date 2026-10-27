@@ -1,0 +1,33 @@
+# l1_left_action_calculation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l1_left_action_calculation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 L1에서 왼쪽 행동: 외벽 충돌 및 보상 -1 계산
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 도로시가 L1 칸에서 왼쪽 벽으로 가려다 쿵 부딪혀 제자리에 머물며 벌점 -1을 받고, 지니가 칠판에 '0.5 * (-1 + 0) = -0.5'를 계산하는 유머러스한 현장 학습.
+- **주요 구성**:
+  - 그리드 칸: L1 칸과 왼쪽의 단단한 벽돌 벽
+  - 도로시: 벽에 살짝 부딪혀 머리에 작은 별이 뱅글 돌며 엉덩방아를 찧고 웃는 도로시
+  - 지니: 작은 분필판을 들고 '-1 보상에 확률 0.5를 곱해 -0.5!'라고 적는 지니
+  - 토토: 벽을 보고 '멍멍!' 짖어주는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 엉덩방아/코믹 표정, 지니 계산판, 토토 짖는 동작.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 외벽 충돌 시 상태 유지 및 음의 보상(-1) 계산 과정을 1차원 그리드 월드에서 구체적으로 시각화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, playful dynamic linework, warm colors, pure solid white background (#FFFFFF). A stone floor tile L1 next to a sturdy brick wall. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, sitting playfully on the floor with tiny comic stars around her head after bumping gently into the wall. Tuxedo cat Jiny with round glasses holding a small chalkboard showing a calculation snippet. Pure white puppy Toto with sky-blue bandana barking playfully at the wall. Exactly one girl, one cat, one dog. Pure white background, comic educational moment, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "왼쪽으로 가려다 벽에 부딪히면 벌점 마이너스 1을 받고 제자리에 남습니다."

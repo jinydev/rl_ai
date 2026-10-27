@@ -1,0 +1,58 @@
+# [이미지 분석 및 프롬프트 명세서] grid_layout_states.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `grid_layout_states.png`
+- **교재 챕터**: 07.3.2 step5 목표, 벽, 시작 상태 설정 (`index.md` 라인 158-167)
+- **캡션**: `격자 위 주요 상태들: 시작 지점 (2, 0), 벽 (1, 1), 목표 지점 (0, 3)`
+- **교육적 목표**: 
+  $3 \times 4$ 그리드 월드 클래스의 생성자(`__init__`)에서 선언되는 3대 핵심 랜드마크 좌표:
+  * 에이전트 초기 위치: `self.agent_state = (2, 0)` (왼쪽 아래)
+  * 진입 불가 장애물 벽: `self.wall_state = (1, 1)` (중앙)
+  * 목표 도착 지점: `self.goal_state = (0, 3)` (오른쪽 위)
+  이 세 가지 상태의 물리적 위치와 좌표계(행 $y$, 열 $x$) 상의 매핑을 명확하게 인지시키는 것입니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 2차원 행렬 좌표계 `(row, col)`에서의 위치 인덱싱:
+  * (2, 0): 출발선 녹색 깃발
+  * (1, 1): 회색 벽돌 블록
+  * (0, 3): 빨간 사과 목표 지점
+- **시각적 은유**: 
+  - 테이블 위에 놓인 3행 4열($3 \times 4$) 바둑판식 입체 블록 모델.
+  - 이호진 교수님이 인자한 미소로 레이아웃 보드를 가리키며 랜드마크들을 설명.
+  - 도로시와 토토가 (2, 0) 출발선에서 깃발을 꽂으며 모험을 준비하는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - 3개 주요 좌표의 위치 관계(2,0 출발 / 1,1 벽 / 0,3 골).
+  - 큰 안내 칠판 텍스트를 제거하고 입체 격자 모형 위의 시각적 랜드마크로 대체.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님 (Prof. Hojin)**: 40대 초반의 동안 공학 멘토 (단정한 솔트앤페퍼 헤어, 얇은 메탈 안경, 무지 네이비 반팔 폴로, 청바지, 스니커즈). 3×4 모형 옆에서 손을 뻗어 출발점과 벽, 골의 관계를 친절하게 안내.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). (2, 0) 타일에 작은 녹색 'START' 깃발을 꽂으며 출발 각오를 다짐.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 중앙 (1, 1)의 회색 벽돌 블록을 킁킁거리며 장애물을 탐색하는 호기심 어린 모습.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 입간판 텍스트 상자 배제, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An educational tabletop demonstration scene for gridworld landmarks. Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short hair, thin minimalist round metal wire-rim glasses, kind intelligent brown eyes, encouraging warm smile, dressed in a plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers), stands by a low wooden workshop table. 
+
+On the table rests an isometric 3x4 pastel gridworld model with 3 rows and 4 columns:
+- At the bottom-left tile (2, 0), young Dorothy (9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) carefully plants a cute green flag labeled "START (2, 0)".
+- In the center tile (1, 1) stands a miniature solid gray stone wall block labeled with tiny text "(1, 1)".
+- In the top-right tile (0, 3) sits a glowing red apple trophy labeled "(0, 3)".
+
+Beside Dorothy, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) sniffs curiously near the wall block with a cheerful wagging tail. Professor Hojin gestures warmly toward the layout, guiding the learning process. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

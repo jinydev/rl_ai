@@ -1,0 +1,40 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_argmax_dictionary_key.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_argmax_dictionary_key.png
+- 교재 챕터: 07.5.1 정책 개선 구현 - argmax() 함수의 딕셔너리 키 탐색 (index.md 라인 124-128)
+- 캡션: 그림 07-17 4개의 점수 상자 중 가장 큰 값(9.9)을 가진 남쪽(South) 열쇠를 꺼내는 도로시와 토토
+- 교육적 목표: 파이썬 딕셔너리 `d = {0: 1.2, 1: 0.5, 2: -0.8, 3: 9.9}`에서 `argmax(d)` 함수가 `for key, value in d.items()` 반복문을 돌며 가장 큰 점수를 가진 키(행동 3, South)를 찾아내는 과정을 열쇠 상자 은유로 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 딕셔너리 순회(`items()`)와 최댓값 키(`key`) 추적 메커니즘.
+- 시각적 은유: 4개의 보관함 서랍:
+  * 서랍 0 (UP): 점수 1.2
+  * 서랍 1 (DOWN): 점수 0.5
+  * 서랍 2 (LEFT): 점수 -0.8
+  * 서랍 3 (SOUTH): 점수 9.9 ⭐
+  도로시가 9.9 점수표가 붙은 3번 서랍을 활짝 열고, 그 안에서 황금 열쇠("South (3)")를 꺼내어 환하게 비추는 모습. 토토가 옆에서 기뻐함.
+- 유지해야 할 필수 콘텐츠: 4개의 번호/점수 서랍, 3번 서랍에서 꺼낸 황금 열쇠("South"), 도로시와 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 9.9 서랍에서 황금 열쇠를 번쩍 치켜들며 감탄하는 표정.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 발치에서 두 발로 서며 열쇠를 바라봄.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 직관적인 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A clear visual metaphor of Python dictionary argmax key lookup. In the center is a neat wooden cabinet with four labeled drawer boxes: 
+- Drawer 0 (UP): "1.2" 
+- Drawer 1 (DOWN): "0.5" 
+- Drawer 2 (LEFT): "-0.8" 
+- Drawer 3 (SOUTH): glowing golden "9.9" with open drawer. 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily pulls a shining golden brass key labeled "Key: South (3)" out of the 9.9 drawer, holding it high in the air with a bright, victorious smile. 
+Beside the cabinet, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) wags his tail cheerfully, looking up at the golden key. Exactly one dog only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

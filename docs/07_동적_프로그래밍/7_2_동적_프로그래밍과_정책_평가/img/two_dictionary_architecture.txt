@@ -1,0 +1,33 @@
+# two_dictionary_architecture.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: two_dictionary_architecture.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 2개 딕셔너리 분리 방식: 읽기 전용 V와 쓰기 전용 new_V
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 오염 없는 완벽한 동기 갱신을 위해, 파란색 표지의 '읽기 전용 서랍(V)'에서 이전 값을 꺼내 계산하고, 새 결과는 주황색 표지의 '쓰기 전용 서랍(new_V)'에만 깔끔하게 보관하는 2중 서랍장 구조.
+- **주요 구성**:
+  - 두 개의 서랍장: 왼쪽 파란색 읽기 전용 서랍(V)과 오른쪽 주황색 쓰기 전용 서랍(new_V)
+  - 도로시: 파란 서랍에서 이전 가치 카드를 꺼내 계산기에 넣고, 출력된 새 카드를 주황 서랍에 넣는 분주한 모습
+  - 지니: 서랍장 사이에 서서 '데이터가 서로 뒤섞이지 않게 철저히 분리!' 깃발을 든 지니
+  - 토토: 새 카드를 물어다 주황 서랍에 전달해 주는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 서랍 정리 동작, 지니 분리 통제, 토토 카드 배달.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 동기적 갱신(Synchronous Update)에서 계산 중인 새로운 값이 이전 값 참조를 오염시키는 부작용을 방지하기 위한 이중 버퍼(Double Buffering) 원리를 체득.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, whimsical clean linework, warm cel colors, pure solid white background (#FFFFFF). Two colorful filing drawer cabinets side by side: a blue cabinet (Read-only) and an orange cabinet (Write-only). Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, transferring a card from the blue drawer, through a small calculator, into the orange drawer. Tuxedo cat Jiny with round glasses directing the flow, milk-white puppy Toto with sky-blue bandana carrying a card happily. Exactly one girl, one cat, one dog. Pure white background, clear data flow metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "읽기 전용 서랍과 쓰기 전용 서랍을 분리하면, 계산 도중에 데이터가 뒤섞이는 오염을 완벽히 막을 수 있습니다."

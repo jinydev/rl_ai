@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] bellman_naming_origin.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: bellman_naming_origin.png
+- 교재 챕터: 07.1.5 정치적 방패가 된 학문의 이름 (index.md 라인 99-103)
+- 캡션: 국방부 장관의 예산 삭감 가위를 동적 프로그래밍 방패로 막아내는 리처드 벨만
+- 교육적 목표: 동적 프로그래밍이라는 이름이 정치인과 관료들의 무차별적인 예산 삭감 가위질을 어떻게 완벽하게 방어해 냈는지를 직관적인 대치 구도와 방패 은유로 유쾌하게 전달합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 정치적/행정적 예산 삭감 위협을 무력화한 완벽한 명명 전략.
+- 시각적 은유: 화면 왼쪽에 땀을 뻘뻘 흘리며 거대한 녹슨 쇠가위("Budget Cut" 또는 "예산 삭감")를 든 관료/장관이 싹둑 자르려 하지만, 오른쪽에 단정한 정장을 입은 여유만만한 수학자 리처드 벨만이 찬란하게 빛나는 황금빛 방패 "Dynamic Programming"을 세워 가위를 튕겨내는(Clang! 스파크) 유쾌한 대결 장면.
+- 유지해야 할 필수 콘텐츠: 거대한 예산 삭감 가위, 이를 튕겨내는 찬란한 황금 방패, 당황한 관료 vs 여유로운 수학자의 표정 대비, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 관료/장관 (Bureaucrat): 모자를 쓴 뚱하고 완고한 관료가 무거운 거대 가위를 들고 당황하여 식은땀을 흘리는 모습.
+- 리처드 벨만 (Richard Bellman): 세련된 1950년대 정장에 나비넥타이와 얇은 메탈 안경을 쓴 여유로운 지식인. 한 손을 허리에 얹고 미소 지으며 방패를 든 당당한 자세.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 명쾌하고 역동적인 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 2인 대치 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A humorous clash between budget politics and clever mathematics. 
+On the left, a grumpy 1950s government bureaucrat in a grey official uniform and peaked cap strains comically while holding a pair of giant rusty iron shears engraved with "Budget Cut". The heavy shears bounce off harmlessly with sparkling golden sparks. 
+On the right, sharp-witted mathematician Richard Bellman (a handsome, confident intellectual in his late 30s with neatly combed salt-and-pepper hair, thin round wire-rim glasses, a stylish brown tweed suit jacket with bowtie) stands calm and poised with one hand on his hip. He effortlessly wields a glowing radiant golden heraldic shield boldly inscribed with "Dynamic Programming" in clean letters, effortlessly deflecting the shears. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

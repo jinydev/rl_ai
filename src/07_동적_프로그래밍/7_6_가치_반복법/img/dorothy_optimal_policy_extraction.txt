@@ -1,0 +1,33 @@
+# dorothy_optimal_policy_extraction.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_optimal_policy_extraction.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 보물 지도 완성: 최적 정책의 원샷 추출
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 완성된 최적 가치 지도(V*) 위에, 도로시가 탐욕적 화살표(황금 나침반 바늘)를 그리드의 각 칸마다 단 한 번에 쏙쏙 꽂아 완벽한 최단 경로를 완성하는 장면.
+- **주요 구성**:
+  - 그리드 보드: 빛나는 입체 지형 그리드 판
+  - 도로시: 작은 황금 화살표 깃발들을 손에 쥐고, 각 칸마다 가장 높은 쪽을 향해 깃발을 콕콕 꽂고 있는 도로시
+  - 지니: 전체 깃발들이 일제히 보물 상자를 가리키는 것을 확인하고 출구 체크리스트에 동그라미를 치는 지니
+  - 토토: 첫 번째 깃발이 가리키는 방향을 향해 당장이라도 달려나갈 자세를 취하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 깃발 꽂는 포즈, 지니 체크리스트, 토토 출발 자세.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 반복법이 끝난 후 'argmax를 단 한 번만 수행'하여 최종 최적 정책(pi*)을 추출하는 단계를 시각적으로 명쾌하게 제시.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, crisp line art, warm glowing colors, pure white background (#FFFFFF). A floating grid gameboard where each square has a small golden arrow pointing toward a radiant treasure chest. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, happily placing the final golden directional arrow flag on the board. Tuxedo cat Jiny with round scholar glasses holding a tiny clipboard giving a nod. Pure white puppy Toto with sky-blue bandana poised ready to sprint along the arrow path. Exactly one girl, one cat, one dog. Triumph, educational, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "가치 지도가 완성되면, 각 칸에서 가장 높은 곳을 향해 단 한 번만 화살표를 꽂아 최적 정책을 얻습니다."

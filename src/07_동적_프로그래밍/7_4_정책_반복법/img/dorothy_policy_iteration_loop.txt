@@ -1,0 +1,33 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_policy_iteration_loop.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_policy_iteration_loop.png
+- 교재 챕터: 07.4 정책 반복법 - 평가와 개선의 선순환 구조 (index.md 라인 42-45)
+- 캡션: 그림 07-16 정책 평가(Evaluation)와 정책 개선(Improvement)의 선순환 구조
+- 교육적 목표: 정책 평가 단계($v_\pi$)에서 현재 정책의 가치를 정확히 측정하고, 이를 바탕으로 정책 개선 단계($\pi'$)에서 탐욕화(argmax)를 통해 더 나은 정책으로 갱신하는 2단계 선순환 나선형 순환 고리를 직관적으로 이해시킵니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 정책 평가($\pi \rightarrow v$)와 정책 개선($v \rightarrow \pi'$)의 순환 루프.
+- 시각적 은유: 중앙에 영롱하게 빛나는 원형 순환 화살표(Circular Flow Arrow). 상단에는 금빛 저울/채점기(Evaluation $v$), 하단에는 빛나는 나침반과 탐욕 기어(Improvement $\pi'$). 도로시가 지도와 펜을 들고 개선 화살표를 따라 힘차게 달려가고, 지니가 평가 저울 옆에서 안경을 올리며 미소 짓는 모습.
+- 유지해야 할 필수 콘텐츠: 평가(Evaluation)와 개선(Improvement)을 잇는 순환 화살표, 도로시와 지니, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 손에 깃털 펜과 보물 지도를 쥐고 개선 방향으로 활기차게 발걸음을 옮김.
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 미니 안경, 빨간 방울 목걸이. 상단 평가 화살표 위에서 채점 성적표를 들고 고개를 끄덕임.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 뒤를 졸졸 따르며 신나게 점프.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 밝고 화사한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A bright infographic illustration of the policy iteration virtuous loop. In the center is a glowing circular dual-arrow ring connecting two stages: 
+- Top Stage labeled "Policy Evaluation: π → V": Jiny the lab assistant cat (chubby black-and-white tuxedo cat, round wire scholar glasses, red collar with gold bell) sits calmly checking a wooden ledger scorecard with a green checkmark.
+- Bottom Stage labeled "Policy Improvement: V → π'": Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily dashes forward holding a golden navigation compass and an updated parchment map. 
+Beside Dorothy, Toto the fluffy cream-white puppy (solid milk-white coat, no spots, black button nose, sky-blue bandana) bounds energetically alongside her. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

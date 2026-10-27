@@ -1,0 +1,33 @@
+# inplace_update_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: inplace_update_intro.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 반복적 정책 평가 덮어쓰기(In-place) 방식의 도입
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 번거롭게 두 개의 공책(V와 new_V)을 왔다 갔다 할 필요 없이, 단 하나의 공책(V) 위에서 연필과 지우개로 숫자를 그 자리에서 바로 쓱쓱 고쳐 적으며 훨씬 빠르게 계산하는 도로시의 영리한 아이디어.
+- **주요 구성**:
+  - 책상: 단 하나의 깔끔한 가죽 장정 공책(V)
+  - 도로시: 한 손에는 연필, 한 손에는 지우개를 쥐고 신속하고 경쾌하게 숫자를 지우고 새 숫자를 덮어쓰는 도로시
+  - 지니: '공책을 하나만 쓰니 훨씬 빠르고 가볍구나!' 감탄하는 턱시도 고양이 지니
+  - 토토: 필요 없어진 무거운 보조 공책들을 옆으로 밀어 치워주는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 지우개/연필 동작, 지니 감탄, 토토 보조 공책 치우기.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 메모리를 절반만 사용하고 최신 계산 결과를 즉각 반영하는 In-place 갱신의 직관적 우수성을 제시.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean line art, warm cel shading, pure solid white background (#FFFFFF). A single sturdy leather notebook on a wooden desk. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, holding a pencil in one hand and an eraser in the other, swiftly updating numbers directly on the same page with a smart smile. Tuxedo cat Jiny with round glasses admiring the speed, pure white puppy Toto with sky-blue bandana pushing away an unnecessary extra book with its paw. Exactly one girl, one cat, one dog. Pure white background, efficient workflow metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "두 권의 공책 대신 한 권의 공책에 바로바로 덮어쓰면, 훨씬 가볍고 빠르게 답을 찾을 수 있습니다."

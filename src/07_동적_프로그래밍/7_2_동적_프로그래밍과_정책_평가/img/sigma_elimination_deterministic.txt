@@ -1,0 +1,33 @@
+# sigma_elimination_deterministic.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: sigma_elimination_deterministic.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 전이 확률 p=1과 시그마(∑) 기호의 마법 같은 소거
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 다음 상태가 단 하나로 확정되자(p=1.0), 복잡했던 다음 상태 합산 기호(∑_s')가 칠판에서 비눗방울처럼 퐁 하고 사라지며 수식이 거짓말처럼 단순해지는 마법 같은 순간.
+- **주요 구성**:
+  - 칠판: 복잡한 그리스 문자 시그마(∑) 기호가 비눗방울처럼 터지며 반짝이는 별가루로 변하는 모습
+  - 도로시: 마법 지팡이 끝으로 시그마 기호를 톡 건드려 터뜨리고 신나게 웃는 도로시
+  - 지니: '상태가 하나뿐이니 더할 필요가 없단다!' 감탄하는 턱시도 고양이 지니
+  - 토토: 공중에 흩날리는 반짝이 별가루를 잡으려고 폴짝 뛰는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 요술봉 포즈, 지니 감탄, 토토 점프. 표준 의상 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 결정적 전이 가정 하에서 왜 벨만 방정식의 상태 전이 합산 기호(∑_s')가 사라지는지 수학적 원리를 시각화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, magical anime line art, warm cel shading, pure solid white background (#FFFFFF). A chalkboard where a complex math Sigma symbol dissolves into sparkling golden bubbles as if popped by magic. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, playfully tapping the board with a small wooden wand. Tuxedo cat Jiny with round wire glasses clapping, pure white puppy Toto with sky-blue bandana leaping playfully at the floating golden sparkles. Exactly one girl, one cat, one dog. Pure white background, magical mathematical simplification, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "도착할 곳이 단 한 곳으로 정해져 있으니, 복잡한 합산 기호는 마법처럼 사라집니다."

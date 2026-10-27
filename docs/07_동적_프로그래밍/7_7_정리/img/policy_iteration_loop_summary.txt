@@ -1,0 +1,12 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, clean educational animation art, pure solid white background (#FFFFFF), white background cutout. A charming green chalkboard on an easel illustrating the cyclic two-step mechanism of Policy Iteration: a curved upper golden arrow flows from 'Evaluation (V_pi)' to 'Improvement (pi_prime)', and a lower curved golden arrow returns until optimal convergence. Adorable 9-year-old girl Dorothy (chestnut twin pigtails with beads, denim overalls with STEM HERO patch, orange striped t-shirt, red sneakers) holds a chalk piece and smiles brightly as she completes the loop. Tuxedo cat Jiny with round glasses and red bell collar holds an argmax compass badge, while fluffy cream-white puppy Toto with sky-blue bandana wags tail playfully in front of the board. Exactly one girl, one cat, one dog. Pure white background, vibrant warm colors, no frames, no Japanese text.
+
+Negative:
+Japanese text, sailor suit, pink bow, purple cat, brown poodle, spots on puppy, duplicate characters, twin girls, 3D CGI, dark background.
+
+[해설]: 정책 반복법의 핵심 원리인 '정책 평가(Policy Evaluation)'와 '정책 개선(Policy Improvement)'의 2단계 순환 맞물림 핑퐁 구조를 칠판 도식으로 명쾌하게 시각화하여, 정책이 더 이상 변하지 않을 때까지 교대로 갱신되는 수렴 과정을 표현한 삽화.

@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_optimal_policy_match.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_optimal_policy_match.png
+- 교재 챕터: 07.4.1 정책 개선 - 수렴과 최적 정책 도달 조건 (index.md 라인 220-224)
+- 캡션: 그림 07-21 기존 지도(MAP 1)와 갱신된 지도(MAP 2)가 똑같음을 깨닫고 기뻐하는 도로시와 토토
+- 교육적 목표: 정책 개선 알고리즘을 수행했음에도 새로운 정책($\mu'$)이 이전 정책($\mu$)과 100% 동일하게 유지되는 상태($\mu' = \mu$)에 도달했을 때, 바로 이 상태가 증명된 '최적 정책($\mu_*$)'임을 도로시의 기쁨 넘치는 발견으로 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 정책 반복법의 수렴 조건($\pi_{k+1} = \pi_k \implies \pi = \pi_*$).
+- 시각적 은유: 원목 책상 위에 펼쳐진 두 장의 양피지 보물 지도 (MAP 1과 MAP 2). 두 지도의 길과 화살표가 완벽하게 일치하자(가운데 커다란 초록색 등호 '='와 'PERFECT MATCH! 100%' 스탬프), 도로시가 손에서 연필을 내려놓고 양팔을 번쩍 들며 환호하는 모습. 토토도 꼬리를 치며 기뻐함.
+- 유지해야 할 필수 콘텐츠: 완전히 일치하는 두 개의 격자 지도, 초록색 '=' 등호와 매칭 마크, 기뻐하는 도로시와 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 연필을 책상에 턱 내려놓고 두 손을 높이 들며 "찾았다, 최적 지도!"라고 외치는 환희의 표정.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 옆에서 두 발로 서서 박수를 치듯 기뻐하는 모습.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 밝고 따뜻한 승리의 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A triumphant eureka moment of reaching the optimal policy. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily throws both arms in the air with a radiant victory smile. 
+On the wooden maker table in front of her are two parchment grid maps side by side: "Old Policy μ" and "New Policy μ'". Between the two identical maps is a bright glowing green equals sign "=" and a golden wax seal stamped "PERFECT MATCH: Optimal Policy Reached!". A yellow pencil rests peacefully on the table. 
+Beside the table, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) jumps playfully on his hind legs with a cheerful open dog smile. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

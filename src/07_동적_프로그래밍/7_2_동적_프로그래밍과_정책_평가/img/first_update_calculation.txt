@@ -1,0 +1,33 @@
+# first_update_calculation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: first_update_calculation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 가치 함수 1차 갱신(V1) 실전 칠판 판서 요약
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 도로시와 지니가 나무 교실 칠판에 L1 상태의 가치 0.0과 L2 상태의 가치 -0.5가 나란히 도출된 결과를 예쁜 분필 글씨와 화살표로 총정리해 둔 깔끔한 요약 판서.
+- **주요 구성**:
+  - 칠판: 왼쪽 칸 L1 = 0.0, 오른쪽 칸 L2 = -0.5가 정갈하게 비교 정리된 표 다이어그램
+  - 도로시: 칠판 옆에 서서 분필을 쥐고 환하게 웃으며 학습자를 바라보는 도로시
+  - 지니: 지휘봉으로 칠판 밑의 최종 결과 요약을 가리키는 턱시도 고양이 지니
+  - 토토: 칠판 받침대 옆에 다소곳이 앉아 꼬리를 살랑이는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 발표자 포즈, 지니 지휘봉, 토토 다소곳한 포즈.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- L1과 L2의 1차 갱신 계산 전체를 한눈에 조감하여 학습 내용을 머릿속에 체계화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean line art, warm soft cel colors, pure solid white background (#FFFFFF). A neat chalkboard displaying a clean side-by-side summary diagram of state values L1 and L2. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, standing proudly next to the board holding a piece of chalk. Tuxedo cat Jiny with round glasses pointing at the conclusion with a wooden stick, pure white puppy Toto with sky-blue bandana sitting sweetly. Exactly one girl, one cat, one dog. Pure white background, tidy educational summary, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "일차 갱신 결과, 엘원은 0점, 엘이는 마이너스 0.5점이라는 성적표를 얻었습니다."

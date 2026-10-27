@@ -1,0 +1,32 @@
+# dp_basics_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dp_basics_intro.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 동적 프로그래밍 기초 인트로
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 벨만 갱신식과 부트스트랩 블록을 쌓으며 신나게 강화학습 기초 공사를 진행하는 도로시, 지니, 토토의 협동 학습 장면.
+- **주요 구성**:
+  - 중앙: 부드러운 파스텔 톤의 알파벳/숫자 블록들을 쌓아 작은 탑을 완성 중인 도로시
+  - 지니: 연필을 들고 설계도 도면을 검토하며 블록 배치를 지시하는 턱시도 고양이 지니
+  - 토토: 작은 네모 블록을 입에 물고 배달해 주는 순백색 강아지 토토
+  - 배경: 순백색(#FFFFFF) 컷아웃
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 복장, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 본격적인 수식 학습에 앞서 친근하고 능동적인 학습 분위기를 조성.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm soft cel colors, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, kneeling happily building a tower out of wooden toy blocks. Beside her, tuxedo cat Jiny with round wire glasses holding a blueprint scroll, and milk-white puppy Toto with sky-blue bandana carrying a small block in its mouth. Exactly one girl, one cat, one dog. Pure white background, cheerful teamwork, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "이제 본격적으로 동적 프로그래밍의 기본 블록들을 하나씩 차근차근 조립해 봅시다."

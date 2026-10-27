@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] dp_naming_fusion.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dp_naming_fusion.png
+- 교재 챕터: 07.1.4 단어의 완벽한 마케팅적 선택: Dynamic과 Programming (index.md 라인 71-75)
+- 캡션: 동적(Dynamic)이라는 찬란한 에너지 결정과 계획(Programming)이라는 견고한 기어 휠을 결합하여 무적의 '동적 프로그래밍' 방패를 제조해 내는 마법사 벨만
+- 교육적 목표: 'Dynamic(시간에 따라 변하는 역동성)'과 'Programming(최적의 계획 및 자원 분배 일정표)'이라는 두 핵심 키워드가 마법처럼 융합되어 예산 삭감의 칼바람을 막아내는 찬란한 방패가 완성되는 과정을 판타지 동화풍의 유쾌한 은유로 각인시킵니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: Dynamic과 Programming 두 단어의 상호 보완적 결합과 시너지.
+- 시각적 은유: 별과 달 패턴이 새겨진 마법사 로브를 두른 지혜로운 현자(수학자 벨만의 위트 있는 마법사 변신). 오른손에는 찬란하게 빛나는 하늘빛 에너지 크리스털(Dynamic, 역동성)을, 왼손에는 정밀하게 맞물려 돌아가는 황동 톱니바퀴들(Programming, 최적 계획)을 들고 있으며, 두 힘이 가운데에서 합쳐져 눈부시게 빛나는 무적의 황금빛 방패 "Dynamic Programming"을 연성해 내는 마법적 연출.
+- 유지해야 할 필수 콘텐츠: 푸른 크리스털(Dynamic), 황동 톱니 기어(Programming), 중앙의 눈부신 황금 방패(Dynamic Programming), 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 마법사 벨만 (Wizard Bellman): 푸른 마법사 고깔모자와 은하수 로브를 입은 장난기 넘치고 인자한 학자 현자. 동그란 메탈 안경 너머로 총명한 눈빛을 반짝이며 양손의 에너지를 융합하는 포즈.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 신비롭고 따뜻한 마법의 골드/시안 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+마법 오브젝트 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A magical fusion metaphor of dynamic programming. In the center stands a whimsical scholarly wizard (representing Richard Bellman in a pointed midnight blue wizard hat and star-patterned robe, with round wire glasses and a kind joyful smile). 
+In his right hand, he raises a radiant, glowing cyan-blue geometric crystal labeled "Dynamic" emitting energetic sparkles. 
+In his left hand, he holds intricate rotating brass gear wheels labeled "Programming" representing systematic planning. 
+Between his hands at chest height, the two mystical elements fuse together into a dazzling, glowing golden heraldic shield emblem emblazoned with clear bold text: "Dynamic Programming", radiating bright protective golden light. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

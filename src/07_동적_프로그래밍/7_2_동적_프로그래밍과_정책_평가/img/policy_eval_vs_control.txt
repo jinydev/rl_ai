@@ -1,0 +1,33 @@
+# policy_eval_vs_control.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: policy_eval_vs_control.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 정책 평가와 정책 제어의 개념 비교
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 화면을 좌우로 나누어, 왼쪽에서는 채점용 빨간 펜으로 현재 지도의 점수를 매기는 도로시(평가), 오른쪽에서는 지우개와 나침반으로 최적의 화살표 길을 새로 그리는 도로시(제어)의 대비.
+- **주요 구성**:
+  - 좌측(평가): 책상 위 지도에 별점과 점수 도장을 쾅쾅 찍으며 채점하는 도로시
+  - 우측(제어): 나침반과 연필로 잘못된 화살표를 지우고 황금 화살표로 경로를 수정하는 도로시
+  - 중앙: 지니가 안경을 반짝이며 양쪽을 비교 설명함
+  - 하단: 왼쪽엔 채점표를 물고 있는 토토, 오른쪽엔 지우개를 물고 있는 토토 (대비 연출)
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 지니 안경/방울, 토토 하얀 털/하늘색 반다나. 좌우 대비 명확.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 정책 평가(주어진 정책의 가치 측정)와 정책 제어(더 나은 정책 탐색)의 본질적 차이를 시각적 역할극으로 각인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clear side-by-side contrast, warm colors, pure solid white background (#FFFFFF). On left side, cute anime girl Dorothy grading a map with a red check-mark pencil and star stamps. On right side, Dorothy holding an eraser and golden compass drawing optimal path arrows on another map. In center, tuxedo cat Jiny with round glasses explaining the contrast. Pure white puppy Toto sitting cheerfully. Pure solid white background, educational concept comparison, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "평가는 현재 정책의 성적표를 매기는 일이고, 제어는 더 좋은 성적을 받도록 계획을 뜯어고치는 일입니다."

@@ -1,0 +1,13 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, warm celebratory masterpiece illustration, pure solid clean white background (#FFFFFF), white background cutout. In the center, adorable 9-year-old girl Dorothy (matching dorothy_character_sheet: chestnut wavy twin pigtails with colorful round beads, denim overalls with STEM HERO circular badge, orange-yellow striped t-shirt, red canvas sneakers) leaps joyfully with both hands raised, holding a golden trophy. Behind her, a dark green walnut framed chalkboard reads 'CHAPTER 7 CLEAR!' with celebratory chalk ribbons and stars. On the left, Professor Hojin (matching hojin_character_sheet: handsome youthful early 40s Korean professor, smooth wrinkle-free skin, salt-and-pepper parted hair, thin round wireframe glasses, plain dark navy polo shirt, blue jeans) gives a proud, warm thumbs-up smile. On the right, tuxedo cat Jiny (matching jiny_character_sheet: black and white tuxedo coat, round scholar glasses, red bell collar) claps enthusiastically on a wooden desk. In front, fluffy solid cream-white puppy Toto (matching toto_character_sheet: pure milk-white coat, no spots, black nose, sky-blue bandana) jumps playfully in mid-air amidst floating confetti and scattered mini treasure maps. Exactly one man, one girl, one cat, one dog. Pure white background, vibrant joyful graduation celebration, no frames, no Japanese text.
+
+Negative:
+Japanese text, wrinkled face, old man, bald, round Harry Potter dark plastic frames, brown spots on puppy, purple cat, duplicate characters, twin girls, 3D CGI, dark background.
+
+[해설]: 07장 동적 프로그래밍(DP)의 대장정을 성공적으로 완주한 것을 기념하는 대단원 축하 일러스트. 칠판의 'CHAPTER 7 CLEAR!' 문구 아래, 40대 초반 동안의 이호진 교수님이 자랑스러운 엄지척을 보내고, 도로시가 트로피를 들고 환호하며, 조교 지니와 토토가 축하 꽃가루 속에서 기뻐하는 7강 완주 기념 대표 시각 자료.

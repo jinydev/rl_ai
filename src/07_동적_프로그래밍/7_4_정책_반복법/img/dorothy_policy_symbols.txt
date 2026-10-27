@@ -1,0 +1,33 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_policy_symbols.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_policy_symbols.png
+- 교재 챕터: 07.4.1 정책 개선 - 강화학습 용어 사전 (index.md 라인 77-81)
+- 캡션: 그림 07-17 최적 정책 기호들의 도로시 모험 비유 (나침반, 보물상자, 사과)
+- 교육적 목표: 강화학습의 주요 수학 기호($\pi$ 확률적 지도, $\mu$ 결정적 나침반, $v(s)$ 땅의 보물상자, $R$ 달콤한 사과 보상, $\gamma$ 모래시계 할인율)를 도로시의 모험 배낭 소품들로 직관적인 시각적 은유를 부여합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 강화학습 핵심 변수와 기호들의 시각적 매핑.
+- 시각적 은유: 숲속 탐험가 도로시의 소품 전시대. 도로시가 보물 지도($\pi, \mu$)를 펼쳐 들고 있고, 발밑에는 금빛 보물상자($v(s)$), 손에는 반짝이는 붉은 사과($R$), 가방 옆에는 신비로운 모래시계($\gamma$), 책상 위에는 빛나는 금빛 앤틱 나침반($q(s,a)$)이 조화롭게 배치된 모험가의 탐험 키트 장면.
+- 유지해야 할 필수 콘텐츠: 보물 지도, 보물상자, 붉은 사과, 모래시계, 나침반, 호기심 가득한 도로시와 토토.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 한 손에 탐험 지도를 펴고 다른 손으로 사과를 가리키며 밝게 웃음.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 보물상자 옆에서 꼬리를 흔들며 사과를 올려다봄.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻한 어드벤처 톤의 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A delightful educational metaphor of reinforcement learning adventure symbols. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily showcases her adventurer gear: 
+In her hands she unrolls an antique parchment map labeled with policy symbols "π & μ". 
+At her feet sits an open wooden treasure chest glowing with golden coins labeled "V(s) Value". 
+Beside it rests a crisp, shiny red apple labeled "R Reward", a vintage brass hourglass labeled "γ Discount", and a golden compass labeled "Q(s, a)". 
+Beside the treasure chest, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) sits wagging his tail happily. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

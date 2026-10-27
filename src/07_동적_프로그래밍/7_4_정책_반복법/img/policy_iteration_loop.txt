@@ -1,0 +1,37 @@
+# [이미지 분석 및 프롬프트 명세서] policy_iteration_loop.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: policy_iteration_loop.png
+- 교재 챕터: 07.4.2 정책 반복법 (index.md 라인 320-324)
+- 캡션: 평가와 개선을 반복하여 최적 정책 깃발로!
+- 교육적 목표: 초기 정책 $\pi_0$에서 시작하여 '평가(E)'와 '개선(I)'의 나선형 계단을 연속적으로 밟아올라 마침내 정점의 최적 정책 $\pi_*$ 깃발에 도달하는 정책 반복법(Policy Iteration)의 전체 알고리즘 수렴 여정을 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 정책 반복법의 전체 파이프라인($\pi_0 \xrightarrow{E} v_0 \xrightarrow{I} \pi_1 \xrightarrow{E} v_1 \xrightarrow{I} \dots \rightarrow \pi_*$).
+- 시각적 은유: 완만한 언덕을 따라 지그재그로 올라가는 황금빛 오솔길.
+  * 1단계: $\pi_0 \xrightarrow{Evaluation} v_{\pi_0}$
+  * 2단계: $v_{\pi_0} \xrightarrow{Improvement} \pi_1$
+  * 3단계: $\dots \rightarrow \pi_*$
+  언덕 꼭대기에는 찬란한 황금 깃발(Optimal Policy $\pi_*$)이 꽂혀 있고, 도로시와 토토가 신나게 언덕 정상을 향해 달리는 역동적 구도.
+- 유지해야 할 필수 콘텐츠: 지그재그 E-I 갱신 오솔길, 정점의 최적 정책 $\pi_*$ 황금 깃발, 힘차게 달리는 도로시와 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 한 손에 지도, 다른 손을 번쩍 들고 언덕 정상을 향해 신나게 달려 올라감.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 앞에서 꼬리를 휘날리며 경쾌하게 뛰어오름.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 산뜻하고 활기찬 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+An energetic journey illustrating the policy iteration algorithm loop. In the center is a winding, ascending cobblestone path with alternating milestone stepping stones: 
+- "π0" → "Eval(V)" → "Improve(π1)" → "Eval(V1)" → "π2" 
+Leading to a sunlit gentle hill summit where a glorious golden flagpole stands with a fluttering flag inscribed with "Optimal Policy π* & V*". 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily dashes up the path, raising one hand with boundless enthusiasm. 
+Ahead of her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) leaps cheerfully towards the golden summit flag. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at base, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

@@ -1,0 +1,38 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_argmax_choice.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_argmax_choice.png
+- 교재 챕터: 07.4.1 정책 개선 - 수식 치환과 argmax 연산 (index.md 라인 128-132)
+- 캡션: 그림 07-19 기대 가치가 가장 높은 남쪽(+10)을 argmax(나침반)로 선택하는 도로시와 토토
+- 교육적 목표: argmax 연산자가 사방(동서남북)의 행동 가치 $q(s,a)$ 중 가장 높은 점수를 주는 단 하나의 최적 방향을 '결정적(Deterministic)'으로 선택해 주는 원리를 나침반 선택 은유로 설명합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: $\operatorname{argmax}_a q(s, a)$ 연산, 최고 가치 행동의 결정적 선택.
+- 시각적 은유: 십자로(Crossroad) 갈림길에 선 도로시. 발밑에 동서남북 4개 방향 화살표와 점수판이 표시됨:
+  * 북: +2, 동: +3, 서: -1, **남: +10 (빛나는 왕관/별표)**
+  도로시가 황금 나침반(바늘에 'argmax'라 새겨짐)을 들고 환하게 웃으며 가장 높은 점수인 남쪽(+10) 길을 당당하게 가리키고, 토토가 신나게 남쪽으로 발걸음을 떼는 모습.
+- 유지해야 할 필수 콘텐츠: 4방향 점수판(+2, +3, -1, +10), 남쪽(+10)을 가리키는 argmax 황금 나침반, 도로시와 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 황금 나침반을 들고 남쪽 방향을 자신만만하게 손가락으로 가리킴.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 남쪽 화살표를 향해 귀를 휘날리며 앞발을 내딛는 역동적인 자세.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 산뜻하고 명쾌한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A clear visual explanation of the argmax operation. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) stands at a four-way crossroads paved in cobblestone tiles. 
+Surrounding her are four directional arrow signs with values: 
+- North: "+2" 
+- East: "+3" 
+- West: "-1" 
+- South: bright glowing "+10" decorated with golden stars and a laurel wreath. 
+In her hand, Dorothy proudly holds an ornate golden compass engraved with "argmax", whose needle points decisively towards the South (+10). She points her finger southward with a confident, joyful smile. 
+Beside her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) happily bounds forward in the South direction. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

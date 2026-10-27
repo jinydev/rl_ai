@@ -1,0 +1,33 @@
+# state_value_zero_initialization.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: state_value_zero_initialization.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 모든 상태의 가치를 0으로 초기화하기
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 그리드 판의 모든 칸마다 앙증맞은 '0' 모양 잉크 스탬프를 쾅쾅 찍으며 깨끗한 도화지처럼 계산의 첫 출발선을 준비하는 도로시와 토토.
+- **주요 구성**:
+  - 그리드 타일들: 바닥에 놓인 정사각형 석판 타일들
+  - 도로시: 손에 나무 스탬프를 들고 타일 위에 숫자 '0' 도장을 경쾌하게 찍고 있는 도로시
+  - 지니: 잉크 패드를 받쳐 들고 보조해 주는 턱시도 고양이 지니
+  - 토토: 도장이 찍힌 타일 냄새를 킁킁 맡는 귀여운 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 스탬프 찍는 동작, 지니 잉크 보조, 토토 호기심. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 알고리즘 시작 전 모든 상태 가치를 0으로 초기화(V(s)=0)하는 첫 단추의 의미를 시각화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean outlines, warm cel colors, pure solid white background (#FFFFFF). A series of smooth floor tiles laid out neatly. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, holding a wooden stamp happily stamping a neat numeral '0' on each tile. Tuxedo cat Jiny with round glasses holding an inkpad, pure white puppy Toto with sky-blue bandana sniffing the fresh stamped number. Exactly one girl, one cat, one dog. Pure white background, playful setup scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "모든 칸을 깨끗한 0으로 채우며 탐색의 첫 출발선을 준비합니다."

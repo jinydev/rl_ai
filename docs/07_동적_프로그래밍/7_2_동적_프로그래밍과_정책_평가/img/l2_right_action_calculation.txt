@@ -1,0 +1,33 @@
+# l2_right_action_calculation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l2_right_action_calculation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 L2에서 오른쪽 행동: 외벽 충돌 및 벌점 -1 계산
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: L2 칸에서 오른쪽으로 가려다 오른쪽 외벽에 톡 부딪혀 제자리에 머물며 벌점 -1(0.5 * (-1 + 0) = -0.5)을 얻는 코믹한 상황.
+- **주요 구성**:
+  - 그리드 칸: L2 타일과 오른쪽 외벽
+  - 도로시: 벽에 손을 짚고 '아야, 여기도 벽이 막혀 있네!' 하며 혀를 쏙 내미는 익살스러운 도로시
+  - 지니: 벽에 경고 표지판을 붙이며 메모하는 지니
+  - 토토: 벽을 보고 조심하라는 듯 꼬리를 흔드는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 장난스러운 표정, 지니 경고 표지, 토토 꼬리 흔들기.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- L2의 오른쪽 외벽 충돌 규칙과 음의 보상 계산 과정을 시각적으로 명료화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean outlines, warm colors, pure solid white background (#FFFFFF). A stone tile L2 adjacent to a solid right boundary wall. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, placing her hand gently against the wall with a cute sheepish smile. Tuxedo cat Jiny with round glasses holding a tiny warning sign, milk-white puppy Toto with sky-blue bandana looking up curiously. Exactly one girl, one cat, one dog. Pure white background, lighthearted educational moment, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "엘이에서 오른쪽으로 가면 벽에 가로막혀 마이너스 1의 감점을 받습니다."

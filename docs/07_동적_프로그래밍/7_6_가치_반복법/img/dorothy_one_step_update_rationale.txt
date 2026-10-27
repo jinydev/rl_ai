@@ -1,0 +1,34 @@
+# dorothy_one_step_update_rationale.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_one_step_update_rationale.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 단 한 번의 갱신으로 드러나는 우열 (+1 vs +10)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 왼쪽 길(사탕 1개, +1)과 오른쪽 길(커다란 선물 상자, +10)을 단 1회의 갱신만으로도 어느 쪽이 우세한지 단번에 파악하고 고개를 끄덕이는 도로시 일러스트.
+- **주요 구성**:
+  - 왼쪽 경로: 작고 초라한 사탕 1개와 숫자 '+1' 마크
+  - 오른쪽 경로: 반짝반짝 빛나는 거대한 황금 선물 상자와 '+10' 마크
+  - 도로시: 양손으로 저울질하듯 가리키며 '백 번 계산 안 해봐도 오른쪽이 당연히 최고네!' 깨닫는 도로시
+  - 토토: 이미 오른쪽 황금 상자를 향해 꼬리를 치고 있는 하얀 강아지 토토
+  - 지니: 안경을 치켜올리며 흐뭇하게 미소 짓는 턱시도 고양이 지니
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 복장, 토토 하얀 털/하늘색 반다나, 지니 안경/방울 목걸이.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 평가를 수렴(무한 반복)까지 할 필요 없이, 1번만 계산해도 최적 행동 선택(argmax)에는 이미 충분하다는 Truncation의 논리적 근거 전달.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean outlines, warm cel colors, pure white background (#FFFFFF). Two clear diverging paths: left path shows a tiny +1 candy icon, right path shows a huge glowing +10 golden gift box. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, smiling and pointing decisively to the right path. Pure white puppy Toto with sky-blue bandana already wagging tail toward the +10 gift. Tuxedo cat Jiny with round glasses adjusting his glasses with satisfaction. Exactly one girl, one cat, one dog. Pure white background, clear educational comparison, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "단 한 번만 계산해 보아도 플러스 일과 플러스 십 중 어느 쪽이 우세한지는 바로 알 수 있습니다."

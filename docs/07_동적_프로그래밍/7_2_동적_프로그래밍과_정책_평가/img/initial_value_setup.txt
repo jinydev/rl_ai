@@ -1,0 +1,34 @@
+# initial_value_setup.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: initial_value_setup.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 가치 추정치 초깃값(V0 = 0) 페인트칠 비유
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 어떤 값으로 시작해도 결국 참값으로 수렴하지만, 계산이 가장 편리한 0이라는 숫자를 L1과 L2 징검다리 돌판 위에 노란 페인트 붓으로 쓱쓱 칠하는 즐거운 준비 작업.
+- **주요 구성**:
+  - 돌판 2개: L1 돌판과 L2 돌판
+  - 페인트 통: 노란색 페인트 통과 큰 붓
+  - 도로시: 멜빵바지 무릎을 꿇고 정성스럽게 돌판 위에 숫자 '0'을 페인트칠하는 도로시
+  - 지니: 페인트 통을 쏟아지지 않게 꼭 잡아주는 턱시도 고양이 지니
+  - 토토: 페인트 붓을 신기하게 바라보며 발자국을 찍으려는 장난꾸러기 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 페인트칠, 지니 통 잡기, 토토 장난기. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 초깃값 V0=0 설정의 실용적이고 수학적인 편의성을 친숙한 페인트칠 메타포로 이해.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm playful cel art, pure solid white background (#FFFFFF). Two large flat stone stepping stones on the floor. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, kneeling down happily painting a smooth yellow numeral '0' on a stone with a paint brush. Tuxedo cat Jiny with round glasses holding the paint bucket steadily, pure white puppy Toto with sky-blue bandana watching the wet paint with head tilted curiously. Exactly one girl, one cat, one dog. Pure white background, cheerful setup, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "돌판 위에 숫자 0을 칠하며 가장 깔끔하고 단순한 첫 계산을 준비합니다."

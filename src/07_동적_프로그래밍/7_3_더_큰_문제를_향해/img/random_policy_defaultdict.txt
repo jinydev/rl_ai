@@ -1,0 +1,55 @@
+# [이미지 분석 및 프롬프트 명세서] random_policy_defaultdict.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `random_policy_defaultdict.png`
+- **교재 챕터**: 07.3.3 `defaultdict` 무작위 정책의 매핑 동작 (`index.md` 라인 578-585)
+- **캡션**: `defaultdict 무작위 정책의 매핑 동작: 0, 1 카드를 넣자 상하좌우 4방향의 0.25 확률 나비들이 튀어나오는 비유`
+- **교육적 목표**: 
+  정책 객체 `pi = defaultdict(lambda: {0: 0.25, 1: 0.25, 2: 0.25, 3: 0.25})`의 내부 매핑 동작을 시각화합니다. 임의의 상태 좌표 카드 `(0, 1)`을 `pi` 마법 단지에 입력하면, 딕셔너리가 상/하/좌/우 4가지 방향과 각각 0.25의 선택 확률을 지닌 결과 나비들을 뿜어내는 마법 같은 함수 매핑 원리를 설명합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 정책 함수 $\pi(a|s)$의 입출력 매핑, `pi[state]` 호출 시 반환되는 딕셔너리 `{0: 0.25, 1: 0.25, 2: 0.25, 3: 0.25}`.
+- **시각적 은유**: 
+  - 표면에 그리스 문자 `π`가 은은하게 빛나는 마법의 크리스털 유리 단지.
+  - 도로시가 좌표 카드 `(0, 1)`을 단지 입구에 넣는 순간.
+  - 단지 속에서 4마리의 빛나는 파스텔 나비가 솟아오름:
+    * 주황 나비: `↑ Up 0.25`
+    * 초록 나비: `↓ Down 0.25`
+    * 파랑 나비: `← Left 0.25`
+    * 분홍 나비: `→ Right 0.25`
+  - 조교 지니가 안경을 고쳐 쓰며 매핑 결과를 흡족하게 검증.
+- **유지해야 할 필수 콘텐츠**:
+  - `π` 항아리, `(0, 1)` 좌표 카드, 4개의 방향/확률 나비.
+  - 슬라이드 카드 테두리 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 카드 `(0, 1)`을 조심스럽게 `π` 단지에 넣으며 신비로운 나비들의 등장을 환한 미소로 지켜봄.
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 턱시도 조교 냥이. 테이블 위에 앉아 코끝에 걸친 안경을 앞발로 살짝 올리며 "완벽한 균등 분포 매핑이다냥!" 하고 만족스러워함.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 공중으로 날아오르는 예쁜 확률 나비들을 바라보며 꼬리를 신나게 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 소프트 접지 그림자.
+- **제약 사항**: 도로시 교복 치마 금지, 갈색 푸들 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A magical programming visual metaphor scene. On a small wooden table sits an enchanting glowing translucent glass jar with the Greek letter "π" elegantly painted on its front. Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red sneakers) drops a small paper card labeled "(0, 1)" into the jar opening. Magically emerging from the jar are 4 glowing pastel butterflies fluttering in four directions, each carrying a tiny ribbon tag:
+- Upward orange butterfly: "^ Up 0.25"
+- Downward green butterfly: "v Down 0.25"
+- Leftward blue butterfly: "< Left 0.25"
+- Rightward pink butterfly: "> Right 0.25"
+
+Sitting next to the jar, Jiny the lab assistant cat (chubby black-and-white bicolor tuxedo cat, olive-green eyes, tiny round scholar glasses, red collar with gold bell) gently adjusts his glasses with one white paw, smiling with intellectual satisfaction. Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) sits watching the glowing butterflies with wonder and a cheerful open-mouthed dog smile. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

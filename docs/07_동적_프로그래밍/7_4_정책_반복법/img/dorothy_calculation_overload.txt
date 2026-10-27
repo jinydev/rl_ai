@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_calculation_overload.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_calculation_overload.png
+- 교재 챕터: 07.4 정책 반복법 - 연립방정식 풀이의 한계 (index.md 라인 27-31)
+- 캡션: 그림 07-15 상태수(S)와 행동수(A)에 따라 계산량이 폭발해 종이 더미에 묻힌 도로시
+- 교육적 목표: 벨만 최적 방정식을 직접 연립방정식으로 풀려고 할 때 발생하는 지수적 계산 복잡도 $A^S$의 비현실성을, 산더미 같은 계산 서류에 파묻혀 지쳐 쓰러진 도로시와 토토의 모습으로 극적이고 코믹하게 전달합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 차원의 저주, 지수적 계산 폭발($A^S$), 직접 계산의 한계.
+- 시각적 은유: 도로시의 키보다 높게 쌓인 거대한 수학 계산 서류 탑. 서류마다 $A^S$, $\sum$, 복잡한 행렬식들이 빽빽하게 적혀 있고, 서류 더미 사이에서 도로시가 어지러운 소용돌이 눈(@_@)을 한 채 책상에 엎드려 있으며, 토토도 옆에서 서류 한 장을 입에 물고 어리둥절해하는 장면.
+- 유지해야 할 필수 콘텐츠: 산더미 같은 계산 종이 더미, 종이에 적힌 "$A^S$", 기진맥진한 도로시, 토토.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 밤색 양갈래 머리, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 연필을 쥐고 머리에 빙글빙글 소용돌이 기호가 뜬 채 책상에 쓰러진 지친 모습.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 서류 더미 밑에서 얼굴만 쏙 내밀고 걱정스런 눈빛으로 도로시를 바라봄.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻한 톤의 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A funny comic scene of mathematical computational overload. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) is comically buried under towering stacks of paper calculations and scrolls on a wooden desk. Papers show handwritten complex equations, matrices, and a large highlighted formula "A^S = ∞". 
+Dorothy slumps exhausted on the desk with cute dizzy spiral eyes (@_@) and a tiny white flag resting by her pencil. 
+Beside the giant paper pile, Toto the fluffy cream-white puppy (uniform solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) pokes his head out with a worried, sympathetic expression. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at base, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

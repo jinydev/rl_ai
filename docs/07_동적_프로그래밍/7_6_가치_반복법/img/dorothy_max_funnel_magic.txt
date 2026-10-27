@@ -1,0 +1,34 @@
+# dorothy_max_funnel_magic.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_max_funnel_magic.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: MAX 마법 깔때기
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 네 방향(상, 하, 좌, 우)에서 쏟아져 들어온 여러 후보 보상 구슬들이 'MAX' 마법 깔때기를 통과하며 오직 가장 크고 빛나는 최선 1개만 추출되는 장면.
+- **주요 구성**:
+  - 중앙: 은은하게 빛나는 황동 마법 깔때기 (깔때기 입구로 4가지 색깔의 숫자 구슬이 들어감)
+  - 하단: 깔때기 아래로 가장 큰 황금빛 왕관 구슬 딱 1개만 톡 떨어져 그리드 상태에 장착됨
+  - 도로시: 요술봉처럼 지휘봉을 잡고 깔때기 마법을 감상하며 기뻐하는 도로시
+  - 지니: '보렴, 잡다한 것은 거르고 오직 최선만 통과한단다' 설명하는 지니
+  - 토토: 떨어지는 황금 구슬을 받으려고 입을 벌리고 기다리는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- MAX 연산자가 수많은 후보 값들을 단 하나의 최고 값으로 걸러내는 필터 역할을 한다는 핵심 기제를 시각적으로 형상화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, crisp linework, warm cel shading, pure white background (#FFFFFF). A whimsical glowing brass funnel floating in center. Several colorful floating orbs enter the top of the funnel, and only one giant gleaming golden orb with a tiny crown emerges from the bottom. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, smiling with wonder. Tuxedo cat Jiny with round scholar glasses gesturing toward the funnel. Uniform white puppy Toto with sky-blue bandana playfully looking up at the golden orb. Exactly one girl, one cat, one dog. Creative educational metaphor, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "맥스 마법 깔때기는 복잡한 경우의 수 중에서 가장 높은 가치 하나만을 쏙 걸러냅니다."

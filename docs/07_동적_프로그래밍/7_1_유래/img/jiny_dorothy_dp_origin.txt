@@ -1,0 +1,33 @@
+# [이미지 분석 및 프롬프트 명세서] jiny_dorothy_dp_origin.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: jiny_dorothy_dp_origin.png
+- 교재 챕터: 07.1 동적 프로그래밍의 유래 (index.md 라인 12-15)
+- 캡션: 국방부 장관이 극도로 싫어하는 단어인 '수학', '연구'를 지우고, 대신 '동적(Dynamic)'과 '프로그래밍(Programming)'이라는 이름 방패를 만드는 지니와 도로시
+- 교육적 목표: 동적 프로그래밍(DP)이라는 이름이 컴퓨터 코딩 기술이 아니라, 1950년대 리처드 벨만이 국방부 장관의 예산 삭감을 피하기 위해 고안한 매력적인 '정치적 방패 단어'였다는 탄생 비화를 도로시와 조교 지니의 칠판 마법 연출로 흥미진진하게 소개합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 동적 프로그래밍(DP)의 역사적 탄생 배경, '수학/연구'라는 단어의 회피와 'Dynamic/Programming'의 전략적 채택.
+- 시각적 은유: 대형 분필 칠판에 적힌 붉은 가위표가 그어진 'Math Research(수학 연구)' 단어와, 그 아래 찬란한 금빛으로 빛나는 새로운 이름 'Dynamic Programming(동적 프로그래밍)' 방패 엠블럼. 지니가 칠판 지휘봉으로 가리키며 설명하고, 도로시가 흥미진진하게 감탄하는 구도.
+- 유지해야 할 필수 콘텐츠: 칠판의 명확한 텍스트 대비("Math Research" vs "Dynamic Programming"), 지니의 지휘봉, 도로시의 호기심 어린 반응, 토토의 응원.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세 여아, 4.5등신 치비 주니어 체형, 밤색 양갈래 머리(구슬 머리끈), 'STEM HERO' 원형 뱃지가 달린 블루 데님 멜빵바지, 주황/노랑 줄무늬 티셔츠, 빨간 캔버스 운동화. 눈을 반짝이며 양손을 모으고 감탄하는 자세.
+- 조교 지니 (Jiny): 흑백 턱시도 코숏 고양이, 올리브 그린 눈, 핑크 단추 코, 미니 원형 학사 안경, 빨간 방울 목걸이. 교탁 위에서 지휘봉을 잡고 칠판의 비하인드 스토리를 자신만만하게 강의하는 수석 조교의 위엄.
+- 토토 (Toto): 얼룩 없는 단색 웜밀크 화이트 강아지, 하늘색 반다나, 검은 단추 코와 눈. 칠판 앞 바닥에 얌전히 앉아 고개를 갸웃하며 꼬리를 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 생동감 있는 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+칠판 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+An engaging classroom scene unveiling the humorous origin of Dynamic Programming. In the center stands a classic slate blackboard framed in warm walnut wood. Written in chalk on the board is "Math Research" crossed out boldly with a soft red chalk X, and below it glowing proudly in bright golden chalk is "Dynamic Programming" decorated with sparkling stars and a protective crest outline. 
+On the left of the board, Jiny the lab assistant cat (chubby black-and-white tuxedo cat with cow pattern fur, olive-green eyes, pink button nose, round wire scholar glasses, red collar with gold bell) stands proudly on a wooden podium, pointing a wooden pointer stick at the golden words. 
+On the right, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, vibrant ruby red canvas sneakers) gazes at the board with wide excited amber eyes and hands clasped in delightful surprise. 
+Sitting politely by her feet is Toto the fluffy cream-white puppy (uniform solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) looking up with a cheerful open smile.
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

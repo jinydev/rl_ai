@@ -1,0 +1,5 @@
+Common Misconception 2: C/C++ memory allocation and pointer tricks.
+A dark-mode code IDE displaying low-level C memory allocation (malloc, free, pointers, heap vs stack) crossed out with a glowing red prohibition sign.
+A bright banner clarifying: 'DP is NOT low-level RAM memory management or pointer coding!'.
+Professor Hojin (hojin_01.jpg) points out the true nature of dynamic programming with Toto (single cream puppy).
+Style: Cyberpunk code aesthetics with clean educational contrast, 16:9 ratio.

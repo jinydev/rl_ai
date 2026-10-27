@@ -1,0 +1,47 @@
+# [이미지 분석 및 프롬프트 명세서] reward_lookup_box.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `reward_lookup_box.png`
+- **교재 챕터**: 07.3.2.1 reward() 메서드와 상태 기반 보상 (`index.md` 라인 360-389)
+- **캡션**: `다음 상태(s')의 좌표만 넣으면 보상이 톡! reward() 메서드의 마법 상자`
+- **교육적 목표**: 
+  강화학습 보상 함수 $r(s, a, s')$ 중 현재 3x4 격자 월드에서는 시작 상태 $s$와 행동 $a$에 상관없이 오직 **도착한 다음 상태 $s'$**의 좌표에 의해서만 보상이 결정되는(`return self.reward_map[next_state]`) 메커니즘을 마법 보상 자판기/우체통의 은유로 쉽게 이해시킵니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 상태 기반 보상 결정(State-dependent Reward), 2차원 배열 즉시 색인(Array Indexing).
+- **시각적 은유**: 
+  - 앤틱한 우드 앤 브라스(Wood & Brass) 스타일의 마법 보상 분류 상자(기계).
+  - 도로시가 `(0, 3)` 좌표 토큰 카드를 상자 투입구에 넣자, 상자 아래 배출구로 탐스러운 황금 사과(+1.0 코인)가 톡 떨어져 나옴.
+  - 상자 옆 다른 슬롯에는 `(1, 3)` 토큰과 함께 연기 나는 귀여운 폭탄(-1.0) 마크가 표시되어 있음.
+  - 조교 지니가 상자 위에 앉아 흐뭇하게 바라보고, 토토가 신나게 꼬리를 흔듦.
+- **유지해야 할 필수 콘텐츠**:
+  - `(s')` 좌표 입력과 보상 결과(+1.0 / -1.0 / 0) 출력의 직관적 인과 관계.
+  - 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). `(0, 3)` 좌표 카드를 넣으며 사과가 나오자 활짝 미소 지음.
+- **토토**: 크림화이트 강아지 (하늘색 반다나). 튀어나온 사과 코인을 앞발로 건드리며 즐거워함.
+- **조교 지니**: 안경을 쓴 턱시도 고양이 (빨간 방울 목걸이). 마법 상자 위에 앉아 지도 감독.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 일본어 텍스트 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A whimsical magical reward dispenser machine illustrating the function `reward(state, action, next_state)`. Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) inserts a small wooden card engraved with "(0, 3)" into a glowing slot labeled "next_state". 
+
+From the dispenser tray below, a shiny golden apple token marked "+1.0" pops out delightfully. Sitting nearby, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) excitedly sniffs the shiny apple token with a joyful wagging tail. Perched atop the wooden machine, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny scholar glasses, red collar with gold bell) nods approvingly with a notebook tucked under its paw. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

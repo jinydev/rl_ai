@@ -1,0 +1,33 @@
+# value_iteration_direct.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: value_iteration_direct.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 정책은 생략! 가치 함수를 직접 최대(max)로 갱신
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 정책(Policy)이라는 중간 징검다리를 거치지 않고, 가치 함수(V)가 다음 가치 함수(V_new)로 직통 롤러코스터 레일을 타고 순간 이동하는 다이렉트 갱신 일러스트.
+- **주요 구성**:
+  - 중앙: 상태 V(k)에서 상태 V(k+1)로 바로 연결된 반짝이는 금빛 고속 레일
+  - 아래쪽: '정책 평가-개선'의 구불구불한 옛길은 우회로로 점선 처리
+  - 도로시: 직통 고속 레일 위를 신나게 미끄러져 내려오는 작은 썰매/카트를 타고 환호하는 도로시
+  - 지니와 토토: 카트에 함께 탑승해 바람을 맞으며 즐거워하는 지니와 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시(즐겁게 탑승), 토토(귀를 펄럭이며 즐김), 지니(안경 잡고 즐김). 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 반복법에서는 별도의 정책 테이블을 매번 갱신할 필요 없이 가치 배열 하나만 반복해서 덮어쓰면 된다는 알고리즘의 본질을 역동적으로 각인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, dynamic clear lines, vibrant cel shading, pure white background (#FFFFFF). A smooth glowing golden express rail bypassing a windy confusing maze below. In a small wooden kart on the golden rail, adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, raising her arms joyfully. Beside her in the kart, one tuxedo cat Jiny holding his glasses and one white puppy Toto with sky-blue bandana with floppy ears catching the wind. Exactly one girl, one cat, one dog. Fun, energetic, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "정책을 매번 갱신할 필요 없이, 가치 함수를 직접 최댓값으로 갱신하며 직행합니다."

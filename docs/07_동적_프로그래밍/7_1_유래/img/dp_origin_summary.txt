@@ -1,0 +1,41 @@
+# [이미지 분석 및 프롬프트 명세서] dp_origin_summary.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dp_origin_summary.png
+- 교재 챕터: 07.1.6 학습 정리 (index.md 라인 114-124)
+- 캡션: 그림 07-1-6 동적 프로그래밍의 탄생 비화와 진정한 의미를 완벽하게 정리한 지니와 도로시, 토토
+- 교육적 목표: 07.1절에서 배운 동적 프로그래밍의 3대 핵심 유래(코딩 기술이 아닌 최적 계획, Dynamic의 역동성, Programming의 다단계 의사결정 일정표)를 도로시, 지니 조교, 토토가 칠판 앞에서 깔끔하게 완벽 정리하는 축하와 정리의 장면을 완성합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 동적 프로그래밍(DP)의 정의 재확립 및 챕터 핵심 정리.
+- 시각적 은유: 따뜻한 원목 프레임의 녹색 칠판. 칠판 헤더에는 "07.1 동적 프로그래밍 유래 정리"가 분필로 적혀 있고, 그 아래 세 가지 핵심 요약이 깔끔한 불릿으로 정리되어 있음:
+  1. Planning: 코딩이 아닌 다단계 최적 계획
+  2. Dynamic: 시간 변화 + 긍정적 키워드
+  3. Programming: 다단계 의사결정 일정표
+  칠판 옆에서 지니가 지휘봉을 들고 뿌듯하게 서 있고, 도로시는 양손 주먹을 쥐고 기뻐하며, 토토는 꼬리를 흔들며 활짝 웃는 승리와 성취의 구도.
+- 유지해야 할 필수 콘텐츠: 녹색 분필 칠판과 명확한 3개 요약 포인트, 도로시의 성취감 넘치는 자세, 지니의 지휘봉, 토토의 밝은 미소.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세 여아, 4.5등신 치비 주니어 체형, 밤색 양갈래 머리(구슬 머리끈), 'STEM HERO' 뱃지가 달린 블루 데님 멜빵바지, 주황/노랑 줄무늬 티셔츠, 빨간 캔버스 운동화. 양손 주먹을 쥐고 환하게 웃으며 "이제 완벽히 이해했어!"라는 표정.
+- 조교 지니 (Jiny): 흑백 턱시도 코숏 고양이, 올리브 눈, 핑크 단추 코, 미니 원형 안경, 빨간 방울 목걸이. 나무 책상 위에서 지휘봉을 잡고 칠판 요약을 가리키며 당당하게 턱을 든 수석 조교.
+- 토토 (Toto): 얼룩 없는 단색 웜밀크 화이트 강아지, 하늘색 반다나, 검은 단추 코/눈. 도로시 발치에서 기분 좋게 혀를 내밀고 꼬리를 치는 해맑은 모습.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 화사한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+칠판 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A celebratory chapter summary scene. In the background stands a wide green chalkboard with a warm walnut wood frame. Neatly written in crisp white chalk is:
+Header: "07.1 Dynamic Programming Origin"
+1. Optimal Planning: Not computer coding, but multi-stage planning
+2. Dynamic: Changing over time & positive vitality
+3. Programming: Scheduling multi-stage decision plans
+Standing in front on the left, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily pumps her fists in joyful triumph, smiling brightly. 
+On the right, Jiny the lab assistant cat (chubby black-and-white tuxedo cat with cow pattern fur, olive-green eyes, pink button nose, round wire scholar glasses, red collar with gold bell) sits smartly on a small wooden table holding a slender pointer stick pointing at the chalkboard. 
+In the center, Toto the fluffy cream-white puppy (uniform solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) wags his plumey tail happily with an open-mouthed dog smile.
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

@@ -1,0 +1,33 @@
+# dorothy_value_iteration_jump.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_value_iteration_jump.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 한 칸 앞만 보고 보물을 향해 뛰는 가치 반복법
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 먼 미래의 모든 경우의 수를 다 따지는 대신, 바로 앞의 '가장 큰 보물(max)'만 돋보기로 확인하고 거침없이 도약하는 가치 반복법의 직관적 태도.
+- **주요 구성**:
+  - 중앙: 그리드 발판 위에서 황금 돋보기로 바로 앞 칸을 비추며 씩씩하게 점프하는 도로시
+  - 그리드 칸: 각 칸마다 작고 반짝이는 별 숫자(+1, +10)가 적혀 있고, 가장 큰 +10 칸으로 도약
+  - 지니: 날카로운 눈으로 '지금 가장 좋은 곳으로 즉시 뛰어!' 손짓하는 지니
+  - 토토: 도로시의 점프에 맞춰 함께 허공으로 귀엽게 뛰어오르는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 점프 모션, 지니 격려, 토토 점프. 표준 캐릭터 가이드 엄수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 반복법(Value Iteration)의 Bellman Optimality Backup 연산이 갖는 '탐욕적 즉시 갱신'의 직관을 학습자에게 각인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean lines, warm vibrant cel shading, pure white background (#FFFFFF). Adorable 9-year-old anime girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, holding a small golden magnifying glass, dynamically jumping forward across floating stone tiles toward a glowing star. One milk-white puppy Toto with sky-blue bandana leaping playfully beside her. One tuxedo cat Jiny with scholar glasses pointing forward encouragingly. Exactly one girl, one dog, one cat. Energetic, educational, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "가치 반복법은 먼 훗날을 복잡하게 계산하지 않고, 바로 다음 가장 달콤한 최선의 한 걸음을 내딛습니다."

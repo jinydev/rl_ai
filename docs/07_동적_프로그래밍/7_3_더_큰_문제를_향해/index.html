@@ -652,7 +652,7 @@
 
 <p>[그림 07-8] 3 × 4 그리드 월드</p>
 
-<p><img src="./img/fig_07_8.svg" alt="그림 07-8" /></p>
+<p><img src="./img/fig_07_8.jpg" alt="그림 07-8" /></p>
 
 <h1 id="07312-3--4-그리드-월드의-문제-설정은-다음과-같습니다">07.3.1.2 ‘3 × 4 그리드 월드’의 문제 설정은 다음과 같습니다.</h1>
 
@@ -703,7 +703,9 @@
 </span>        <span class="n">self</span><span class="p">.</span><span class="n">agent_state</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">start_state</span>  <span class="c1"># 에이전트 초기 상태(좌표)
 </span></code></pre></div></div>
 
-<p>파이썬 클래스에서 초기화 코드는 <code class="language-plaintext highlighter-rouge">__init__</code>메소드 안에 작성합니다. <code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스를 살펴보면 여러 인스턴스 변수를 사용한 흔적을 볼 수 있습니다.</p>
+<p><img src="./img/gridworld_class_blueprint.png" alt="GridWorld 클래스의 설계도" /></p>
+
+<p>파이썬 클래스에서 초기화 코드는 <code class="language-plaintext highlighter-rouge">__init__</code> 메소드 안에 작성합니다. <code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스를 살펴보면 여러 인스턴스 변수를 사용한 흔적을 볼 수 있습니다. 이 초기화 코드는 행동 공간 <code class="language-plaintext highlighter-rouge">action_space</code>, 보상 지도 <code class="language-plaintext highlighter-rouge">reward_map</code>, 시작/벽/목표 상태 등 그리드 월드 환경의 모든 물리적 법칙과 상태 변수를 하나의 파이썬 클래스 안에 유기적으로 통합하는 설계도 역할을 합니다.</p>
 
 <h4 id="step2-코드설명">step2 코드설명</h4>
 
@@ -740,7 +742,7 @@
 
 <p>그림 07-9 보상 맵의 좌표계</p>
 
-<p><img src="./img/fig_07_9.svg" alt="그림 07-9" /></p>
+<p><img src="./img/fig_07_9.jpg" alt="그림 07-9" /></p>
 
 <h4 id="step4-일회성-과제">step4 일회성 과제</h4>
 
@@ -911,6 +913,10 @@
   </ul>
 </blockquote>
 
+<p><img src="./img/action_coordinates_mapping.png" alt="행동 번호와 좌표 변화량의 비밀: (-1, 0)은 UP, (1, 0)은 DOWN!" /></p>
+
+<p>컴퓨터의 2차원 행렬 인덱스 체계에서는 맨 위 행이 0번 행이므로, 위(UP)로 이동할 때 y좌표를 1 감소(<code class="language-plaintext highlighter-rouge">-1</code>)시키고 아래(DOWN)로 이동할 때 y좌표를 1 증가(<code class="language-plaintext highlighter-rouge">+1</code>)시켜야 합니다. 이 좌표 변화량 벡터를 현재 좌표 <code class="language-plaintext highlighter-rouge">(y, x)</code>에 더함으로써 직관적인 이동 연산이 이루어집니다.</p>
+
 <p>그런 다음 ❷에서 테두리 밖이나 벽으로 이동하지 않았는지 확인하여, 이동이 불가능하다면 현재 위치를 유지합니다(<code class="language-plaintext highlighter-rouge">next_state = state</code>).</p>
 
 <blockquote>
@@ -972,6 +978,10 @@
   </ul>
 </blockquote>
 
+<p><img src="./img/reward_lookup_box.png" alt="다음 상태(s')의 좌표만 넣으면 보상이 톡! reward() 메서드의 마법 상자" /></p>
+
+<p>이처럼 3x4 격자 월드에서는 시작 위치나 어떤 행동을 취했는지와 상관없이 에이전트가 최종 도착한 ‘다음 상태($s’$)’의 좌표만을 인덱스로 삼아 보상 맵에서 즉시 보상값을 꺼내어 돌려주도록 설계되어 있습니다.</p>
+
 <h4 id="step10-시각화-메서드">step10 시각화 메서드</h4>
 
 <p>이외에도 <code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스에는 시각화용 메서드인 <code class="language-plaintext highlighter-rouge">render_v(self, v=None, policy=None)</code>도 있습니다. 시각화는 지금 주제가 아니므로 책에서는 사용법만 보여드리겠습니다.</p>
@@ -984,7 +994,7 @@
 
 <p>그림 07-10 3×4 그리드 월드 시각화</p>
 
-<p><img src="./img/fig_07_10.svg" alt="그림 07-10" /></p>
+<p><img src="./img/fig_07_10.jpg" alt="그림 07-10" /></p>
 
 <p>벽은 회색으로 칠해져 있습니다. 각 칸의 왼쪽 아래에는 보상값이 적혀 있습니다. 다만 보상이 0이면 아무런 값도 출력하지 않습니다.</p>
 
@@ -1005,7 +1015,7 @@
 
 <p>그림 07-11 3×4 그리드 월드 시각화(상태 가치 함수 입력)</p>
 
-<p><img src="./img/fig_07_11.svg" alt="그림 07-11" /></p>
+<p><img src="./img/fig_07_11.jpg" alt="그림 07-11" /></p>
 
 <p>이처럼 <code class="language-plaintext highlighter-rouge">render_v()</code> 메서드에 가치 함수를 건네면 각 위치의 가치 함수 값이 해당 칸 오른쪽 위에 표시됩니다.</p>
 
@@ -1016,44 +1026,16 @@
 <blockquote>
   <p>NOTE_ <code class="language-plaintext highlighter-rouge">render_v()</code> 메서드는 정책도 받을 수 있습니다.</p>
 
-  <p>정책을 건네면 각 위치에서 취할 가능성이 가장 큰 행동을 화살표### 07.2.5 무작위 정책 평가 결과</p>
+  <p>정책을 건네면 각 위치에서 취할 가능성이 가장 큰 행동을 화살표로 그려줍니다.</p>
 </blockquote>
 
-<p>이제 지금까지 구현한 <code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스와 <code class="language-plaintext highlighter-rouge">policy_eval()</code> 함수를 사용하여 정책 평가를 수행해봅시다.</p>
+<h4 id="step13-가치-함수의-딕셔너리-구현과-한계">step13 가치 함수의 딕셔너리 구현과 한계</h4>
 
-<div align="right"><b>ch07/policy_eval.py</b></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">env</span> <span class="o">=</span> <span class="nc">GridWorld</span><span class="p">()</span>
-<span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span> <span class="c1"># 할인율
-</span>
-<span class="n">pi</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">})</span> <span class="c1"># 정책
-</span><span class="n">V</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># 가치 함수
-</span>
-<span class="n">V</span> <span class="o">=</span> <span class="nf">policy_eval</span><span class="p">(</span><span class="n">pi</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">env</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span> <span class="c1"># 정책 평가
-</span><span class="n">env</span><span class="p">.</span><span class="nf">render_v</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">pi</span><span class="p">)</span> <span class="c1"># 시각화
-</span></code></pre></div></div>
-
-<p>무작위 정책을 <code class="language-plaintext highlighter-rouge">pi</code>, 가치 함수를 <code class="language-plaintext highlighter-rouge">V</code>로 초기화했습니다. 그리고 무작위 정책을 평가하여 가치 함수를 구합니다. 이 코드를 실행하면 다음 그림을 얻을 수 있습니다.</p>
-
-<p><strong>그림 07-13</strong> 무작위 정책의 가치 함수</p>
-
-<p><img src="./img/fig_07_13.svg" alt="그림 07-13" /></p>
-
-<p>[그림 07-13]은 무작위 정책의 가치 함수를 보여줍니다. 예를 들어 시작점인 왼쪽 맨 아래 칸의 가치 함수는 -0.10입니다. 시작점에서 무작위로 움직이면 기대 수익이 -0.10이라는 뜻입니다. 에이전트가 무작위로 움직이기 때문에 폭탄을 (의도치 않게) 얻을 수도 있습니다. 값이 -0.10인 걸 보니 사과(+1)보다 폭탄(-1)을 얻을 확률이 조금 더 큽니다. 또한 맨 아래 줄과 가운데 줄은 모두 마이너스인데, 이 위치들에서는 폭탄의 영향이 더 크다는 뜻입니다.</p>
-
-<p>앞의 코드를 실행하면 결과가 순식간에 나옵니다. DP를 적용하여 정책 평가의 실행 효율을 높였기 때문입니다. 그 덕분에 그리드 월드의 크기가 (어느 정도) 커져도 괜찮습니다. 하지만 아직까지는 정책 평가만을 수행했을 뿐입니다. 다음 절에서는 최적 정책을 찾는 방법을 알아보겠습니다.</p>
-
-<blockquote>
-  <p>[!NOTE]
-<strong>policy_eval()의 핵심 수렴 루프 메커니즘</strong></p>
-  <ul>
-    <li><strong>갱신 반복 (<code class="language-plaintext highlighter-rouge">while True</code>)</strong>: 가치 함수의 상태 값이 수렴하여 변화가 거의 없어질 때까지 <code class="language-plaintext highlighter-rouge">eval_onestep</code>을 반복 가동합니다.</li>
-    <li><strong>최대 변화량 추적 (<code class="language-plaintext highlighter-rouge">delta</code>)</strong>: 갱신되기 직전 가치 표(<code class="language-plaintext highlighter-rouge">old_V</code>)와 갱신된 가치 표(<code class="language-plaintext highlighter-rouge">V</code>)의 각 상태별 절댓값 차이(<code class="language-plaintext highlighter-rouge">abs(V[state] - old_V[state])</code>)를 구한 뒤, 그중 가장 큰 변화 폭을 <code class="language-plaintext highlighter-rouge">delta</code>에 기록합니다.</li>
-    <li><strong>임계값 중단 검사 (<code class="language-plaintext highlighter-rouge">threshold</code>)</strong>: <code class="language-plaintext highlighter-rouge">delta</code>가 우리가 설정한 아주 미세한 오차 범위 임계값(<code class="language-plaintext highlighter-rouge">threshold = 0.001</code>)보다 작아지면, 더 이상의 반복 계산이 무의미할 정도로 수렴했다고 판정하여 무한 루프를 탈출(<code class="language-plaintext highlighter-rouge">break</code>)하고 가치 함수 표를 최종 반환합니다.�� 구현했습니다. 딕셔너리는 <code class="language-plaintext highlighter-rouge">V[key]</code> 형태로 사용하는데, 딕셔너리 안에 key가 존재하지 않으면 오류가 납니다.</li>
-  </ul>
-</blockquote>
+<p>앞서 가치 함수 <code class="language-plaintext highlighter-rouge">V</code>를 딕셔너리로 구현했습니다. 딕셔너리는 <code class="language-plaintext highlighter-rouge">V[key]</code> 형태로 사용하는데, 딕셔너리 안에 key가 존재하지 않으면 <code class="language-plaintext highlighter-rouge">KeyError</code> 오류가 납니다.</p>
 
 <p>따라서 앞의 코드처럼 우선 모든 원소를 초기화해야 합니다.</p>
+
+<p><img src="./img/python_keyerror_puzzle.png" alt="등록되지 않은 키를 찾으려다 펑! 일반 딕셔너리의 KeyError 난관" /></p>
 
 <blockquote>
   <p>[!NOTE]
@@ -1220,7 +1202,7 @@
 
 <p>그림 07-12 각 상태에 순차적으로 접근하기</p>
 
-<p><img src="./img/fig_07_12.svg" alt="그림 07-12" /></p>
+<p><img src="./img/fig_07_12.jpg" alt="그림 07-12" /></p>
 
 <p>이와 같이 모든 상태에 순차적으로 접근합니다.</p>
 
@@ -1244,6 +1226,10 @@
 &amp;V_{k+1}(s) = \sum_{a} \pi(a \mid s) \{ r(s, a, s') + \gamma V_k(s') \}
 \end{aligned}
 \tag{식 07-3}\)</p>
+
+<p><img src="./img/bellman_code_math_bridge.png" alt="수학과 코드의 아름다운 만남: 벨만 갱신식과 파이썬 한 줄의 1:1 완벽한 대응!" /></p>
+
+<p>수학 수식과 파이썬 코드를 1:1로 비교해보면, 벨만 방정식의 시그마($\sum$) 기호는 <code class="language-plaintext highlighter-rouge">for action, action_prob in action_probs.items():</code> 루프로, 가중치 $\pi(a \mid s)$는 <code class="language-plaintext highlighter-rouge">action_prob</code> 변수로, 그리고 즉시 보상과 할인된 미래 가치 $r + \gamma V(s’)$는 <code class="language-plaintext highlighter-rouge">r + gamma * V[next_state]</code>로 완벽하게 대응되어 누적 합산(<code class="language-plaintext highlighter-rouge">new_V += ...</code>)되는 아름다운 구조를 확인할 수 있습니다.</p>
 
 <p>이상의 <code class="language-plaintext highlighter-rouge">eval_onestep()</code> 함수로 가치 함수가 한 차례 갱신됩니다.</p>
 
@@ -1289,6 +1275,10 @@
   </ul>
 </blockquote>
 
+<p><img src="./img/policy_eval_convergence.png" alt="오차가 임계값 아래로 떨어질 때까지 반복! delta와 threshold의 수렴 마법" /></p>
+
+<p>알고리즘이 가동되면 매 스텝마다 가치 함수의 변화 폭인 <code class="language-plaintext highlighter-rouge">delta</code>가 점점 작아지며 계측기 바늘처럼 아래로 내려옵니다. 마침내 <code class="language-plaintext highlighter-rouge">delta</code>가 우리가 설정한 정밀 임계값 <code class="language-plaintext highlighter-rouge">threshold (0.001)</code> 아래로 떨어지는 순간 수렴(Convergence)이 완료되고, 루프를 안전하게 탈출하여 최종 수렴된 가치 함수를 완성하게 됩니다.</p>
+
 <hr />
 
 <h1 id="0735-무작위-정책-평가-결과">07.3.5 무작위 정책 평가 결과</h1>
@@ -1313,7 +1303,7 @@
 
 <p><strong>그림 07-13</strong> 무작위 정책의 가치 함수</p>
 
-<p><img src="./img/fig_07_13.svg" alt="그림 07-13" /></p>
+<p><img src="./img/fig_07_13.jpg" alt="그림 07-13" /></p>
 
 <p>[그림 07-13]은 무작위 정책의 가치 함수를 보여줍니다.</p>
 

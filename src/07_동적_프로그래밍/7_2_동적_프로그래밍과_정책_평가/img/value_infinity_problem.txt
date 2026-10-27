@@ -1,0 +1,33 @@
+# value_infinity_problem.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: value_infinity_problem.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 무한한 미래 보상 계산의 한계와 난처함
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 끝도 없이 돌돌 풀려 나와 방바닥을 가득 채우는 끝없는 미래 보상 스크롤 앞에서 수동 계산기를 들고 땀을 삐질 흘리는 도로시의 코믹한 난처함.
+- **주요 구성**:
+  - 스크롤: 바닥 끝까지 둘둘 풀려 끝이 보이지 않는 긴 양피지 두루마리와 유령처럼 떠도는 무한대 기호(infinity)
+  - 도로시: 주사판 수동 계산기를 들고 이마의 땀을 닦으며 한숨 쉬는 표정
+  - 지니: 두루마리 길이를 재다가 지쳐 엎드린 턱시도 고양이 지니
+  - 토토: 두루마리 종이 끝을 물고 장난치는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 당황/피로 표정, 지니 지침, 토토 장난기. 표준 캐릭터 의상 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 정의대로 무한한 스텝의 보상을 직접 다 더하는 것은 계산적으로 불가능하다는 문제 상황을 극적으로 연출.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, expressive funny linework, warm colors, pure solid white background (#FFFFFF). An infinitely long parchment scroll rolling endlessly across the floor with tiny reward symbols. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, holding a small abacus looking comically overwhelmed with a sweat drop. Tuxedo cat Jiny with round glasses lying tired on the scroll, milk-white puppy Toto with sky-blue bandana playing with the paper end. Exactly one girl, one cat, one dog. Pure white background, humorous dilemma, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "끝없이 이어지는 무한한 미래의 보상을 일일이 다 더하는 것은 불가능합니다."

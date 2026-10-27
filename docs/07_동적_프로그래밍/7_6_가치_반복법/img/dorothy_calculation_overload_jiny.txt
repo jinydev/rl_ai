@@ -1,0 +1,33 @@
+# dorothy_calculation_overload_jiny.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_calculation_overload_jiny.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 중복 계산 피로와 지니의 구조
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 끝없는 중간 정책 평가 계산에 지쳐 책상 위에 엎드린 도로시와, 걱정스럽게 종이를 치워주며 새로운 지름길을 알려주는 지니의 다정한 구조 장면.
+- **주요 구성**:
+  - 책상: 무수한 계산 종이들이 어지럽게 쌓여 있고, 도로시는 책상에 엎드려 빙글빙글 눈(피로 표현)을 하고 있음
+  - 도로시: 양갈래 머리가 살짝 헝클어지고 볼을 책상에 댄 채 한숨 쉬는 귀여운 표정
+  - 지니: 도로시의 어깨를 톡톡 두드리며 '도로시야, 이제 그 수많은 계산은 생략해도 돼!'라며 황금색 MAX 카드를 내미는 지니
+  - 토토: 도로시 다리에 머리를 기대고 위로하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시(지친 코믹한 표정, 정확한 의상), 지니(안경 쓴 친절한 조언자), 토토(하얀 털, 스카이블루 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 학습자가 공감할 수 있는 계산 피로를 유머러스하게 표현하고, 가치 반복법의 등장 필요성을 감정적으로 공감시킴.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean expressive lines, warm colors, pure white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, comically resting her cheek on a wooden desk looking exhausted with swirly tired eyes, surrounded by gentle stacks of study papers. Tuxedo cat Jiny with round glasses gently patting her shoulder, offering a glowing golden card. One milk-white puppy Toto with sky-blue bandana resting its chin sympathetically on her foot. Exactly one girl, one cat, one dog. Humorous, comforting, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "매번 완벽한 가치를 구하느라 지치셨나요? 이제 그 중복 계산을 과감히 생략할 시간입니다."

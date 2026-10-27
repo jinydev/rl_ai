@@ -1,0 +1,35 @@
+# [이미지 분석 및 프롬프트 명세서] jiny_dorothy_policy_iteration_gears.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: jiny_dorothy_policy_iteration_gears.png
+- 교재 챕터: 07.5 정책 반복법 구현 인트로 (index.md 라인 10-14)
+- 캡션: 그림 07-14-1 정책 평가와 개선 기어를 파이썬 렌치로 유기적으로 연결하여 조립하는 지니와 도로시
+- 교육적 목표: 우리가 앞서 완성한 '정책 평가(가치 함수 계산)' 거대 기어와 새로 구현할 '정책 개선(탐욕화)' 거대 기어를 파이썬 코드로 맞물려 조립함으로써, 두 프로세스가 스스로 회전하며 최적 정책으로 수렴하는 완성된 알고리즘 메커니즘을 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 정책 반복법의 두 엔진(평가와 개선)의 기계적 결합 및 자동화.
+- 시각적 은유: 메이커 작업실의 기어 조립대. 왼쪽에는 웅장한 청동 기어("Policy Evaluation"), 오른쪽에는 반짝이는 황동 기어("Policy Improvement"). 도로시가 파이썬 로고가 새겨진 렌치를 들고 진지하고 즐겁게 두 기어의 축을 조이고 있고, 작업복 차림의 조교 지니가 기름칠 캔을 들고 정밀하게 조언하는 협업 장면.
+- 유지해야 할 필수 콘텐츠: 두 개의 맞물리는 거대 기어(Evaluation / Improvement), 파이썬 렌치, 조립하는 도로시와 지니, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 파란색 파이썬 렌치를 쥐고 눈을 빛내며 기어를 조립하는 주니어 엔지니어.
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 미니 안경, 빨간 방울 목걸이. 작업대 위에서 앙증맞은 앞발로 황동 윤활유 캔을 들고 톱니가 부드럽게 맞물리도록 지도.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 부품 상자 옆에서 꼬리를 흔들며 작은 볼트를 발로 톡톡 굴림.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 정교한 메이커 공방 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A charming maker workshop scene assembling the gears of policy iteration. In the center are two large interlocking steampunk-style brass and steel gear wheels mounted on a sturdy oak workbench: 
+- Left Gear labeled "Policy Evaluation" in neat engraved letters. 
+- Right Gear labeled "Policy Improvement" in neat engraved letters. 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) happily tightens a central brass bolt connecting the two gears using a neat blue wrench with a stylized Python snake icon. 
+Beside the gears on the bench, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, round wire scholar glasses, red collar with gold bell) carefully holds a small vintage oil can with his paw. 
+Under the bench, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) sits wagging his tail next to a small wooden toolbox. Exactly one dog and one cat only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

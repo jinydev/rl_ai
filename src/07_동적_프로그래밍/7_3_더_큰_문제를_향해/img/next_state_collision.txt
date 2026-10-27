@@ -1,0 +1,47 @@
+# [이미지 분석 및 프롬프트 명세서] next_state_collision.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `next_state_collision.png`
+- **교재 챕터**: 07.3.2.1 `next_state()` 메서드와 충돌 예외 처리 (`index.md` 라인 335-355)
+- **캡션**: `쿵! 테두리 밖이나 벽을 만나면 제자리로!`
+- **교육적 목표**: 
+  그리드 월드의 상태 전이 함수 `next_state(state, action)`에서, 에이전트가 격자 테두리 바깥(Out of Bounds)으로 나가려 하거나 진입 불가 장애물인 중앙의 벽 `wall_state = (1, 1)`으로 돌진할 경우, 벽을 뚫지 못하고 현재 위치 그대로 제자리에 유지(`next_state = state`)되는 물리적 충돌 안전망 로직을 코믹하고 직관적으로 설명합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 경계 조건(Boundaries Check) 및 장애물 충돌 예외 처리 (`next_state = state`).
+- **시각적 은유**: 
+  - 격자 타일 위에서 씩씩하게 발을 딛던 도로시가 단단한 회색 석벽 블록이나 보이지 않는 투명 격자 벽면에 살짝 "쿵!" 하고 부딪혀 뒤로 한 발 멈칫 물러서는 모습.
+  - 도로시의 머리 위에 작은 만화풍 별과 물음표(`?`) 효과가 귀엽게 맴돎.
+  - 토토가 깜짝 놀라 눈을 동그랗게 뜨고 "멍!" 짖는 모습.
+  - 조교 지니가 벽 위에 앉아 "벽은 뚫을 수 없다냥! 제자리 복귀다냥!" 푯말을 가리키는 유쾌한 서사.
+- **유지해야 할 필수 콘텐츠**:
+  - 격자 타일, 회색 벽돌 벽, 충돌 효과(부딪힘 스타 버스트), 제자리에 멈춰 서는 상황.
+  - 커다란 안내 팻말 텍스트 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 벽돌 벽에 살짝 부딪혀 뒤로 한 걸음 물러나며 볼을 빵빵하게 부풀리고 머리를 긁적이는 깜찍한 표정.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 도로시 옆에서 엉덩이를 뒤로 빼고 깜짝 놀란 표정으로 입을 'O' 모양으로 벌림.
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 턱시도 조교 냥이. 벽돌 블록 위에 얌전히 앉아 앞발로 "벽은 진입 불가! Stay!" 작은 깃발을 흔들며 규칙을 안내.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 소프트 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 대형 텍스트 박스 배제, 갈색 푸들 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A humorous and expressive educational scene illustrating collision boundary checks in a gridworld. On pastel isometric grid tiles, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' round chest patch, red sneakers) bumps gently into a solid gray stone wall block on cell (1, 1). She stumbles back one step to her original tile, puffing her cheeks with a cute, comically surprised expression while scratching her head; tiny cartoon starburst sparks and a soft question mark hover briefly above her hair. 
+
+Beside her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) hops backward with wide surprised black button eyes and an open 'o' shaped mouth. Perched calmly on top of the stone wall block, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny round scholar glasses, red collar with gold bell) points downward with a white front paw, gesturing that the agent must stay in place when hitting an obstacle. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_greedy_policy_calculation.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_greedy_policy_calculation.png
+- 교재 챕터: 07.5.1 정책 개선 구현 - greedy_policy() 격자 지도 갱신 (index.md 라인 174-178)
+- 캡션: 그림 07-16 각 상태에서 가장 좋은 방향을 계산하여 지도(π)에 화살표로 꾹 그리는 도로시
+- 교육적 목표: `greedy_policy()` 함수가 3x4 격자 월드의 모든 칸을 하나씩 방문하며, 각 칸마다 가장 큰 기대 수익을 주는 최선 방향을 계산한 뒤 정책 지도 $\pi$의 해당 칸에 굵고 선명한 녹색 화살표(결정적 행동)를 확정적으로 그려 넣는 전수 갱신 과정을 도로시의 지도 그리기 작업으로 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 모든 상태 $s$에 대해 $V$ 기반 탐욕적 화살표 갱신(Greedy Arrow Placement).
+- 시각적 은유: 3x4 격자 모눈 지도가 펼쳐진 원목 책상. 도로시가 초록색 크레용(또는 마커)을 쥐고 격자 칸 하나하나에 최적 방향 화살표(사과를 향하고 폭탄을 피하는 방향)를 꾹꾹 눌러 그리고 있음. 이미 여러 칸에 그려진 화살표들이 목적지(사과 칸)를 향해 아름다운 물결을 이루고, 토토가 곁에서 응원하는 따뜻한 제작 현장.
+- 유지해야 할 필수 콘텐츠: 3x4 격자 지도, 각 칸에 그려진 선명한 방향 화살표, 지도에 화살표를 그리는 도로시, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 집중한 듯 볼을 발그레 붉히고 정성스럽게 격자 칸에 초록 화살표를 그려 넣는 열정적인 메이커.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 책상 옆에서 발을 딛고 서서 도로시의 화살표가 완성될 때마다 신나게 꼬리를 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 포근한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A charming maker scene of updating the gridworld policy map. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) leans attentively over a large parchment map of a 3x4 gridworld on a wooden desk. 
+Using a bright green marker, she carefully draws a bold green directional arrow pointing towards the golden apple goal in each grid square. Several squares already have crisp green navigation arrows neatly aligned to avoid a red danger skull tile. 
+Beside the desk, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) rests his front paws on the table edge, wagging his tail happily as he watches the map come to life. Exactly one dog only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

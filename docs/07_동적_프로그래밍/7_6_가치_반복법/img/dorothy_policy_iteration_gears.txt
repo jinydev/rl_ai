@@ -1,0 +1,33 @@
+# dorothy_policy_iteration_gears.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_policy_iteration_gears.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 정책 반복법의 두 바퀴: 평가와 개선 톱니바퀴
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 정책 평가 톱니바퀴와 정책 개선 톱니바퀴가 맞물려 돌아가며 점진적으로 전진하는 정책 반복법(Policy Iteration)의 순환 구조를 시각화한 일러스트.
+- **주요 구성**:
+  - 중앙: 서로 맞물려 회전하는 2개의 대형 황동 톱니바퀴. 왼쪽 톱니바퀴에는 파란색 룬 문자 'v_pi(평가)', 오른쪽 톱니바퀴에는 주황색 룬 문자 'pi(개선)' 음각
+  - 도로시: 멜빵바지 주머니에 스패너를 꽂고 진지하게 톱니바퀴의 회전을 조율하는 도로시
+  - 지니: 공책을 펴고 회전 속도를 기록하는 턱시도 고양이 지니
+  - 토토: 톱니바퀴 앞을 안전하게 지키며 멍멍 짖는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF), 메커니컬한 기어 일러스트레이션
+
+## 3. 캐릭터 가이드 준수
+- 도로시(정확한 9세 비율, STEM HERO 패치 멜빵바지), 지니(안경, 방울), 토토(순백색, 하늘색 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 평가와 개선이 톱니처럼 긴밀하게 맞물려 작동하지만, 하나의 톱니가 너무 오래 돌면 전체 속도가 느려진다는 점을 직관적으로 연상시킴.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean crisp dark linework, warm cel shading, pure white background (#FFFFFF). Two large intermeshing brass clockwork gears floating in center, glowing subtly with blue and orange energy. Adorable 9-year-old anime girl Dorothy with chestnut twin pigtails, denim overalls with 'STEM HERO' chest patch, holding a small golden wrench inspecting the gears. Beside her, cute tuxedo cat Jiny with round scholar glasses and red bell collar taking notes. One solid pure white puppy Toto with sky-blue bandana sitting happily. Exactly one girl, one cat, one dog. Clear, educational, bright, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "평가 톱니바퀴와 개선 톱니바퀴가 완벽히 맞물려 돌 때 정책 반복법이 완성됩니다."

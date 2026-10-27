@@ -1,0 +1,46 @@
+# [이미지 분석 및 프롬프트 명세서] python_property_mask.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `python_property_mask.png`
+- **교재 챕터**: 07.3.2.1 `@property` 데코레이터 (`index.md` 라인 210-218)
+- **캡션**: `@property 데코레이터: 메서드를 속성(변수)처럼 괄호 없이 조회하게 해 줌!`
+- **교육적 목표**: 
+  객체지향 파이썬 프로그래밍의 핵심 문법인 `@property` 데코레이터의 역할을 시각화합니다. 메서드(`def height(self):`) 위에 `@property`를 얹어주면, 호출할 때 거추장스러운 소괄호 `()`를 붙이지 않고 `env.height`, `env.width`, `env.shape`처럼 일반 인스턴스 변수(속성)를 읽듯이 직관적이고 깔끔하게 접근할 수 있는 문법적 마법을 재미있게 이해시킵니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 파이썬 데코레이터 `@property`, 메서드 호출 `method()` $\rightarrow$ 속성 접근 `attribute`로의 전환.
+- **시각적 은유**: 
+  - 천재 조교 냥이 지니가 마법사 모자를 쓰고 황금 별 요술봉으로 코드 블록의 거추장스러운 소괄호 `()`를 퐁! 하고 비눗방울처럼 날려버리는 모습.
+  - 메서드 블록 `def height` 위에 반짝이는 `@property` 황금 왕관 엠블럼을 장식.
+  - 도로시가 손뼉을 치며 감탄하고, 토토가 날아가는 소괄호 비눗방울을 잡으려고 뛰노는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - `@property`라는 마법 장치와 소괄호 `()`의 소멸 메커니즘.
+  - 슬라이드 상단 걸개 액자 텍스트 상자 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 턱시도 조교 냥이. 작은 뾰족 마법사 모자를 쓰고 귀여운 마법 지팡이로 `@property` 마법을 시연하는 당당한 프로그래밍 전문가.
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 코딩 마법을 보며 두 손을 모으고 반짝이는 눈으로 "와, 괄호가 사라졌어!" 감탄.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 공중으로 퐁퐁 날아오르는 투명한 괄호 `()` 비눗방울을 향해 꼬리를 치며 호기심을 보임.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 소프트 접지 그림자.
+- **제약 사항**: 대형 설명문 팻말 배제, 영문 코드 키워드(`@property`, `def height`)만 간결하게 사용.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A whimsical programming magic scene illustrating Python's @property decorator. Jiny the lab assistant cat (chubby black-and-white bicolor tuxedo cat, olive-green eyes, tiny round scholar glasses, red collar with gold bell, wearing a small starry wizard hat) proudly waves a miniature golden magic wand with sparkling yellow stardust. He enchants a wooden code block labeled "def height": floating above it, a glowing golden star crest inscribed with "@property" shines brightly, magically banishing the bulky function parentheses "()" into floating, popping soap bubbles. 
+
+Beside the desk, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' round chest patch, red sneakers) claps her hands with a bright, amazed smile. Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) playfully pounces toward the popping parentheses bubbles with happy sparkling eyes. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

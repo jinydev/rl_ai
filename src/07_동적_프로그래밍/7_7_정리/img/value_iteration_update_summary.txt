@@ -1,0 +1,12 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, crisp line art, warm cel shading, pure solid white background (#FFFFFF), white background cutout. A glowing golden brass funnel labeled 'MAX' on a laboratory workbench, demonstrating Value Iteration: various candidate future returns enter the wide top of the funnel, and a single concentrated golden optimal value beam flows directly downward into a neat value map. Adorable 9-year-old girl Dorothy (chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped t-shirt, red sneakers) operates the funnel lever with a proud, confident smile. Tuxedo cat Jiny with round glasses carefully inspects the output beam with a clipboard, and pure white puppy Toto with sky-blue bandana watches the sparkling light with delight. Exactly one girl, one cat, one dog. Pure white background, mechanical educational metaphor, no frames, no Japanese text.
+
+Negative:
+Japanese text, sailor suit, pink bow, purple cat, brown poodle, spots on puppy, duplicate characters, twin girls, 3D CGI, dark background.
+
+[해설]: 가치 반복법의 핵심인 'MAX 연산자를 통한 평가와 개선의 단일 수식 융합'을 마법의 황금 깔때기(MAX Funnel) 은유로 시각화하여, 중간 정책 저장의 군더더기 없이 가치 함수만을 초고속으로 수렴시키는 혁신적 구조를 보여주는 교육용 일러스트.

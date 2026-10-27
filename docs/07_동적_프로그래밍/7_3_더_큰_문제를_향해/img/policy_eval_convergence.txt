@@ -1,0 +1,50 @@
+# [이미지 분석 및 프롬프트 명세서] policy_eval_convergence.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `policy_eval_convergence.png`
+- **교재 챕터**: 07.3.4 반복적 정책 평가 구현 - policy_eval()과 수렴 루프 (`index.md` 라인 687-732)
+- **캡션**: `오차가 임계값 아래로 떨어질 때까지 반복! delta와 threshold의 수렴 마법`
+- **교육적 목표**: 
+  `policy_eval()` 함수의 무한 루프(`while True`)가 종료되는 수렴 메커니즘을 시각화합니다.
+  한 단계씩 갱신될 때마다 가치 함수의 변화 폭인 `delta`가 점점 줄어들다가, 
+  우리가 설정한 기준점인 `threshold (0.001)` 선 아래로 떨어지는 순간 루프가 정지(`break`)되고 
+  최종 수렴된 가치 함수가 완성되는 동적 프로그래밍의 수렴 원리를 정밀 계측기 게이지와 그래프로 표현합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 가치 함수의 수렴성(Convergence), 갱신 오차 최댓값 `delta`, 수렴 임계값 `threshold`.
+- **시각적 은유**: 
+  - 황동과 유리로 된 고풍스러운 정밀 계측기(Convergence Gauge).
+  - 계측기 눈금판에 빨간색 오차 지침 `delta`가 단계가 거듭될수록 아래로 내려오고, 마침내 초록색 안전선 `threshold = 0.001` 아래로 안착함.
+  - 계측기 상단에 초록색 완료 램프와 "CONVERGED!"(수렴 완료) 신호가 켜짐.
+  - 조교 지니가 타이머를 들고 검수하고, 도로시와 토토가 박수를 치며 기뻐함.
+- **유지해야 할 필수 콘텐츠**:
+  - `delta`가 `threshold` 아래로 내려가 수렴하는 직관적 게이지/그래프.
+  - 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 계측기 앞에서 0.001 이하로 바늘이 내려가자 두 손을 모아 환호.
+- **토토**: 크림화이트 강아지 (하늘색 반다나). 도로시 곁에서 펄쩍 뛰며 함께 축하.
+- **조교 지니**: 안경을 쓴 턱시도 고양이 (빨간 방울 목걸이). 황동 회중시계와 체크리스트를 쥐고 엄지를 치켜세움.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 일본어 텍스트 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A captivating scientific scene illustrating algorithm convergence for `policy_eval()`. In the center stands a whimsical retro-futuristic brass and wood laboratory gauge labeled "Error Delta Tracker". The dial of the gauge shows a needle marked "delta" dropping below a fine green reference line marked "threshold (0.001)". A cheerful green indicator light shines above the dial with a clean small plaque saying "CONVERGED". 
+
+Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) claps her hands in delight with a beaming smile. Beside her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) hops playfully with happy paws. Next to the gauge, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny scholar glasses, red collar with gold bell) holds a pocket stopwatch and gives a proud approving nod. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

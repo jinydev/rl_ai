@@ -1,0 +1,31 @@
+# [이미지 분석 및 프롬프트 명세서] dp_misconception.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dp_misconception.png
+- 교재 챕터: 07.1.1 흔히 오해하는 '프로그래밍'의 이미지 (index.md 라인 24-28)
+- 캡션: 동적 프로그래밍의 흔한 오해: 머릿속 상상 풍선으로 메모리를 쪼개고 코드를 최적화하는 복잡한 엔지니어링 과정을 그려보는 도로시
+- 교육적 목표: 독자들이 '동적 프로그래밍'이라는 단어를 처음 접했을 때 빠지기 쉬운 일반적 선입견(컴퓨터 RAM 메모리 동적 할당, C/C++ 하드웨어 저수준 코딩 등)을 유쾌하게 시각화하여, 이러한 오해를 깨뜨리고 진정한 수학적 계획법의 본질로 진입하도록 유도합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 동적 프로그래밍에 대한 흔한 기술적 오해 vs 진정한 본질.
+- 시각적 은유: 도로시가 머리를 긁적이며 생각에 잠겨 있고, 도로시의 머리 위에 몽실몽실 떠오른 귀여운 생각 풍선(thought cloud) 속에 컴퓨터 메모리 칩(RAM), 초록색 기판(PCB), 복잡한 C언어 바이너리 코드, 땜납 인두기 등이 뒤엉켜 있는 코믹한 상상 장면.
+- 유지해야 할 필수 콘텐츠: 생각 풍선 속의 컴퓨터 부품/코드 은유, 도로시의 귀여운 고민 표정, 토토의 호기심.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세 여아, 4.5등신 치비 주니어 체형, 밤색 양갈래 머리(구슬 머리끈), 'STEM HERO' 뱃지가 달린 블루 데님 멜빵바지, 주황/노랑 줄무늬 티셔츠, 빨간 캔버스 운동화. 한 손으로 턱을 괴고 다른 손으로 머리를 긁적이며 눈동자를 위로 굴리는 고민 표정.
+- 토토 (Toto): 얼룩 없는 단색 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 옆에서 얌전히 앉아 함께 생각 풍선을 올려다보며 귀를 쫑긋 세움.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 포근한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+생각 풍선 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A charming visual metaphor depicting common misconceptions about programming. Dorothy (adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, vibrant ruby red canvas sneakers) sits on a small wooden maker stool, tilting her head and scratching her hair with a comically puzzled expression. 
+Floating above her head is a whimsical semi-transparent dreamy thought bubble: inside the bubble are playful stylized cartoon illustrations of computer hardware components—a glowing RAM memory stick splitting into dynamic chunks, green circuit board traces, floating bits of binary code "010101", a tiny retro soldering iron, and tangled jumper wires. 
+Beside Dorothy's stool, Toto the fluffy cream-white puppy (uniform solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) sits looking curiously up at the floating thought bubble with head tilted.
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

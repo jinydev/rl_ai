@@ -1,0 +1,32 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_policy_iteration_loop_break.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_policy_iteration_loop_break.png
+- 교재 챕터: 07.5.2 정책 반복법 구현 - 루프 탈출 조건(break) (index.md 라인 248-252)
+- 캡션: 그림 07-18 두 지도가 같은지 대조해보고 루프 탈출구(Exit)로 나가는 도로시와 토토
+- 교육적 목표: 무한 루프(`while True`) 안에서 정책 평가와 개선을 거듭하다가, 새 정책(`new_pi`)과 기존 정책(`pi`)이 완벽히 일치하는 순간(`new_pi == pi`), 드디어 계산의 쳇바퀴를 끝내고 당당하게 `break` 탈출구 문을 열고 완성된 최적 정책을 안고 나오는 수렴 완결 과정을 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: `if new_pi == pi: break`, 정책 반복법의 수렴 종료 조건.
+- 시각적 은유: 회전하는 쳇바퀴 궤도(Evaluation & Improvement Loop) 옆에 활짝 열린 초록색 빛의 비상구 문(EXIT). 문 위에는 "new_pi == pi: BREAK!" 팻말이 걸려 있고, 도로시가 완성된 황금 지도를 품에 안고 활짝 웃으며 문을 통과하여 밖으로 나오고, 토토가 신나게 앞장서는 해방과 완성의 순간.
+- 유지해야 할 필수 콘텐츠: 회전 루프와 대비되는 열린 EXIT 탈출구, "new_pi == pi" 표지판, 황금 지도를 든 도로시, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 가슴에 반짝이는 최종 지도를 꼭 안고 탈출구를 통과하며 환하게 미소 지음.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 앞에서 문을 향해 신나게 뜀박질.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 밝고 상쾌한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A joyful illustration of escaping the infinite algorithm loop upon convergence. On the left is a spinning stone loop treadmill labeled "Evaluation & Improvement". 
+On the right is a wide, welcoming wooden doorway glowing with bright emerald light, labeled "EXIT: if new_pi == pi: break" in clean lettering. 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) steps joyfully through the exit doorway, proudly hugging a glowing golden parchment map to her chest with a radiant smile of relief. 
+Ahead of her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) leaps cheerfully out into the sunlight. Exactly one dog only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

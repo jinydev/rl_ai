@@ -1,0 +1,34 @@
+# deterministic_bellman_update.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: deterministic_bellman_update.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 결정적 전이 환경 하의 가치 함수 갱신 메커니즘
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 왼쪽 행동과 오른쪽 행동이라는 두 갈래 선택지만 남고, 각 행동에 대해 오직 단 하나의 고정된 미래만 반영하면 되는 간결하고 명료한 가치 갱신 파이프라인.
+- **주요 구성**:
+  - 중앙: 갈림길에서 왼쪽 밸브(왼쪽 행동)와 오른쪽 밸브(오른쪽 행동)로 갈라지는 깔끔한 황동 파이프
+  - 파이프 끝: 각 파이프 끝에 정확히 하나의 보상 구슬과 다음 상태 가치가 대기 중
+  - 도로시: 두 밸브의 손잡이를 점검하며 유량을 조절하는 똑똑한 엔지니어 도로시
+  - 지니: 압력 게이지를 보며 기록하는 턱시도 고양이 지니
+  - 토토: 파이프 아래에서 얌전히 지켜보는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 엔지니어 포즈, 지니 게이지 기록, 토토 얌전. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 결정적 환경에서의 벨만 갱신이 단지 가능한 행동들의 가중 평균에 불과함을 구조적으로 명시.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean steampunk educational art, warm cel colors, pure solid white background (#FFFFFF). A clean brass pipe mechanism branching into exactly two smooth paths: left and right. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, inspecting the valve controls with a small brass wrench. Tuxedo cat Jiny with round glasses taking notes on a clipboard, pure white puppy Toto with sky-blue bandana sitting faithfully. Exactly one girl, one cat, one dog. Pure white background, mechanical pipeline clarity, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "이제 우리는 각 행동에 따른 다음 상태 하나씩만 고려하여 평균을 내면 됩니다."

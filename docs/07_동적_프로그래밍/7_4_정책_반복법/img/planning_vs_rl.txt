@@ -1,0 +1,34 @@
+# [이미지 분석 및 프롬프트 명세서] planning_vs_rl.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: planning_vs_rl.png
+- 교재 챕터: 07.4.2 정책 반복법 - 계획(Planning) 문제 vs 강화학습(RL) (index.md 라인 328-332)
+- 캡션: 머리로 그리는 계획 vs 직접 몸으로 부딪치는 모험
+- 교육적 목표: 환경 모델(상태 전이 확률 $p$와 보상 $r$)을 미리 완벽하게 알고 있어서 책상머리에서 계산만으로 최적 정책을 도출하는 **'계획 문제(Planning / DP)'**와, 환경을 전혀 모른 채 직접 몸으로 부딪치며 경험 데이터를 모아 학습하는 **'강화학습(Reinforcement Learning)'**의 결정적 차이를 두 가지 상반된 상황 대비로 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 계획(Planning with known model) vs 강화학습(Learning with unknown model / trial-and-error).
+- 시각적 은유: 반분할(Split) 구도:
+  * 왼쪽 [Planning]: 안락한 메이커 작업실 책상에 앉아 완벽한 청사진(Blueprint) 지도를 보며 연필로 최적 경로를 정밀하게 미리 계획하는 지니와 도로시 ("Known Model").
+  * 오른쪽 [Reinforcement Learning]: 안개 낀 미지의 미로 숲속으로 배낭을 메고 손전등을 비추며 직접 발을 내디뎌 부딪히며 모험하는 도로시와 토토 ("Unknown World, Trial & Error").
+- 유지해야 할 필수 콘텐츠: 책상머리 계획(청사진) vs 미지의 모험(손전등), 도로시, 지니, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. (왼쪽에서는 연필을 쥐고 연구, 오른쪽에서는 배낭을 메고 손전등으로 탐험).
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 미니 안경, 빨간 방울 목걸이. 왼쪽 계획 책상에서 돋보기로 청사진 모델을 검토.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 오른쪽 모험에서 앞장서서 신나게 미로를 탐색.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 대비감 있는 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A clear conceptual split comparison between "Planning (DP)" and "Reinforcement Learning (RL)": 
+- Left Half labeled "Planning (Known Model)": Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt) sits at a tidy wooden drafting desk with Jiny the tuxedo cat (round scholar glasses, red collar with bell), thoughtfully plotting optimal paths on a detailed cyan architectural blueprint of the grid maze with a ruler and pencil. 
+- Right Half labeled "Reinforcement Learning (Trial & Error)": Dorothy wearing an adventurer backpack holds a glowing golden lantern, stepping bravely into an unknown mysterious mist maze alongside Toto the fluffy cream-white puppy (uniform solid milk-white coat, sky-blue bandana), discovering clues step by step. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at base, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

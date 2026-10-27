@@ -1,0 +1,56 @@
+# [이미지 분석 및 프롬프트 명세서] action_coordinates_mapping.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `action_coordinates_mapping.png`
+- **교재 챕터**: 07.3.2.1 next_state() 구현과 좌표 이동 (`index.md` 라인 300-332)
+- **캡션**: `행동 번호와 좌표 변화량의 비밀: (-1, 0)은 UP, (1, 0)은 DOWN!`
+- **교육적 목표**: 
+  `action_move_map = [(-1, 0), (1, 0), (0, -1), (0, 1)]`의 4가지 오프셋 연산을 시각화합니다.
+  컴퓨터 행렬 좌표계(맨 위가 0행)의 특성상, **위(UP)로 가는 행동이 y좌표를 -1 감소**시키고 **아래(DOWN)가 y좌표를 +1 증가**시키는 
+  수학적/프로그래밍적 좌표계 반전 규칙을 도로시에게 명쾌하게 설명해주는 장면을 연출합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 행렬 인덱스 기반 좌표 이동, `(dy, dx)` 벡터 합 연산, `state + move`의 물리적 궤적.
+- **시각적 은유**: 
+  - 칠판에 그려진 십자 좌표계 화살표와 4개의 이동 벡터:
+    * `0: UP (-1, 0)` $\uparrow$
+    * `1: DOWN (+1, 0)` $\downarrow$
+    * `2: LEFT (0, -1)` $\leftarrow$
+    * `3: RIGHT (0, +1)` $\rightarrow$
+  - 이호진 교수님이 분필로 칠판의 `(-1, 0)` 화살표를 짚으며 행렬 좌표의 원리를 친절하게 설명.
+  - 도로시가 손가락으로 공중에 위아래를 가리키며 "아하, 위로 가면 행 번호가 줄어드는군요!" 하고 깨달음을 얻는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - 4방향 좌표 변화량 칠판 도식.
+  - 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님**: 40대 초반 동안의 온화한 교수님 (매끄러운 피부, 주름 없음, 솔트앤페퍼 헤어, 메탈 안경, 무지 네이비 폴로, 블루진). 분필을 쥐고 칠판의 좌표 벡터를 짚음.
+- **도로시**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 칠판을 보며 환하게 깨달은 표정.
+- **토토**: 크림화이트 강아지 (하늘색 반다나). 도로시 발치에서 고개를 갸우뚱하며 칠판을 봄.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An engaging programming lesson about 2D grid matrix coordinates. Professor Hojin (youthful friendly Korean professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper hair, thin minimalist round metal wire-rim glasses, plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers) stands by a dark chalkboard in a wooden frame. On the board, he has drawn four distinct directional arrows with chalk coordinates:
+- Up Arrow: "0: UP (-1, 0)"
+- Down Arrow: "1: DOWN (1, 0)"
+- Left Arrow: "2: LEFT (0, -1)"
+- Right Arrow: "3: RIGHT (0, 1)"
+
+He gently points to the UP (-1, 0) arrow with white chalk, smiling warmly. Next to him, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) points an index finger upward with an enlightened "Aha!" expression, nodding happily. Sitting between them on the floor, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) looks up at the chalkboard inquisitively. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

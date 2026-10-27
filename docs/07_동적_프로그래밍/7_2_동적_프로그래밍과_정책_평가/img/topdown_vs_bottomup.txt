@@ -1,0 +1,34 @@
+# topdown_vs_bottomup.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: topdown_vs_bottomup.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 동적 계획법의 하향식(Top-down) vs 상향식(Bottom-up) 구현 비교
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 커다란 문제를 위에서부터 쪼개어 메모장에 적어두는 하향식(메모이제이션 트리)과, 가장 바닥의 기초 벽돌(V0)부터 차곡차곡 쌓아 올리는 상향식(테뷸레이션 탑)의 건축적 대비.
+- **주요 구성**:
+  - 좌측(하향식): 큰 나무에서 가지를 치듯 세부 문제를 적은 메모지를 나뭇가지에 매다는 모습
+  - 우측(상향식): 튼튼한 바닥 기초석부터 한 장씩 벽돌을 단단하게 쌓아 올리는 피라미드 모습
+  - 도로시: 가운데 서서 두 건축 방식을 비교하며 지니와 토론하는 도로시
+  - 지니: 상향식 벽돌탑의 수평계를 점검하는 턱시도 고양이 지니
+  - 토토: 상향식 벽돌 하나를 밟고 서 있는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 비교 포즈, 지니 수평계 점검, 토토 벽돌 위.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 컴퓨터 과학의 전통적 DP(하향식 메모이제이션)와 강화학습의 반복적 정책 평가(상향식 테뷸레이션)의 구조적 차이를 건축학적 비유로 이해.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clear side-by-side concept, warm cel shading, pure solid white background (#FFFFFF). On left, an upside-down tree diagram branching out into tiny notes (top-down). On right, a neat stone brick step tower being built firmly from the bottom base up (bottom-up). Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, standing between them comparing thoughtfully. Tuxedo cat Jiny with round glasses inspecting the stone bricks with a spirit level, pure white puppy Toto with sky-blue bandana sitting by the base bricks. Exactly one girl, one cat, one dog. Pure white background, architectural concept comparison, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "강화학습의 정책 평가는 맨 밑바닥 0에서부터 차곡차곡 쌓아 올리는 상향식 접근법을 취합니다."

@@ -1,0 +1,47 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_grid_world_random.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `dorothy_grid_world_random.png`
+- **교재 챕터**: 07.3.4 무작위 정책의 평가 결과와 격자 세상 탐색 (`index.md` 라인 776-785)
+- **캡션**: `그림 07-14 무작위 정책에 따라 격자 세상을 헤매는 도로시와 토토`
+- **교육적 목표**: 
+  반복적 정책 평가 알고리즘을 무작위 정책에 적용했을 때 계산된 상태 가치 함수(그림 07-13)의 결과를 서사적으로 해석합니다. 시작점인 왼쪽 아래 칸의 기대 가치가 `-0.10`으로 마이너스가 나오는 이유(아무 생각 없이 무작위로 움직이다 보면 폭탄(-1)을 밟을 확률이 사과(+1)를 만날 확률보다 크기 때문)를 물리적 탐험으로 보여줍니다. 아직 최적 정책(Optimal Policy)을 배우기 전, 무작위로 헤매면서도 차근차근 환경의 가치를 파악해 나가는 탐험의 단계를 표현합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 무작위 정책 평가의 한계(가치 음수 -0.10), 폭탄 트랩의 위협, 다음 단계인 '최적 정책(Control)' 학습으로의 연결 디딤돌.
+- **시각적 은유**: 
+  - $3 \times 4$ 파스텔톤 격자 타일 지형 위에서 지도와 나침반을 들고 어느 방향으로 가야 할지 신중하게 고민하는 도로시.
+  - 도로시 발치 사방으로 부드러운 4방향 화살표 빛이 맴돎.
+  - 저 멀리 대각선 위에는 안전하고 달콤한 빨간 사과(+1.0), 바로 그 아래 칸에는 위험한 검은 폭탄(-1.0)이 놓여 있음.
+  - 조교 지니가 표지목 위에 앉아 망원경을 들고 든든하게 길을 살펴줌.
+- **유지해야 할 필수 콘텐츠**:
+  - 격자 타일 위의 도로시, 사방 화살표, 사과와 폭탄의 대조, 토토의 길안내 동행.
+  - 슬라이드 테두리 및 텍스트 프레임 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 작은 공책과 연필을 쥐고, 사방을 둘러보며 "어디로 가야 폭탄을 피하고 사과를 찾을 수 있을까?" 고민하는 귀여운 표정.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 도로시 옆에서 앞발을 들어 앞으로 갈 방향을 톡톡 가리키며 활기차게 안내.
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 턱시도 조교 냥이. 격자 펜스 위에 앉아 작은 황동 망원경으로 전방을 정찰하며 지원.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 상단 텍스트 상자 배제, 갈색 푸들 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An adventurous gridworld exploration scene illustrating random policy navigation. On a series of pastel isometric grid floor tiles, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) stands thoughtfully holding a small pink notepad and pencil, with soft glowing direction arrows pointing in four directions (North, South, East, West) around her feet. She ponders which direction to step next with a cute, mildly puzzled yet determined expression. 
+
+Beside her on the grid tiles, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) energetically points his paw forward with an encouraging open dog smile. At the far side of the grid, a bright red apple shines invitingly on one tile, while a cute round black bomb sits cautiously on an adjacent tile. Perched on a nearby rustic wooden post, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny scholar glasses, red collar with gold bell) scouts ahead through a miniature brass telescope with an observant scholar's expression. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

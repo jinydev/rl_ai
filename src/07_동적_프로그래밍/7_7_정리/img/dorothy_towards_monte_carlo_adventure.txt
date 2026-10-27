@@ -1,0 +1,12 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, inspiring adventure opening illustration, pure solid white background (#FFFFFF), white background cutout. Leaving behind the safe indoor chalkboard of Chapter 7, adorable 9-year-old girl Dorothy (chestnut wavy twin pigtails with beads, denim overalls with STEM HERO patch, orange striped t-shirt, red sneakers) wears a cute small leather explorer backpack and holds an open glowing golden compass in one hand, pointing boldly forward with a sparkling hopeful smile. Beside her, tuxedo cat Jiny with round glasses and red bell collar stands on two hind legs holding an explorer's lantern, and fluffy solid cream-white puppy Toto with sky-blue bandana leaps forward eagerly. Exactly one girl, one cat, one dog. Pure white background, high aesthetic adventure departure into the model-free wild world of Monte Carlo, no frames, no Japanese text.
+
+Negative:
+Japanese text, sailor suit, pink bow, purple cat, brown poodle, spots on puppy, duplicate characters, twin girls, 3D CGI, dark background.
+
+[해설]: 환경의 확률과 보상 지도가 완벽히 주어지던 동적 프로그래밍(Planning)의 안전한 연구실을 넘어, 사전 모델 없이 직접 온몸으로 부딪혀서 배우는 '제8강 몬테카를로 방법(Model-Free Learning)'의 광활한 미지의 세계로 당차게 출발하는 도로시 탐험대의 모험 예고 일러스트.

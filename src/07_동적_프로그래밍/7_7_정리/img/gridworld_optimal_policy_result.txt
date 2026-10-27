@@ -1,0 +1,12 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, clean isometric educational illustration, pure solid white background (#FFFFFF), white background cutout. A 3D isometric 3x4 grid world game board resting on a clean wooden table. Each grid cell features clear glowing golden directional arrows marking the optimal policy path that cleverly detours around a red hazard square with a bomb icon (-1) and safely points straight towards a gleaming golden apple target square (+1). Adorable 9-year-old girl Dorothy (chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped t-shirt, red sneakers) points at the final path with a joyful smile. Tuxedo cat Jiny with round glasses holds a Python code scroll labeled 'policy_iter.py & value_iter.py: 100% Match', and solid white puppy Toto with sky-blue bandana wags tail playfully next to the board. Exactly one girl, one cat, one dog. Pure white background, celebratory achievement, no frames, no Japanese text.
+
+Negative:
+Japanese text, sailor suit, pink bow, purple cat, brown poodle, spots on puppy, duplicate characters, twin girls, 3D CGI, dark background.
+
+[해설]: 3x4 그리드 월드 환경에서 정책 반복법과 가치 반복법 파이썬 코드를 실행하여 얻어낸 '완벽한 최적 정책 경로(Optimal Policy Grid)'를 입체 격자판으로 시각화하여, -1 감점 함정을 지능적으로 우회하여 +1 목표 사과로 도달하는 알고리즘의 최종 성공을 검증한 인포그래픽.

@@ -1,0 +1,33 @@
+# two_problems_curiosity.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: two_problems_curiosity.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 강화학습의 두 가지 핵심 과제: 평가와 제어에 대한 호기심
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 칠판에 물음표가 그려진 두 개의 신비로운 보물 상자('정책 평가'와 '정책 제어')를 앞에 두고, 돋보기와 열쇠를 들고 호기심에 가득 찬 도로시, 지니, 토토.
+- **주요 구성**:
+  - 두 개의 보물 상자: 왼쪽 상자(가치를 측정하는 은색 상자), 오른쪽 상자(방향을 조종하는 금색 상자)
+  - 도로시: 황금 열쇠를 들고 '이 두 상자 속에 무엇이 들어있을까?' 궁금해하는 표정
+  - 지니: 칠판에 '1. 가치 알기(평가), 2. 최선 찾기(제어)'라고 지휘봉으로 가리키는 지니
+  - 토토: 은색 상자 냄새를 킁킁 맡는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 복장, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 강화학습 문제의 양대 축인 Prediction(예측/평가)과 Control(제어)의 구분을 명확히 인식시킴.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm cel shading, pure solid white background (#FFFFFF). Two antique fantasy treasure chests, one silver with an evaluation scale symbol, one gold with a directional compass symbol. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, holding a small key curiously. Tuxedo cat Jiny with round glasses pointing at them with a stick, pure white puppy Toto with sky-blue bandana sniffing the silver chest. Exactly one girl, one cat, one dog. Pure white background, engaging educational scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "동적 프로그래밍은 '지금 정책의 가치를 재는 문제'와 '최고의 정책을 찾는 문제'라는 두 가지 핵심 과제를 다룹니다."

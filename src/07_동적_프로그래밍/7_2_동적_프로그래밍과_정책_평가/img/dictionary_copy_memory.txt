@@ -1,0 +1,34 @@
+# dictionary_copy_memory.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dictionary_copy_memory.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 파이썬 딕셔너리 복사(V.copy())와 독립 메모리 분리
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 컴퓨터 메모리 칩 위에서 원본 상자 V와 똑같은 내용물을 복사 마법으로 새로운 독립 상자 new_V로 복제하여, 서로의 영역을 침범하지 않고 안전하게 작업하는 메모리 복제 시각화.
+- **주요 구성**:
+  - 두 개의 투명 아크릴 상자: 'V' 상자와 'new_V' 상자
+  - 복사 마법: 반짝이는 복사 광선이 V 상자의 장난감들을 new_V 상자로 그대로 순간 복제함
+  - 도로시: 복제 마법봉을 휘두르며 '이제 서로 엉키지 않고 안심하고 쓸 수 있어!' 기뻐하는 도로시
+  - 지니: 독립된 메모리 주소 태그를 상자에 붙여주는 턱시도 고양이 지니
+  - 토토: 복제된 장난감을 보고 신기해하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 복제 마법, 지니 메모리 태그, 토토 장난감 주시. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 파이썬에서 얕은 복사/참조 할당의 함정(`new_V = V`)을 피하고 `.copy()`를 통해 독립된 메모리 공간을 확보해야 하는 필수 프로그래밍 지식을 전달.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean lines, warm vibrant cel colors, pure solid white background (#FFFFFF). Two clear glass toy boxes side by side. A magical sparkling beam duplicates the neat blocks from the left box into the right box independently. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, holding a small glowing wand proudly. Tuxedo cat Jiny with round glasses attaching a little label tag, pure white puppy Toto with sky-blue bandana curiously watching the duplicated blocks. Exactly one girl, one cat, one dog. Pure white background, clear memory cloning metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "딕셔너리를 깊게 복제해 두어야 이전 값과 새로운 값이 엉키지 않고 안전하게 계산됩니다."

@@ -1,0 +1,32 @@
+# jiny_dorothy_value_iteration_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_dorothy_value_iteration_intro.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 가치 반복법(Value Iteration) 도입과 도로시의 탐구
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 정책 반복법의 완전한 정책 평가에 드는 과도한 계산량을 극복하기 위해, 매번 수렴할 때까지 기다리지 않고 '가치 함수를 단 1회만 갱신(max 연산)'하는 가치 반복법의 기본 철학을 도로시, 지니, 토토가 호기심 가득한 표정으로 지도 앞에서 토론하는 장면.
+- **주요 구성**:
+  - 중앙: 호기심 가득한 표정으로 보물 지도를 펼쳐 든 9세 소녀 도로시 (양갈래 머리, 데님 멜빵바지, 주황 스트라이프 티셔츠)
+  - 좌측: 꼬마 학자 안경과 붉은 방울 목걸이를 착용한 턱시도 고양이 지니가 나무 지휘봉으로 지도의 지름길을 가리킴
+  - 우측: 하늘색 반다나를 목에 두른 순백색 강아지 토토가 꼬리를 흔들며 지도를 관찰
+  - 배경: 순백색(#FFFFFF) 컷아웃, 부드러운 스튜디오 지브리 2D 애니메이션 스타일
+
+## 3. 캐릭터 가이드 준수
+- 도로시: 밤색 양갈래 땋은 머리, STEM HERO 원형 패치 데님 멜빵바지, 빨간 캔버스 운동화. 지니: 턱시도 무늬, 올리브 그린 눈, 미니 금테 학자 안경, 금빛 방울 목걸이. 토토: 얼룩 없는 따뜻한 밀크화이트 털, 스카이블루 반다나, 까만 코. 단 1명의 도로시, 1마리 지니, 1마리 토토.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 정책 반복법의 무한 평가 루프에서 벗어나 더 빠르고 직관적인 '가치 반복법'으로 전환하는 학습자의 동기를 자극하고 흥미를 유발함.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean dark espresso brown linework, warm flat cel shading, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails with colorful beads, wearing denim overalls with round chest patch 'STEM HERO', orange striped t-shirt, and ruby red sneakers. Exactly one girl. Beside her, one Korean shorthair tuxedo cat Jiny wearing mini round wire scholar glasses and a red collar with a golden bell, pointing with a little wooden stick at a colorful treasure map. One uniform warm milk-white puppy Toto with sky-blue neckerchief bandana happily wagging tail. Educational, warm, bright, no text, no frame, no duplicate characters.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "가치 반복법은 수렴할 때까지 정책을 일일이 평가하지 않고, 단 한 번의 벨만 최적 업데이트로 지름길을 찾아냅니다."

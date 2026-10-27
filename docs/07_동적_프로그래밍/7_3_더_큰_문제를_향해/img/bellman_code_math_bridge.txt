@@ -1,0 +1,52 @@
+# [이미지 분석 및 프롬프트 명세서] bellman_code_math_bridge.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `bellman_code_math_bridge.png`
+- **교재 챕터**: 07.3.4 반복적 정책 평가 구현 - [식 07-3]과 코드의 1대1 대응 (`index.md` 라인 664-686)
+- **캡션**: `수학과 코드의 아름다운 만남: 벨만 갱신식과 파이썬 한 줄의 1:1 완벽한 대응!`
+- **교육적 목표**: 
+  이론으로 배운 벨만 방정식 [식 07-3] $V_{k+1}(s) = \sum_{a} \pi(a \mid s) \{ r(s, a, s') + \gamma V_k(s') \}$과
+  실제 구현 코드 `new_V += action_prob * (r + gamma * V[next_state])` 사이의 
+  완벽한 일대일 대응 관계를 시각화합니다. 복잡해 보이는 수학 기호들이 실제로는 파이썬 코드 한 줄로 우아하게 번역되는 지적 희열을 도로시와 교수님의 상호작용으로 표현합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 벨만 기대 방정식의 이산 연산화, 수학 수식과 알고리즘 코드의 상호 번역.
+- **시각적 은유**: 
+  - 대형 칠판 위에 금빛 화살표로 연결된 두 개의 영롱한 텍스트 블록:
+    * 상단: 벨만 수식 $V(s) = \sum \pi [r + \gamma V(s')]$
+    * 하단: 파이썬 코드 `new_V += prob * (r + gamma * V[next])`
+  - 두 블록 사이에 흐르는 빛나는 마법의 번역 다리(Golden Bridge).
+  - 이호진 교수님이 지휘봉으로 수식의 $\sum$과 코드의 `+=`를 가리키며 활짝 웃고, 도로시가 노트에 별표를 그리며 환호하는 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - 수학 수식과 코드 간의 직관적 대응 연결.
+  - 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **이호진 교수님**: 40대 초반 동안의 온화한 교수님 (매끄러운 피부, 주름 없음, 솔트앤페퍼 헤어, 메탈 안경, 무지 네이비 폴로, 블루진). 지휘봉으로 수식과 코드의 일치를 명쾌하게 짚어줌.
+- **도로시**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 펜을 들고 의자가 들썩일 정도로 감탄하는 표정.
+- **토토**: 크림화이트 강아지 (하늘색 반다나). 도로시 발치에서 기쁘게 꼬리를 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 노안/SNU 로고 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+An illuminating classroom moment connecting mathematical theory and computer code. Standing before a large slate blackboard, Professor Hojin (youthful friendly Korean professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper hair, thin minimalist round metal wire-rim glasses, plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers) holds a slender wooden pointer stick. On the board, he demonstrates the bridge between a neat math equation and Python code connected by clean chalk alignment:
+- Top Formula: "V(s) = Σ π(a|s) [r + γ V(s')]"
+- Bottom Code: "new_V += action_prob * (r + gamma * V[next_state])"
+
+He points smilingly to the summation symbol and the += operator. Seated at her wooden desk, young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) raises both hands in a joyous eureka moment, eyes glowing with excitement. Beside her desk, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) wags its tail happily. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

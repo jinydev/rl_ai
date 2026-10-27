@@ -1,0 +1,33 @@
+# jiny_dorothy_dp_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_dorothy_dp_intro.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 동적 프로그래밍과 정책 평가 대제목 인트로
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 환경 모델(상태 전이 확률, 보상)을 알고 있을 때 벨만 방정식을 반복 계산하여 참 가치 지도를 완성하는 여정을 시작하며, 도로시와 지니, 토토, 그리고 이호진 교수님이 함께 지도를 보며 학습 목표를 공유하는 밝은 오프닝 장면.
+- **주요 구성**:
+  - 중앙: 호기심 넘치는 9세 소녀 도로시가 학습 노트를 들고 활짝 웃고 있음
+  - 좌측: 40대 초반 동안의 이호진 교수님(솔트앤페퍼 헤어, 얇은 메탈 안경, 무지 네이비 폴로 셔츠)이 따뜻한 미소로 방향을 안내함
+  - 우측: 미니 학자 안경과 빨간 방울 목걸이를 한 턱시도 고양이 지니가 지휘봉을 들고 있음
+  - 하단: 순백색 털의 아기 강아지 토토가 하늘색 반다나를 매고 발을 구르며 반김
+  - 배경: 순백색(#FFFFFF) 컷아웃, 1:1 정사각형 구도
+
+## 3. 캐릭터 가이드 준수
+- 이호진 교수님(40대 초반 동안, 솔트앤페퍼 흑발, 얇은 메탈 안경, 무지 네이비 폴로, 청바지), 도로시(9세, 양갈래 밤색 머리, STEM HERO 패치 데님 멜빵바지, 주황 줄무늬 티, 빨간 운동화), 지니(턱시도 고양이, 안경, 방울), 토토(순백색 단색 털, 하늘색 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 학습자에게 강화학습의 이론적 기초인 동적 계획법(DP)의 세계로 진입하는 설렘과 안정적인 멘토링 분위기를 제공함.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean dark espresso brown linework, warm flat cel shading, pure solid white background (#FFFFFF). In center, adorable 9-year-old girl Dorothy with chestnut twin pigtails with beads, denim overalls with 'STEM HERO' round patch, orange striped t-shirt, ruby sneakers, holding a notebook. On left, handsome early 40s Korean professor Hojin with youthful smooth skin, salt-and-pepper hair, round metal wire glasses, wearing plain solid dark navy polo shirt without logo and blue jeans, smiling warmly. On right, tuxedo cat Jiny with round glasses and red bell collar holding a pointer stick. Pure milk-white puppy Toto with sky-blue bandana sitting happily. Exactly one man, one girl, one cat, one dog. Pure white background, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "환경의 규칙을 알고 있다면, 우리는 수학과 알고리즘으로 완벽한 가치 지도를 그려낼 수 있습니다."

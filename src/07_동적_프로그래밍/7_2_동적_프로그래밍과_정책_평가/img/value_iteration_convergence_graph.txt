@@ -1,0 +1,34 @@
+# value_iteration_convergence_graph.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: value_iteration_convergence_graph.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 어떤 초깃값으로 시작해도 참 가치로 수렴하는 그래프
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 커다란 그래프 모눈종이 위에서, 위에서 출발한 곡선과 밑에서 출발한 곡선이 반복 회차가 거듭될수록 자석에 이끌리듯 하나의 매끄러운 참 가치 점선 수평선으로 모여드는 수렴 곡선.
+- **주요 구성**:
+  - 모눈 그래프: 가로축(반복 횟수 k)과 세로축(가치 V)
+  - 곡선들: 서로 다른 출발점에서 시작한 3개의 색색 곡선들이 오른쪽으로 갈수록 하나의 황금 수평선으로 완벽하게 합쳐짐
+  - 도로시: 자를 대고 그래프의 수렴점을 가리키며 뿌듯해하는 도로시
+  - 지니: '보렴, 결국 어디서 출발해도 똑같은 결론에 도달하지?' 미소 짓는 지니
+  - 토토: 그래프 모눈종이 귀퉁이를 발로 밟고 앉은 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 그래프 가리키기, 지니 미소, 토토 앉음. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 초깃값의 독립성과 점근적 수렴성(Asymptotic Convergence)을 수학적 그래프와 곡선의 아름다움으로 확인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean technical anime art, warm cel shading, pure solid white background (#FFFFFF). A large grid paper displaying gentle smooth curves starting from different initial heights and converging together into a single glowing horizontal golden line. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, pointing at the convergence point with a clear ruler. Tuxedo cat Jiny with round glasses admiring the graph, pure white puppy Toto with sky-blue bandana resting paws on the paper edge. Exactly one girl, one cat, one dog. Pure white background, clear mathematical graph metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "높은 곳에서 시작하든 낮은 곳에서 시작하든, 갱신을 거듭하면 마침내 유일한 참 가치로 모여듭니다."

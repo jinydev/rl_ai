@@ -1,0 +1,33 @@
+# equation_explosion_vs_dp.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: equation_explosion_vs_dp.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 연립방정식 폭발과 동적 프로그래밍의 등장
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 수천 개의 미지수가 적힌 거대한 연립방정식 서류 더미 폭탄 앞에서 어지러워하는 도로시를, 이호진 교수님이 '동적 프로그래밍(DP)'이라는 황금 마법 정리봉으로 서류를 질서정연하게 차곡차곡 정리해 주는 장면.
+- **주요 구성**:
+  - 도로시: 흩날리는 수많은 복잡한 수식 서류 더미 사이에서 눈을 동그랗게 뜨고 당황한 표정의 도로시
+  - 이호진 교수님: 침착하고 부드러운 미소의 40대 초반 동안 교수님(무지 네이비 폴로셔츠, 솔트앤페퍼 헤어, 라운드 안경)이 반짝이는 DP 마법봉을 휘두르자 서류들이 깔끔한 계단식 블록으로 정리됨
+  - 지니: 서류 한 장을 낚아채며 안경을 고쳐 쓰는 턱시도 고양이 지니
+  - 토토: 날아다니는 종이를 향해 귀엽게 앞발을 뻗는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF) 컷아웃
+
+## 3. 캐릭터 가이드 준수
+- 이호진 교수님(40대 초반 동안, 무지 네이비 폴로, 주름 없는 매끄러운 피부, 얇은 안경), 도로시(9세 양갈래 머리, STEM HERO 패치 멜빵바지), 지니(안경, 방울), 토토(순백색, 스카이블루 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 상태가 많아지면 선형대수적 직접 역행렬 풀이(O(N^3))가 불가능해지는 '차원의 저주'를 유머러스하게 보여주고, 점진적 반복 해법인 DP의 필요성을 절감하게 함.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean line art, warm vibrant colors, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, comically surprised as papers with math equations flutter around. Beside her, youthful early 40s Korean professor Hojin with salt-and-pepper hair, round glasses, wearing plain dark navy polo shirt, calmly waving a small glowing golden magic wand that organizes the papers neatly into stepping blocks. Tuxedo cat Jiny with glasses catching a paper, pure white puppy Toto with sky-blue bandana jumping playfully. Exactly one man, one girl, one cat, one dog. Pure white background, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "미지수가 수만 개로 늘어나면 연립방정식을 한 번에 풀 수 없습니다. 이때 동적 계획법이 훌륭한 구원투수가 됩니다."

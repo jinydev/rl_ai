@@ -1,0 +1,33 @@
+# jiny_tutoring_formula_07_9.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_tutoring_formula_07_9.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 지니의 과외: 정책 탐욕화 공식 (식 07.9)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 지니가 도로시에게 argmax를 이용해 가장 큰 Q값을 가진 최선의 행동을 쏙 골라내는 탐욕화(Greedification)의 과정을 설명하는 일러스트.
+- **주요 구성**:
+  - 칠판: 4개의 방향 화살표(상, 하, 좌, 우) 중 가장 빛나는 오른쪽 화살표에 왕관이 씌워진 그림
+  - 지니: '여러 행동 중 가장 큰 이득을 주는 단 하나를 고르는 것이 바로 탐욕화야!' 설명하는 지니
+  - 도로시: '아하, 제일 좋은 것만 쏙 고르면 되는구나!' 하며 밝게 웃는 도로시
+  - 토토: 왕관 쓴 화살표를 보고 꼬리를 살랑살랑 흔드는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 의상, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- argmax 연산이 복잡한 수식이 아니라 '최선의 행동에 왕관을 씌우는 단순한 선택'임을 직관적으로 설명.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean linework, pure white background (#FFFFFF). On a cute small chalkboard, four direction arrows are drawn, with the right arrow glowing brightly with a tiny golden crown on it. Cute tuxedo cat Jiny wearing round glasses pointing at the crowned arrow. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, clapping her hands happily in understanding. Uniform milk-white puppy Toto with sky-blue bandana sitting beside. Exactly one girl, one cat, one dog. Pure white background, warm and clear, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "탐욕화는 가장 큰 기대 보상을 가져다주는 행동을 왕관처럼 콕 집어 선택합니다."

@@ -1,0 +1,34 @@
+# future_estimate_to_current.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: future_estimate_to_current.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 한 걸음 앞의 추정치로 현재 상태 가치를 끌어올리기
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 한 걸음 앞선 다음 상태의 돌판에 놓인 따끈따끈한 마법 등불(V_k(s'))의 온기를 마법 깔때기로 모아, 지금 서 있는 발판(V_k+1(s))을 환하게 밝혀주는 직관적 연출.
+- **주요 구성**:
+  - 발판: 현재 발판과 한 칸 앞의 발판
+  - 마법 등불: 앞 발판의 등불에서 피어오른 빛줄기가 도로시의 지팡이를 통해 현재 발판으로 흘러듦
+  - 도로시: 앞 발판의 빛을 끌어오며 환하게 웃는 도로시
+  - 지니: 빛의 흐름을 기록하는 턱시도 고양이 지니
+  - 토토: 밝아진 발판 위에서 신나게 발을 구르는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 다음 상태의 가치 정보를 백업(Backup)받아 현재 상태의 가치를 업데이트하는 강화학습 특유의 정보 흐름 방향을 직관화.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm magical glow, pure solid white background (#FFFFFF). Two stone stepping tiles floating in space. A warm glowing lantern on the forward tile casts a ray of golden light backward, illuminating the tile where adorable 9-year-old girl Dorothy with chestnut pigtails and denim overalls with STEM HERO patch stands. Tuxedo cat Jiny with round glasses taking notes, pure white puppy Toto with sky-blue bandana happily wagging tail on the glowing floor. Exactly one girl, one cat, one dog. Pure white background, educational magic, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "다음 칸의 불빛을 끌어와 지금 내가 딛고 선 칸을 더 밝게 비춥니다."

@@ -1,0 +1,34 @@
+# dorothy_iterative_bouncing_wall.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_iterative_bouncing_wall.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 두 벽 사이를 튕기는 얌체공 메타포
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 정책 평가 벽과 정책 개선 벽 사이를 왕복하며 튕기는 마법 에너지 공을 통해, 평가와 개선의 엄격한 상호작용을 재미있게 표현한 일러스트.
+- **주요 구성**:
+  - 양쪽 벽: 왼쪽의 푸른빛 '가치 평가' 투명 크리스털 벽, 오른쪽의 오렌지빛 '정책 개선' 크리스털 벽
+  - 중앙: 두 벽 사이를 통통 튀며 앞으로 전진하는 발광 얌체공 궤적
+  - 도로시: 얌체공의 궤적을 유심히 관찰하며 턱을 괴고 생각에 잠긴 도로시
+  - 지니: 지휘봉으로 튕기는 각도를 측정하는 턱시도 고양이 지니
+  - 토토: 공을 따라 고개를 좌우로 흔들며 집중하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF) 컷아웃
+
+## 3. 캐릭터 가이드 준수
+- 도로시(주황 스트라이프 티, 데님 멜빵바지), 지니(턱시도 무늬, 안경), 토토(순백색, 하늘색 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 평가 벽까지 공이 완전히 도달해야만 반사되는 기존 방식의 비효율성을 시각화하여 지름길 아이디어의 필요성을 드러냄.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean line art, warm lighting, pure white background (#FFFFFF). Two translucent magical crystal slabs on left and right sides. A glowing magical bouncy orb bouncing back and forth between them in an energetic zigzag trajectory. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with round STEM HERO patch, watching thoughtfully. Beside her, tuxedo cat Jiny wearing scholar glasses pointing with a small stick, and one white puppy Toto with sky-blue bandana curiously watching the bouncing ball. Exactly one girl, one dog, one cat. Pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "공이 저 먼 벽 끝까지 매번 완전히 닿아야만 튕겨 나올 필요가 있을까요?"

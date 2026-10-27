@@ -1,0 +1,33 @@
+# jiny_tutoring_formula_v_k.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_tutoring_formula_v_k.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 지도의 버전별 진화 (V_0 -> V_1 -> V* 수렴)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 흐릿하고 밋밋했던 보물 지도가 반복 회차가 거듭될수록 지형과 등고선, 황금 보물 위치가 점점 또렷하고 입체적으로 선명해지는 3단계 지도 진화 일러스트.
+- **주요 구성**:
+  - 3장의 지도: 왼쪽(0으로 가득 찬 백지 지도 V0), 중간(주변 윤곽이 드러나는 V1~Vk 지도), 오른쪽(보물 위치까지 완벽히 빛나는 완성된 최적 지도 V*)
+  - 도로시: 돋보기를 들고 마지막 완성된 V* 지도를 확인하며 감탄하는 도로시
+  - 지니: '봐, 반복할 때마다 지도가 점점 더 완벽해지지?' 흐뭇해하는 지니
+  - 토토: 완성된 지도 위의 황금 보물 마크에 앞발을 얹고 꼬리 치는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 함수의 반복적 갱신(k=0, 1, 2...)이 무작위 추정치에서 출발하여 점진적으로 참된 최적 가치로 수렴해 가는 수렴의 직관을 전달.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm vivid cel colors, pure white background (#FFFFFF). Three parchment maps floating in sequence: the first is plain blank, the second has emerging gentle color contours, and the third shines brightly with a rich 3D golden terrain and clear treasure chest. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, admiring the third map with a magnifying glass. Tuxedo cat Jiny with round glasses smiling proudly. Solid white puppy Toto with sky-blue bandana happily touching the treasure mark. Exactly one girl, one cat, one dog. Pure white background, clear educational progression, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "반복을 거듭할수록 흐릿했던 가치 지도는 점점 뚜렷한 최적의 보물 지도로 완성됩니다."

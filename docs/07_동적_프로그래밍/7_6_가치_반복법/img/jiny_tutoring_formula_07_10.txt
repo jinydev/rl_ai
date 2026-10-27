@@ -1,0 +1,33 @@
+# jiny_tutoring_formula_07_10.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_tutoring_formula_07_10.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 지니의 과외: 벨만 최적 방정식 (식 07.10)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 평균을 구하는 sum(sigma) 기호 대신, 즉시 최댓값을 취하는 MAX 기호로 합쳐진 벨만 최적 방정식의 우아한 결합을 설명하는 지니와 도로시.
+- **주요 구성**:
+  - 칠판: 두 공식이 하나로 융합되어 빛나는 황금빛 'MAX' 심볼과 벨만 최적 업데이트 식
+  - 지니: 양손을 쫙 펴며 '평가와 개선을 MAX 하나로 마법처럼 합쳤단다!' 감탄하는 지니
+  - 도로시: 양손을 모으고 경이로운 표정으로 칠판의 MAX 마크를 바라보는 도로시
+  - 토토: 빛나는 MAX 마크를 호기심 어린 눈으로 올려다보는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 지니(감탄하는 포즈), 도로시(경이로운 표정), 토토(호기심 어린 포즈).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 식 07.8과 식 07.9가 식 07.10의 벨만 최적 방정식 하나로 압축되는 수학적 아름다움과 효율성을 전달.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, warm cel shading, pure white background (#FFFFFF). A chalkboard displaying a central glowing golden star labeled subtly with an abstract MAX concept. Tuxedo cat Jiny with round wire glasses gesturing grandly toward it. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, gazing in wonder with clasped hands. One uniform white puppy Toto with sky-blue bandana looking up enthusiastically. Exactly one girl, one cat, one dog. Pure white background, inspirational educational scene, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "지루한 평균 계산 대신 MAX 기호 하나를 넣음으로써 두 단계가 하나로 완벽히 융합됩니다."

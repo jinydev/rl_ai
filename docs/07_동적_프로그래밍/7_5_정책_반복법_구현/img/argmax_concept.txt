@@ -1,0 +1,41 @@
+# [이미지 분석 및 프롬프트 명세서] argmax_concept.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: argmax_concept.png
+- 교재 챕터: 07.5.1 정책 개선 구현 - argmax의 기본 원리 (index.md 라인 88-92)
+- 캡션: argmax의 역할: 가장 가치가 큰 행동을 선택!
+- 교육적 목표: max 함수가 '가장 큰 값(숫자)'을 반환하는 것과 달리, argmax 함수는 '그 최댓값을 만들어낸 원인인 행동(동서남북 키/인덱스)'을 찾아 반환한다는 근본적인 차이를 시각적 상자와 라벨 매핑으로 명쾌하게 이해시킵니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: $\max$ (최댓값 자체) vs $\operatorname{argmax}$ (최댓값을 달성하는 변수/행동).
+- 시각적 은유: 4개의 색색깔 선물 상자가 저울 위에 놓여 있음:
+  * UP 상자: 2.1
+  * DOWN 상자: 5.4
+  * LEFT 상자: -1.0
+  * RIGHT 상자: 9.8 ⭐ (가장 무겁고 빛남)
+  황금 로봇 집게손이 9.8이라는 점수를 보고, 상자 위에 붙은 꼬리표인 **'RIGHT' (행동)**를 쏙 뽑아 올려 보여주는 직관적 기계장치.
+- 유지해야 할 필수 콘텐츠: 4방향 상자와 점수들, 최댓값을 가진 상자의 라벨('RIGHT' 또는 'action')을 집어 올리는 argmax 기구, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 기계 옆에서 집게손이 뽑아낸 'RIGHT' 표지판을 가리키며 활짝 웃음.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 상자들 옆에 앉아 꼬리를 흔들며 구경.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 명확하고 산뜻한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A clear educational diagram of the argmax function mechanism. In the center are four colorful wooden score boxes resting on a maker bench: 
+- UP Box: "2.1" 
+- DOWN Box: "5.4" 
+- LEFT Box: "-1.0" 
+- RIGHT Box: glowing golden "9.8" with sparkling stars. 
+A cute brass mechanical crane claw labeled "argmax" reaches down and lifts the key label tag "RIGHT" from the highest-scoring box, showing that argmax returns the best action key rather than just the number. 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) claps happily, pointing at the selected "RIGHT" tag with joyful clarity. 
+Beside the bench, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) sits wagging his tail. Exactly one dog only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

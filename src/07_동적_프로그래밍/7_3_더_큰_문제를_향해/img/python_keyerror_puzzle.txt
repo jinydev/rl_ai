@@ -1,0 +1,47 @@
+# [이미지 분석 및 프롬프트 명세서] python_keyerror_puzzle.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `python_keyerror_puzzle.png`
+- **교재 챕터**: 07.3.2.1 가치 함수의 딕셔너리 구현과 한계 (`index.md` 라인 476-487)
+- **캡션**: `등록되지 않은 키를 찾으려다 펑! 일반 딕셔너리의 KeyError 난관`
+- **교육적 목표**: 
+  일반 파이썬 딕셔너리(`V = {}`)를 사용할 때, 미리 초기화되지 않은 상태 좌표 키(`(1, 2)`)를 조회하려고 하면 파이썬이 `KeyError` 예외를 던지며 프로그램이 멈추는 상황을 귀엽고 극적인 시각적 은유로 전달합니다. 이를 통해 다음 단계에서 등장할 `defaultdict`의 필요성과 마법 같은 편리함을 극대화하여 부각합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 일반 딕셔너리의 `KeyError`, 사전 초기화 루프의 번거로움, 예외 발생 메커니즘.
+- **시각적 은유**: 
+  - 서랍장 형태의 딕셔너리 보관함 `V`.
+  - 도로시가 `(1, 2)` 라벨이 붙은 서랍을 열려고 하자, 서랍 속이 비어있어 작은 보라색 연기와 함께 깜짝 놀랄 만한 경고 팻말 `KeyError!`가 뿅 튀어나옴.
+  - 도로시가 깜짝 놀라 눈을 크게 뜨고 뒤로 살짝 물러서고, 토토가 귀를 쫑긋 세우며 멍멍 짖는 듯한 유쾌한 만화적 연출.
+  - 조교 지니가 "쯧쯧, 초기화를 깜빡했구나!" 하는 표정으로 안경을 추켜올림.
+- **유지해야 할 필수 콘텐츠**:
+  - `KeyError` 팝업 연출, 도로시와 친구들의 깜짝 반응.
+  - 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 비어있는 서랍에서 튀어나온 `KeyError!`에 귀엽게 깜짝 놀라는 표정.
+- **토토**: 크림화이트 강아지 (하늘색 반다나). 도로시 다리 옆에서 방어하듯 왈왈 짖는 자세.
+- **조교 지니**: 안경을 쓴 턱시도 고양이 (빨간 방울 목걸이). 서랍장 옆에서 수첩을 들고 아쉬워하며 지도하는 포즈.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 소프트 웜 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 은은한 접지 그림자.
+- **제약 사항**: 프레젠테이션 테두리 및 텍스트 박스 배제, 일본어 텍스트 금지.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A humorous and educational programming metaphor scene showing a Python KeyError. Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, red canvas sneakers) reaches to open an empty wooden drawer of a filing cabinet labeled "Dictionary V". As she pulls the drawer labeled "(1, 2)", an empty void releases a cute small puff of purple comic smoke with a pop-up sign saying "KeyError!". 
+
+Dorothy stumbles back slightly with wide, comical surprised anime eyes and open mouth. Beside her, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) barks protectively with perked ears. Sitting beside the cabinet, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny scholar glasses, red collar with gold bell) gently shakes its head and adjusts its glasses with a teacher-like expression. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

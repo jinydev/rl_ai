@@ -1,0 +1,33 @@
+# jiny_tutoring_formula_07_8.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: jiny_tutoring_formula_07_8.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: 지니의 과외: 벨만 기대 방정식 (식 07.8)
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 칠판 앞에서 턱시도 고양이 지니가 지휘봉으로 벨만 기대 방정식의 '정책 가중 평균 합' 기호를 짚어주며 도로시에게 원리를 설명하는 친절한 과외 장면.
+- **주요 구성**:
+  - 칠판: 귀여운 분필 그림으로 그려진 상태 전이 다이어그램과 합 기호(sigma pi)
+  - 지니: 학자 안경을 쓰고 긴 나무 지휘봉으로 칠판의 합 기호를 가리키는 턱시도 고양이 지니
+  - 도로시: 책상에 단정히 앉아 턱을 괴고 끄덕이며 공책에 필기하는 도로시
+  - 토토: 책상 옆 바닥에 얌전히 엎드려 지니의 지휘봉 끝을 쳐다보는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF) 컷아웃
+
+## 3. 캐릭터 가이드 준수
+- 지니(미니 학자 안경, 붉은 방울 목걸이), 도로시(단정히 앉은 9세 소녀, 멜빵바지), 토토(하얀 털, 스카이블루 반다나).
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 정책 반복법에서 사용하던 벨만 기대 방정식이 '모든 행동의 평균'을 계산하느라 복잡했음을 되짚음.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean line art, warm soft cel colors, pure white background (#FFFFFF). A cozy chalk blackboard with simple hand-drawn branch diagram. Tuxedo cat Jiny wearing mini round wire glasses and red bell collar, standing on a wooden stool pointing with a small pointer at the board. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, sitting at a wooden school desk diligently taking notes. One solid white puppy Toto with sky-blue bandana resting quietly by her feet. Exactly one girl, one cat, one dog. Pure white background, warm educational atmosphere, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "벨만 기대 방정식은 모든 가능한 행동의 확률적 가중 평균을 구해야 했습니다."

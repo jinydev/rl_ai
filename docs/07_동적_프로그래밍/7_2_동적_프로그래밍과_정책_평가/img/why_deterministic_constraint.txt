@@ -1,0 +1,33 @@
+# why_deterministic_constraint.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: why_deterministic_constraint.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 결정적 상태 전이로 제한하는 교육적 이유
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 복잡한 이중 시그마(Sigma) 확률 덤불을 가위로 싹둑 잘라내고, 핵심 도로를 넓고 시원하게 열어주어 초보자도 벨만 방정식의 핵심 뼈대를 명쾌하게 볼 수 있게 해주는 배려.
+- **주요 구성**:
+  - 도로시: 커다란 원예 가위로 복잡하게 얽힌 수식 덤불을 가지치기하며 활짝 웃는 도로시
+  - 덤불 뒤: 가지치기 후 드러난 넓고 시원한 직진 고속도로
+  - 지니: '불필요한 수학적 피로감을 걷어내고 핵심에 집중하자!' 표지판을 세우는 지니
+  - 토토: 깨끗해진 길 위로 신나게 뛰어나가는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 가지치기 동작, 지니 표지판, 토토 질주. 표준 의상 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 왜 교재에서 확률적 전이 대신 결정적 전이를 먼저 다루는지(수학적 복잡도를 낮추고 직관적 핵심에 집중하기 위함) 교육적 의도를 설명.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean outlines, bright warm cel colors, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, smiling playfully as she snips away thorny tangled weed vines with gardening shears, unveiling a smooth broad sunlit road ahead. Tuxedo cat Jiny with round glasses putting up a clean guiding signpost, milk-white puppy Toto with sky-blue bandana leaping down the newly cleared path. Exactly one girl, one cat, one dog. Pure white background, educational clarity, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "복잡한 확률 합산 기호를 걷어내면, 벨만 방정식의 진짜 핵심 원리가 선명하게 드러납니다."

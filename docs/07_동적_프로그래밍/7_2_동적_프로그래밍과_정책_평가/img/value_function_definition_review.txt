@@ -1,0 +1,33 @@
+# value_function_definition_review.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: value_function_definition_review.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 가치 함수의 정의 복습
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 현재 상태 s에서 앞으로 얻을 미래 보상들의 할인 총합(R_t + gamma R_t+1 + ...)을 칠판 앞에서 친절하게 짚어주는 도로시와 경청하는 토토.
+- **주요 구성**:
+  - 칠판: 타임라인 화살표 위에 현재 보상부터 점점 작아지는 미래 보상 코인들이 나열된 그림
+  - 도로시: 긴 지시봉으로 첫 번째 큰 코인을 가리키며 설명하는 똑똑한 도로시
+  - 지니: 돋보기로 할인율 gamma가 곱해진 미래 코인을 확인하는 턱시도 고양이 지니
+  - 토토: 칠판 아래에서 고개를 갸우뚱하며 집중하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 지니 안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 가치 함수의 본질이 '앞으로 받을 미래 보상들의 기대 할인 합'이라는 점을 직관적으로 리마인드.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean outlines, warm colors, pure solid white background (#FFFFFF). A cozy wooden stand chalkboard showing a timeline of sparkling gold coins gradually shrinking into the distance. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, pointing at the board with a wooden pointer. Tuxedo cat Jiny with round glasses looking through a magnifying glass, pure white puppy Toto with sky-blue bandana sitting attentively. Exactly one girl, one cat, one dog. Pure white background, educational scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "가치 함수란 현재 상태에서 출발하여 미래에 얻을 모든 보상들을 할인하여 더한 총합입니다."

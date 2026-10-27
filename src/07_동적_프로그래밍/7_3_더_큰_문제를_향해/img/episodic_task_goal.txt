@@ -1,0 +1,45 @@
+# [이미지 분석 및 프롬프트 명세서] episodic_task_goal.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- **파일명**: `episodic_task_goal.png`
+- **교재 챕터**: 07.3.2 step4 일회성 과제 (`index.md` 라인 142-155)
+- **캡션**: `일회성 과제: 목표 상태에 도달하면 에피소드 종료!`
+- **교육적 목표**: 
+  문제를 '일회성 과제(Episodic Task)'로 정의하는 수학적/알고리즘적 이유를 직관적으로 전달합니다. 에이전트가 목표 지점에 도달하면 더 이상 탐색이나 보상이 발생하지 않고 에피소드가 깔끔하게 종료(종결 상태, Terminal State)되므로, 미래 보상의 총합이 무한대로 발산하지 않고 가치 $V(\text{goal})=0$이라는 명확한 경계 조건으로 수렴함을 경쾌한 성취감과 함께 축하합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- **핵심 개념**: 일회성 과제(Episodic Task), 종결 상태(Terminal State), 목표 달성 시 $V(\text{goal})=0$ 고정 및 에피소드 종료.
+- **시각적 은유**: 
+  - 체커 플래그(Finish Flag)가 꽂힌 결승선 타일.
+  - 탐스러운 커다란 황금 사과(+1.0)를 안고 기뻐하는 도로시.
+  - 결승선에서 신나게 뜀박질하며 축하하는 토토.
+  - 조교 지니가 'MISSION COMPLETE! EPISODE END' 클립보드에 도장을 쾅 찍어주는 감수 조교의 모습.
+- **유지해야 할 필수 콘텐츠**:
+  - 결승선, 사과, 성공의 축제 분위기(색색의 작은 컨페티).
+  - 커다란 텍스트 박스看板이나 UI 테두리 배제.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- **도로시 (Dorothy)**: 4.5등신 치비 주니어 메이커 ('STEM HERO' 오버롤, 빨간 스니커즈). 결승선에 무사히 골인하여 커다란 사과 모형을 품에 꼭 안고 활짝 웃음.
+- **토토 (Toto)**: 크림화이트 강아지 (하늘색 반다나). 도로시 발치에서 하늘 높이 펄쩍 뛰어오르며 신나게 축하.
+- **조교 지니 (Jiny the TA Cat)**: 안경을 쓴 턱시도 조교 냥이. 작은 나무 클립보드를 들고 빨간 잉크 도장(Stamp)으로 "PASSED"를 찍으며 엄지발을 척 올려주는 든든한 연구실 조교.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 클린 라인아트 (`#26211E`), 화사한 플랫 셀 채색.
+- **배경**: 무결점 순백색 (`#FFFFFF`, Solid Pure White), 발밑의 부드러운 접지 그림자.
+- **제약 사항**: 화면을 가로지르는 거대한 슬라이드 리본 배너나 텍스트 팻말 배제, 피사체 중심의 깔끔한 누끼 컷아웃 구도.
+
+---
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+
+A joyful victory and episode completion scene in an AI grid world. Young Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' round chest patch, red canvas sneakers) happily hugs a shiny oversized green-and-red apple reward on a pastel finish-line checkered tile, beaming with a triumphant cheerful smile. Floating around are colorful festive confetti sparkles. Beside her, Toto the fluffy cream-white puppy (solid warm milk-white coat, no spots, black button nose, sky-blue neckerchief bandana) leaps cheerfully into the air with an ecstatic open-mouthed dog smile. On the other side, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, olive-green eyes, tiny round scholar glasses, red collar with gold bell) sits proudly on a small stool, holding a wooden clipboard with a checklist, holding up a red rubber stamp with an approving nod. A small checkered finish flag flutters near the tile. 
+
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+```
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+```text
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature
+```

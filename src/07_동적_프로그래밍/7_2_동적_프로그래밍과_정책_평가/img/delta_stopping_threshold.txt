@@ -1,0 +1,35 @@
+# delta_stopping_threshold.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: delta_stopping_threshold.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 가치 변화량(delta) 측정과 자동 갱신 중단
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 두 방의 변화량 중 가장 큰 값(delta)을 측정 저울에 올려놓고, 눈금이 임곗값(theta=0.0001) 밑으로 톡 떨어지자 축하 폭죽과 함께 76회 만에 계산이 완료되는 통쾌한 순간.
+- **주요 구성**:
+  - 중앙: 미세한 변화량을 측정하는 정밀 황금 눈금 다이얼
+  - 다이얼 바늘: 0.0001 빨간 안전선 아래로 톡 내려가 있음
+  - 축하: 다이얼 상단에서 팡 터지는 작은 색종이 폭죽
+  - 도로시: 양손을 번쩍 들고 '76회 만에 완벽 수렴 달성!' 환호하는 도로시
+  - 지니: 초시계를 멈추며 미소 짓는 턱시도 고양이 지니
+  - 토토: 색종이를 맞으며 신나게 꼬리를 흔드는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 환호 포즈, 지니 초시계 정지, 토토 폭죽 즐김. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- while 루프의 탈출 조건인 `max(delta) < theta`가 어떻게 76회의 반복 끝에 알고리즘을 성공적으로 완수시키는지 극적으로 체감.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, celebratory warm cel art, pure solid white background (#FFFFFF). A polished golden gauge dial with a tiny needle resting safely below a red threshold line. Gentle festive confetti sparkles above. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, raising her hands joyfully in celebration. Tuxedo cat Jiny with round glasses stopping a brass timer proudly, milk-white puppy Toto with sky-blue bandana playfully jumping among the soft confetti. Exactly one girl, one cat, one dog. Pure white background, triumphant achievement, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "변화량이 기준선 아래로 내려앉는 순간, 76회의 긴 여정이 성공적으로 마무리됩니다."

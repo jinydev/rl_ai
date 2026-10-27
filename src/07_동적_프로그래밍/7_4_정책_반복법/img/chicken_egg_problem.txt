@@ -1,0 +1,37 @@
+# [이미지 분석 및 프롬프트 명세서] chicken_egg_problem.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: chicken_egg_problem.png
+- 교재 챕터: 07.4.1 정책 개선 - 탐욕 정책의 닭과 달걀 딜레마 (index.md 라인 153-157)
+- 캡션: 누가 먼저일까? 닭과 달걀의 순환 고리!
+- 교육적 목표: 최적 가치 함수 $v_*$를 알려면 최적 정책 $\mu_*$가 필요하고, 최적 정책 $\mu_*$를 구하려면 최적 가치 함수 $v_*$가 필요한 '닭과 달걀'의 순환 의존성(Circular Dependency) 문제를 위트 있게 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 최적 가치 함수 $v_*$와 최적 정책 $\mu_*$ 사이의 상호 의존 순환 딜레마.
+- 시각적 은유: 둥근 순환 고리 궤도. 한쪽에는 볏을 세우고 날개를 펄럭이는 귀여운 어미 닭(최적 정책 $\mu_*$ 메달 착용), 반대쪽에는 금빛으로 빛나는 마법의 알(최적 가치 $v_*$ 각인). 두 화살표가 서로를 가리키며 뱅글뱅글 맴돌고 있고, 도로시가 턱을 괴고 "누가 먼저지?"라며 고민하고 지니가 안경을 고쳐 쓰며 짚어주는 장면.
+- 유지해야 할 필수 콘텐츠: 닭($\mu_*$)과 알($v_*$)의 순환 화살표 루프, 궁금해하는 도로시, 지니, 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 검지손가락을 뺨에 대고 호기심 어린 눈으로 순환 루프를 관찰.
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 미니 안경, 빨간 방울 목걸이. 책상 위에서 지휘봉으로 닭과 달걀을 번갈아 가리키며 딜레마를 설명.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 알 옆에서 코를 킁킁대며 꼬리를 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 밝고 따뜻한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A humorous and witty illustration of the "Chicken and Egg" circular dilemma in reinforcement learning. 
+In the center is a glowing circular dual-arrow track: 
+- On one side sits a plump, cheerful white cartoon mother hen wearing a golden medal inscribed "Optimal Policy μ*". 
+- On the other side sits a magical glowing golden egg inscribed with "Optimal Value V*". 
+Curved glowing green arrows point from the chicken to the egg and from the egg back to the chicken in an infinite loop labeled "Which came first?". 
+On the left, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) tilts her head thoughtfully with her finger on her cheek. 
+On the right, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, round wire scholar glasses, red collar with gold bell) points his wooden pointer stick at the loop with a scholarly smile. 
+Beside Dorothy, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) playfully sniffs at the golden egg. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

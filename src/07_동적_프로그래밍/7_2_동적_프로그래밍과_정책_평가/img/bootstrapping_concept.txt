@@ -1,0 +1,32 @@
+# bootstrapping_concept.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: bootstrapping_concept.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 부트스트래핑(Bootstrapping)의 어원과 강화학습적 의미
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 외부의 밧줄 도움 없이, 스스로 자신의 신발 뒤축 고리끈(Boot-strap)을 야무지게 잡아당겨 허공으로 둥실 떠오르며 자력 갱신하는 도로시의 귀엽고 상징적인 일러스트.
+- **주요 구성**:
+  - 도로시: 빨간 캔버스 운동화 뒤축에 달린 끈을 양손으로 단단히 쥐고 위로 당기자, 마법처럼 몸이 공중으로 둥실 떠오르는 유쾌한 모습
+  - 지니: '남의 손을 빌리지 않고 내 추정치로 나를 들어 올린다!' 감탄하며 박수 치는 지니
+  - 토토: 도로시와 함께 공중에 살짝 떠올라 놀라워하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF) 컷아웃
+
+## 3. 캐릭터 가이드 준수
+- 도로시 빨간 운동화 끈 당기는 포즈, 지니 감탄, 토토 공중 부양. 표준 의상 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- '스스로의 끈을 당겨 자력으로 일어선다'는 부트스트랩의 어원을 통해, 참값 없이 기존 추정치만으로 새로운 추정치를 갱신하는 DP/RL의 핵심 속성을 유쾌하게 각인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, whimsical clean linework, warm vibrant colors, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, comically and magically pulling upward on the red straps at the back of her canvas sneakers, floating gently in mid-air by her own power. Beside her, tuxedo cat Jiny with round glasses applauding proudly, and pure white puppy Toto with sky-blue bandana floating lightly beside her with a happy surprised expression. Exactly one girl, one cat, one dog. Pure white background, whimsical literal bootstrap metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "부트스트래핑이란 참값의 도움 없이, 자신의 기존 추정치를 발판 삼아 스스로를 한 단계 더 높이 끌어올리는 마법입니다."

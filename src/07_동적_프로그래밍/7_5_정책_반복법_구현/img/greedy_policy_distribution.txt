@@ -1,0 +1,42 @@
+# [이미지 분석 및 프롬프트 명세서] greedy_policy_distribution.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: greedy_policy_distribution.png
+- 교재 챕터: 07.5.1 정책 개선 구현 - 탐욕화 확률 분포 생성 (index.md 라인 162-166)
+- 캡션: 결정적 행동에 1.0의 확률을 올인!
+- 교육적 목표: 탐욕 정책(Greedy Policy)이 최적 행동에 1.0(100%)의 확률을 전부 몰아주고, 나머지 다른 행동들에는 0.0의 확률을 배정하여 확고한 '결정적 정책(Deterministic Policy)'으로 전환되는 확률 분포 구조를 직관적으로 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: `action_probs = {0: 0, 1: 0, 2: 0, max_action: 1.0}`, 탐욕적 확률 올인.
+- 시각적 은유: 4개의 확률 비커(또는 코인 저울).
+  * UP 비커: 빈 잔 (0.0)
+  * LEFT 비커: 빈 잔 (0.0)
+  * RIGHT 비커: 빈 잔 (0.0)
+  * **SOUTH 비커**: 황금빛 액체(또는 금화)가 100% 가득 찬 잔 (**1.0 ALL-IN!**)
+  지니 조교가 스포이트로 1.0 눈금에 도장을 쾅 찍어주며 "결정적 정책 완성!"이라고 만족스러워하는 장면.
+- 유지해야 할 필수 콘텐츠: 4개 행동 중 하나에만 100%(1.0)가 채워진 확률 막대/비커 차트, 지니와 도로시, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 미니 안경, 빨간 방울 목걸이. 교탁 위에서 지휘봉으로 1.0이 가득 찬 South 비커를 짚으며 명쾌하게 설명.
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 1.0 수치를 노트에 기록하며 고개를 끄덕임.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 발치에서 기분 좋게 꼬리를 흔듦.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 밝고 명쾌한 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A clear educational diagram of greedy policy probability allocation. In the center are four glass laboratory beakers on a wooden laboratory rack representing four action directions: 
+- UP Beaker: empty "0.0" 
+- LEFT Beaker: empty "0.0" 
+- RIGHT Beaker: empty "0.0" 
+- SOUTH Beaker: filled to the brim with glowing golden elixir labeled "1.0 (100% ALL-IN!)" with a green checkmark seal. 
+On the right, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, round wire scholar glasses, red collar with gold bell) stands on a stool, pointing his wooden pointer stick proudly at the 1.0 beaker. 
+On the left, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) jots down "South: 1.0" in her notebook with a happy smile. 
+Beside Dorothy, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) sits wagging his tail. Exactly one cat and one dog only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

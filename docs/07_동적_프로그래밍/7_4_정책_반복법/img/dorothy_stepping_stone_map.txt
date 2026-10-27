@@ -1,0 +1,37 @@
+# [이미지 분석 및 프롬프트 명세서] dorothy_stepping_stone_map.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: dorothy_stepping_stone_map.png
+- 교재 챕터: 07.4.1 정책 개선 - 임의의 정책 적용과 디딤돌 우회로 (index.md 라인 180-184)
+- 캡션: 그림 07-20 엉성한 지도(μ)를 직접 고치며 완벽한 최적의 지도(μ*)를 동경하는 도로시
+- 교육적 목표: 단번에 최적의 지도($\mu_*$)를 손에 넣을 수 없기에, 현재의 엉성한 지도($\mu_0$)부터 시작하여 한 단계씩 평가하고 고쳐나가는 '디딤돌 사다리(Stepping Stones)' 현실적 우회로 전략을 시각화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 점진적 정책 개선(Incremental Policy Improvement), 임의의 초기 정책에서 최적 정책으로의 수렴 과정.
+- 시각적 은유: 구름 위에 놓인 파스텔 톤의 디딤돌 계단.
+  * 맨 아래 디딤돌: 낡고 구겨진 첫 지도 $\mu_0$를 들고 있는 도로시
+  * 중간 디딤돌: 조금 더 정밀해진 지도 $\mu_1, \mu_2$로 한 걸음씩 올라가는 발자국
+  * 맨 꼭대기 디딤돌: 눈부신 금빛 후광을 내뿜는 완벽한 최적의 지도 $\mu_*$와 황금 깃발
+  도로시가 지도를 품에 안고 설레는 눈빛으로 정상을 바라보며 한 걸음 내딛는 희망찬 모험 장면.
+- 유지해야 할 필수 콘텐츠: 계단형 디딤돌($\mu_0 \rightarrow \mu_1 \rightarrow \mu_*$), 손에 든 지도, 정상의 황금 깃발, 도로시와 토토.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 한 손에 연필, 다른 손에 지도를 쥐고 희망찬 표정으로 위를 올려다봄.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 앞쪽 디딤돌에 먼저 올라서서 꼬리를 흔들며 길을 안내.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 몽환적이고 따뜻한 모험 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+An inspiring adventure metaphor of stepping stones to optimal policy. In the center are floating stone stepping steps rising diagonally upward: 
+- Lower Step: labeled "Initial Policy μ0", where Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) stands holding a rough hand-drawn parchment map and a pencil, taking an eager step up. 
+- Middle Steps: labeled "μ1" and "μ2" showing clear progress with glowing green trail arrows. 
+- Highest Step: glowing with brilliant golden light, holding a glorious golden flag inscribed with "Optimal Policy μ*" surrounded by sparkling golden stars. 
+Ahead of Dorothy on the next step, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) happily looks back, encouraging her forward with an open smile. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at base, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

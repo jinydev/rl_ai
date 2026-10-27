@@ -1,0 +1,33 @@
+# l2_left_action_calculation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l2_left_action_calculation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 L2에서 왼쪽 행동: L1으로 이동 및 보상 0 계산
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 도로시가 L2 칸에서 왼쪽 L1 칸으로 안전하게 한 칸 이동하지만, 아무런 특별한 보상이 없는 평범한 칸이어서 보상 0(0.5 * (0 + 0) = 0)을 기록하는 잔잔한 탐색 장면.
+- **주요 구성**:
+  - 그리드 칸: L2에서 L1으로 왼쪽 발걸음을 옮기는 모습
+  - 도로시: 조심스럽게 한 발을 디디며 주변을 둘러보는 도로시 (보상이 없음을 확인)
+  - 지니: 공책에 숫자 '0'을 적으며 끄덕이는 턱시도 고양이 지니
+  - 토토: 도로시 발치를 따라 얌전히 걸어오는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 조심스러운 보행, 지니 기록, 토토 보행. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 보상이 0인 전이의 계산 과정을 다루어, 0도 의미 있는 유효한 보상 값임을 확인.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, calm clear linework, warm cel colors, pure solid white background (#FFFFFF). Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, taking a careful step from right stone tile L2 to left stone tile L1. Tuxedo cat Jiny with round glasses writing a neat '0' in his notebook, pure white puppy Toto with sky-blue bandana walking calmly alongside. Exactly one girl, one cat, one dog. Pure white background, peaceful educational step, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "엘이에서 왼쪽으로 이동하면 안전하지만 아무런 추가 보상도 없습니다."

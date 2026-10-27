@@ -1,0 +1,33 @@
+# l1_deterministic_railway.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l1_deterministic_railway.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 결정적 전이의 기차 선로 비유
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: L1에서 오른쪽으로 이동할 때, 마치 단선 철로 위를 달리는 꼬마 기차처럼 탈선이나 갈림길 없이 100% 확률(p=1.0)로 정확히 L2 역에 안착하는 도로시의 장난감 기차 여행.
+- **주요 구성**:
+  - 철로: L1 역에서 L2 역으로 흔들림 없이 이어진 예쁜 미니 철도 선로
+  - 꼬마 기차: 도로시가 운전석에 타고 밝게 기적을 울리는 귀여운 증기기관차
+  - 지니: 차장 모자를 쓰고 표를 검사하는 턱시도 고양이 지니
+  - 토토: 객차 창밖으로 얼굴을 내밀고 귀를 펄럭이는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 기관사 포즈, 지니 차장, 토토 승객. 표준 캐릭터 외형 유지.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 결정적 전이가 왜 '확률 p=1.0'인지를 철로 비유로 완벽하게 이해시킴.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, whimsical and charming, pure solid white background (#FFFFFF). A miniature wooden train running smoothly along a straight toy railway connecting station L1 to station L2. Adorable 9-year-old girl Dorothy with chestnut pigtails, denim overalls with STEM HERO patch, sitting joyfully in the conductor seat. Tuxedo cat Jiny with round glasses standing by the station bell, pure white puppy Toto with sky-blue bandana happily sticking head out the train window. Exactly one girl, one cat, one dog. Pure white background, joyful railway metaphor, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "선로를 달리는 기차처럼, 아무런 변수 없이 정확하게 다음 역으로 향합니다."

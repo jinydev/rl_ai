@@ -1,0 +1,34 @@
+# dorothy_gpi_shortcut.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: dorothy_gpi_shortcut.png
+- **위치**: src/07_동적_프로그래밍/7_6_가치_반복법/img/
+- **주제**: GPI 지름길 오솔길을 따라 뛰어가는 도로시
+- **배경**: #FFFFFF (순백색 배경, 프레임/슬라이드 테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 빙빙 돌아가는 험난한 옛길 대신, 빠르고 매끄러운 GPI(일반화된 정책 반복) 지름길 오솔길을 신나게 달려가는 도로시, 토토, 지니의 밝은 모습.
+- **주요 구성**:
+  - 중앙: 부드럽고 황금빛 꽃들이 피어 있는 지름길 오솔길
+  - 대비: 뒤편으로 보이는 울퉁불퉁하고 빙빙 도는 미로 같은 길
+  - 도로시: 가벼운 발걸음으로 지름길을 질주하는 도로시 (신나는 표정)
+  - 토토: 도로시 옆에서 신나게 앞발을 구르며 뛰는 하얀 강아지 토토
+  - 지니: 도로시 어깨 옆을 날렵하게 달리며 지도 깃발을 든 턱시도 고양이 지니
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 멜빵바지, 토토 순백색/하늘색 반다나, 지니 턱시도/안경/방울.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- GPI의 개념이 복잡한 수학 공식이 아니라 학습 과정을 획기적으로 단축해 주는 든든한 '지름길'임을 친근하게 제시.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, bright joyful colors, pure solid white background (#FFFFFF). A smooth glowing shortcut trail with tiny golden stepping stones. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, running happily along the shortcut. Beside her, one solid milk-white puppy Toto with sky-blue bandana bounding joyfully, and one tuxedo cat Jiny with scholar glasses running lightly carrying a mini pennant flag. Exactly one girl, one cat, one dog. Cheerful, pure white background, no text.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "일반화된 정책 반복(GPI)은 평가와 개선을 느슨하게 연결하여 가장 빠른 지름길을 열어줍니다."

@@ -1,0 +1,30 @@
+# [이미지 분석 및 프롬프트 명세서] wilson_math_phobia.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: wilson_math_phobia.png
+- 교재 챕터: 07.1.3 예산 삭감의 칼바람과 찰스 윌슨 장관 (index.md 라인 52-56)
+- 캡션: 찰스 윌슨 장관의 수학 혐오: 연구 계획서와 복잡한 수학 공식 서류들을 보기만 해도 머리를 쥐어짜며 화를 내는 장관
+- 교육적 목표: 당시 국방부 장관 찰스 윌슨(GM CEO 출신)이 가졌던 극단적인 실용주의적 태도와 순수 기초 수학 및 학문적 연구에 대한 거부감을 유머러스한 캐리커처 스타일로 시각화하여, 벨만이 왜 '수학'이라는 단어를 필사적으로 숨겨야 했는지를 감정적으로 설득력 있게 전달합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 1950년대 미 국방부의 기초 과학/수학 예산 삭감 압박, 관료들의 수학 기피증.
+- 시각적 은유: 1950년대 군복과 훈장을 갖춘 완고하고 뚱한 표정의 국방부 장관 찰스 윌슨. 복잡한 미적분 수식, 시그마 기호, 함수 그래프가 가득한 연구 계획서 서류들이 주변에 날아다니자, 머리를 두 손으로 감싸 쥐며 화가 나 씩씩거리는 코믹한 모습. 머리 위 분노 구름 속에 'Math'와 'Research'에 큰 붉은 엑스표가 그려진 모습.
+- 유지해야 할 필수 콘텐츠: 양손으로 머리를 쥐어뜯는 장관의 익살맞은 분노 제스처, 날아다니는 수학 서류들, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 찰스 윌슨 장관 (Secretary Wilson): 1950년대 풍의 50대 후반~60대 초반 각진 턱의 미국 관료/군 행정 책임자. 올리브 드랩(카키) 군 정복 또는 짙은 양복에 훈장 리본이 달린 차림, 백발이 섞인 짧은 머리, 붉으락푸르락해진 뺨, 분노로 치켜뜬 눈썹과 앙다문 입술. 양손으로 머리를 감싸 쥐고 절규하는 코믹한 포즈.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 과장되고 생동감 있는 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 순수 캐릭터+날리는 종이 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A humorous caricatured scene of bureaucratic frustration. Secretary Charles Wilson, an imposing and stubborn 1950s defense official with silver-grey hair, heavy furrowed eyebrows, and rosy flushed cheeks, wearing an olive-drab military-style officer suit with medal ribbons. He clutches both sides of his head in comic agony and exasperation, teeth gritted in sheer annoyance. 
+Swirling around him in the air are scattered white research papers and official reports filled with dizzying mathematical formulas, integration signs, and function graphs. 
+Above his head, a stormy cartoon thought bubble shows the bold words "Math" and "Research" stamped with large glowing red X cancellation marks. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

@@ -1,0 +1,35 @@
+# l1_value_summation.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: l1_value_summation.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 상태 L1 1차 가치 합산 결과: -0.5와 +0.5의 완벽한 균형
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 양팔 저울의 왼쪽에 왼쪽 행동의 기여분(-0.5) 추를 올리고, 오른쪽에 오른쪽 행동의 기여분(+0.5) 추를 올려 수평 저울이 완벽하게 0.0으로 균형을 이루는 시각적 결과 설명.
+- **주요 구성**:
+  - 중앙: 완벽한 수평을 이루고 있는 황동 양팔 저울
+  - 왼쪽 접시: 파란색 얼음 추 (-0.5)
+  - 오른쪽 접시: 주황색 불꽃 추 (+0.5)
+  - 도로시: 양팔을 수평으로 벌리고 '마이너스와 플러스가 만나 딱 0이 되었어!' 웃는 도로시
+  - 지니: 저울 바늘이 정중앙 0을 가리키는 것을 확인하는 턱시도 고양이 지니
+  - 토토: 저울 앞에서 얌전히 앉아 관찰하는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 수평 팔 포즈, 지니 저울 확인, 토토 얌전 포즈. 표준 복장 준수.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 확률 가중 평균의 결과가 음수 기여분과 양수 기여분의 합산(Balance)으로 결정됨을 저울 메타포로 이해.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, crisp line art, warm cel shading, pure solid white background (#FFFFFF). A polished brass balance scale resting in perfect horizontal balance. The left pan holds a cool blue weight, and the right pan holds a warm orange weight. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, holding her arms out horizontally imitating the balanced scale with a bright smile. Tuxedo cat Jiny with round glasses checking the center needle, pure white puppy Toto with sky-blue bandana sitting proudly. Exactly one girl, one cat, one dog. Pure white background, harmonious balance concept, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "왼쪽의 마이너스와 오른쪽의 플러스가 정확히 상쇄되어, 엘원 상태의 일차 가치는 0이 됩니다."

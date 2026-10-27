@@ -1,0 +1,35 @@
+# [이미지 분석 및 프롬프트 명세서] optimal_policy_celebration.png
+
+## 1. 교재 내 위치 및 교육적 맥락 (Pedagogical Context)
+- 파일명: optimal_policy_celebration.png
+- 교재 챕터: 07.5.3 문제 풀이 - 3x4 그리드 월드 졸업 및 최적 정책 정복 (index.md 라인 292-296)
+- 캡션: 3x4 그리드 월드 졸업! 최적 정책 정복!
+- 교육적 목표: 정책 반복법을 통해 마침내 3x4 그리드 월드의 완벽한 최적 정책과 가치 함수를 정복한 감격적인 순간을 도로시, 조교 지니, 토토, 그리고 이호진 교수님이 함께 축하하는 졸업 파티 장면으로 성취감을 극대화합니다.
+
+## 2. 핵심 개념 및 시각적 은유 (Core Concept & Visual Metaphor)
+- 핵심 개념: 3x4 그리드 월드 최적 정책 정복 완료 및 축하(Graduation & Mastery).
+- 시각적 은유: 오색 꽃가루와 반짝이는 별가루가 흩날리는 축하의 무대. 중앙에 액자에 담긴 완성된 3x4 격자 최적 보물 지도가 당당히 세워져 있고, 도로시는 양팔을 번쩍 들며 환호하고, 학사모를 쓴 지니가 수료증을 들고 칭찬하며, 교수님이 따뜻한 미소로 엄지척을 보내고, 토토가 리본을 달고 신나게 뜀박질하는 성대한 피날레.
+- 유지해야 할 필수 콘텐츠: 완성된 3x4 그리드 최적 지도, 이호진 교수님의 따뜻한 엄지척 칭찬, 환호하는 도로시, 학사모 지니, 기뻐하는 토토, 순백색 배경.
+
+## 3. 등장인물 캐스팅 및 서사적 역할 (Character Casting & Role)
+- 이호진 교수님 (Prof. Hojin): 40대 초반 동안의 온화한 교수님 (매끄러운 피부, 주름 없음, 솔트앤페퍼 흑발, 얇은 메탈 안경, 무지 다크네이비 폴로 셔츠(NO SNU), 블루진). 옆에서 따뜻하게 엄지 척을 하며 도로시를 진심으로 칭찬.
+- 도로시 (Dorothy): 9세, 4.5등신 치비 주니어, 'STEM HERO' 오버롤, 주황 줄무늬 티셔츠, 빨간 스니커즈. 만세를 부르며 환하게 웃음.
+- 조교 지니 (Jiny): 흑백 턱시도 냥이, 작은 학사모 착용, 미니 안경, 빨간 방울 목걸이. 테이블 위에서 자랑스럽게 수료증 족자를 펼쳐 듦.
+- 토토 (Toto): 얼룩 없는 웜밀크 화이트 강아지, 하늘색 반다나. 도로시 발치에서 기쁨의 점프.
+
+## 4. 스타일 및 레이아웃 준수 규칙 (Style & Layout Rules)
+- 화풍: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 클린 라인아트 (#26211E), 따뜻하고 찬란한 축제 플랫 셀 채색.
+- 배경: 무결점 순백색 (#FFFFFF, Solid Pure White), 은은한 접지 그림자.
+- 제약 사항: 프레젠테이션 테두리/박스 배제, 일본어 텍스트 금지, 1:1 정방형 컷아웃.
+
+## 5. 최종 이미지 생성 프롬프트 (Universal Master Prompt - English)
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+A heartwarming celebratory graduation scene of conquering 3x4 Gridworld with optimal policy. In the center stands an ornate golden framed display showing the completed 3x4 grid map with green arrows guiding perfectly to the golden apple and away from the red danger tile. Colorful confetti and golden sparkles gently drift in the air. 
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt, ruby red canvas sneakers) leaps with both arms raised in joyful victory. 
+Beside her on the left, Professor Hojin (youthful friendly Korean professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper hair, thin minimalist round metal wire-rim glasses, plain solid dark charcoal navy polo shirt with NO badges or logos, classic blue jeans, grey sneakers) smiles warmly giving an encouraging thumbs-up. 
+On a small wooden stand, Jiny the lab assistant cat (chubby black-and-white tuxedo cat, wearing a tiny graduation cap, round wire scholar glasses, red collar with gold bell) proudly displays an official diploma scroll. 
+At Dorothy's feet, Toto the fluffy cream-white puppy (uniform solid milk-white coat, no spots, black button nose, sky-blue bandana) jumps playfully with an open joyful smile. Exactly one dog and one cat only. 
+Pure solid clean white background (#FFFFFF), isolated presentation graphic cutout, subtle soft contact shadow at feet, perfectly centered, 1:1 square aspect ratio, no slide frames, no title banner, no text containers, no Japanese text.
+
+## 6. 마스터 네거티브 프롬프트 (Universal Negative Prompt)
+3d, photorealistic, realistic photograph, 3d cgi render, oil painting, rough pencil sketch, presentation slide frame, slide border, title banner, header text box, footer card, text containers, powerpoint template, dark background, complex outdoor background, room interior walls, blurry, low resolution, extra fingers, deformed hands, mutated limbs, garbled text, gibberish letters, kanji, hiragana, katakana, japanese text, wrinkles, old man, elderly, snu, snu badge, snu logo, name tag, brown spots on dog, multi-colored dog fur, duplicate cats, multiple cats, extra animals, watermark, signature

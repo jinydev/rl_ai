@@ -1,0 +1,33 @@
+# policy_eval_code_intro.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: policy_eval_code_intro.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 이론에서 파이썬 코드로: 메모리 구조에 대한 고민
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 노트북 컴퓨터 화면 앞에서 파이썬 딕셔너리 코드를 들여다보며, 이전 값과 새 값을 어떻게 변수로 저장하고 관리할지 진지하게 고민하는 도로시, 지니, 토토.
+- **주요 구성**:
+  - 책상: 컴팩트한 빈티지풍 노트북 컴퓨터와 펼쳐진 파이썬 코딩 노트
+  - 도로시: 턱을 괴고 화면을 보며 '이전 가치와 새 가치가 섞이지 않게 하려면 어떻게 해야 할까?' 고민하는 도로시
+  - 지니: 키보드 위에 앞발을 얹고 변수 이름을 추천해 주는 턱시도 고양이 지니
+  - 토토: 마우스 패드 옆에 턱을 괴고 함께 모니터를 쳐다보는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 코딩 고민 포즈, 지니 키보드 조언, 토토 모니터 응시.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 수학 공식을 실제 프로그래밍 언어의 자료구조(Dictionary)와 메모리 관리 관점으로 전이시키는 징검다리 역할.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean anime lines, warm cel shading, pure solid white background (#FFFFFF). A cozy wooden desk with a small laptop computer. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, resting her chin on her hand thoughtfully looking at the screen. Tuxedo cat Jiny with round wire glasses has a paw gently on the laptop rim offering advice, pure white puppy Toto with sky-blue bandana resting chin on the desk curiously watching. Exactly one girl, one cat, one dog. Pure white background, warm programming scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "이제 수학 공식을 컴퓨터가 실제로 실행할 수 있는 파이썬 코드로 옮겨 담을 차례입니다."

@@ -1,0 +1,33 @@
+# update_formula_anatomy.png 시각 자료 명세서
+
+## 1. 이미지 메타데이터
+- **파일명**: update_formula_anatomy.png
+- **위치**: src/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/img/
+- **주제**: 가치 함수 갱신 공식 분해 해부도
+- **배경**: #FFFFFF (순백색 배경, 슬라이드 프레임/테두리 없음)
+- **비율**: 1:1 정사각형
+
+## 2. 시각적 구성 요소 및 구도
+- **설명**: 칠판에 큼직하게 분필로 적힌 갱신 공식의 각 부품(시그마, 파이, 피, 알, 감마, 브이)을 도로시와 지니가 실험 가운처럼 단정한 멜빵 차림으로 하나하나 해부하여 친절하게 설명하는 강의 장면.
+- **주요 구성**:
+  - 칠판: 분필로 알기 쉽게 블록 단위로 묶인 공식 블록들 (확률 블록, 보상 블록, 미래 가치 블록)
+  - 도로시: 나무 지시봉으로 '할인율 감마' 블록을 콕 짚으며 미소 짓는 도로시
+  - 지니: 사다리 위에 올라가 '정책 파이' 블록에 노란 분필로 별표를 치는 지니
+  - 토토: 책상 아래에 단정히 앉아 도로시를 바라보는 하얀 강아지 토토
+  - 배경: 순백색(#FFFFFF)
+
+## 3. 캐릭터 가이드 준수
+- 도로시 표준 복장, 지니 사다리 위/안경/방울, 토토 하얀 털/하늘색 반다나.
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일, 다크 에스프레소 브라운 외곽선(#26211E), 따뜻하고 평평한 셀 채색, 그림자 최소화.
+- **배경 원칙**: 순백색(#FFFFFF) 컷아웃, 여백 충분, 텍스트 일체 배제(외국어/왜곡 텍스트 없음).
+
+## 4. 교육적 의도
+- 긴 수식을 한 번에 보았을 때의 두려움을 없애고, 의미 단위별로 쪼개어 이해하는 분석적 태도를 길러줌.
+
+## 5. 생성 프롬프트
+```text
+Studio Ghibli 2D anime style, clean lines, warm educational atmosphere, pure solid white background (#FFFFFF). A large wooden framed blackboard with a formula dissected into color-coded boxes. Adorable 9-year-old girl Dorothy with chestnut twin pigtails, denim overalls with STEM HERO patch, using a pointer stick to explain a highlighted box. Tuxedo cat Jiny with round glasses on a small stepladder drawing a yellow star with chalk, pure white puppy Toto with sky-blue bandana sitting patiently. Exactly one girl, one cat, one dog. Pure white background, clear teaching scene, no text, no frame.
+```
+
+## 6. 음성 해설(TTS) 대본 연계
+> "복잡해 보이는 공식도 의미 단위로 하나씩 쪼개어 보면 아주 당연하고 단순한 구조입니다."
