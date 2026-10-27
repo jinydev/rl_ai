@@ -1,0 +1,11 @@
+# Sub-chapter 4.1: 마르코프 인물소개 (Biography of Andrey Markov & Pushkin's Poetry Analysis) YouTube 16:9 Cover Prompt
+# File: 4_1_마르코프_인물소개.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and sub-chapter cover illustration for '04.1 마르코프 인물소개 (Biography of Andrey Markov & Pushkin's Poetry Analysis)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily reads an oversized vintage hardcover storybook of Pushkin's poetry, with glowing letters (Vowel A, Consonant B, Vowel-Consonant chains) rising like magical musical notes.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) playfully looks at a vintage quill and inkwell.
+On the right, Professor Hojin (matching reference face exactly) explains Andrey Markov's 1906 text analysis and the birth of Markov chains on a chalkboard, smiling warmly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) tallies alternating vowel and consonant counts on a ledger.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.

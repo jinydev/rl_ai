@@ -1,0 +1,11 @@
+# Sub-chapter 2.3: 함수의 정의와 대응 (Functions and Mapping in Reinforcement Learning) YouTube 16:9 Cover Prompt
+# File: 03_함수의_정의와_대응.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and sub-chapter cover illustration for '02.3 함수의 정의와 대응 (Functions and Mapping in Reinforcement Learning)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) marvels at a fun magical function machine: input tokens (State s) enter a colorful chute on the left, and corresponding outputs (Action a, Value V(s)) gently emerge with glowing arrows.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) watches a glowing output orb roll into a basket.
+On the right, Professor Hojin (matching reference face exactly) draws a clear mapping diagram (Domain X to Codomain Y, f: X -> Y) on a blackboard, smiling warmly.
+On the left, Jiny the lab assistant cat (single tuxedo cat with round glasses and red bell collar) drops an input card into the machine.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean educational layout without extra borders or Japanese text.

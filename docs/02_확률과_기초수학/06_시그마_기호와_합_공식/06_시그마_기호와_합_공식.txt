@@ -1,0 +1,11 @@
+# Sub-chapter 2.6: 시그마 기호와 합 공식 (Sigma Notation and Sum Formulas) YouTube 16:9 Cover Prompt
+# File: 06_시그마_기호와_합_공식.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and sub-chapter cover illustration for '02.6 시그마 기호와 합 공식 (Sigma Notation and Sum Formulas)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) holds a shining giant Greek letter Sigma (Σ) like a friendly golden frame, collecting multiple glowing rewards (r1 + r2 + r3 + ...) neatly into one luminous sum.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) wags tail happily beside a basket of numbered tokens.
+On the right, Professor Hojin (matching reference face exactly) explains the Sigma summation index i=1 to n and expected value sum on a chalkboard with chalk, smiling encouragingly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) stacks numbered summation blocks from 1 to N.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.

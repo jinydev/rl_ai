@@ -1,0 +1,11 @@
+# Chapter 5: Markov Decision Process MDP (마르코프 결정 과정) YouTube 16:9 Cover Prompt
+# File: 05_마르코프_결정_과정.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and chapter cover illustration for reinforcement learning Chapter 5 '05 마르코프 결정 과정 (Markov Decision Process, MDP)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily steps onto a colorful 4x4 Gridworld gameboard, deciding an action (Up, Down, Left, Right) to reach a golden treasure chest (+10 reward) while avoiding a muddy puddle trap.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) trots on the grid path toward the treasure.
+On the right, Professor Hojin (matching reference face exactly) explains the MDP 5-tuple (S, A, P, R, gamma) and the Agent-Environment interaction loop on a chalkboard, smiling encouragingly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) guides the feedback arrows (State S_t, Action A_t, Reward R_t+1) with a wooden wand.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.

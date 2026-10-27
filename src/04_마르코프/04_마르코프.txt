@@ -1,0 +1,11 @@
+# Chapter 4: Markov (마르코프) YouTube 16:9 Cover Prompt
+# File: 04_마르코프.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and chapter cover illustration for reinforcement learning Chapter 4 '04 마르코프 (Markov Processes and Memorylessness)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) confidently stands on a glowing circular stone slab labeled 'Present S_t', while past footprints on stones behind her labeled 'Past S_t-1, S_t-2' dissolve into soft peaceful mist, and forward glowing stepping stones labeled 'Future S_t+1' light up with transition arrows.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) hops forward toward the future stone.
+On the right, Professor Hojin (matching reference face exactly) explains the Markov Property P(S_t+1 | S_t) = P(S_t+1 | S_t, S_t-1, ...) with chalk on a chalkboard, smiling warmly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) holds a pointer wand showing a state transition diagram with Sunny and Rainy nodes.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.

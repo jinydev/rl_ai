@@ -1,0 +1,11 @@
+# Sub-chapter 4.4: 은닉 마르코프 (Hidden Markov Models - HMM) YouTube 16:9 Cover Prompt
+# File: 4_4_은닉_마르코프.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and sub-chapter cover illustration for '04.4 은닉 마르코프 (Hidden Markov Models - HMM)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) acts like a cheerful detective, deducing the hidden weather states (Sun / Rain hidden behind a soft cloud curtain) by inspecting observable clues: yellow raincoat, umbrella, and sunglasses.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) wears tiny stylish sunglasses and wags his tail.
+On the right, Professor Hojin (matching reference face exactly) explains the HMM architecture (Hidden States X_t emitting Observations Y_t) with emission probabilities on a chalkboard, smiling warmly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) holds a detective magnifying glass pointing to an emission probability diagram.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.

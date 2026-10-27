@@ -1,0 +1,11 @@
+# Sub-chapter 5.4: MDP 예제 (Gridworld Practical Example) YouTube 16:9 Cover Prompt
+# File: 5_4_MDP_예제.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and sub-chapter cover illustration for '05.4 MDP 예제 (Gridworld Practical Example)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily hops across a 4x3 Gridworld puzzle board, choosing a safe detour around a stone wall block and a red danger hazard square (-1) to reach the golden flag finish line (+1).
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) sniffs eagerly near the goal tile.
+On the right, Professor Hojin (matching reference face exactly) draws the Gridworld coordinate state space (x, y) and optimal path arrows on a chalkboard, smiling encouragingly.
+On the left, Jiny the lab assistant cat (single chubby tuxedo cat with round scholar glasses and red bell collar, no other cats) marks step cost (-0.04) and path rewards on a miniature tabletop map.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, clean storybook style, no slide frames, no extra UI borders, no Japanese text.
