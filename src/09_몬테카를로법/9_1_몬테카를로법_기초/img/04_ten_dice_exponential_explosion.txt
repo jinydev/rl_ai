@@ -1,0 +1,8 @@
+### 04_ten_dice_exponential_explosion.png 프롬프트 명세서
+
+- **역할 및 용도**: 주사위 10개 확장 시 분포 모델의 계산 폭발(6^10) vs 샘플 모델의 단순함(sample(10)) 비교 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A humorous and clear comparison of computational complexity on a pure solid white background (#FFFFFF). On the left, Jiny the tuxedo cat with scholar glasses humorously holds his paws to his head in shock in front of an absurdly tall, wobbling stack of calculation papers labeled '6^10 = 60,466,176 경우의 수!' (Distribution model overload). On the right, Dorothy (chestnut pigtails, denim overalls with STEM HERO patch) cheerfully types 'sample(10)' on a vintage laptop with a glowing green screen, easily rolling 10 small colorful wooden dice across her desk with zero effort. Pure solid clean white background (#FFFFFF), isolated character and prop composition, 1:1 square aspect ratio, subtle shadows, no slide UI, no Japanese text.

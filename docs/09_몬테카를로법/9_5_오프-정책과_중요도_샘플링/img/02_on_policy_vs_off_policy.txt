@@ -1,0 +1,15 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, observing two paths: on-policy track where she runs while learning, and off-policy control room where she observes an explorer robot).
+2. Jiny (glowing blue fairy pointing with a glowing wand).
+
+Scene:
+A side-by-side conceptual illustration.
+Left panel: 'On-Policy (π = b)' - A runner learns directly by falling down and adjusting their own footsteps along the same path.
+Right panel: 'Off-Policy (π ≠ b)' - An explorer agent 'b' roams freely across dangerous terrain collecting experience bottles, while a master coach 'π' in the control room analyzes the data to formulate the ultimate championship strategy.
+
+Composition:
+1:1 square canvas, clean split comparison layout, bright cheerful colors, isolated on pure white, high detail, no Japanese text.

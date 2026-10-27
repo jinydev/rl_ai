@@ -1,0 +1,16 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, weighing timeline hourglasses on a brass balance scale).
+2. Jiny (magical blue sprite fairy hovering near the scale, adding glowing golden dust to the most recent hourglass).
+
+Scene:
+A conceptual comparison between Sample Average (Equal Weights 1/n) and Exponential Moving Average with fixed learning rate α.
+On the left: Past and current samples all have the same flat, fading weight (1/n).
+On the right: Recent samples receive high exponential weight, rapidly fading out ancient outdated samples.
+Chalk text on a wooden easel reads: 'Non-Stationary Adaptation: Q ← Q + α(G - Q)'.
+
+Composition:
+1:1 square canvas, centered balance scale and weight graphs, soft pastel tones, warm Ghibli feeling, clean isolated white background, no Japanese text.

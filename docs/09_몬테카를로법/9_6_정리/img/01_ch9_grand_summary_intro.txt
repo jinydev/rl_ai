@@ -1,0 +1,8 @@
+### 01_ch9_grand_summary_intro.png (and jiny_ch9_6_summary.png) 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.6 대단원 종합 정리 인트로 슬라이드 및 교재 서두 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Exactly ONE youthful Korean male professor in his early 40s (Professor Hojin, salt-and-pepper short hair, thin round wire-rim glasses, plain dark navy collared polo shirt with NO badges or logos, blue jeans, grey sneakers) stands on the left. In the center stands Dorothy, an adorable 9-year-old girl (4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' round chest patch, orange striped t-shirt, ruby red canvas sneakers). Between them is Jiny the lab assistant cat (chubby black-and-white tuxedo cat with olive green eyes, round scholar glasses on his nose, red collar with a tiny gold bell), pointing his paw at an illuminated parchment map of Chapter 9 Monte Carlo Methods. On the right, Toto the fluffy cream-white puppy (solid milk-white coat, NO spots, black button nose, sky-blue bandana) happily looks up with an open-mouth dog smile. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 16:9 aspect ratio, no slide borders, no title banners, no Japanese text, no duplicate characters.

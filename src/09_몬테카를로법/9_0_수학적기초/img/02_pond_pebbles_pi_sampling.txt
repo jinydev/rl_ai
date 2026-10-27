@@ -1,0 +1,8 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli aesthetic 2D animation style, masterwork educational textbook illustration, crisp clean line art, warm vibrant flat cel shading. 9-year-old Dorothy (matching reference: chestnut twin pigtails with colorful beads, blue denim overalls with STEM HERO badge, orange-yellow striped shirt) playfully tossing smooth little pebbles into a clear outdoor square stone pond with a round fountain ring in the center. Tiny splashes show pebbles landing inside and outside the fountain ring. Beside Dorothy on the stone edge, her fluffy cream-white puppy Toto wearing a sky-blue bandana watches with happy sparkling eyes and wagging tail. Jiny the tuxedo cat wearing tiny round scholar glasses watches from a sunny stone step. Isolated presentation cutout on a pure solid white background (#FFFFFF), crisp edges, centered composition, aspect ratio 1:1, square format.
+Negative: Japanese text, spots on puppy, 3D CGI, dark background.
+
+[해설]: 도로시와 토토의 연못 돌멩이 비유를 형상화한 일러스트. 사각형 돌 연못 중앙의 원형 분수대를 향해 도로시가 조약돌을 무작위로 던져 넣고, 원 안에 들어간 돌과 사각형에 들어간 돌의 개수 비율을 세어 복잡한 적분 공식 없이도 원주율과 면적 비율을 찾아내는 몬테카를로법의 직관적 원리 실습. 순백색 배경(#FFFFFF) 1:1 정방형 컷.

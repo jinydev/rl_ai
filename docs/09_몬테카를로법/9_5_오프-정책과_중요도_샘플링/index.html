@@ -631,105 +631,118 @@
         <div class="bd-content ps-lg-4">
             <h1 id="095-오프-정책과-중요도-샘플링">09.5 오프-정책과 중요도 샘플링</h1>
 
-<p><strong>그림 09-5</strong> 탐험 지도(Behavior Policy)와 타깃 지도(Target Policy)의 확률 비율을 마법 저울에 올리고 오프-정책을 계산하는 지니와 도로시
-<img src="./img/jiny_ch9_5_importance_sampling.png" alt="중요도 샘플링 인트로" /></p>
+<p><img src="./img/01_off_policy_intro.png" alt="중요도 샘플링 인트로" />
+<strong>그림 09-5-1</strong> 탐험 지도(Behavior Policy)와 타깃 지도(Target Policy)의 확률 비율을 마법 저울에 올리고 오프-정책을 계산하는 지니와 도로시</p>
 
 <p>에이전트가 ‘행동하는 정책’과 ‘학습하려는 대상 정책’이 서로 다를 때 활용하는 <strong>오프-정책(Off-policy)</strong> 학습법을 배웁니다. 다른 에이전트가 수행한 간접 데이터로부터 유용한 정보를 추출하기 위해 두 정책의 확률 비율을 계산하여 곱해주는 <strong>중요도 샘플링(Importance Sampling)</strong> 기법을 요정 지니의 대수적 마법 저울 정산법을 통해 마스터해봅시다!</p>
 
 <hr />
 
-<p>앞서 몬테카를로법에 $\epsilon$-탐욕 정책을 결합하여 최적에 가까운 정책을 얻었습니다. 하지만 그 결과는 완벽한 최적 정책이 아닙니다. 우리는 (할 수만 있다면) Q 함수의 값이 가장 큰 행동만을 수행하도록 하고 싶습니다. 즉, ‘활용’만 하고 싶은 것입니다. 하지만 그러려면 ‘탐색’을 포기해야 합니다. 그래서 $\epsilon$이라는 작은 확률로 탐색을 수행했습니다. 말하자면, $\epsilon$-탐욕 정책은 일종의 타협인 셈입니다.</p>
+<p>앞서 몬테카를로법에 <em>ε</em>-탐욕 정책을 결합하여 최적에 가까운 정책을 얻었습니다. 하지만 그 결과는 완벽한 최적 정책이 아닙니다. 우리는 (할 수만 있다면) <em>Q</em> 함수의 값이 가장 큰 행동만을 수행하도록 하고 싶습니다. 즉, ‘활용’만 하고 싶은 것입니다. 하지만 그러려면 ‘탐색’을 포기해야 합니다. 그래서 <em>ε</em>이라는 작은 확률로 탐색을 수행했습니다. 말하자면, <em>ε</em>-탐욕 정책은 일종의 타협인 셈입니다.</p>
 
 <p>이번 절에서는 몬테카를로법을 이용해 완벽한 최적 정책을 학습하는 방법을 고민해보겠습니다. 이를 위한 준비 과정으로 먼저 온-정책과 오프-정책에 대해 알아봅니다.</p>
 
 <h2 id="0951-온-정책과-오프-정책">09.5.1 온-정책과 오프-정책</h2>
 
-<p>사람은 다른 사람의 행동을 관찰하여 자신의 능력을 개선할 힌트를 얻기도 합니다. 예를 들어 다른 테니스 선수가 스윙하는 모습을 보고 자신의 스윙 자세를 고치기도 하죠. 강화 학습 용어로는 ‘자신과 다른 환경에서 얻은 경험을 토대로 자신의 정책을 개선한다’고 표현할 수 있습니다. 이러한 접근 방식을 강화 학습에서는 오프-정책<sup>off-policy</sup>이라고 합니다. 반면 스스로 쌓은 경험을 토대로 자신의 정책을 개선하는 방식은 온-정책<sup>on-policy</sup>이라고 합니다.</p>
+<p>사람은 다른 사람의 행동을 관찰하여 자신의 능력을 개선할 힌트를 얻기도 합니다. 예를 들어 다른 테니스 선수가 스윙하는 모습을 보고 자신의 스윙 자세를 고치기도 하죠. 강화 학습 용어로는 ‘자신과 다른 환경에서 얻은 경험을 토대로 자신의 정책을 개선한다’고 표현할 수 있습니다. 이러한 접근 방식을 강화 학습에서는 <strong>오프-정책<sup>off-policy</sup></strong>이라고 합니다. 반면 스스로 쌓은 경험을 토대로 자신의 정책을 개선하는 방식은 <strong>온-정책<sup>on-policy</sup></strong>이라고 합니다.</p>
+
+<p><img src="./img/02_on_policy_vs_off_policy.png" alt="온-정책 vs 오프-정책 비교" />
+<strong>그림 09-5-2</strong> 자신이 달리는 트랙에서 바로 배우는 온-정책과, 탐험 로봇의 데이터를 관제실에서 분석해 챔피언 전략을 세우는 오프-정책</p>
 
 <blockquote>
   <p>[!NOTE]
-역할 측면에서 보면 에이전트의 정책은 두 가지입니다. 하나는 평가와 개선의 대상으로서의 정책입니다. 즉, 정책에 대해 평가한 다음 개선합니다. 이러한 정책을 <strong>대상 정책</strong><sup>target policy</sup>이라고 합니다.<sup>*</sup> 다른 하나는 에이전트가 실제로 행동을 취할 때 활용하는 정책입니다. 이 정책에 따라 ‘상태, 행동, 보상’의 샘플 데이터가 생성됩니다. 이러한 정책을 <strong>행동 정책</strong><sup>behaviour policy</sup>이라고 합니다.</p>
+역할 측면에서 보면 에이전트의 정책은 두 가지입니다. 하나는 평가와 개선의 대상으로서의 정책입니다. 즉, 정책에 대해 평가한 다음 개선합니다. 이러한 정책을 <strong>대상 정책<sup>target policy</sup></strong>이라고 합니다. 다른 하나는 에이전트가 실제로 행동을 취할 때 활용하는 정책입니다. 이 정책에 따라 ‘상태, 행동, 보상’의 샘플 데이터가 생성됩니다. 이러한 정책을 <strong>행동 정책<sup>behaviour policy</sup></strong>이라고 합니다.</p>
 </blockquote>
 
 <p>지금까지 이 책에서는 ‘대상 정책’과 ‘행동 정책’을 구분하지 않았습니다. 즉, ‘평가와 개선의 대상인 대상 정책’과 ‘실제 행동을 선택하는 행동 정책’을 동일시한 것입니다. 이처럼 두 정책이 같은 경우를 온-정책, 따로 떼어서 생각하는 경우를 오프-정책이라고 합니다. 여기서 온/오프는 ‘연결되어 있다’와 ‘떨어져 있다’라는 뜻으로 해석하면 됩니다. 즉, 오프-정책은 ‘대상 정책과 행동 정책이 떨어져 있다’라는 의미입니다.</p>
 
-<p>이번 절의 주제는 ‘오프-정책’입니다. 테니스 선수의 예처럼 다른 정책(행동 정책)에서 얻은 경험을 토대로 자신의 정책(대상 정책)을 평가하고 개선하는 것이죠. 오프-정책이라면 행동 정책에서는 ‘탐색’을, 대상 정책에서는 ‘활용’만을 할 수 있습니다. 다만, 행동 정책에서 얻은 샘플 데이터로부터 대상 정책과 관련된 기대값을 계산하는 방법은 고민을 좀 해야 합니다. 이때 등장하는 것이 바로 중요도 샘플링 기법입니다.</p>
+<p>이번 절의 주제는 ‘오프-정책’입니다. 테니스 선수의 예처럼 다른 정책(행동 정책)에서 얻은 경험을 토대로 자신의 정책(대상 정책)을 평가하고 개선하는 것이죠. 오프-정책이라면 행동 정책에서는 과감한 ‘탐색’을, 대상 정책에서는 순수한 ‘활용’만을 할 수 있습니다. 다만, 행동 정책에서 얻은 샘플 데이터로부터 대상 정책과 관련된 기댓값을 계산하는 방법은 고민을 좀 해야 합니다. 이때 등장하는 것이 바로 중요도 샘플링 기법입니다.</p>
 
 <h2 id="0952-중요도-샘플링">09.5.2 중요도 샘플링</h2>
 
-<p><strong>중요도 샘플링</strong><sup>importance sampling</sup>은 어떤 확률 분포의 기댓값을 다른 확률 분포에서 샘플링한 데이터를 사용하여 계산하는 기법입니다. $\mathbb{E}_{\pi}[x]$라는 기댓값 계산을 예로 중요도 샘플링을 설명해보겠습니다. 여기서 $x$는 확률 변수이며 $x$의 확률은 $\pi(x)$로 표기합니다. 그래서 확률 분포의 기댓값은 다음 식으로 표현됩니다.</p>
+<p><strong>중요도 샘플링<sup>importance sampling</sup></strong>은 어떤 확률 분포의 기댓값을 다른 확률 분포에서 샘플링한 데이터를 사용하여 계산하는 기법입니다. <em>E</em><sub><em>π</em></sub>[<em>X</em>]라는 기댓값 계산을 예로 중요도 샘플링을 설명해보겠습니다. 여기서 <em>X</em>는 확률 변수이며 <em>X</em>의 확률은 <em>π</em>(<em>x</em>)로 표기합니다. 그래서 확률 분포의 기댓값은 다음 식으로 표현됩니다.</p>
 
-\[\mathbb{E}_{\pi}[x] = \sum x \pi(x)\]
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E_π[X] = ∑ x · π(x)
+</code></pre></div></div>
 
-<p>이 기댓값을 몬테카를로법으로 근사하려면 $x$를 확률 분포 <em>π</em>에서 샘플링하여 평균을 내면 됩니다.</p>
+<p>이 기댓값을 몬테카를로법으로 근사하려면 <em>x</em>를 확률 분포 <em>π</em>에서 샘플링하여 평균을 내면 됩니다.</p>
 
-<hr />
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>샘플링: x^{(i)} ~ π   (i = 1, 2, ..., n)
+E_π[X] ≈ (x^{(1)} + x^{(2)} + ... + x^{(n)}) / n
+</code></pre></div></div>
 
-<p>* 옮긴이_ ‘목표 정책’이라고도 많이 번역하지만 ‘대상 정책’이 본래의 의미(개선 대상)를 더 직관적으로 표현한다고 생각하여 이 책에서는 ‘대상 정책’으로 옮겼습니다.</p>
+<p>이 수식에서 <em>x</em><sup>(<em>i</em>)</sup> ~ <em>π</em> 표기는 확률 분포 <em>π</em>에서 <em>i</em>번째 데이터 <em>x</em><sup>(<em>i</em>)</sup>가 샘플링되었음을 나타냅니다.</p>
 
-\[\begin{aligned}
-&amp;\text{샘플링: } x^{(i)} \sim \pi \quad (i = 1, 2, \cdots, n) \\
-&amp;\mathbb{E}_{\pi}[x] \simeq \frac{x^{(1)} + x^{(2)} + \cdots + x^{(n)}}{n}
-\end{aligned}\]
+<p>이제 본론으로 들어갑시다. 지금 우리는 <em>x</em>가 다른 확률 분포에서 샘플링된 경우의 문제를 풀고자 합니다. 예를 들어 <em>x</em>가 (<em>π</em>가 아닌) <em>b</em>라는 확률 분포에서 샘플링되었다고 가정해봅시다. 이 경우에 기댓값 <em>E</em><sub><em>π</em></sub>[<em>X</em>]는 어떻게 근사할 수 있을까요? 해결의 열쇠는 다음과 같은 식 변형에 있습니다.</p>
 
-<p>이 수식에서 $x^{(i)} \sim \pi$ 표기는 확률 분포 <em>π</em>에서 $i$번째 데이터 $x^{(i)}$가 샘플링되었음을 나타냅니다.</p>
+<p><img src="./img/03_importance_sampling_formula.png" alt="중요도 샘플링 유도" />
+<strong>그림 09-5-3</strong> 칠판에 분모·분자 트릭을 전개하며 중요도 가중치 로우를 도출해내는 도로시와 지니</p>
 
-<p>이제 본론으로 들어갑시다. 지금 우리는 $x$가 다른 확률 분포에서 샘플링된 경우의 문제를 풀고자 합니다. 예를 들어 $x$가 (<em>π</em>가 아닌) $b$라는 확률 분포에서 샘플링되었다고 가정해봅시다. 이 경우에 기댓값 $\mathbb{E}_{\pi}[x]$는 어떻게 근사할 수 있을까요? 해결의 열쇠는 다음과 같은 식 변형에 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E_π[X] = ∑ x · π(x)
+       = ∑ x · (b(x) / b(x)) · π(x)
+       = ∑ x · (π(x) / b(x)) · b(x)                                      [식 9.7]
+</code></pre></div></div>
 
-<p>\(\begin{aligned}
-\mathbb{E}_{\pi}[x] &amp;= \sum x \pi(x) \\
-&amp;= \sum x \frac{b(x)}{b(x)} \pi(x) \\
-&amp;= \sum x \frac{\pi(x)}{b(x)} b(x)
-\end{aligned}\)
-[식 6.6]</p>
+<p>여기서 핵심은 두 번째 줄에서 <em>b</em>(<em>x</em>) / <em>b</em>(<em>x</em>)를 끼워넣는 부분입니다. <em>b</em>(<em>x</em>) / <em>b</em>(<em>x</em>)는 항상 1이므로 등식이 성립합니다. 그리고 [식 9.7]과 같이 ∑ … <em>b</em>(<em>x</em>) 형태로 바꾸면 확률 분포 <em>b</em>(<em>x</em>)에서의 기댓값으로 간주할 수 있습니다. 실제로 [식 9.7]을 한 번 더 변형하면 다음 식을 얻을 수 있습니다.</p>
 
-<p>여기서 핵심은 두 번째 줄에서 $\frac{b(x)}{b(x)}$를 끼워넣는 부분입니다. $\frac{b(x)}{b(x)}$는 항상 1이므로 등식이 성립합니다. 그리고 [식 6.6]과 같이 $\sum \cdots b(x)$ 형태로 바꾸면 확률 분포 $b(x)$에서의 기댓값으로 간주할 수 있습니다. 실제로 [식 6.6]을 한 번 더 변형하면 다음 식을 얻을 수 있습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>E_π[X] = ∑ x · (π(x) / b(x)) · b(x)
+       = E_b[ X · (π(X) / b(X)) ]                                        [식 9.8]
+</code></pre></div></div>
 
-<p>\(\begin{aligned}
-\mathbb{E}_{\pi}[x] &amp;= \sum x \frac{\pi(x)}{b(x)} b(x) \\
-&amp;= \mathbb{E}_b \left[ x \frac{\pi(x)}{b(x)} \right]
-\end{aligned}\)
-[식 6.7]</p>
+<p>이 수식에서 주목할 부분은 <em>E</em><sub><em>b</em></sub>입니다. 확률 분포 <em>π</em>에 대한 기댓값을 확률 분포 <em>b</em>에 대한 기댓값으로 표현해낸 것입니다. 또한 각각의 <em>x</em>에 <em>π</em>(<em>x</em>) / <em>b</em>(<em>x</em>)가 곱해진다는 점도 중요합니다. 여기서 <em>ρ</em>(<em>x</em>) = <em>π</em>(<em>x</em>) / <em>b</em>(<em>x</em>)라고 하면, 각각의 <em>x</em>에는 ‘가중치’로서 <em>ρ</em>(<em>x</em>)가 곱해진다고 볼 수 있습니다(<em>ρ</em>는 ‘로우’로 읽습니다).</p>
 
-<p>이 수식에서 주목할 부분은 $\mathbb{E}_b$입니다. 확률 분포 <em>π</em>에 대한 기댓값을 확률 분포 $b$에 대한 기댓값으로 표현해낸 것입니다. 또한 각각의 $x$에 $\frac{\pi(x)}{b(x)}$가 곱해진다는 점도 중요합니다. 여기서 $\rho(x) = \frac{\pi(x)}{b(x)}$라고 하면, 각각의 $x$에는 ‘가중치’로서 $\rho(x)$가 곱해진다고 볼 수 있습니다($\rho$는 ‘로우’로 읽습니다).</p>
+<p>[식 9.8]에 근거하여 몬테카를로법을 수식으로 표현하면 다음과 같습니다.</p>
 
-<p>[식 6.7]에 근거하여 몬테카를로법을 수식으로 표현하면 다음과 같습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>샘플링: x^{(i)} ~ b   (i = 1, 2, ..., n)
+E_π[X] ≈ (ρ(x^{(1)})·x^{(1)} + ρ(x^{(2)})·x^{(2)} + ... + ρ(x^{(n)})·x^{(n)}) / n
+</code></pre></div></div>
 
-\[\begin{aligned}
-&amp;\text{샘플링: } x^{(i)} \sim b \quad (i = 1, 2, \cdots, n) \\
-&amp;\mathbb{E}_{\pi}[x] \simeq \frac{\rho(x^{(1)})x^{(1)} + \rho(x^{(2)})x^{(2)} + \cdots + \rho(x^{(n)})x^{(n)}}{n}
-\end{aligned}\]
+<p>이제 다른 확률 분포 <em>b</em>에서 샘플링한 데이터를 이용하여 <em>E</em><sub><em>π</em></sub>[<em>X</em>]를 계산할 수 있습니다.</p>
 
-<p>이제 다른 확률 분포 $b$에서 샘플링한 데이터를 이용하여 $\mathbb{E}_{\pi}[x]$를 계산할 수 있습니다.</p>
+<h4 id="-수식-돋보기-중요도-샘플링-기댓값-유도와-가중치-ρ-해부">💡 수식 돋보기: 중요도 샘플링 기댓값 유도와 가중치 ρ 해부</h4>
 
-<p>그럼 이어서 중요도 샘플링을 코드로 구현해봅시다. [그림 09-19]의 확률 분포를 대상으로 중요도 샘플링을 수행하겠습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[가중치 정의]  ρ(x) = π(x) / b(x)
+[기댓값 변환]  E_π[X] = E_b[ ρ(X) · X ]
+</code></pre></div></div>
 
-<p><strong>그림 09-19</strong> 확률 분포 <em>π</em>와 $b$</p>
+<ol>
+  <li><strong>분모·분자 트릭의 본질</strong>:
+    <ul>
+      <li>수학적으로 1 = <em>b</em>(<em>x</em>) / <em>b</em>(<em>x</em>)를 곱하는 간단한 트릭이지만, 이를 통해 표본 공간을 <em>π</em>에서 <em>b</em>로 완전히 치환하는 통계적 다리를 놓습니다.</li>
+    </ul>
+  </li>
+  <li><strong>중요도 가중치 <em>ρ</em>(<em>x</em>)의 통계적 의미</strong>:
+    <ul>
+      <li><em>b</em>(<em>x</em>)가 샘플을 너무 드물게 뽑을 때 (<em>b</em>(<em>x</em>) &lt; <em>π</em>(<em>x</em>)) → <em>ρ</em>(<em>x</em>) &gt; 1 : 가중치를 키워 과소평가 방지</li>
+      <li><em>b</em>(<em>x</em>)가 샘플을 너무 과하게 뽑을 때 (<em>b</em>(<em>x</em>) &gt; <em>π</em>(<em>x</em>)) → <em>ρ</em>(<em>x</em>) &lt; 1 : 가중치를 줄여 과대평가 삭감</li>
+      <li><em>b</em>(<em>x</em>) = <em>π</em>(<em>x</em>) 일 때 → <em>ρ</em>(<em>x</em>) = 1 : 일반 온-정책 몬테카를로 평균과 완벽히 일치!</li>
+    </ul>
+  </li>
+</ol>
 
-<p><img src="./img/fig_6_19.svg" alt="그림 09-19" /></p>
-
-<p>지금 목표는 기댓값 $\mathbb{E}_{\pi}[x]$를 구하는 것입니다. 먼저 확률 분포 <em>π</em>의 기댓값을 일반적인 몬테카를로법으로 구해보겠습니다.</p>
+<p>그럼 이어서 중요도 샘플링을 파이썬 코드로 구현해봅시다.</p>
 
 <div align="right"><b>ch05/importance_sampling.py</b></div>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>          <span class="c1"># 확률 변수
-</span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>   <span class="c1"># 확률 분포
+</span><span class="n">pi</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>   <span class="c1"># 목표 확률 분포
 </span>
 <span class="c1"># 기댓값의 참값 계산
 </span><span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">sum</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">pi</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">참값(E_pi[x]):</span><span class="sh">'</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 
-<span class="c1"># 몬테카를로법으로 계산
+<span class="c1"># 온-정책 몬테카를로법으로 계산
 </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># 샘플 개수
 </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># pi를 이용한 샘플링
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># pi를 이용한 직접 샘플링
 </span>    <span class="n">samples</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span> <span class="c1"># 샘플들의 평균
 </span><span class="n">var</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">var</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>   <span class="c1"># 샘플들의 분산
-</span><span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">몬테카를로법: {:.2f} (분산: {:.2f})</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
+</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">몬테카를로법: {:.2f} (분산: {:.2f})</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">))</span>
 </code></pre></div></div>
 
 <p><strong>출력 결과</strong></p>
@@ -737,25 +750,22 @@
 몬테카를로법: 2.78 (분산: 0.27)
 </code></pre></div></div>
 
-<p>먼저 기댓값을 정의식에 맞게 구합니다. 그 결과는 2.7입니다(이 값이 참값입니다).</p>
+<p>먼저 기댓값을 정의식에 맞게 구합니다. 그 결과는 2.7입니다(이 값이 참값입니다).
+이어서 온-정책 몬테카를로법으로 100개 샘플을 추출하여 평균을 구하면 2.78로 참값에 가깝게 나오고, 분산은 0.27로 매우 작습니다.</p>
 
-<p>이어서 몬테카를로법을 이용하여 구합니다. 여기서는 확률 분포 <code class="language-plaintext highlighter-rouge">pi</code>에서 데이터를 100개만 샘플링하여 평균을 구했습니다(넘파이의 <code class="language-plaintext highlighter-rouge">np.mean()</code> 메서드 사용). 그 결과는 2.78로, 참값에 가깝게 나왔습니다. 그리고 넘파이의 <code class="language-plaintext highlighter-rouge">np.var()</code> 메서드를 사용하여 ‘분산’도 구했습니다. 분산은 0.27로 나왔네요. 이 값은 곧이어 중요도 샘플링의 결과와 비교해볼 것입니다.</p>
+<p>참고로 분산은 데이터가 얼마나 흩어져 있는가를 나타냅니다.</p>
 
-<p>참고로 분산은 데이터가 얼마나 흩어져 있는가를 나타냅니다. 기댓값과 분산의 관계를 수식으로 표현하면 다음과 같습니다.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Var[X] = E[(X - E[X])^2]
+</code></pre></div></div>
 
-\[\operatorname{Var}[X] = \mathbb{E}[(X - \mathbb{E}[X])^2]\]
+<p><img src="./img/04_variance_dispersion_concept.png" alt="분산의 흩어짐 개념" />
+<strong>그림 09-5-4</strong> 각 데이터가 2차원상의 점이라고 가정했을 때의 분산 비교 (원의 중심이 평균)</p>
 
-<p>분산은 ‘데이터 $X$’와 ‘$X$의 평균인 $\mathbb{E}[X]$’의 차이를 제곱한 값의 기댓값입니다. 직관적으로는 [그림 09-20]과 같이 데이터의 ‘흩어진 정도’를 나타냅니다.</p>
-
-<p><strong>그림 09-20</strong> 각 데이터가 2차원상의 점이라고 가정했을 때의 분산(원의 중심이 평균)</p>
-
-<p><img src="./img/fig_6_20.svg" alt="그림 09-20" /></p>
-
-<p>이어서 중요도 샘플링을 이용하여 기댓값을 구해보겠습니다.</p>
+<p>이어서 다른 분포 <code class="language-plaintext highlighter-rouge">b</code>로부터 중요도 샘플링을 이용하여 기댓값을 구해보겠습니다.</p>
 
 <div align="right"><b>ch05/importance_sampling.py</b></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># 확률 분포
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># 균등 탐색 분포
 </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># 샘플 개수
 </span><span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -763,7 +773,7 @@
     <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>         <span class="c1"># b의 인덱스([0, 1, 2])
 </span>    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>  <span class="c1"># b를 사용하여 샘플링
 </span>    <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="n">rho</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>              <span class="c1"># 가중치
+    <span class="n">rho</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>              <span class="c1"># 가중치 ρ
 </span>    <span class="n">samples</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>         <span class="c1"># 샘플 데이터에 가중치를 곱해 저장
 </span>
 <span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
@@ -775,41 +785,26 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중요도 샘플링: 2.95 (분산: 10.63)
 </code></pre></div></div>
 
-<p>이번에는 확률 분포 <code class="language-plaintext highlighter-rouge">b</code>를 사용하여 샘플링합니다. 단, 샘플링하는 대상은 ‘<code class="language-plaintext highlighter-rouge">b</code>의 인덱스(<code class="language-plaintext highlighter-rouge">[0, 1, 2]</code>)’로 설정했습니다. 가중치 <code class="language-plaintext highlighter-rouge">rho</code>를 계산할 때 샘플링한 인덱스를 사용하기 때문입니다.</p>
-
-<p>출력 결과를 보겠습니다. 평균은 2.95입니다. 참값인 2.7과는 조금 거리가 있지만 아주 동떨어진 값은 아닙니다. 한편 분산은 10.63으로, 데이터의 ‘흩어진 정도’가 몬테카를로법 때의 0.27보다 훨씬 큰 것을 알 수 있습니다.</p>
+<p>이번에는 확률 분포 <code class="language-plaintext highlighter-rouge">b</code>를 사용하여 샘플링했습니다. 평균은 2.95로 참값인 2.7에 근사합니다. 하지만 분산은 무려 10.63으로, 몬테카를로법 때의 0.27보다 약 40배나 커졌습니다!</p>
 
 <h2 id="0953-분산을-작게-하기">09.5.3 분산을 작게 하기</h2>
 
-<p>분산이 작을수록 적은 샘플로도 정확하게 근사할 수 있습니다. 반대로 분산이 클수록 샘플을 더 많이 사용해야 합니다. 그래서 이제부터 중요도 샘플링에서 분산을 줄이는 방법을 알아보겠습니다. 먼저 [그림 09-21]을 보면서 중요도 샘플링을 쓰면 분산이 커지는 이유를 설명하겠습니다.</p>
+<p>분산이 작을수록 적은 샘플로도 정확하게 근사할 수 있습니다. 반대로 분산이 클수록 샘플을 더 많이 사용해야 합니다. 중요도 샘플링에서 분산이 커지는 이유는 샘플 데이터로 3을 선택했을 때 가중치 <em>ρ</em> = 0.8 / (1/3) = 2.4가 곱해져 3 × 2.4 = 7.2라는 큰 값이 되기 때문입니다. 참값이 2.7인데 첫 샘플부터 7.2가 들어오면 편차가 극단적으로 벌어집니다.</p>
 
-<p><strong>그림 09-21</strong> 확률 분포 $b$에서 3을 샘플링한 예</p>
+<p>그렇다면 어떻게 해야 분산을 줄일 수 있을까요? 두 확률 분포(<em>b</em>와 <em>π</em>)를 가깝게 만들면 됩니다. 이렇게 하면 가중치 <em>ρ</em>의 값을 1에 가깝게 만들 수 있습니다.</p>
 
-<p><img src="./img/fig_6_21.svg" alt="그림 09-21" /></p>
+<p><img src="./img/05_variance_reduction_distribution_matching.png" alt="분포 정렬을 통한 분산 축소" />
+<strong>그림 09-5-5</strong> 확률 분포 b를 목표 분포 파이에 가깝게 조율하여 분산을 안정화시키는 지니와 도로시</p>
 
-<p>[그림 09-21]은 샘플 데이터로 3을 선택한 예를 보여줍니다. 이때 가중치 $\rho$는 2.4입니다. 즉, 3을 뽑았음에도 결과적으로 $3 \times 2.4 = 7.2$를 얻는다는 뜻입니다. 뭔가 잘못됐다고 느껴질 수 있지만 말이 되는 상황입니다. 이유는 다음과 같습니다.</p>
+<p>실험을 해봅시다. 직전 코드에서 확률 분포 <code class="language-plaintext highlighter-rouge">b</code>의 값을 <code class="language-plaintext highlighter-rouge">[0.2, 0.2, 0.6]</code>으로 변경해 보겠습니다.</p>
 
-<ul>
-  <li>확률 분포 <em>π</em>를 기준으로 했을 때 3은 대표적인 값이기 때문에 (원래는) 3이 많이 샘플링되어야 한다.</li>
-  <li>하지만 확률 분포 $b$에서는 3이 특별히 많이 선택되지 않는다.</li>
-  <li>이 간극을 메우기 위해 3이 샘플링된 경우, 그 값이 커지도록 ‘가중치’를 곱하여 조정한다.</li>
-</ul>
-
-<p>이처럼 확률 분포 <em>π</em>와 $b$의 차이를 고려하여 샘플링된 값에 가중치를 곱하여 조정하는 일 자체는 의미가 있습니다. 하지만 샘플링된 값은 3인데 7.2로 취급한다면 그리고 만약 지금이 첫 번째 샘플 데이터라면, 현시점의 추정값은 7.2가 된다는 문제가 생깁니다. 참값이 2.7이니 너무 크게 벗어나는 셈입니다. 이처럼 실제 얻은 값에 부여하는 가중치 $\rho$의 보정 효과가 클수록 분산(참값으로부터의 편차)이 커집니다.</p>
-
-<p>그렇다면 어떻게 해야 분산을 줄일 수 있을까요? 두 확률 분포($b$와 <em>π</em>)를 가깝게 만들면 됩니다. 이렇게 하면 가중치 $\rho$의 값을 1에 가깝게 만들 수 있습니다.</p>
-
-<p>실험을 해봅시다. 직전 코드에서 확률 분포 $b$의 값만 바꿔보겠습니다.</p>
-
-<div align="right"><b>ch05/importance_sampling.py</b></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span> <span class="c1"># 확률 분포 변경 (앞에서는 [1/3, 1/3, 1/3]로 설정)
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">array</span><span class="p">([</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">])</span> <span class="c1"># pi([0.1, 0.1, 0.8])와 가깝게 조율
 </span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">samples</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="c1"># [0, 1, 2]
-</span>    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">arange</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">b</span><span class="p">)</span>
     <span class="n">s</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">rho</span> <span class="o">=</span> <span class="n">pi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">/</span> <span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">samples</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">rho</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
@@ -823,14 +818,44 @@
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>중요도 샘플링: 2.72 (분산: 2.48)
 </code></pre></div></div>
 
-<p>이와 같이 확률 분포 <code class="language-plaintext highlighter-rouge">b</code>를 <code class="language-plaintext highlighter-rouge">[0.2, 0.2, 0.6]</code>으로 변경하여 확률 분포 <code class="language-plaintext highlighter-rouge">pi</code>에 가깝게 만들어봅니다 (<code class="language-plaintext highlighter-rouge">pi = [0.1, 0.1, 0.8]</code>). 결과는 평균이 2.72로, 참값에 더 가까워졌습니다. 이때 분산은 2.48이며 이전 결과보다 작아졌음을 알 수 있습니다.</p>
+<p>결과는 평균이 2.72로 참값에 훨씬 정밀하게 일치하며, 분산은 10.63에서 2.48로 대폭 줄어들었습니다!</p>
 
-<p>이처럼 중요도 샘플링 시 두 확률 분포를 비슷하게 설정하면 분산을 줄일 수 있습니다. 단, 강화 학습에서 핵심은 한쪽 정책(확률 분포)은 ‘탐색’에, 다른 쪽 정책은 ‘활용’에 이용하는 것입니다. 이 조건을 염두에 둔 상태에서 두 확률 분포를 최대한 가깝게 조정하면 분산을 줄일 수 있습니다.</p>
+<p>이처럼 중요도 샘플링 시 두 확률 분포를 비슷하게 설정하면 분산을 획기적으로 줄일 수 있습니다. 단, 강화 학습에서 핵심은 한쪽 정책은 ‘탐색’에, 다른 쪽 정책은 ‘활용’에 이용하는 것입니다. 이 조건을 염두에 둔 상태에서 두 확률 분포를 현명하게 조정하면 분산을 안정적으로 다스릴 수 있습니다.</p>
 
-<p>이것이 바로 중요도 샘플링입니다. 중요도 샘플링을 이용하면 오프-정책을 구현할 수 있습니다. 즉, 행동 정책이라는 확률 분포에서 샘플링된 데이터를 토대로 대상 정책에 대한 기댓값을 계산할 수 있습니다.</p>
+<hr />
 
-<p>이번 장에서는 설명을 이쯤에서 마치고 더 자세한 방법은 부록 A에서 다룹니다. 한 걸음 더 들어간 주제이니 관심 있는 분은 참고하기 바랍니다.</p>
+<h3 id="0954-핵심-정리-오프-정책과-중요도-샘플링-3대-기둥">09.5.4 핵심 정리: 오프-정책과 중요도 샘플링 3대 기둥</h3>
 
+<p><img src="./img/06_summary_core_takeaways.png" alt="핵심 정리 피날레" />
+<strong>그림 09-5-6</strong> 역할 분담, 중요도 가중치, 분산 안정화의 3대 기둥을 세우고 시간차 학습(TD)의 관문으로 향하는 도로시와 지니</p>
+
+<ol>
+  <li><strong>정책의 역할 분담 (Behavior vs Target)</strong>:
+    <ul>
+      <li>행동 정책 <em>b</em>는 미지의 환경을 과감하게 탐색하고, 대상 정책 <em>π</em>는 불필요한 무작위 행동 없이 순수한 최적 정책만을 깔끔하게 추정합니다.</li>
+    </ul>
+  </li>
+  <li><strong>중요도 가중치 <em>ρ</em> = <em>π</em> / <em>b</em>의 수학적 정산</strong>:
+    <ul>
+      <li>행동 정책에서 수집된 경험 표본에 두 정책의 확률 비율을 곱하여, 다른 분포에서 온 데이터를 목표 정책의 참 기댓값으로 완벽하게 보정합니다.</li>
+    </ul>
+  </li>
+  <li><strong>분산 통제와 Q-러닝으로의 연결 고리</strong>:
+    <ul>
+      <li>중요도 샘플링의 분산 폭발 문제는 두 분포를 가깝게 정렬하여 완화할 수 있으며, 나아가 10장 시간차 학습(TD)에서 다룰 Q-러닝(Q-learning)은 중요도 가중치를 전혀 곱하지 않고도 완벽한 오프-정책을 달성하는 혁신을 이뤄냅니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>교수님의 한마디</strong>:
+“오프-정책과 중요도 샘플링은 강화학습에서 데이터 수집과 정책 최적화를 완전히 디커플링(Decoupling)한 거대한 도약입니다. 비록 몬테카를로법에서는 긴 에피소드 동안 가중치 곱셈이 누적되며 분산이 커지는 한계가 있지만, 이 통찰이 바로 다음 10장의 1스텝 시간차 학습과 Q-러닝의 탄생으로 이어집니다.”</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>지니의 응원</strong>:
+“도로시와 여러분, 마법 저울의 비밀을 완벽히 마스터했어요! 다른 모험가의 경험에서 최선의 지혜를 뽑아내는 중요도 가중치 로우(<em>ρ</em>)의 놀라운 힘을 잊지 마세요. 이제 9장의 대미를 장식하는 9.6절 최종 총정리로 달려가 봅시다!”</p>
+</blockquote>
 
 
             <!-- 구글 애드센스 출력 -->

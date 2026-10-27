@@ -1,0 +1,8 @@
+### 03_distribution_vs_sample_model.png 프롬프트 명세서
+
+- **역할 및 용도**: 분포 모델 vs 샘플 모델의 개념 대비 설명용 공식 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A dual comparison scene illustrating 'Distribution Model vs Sample Model' on a pure solid white background (#FFFFFF). On the left side representing '분포 모델 (Distribution Model)', young Dorothy (chestnut brown twin pigtails, denim overalls with STEM HERO patch) stands by a chalkboard pointing at a clean probability curve and exact calculation formulas. On the right side representing '샘플 모델 (Sample Model)', Toto the fluffy cream-white puppy (solid milk-white fur, no spots, black nose, sky-blue bandana) happily pushes a leather cup rolling dice onto a rug, while Jiny the tuxedo cat with scholar glasses jots down the rolled numbers in a sample notebook. Clear labels: '분포 모델 (Distribution Model)' on left and '샘플 모델 (Sample Model)' on right. Pure solid clean white background (#FFFFFF), isolated cutout composition, soft contact shadows, 16:9 aspect ratio, no slide borders, no Japanese text.

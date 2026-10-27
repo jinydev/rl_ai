@@ -1,0 +1,4 @@
+Studio Ghibli aesthetic 2D animation style, masterwork educational 4-stage infographic diagram. A clear grid showing 4 progressive steps of Monte Carlo circle sampling: Step 1 'N=10, π≈4.00' (sparse coins), Step 2 'N=100, π≈3.20' (scattered coins), Step 3 'N=1,000, π≈3.16' (circle shape emerging), Step 4 'N=10,000, π≈3.1415' (densely populated circle). At the bottom, Jiny the tuxedo cat wearing tiny round scholar glasses and red bell collar sits happily pointing a paw at the final converged value: 'Convergence to π ≈ 3.14159...'. Isolated presentation cutout on a pure solid white background (#FFFFFF), crisp clean edges, centered composition, aspect ratio 1:1, square format.
+Negative: Japanese text, 3D CGI, blurry numbers, dark background.
+
+[해설]: 몬테카를로법에서 시행 횟수(샘플 데이터 수)가 N=10, 100, 1,000, 10,000으로 증가함에 따라 원주율 π의 추정값이 4.00에서 3.20, 3.16을 거쳐 참값인 3.14159...로 정밀하게 수렴해 들어가는 4단계 과정을 직관적으로 정리한 인포그래픽. 조교 지니의 말풍선 안내가 포함된 순백색 배경(#FFFFFF) 1:1 정방형 다이어그램.

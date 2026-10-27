@@ -1,0 +1,14 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, shoulder-length brown hair, straight bangs, red hair ribbon, yellow hoodie, holding a wooden ping-pong paddle labeled 'Evaluation V/Q').
+2. Jiny (playful glowing blue sprite fairy, holding a magical paddle labeled 'Improvement argmax').
+3. Toto (fluffy brown puppy sitting next to the ping-pong net, watching the glowing ball bounce back and forth).
+
+Scene:
+A whimsical miniature table tennis (ping-pong) match between Dorothy and Jiny. Dorothy hits a glowing golden ball of 'Policy Evaluation' across the net, and Jiny volleys back with a radiant beam of 'Policy Improvement (Greedification)'. Above the table, an alternating cycle diagram shows 'Evaluation → Improvement → Evaluation' converging towards an optimal golden crown.
+
+Composition:
+1:1 square canvas, centered composition, bright cheerful colors, Studio Ghibli warmth, isolated on pure white, high detail, no Japanese text.

@@ -1,0 +1,8 @@
+### 01_stepping_stones_policy_evaluation.png 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.2 인트로 징검다리 에피소드 완주와 상태 가치 V(s) 갱신 시각화 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. In a whimsical garden maze, Dorothy (4.5 heads tall, chestnut pigtails, denim overalls with STEM HERO patch, red sneakers) hops across stepping stone pathway tiles labeled A, B, and C toward a glowing golden goal portal. At each stone, sparkling golden star rewards float up. Beside her, fluffy cream-white puppy Toto (solid milk-white fur, sky-blue bandana) happily bounds along. Floating in the air, Jiny the tuxedo cat with scholar glasses holds up glowing holographic value cards displaying 'V(A)', 'V(B)', and 'V(C)'. Pure solid clean white background (#FFFFFF), isolated adventure composition, soft contact shadows, 16:9 aspect ratio, no slide UI, no Japanese text.

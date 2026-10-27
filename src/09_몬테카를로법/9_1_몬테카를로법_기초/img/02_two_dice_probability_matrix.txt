@@ -1,0 +1,8 @@
+### 02_two_dice_probability_matrix.png 프롬프트 명세서
+
+- **역할 및 용도**: 주사위 2개 던지기 실험 및 36가지 합 조합 매트릭스 설명용 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Dorothy, an adorable 9-year-old junior anime girl (4.5 heads tall, chestnut brown twin pigtails, denim overalls with STEM HERO patch, orange striped shirt, red canvas sneakers) sitting on a small wooden chair at a study desk, rolling two wooden dice from a cup onto the table. Sitting beside her chair on the floor is exactly ONE cute puppy Toto (solid cream-white coat, no spots, black nose, sky-blue bandana), happily looking up. On the desk, Jiny the black-and-white tuxedo cat with scholar glasses gently pats a clean educational dice combinations matrix board. Exactly one puppy, exactly one cat. Pure solid clean white background (#FFFFFF), isolated cutout graphic, subtle contact shadow, 1:1 square ratio, no slide UI, no Japanese text.

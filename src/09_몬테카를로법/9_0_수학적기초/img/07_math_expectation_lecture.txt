@@ -1,0 +1,9 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli aesthetic 2D animation style, masterwork educational lecture illustration. The professor lecturing at the chalkboard must match the exact face, hairstyle, and glasses of Professor Hojin from the first reference image: a youthful, handsome Korean professor in his early 40s with smooth wrinkle-free skin, neatly parted ash-grey and black hair with bangs, rectangular-rounded thin wireframe glasses, dark navy collared polo shirt. He passionately explains the mathematical meaning of Monte Carlo expectation E[X] = sum x*P(X=x) on a dark-green chalkboard. Beside him on a stool, Jiny the tuxedo assistant cat wearing tiny glasses and red bell collar points a wooden pointer at a dice diagram. Seated in the front desk, Dorothy (matching the second reference image exactly: 9-year-old girl with chestnut twin pigtails tied with colorful beads, denim overalls with STEM HERO badge) raises her hand with a joyful 'Aha!' smile. Beside her desk, Toto the fluffy cream-white puppy with a sky-blue bandana wags his tail happily. Warm sunny classroom, 16:9 wide aspect ratio.
+Negative: Japanese text, old wrinkled face, bald head, round harry potter glasses, 3D CGI, brown spots on puppy.
+
+[해설]: 공식 모델 시트(hojin_character_sheet, dorothy_character_sheet)의 인물 외형과 헤어스타일, 안경 규격을 100% 반영하여, 40대 초반 동안의 이호진 교수님이 대형 칠판 앞에서 몬테카를로법의 기댓값 정의 E[X] = ∑ x P(X=x)와 표본 평균의 수렴 원리를 명쾌하게 직강하고, 조교 지니가 포인터로 주사위 확률 트리를 짚어주며, 도로시가 손을 들며 깨달음을 얻고 토토가 곁에서 응원하는 16:9 와이드 핵심 강의 씬.

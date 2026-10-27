@@ -1,0 +1,16 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, shoulder-length brown hair with straight bangs, red ribbon, yellow oversized hoodie, looking curious and amazed).
+2. Toto (fluffy brown puppy sitting at her feet).
+3. Jiny (magical blue glowing fairy holding a luminous golden balance scale in mid-air).
+
+Scene:
+On the left pan of Jiny's golden scale rests a blue scroll labeled 'Behavior Policy b(a|s) (Exploration)'.
+On the right pan rests a golden scroll labeled 'Target Policy π(a|s) (Optimization)'.
+Between the pans floats a radiant mathematical ratio symbol 'ρ = π / b' glowing with warm amber light, illustrating Importance Sampling.
+
+Composition:
+16:9 wide landscape banner, centered harmonious composition, crisp outlines, vibrant warm pastel colors, isolated on solid white, no Japanese text.

@@ -1,0 +1,8 @@
+### 02_step_method_memory_packaging.png 프롬프트 명세서
+
+- **역할 및 용도**: env.step(action) 동작 후 (상태, 행동, 보상) 튜플을 agent.memory 리스트에 저장하는 과정 시각화 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational concept diagram on a pure solid white background (#FFFFFF). Dorothy clicks a red 'step(action)' button on a handheld remote controller on a gridworld gameboard. A glowing reward apple (+1.0) pops up into her hand, and she steps to the next grid tile 'next_state'. Sitting beside her, Jiny the tuxedo cat with scholar glasses carefully packs a glowing golden memory capsule labeled '(state, action, reward)' into Dorothy's adventure backpack labeled 'agent.memory'. Toto the puppy (solid milk-white coat, sky-blue bandana) jumps playfully. Pure solid clean white background (#FFFFFF), isolated character and prop composition, 1:1 square aspect ratio, no slide UI, no Japanese text.

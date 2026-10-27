@@ -1,0 +1,8 @@
+### 05_sample_mean_formula_breakdown.png 프롬프트 명세서
+
+- **역할 및 용도**: 표본 평균 기댓값 공식 V ≈ (1/N) ∑ s_i 기호 분해 해설 칠판 강의용 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational chalkboard lecture on a pure solid white background (#FFFFFF). Professor Hojin (refer to input image: early 40s Korean male professor, smooth skin, neat parted ash-gray dark charcoal hair, thin round wire-rim glasses, kind smile, plain solid navy polo shirt with NO badges or SNU text, blue jeans) points with a wooden pointer to a large dark chalkboard. Written on the chalkboard is a clear, large formula: "V ≈ (1 / N) ∑ s_i". The chalkboard breaks down the 3 components with neat chalk arrows: 1. "V ≈" (추정 가치 / 표본 평균), 2. "1 / N" (전체 시행 횟수 N으로 나눔), 3. "∑ s_i" (모든 경험 표본들의 총합). Dorothy and Toto (cream-white puppy with sky-blue bandana) watch attentively. Pure solid clean white background (#FFFFFF), isolated lecture composition, soft contact shadows, 16:9 aspect ratio, no slide UI, no Japanese text.

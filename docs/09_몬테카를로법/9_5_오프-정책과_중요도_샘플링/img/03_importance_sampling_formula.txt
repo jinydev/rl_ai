@@ -1,0 +1,18 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing small round glasses and yellow hoodie, carefully inspecting a glowing blackboard).
+2. Jiny (shining blue fairy holding a golden chalk, underlining a magical mathematical step).
+
+Scene:
+A wooden chalkboard floating on pure white background.
+The formula steps of Importance Sampling are neatly handwritten in glowing white and amber chalk:
+Step 1: E_π[X] = ∑ x · π(x)
+Step 2: E_π[X] = ∑ x · (π(x) / b(x)) · b(x)  (Insert b(x)/b(x) = 1)
+Step 3: E_π[X] = E_b[ X · (π(x) / b(x)) ] = E_b[ X · ρ(x) ]
+Next to the formula, Jiny holds a magnifying glass over 'ρ(x) = π(x) / b(x)' labeled 'Importance Weight'.
+
+Composition:
+16:9 wide landscape, educational mathematical infographic with whimsical fairy-tale warmth, pure white background, crisp typography, no Japanese text.

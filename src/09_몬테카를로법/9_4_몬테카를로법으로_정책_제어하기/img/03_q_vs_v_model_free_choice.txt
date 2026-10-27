@@ -1,0 +1,15 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing round glasses like a curious young scholar, holding a magnifying glass inspecting a blackboard).
+2. Jiny (magical blue glowing fairy pointing with a glowing wand to contrasting mathematical formulas written on the blackboard).
+
+Scene:
+A wooden blackboard stands on an isolated white background.
+On the left side: 'State-Value V(s) Approach' with a red question mark stamped over transition probability 'p(s\'|s,a) (Model Unknown!)', showing that without the transition model, greedy action cannot be calculated.
+On the right side: 'Action-Value Q(s,a) Approach' with a glowing green checkmark next to 'argmax_a Q(s,a) (Direct & Model-Free!)', showing that Q-function directly tells which action is best without requiring any environmental probability model.
+
+Composition:
+16:9 wide landscape ratio, clear side-by-side pedagogical formula breakdown, crisp typography, clean chalk-style math symbols, whimsical Ghibli styling, no Japanese text.

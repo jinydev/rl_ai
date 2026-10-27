@@ -1,0 +1,15 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, sliding two colorful curved glass bells closer together).
+2. Jiny (glowing blue fairy helping align the distributions with a magic wand).
+
+Scene:
+Visualizing variance reduction in Importance Sampling:
+When behavior distribution b is distant from target π, the importance ratio ρ = 2.4 blows up a sample of 3 to 7.2, causing massive instability.
+When behavior distribution b is gently brought closer to target π ([0.2, 0.2, 0.6] approaching [0.1, 0.1, 0.8]), importance ratio ρ stabilizes near 1.0, and variance dramatically plummets from 10.63 down to 2.48.
+
+Composition:
+1:1 square canvas, charming storybook diagram, soft watercolor curves, clean isolated white background, no Japanese text.

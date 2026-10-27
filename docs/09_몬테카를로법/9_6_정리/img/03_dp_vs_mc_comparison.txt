@@ -1,0 +1,8 @@
+### 03_dp_vs_mc_comparison.png 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.6 동적 프로그래밍(DP)과 몬테카를로(MC) 비교 슬라이드 및 교재 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A pedagogical side-by-side comparison between Dynamic Programming (DP) and Monte Carlo (MC). On the left side labeled 'Dynamic Programming (Model-Based)', Professor Hojin (youthful early 40s Korean professor, salt-and-pepper hair, thin round wire-rim glasses, plain dark navy polo shirt, blue jeans) stands next to a wooden blackboard solving neat Bellman expectation equations with transition matrices p(s'|s,a). On the right side labeled 'Monte Carlo (Model-Free)', Dorothy (4.5 heads tall, chestnut twin pigtails, blue denim overalls with STEM HERO patch, orange striped shirt, ruby red sneakers) runs forward across an open gridworld meadow with Toto the cream-white puppy, collecting actual glowing return bottles directly from experience. Between them, Jiny the lab assistant cat (chubby black-and-white tuxedo cat with round scholar glasses and red bell collar) sits observing. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow, 16:9 aspect ratio, no slide borders, no title banners, no Japanese text.

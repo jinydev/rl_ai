@@ -1,0 +1,8 @@
+### 05_backward_return_accumulation.png (및 reversed_eval.png, step_and_memory.png) 프롬프트 명세서
+
+- **역할 및 용도**: 에피소드 완주 후 역방향으로 할인율 γ를 곱해가며 수익 G를 누적하는 점화식 G ← γ · G + R 시각화 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational algorithm scene on a pure solid clean white background (#FFFFFF) illustrating backward return accumulation: 'G ← γ · G + R'. In an isometric stepping stone path from GOAL back to START, Dorothy (9-year-old girl, 4.5 heads tall junior proportions, wavy chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange striped t-shirt, ruby red sneakers) walks backwards along the stones, carefully placing glowing golden reward stars multiplied by discount factor 'γ' into her backpack. Beside the stones, Jiny the lab assistant cat (chubby black-and-white tuxedo cat with olive green eyes, round scholar glasses on his nose, red collar with gold bell) sits at a wooden chalkboard easel, pointing his paw at the glowing chalk formula: 'G ← γ · G + R (Reversed Evaluation)'. Beside Dorothy, Toto the fluffy cream-white puppy (solid milk-white fur, NO spots, black button nose, sky-blue bandana) playfully follows along. Pure solid clean white background (#FFFFFF), centered isolated composition, soft contact shadow at feet, 1:1 square ratio, no slide UI, no Japanese text, no duplicate animals.

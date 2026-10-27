@@ -1,0 +1,12 @@
+# Chapter 9.4: 07_summary_core_takeaways Prompt (1:1 ratio)
+# File: 07_summary_core_takeaways.png
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed.
+CRITICAL: The man MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Pure solid clean white background (#FFFFFF), isolated cutout illustration, no background scenery, no gradients.
+Grand finale summary celebration for Chapter 9.4: Monte Carlo Policy Control.
+Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily holds up a gleaming golden trophy with an epsilon symbol 'ε'.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) hops with joy.
+On the right, Professor Hojin (matching reference face exactly) gives a warm encouraging thumbs-up and smiles proudly at Dorothy's success.
+On the left, Jiny the lab assistant cat (the ONLY cat in the entire image, exactly one cat, chubby tuxedo cat with round scholar glasses and red bell collar) proudly displays a summary banner of '3 Pillars of MC Control: Q(s,a), ε-Greedy, Fixed-α'.
+Subtle soft contact shadows under feet, perfectly balanced 1:1 square composition, exactly one cat, exactly one dog, no duplicate animals, no slide frames, no extra UI borders, no Japanese text.

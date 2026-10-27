@@ -1,0 +1,9 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli aesthetic 2D animation style, masterwork educational lecture illustration. The man standing at the blackboard lecturing must match the exact face, hairstyle, and glasses of Professor Hojin from the first reference image: a handsome youthful Korean professor in his early 40s with smooth wrinkle-free skin, stylish parted salt-and-pepper hair with bangs on forehead, thin rectangular-rounded wireframe glasses, kind warm brown eyes, dark navy collared polo shirt. Standing beside a large dark-green chalkboard, holding white chalk, passionately explaining probability and computing. Beside him on a stool, Jiny the tuxedo cat wearing tiny glasses and red bell collar points a pointer at a casino roulette and dice diagram. In the front classroom desk, Dorothy (matching the second reference image exactly: 9-year-old girl with wavy chestnut twin pigtails with colorful round beads, orange-yellow striped shirt, denim overalls with STEM HERO badge) takes notes with a bright smile. Beside her desk, Toto the fluffy solid cream-white puppy with a sky-blue bandana looks up happily. Warm golden classroom lighting, 16:9 wide aspect ratio.
+Negative: Japanese text, old wrinkled face, bald head, round harry potter glasses, 3D CGI, brown spots on puppy.
+
+[해설]: 공식 캐릭터 모델 시트(hojin_character_sheet, dorothy_character_sheet)의 인물 외형을 엄격히 계승하여, 40대 초반 동안의 이호진 교수님이 대형 칠판 앞에서 몬테카를로법의 탄생 역사(확률 이론과 카지노 룰렛의 만남)를 생생하게 직강하고, 조교 지니가 포인터로 판서를 짚어주며, 도로시가 "STEM HERO" 오버롤을 입고 초롱초롱한 눈으로 필기하고 토토가 곁에서 경청하는 16:9 와이드 인트로 일러스트.

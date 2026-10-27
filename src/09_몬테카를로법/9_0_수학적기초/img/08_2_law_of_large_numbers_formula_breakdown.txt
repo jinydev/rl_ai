@@ -1,0 +1,10 @@
+[Prompt Template]
+Studio Ghibli warm watercolor animation style educational infographic illustration. A wide green chalkboard displaying the Law of Large Numbers mathematical limit formula broken down into three visual blocks: 'lim_{n -> infinity}' (infinite trials), '(1/n) sum_{i=1}^n X^(i)' (sample average of actual experiences), and '= E[X]' (true expectation). Professor Hojin (referencing hojin_character_sheet.jpg, male in early 40s, parted ash-gray hair, rectangular-rounded thin wireframe glasses, dark navy polo shirt, intellectual gentle face) underlines the equal sign '=' with yellow chalk. Dorothy (9-year-old girl with chestnut curly pigtails, denim overalls, STEM HERO badge) excitedly points to the 'n -> infinity' symbol. Beside her, cute fluffy white puppy Toto with sky-blue bandana and chubby ginger cat Jiny hold a card showing 'Sample Mean -> True Value'. Pure white background (#FFFFFF) around the chalkboard, bright lighting, heartwarming educational anime style, absolutely no Japanese characters.
+
+[Visual Specifications]
+- Subject: Three-block breakdown of the Law of Large Numbers limit formula lim_{n → ∞} (1/n) ∑_{i=1}^n X^(i) = E[X]
+- Characters: Professor Hojin (pointing to = sign), Dorothy (pointing to lim n→∞), Toto & Jiny (holding 'Sample Mean -> True Value' card)
+- Aspect Ratio: 16:9 Wide
+- Background: Green chalkboard centered on pure white (#FFFFFF) background
+- Style: Studio Ghibli inspired warm watercolor digital anime, Hayao Miyazaki aesthetic
+- Constraints: Exact facial match with hojin_character_sheet.jpg, youthful early 40s, thin wireframe glasses, solid cream-white puppy with sky-blue bandana, strictly Korean and English text only, no Japanese.

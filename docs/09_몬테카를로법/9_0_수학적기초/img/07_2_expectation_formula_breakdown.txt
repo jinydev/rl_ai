@@ -1,0 +1,10 @@
+[Prompt Template]
+Studio Ghibli warm watercolor animation style educational infographic illustration. A grand green chalkboard displaying mathematical expectation formula symbols clearly broken down. At the top of the chalkboard, the equation 'E[X] = sum(x * P(X=x))' and sample mean '(1/n) sum X^(i)' are written in neat white chalk with colorful chalk annotations and brackets. Professor Hojin (referencing hojin_character_sheet.jpg, male in early 40s, parted ash-gray hair, rectangular-rounded thin wireframe glasses, dark navy polo shirt, kind intellectual face) stands holding a wooden pointer indicating the 'E[X]' symbol. Beside him, chubby ginger tabby cat Jiny holds up educational cards labeling symbols. Dorothy (9-year-old girl with chestnut brown curly pigtails, denim overalls, STEM HERO badge) and Toto (small fluffy cloud-white Bichon-Maltese puppy with sky-blue bandana) watch with enlightened eureka expressions. Clean pure white background (#FFFFFF) around the chalkboard, extremely warm, inspiring, high quality educational anime art, absolutely no Japanese text.
+
+[Visual Specifications]
+- Subject: Breakdown of Mathematical Expectation E[X] = ∑ x · P(X = x) and Sample Mean (1/n) ∑ X^(i)
+- Characters: Professor Hojin (Instructor), Jiny (Cat Assistant), Dorothy (Learner), Toto (Assistant Dog)
+- Aspect Ratio: 16:9 Wide
+- Background: Green chalkboard centered on pure white (#FFFFFF) background
+- Style: Studio Ghibli inspired warm watercolor digital anime, Hayao Miyazaki aesthetic
+- Constraints: Exact facial match with hojin_character_sheet.jpg, youthful early 40s, thin wireframe glasses, solid cream-white puppy with sky-blue bandana, strictly Korean and English text only, no Japanese.

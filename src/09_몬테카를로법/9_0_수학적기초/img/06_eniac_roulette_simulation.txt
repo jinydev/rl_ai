@@ -1,0 +1,4 @@
+Studio Ghibli aesthetic 2D animation style, masterwork educational conceptual illustration. 1940s vintage computing laboratory filled with towering racks of warm glowing vacuum tubes, patch cables, and analog dials of an early electronic computer. In the center, a luminous conceptual fusion: a spinning golden casino roulette wheel and cards emitting sparkling trails of binary numbers (0 and 1) and random sampling data streams into the computing circuits. In the bottom corner, Jiny the tuxedo cat wearing tiny glasses and Toto the fluffy white puppy with a sky-blue bandana watch the historical computational birth of Monte Carlo simulation with wonder. Warm ambient vintage tones, detailed linework, aspect ratio 16:9 wide.
+Negative: Japanese text, modern laptops, 3D CGI, dark horror.
+
+[해설]: 1940년대 최초의 대형 진공관 컴퓨터 회로와 카지노 룰렛의 무작위 난수 생성 개념이 만나 오늘날 과학과 강화학습의 핵심 도구가 된 '몬테카를로법'의 탄생을 상징적으로 표현한 16:9 와이드 일러스트. 곁에서 감탄하며 바라보는 조교 지니와 토토.

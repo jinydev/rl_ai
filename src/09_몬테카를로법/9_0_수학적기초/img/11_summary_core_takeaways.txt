@@ -1,0 +1,15 @@
+### 11_summary_core_takeaways.png 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.0 몬테카를로법의 수학적 기초 강의 피날레 핵심 요약 슬라이드 및 교재 정리용 공식 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리(Studio Ghibli) 수채화 애니메이션 감성의 따뜻한 교육용 일러스트
+
+#### 프롬프트 본문:
+Clean educational anime illustration in warm Studio Ghibli watercolor style, on a pure solid white background (#FFFFFF). In a modern warm AI robotics lab, Professor Hojin (refer to input image: early 40s Korean male professor, neat parted ash-gray dark charcoal hair, rectangular-rounded thin wireframe glasses, kind intelligent smile, navy collared polo shirt) stands proudly by a clean whiteboard with bright Korean female student Dorothy (side ponytail, amber eyes), cute white cloud-fluffy puppy Toto (pure cream-white coat, wearing a vibrant sky-blue bandana around neck), and charming purple cat assistant Jiny. The whiteboard has a clear 3-step summary diagram titled '핵심 정리': 1. 무작위 표본 추출 (Random Sampling), 2. 대수의 법칙 수렴 (Law of Large Numbers), 3. 모델 프리 강화학습 (Model-free RL). Warm cheerful atmosphere celebrating completing the lecture, bright soft studio lighting, crisp outlines, high resolution, absolutely NO Japanese text, only clean Korean and math labels.
+
+#### 캐릭터 잠금 기준:
+1. **이호진 교수님**: 40대 초반 동안, 짙은 숯 회색(애시 그레이) 가르마 머리, 직사각형-라운드 얇은 금속테 안경, 네이비 칼라 폴로셔츠, 엄지 척 포즈.
+2. **도로시**: 10대 후반, 밝은 사이드 포니테일, 호박색 눈동자, 편안한 흰 티셔츠와 청바지.
+3. **토토**: 단색 웜밀크 화이트 (#FBF6EB) 구름 털 질감의 비숑-말티즈 믹스견, 선명한 하늘색 삼각 반다나. 얼룩 반점 절대 금지.
+4. **지니**: 보라색 고양이, 마커 펜을 들고 귀엽게 서포트.
+5. **텍스트**: 순수 한글 '핵심 정리', '1. 무작위 표본 추출', '2. 대수의 법칙 수렴', '3. 모델 프리 강화학습' 및 수학 기호만 포함. 일본어 절대 금지.

@@ -1,0 +1,17 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, happily dividing colorful probability pies on a wooden table).
+2. Jiny (glowing blue fairy floating above, pointing with a glowing wand to four directional arrows).
+
+Scene:
+A pie-chart and probability breakdown of the ε-greedy policy.
+Four action directions (Up, Down, Left, Right) are shown.
+The best action (Up) has a large vibrant golden slice of probability equal to '1 - ε + ε/4' (e.g. 0.925).
+The remaining three exploratory actions each have smaller blue pastel slices equal to 'ε/4' (e.g. 0.025 each).
+Above the table floats a golden glowing formula card: 'π(a*|s) = 1 - ε + ε/|A|, π(a|s) = ε/|A|'.
+
+Composition:
+16:9 wide landscape, educational infographic style with warm Ghibli storybook charm, isolated on pure white #FFFFFF, sharp legible math symbols, no Japanese text.

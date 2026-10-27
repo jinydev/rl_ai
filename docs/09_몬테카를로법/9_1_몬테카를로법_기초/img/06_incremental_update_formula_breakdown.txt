@@ -1,0 +1,8 @@
+### 06_incremental_update_formula_breakdown.png 프롬프트 명세서
+
+- **역할 및 용도**: 가치 갱신 증분 점화식 V_new = V_old + (1/n)(s - V_old) 기호 해부 설명 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational diagram on a pure solid white background (#FFFFFF) illustrating the incremental value update equation: 'V_new = V_old + (1 / n)(s - V_old)'. On a clean whiteboard in a wooden frame, the equation is written with colorful callout annotations: 'V_old' (기존 추정치), '(1 / n)' (학습 보폭 / 학습률), and '(s - V_old)' (새 표본과의 오차 신호 Error). Jiny the tuxedo cat with scholar glasses stands on a stool pointing with a pointer at '(s - V_old)'. Dorothy (twin pigtails, denim overalls with STEM HERO patch) holds a single lightweight memory chip with a happy bright smile, realizing she does not need to store all past data. Pure solid clean white background (#FFFFFF), isolated educational graphic, 16:9 aspect ratio, no slide UI, no Japanese text.

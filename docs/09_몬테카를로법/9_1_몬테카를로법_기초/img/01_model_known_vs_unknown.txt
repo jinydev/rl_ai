@@ -1,0 +1,8 @@
+### 01_model_known_vs_unknown.png 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.1 인트로 슬라이드 및 교재 서두 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. In a bright AI laboratory, Professor Hojin (refer to input image: early 40s Korean male professor, neat parted ash-gray dark charcoal hair, thin round wireframe glasses, kind intelligent smile, plain dark navy polo shirt with NO badges or SNU text, blue jeans) and junior student Dorothy (4.5 heads tall, chestnut brown twin pigtails, blue denim overalls with STEM HERO patch) compare two conceptual worlds. On the left is a clear transparent glowing acrylic gridworld board (Known Environment Model), and on the right is a mysterious glowing wooden puzzle box with mist (Unknown Black-Box Model). Cute cat assistant Jiny (tuxedo cat with scholar glasses and red bell collar) watches attentively. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 16:9 aspect ratio, no slide borders, no title banners, English or Korean labels only, no Japanese text.

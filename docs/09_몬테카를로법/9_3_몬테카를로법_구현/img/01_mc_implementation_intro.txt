@@ -1,0 +1,8 @@
+### 01_mc_implementation_intro.png 프롬프트 명세서
+
+- **역할 및 용도**: 챕터 09.3 몬테카를로법 구현 인트로 슬라이드 및 교재 서두 삽화 (16:9 와이드)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. In a modern AI robotics programming lab, Dorothy (4.5 heads tall, chestnut pigtails, denim overalls with STEM HERO patch, red canvas sneakers) holds a retro arcade-style game controller while looking at a dual-monitor workstation displaying Python code for 'GridWorld.step()' and 'RandomAgent.eval()'. Beside her, Jiny the tuxedo cat wearing tiny round scholar glasses points his white paw at the terminal output showing state value convergence. Fluffy puppy Toto (solid cream-white fur, sky-blue bandana) wags his tail cheerfully under the desk. Pure solid clean white background (#FFFFFF), isolated coding workstation composition, soft contact shadows, 16:9 aspect ratio, no slide UI, no Japanese text.

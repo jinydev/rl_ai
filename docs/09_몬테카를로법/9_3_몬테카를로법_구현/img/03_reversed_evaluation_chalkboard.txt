@@ -1,0 +1,8 @@
+### 03_reversed_evaluation_chalkboard.png 프롬프트 명세서
+
+- **역할 및 용도**: reversed(self.memory)를 순회하며 G = gamma * G + reward 및 증분 가치 갱신을 실행하는 eval() 메서드 해설 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational algorithm visualization on a pure solid white background (#FFFFFF). On a dark wooden-framed chalkboard, clean chalk code is highlighted: 'for data in reversed(self.memory): G = gamma * G + reward, V[state] += (G - V[state]) / cnts[state]'. Jiny the tuxedo cat with scholar glasses stands on a stool pointing with a magic wand at the 'reversed()' function. Dorothy walks backward along stone tiles stepping from the GOAL flag toward the start, collecting glowing discount stars 'γ'. Toto the cream-white puppy watches with a happy dog smile. Pure solid clean white background (#FFFFFF), isolated algorithm illustration, 1:1 square ratio, no slide UI, no Japanese text.

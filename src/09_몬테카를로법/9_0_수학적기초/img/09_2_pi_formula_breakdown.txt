@@ -1,0 +1,10 @@
+[Prompt Template]
+Studio Ghibli warm watercolor animation style educational infographic illustration. A grand chalkboard explaining the geometric Pi derivation formula step-by-step: 'pi approx 4 * (N_circle / N_total)'. On the board, clear colorful diagrams show: a square of area 4r^2, an inscribed circle of area pi*r^2, the ratio (pi*r^2 / 4r^2 = pi / 4), and multiplying by 4 to isolate 'pi'. Dorothy (9-year-old girl with chestnut curly pigtails, denim overalls, STEM HERO badge) proudly holds a pointer explaining the '4 *' multiplier coming from the square's 4r^2 area. Toto (cute fluffy cloud-white puppy with sky-blue bandana) happily sits beside stacks of shiny gold coins. Cute ginger tabby cat Jiny holds a card showing 'Area Ratio -> Pi'. Pure white background (#FFFFFF) around the chalkboard, cheerful and clear educational anime aesthetic, absolutely no Japanese characters.
+
+[Visual Specifications]
+- Subject: Step-by-step geometric breakdown of π ≈ 4 × (N_circle / N_total) with square area 4r^2 and circle area πr^2
+- Characters: Dorothy (pointing to formula), Toto (beside gold coin stacks), Jiny (holding 'Area Ratio -> Pi' card)
+- Aspect Ratio: 16:9 Wide
+- Background: Green chalkboard centered on pure white (#FFFFFF) background
+- Style: Studio Ghibli inspired warm watercolor digital anime, Hayao Miyazaki aesthetic
+- Constraints: Dorothy with chestnut pigtails and STEM HERO badge, solid cream-white puppy with sky-blue bandana, strictly Korean and English text only, no Japanese.

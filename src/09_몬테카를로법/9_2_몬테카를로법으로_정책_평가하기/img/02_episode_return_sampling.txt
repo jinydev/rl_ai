@@ -1,0 +1,8 @@
+### 02_episode_return_sampling.png 프롬프트 명세서
+
+- **역할 및 용도**: 에피소드별 수익 샘플 G^(1)=3, G^(2)=2의 산술 평균으로 상태 가치 2.5를 추정하는 시각화 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 수채화 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational calculation scene on a pure solid white background (#FFFFFF). Dorothy (chestnut twin pigtails, denim overalls with STEM HERO patch) places two golden treasure pouches on a table. One pouch is labeled 'G^(1) = 3' and the other 'G^(2) = 2'. Beside the table, Jiny the tuxedo cat wearing tiny round scholar glasses chalks on a small easel board: 'V_π(s) = (3 + 2) / 2 = 2.5'. Toto the cream-white puppy with sky-blue bandana watches happily. Pure solid clean white background (#FFFFFF), isolated character and prop composition, 1:1 square aspect ratio, soft shadows, no slide UI, no Japanese text.

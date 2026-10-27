@@ -1,0 +1,11 @@
+# Chapter 9: Monte Carlo Methods (몬테카를로법) YouTube 16:9 Cover Prompt
+# File: 09_몬테카를로법.png (16:9 ratio)
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. 
+CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
+Grand 16:9 wide YouTube and chapter cover illustration for reinforcement learning Chapter 9 '몬테카를로법 (Monte Carlo Methods)'.
+In the center, Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily steps forward on colorful floating grid tiles and stepping stones, tossing smooth colorful pebbles and rolling a glowing dice labeled 'V(s) ≈ (1/N) ∑ G'.
+Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) playfully trots along with a joyful smile.
+On the right, Professor Hojin (matching reference face exactly) stands smiling warmly, pointing with white chalk toward a warm chalkboard with diagram: 'Model-Free RL: Experience → Value Function'.
+On the left, Jiny the lab assistant cat (the ONLY cat in the entire image, exactly one cat, chubby tuxedo cat with round scholar glasses and red bell collar) sits smartly beside a miniature wooden roulette wheel model, holding a glowing compass.
+Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, exactly one cat, exactly one dog, no duplicate animals, no slide frames, no extra UI borders, no Japanese text.

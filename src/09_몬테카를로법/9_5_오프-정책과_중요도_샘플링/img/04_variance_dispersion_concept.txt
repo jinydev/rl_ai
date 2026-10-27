@@ -1,0 +1,16 @@
+Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+
+Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+
+Characters:
+1. Dorothy (7-year-old Korean girl, wearing yellow hoodie, holding a compass circle tool).
+2. Toto (fluffy brown puppy watching floating colored marbles).
+
+Scene:
+A visual comparison of Variance (Dispersion of Samples) on a 2D plane:
+Left side: 'Low Variance (Var = 0.27)' - Samples form a tight, compact cluster of glowing green dots closely hugging the bullseye center.
+Right side: 'High Variance (Var = 10.63)' - Samples are scattered wildly across a wide area with large error bars and a huge glowing red dashed circle.
+Chalk text reads: 'Var[X] = E[(X - E[X])^2]'.
+
+Composition:
+1:1 square canvas, clean geometric and illustrative contrast, vibrant colors, isolated on solid pure white, no Japanese text.
