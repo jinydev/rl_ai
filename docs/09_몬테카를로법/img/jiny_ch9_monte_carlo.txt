@@ -1,0 +1,8 @@
+### jiny_ch9_monte_carlo.png 프롬프트 명세서
+
+- **역할 및 용도**: 몬테카를로법 대문 커버 보조 삽화: 거대한 카지노 룰렛과 그리드 타일 징검다리를 나침반을 들고 탐험하는 도로시와 토토, 조교 지니의 모험 장면 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Chapter 9 Monte Carlo introduction scene. In the center, young Dorothy (4.5 heads tall, chestnut brown twin pigtails with colorful beads, denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) holds a golden brass compass and happily steps across giant colorful casino roulette wheel sectors and floating 3D pastel gridworld stepping tiles towards a glowing golden apple. Running beside her cheerfully is Toto the fluffy cream-white puppy (solid milk-white coat, no spots, floppy ears, black button eyes, black nose, sky-blue bandana). Sitting smartly on a nearby hovering tile is Jiny the tuxedo cat (round scholar glasses, red collar with tiny gold bell), encouraging the adventure with a friendly paw wave. Floating gently around are soft sparkling golden stars and math symbols (π, G_t, V(s)). Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and English text only, zero Japanese characters.

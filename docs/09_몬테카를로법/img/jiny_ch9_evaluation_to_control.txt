@@ -1,0 +1,8 @@
+### jiny_ch9_evaluation_to_control.png 프롬프트 명세서
+
+- **역할 및 용도**: 평가에서 제어로의 멘토링 보조 삽화: 태블릿으로 더 높은 최적 정책으로 향하는 나선형 계단을 안내하는 이호진 교수님과 자신감 넘치는 도로시 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Mentoring scene for policy control and Generalized Policy Iteration (GPI). On the left, Professor Hojin, a youthful Korean professor in his early 40s (smooth skin, no wrinkles, neatly parted salt-and-pepper hair, thin round wire-rim glasses, plain dark charcoal navy polo shirt with no badges, blue jeans, grey sneakers), holds a modern slim tablet PC and gently points towards an ascending golden spiral of glowing stepping steps labeled with cyclical arrows '평가 (Evaluation)' and '개선 (Improvement)' leading up to '최적 정책 π*'. On the right, Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) clenches a small determined fist with a confident bright smile. Beside her, Toto the fluffy cream-white puppy (solid milk-white, NO spots, floppy ears, sky-blue bandana) wags his tail cheerfully. Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and math text only, zero Japanese characters.

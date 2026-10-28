@@ -1,0 +1,8 @@
+### monte_carlo_dice.png 프롬프트 명세서
+
+- **역할 및 용도**: 몬테카를로 주사위와 대수의 법칙 보조 삽화: 컵에서 쏟아져 나온 알록달록 주사위들을 굴리며 노는 토토와 안경을 쓰고 관찰하는 조교 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Demonstrating the Law of Large Numbers and Monte Carlo sampling with dice. In the center, a brown leather cup has tipped over, spilling colorful pastel gaming dice across the floor. Toto the fluffy cream-white puppy (solid milk-white coat, NO spots, floppy ears, glossy black button nose, black button eyes, vibrant sky-blue neckerchief bandana) playfully rolls a red die with his cute front paw with a happy open-mouthed dog smile. Sitting beside him is Jiny the tuxedo cat (black mask, white muzzle, pink button nose, round scholar glasses, red collar with gold bell), calmly holding a small notepad with a fountain pen, pointing with his paw towards a small wooden tabletop easel chalkboard showing a converging line plot towards 'E[X] = 7.0' and Korean text '대수의 법칙 (표본 평균 → 참값)'. Pure solid clean white background (#FFFFFF), isolated scene, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and English text only, zero Japanese characters.

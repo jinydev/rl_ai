@@ -1,0 +1,8 @@
+### jiny_ch9_model_free_intro.png 프롬프트 명세서
+
+- **역할 및 용도**: 모델 프리(Model-Free) 필요성 보조 삽화: 안개 낀 미지의 그리드 타일 앞 나침반을 들고 고민하는 도로시와 호기심 가득한 토토 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Full-body view of Dorothy, an adorable 9-year-old anime girl (4.5 heads tall, chestnut brown twin pigtails tied with colorful round beads, cute bangs, warm amber eyes, rosy cheeks). She wears classic blue denim overalls with rolled cuffs and a round 'STEM HERO' patch, orange and yellow striped t-shirt, and red canvas sneakers. She holds a vintage brass compass in one hand, her other hand thoughtfully touching her chin with curious determination. Beside her, Toto the fluffy cream-white puppy (solid milk-white coat, NO spots, floppy ears, black button nose, black button eyes, vibrant sky-blue neckerchief bandana) looks up with an eager, happy head tilt. In front of them are floating pastel 3D isometric gridworld stepping stones shrouded in gentle morning mist, with cute soft question mark bubbles floating above. Pure solid clean white background (#FFFFFF), isolated character composition, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, zero Japanese text.

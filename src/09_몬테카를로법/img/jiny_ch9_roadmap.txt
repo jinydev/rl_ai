@@ -1,0 +1,8 @@
+### jiny_ch9_roadmap.png 프롬프트 명세서
+
+- **역할 및 용도**: 9장 전체 7대 탐험 관문 출정 단체 보조 삽화: 대형 모험 지도를 앞에 두고 함께 힘차게 출발을 알리는 4인방(교수님, 도로시, 지니, 토토) (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Group expedition scene for the Chapter 9 Monte Carlo 7-step learning roadmap. In the center is a large illustrated parchment adventure map showing 7 learning milestone stations from 9.0 to 9.6 with a compass rose. Gathered proudly around the map are the four main characters: Professor Hojin (left, youthful 40s Korean professor, smooth skin, stylish salt-and-pepper hair, thin round wire-rim glasses, plain dark charcoal navy polo shirt with no badges, blue jeans, grey sneakers, giving an encouraging warm thumbs-up); Dorothy (center, adorable 9-year-old anime girl, 4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers, waving cheerfully to viewer); Jiny the tuxedo cat (sitting on the edge of the map with round scholar glasses and red bell collar, looking proud); and Toto the fluffy cream-white puppy (front right, solid milk-white, NO spots, black button nose, sky-blue bandana, smiling happily with curled plumey tail wagging). Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and English text only, zero Japanese characters.

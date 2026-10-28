@@ -1,0 +1,8 @@
+### jiny_ch9_experience_learning.png 프롬프트 명세서
+
+- **역할 및 용도**: 경험 데이터 수집 보조 삽화: 돋보기로 발자국 궤적과 타일 데이터를 흥미진진하게 살피는 도로시와 수첩에 메모하는 조교 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Full-body view of Dorothy, an adorable 9-year-old anime girl (4.5 heads tall, chestnut twin pigtails with colorful beads, denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers), happily crouching down holding a round golden magnifying glass to inspect glowing pawprint and footprint trajectory marks along 3D pastel grid tiles. Standing next to her on a small wooden crate is Jiny the lab assistant cat (chubby black-and-white bicolor tuxedo cat, olive-green eyes, pink nose, tiny round scholar glasses perched on nose, red collar with gold bell), writing neatly in a small leather notebook with a cute feather quill, recording experience tuples '(S_t, A_t, R_t+1, S_t+1)'. Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and English text only, zero Japanese characters.

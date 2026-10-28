@@ -1,0 +1,8 @@
+### jiny_ch9_dp_review.png 프롬프트 명세서
+
+- **역할 및 용도**: 동적 프로그래밍 전제조건 복습 보조 삽화: 칠판 앞에서 상태 전이와 보상 다이어그램을 열정적으로 강의하는 이호진 교수님과 관찰하는 조교 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. CRITICAL: The man on the left MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape of Professor Hojin from the reference image, keeping his exact facial identity, youthful early 40s appearance (smooth skin, no wrinkles), stylish neatly parted salt-and-pepper short black hair, thin minimalist round metal wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt (no logos, no badges, no SNU text), blue denim jeans, and grey sneakers. He stands gracefully pointing white chalk towards a dark slate chalkboard in a warm walnut frame. On the chalkboard are clean chalk diagrams of a 2x2 grid state transition arrow with clear formulas: 'p(s\'|s,a)', 'r(s,a,s\')', and 'V(s) = ∑ p · [r + γ V(s\')]'. Sitting neatly on a small wooden desk next to the board is Jiny the tuxedo cat (round scholar glasses, red collar with tiny gold bell), listening like a dedicated TA. Pure solid clean white background (#FFFFFF), isolated scene, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and English text only, zero Japanese characters.

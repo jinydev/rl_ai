@@ -1,0 +1,8 @@
+### jiny_ch9_reversed_eval.png 프롬프트 명세서
+
+- **역할 및 용도**: 에피소드 완주와 역방향 계산 보조 삽화: 골인 지점에서 환호하는 도로시와 출발점을 향해 역방향으로 시간을 거슬러 올라가는 궤적을 짚어주는 조교 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Demonstrating episode completion and reversed return calculation in Monte Carlo. On the right, Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) happily cheers with both arms raised in celebration beside a golden trophy flag labeled 'GOAL'. Next to her, Toto the fluffy cream-white puppy (solid milk-white, no spots, sky-blue bandana) jumps playfully. On the left along a curved stone stepping path leading back from the goal towards the start, Jiny the tuxedo cat (round scholar glasses, red collar with gold bell) walks backwards pointing with his paw along glowing golden reverse arrows labeled with the recursive formula 'G_t = R_{t+1} + γ · G_{t+1}'. Soft sparkling discount gamma symbols (γ) float along the path. Pure solid clean white background (#FFFFFF), isolated composition, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, math and Korean text only, zero Japanese characters.

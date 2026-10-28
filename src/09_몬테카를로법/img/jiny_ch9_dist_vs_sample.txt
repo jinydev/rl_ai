@@ -1,0 +1,8 @@
+### jiny_ch9_dist_vs_sample.png 프롬프트 명세서
+
+- **역할 및 용도**: 모델 패러다임 비교 보조 삽화: 이론 책을 든 이호진 교수님(분포 모델)과 주사위 컵과 표본을 든 도로시와 토토(샘플 모델)의 대비 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Comparing Distribution Model vs Sample Model in reinforcement learning. On the left stands Professor Hojin, a youthful Korean professor in his early 40s (smooth skin, no wrinkles, neatly parted salt-and-pepper hair, thin round wire-rim glasses, solid dark navy polo shirt with no badges, blue jeans, grey sneakers), holding a thick theoretical textbook and an open scroll showing a probability bell curve graph with text: '분포 모델 (E[X] = ∑ x · p(x))'. On the right stands Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) holding a brown leather dice cup, happily tossing colorful sample spheres with text: '샘플 모델 (E[X] ≈ 1/N ∑ x_i)'. Beside her, Toto the cream-white puppy (solid milk-white, no spots, sky-blue bandana) happily catches a bouncing sample die. Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide frames, Korean and math text only, zero Japanese characters.

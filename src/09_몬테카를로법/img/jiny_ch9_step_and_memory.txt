@@ -1,0 +1,8 @@
+### jiny_ch9_step_and_memory.png 프롬프트 명세서
+
+- **역할 및 용도**: 스텝과 메모리 코딩 실습 보조 삽화: 연구실 워크벤치에서 파이썬 코딩을 하는 도로시와 모니터 옆에서 화면을 함께 검토하는 조교 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Python coding workstation scene for reinforcement learning. Dorothy (4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) sits focused at a warm wooden maker desk, typing happily on a modern laptop keyboard. Displayed clearly on the laptop screen is clean Python code: 'next_state, reward, done = env.step(action)' and 'agent.add(state, action, reward)'. Sitting smartly on the desk right next to the laptop is Jiny the tuxedo cat (round scholar glasses, red collar with tiny gold bell), pointing his white front paw at the code screen with intellectual pride while reviewing the memory buffer mechanism. A small steaming ceramic mug rests on the desk. Pure solid clean white background (#FFFFFF), isolated desk vignette, subtle soft contact shadow at base, 1:1 square aspect ratio, no slide frames, zero Japanese text.
