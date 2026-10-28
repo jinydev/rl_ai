@@ -1,0 +1,8 @@
+### 05_agent_environment_loop_flow.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 에이전트와 환경의 파이썬 상호작용 루프 순환 흐름도 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A circular pedagogical diagram showing the Python reinforcement learning interaction loop. At the top left, Dorothy (9-year-old anime girl, chestnut pigtails, blue overalls, orange striped t-shirt) holds a glowing golden compass labeled 'get_action(state)', sending a glowing blue arrow labeled 'action' to an environmental maze console at the right labeled 'GridWorld.step(action)'. The console emits three glowing capsules downward: 'next_state', 'reward', and a flag labeled 'done'. At the bottom, Jiny the tuxedo cat with glasses packs the capsules into a leather pouch labeled 'agent.add(s,a,r)'. In the center, a loop arrow leads to a checkered finish gate where Toto the cream puppy barks cheerfully, triggering a magical chalkboard labeled 'if done: agent.eval()'. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft ground contact shadows, 1:1 square ratio, clean Korean and English labels only, no Japanese text.

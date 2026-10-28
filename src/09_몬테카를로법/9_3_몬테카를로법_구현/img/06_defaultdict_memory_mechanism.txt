@@ -1,0 +1,8 @@
+### 06_defaultdict_memory_mechanism.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 파이썬 일반 dict와 defaultdict의 차이점 및 가치 함수/방문 횟수 자동 초기화 메커니즘 비교 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A split comparison explaining Python defaultdict. On the left side labeled '일반 dict (KeyError 발생)', a rusty old metal mailbox labeled 'dict' smokes with red warning sparks as a mail letter labeled '(2, 3)' causes an explosion with a red warning sign reading 'KeyError!'. Dorothy looks startled. On the right side labeled 'defaultdict(lambda: 0)', a magical warm wooden filing cabinet labeled 'defaultdict' glowing with gentle golden light smoothly slides open a brand new wooden drawer labeled '(2, 3)' containing a shiny golden coin labeled '0.0' automatically created with a cheerful chime. Jiny the tuxedo cat with glasses smiles approvingly holding a golden key. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft shadows, 1:1 square ratio, clean Korean and English labels, no Japanese text.

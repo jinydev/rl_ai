@@ -1,0 +1,8 @@
+### 07_incremental_mean_convergence.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 가치 증분 갱신 공식과 에피소드 반복에 따른 가치 수렴 및 오차 감소 곡선 시각화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An inspiring scientific scene in a bright AI laboratory. At the center, a large wooden chalkboard on an easel displays the mathematical update equation: 'V(s) += (G - V(s)) / N(s)' in clean chalk handwriting. On a glowing modern glass tablet held by Professor Hojin (warm Korean male professor in his early 40s, stylish glasses, neat navy cardigan, white shirt), a smooth educational graph shows an orange learning curve line starting from 0 and smoothly converging toward an accurate dashed target line at +0.40 as the episode count N(s) increases from 1 to 1000. Dorothy claps her hands excitedly, and Jiny the tuxedo cat with glasses points a wooden pointer stick to the shrinking error gap labeled 'Error (G - V)'. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft shadows, 1:1 square ratio, clean Korean and English labels, no Japanese text.

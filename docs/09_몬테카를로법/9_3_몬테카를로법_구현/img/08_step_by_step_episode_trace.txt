@@ -1,0 +1,8 @@
+### 08_step_by_step_episode_trace.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 3x4 그리드월드에서 실제 에피소드 이동 경로(S0→S1→S2→Goal) 및 역순 거슬러 올라가기(reversed)를 통한 할인 수익(G) 누적 과정 시각화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A step-by-step game board trace of an episode on a floating 3x4 grid world. From Start stone tile S0 at bottom-left, Dorothy's footsteps trace through floating stones S1, S2 up to Goal tile at top-right with a checkered flag and golden trophy (+1 Reward). Along the path, glowing blue forward arrows show agent steps '(S, A, R)'. Crucially, glowing golden reverse curved arrows point backwards from Goal to Start with labels: 'G = 1.0', then 'G = 0.9 * 1.0 = 0.9', then 'G = 0.9 * 0.9 = 0.81'. Jiny the tuxedo cat with glasses stands on a cloud pointing a golden compass showing 'for data in reversed(memory)'. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft shadows, 1:1 square ratio, clean English and Korean labels, no Japanese text.
