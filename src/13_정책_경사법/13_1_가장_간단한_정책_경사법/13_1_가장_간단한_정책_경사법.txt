@@ -1,0 +1,19 @@
+### Subchapter 13.1 Cover Image Prompt (16:9)
+
+**File**: `13_1_가장_간단한_정책_경사법.png`
+**Title**: 13.1 가장 간단한 정책 경사법
+**Subtitle**: (Simplest Policy Gradient)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "13.1 가장 간단한 정책 경사법"
+Bottom line English: "(Simplest Policy Gradient)"
+
+CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin (consistent with reference sheet: early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, wearing a plain solid dark navy polo shirt with short sleeves, blue denim jeans, and grey sneakers). He holds a wooden pointer explaining the gradient update equation θ ← θ + α ∇log π(a|s) R.
+In the center, Dorothy (4.5 heads tall young girl, chestnut brown twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange-and-white striped t-shirt, red canvas sneakers) happily stepping up clear wooden steps representing policy parameter θ steps.
+Beside her, Toto (small solid milk-white puppy #FBF6EB with NO spots, black button nose, fluffy tail, wearing a sky-blue bandana around neck) happily trotting up the steps.
+On the ground, Jiny (sleek black-and-white tuxedo cat with white paws, pink nose, red collar with small gold bell, wearing round scholar glasses) checking probability bars on a tablet.
+Pure clean white background (#FFFFFF), joyful educational anime style, zero Japanese characters.
+```

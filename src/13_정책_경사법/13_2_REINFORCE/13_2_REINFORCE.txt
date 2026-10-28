@@ -1,0 +1,19 @@
+### Subchapter 13.2 Cover Image Prompt (16:9)
+
+**File**: `13_2_REINFORCE.png`
+**Title**: 13.2 REINFORCE
+**Subtitle**: (REINFORCE Algorithm)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "13.2 REINFORCE"
+Bottom line English: "(REINFORCE Algorithm)"
+
+CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin (consistent with reference sheet: early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, wearing a plain solid dark navy polo shirt with short sleeves, blue denim jeans, and grey sneakers). He gently unfurls an illustrated episode parchment film-strip showing sequential steps from Start to Goal.
+In the center, Dorothy (4.5 heads tall young girl, chestnut brown twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange-and-white striped t-shirt, red canvas sneakers) holding a sparkling golden star token stamped with total return "G_t = +100".
+Beside her, Toto (small solid milk-white puppy #FBF6EB with NO spots, black button nose, fluffy tail, wearing a sky-blue bandana around neck) happily watching the glowing star.
+On the left, Jiny (sleek black-and-white tuxedo cat with white paws, pink nose, red collar with small gold bell, wearing round scholar glasses) holding up a small chalkboard display with the update rule: "θ ← θ + α G_t ∇log π".
+Educational, delightful anime atmosphere, pure white background (#FFFFFF), zero Japanese characters.
+```

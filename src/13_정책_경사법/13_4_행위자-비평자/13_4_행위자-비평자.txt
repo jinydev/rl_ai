@@ -1,0 +1,19 @@
+### Subchapter 13.4 Cover Image Prompt (16:9)
+
+**File**: `13_4_행위자-비평자.png`
+**Title**: 13.4 행위자-비평자
+**Subtitle**: (Actor-Critic Method)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "13.4 행위자-비평자"
+Bottom line English: "(Actor-Critic Method)"
+
+CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin (consistent with reference sheet: early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, wearing a plain solid dark navy polo shirt with short sleeves, blue denim jeans, and grey sneakers). He gestures with warm encouragement toward the duo of Actor and Critic.
+In the center, Dorothy (4.5 heads tall young girl, chestnut brown twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange-and-white striped t-shirt, red canvas sneakers) acting as the "Actor (π)", dancing forward with a colorful ribbon.
+Beside her, Jiny (sleek black-and-white tuxedo cat with white paws, pink nose, red collar with small gold bell, wearing round scholar glasses) acting as the "Critic (V)", sitting on a small stool holding a clipboard showing TD error "δ = R + γV(S') - V(S)".
+Beside Dorothy, Toto (small solid milk-white puppy #FBF6EB with NO spots, black button nose, fluffy tail, wearing a sky-blue bandana around neck) enthusiastically clapping paws.
+Pure clean white background (#FFFFFF), beautiful teamwork and educational anime illustration, zero Japanese characters.
+```

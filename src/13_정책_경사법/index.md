@@ -6,7 +6,7 @@ title: "CHAPTER 13 정책 경사법"
 # CHAPTER 13 정책 경사법
 
 **그림 13-0** 녹색 경사 언덕 위로 마법 화살표(Gradient Ascent)를 뿌려 정책의 최대 성과 지점으로 안내하는 지니와 도로시
-![정책 경사법 인트로](./img/jiny_ch13_policy_gradient.png)
+![CHAPTER 13 정책 경사법](./13_정책_경사법.png)
 
 ---
 

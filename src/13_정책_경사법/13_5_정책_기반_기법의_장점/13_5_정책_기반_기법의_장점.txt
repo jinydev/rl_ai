@@ -1,0 +1,19 @@
+### Subchapter 13.5 Cover Image Prompt (16:9)
+
+**File**: `13_5_정책_기반_기법의_장점.png`
+**Title**: 13.5 정책 기반 기법의 장점
+**Subtitle**: (Advantages of Policy-Based Methods)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "13.5 정책 기반 기법의 장점"
+Bottom line English: "(Advantages of Policy-Based Methods)"
+
+CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin (consistent with reference sheet: early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, wearing a plain solid dark navy polo shirt with short sleeves, blue denim jeans, and grey sneakers). He points to a whiteboard illustrating a smooth Gaussian normal distribution curve N(μ, σ²) for continuous actions.
+In the center, Dorothy (4.5 heads tall young girl, chestnut brown twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange-and-white striped t-shirt, red canvas sneakers) confidently turning a smooth steering wheel of a small futuristic educational rover.
+Beside her, Toto (small solid milk-white puppy #FBF6EB with NO spots, black button nose, fluffy tail, wearing a sky-blue bandana around neck) happily looking forward.
+On the left, Jiny (sleek black-and-white tuxedo cat with white paws, pink nose, red collar with small gold bell, wearing round scholar glasses) holding a checkmark chart listing "Continuous Actions ✓", "Stochastic Policy ✓".
+Pure solid white background (#FFFFFF), inspiring educational anime illustration, zero Japanese characters.
+```
