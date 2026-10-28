@@ -5,6 +5,8 @@ title: "10.2 SARSA"
 
 # 10.2 SARSA
 
+![10.2 SARSA](./10_2_SARSA.png)
+
 **그림 10-2** 온-정책 시간차 제어를 실현하기 위해 다섯 개의 알파벳 문자 블록 S, A, R, S, A를 체인으로 엮어 들고 있는 도로시와 지니
 ![SARSA 인트로](./img/jiny_ch10_2_sarsa.png)
 

@@ -5,6 +5,8 @@ title: "CHAPTER 10 TD법"
 
 # CHAPTER 10 TD법
 
+![CHAPTER 10 TD법](./10_TD법.png)
+
 **그림 10-0** 단 한 걸음(One-step)을 앞으로 전진하자마자 마법 지팡이로 이전 발판의 가치를 업데이트해주는 지니와 도로시
 ![TD법 인트로](./img/jiny_ch10_td.png)
 

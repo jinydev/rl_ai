@@ -5,6 +5,8 @@ title: "10.3 오프-정책 SARSA"
 
 # 10.3 오프-정책 SARSA
 
+![10.3 오프-정책 SARSA](./10_3_오프-정책_SARSA.png)
+
 **그림 10-3** 탐험 지도(Behavior Policy)와 학습 목표 책(Target Policy)의 확률 변동 비를 대수적으로 유도해 칠판에 필기해주는 지니와 도로시
 ![오프-정책 SARSA 인트로](./img/jiny_ch10_3_off_policy_sarsa.png)
 
