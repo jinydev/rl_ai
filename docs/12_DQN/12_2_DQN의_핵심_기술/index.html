@@ -629,7 +629,7 @@
 
 <p><strong>그림 12-4</strong> 지도 학습의 흐름</p>
 
-<p><img src="./img/fig_9_4.svg" alt="그림 12-4" />
+<p><img src="./img/fig_9_4.jpg" alt="그림 12-4" />
 데이터셋 (이미지 데이터, 정답 레이블) -&gt; 무작위로 추출 -&gt; 미니배치 -&gt; 신경망 학습</p>
 
 <p>그림과 같이 훈련용 데이터셋에서 일부 데이터를 무작위로 추출합니다. 이렇게 추출한 데이터를 <strong>미니배치</strong><sup>mini-batch</sup>라고 합니다. 이 미니배치를 이용해 신경망의 매개변수를 갱신합니다. 한편, 미니배치를 만들 때는 데이터가 편향되지 않도록 주의해야 합니다(예컨대 ‘2’ 이미지만 뽑아내지 않도록 방지). 신경망 학습에서는 데이터셋으로부터 데이터를 무작위로 추출하는 게 일반적인데, 바로 데이터 편향을 막기 위해서입니다.</p>
@@ -640,7 +640,7 @@
 
 <p><strong>그림 12-5</strong> 경험 재생을 이용한 학습의 흐름</p>
 
-<p><img src="./img/fig_9_5.svg" alt="그림 12-5" />
+<p><img src="./img/fig_9_5.jpg" alt="그림 12-5" />
 에이전트 &lt;-&gt; 환경 -&gt; 경험 데이터 추가 -&gt; 버퍼 ($(S_0, A_0, R_0, S_1), (S_1, A_1, R_1, S_2), (S_2, A_2, R_2, S_3), \dots$) -&gt; 무작위로 추출 -&gt; 미니배치 -&gt; 신경망 (Q 러닝)</p>
 
 <p>경험 재생 기법으로 경험 데이터 사이의 상관관계를 약화시켜 결국 편향이 적은 데이터를 얻을 수 있습니다. 또한 경험 데이터를 반복해서 사용할 수 있기 때문에 데이터 효율도 높아집니다.</p>
@@ -695,7 +695,7 @@
 
 <p><strong>그림 12-6</strong> 미니배치 원소를 np.ndarray로 변환하는 코드 예제</p>
 
-<p><img src="./img/fig_9_6.svg" alt="그림 12-6" /></p>
+<p><img src="./img/fig_9_6.jpg" alt="그림 12-6" /></p>
 <ul>
   <li><code class="language-plaintext highlighter-rouge">self.buffer</code> <code class="language-plaintext highlighter-rouge">[(s0, a0, r0, s1), (s1, a1, r1, s2), ..., (s9, a9, r9, s10)]</code> -&gt; 예를 들어 3개를 무작위로 샘플링 -&gt; <code class="language-plaintext highlighter-rouge">[(s7, a7, r7, s8), (s2, a2, r2, s3), (s5, a5, r5, s6)]</code></li>
   <li>state는 형상이 (4,)인 np.ndarray -&gt; <code class="language-plaintext highlighter-rouge">np.stack([s7, s2, s5])</code>로 형상이 (3, 4)인 np.ndarray로</li>
@@ -854,7 +854,7 @@ copy 모듈에는 ‘얕은 복사(copy.copy)’와 ‘깊은 복사(copy.deepco
 
 <p><strong>그림 12-7</strong> <code class="language-plaintext highlighter-rouge">q = qs[np.arange(self.batch_size), action]</code> 코드가 수행하는 작업</p>
 
-<p><img src="./img/fig_9_7.svg" alt="그림 12-7" />
+<p><img src="./img/fig_9_7.jpg" alt="그림 12-7" />
 <code class="language-plaintext highlighter-rouge">qs</code>: <code class="language-plaintext highlighter-rouge">[[0.1, 0.3], [0.5, 0.6], [0.2, 0.8], [0.9, 0.5], ..., [0.7, 0.3]]</code>
 <code class="language-plaintext highlighter-rouge">action</code>: <code class="language-plaintext highlighter-rouge">[0, 1, 0, 0, ..., 1]</code>
 <code class="language-plaintext highlighter-rouge">q</code>: <code class="language-plaintext highlighter-rouge">[0.1, 0.6, 0.2, 0.9, ..., 0.3]</code></p>
@@ -903,13 +903,13 @@ copy 모듈에는 ‘얕은 복사(copy.copy)’와 ‘깊은 복사(copy.deepco
 
 <p><strong>그림 12-8</strong> &lt;카트 폴&gt;에서 에피소드별 보상 총합의 추이</p>
 
-<p><img src="./img/fig_9_8.svg" alt="그림 12-8" /></p>
+<p><img src="./img/fig_9_8.jpg" alt="그림 12-8" /></p>
 
 <p>그래프의 가로축은 에피소드 수, 세로축은 보상 합계입니다. 이번 문제의 경우 보상 총합은 막대가 균형을 유지한 시간(타임 스텝)입니다. 에피소드가 거듭될수록 전반적으로 보상의 총합이 커지는 듯 보입니다. 다만 변동폭이 커서 섣불리 판단하기 어렵습니다. 이처럼 강화 학습 알고리즘을 평가할 때 한 번의 실험 결과만으로 판단하는 것은 위험합니다. 그래서 같은 실험을 반복 수행하여 얻은 결과를 평균하여 평균하는 게 좋습니다. [그림 12-9]는 같은 실험을 100번 반복하여 결과를 평균한 그래프입니다.</p>
 
 <p><strong>그림 12-9</strong> 100번 실험 후 평균한 결과</p>
 
-<p><img src="./img/fig_9_9.svg" alt="그림 12-9" /></p>
+<p><img src="./img/fig_9_9.jpg" alt="그림 12-9" /></p>
 
 <p>[그림 12-9]를 보면 초기에는 균형을 제대로 잡지 못하고 금방 실패합니다. 하지만 50회를 지나면서부터 서서히 ‘요령’을 익히기 시작하며, 150회 정도까지는 순조롭게 학습이 진행됩니다. 그러다가 이후부터는 다소 하락하는 모습을 보입니다. 어쨌든 전체적으로 보면 좋은 방향으로 학습이 진행되는 것으로 보입니다.</p>
 

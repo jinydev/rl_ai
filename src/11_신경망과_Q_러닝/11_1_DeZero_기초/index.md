@@ -23,7 +23,7 @@ title: "11.1 DeZero 기초"
 
 **그림 11-1** 『밑바닥부터 시작하는 딥러닝 3』과 DeZero
 
-![그림 11-1](./img/fig_8_1.svg)
+![그림 11-1](./img/fig_8_1.jpg)
 DeZero
 
 DeZero는 파이토치<sup>PyTorch</sup>를 기반으로 '알기 쉽게' 설계된 프레임워크입니다. 그래서 파이토치나 텐서플로<sup>TensorFlow</sup> 같은 최신 딥러닝 프레임워크를 사용해봤다면 DeZero에도 금방 익숙해질 겁니다. 이번 절에서는 DeZero의 사용법을 간략히 설명합니다.
@@ -115,7 +115,7 @@ $$
 
 **그림 11-3** 행렬 곱 계산 방법
 
-![그림 11-3](./img/fig_8_3.svg)
+![그림 11-3](./img/fig_8_3.jpg)
 $1 \times 5 + 2 \times 7$
 $\mathbf{a} \quad \mathbf{b} = \mathbf{c}$
 
