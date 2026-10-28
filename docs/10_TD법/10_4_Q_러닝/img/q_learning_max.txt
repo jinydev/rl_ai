@@ -1,0 +1,21 @@
+### q_learning_max.png 프롬프트 명세서
+
+- **역할 및 용도**: Q 러닝의 핵심인 max 연산자 기반 최적 행동 가치 선택 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: Q-Learning optimal greedy choice with max operator.
+In the center, four wooden podiums representing four actions have Q-value signs:
+- Action Up: Q = +2.0
+- Action Down: Q = +1.0
+- Action Left: Q = -0.5
+- Action Right: Q = +8.5 (shining with golden sparkle)
+Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) happily placing a sparkling golden crown on top of the 'Action Right (Q = +8.5)' podium.
+Beside her, Jiny the tuxedo cat (round scholar glasses, red bell collar) proudly holding a pointer sign labeled: "max_a Q(s',a) = +8.5".
+Toto the cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) sitting happily beside the winning podium.
+Pure solid clean white background (#FFFFFF), isolated educational illustration, subtle soft contact shadow at base, 1:1 square ratio, Korean and English text, no Japanese text.
+```

@@ -1,0 +1,19 @@
+### jiny_ch10_4_q_learning.png 프롬프트 명세서
+
+- **역할 및 용도**: Q 러닝의 핵심인 max Q(s',a) 타겟값과 오프-정책 제어 원리 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: Q-Learning off-policy control with max Q(s',a') target.
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the image: Professor Hojin on the right (early 40s youthful Korean professor, smooth skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain solid dark navy polo shirt, blue denim jeans, grey sneakers). He points proudly to the Q-Learning update rule: "Q(S,A) ← Q(S,A) + α [R + γ max_a Q(S',a) - Q(S,A)]".
+2. Exactly ONE young girl: Dorothy in the center (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' patch over an orange-striped t-shirt, red canvas sneakers) happily choosing the highest score card labeled "MAX: +10".
+3. Exactly ONE tuxedo cat: Jiny on the left (black-and-white tuxedo cat, white paws, pink nose, round scholar glasses, red bell collar) holding a sparkling star wand pointing to "max_a Q(s',a)".
+4. Exactly ONE puppy: Toto the cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) sitting happily looking up.
+
+Pure solid clean white background (#FFFFFF), isolated educational graphic cutout, subtle soft contact shadow at feet, 1:1 square ratio, Korean and English math text only, no Japanese text.
+```
