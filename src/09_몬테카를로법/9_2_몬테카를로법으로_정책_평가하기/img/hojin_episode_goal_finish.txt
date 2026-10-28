@@ -1,0 +1,14 @@
+### hojin_episode_goal_finish.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 09.2.1 에피소드 완주와 총수익 G 정산 개념 삽화 (에피소드 완료 깃발과 황금 사과 바구니, 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Full-body standing portrait of Professor Hojin on the left, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin round wire-rim glasses, warm friendly smile, plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans, grey sneakers). He is warmly welcoming Dorothy at the goal tile of an isometric grid maze, marked with a bright golden goal flag. Dorothy in denim overalls and red sneakers happily holds up a wicker basket full of glowing golden reward apples, celebrating "Episode Complete!". Toto the fluffy milk-white puppy wags his tail excitedly with a happy smile. Jiny the tuxedo cat with scholar glasses sits nearby holding a small ledger book tallying the total return G.
+
+Pure solid clean white background (#FFFFFF), centered isolated cutout graphic, subtle soft contact shadow at feet, 1:1 square ratio, no slide borders, no text banners, no Japanese text.
+```

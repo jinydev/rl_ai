@@ -1,0 +1,14 @@
+### hojin_mc_code_lecture.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 09.3.2 RandomAgent eval() 역순 순회 및 가치 히트맵 렌더링 코딩 실습 삽화 (reversed(self.memory), 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Full-body standing portrait of Professor Hojin on the left, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin round wire-rim glasses, warm friendly smile, plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans, grey sneakers). He is gently guiding Dorothy at a clean wooden computer desk in an AI lab. On the glowing laptop screen is clean Python code showing 'for data in reversed(self.memory):' and a colorful 3x4 gridworld value heatmap. Dorothy in denim overalls and red sneakers sits happily on a wooden stool typing on the keyboard. Beside the laptop, Jiny the tuxedo cat with round scholar glasses and red bell collar purrs proudly while pointing a white paw at the screen.
+
+Pure solid clean white background (#FFFFFF), centered isolated cutout graphic, subtle soft contact shadow at feet, 1:1 square ratio, no slide borders, no text banners, no Japanese text.
+```

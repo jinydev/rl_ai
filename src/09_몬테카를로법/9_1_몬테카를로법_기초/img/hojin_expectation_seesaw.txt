@@ -1,0 +1,14 @@
+### hojin_expectation_seesaw.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 09.1.1 주사위 눈의 합과 기댓값 시소(저울) 개념 삽화 (E[X] = 7.0 균형점, 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Full-body portrait of Professor Hojin on the left, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin round wire-rim glasses, warm friendly smile, plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans, grey sneakers). He is gently explaining mathematical expectation using a cute wooden balance seesaw scale on a wooden table. On the seesaw, colorful numbered wooden blocks (dice numbers 2 to 12) balance perfectly at the center pivot labeled '7.0'. Dorothy, an adorable 9-year-old anime girl (chestnut pigtails, denim overalls, red sneakers), claps her hands in delight. Toto the fluffy milk-white puppy sits happily beside her.
+
+Pure solid clean white background (#FFFFFF), centered isolated cutout graphic, subtle soft contact shadow at feet, 1:1 square ratio, no slide borders, no text banners, no Japanese text.
+```

@@ -1,0 +1,14 @@
+### hojin_ch9_graduation_td_bridge.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 09.6.5 몬테카를로법 완주 축하 및 10장 TD법(시간차 학습) 브릿지 연결 삽화 (수료증과 무지개 다리, 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Full-body portrait of Professor Hojin on the left, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin round wire-rim glasses, warm encouraging smile, plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans, grey sneakers). He warmly gives a thumbs-up. Standing beside him in the center, Dorothy in denim overalls and red sneakers triumphantly holds a rolled diploma scroll tied with red ribbon. Toto the fluffy cream-white puppy jumps cheerfully with paws up. Jiny the tuxedo cat with scholar glasses and red bell collar sits proudly on a milestone marker inscribed 'Chapter 9 Monte Carlo Complete'. In the background, a beautiful glowing rainbow bridge leads towards 'Chapter 10 TD Learning'.
+
+Pure solid clean white background (#FFFFFF), centered isolated cutout graphic, subtle soft contact shadow at feet, 1:1 square ratio, no slide borders, no text banners, no Japanese text.
+```

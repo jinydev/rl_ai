@@ -1,0 +1,14 @@
+### hojin_incremental_chalkboard.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 09.1.3 증분 갱신(Incremental Update) 점화식 칠판 직강 삽화 (V_n = V_{n-1} + (1/n)(s_n - V_{n-1}), 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Full-body standing portrait of Professor Hojin on the left, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin round wire-rim glasses, warm friendly smile, plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans, grey sneakers). He is holding white chalk and pointing warmly to a dark green chalkboard with clear chalk equations: "V_n = V_{n-1} + (1/n)(s_n - V_{n-1})". On the right, Dorothy in denim overalls and red sneakers sits attentively on a small wooden stool taking notes in her notebook. Jiny the black-and-white tuxedo cat with round scholar glasses and red bell collar sits proudly on the table beside a small computer memory chip.
+
+Pure solid clean white background (#FFFFFF), centered isolated cutout graphic, subtle soft contact shadow at feet, 1:1 square ratio, no slide borders, no text banners, no Japanese text.
+```
