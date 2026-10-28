@@ -636,7 +636,7 @@
 <p><img src="./img/01_stepping_stones_policy_evaluation.png" alt="몬테카를로 정책 평가 인트로" />
 <strong>그림 09-2-1</strong> 징검다리를 건너가며 에피소드를 완주하고 각 칸의 상태 가치 카드 V(s)를 갱신해나가는 도로시와 연구실 친구들 (16:9 와이드)</p>
 
-<p>주어진 정책 $\pi$에 따라 에피소드 시뮬레이션을 반복하여 상태 가치 함수 $v_\pi(s)$를 근사하는 <strong>정책 평가(Policy Evaluation)</strong> 과정을 배웁니다. 징검다리를 끝까지 건너는 다수의 에피소드 표본 데이터를 기반으로, 각 칸의 기대 가치 카드를 완성해 나가는 도로시의 즐거운 모험을 지니와 함께 살펴봅시다!</p>
+<p>주어진 정책 <em>π</em>에 따라 에피소드 시뮬레이션을 반복하여 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)를 근사하는 <strong>정책 평가(Policy Evaluation)</strong> 과정을 배웁니다. 징검다리를 끝까지 건너는 다수의 에피소드 표본 데이터를 기반으로, 각 칸의 기대 가치 카드를 완성해 나가는 도로시의 즐거운 모험을 지니와 함께 살펴봅시다!</p>
 
 <hr />
 
@@ -644,11 +644,18 @@
 
 <p>앞서 9.1절에서 우리는 몬테카를로법의 대수적 기초를 배웠습니다. 몬테카를로법은 복잡한 환경의 수학 공식이나 확률 분포표를 전부 펼쳐놓지 않고도, <strong>실제로 주사위를 굴려보는 무작위 샘플링(Sampling)</strong>을 수행하고 수집한 표본 데이터로부터 <strong>산술 평균(Average)</strong>을 내어 참된 기댓값을 계산해 냅니다.</p>
 
-<p>이 기발한 방법은 <strong>강화학습</strong> 문제에 완벽하게 들어맞습니다. 우리가 해결하려는 미지의 세상에서는 환경의 상태 전이 확률 $p(s’ \mid s, a)$나 보상 함수 $r(s, a, s’)$를 사전에 알 수 없습니다. 하지만 괜찮습니다!</p>
+<table>
+  <tbody>
+    <tr>
+      <td>이 기발한 방법은 <strong>강화학습</strong> 문제에 완벽하게 들어맞습니다. 우리가 해결하려는 미지의 세상에서는 환경의 상태 전이 확률 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)나 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)를 사전에 알 수 없습니다. 하지만 괜찮습니다!</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>에이전트가 세상에 직접 발을 내딛고 몸으로 부딪치며 얻은 <strong>경험(실제 누적 수익 샘플 데이터 $G$)</strong>만 모을 수 있다면, 그 경험들을 평균 내는 것만으로도 각 상태의 <strong>참 가치 함수를 놀랍도록 정확하게 추정</strong>할 수 있기 때문입니다.</p>
+<p>에이전트가 세상에 직접 발을 내딛고 몸으로 부딪치며 얻은 <strong>경험(실제 누적 수익 샘플 데이터 <em>G</em>)</strong>만 모을 수 있다면, 그 경험들을 평균 내는 것만으로도 각 상태의 <strong>참 가치 함수를 놀랍도록 정확하게 추정</strong>할 수 있기 때문입니다.</p>
 
-<p>이번 절에서는 에이전트의 행동 지침인 <strong>고정된 정책 $\pi$</strong>가 주어졌을 때, 그 정책을 따랐을 때 각 상태가 얼마나 좋은 곳인지를 몬테카를로법으로 계산해내는 ‘정책 평가(Policy Evaluation)’ 과정을 집중적으로 다룹니다.</p>
+<p>이번 절에서는 에이전트의 행동 지침인 <strong>고정된 정책 <em>π</em></strong>가 주어졌을 때, 그 정책을 따랐을 때 각 상태가 얼마나 좋은 곳인지를 몬테카를로법으로 계산해내는 ‘정책 평가(Policy Evaluation)’ 과정을 집중적으로 다룹니다.</p>
 
 <hr />
 
@@ -658,34 +665,44 @@
 
 <p>강화학습에서 ‘상태 가치 함수’란 에이전트가 어떤 상태에서 출발하여 앞으로 얻을 수 있는 장기적인 기대 수익의 총합을 뜻합니다:</p>
 
-\[v_{\pi}(s) = \mathbb{E}_{\pi}[G_t \mid S_t = s]\]
+<blockquote>
+  <h3 id="vπs--eπgt--st--s"><strong><em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub>[<em>G</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong></h3>
+</blockquote>
 
 <p><img src="./img/03_value_function_definition_chalk.png" alt="가치 함수 수학적 정의 칠판" />
-<strong>그림 09-2-2</strong> 가치 함수 정의식 $v_\pi(s) = \mathbb{E}_\pi[G_t \mid S_t = s]$의 기호별 의미(정책, 출발 상태, 조건부 기댓값)를 칠판에서 해설하는 장면 (1:1 순백색)</p>
+<strong>그림 09-2-2</strong> 가치 함수 정의식 <em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub>[<em>G</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]의 기호별 의미(정책, 출발 상태, 조건부 기댓값)를 칠판에서 해설하는 장면 (1:1 순백색)</p>
 
 <h4 id="-수식-돋보기-가치-함수-정의식-기호-해부">💡 수식 돋보기: 가치 함수 정의식 기호 해부</h4>
 
 <p>가치 함수 수식의 기호를 하나하나 뜯어보면 강화학습의 평가 원리가 한눈에 들어옵니다:</p>
 
 <ol>
-  <li><strong>$v_{\pi}(s)$ (상태 $s$의 참 가치)</strong>:
+  <li><strong><em>v</em><sub><em>π</em></sub>(<em>s</em>) (상태 <em>s</em>의 참 가치)</strong>:
     <ul>
-      <li>정책 $\pi$를 고정하고 따랐을 때, 에이전트가 현재 상태 $s$에 서 있다는 사실 자체만으로 기대할 수 있는 장기적인 잠재 가치 점수입니다.</li>
+      <li>정책 <em>π</em>를 고정하고 따랐을 때, 에이전트가 현재 상태 <em>s</em>에 서 있다는 사실 자체만으로 기대할 수 있는 장기적인 잠재 가치 점수입니다.</li>
     </ul>
   </li>
-  <li><strong>$\mathbb{E}_{\pi}[\;\cdot\;]$ (정책 조건부 기댓값)</strong>:
+  <li><strong>E<sub><em>π</em></sub>[·] (정책 조건부 기댓값)</strong>:
     <ul>
       <li>미래에 어떤 상태로 미끄러질지(환경의 확률성)와 에이전트가 어떤 행동을 고를지(정책의 확률성)를 모두 고려하여 구한 이론적인 가중 평균값입니다.</li>
     </ul>
   </li>
-  <li><strong>$G_t$ (시점 $t$의 누적 할인 수익, Return)</strong>:
+  <li><strong><em>G</em><sub><em>t</em></sub> (시점 <em>t</em>의 누적 할인 수익, Return)</strong>:
     <ul>
-      <li>지금 당장 손에 쥐는 1스텝 보상뿐만 아니라, 게임이 끝날 때까지 미래에 받게 될 모든 보상들을 할인율 $\gamma$로 깎아서 전부 더한 알짜배기 총수익($G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots$)입니다.</li>
+      <li>지금 당장 손에 쥐는 1스텝 보상뿐만 아니라, 게임이 끝날 때까지 미래에 받게 될 모든 보상들을 할인율 <em>γ</em>로 깎아서 전부 더한 알짜배기 총수익(<em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em>+1</sub> + <em>γR</em><sub><em>t</em>+2</sub> + <em>γ</em><sup>2</sup><em>R</em><sub><em>t</em>+3</sub> + …)입니다.</li>
     </ul>
   </li>
-  <li><strong>$\mid S_t = s$ (조건부 출발점)</strong>:
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td>**</td>
+          <td><em>S</em><sub><em>t</em></sub> = <em>s</em> (조건부 출발점)**:</td>
+        </tr>
+      </tbody>
+    </table>
     <ul>
-      <li>“시점 $t$에 에이전트가 서 있는 출발 위치가 정확히 상태 $s$일 때”라는 수학적 단서 조건입니다.</li>
+      <li>“시점 <em>t</em>에 에이전트가 서 있는 출발 위치가 정확히 상태 <em>s</em>일 때”라는 수학적 단서 조건입니다.</li>
     </ul>
   </li>
 </ol>
@@ -696,64 +713,69 @@
 
 <p>이 가치 함수를 몬테카를로법으로 계산하려면 어떻게 해야 할까요? 복잡한 적분이나 연립방정식을 풀 필요가 전혀 없습니다!</p>
 
-<p>에이전트에게 정책 $\pi$에 따라 실제로 환경 속을 마음껏 뛰어다니도록 지시하면 됩니다. 출발 상태 $s$에서 시작하여 에피소드가 끝날 때까지 완주하면, 골인 지점에 도달했을 때 에이전트의 손에는 실제로 획득한 보상들의 누적 합인 <strong>수익 표본($G$)</strong>이 쥐어집니다.</p>
+<p>에이전트에게 정책 <em>π</em>에 따라 실제로 환경 속을 마음껏 뛰어다니도록 지시하면 됩니다. 출발 상태 <em>s</em>에서 시작하여 에피소드가 끝날 때까지 완주하면, 골인 지점에 도달했을 때 에이전트의 손에는 실제로 획득한 보상들의 누적 합인 <strong>수익 표본(<em>G</em>)</strong>이 쥐어집니다.</p>
 
-<p>이러한 모험을 $n$번 반복하여 얻은 실제 수익들이 바로 샘플 데이터($G^{(1)}, G^{(2)}, \dots, G^{(n)}$)가 되며, 이 샘플들의 산술 평균을 구하면 가치 함수의 추정치 $V_\pi(s)$가 완성됩니다:</p>
+<p>이러한 모험을 <em>n</em>번 반복하여 얻은 실제 수익들이 바로 샘플 데이터(<em>G</em><sup>(1)</sup>, <em>G</em><sup>(2)</sup>, …, <em>G</em><sup>(<em>n</em>)</sup>)가 되며, 이 샘플들의 산술 평균을 구하면 가치 함수의 추정치 <em>V</em><sub><em>π</em></sub>(<em>s</em>)가 완성됩니다:</p>
 
-\[V_{\pi}(s) = \frac{G^{(1)} + G^{(2)} + \cdots + G^{(n)}}{n} = \frac{1}{n} \sum_{i=1}^{n} G^{(i)}\]
+<blockquote>
+  <h3 id="vπs--g1--g2----gn--n--1n-i1n-gi"><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) = (<em>G</em><sup>(1)</sup> + <em>G</em><sup>(2)</sup> + … + <em>G</em><sup>(<em>n</em>)</sup>) / <em>n</em> = (1/<em>n</em>) ∑<sub><em>i</em>=1</sub><sup><em>n</em></sup> <em>G</em><sup>(<em>i</em>)</sup></strong></h3>
+</blockquote>
 
-<p>상태 $s$에서 시작하여 $i$번째 에피소드에서 얻은 실제 수익을 $G^{(i)}$라 할 때, $n$번의 에피소드 표본 평균으로 $V_{\pi}(s)$를 추정합니다.</p>
+<p>상태 <em>s</em>에서 시작하여 <em>i</em>번째 에피소드에서 얻은 실제 수익을 <em>G</em><sup>(<em>i</em>)</sup>라 할 때, <em>n</em>번의 에피소드 표본 평균으로 <em>V</em><sub><em>π</em></sub>(<em>s</em>)를 추정합니다.</p>
 
 <p><img src="./img/hojin_episode_goal_finish.jpg" alt="이호진 교수님의 에피소드 완주 환영" />
-<strong>그림 09-2-2b</strong> 에피소드 완주 지점(Goal Flag)에서 황금 사과 바구니를 들고 기뻐하는 도로시와 토토를 맞이하며, 완주된 총수익 $G$를 장부에 기록하여 가치 함수 평균을 갱신하는 이호진 교수님과 조교 지니 (1:1 순백색)</p>
+<strong>그림 09-2-2b</strong> 에피소드 완주 지점(Goal Flag)에서 황금 사과 바구니를 들고 기뻐하는 도로시와 토토를 맞이하며, 완주된 총수익 G를 장부에 기록하여 가치 함수 평균을 갱신하는 이호진 교수님과 조교 지니 (1:1 순백색)</p>
 
 <blockquote>
   <p>[!CAUTION]
 <strong>⚠️ 몬테카를로법은 오직 일회성 과제(Episodic Task)에서만 이용할 수 있습니다!</strong><br />
-몬테카를로법은 반드시 <strong>‘에피소드가 끝까지 완주되어 골인 지점에 도달해야만’</strong> 총수익 $G$가 확정됩니다.<br />
-만약 24시간 365일 멈추지 않고 계속되는 로봇 제어나 주식 거래 같은 지속적 과제(Continuing Task)라면, 게임에 ‘끝’이 없기 때문에 에피소드가 영원히 종료되지 않고, 따라서 수익 샘플 $G^{(i)}$를 영영 계산할 수 없어 몬테카를로법을 적용할 수 없습니다.</p>
+몬테카를로법은 반드시 <strong>‘에피소드가 끝까지 완주되어 골인 지점에 도달해야만’</strong> 총수익 <em>G</em>가 확정됩니다.<br />
+만약 24시간 365일 멈추지 않고 계속되는 로봇 제어나 주식 거래 같은 지속적 과제(Continuing Task)라면, 게임에 ‘끝’이 없기 때문에 에피소드가 영원히 종료되지 않고, 따라서 수익 샘플 <em>G</em><sup>(<em>i</em>)</sup>를 영영 계산할 수 없어 몬테카를로법을 적용할 수 없습니다.</p>
 </blockquote>
 
 <hr />
 
 <h3 id="구체적인-2회-시도-예시-표본-평균의-수렴">구체적인 2회 시도 예시: 표본 평균의 수렴</h3>
 
-<p>중학생도 단번에 감을 잡을 수 있도록, 에이전트가 상태 $s$에서 출발하여 딱 2번의 에피소드를 진행한 구체적인 숫자 예시를 살펴봅시다:</p>
+<p>중학생도 단번에 감을 잡을 수 있도록, 에이전트가 상태 <em>s</em>에서 출발하여 딱 2번의 에피소드를 진행한 구체적인 숫자 예시를 살펴봅시다:</p>
 
 <p><img src="./img/02_episode_return_sampling.png" alt="에피소드별 수익 평균" />
-<strong>그림 09-2-3</strong> 1차 시도 수익 $G^{(1)}=3$과 2차 시도 수익 $G^{(2)}=2$를 모아 산술 평균 2.5로 가치 함수를 갱신하는 도로시와 지니 (1:1 순백색)</p>
+<strong>그림 09-2-3</strong> 1차 시도 수익 G^(1)=3과 2차 시도 수익 G^(2)=2를 모아 산술 평균 2.5로 가치 함수를 갱신하는 도로시와 지니 (1:1 순백색)</p>
 
-<p>이해를 돕기 위해 미래 보상을 깎지 않는 할인율 $\gamma = 1$이라고 가정해 봅시다:</p>
+<p>이해를 돕기 위해 미래 보상을 깎지 않는 할인율 <em>γ</em> = 1이라고 가정해 봅시다:</p>
 
 <ul>
   <li><strong>첫 번째 시도 (에피소드 1)</strong>:
     <ul>
-      <li>에이전트가 상태 $s$에서 출발하여 골인 지점까지 가며 보상으로 1점, 0점, 2점을 차례로 획득했습니다.</li>
-      <li>1차 수익 샘플: $G^{(1)} = 1 + 0 + 2 = \mathbf{3}$</li>
-      <li>1차 추정 가치: $V_{\pi}(s) = G^{(1)} = \mathbf{3.0}$</li>
+      <li>에이전트가 상태 <em>s</em>에서 출발하여 골인 지점까지 가며 보상으로 1점, 0점, 2점을 차례로 획득했습니다.</li>
+      <li>1차 수익 샘플: <em>G</em><sup>(1)</sup> = 1 + 0 + 2 = <strong>3</strong></li>
+      <li>1차 추정 가치: <em>V</em><sub><em>π</em></sub>(<em>s</em>) = <em>G</em><sup>(1)</sup> = <strong>3.0</strong></li>
     </ul>
   </li>
   <li><strong>두 번째 시도 (에피소드 2)</strong>:
     <ul>
-      <li>에이전트가 똑같은 출발 상태 $s$에서 다시 출발했습니다. 하지만 환경의 바람이나 에이전트의 주사위 선택이 달라져 이번에는 0점, 0점, 1점, 1점을 얻고 골인했습니다.</li>
-      <li>2차 수익 샘플: $G^{(2)} = 0 + 0 + 1 + 1 = \mathbf{2}$</li>
-      <li>2차 추정 가치 (2회 표본 평균): 
-\(V_{\pi}(s) = \frac{G^{(1)} + G^{(2)}}{2} = \frac{3 + 2}{2} = \mathbf{2.5}\)</li>
+      <li>에이전트가 똑같은 출발 상태 <em>s</em>에서 다시 출발했습니다. 하지만 환경의 바람이나 에이전트의 주사위 선택이 달라져 이번에는 0점, 0점, 1점, 1점을 얻고 골인했습니다.</li>
+      <li>2차 수익 샘플: <em>G</em><sup>(2)</sup> = 0 + 0 + 1 + 1 = <strong>2</strong></li>
+      <li>2차 추정 가치 (2회 표본 평균):
+        <blockquote>
+          <p><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) = (<em>G</em><sup>(1)</sup> + <em>G</em><sup>(2)</sup>) / 2 = (3 + 2) / 2 = 2.5</strong></p>
+        </blockquote>
+      </li>
     </ul>
   </li>
 </ul>
 
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 짚어보기</strong>:<br />
-“첫 번째 시도에서는 3이 나왔고, 두 번째 시도에서는 2가 나왔단다. 만약 세 번째 시도에서 4가 나온다면 평균은 $(3 + 2 + 4) / 3 = 3.0$이 되겠지?<br />
-매 시도마다 우연에 의해 얻는 점수가 조금씩 요동치더라도, 시도 횟수 $n$이 10번, 100번, 1000번으로 늘어나면 <strong>대수의 법칙(큰 수의 법칙)</strong>에 의해 우연한 흔들림이 서로 상쇄되면서 원래 환경이 품고 있던 진짜 참값 $v_\pi(s)$에 자석처럼 오차 없이 수렴하게 된단다!”</p>
+“첫 번째 시도에서는 3이 나왔고, 두 번째 시도에서는 2가 나왔단다. 만약 세 번째 시도에서 4가 나온다면 평균은 (3 + 2 + 4) / 3 = 3.0이 되겠지?<br />
+매 시도마다 우연에 의해 얻는 점수가 조금씩 요동치더라도, 시도 횟수 <em>n</em>이 10번, 100번, 1000번으로 늘어나면 <strong>대수의 법칙(큰 수의 법칙)</strong>에 의해 우연한 흔들림이 서로 상쇄되면서 원래 환경이 품고 있던 진짜 참값 <em>v</em><sub><em>π</em></sub>(<em>s</em>)에 자석처럼 오차 없이 수렴하게 된단다!”</p>
 </blockquote>
 
 <hr />
 
 <h2 id="0922-모든-상태의-가치-함수-구하기-1타-다피의-혁신">09.2.2 모든 상태의 가치 함수 구하기: 1타 다피의 혁신</h2>
 
-<p>지금까지는 오직 하나의 출발 상태 $s$에 대해서만 이야기했습니다. 그렇다면 우리가 탐험하는 미로에 상태가 수십 개, 수백 개(예: $A, B, C, \dots$) 있다면 이 모든 상태의 가치 함수는 대체 어떻게 구할 수 있을까요?</p>
+<p>지금까지는 오직 하나의 출발 상태 <em>s</em>에 대해서만 이야기했습니다. 그렇다면 우리가 탐험하는 미로에 상태가 수십 개, 수백 개(예: <em>A, B, C</em>, …) 있다면 이 모든 상태의 가치 함수는 대체 어떻게 구할 수 있을까요?</p>
 
 <p><img src="./img/04_single_path_multiple_states.png" alt="단일 경로 다중 상태 수익" />
 <strong>그림 09-2-4</strong> 하나의 모험 경로(A ➔ B ➔ C)를 완주하면서 상태 A, B, C의 수익 데이터를 동시에 수확하는 스마트한 경로 학습 (1:1 순백색)</p>
@@ -761,20 +783,23 @@
 <ul>
   <li><strong>비효율적인 독립 출발 방식의 한계</strong>:
     <ul>
-      <li>가장 단순한 생각은 “상태 $A$의 가치를 알기 위해 $A$에서 100번 출발해 보고, 상태 $B$를 위해 $B$에서 100번 리셋해서 출발하고, 상태 $C$를 위해 $C$에서 또 100번 출발하자!”일 것입니다.</li>
+      <li>가장 단순한 생각은 “상태 <em>A</em>의 가치를 알기 위해 <em>A</em>에서 100번 출발해 보고, 상태 <em>B</em>를 위해 <em>B</em>에서 100번 리셋해서 출발하고, 상태 <em>C</em>를 위해 <em>C</em>에서 또 100번 출발하자!”일 것입니다.</li>
       <li>하지만 이 방식은 엄청난 시간과 컴퓨터 자원을 낭비합니다. 무엇보다 <strong>현실의 자율주행차나 로봇은 원하는 임의의 중간 위치로 순간이동(Reset)하여 출발할 수 없는 경우</strong>가 대부분입니다!</li>
     </ul>
   </li>
   <li><strong>1타 다피의 단일 경로 수확 방식 (Single Path Multi-Harvesting)</strong>:
     <ul>
       <li>놀랍게도 몬테카를로법에서는 그럴 필요가 전혀 없습니다!</li>
-      <li>에이전트가 상태 $A$에서 출발하여 $B$를 거치고, $C$를 지나 골인 지점에 도달했다고 가정해 봅시다:
-\(\text{출발}(A) \xrightarrow{R_0} B \xrightarrow{R_1} C \xrightarrow{R_2} \text{골인(종료)}\)</li>
+      <li>에이전트가 상태 <em>A</em>에서 출발하여 <em>B</em>를 거치고, <em>C</em>를 지나 골인 지점에 도달했다고 가정해 봅시다:
+        <blockquote>
+          <p><strong>출발(<em>A</em>) → 보상 <em>R</em><sub>0</sub> → <em>B</em> → 보상 <em>R</em><sub>1</sub> → <em>C</em> → 보상 <em>R</em><sub>2</sub> → 골인(종료)</strong></p>
+        </blockquote>
+      </li>
       <li>이때 지나온 각 상태의 입장에서 미래의 누적 수익을 계산해 보면 다음과 같습니다:
         <ul>
-          <li><strong>상태 $A$의 수익</strong>: $G_A = R_0 + \gamma R_1 + \gamma^2 R_2$ (상태 $A$를 방문한 이후 얻은 모든 보상의 할인합)</li>
-          <li><strong>상태 $B$의 수익</strong>: $G_B = R_1 + \gamma R_2$ (상태 $B$를 방문한 이후 얻은 모든 보상의 할인합)</li>
-          <li><strong>상태 $C$의 수익</strong>: $G_C = R_2$ (상태 $C$를 방문한 이후 얻은 보상)</li>
+          <li><strong>상태 <em>A</em>의 수익</strong>: <em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γR</em><sub>1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub>2</sub> (상태 <em>A</em>를 방문한 이후 얻은 모든 보상의 할인합)</li>
+          <li><strong>상태 <em>B</em>의 수익</strong>: <em>G</em><sub><em>B</em></sub> = <em>R</em><sub>1</sub> + <em>γR</em><sub>2</sub> (상태 <em>B</em>를 방문한 이후 얻은 모든 보상의 할인합)</li>
+          <li><strong>상태 <em>C</em>의 수익</strong>: <em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub> (상태 <em>C</em>를 방문한 이후 얻은 보상)</li>
         </ul>
       </li>
     </ul>
@@ -783,11 +808,11 @@
 
 <blockquote>
   <p>👧 <strong>도로시의 기차 여행 비유</strong>:<br />
-“마치 서울역($A$)에서 출발해 대전역($B$)과 대구역($C$)을 지나 부산역(골)에 도착하는 기차 여행 같아요!<br />
-기차가 부산에 도착하고 나면, 서울역에서 탄 승객이 느낀 총여행 만족도($G_A$), 대전역에서 탄 승객의 만족도($G_B$), 대구역에서 탄 승객의 만족도($G_C$)를 단 한 번의 기차 운행으로 동시에 정산할 수 있는 것과 똑같네요!”</p>
+“마치 서울역(<em>A</em>)에서 출발해 대전역(<em>B</em>)과 대구역(<em>C</em>)을 지나 부산역(골)에 도착하는 기차 여행 같아요!<br />
+기차가 부산에 도착하고 나면, 서울역에서 탄 승객이 느낀 총여행 만족도(<em>G</em><sub><em>A</em></sub>), 대전역에서 탄 승객의 만족도(<em>G</em><sub><em>B</em></sub>), 대구역에서 탄 승객의 만족도(<em>G</em><sub><em>C</em></sub>)를 단 한 번의 기차 운행으로 동시에 정산할 수 있는 것과 똑같네요!”</p>
 </blockquote>
 
-<p>이처럼 <strong>단 한 번의 에피소드 완주만으로 경로 상에 방문한 모든 상태($A, B, C$)에 대한 수익 샘플 데이터를 동시에 수확</strong>할 수 있습니다! 에이전트가 환경 속을 자유롭게 탐색하며 다양한 상태를 거쳐 가기만 하면, 출발점을 억지로 리셋하지 않아도 모든 상태의 가치 함수 카드가 골고루 채워집니다.</p>
+<p>이처럼 <strong>단 한 번의 에피소드 완주만으로 경로 상에 방문한 모든 상태(<em>A, B, C</em>)에 대한 수익 샘플 데이터를 동시에 수확</strong>할 수 있습니다! 에이전트가 환경 속을 자유롭게 탐색하며 다양한 상태를 거쳐 가기만 하면, 출발점을 억지로 리셋하지 않아도 모든 상태의 가치 함수 카드가 골고루 채워집니다.</p>
 
 <hr />
 
@@ -797,46 +822,52 @@
 
 <p>위에서 구한 세 상태의 수익 계산식을 나란히 놓아보겠습니다:</p>
 
-<p>\(G_A = R_0 + \gamma R_1 + \gamma^2 R_2\)
-\(G_B = R_1 + \gamma R_2\)
-\(G_C = R_2\)</p>
+<blockquote>
+  <p><em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γR</em><sub>1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub>2</sub><br />
+<em>G</em><sub><em>B</em></sub> = <em>R</em><sub>1</sub> + <em>γR</em><sub>2</sub><br />
+<em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub></p>
+</blockquote>
 
 <p>식을 유심히 관찰해 보면 기막힌 규칙이 눈에 들어옵니다:</p>
 <ul>
-  <li>$G_A$의 뒷부분($\gamma R_1 + \gamma^2 R_2$)은 사실 <strong>$\gamma (R_1 + \gamma R_2) = \gamma G_B$</strong>와 완전히 같습니다!</li>
-  <li>마찬가지로 $G_B$의 뒷부분($\gamma R_2$)은 <strong>$\gamma G_C$</strong>와 완전히 같습니다!</li>
+  <li><em>G</em><sub><em>A</em></sub>의 뒷부분(<em>γR</em><sub>1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub>2</sub>)은 사실 <strong><em>γ</em>(<em>R</em><sub>1</sub> + <em>γR</em><sub>2</sub>) = <em>γG</em><sub><em>B</em></sub></strong>와 완전히 같습니다!</li>
+  <li>마찬가지로 <em>G</em><sub><em>B</em></sub>의 뒷부분(<em>γR</em><sub>2</sub>)은 <strong><em>γG</em><sub><em>C</em></sub></strong>와 완전히 같습니다!</li>
 </ul>
 
 <p>즉, 수식을 다음과 같이 점화식 형태로 다시 쓸 수 있습니다:</p>
 
-<p>\(G_C = R_2\)
-\(G_B = R_1 + \gamma G_C\)
-\(G_A = R_0 + \gamma G_B\)</p>
+<blockquote>
+  <p><em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub><br />
+<em>G</em><sub><em>B</em></sub> = <em>R</em><sub>1</sub> + <em>γG</em><sub><em>C</em></sub><br />
+<em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γG</em><sub><em>B</em></sub></p>
+</blockquote>
 
-<p>일반화하면 어떤 임의의 시점 $t$에서의 수익 $G_t$는 다음과 같은 아름다운 재귀 점화식으로 표현됩니다:</p>
+<p>일반화하면 어떤 임의의 시점 <em>t</em>에서의 수익 <em>G</em><sub><em>t</em></sub>는 다음과 같은 아름다운 재귀 점화식으로 표현됩니다:</p>
 
-\[G_t = R_t + \gamma G_{t+1}\]
+<blockquote>
+  <h3 id="gt--rt--γgt1"><strong><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub></strong></h3>
+</blockquote>
 
 <p><img src="./img/hojin_backward_stepping_stones.jpg" alt="이호진 교수님의 역방향 징검다리 칠판 강의" />
-<strong>그림 09-2-4b</strong> 이호진 교수님이 포인터로 골 지점에서 시작 지점으로 거슬러 올라가는 역방향 징검다리 화살표를 가리키며, 이미 구한 미래 수익 $G_{t+1}$을 재활용하는 $G_t = R_t + \gamma G_{t+1}$ 점화식을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
+<strong>그림 09-2-4b</strong> 이호진 교수님이 포인터로 골 지점에서 시작 지점으로 거슬러 올라가는 역방향 징검다리 화살표를 가리키며, 이미 구한 미래 수익 <em>G</em><sub><em>t</em>+1</sub>을 재활용하는 <em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> 점화식을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
 
 <p><img src="./img/05_backward_return_accumulation.png" alt="역방향 수익 계산 점화식" />
-<strong>그림 09-2-5</strong> 골 지점에서부터 뒤로 걸어오며 할인율 $\gamma$를 곱해 미래 수익을 재사용하는 역방향 수익 정산 점화식 시각화 (1:1 순백색)</p>
+<strong>그림 09-2-5</strong> 골 지점에서부터 뒤로 걸어오며 할인율 <em>γ</em>를 곱해 미래 수익을 재사용하는 역방향 수익 정산 점화식 시각화 (1:1 순백색)</p>
 
 <hr />
 
-<h4 id="-계산-복잡도의-기적-ot2에서-ot로의-대혁신">💡 계산 복잡도의 기적: $O(T^2)$에서 $O(T)$로의 대혁신!</h4>
+<h4 id="-계산-복잡도의-기적-ot2에서-ot로의-대혁신">💡 계산 복잡도의 기적: <em>O</em>(<em>T</em><sup>2</sup>)에서 <em>O</em>(<em>T</em>)로의 대혁신!</h4>
 
-<p>만약 계산을 앞에서부터 순서대로($G_A \rightarrow G_B \rightarrow G_C$) 한다면, $G_A$를 구할 때 $R_1, R_2$를 더하고, $G_B$를 구할 때 $R_2$를 또 더하는 심각한 중복 덧셈이 발생합니다. 에피소드 길이가 100스텝이라면 약 $\frac{100 \times 101}{2} \approx 5,000$번의 연산이 필요합니다.</p>
+<p>만약 계산을 앞에서부터 순서대로(<em>G</em><sub><em>A</em></sub> → <em>G</em><sub><em>B</em></sub> → <em>G</em><sub><em>C</em></sub>) 한다면, <em>G</em><sub><em>A</em></sub>를 구할 때 <em>R</em><sub>1</sub>, <em>R</em><sub>2</sub>를 더하고, <em>G</em><sub><em>B</em></sub>를 구할 때 <em>R</em><sub>2</sub>를 또 더하는 심각한 중복 덧셈이 발생합니다. 에피소드 길이가 100스텝이라면 약 (100 × 101) / 2 &amp;approx; 5,000번의 연산이 필요합니다.</p>
 
-<p>하지만 <strong>골(Goal)에서부터 출발지를 향해 거꾸로($G_C \rightarrow G_B \rightarrow G_A$) 거슬러 올라가며 계산</strong>하면:</p>
+<p>하지만 <strong>골(Goal)에서부터 출발지를 향해 거꾸로(<em>G</em><sub><em>C</em></sub> → <em>G</em><sub><em>B</em></sub> → <em>G</em><sub><em>A</em></sub>) 거슬러 올라가며 계산</strong>하면:</p>
 <ol>
-  <li>맨 끝 상태 $C$의 수익은 즉각 보상 $R_2$로 바로 확정됩니다 ($G_C = R_2$).</li>
-  <li>바로 앞 상태 $B$의 수익은 이미 구해둔 $G_C$에 할인율 $\gamma$만 곱해서 즉각 보상 $R_1$과 더하면 끝납니다 ($G_B = R_1 + \gamma G_C$).</li>
-  <li>가장 앞선 상태 $A$의 수익 역시 이미 구해둔 $G_B$에 $\gamma$만 곱해서 $R_0$와 더하면 즉시 끝납니다 ($G_A = R_0 + \gamma G_B$).</li>
+  <li>맨 끝 상태 <em>C</em>의 수익은 즉각 보상 <em>R</em><sub>2</sub>로 바로 확정됩니다 (<em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub>).</li>
+  <li>바로 앞 상태 <em>B</em>의 수익은 이미 구해둔 <em>G</em><sub><em>C</em></sub>에 할인율 <em>γ</em>만 곱해서 즉각 보상 <em>R</em><sub>1</sub>과 더하면 끝납니다 (<em>G</em><sub><em>B</em></sub> = <em>R</em><sub>1</sub> + <em>γG</em><sub><em>C</em></sub>).</li>
+  <li>가장 앞선 상태 <em>A</em>의 수익 역시 이미 구해둔 <em>G</em><sub><em>B</em></sub>에 <em>γ</em>만 곱해서 <em>R</em><sub>0</sub>와 더하면 즉시 끝납니다 (<em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γG</em><sub><em>B</em></sub>).</li>
 </ol>
 
-<p>에피소드 길이가 100스텝이어도 <strong>단 100번의 곱셈과 덧셈($O(T)$ 선형 시간)만으로 모든 상태의 수익 정산이 눈 깜짝할 사이에 완료</strong>됩니다! 파이썬 코드에서 에피소드 메모리 리스트를 <code class="language-plaintext highlighter-rouge">reversed(memory)</code>로 뒤집어 순회하는 이유가 바로 이 눈부신 계산 최적화 때문입니다.</p>
+<p>에피소드 길이가 100스텝이어도 <strong>단 100번의 곱셈과 덧셈(<em>O</em>(<em>T</em>) 선형 시간)만으로 모든 상태의 수익 정산이 눈 깜짝할 사이에 완료</strong>됩니다! 파이썬 코드에서 에피소드 메모리 리스트를 <code class="language-plaintext highlighter-rouge">reversed(memory)</code>로 뒤집어 순회하는 이유가 바로 이 눈부신 계산 최적화 때문입니다.</p>
 
 <hr />
 
@@ -850,17 +881,26 @@
 <ol>
   <li><strong>경험 수익의 표본 평균 (Return Averaging)</strong>:
     <ul>
-      <li>환경의 전이 확률 모델 $p(s’ \mid s, a)$를 전혀 몰라도, 에피소드를 끝까지 완주하며 얻은 실제 수익들의 산술 평균 $V_\pi(s) = \frac{1}{n} \sum G^{(i)}$으로 참 가치 함수를 완벽하게 근사합니다.</li>
+      <li>
+        <table>
+          <tbody>
+            <tr>
+              <td>환경의 전이 확률 모델 <em>p</em>(<em>s’</em></td>
+              <td><em>s</em>, <em>a</em>)를 전혀 몰라도, 에피소드를 끝까지 완주하며 얻은 실제 수익들의 산술 평균 <em>V</em><sub><em>π</em></sub>(<em>s</em>) = (∑ <em>G</em><sup>(<em>i</em>)</sup>) / <em>n</em>으로 참 가치 함수를 완벽하게 근사합니다.</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
     </ul>
   </li>
   <li><strong>단일 경로 다중 상태 수확 (Multi-state Harvesting)</strong>:
     <ul>
-      <li>상태마다 따로따로 출발할 필요 없이, 단 한 번의 에피소드 주행으로 경로 상에 방문한 모든 상태($A, B, C$)의 수익 표본을 동시에 수확합니다.</li>
+      <li>상태마다 따로따로 출발할 필요 없이, 단 한 번의 에피소드 주행으로 경로 상에 방문한 모든 상태(<em>A, B, C</em>)의 수익 표본을 동시에 수확합니다.</li>
     </ul>
   </li>
   <li><strong>초고속 역방향 재귀 정산 (Backward Recursion)</strong>:
     <ul>
-      <li>$G_t = R_t + \gamma G_{t+1}$ 점화식을 이용하여 골에서부터 거꾸로 계산함으로써, 불필요한 중복 연산 없이 $O(T)$의 초고속으로 모든 상태의 가치를 업데이트합니다.</li>
+      <li><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> 점화식을 이용하여 골에서부터 거꾸로 계산함으로써, 불필요한 중복 연산 없이 <em>O</em>(<em>T</em>)의 초고속으로 모든 상태의 가치를 업데이트합니다.</li>
     </ul>
   </li>
 </ol>
