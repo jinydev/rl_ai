@@ -1484,11 +1484,11 @@
 
 <h2 id="-2-텍스트-정제-및-수식-발음-규칙-text-preprocessing">📐 2. 텍스트 정제 및 수식 발음 규칙 (Text Preprocessing)</h2>
 
-<p>마크다운 원문에는 LaTeX 수식(<code class="language-plaintext highlighter-rouge">$v_\pi(s)$</code>, <code class="language-plaintext highlighter-rouge">\sum</code>)과 강조 기호(<code class="language-plaintext highlighter-rouge">**bold**</code>)가 포함되어 있습니다. TTS 엔진에 이를 그대로 전달하면 영어 기호나 백슬래시(<code class="language-plaintext highlighter-rouge">\</code>)를 기계적으로 읽어 청취감이 크게 저하되므로, <strong>한국어 구어체 변환 전처리</strong>를 반드시 수행해야 합니다.</p>
+<p>마크다운 원문에는 수식(<em>v</em><sub><em>π</em></sub>(<em>s</em>), Σ)과 강조 기호(<code class="language-plaintext highlighter-rouge">**bold**</code>)가 포함되어 있습니다. TTS 엔진에 이를 그대로 전달하면 영어 기호나 특수문자를 기계적으로 읽어 청취감이 크게 저하되므로, <strong>한국어 구어체 변환 전처리</strong>를 반드시 수행해야 합니다.</p>
 
 <h3 id="1-마크다운-및-특수문자-제거">(1) 마크다운 및 특수문자 제거</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">**텍스트**</code>, <code class="language-plaintext highlighter-rouge">*텍스트*</code>, <code class="language-plaintext highlighter-rouge">`텍스트`</code> $\rightarrow$ 강조 기호 제거 후 순수 텍스트만 추출</li>
+  <li><code class="language-plaintext highlighter-rouge">**텍스트**</code>, <code class="language-plaintext highlighter-rouge">*텍스트*</code>, <code class="language-plaintext highlighter-rouge">`텍스트`</code> → 강조 기호 제거 후 순수 텍스트만 추출</li>
   <li>따옴표(<code class="language-plaintext highlighter-rouge">"</code>, <code class="language-plaintext highlighter-rouge">'</code>), 화살표(<code class="language-plaintext highlighter-rouge">-&gt;</code>, <code class="language-plaintext highlighter-rouge">=&gt;</code>) 등은 문맥에 맞게 정제</li>
 </ul>
 
@@ -1497,84 +1497,84 @@
 <table>
   <thead>
     <tr>
-      <th style="text-align: left">원문 표기 (Markdown/LaTeX)</th>
+      <th style="text-align: left">원문 표기 (Markdown / 수식)</th>
       <th style="text-align: left">구어체 변환 발음</th>
       <th style="text-align: left">설명</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$v_\pi(s)$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*v*&lt;sub&gt;*π*&lt;/sub&gt;(*s*)</code></td>
       <td style="text-align: left"><strong>“상태 가치 브이 파이 에스”</strong></td>
       <td style="text-align: left">상태 가치 함수</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$v_\pi(s')$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*v*&lt;sub&gt;*π*&lt;/sub&gt;(*s*')</code></td>
       <td style="text-align: left"><strong>“다음 상태 가치 브이 파이 에스 프라임”</strong></td>
       <td style="text-align: left">한 스텝 뒤의 가치</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$v_\pi(s_1)$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*v*&lt;sub&gt;*π*&lt;/sub&gt;(*s*&lt;sub&gt;1&lt;/sub&gt;)</code></td>
       <td style="text-align: left"><strong>“다음 상태 가치 브이 파이 에스 원”</strong></td>
       <td style="text-align: left">특정 다음 상태 가치</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$G_t$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*G*&lt;sub&gt;*t*&lt;/sub&gt;</code></td>
       <td style="text-align: left"><strong>“수익 지 티”</strong></td>
-      <td style="text-align: left">시점 $t$에서의 할인 누적 보상</td>
+      <td style="text-align: left">시점 <em>t</em>에서의 할인 누적 보상</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$G_{t+1}$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*G*&lt;sub&gt;*t*+1&lt;/sub&gt;</code></td>
       <td style="text-align: left"><strong>“다음 시간 수익 지 티 플러스 일”</strong></td>
-      <td style="text-align: left">시점 $t+1$에서의 수익</td>
+      <td style="text-align: left">시점 <em>t</em>+1에서의 수익</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$R_t$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*R*&lt;sub&gt;*t*&lt;/sub&gt;</code></td>
       <td style="text-align: left"><strong>“즉각 보상 알 티”</strong></td>
       <td style="text-align: left">행동 직후 받는 보상</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$S_t = s$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*S*&lt;sub&gt;*t*&lt;/sub&gt; = *s*</code></td>
       <td style="text-align: left"><strong>“현재 상태 에스 티가 에스”</strong></td>
       <td style="text-align: left">조건부 확률의 현재 상태 조건</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$S_{t+1} = s'$</code></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">*S*&lt;sub&gt;*t*+1&lt;/sub&gt; = *s*'</code></td>
       <td style="text-align: left"><strong>“다음 상태 에스 티 플러스 일이 에스 프라임”</strong></td>
       <td style="text-align: left">전이 후 다음 상태 조건</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$\mathbb{E}$</code></td>
+      <td style="text-align: left"><strong>E</strong> (기댓값)</td>
       <td style="text-align: left"><strong>“기댓값”</strong> 또는 <strong>“기댓값 이”</strong></td>
       <td style="text-align: left">평균 기댓값 연산자</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$\gamma$</code></td>
+      <td style="text-align: left"><em>γ</em> (감마)</td>
       <td style="text-align: left"><strong>“할인율 감마”</strong></td>
       <td style="text-align: left">미래 보상 감쇠 계수</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$\pi(a \mid s)$</code></td>
+      <td style="text-align: left"><em>π</em>(<em>a</em> | <em>s</em>)</td>
       <td style="text-align: left"><strong>“정책 파이 오브 에이 기븐 에스”</strong></td>
       <td style="text-align: left">상태 조건부 행동 정책</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$p(s' \mid s, a)$</code></td>
+      <td style="text-align: left"><em>p</em>(<em>s</em>’ | <em>s</em>, <em>a</em>)</td>
       <td style="text-align: left"><strong>“상태 전이 확률 피”</strong></td>
       <td style="text-align: left">환경의 상태 전이 함수</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$p(x, y) = p(x) p(y \mid x)$</code></td>
+      <td style="text-align: left"><em>p</em>(<em>x</em>, <em>y</em>) = <em>p</em>(<em>x</em>)<em>p</em>(<em>y</em> | <em>x</em>)</td>
       <td style="text-align: left"><strong>“동시 확률 피 엑스 와이는 피 엑스 곱하기 피 와이 기븐 엑스”</strong></td>
       <td style="text-align: left">확률의 곱셈 정리</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$\sum_{a, s'}$</code></td>
+      <td style="text-align: left">Σ<sub><em>a</em>, <em>s</em>’</sub></td>
       <td style="text-align: left"><strong>“모든 행동과 다음 상태에 대한 시그마”</strong></td>
       <td style="text-align: left">합산 기호</td>
     </tr>
     <tr>
-      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">$\sum_x \sum_y$</code></td>
+      <td style="text-align: left">Σ<sub><em>x</em></sub> Σ<sub><em>y</em></sub></td>
       <td style="text-align: left"><strong>“시그마 엑스, 시그마 와이”</strong></td>
       <td style="text-align: left">2중 시그마 기호</td>
     </tr>
@@ -1583,12 +1583,12 @@
 
 <h3 id="3-숫자-분수-및-백분율-변환">(3) 숫자, 분수 및 백분율 변환</h3>
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">1/12</code>, <code class="language-plaintext highlighter-rouge">1/6</code>, <code class="language-plaintext highlighter-rouge">1/2</code> $\rightarrow$ <strong>“십이분의 일”</strong>, <strong>“육분의 일”</strong>, <strong>“이분의 일”</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">4/5</code>, <code class="language-plaintext highlighter-rouge">1/5</code> $\rightarrow$ <strong>“오분의 사”</strong>, <strong>“오분의 일”</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">80%</code>, <code class="language-plaintext highlighter-rouge">20%</code>, <code class="language-plaintext highlighter-rouge">100%</code> $\rightarrow$ <strong>“팔십 퍼센트”</strong>, <strong>“이십 퍼센트”</strong>, <strong>“백 퍼센트”</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">0.8</code>, <code class="language-plaintext highlighter-rouge">0.12</code>, <code class="language-plaintext highlighter-rouge">2.35</code> $\rightarrow$ <strong>“영 점 팔”</strong>, <strong>“영 점 일 이”</strong>, <strong>“이 점 삼 오”</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">MDP</code>, <code class="language-plaintext highlighter-rouge">DP</code> $\rightarrow$ <strong>“엠디피”</strong>, <strong>“동적 계획법 디피”</strong></li>
-  <li><code class="language-plaintext highlighter-rouge">Q 함수</code> $\rightarrow$ <strong>“큐 함수”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">1/12</code>, <code class="language-plaintext highlighter-rouge">1/6</code>, <code class="language-plaintext highlighter-rouge">1/2</code> → <strong>“십이분의 일”</strong>, <strong>“육분의 일”</strong>, <strong>“이분의 일”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">4/5</code>, <code class="language-plaintext highlighter-rouge">1/5</code> → <strong>“오분의 사”</strong>, <strong>“오분의 일”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">80%</code>, <code class="language-plaintext highlighter-rouge">20%</code>, <code class="language-plaintext highlighter-rouge">100%</code> → <strong>“팔십 퍼센트”</strong>, <strong>“이십 퍼센트”</strong>, <strong>“백 퍼센트”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">0.8</code>, <code class="language-plaintext highlighter-rouge">0.12</code>, <code class="language-plaintext highlighter-rouge">2.35</code> → <strong>“영 점 팔”</strong>, <strong>“영 점 일 이”</strong>, <strong>“이 점 삼 오”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">MDP</code>, <code class="language-plaintext highlighter-rouge">DP</code> → <strong>“엠디피”</strong>, <strong>“동적 계획법 디피”</strong></li>
+  <li><code class="language-plaintext highlighter-rouge">Q 함수</code> → <strong>“큐 함수”</strong></li>
 </ul>
 
 <hr />
@@ -1726,7 +1726,7 @@
   </li>
   <li><strong>역할 분담의 명확성</strong>:
     <ul>
-      <li>도로시는 독자의 시선에서 가질 법한 자연스러운 의문(“왜 기댓값이 3.5지?”, “시간 $t$와 $t+1$이 왜 다르지?”)을 질문합니다.</li>
+      <li>도로시는 독자의 시선에서 가질 법한 자연스러운 의문(“왜 기댓값이 3.5지?”, “시간 <em>t</em>와 <em>t</em>+1이 왜 다르지?”)을 질문합니다.</li>
       <li>지니는 수학적 정의에 얽매이기보다 일상적인 비유(비디오 게임, 서울-부산 여행, 보물 상자)로 핵심 직관을 짚어줍니다.</li>
     </ul>
   </li>
