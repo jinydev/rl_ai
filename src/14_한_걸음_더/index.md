@@ -6,7 +6,7 @@ title: "CHAPTER 14 한 걸음 더"
 # CHAPTER 14 한 걸음 더
 
 **그림 14-0** 무대 위 행동하는 배우 도로시(Actor)와 감독 의자에 앉아 심사판을 들고 평가해주는 감독 지니(Critic)
-![액터 크리틱 인트로](./img/jiny_ch14_actor_critic.png)
+![CHAPTER 14 한 걸음 더](./14_한_걸음_더.png)
 
 ---
 

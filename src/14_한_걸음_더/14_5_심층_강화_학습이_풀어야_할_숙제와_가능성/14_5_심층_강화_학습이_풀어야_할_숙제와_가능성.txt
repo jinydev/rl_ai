@@ -1,0 +1,20 @@
+### Subchapter 14.5 Cover Image Prompt (16:9)
+
+**File**: `14_5_심층_강화_학습이_풀어야_할_숙제와_가능성.png`
+**Title**: 14.5 심층 강화 학습이 풀어야 할 숙제와 가능성
+**Subtitle**: (Challenges & Frontiers of Deep RL)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "14.5 심층 강화 학습이 풀어야 할 숙제와 가능성"
+Bottom line English: "(Challenges & Frontiers of Deep RL)"
+
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the entire image: Professor Hojin on the right (early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain dark navy polo shirt, blue jeans, grey sneakers). He points with an encouraging hand toward a glowing bridge labeled "Sim-to-Real" bridging virtual simulation to the physical world.
+2. Exactly ONE young girl in the entire image: Dorothy in the center (4.5 heads tall, chestnut twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange striped t-shirt, red canvas sneakers) holding a golden wrench and a small tool pouch labeled "Safe RL".
+3. Exactly ONE small milk-white puppy: Toto beside Dorothy wearing a sky-blue bandana and a cute yellow mini safety hardhat, looking happily ahead.
+4. Exactly ONE tuxedo cat: Jiny on the left with round scholar glasses and red collar, holding an architectural blueprint labeled "Offline RL & Alignment".
+Pure clean white background (#FFFFFF), inspiring scientific optimism and educational anime illustration, zero Japanese characters.
+```

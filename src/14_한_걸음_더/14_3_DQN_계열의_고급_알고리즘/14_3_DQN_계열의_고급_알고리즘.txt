@@ -1,0 +1,20 @@
+### Subchapter 14.3 Cover Image Prompt (16:9)
+
+**File**: `14_3_DQN_계열의_고급_알고리즘.png`
+**Title**: 14.3 DQN 계열의 고급 알고리즘
+**Subtitle**: (Advanced Value-Based: Rainbow DQN)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "14.3 DQN 계열의 고급 알고리즘"
+Bottom line English: "(Advanced Value-Based: Rainbow DQN)"
+
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the entire image: Professor Hojin on the right (early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain dark navy polo shirt, blue jeans, grey sneakers). He points proudly toward a vibrant glowing rainbow arch symbolizing "Rainbow DQN".
+2. Exactly ONE young girl in the entire image: Dorothy in the center (4.5 heads tall, chestnut twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange striped t-shirt, red canvas sneakers) holding a hand of 6 colorful glowing cards (Dueling, Double, PER, Multi-step, C51, Noisy).
+3. Exactly ONE small milk-white puppy: Toto beside Dorothy wearing a sky-blue bandana, playfully jumping after rainbow light sparks.
+4. Exactly ONE tuxedo cat: Jiny on the left with round scholar glasses and red collar, holding a checklist board with checkmarks beside the 6 DQN components.
+Bright, joyous, colorful educational anime illustration, pure solid clean white background (#FFFFFF), zero Japanese characters.
+```
