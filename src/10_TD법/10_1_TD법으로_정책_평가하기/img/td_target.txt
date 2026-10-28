@@ -1,0 +1,17 @@
+### td_target.png 프롬프트 명세서
+
+- **역할 및 용도**: TD 목표(Target)와 시간차 오차(TD Error) 개념 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: TD Target and TD Error concept in Reinforcement Learning.
+In the center stands a colorful target signpost with a bullseye sign clearly labeled: "TD Target: R + γV(S')".
+Dorothy (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' patch over an orange-striped t-shirt, red canvas sneakers) standing beside the target holding a cute wooden measuring tape, measuring the gap labeled "TD Error (δ)".
+Beside the signpost, Jiny the lab assistant cat (black-and-white tuxedo cat, white paws, pink nose, round scholar glasses, red bell collar) sitting on a small wooden toolbox pointing with his paw at the target.
+Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) happily sitting beside Dorothy wagging tail.
+Pure solid clean white background (#FFFFFF), isolated educational graphic cutout, subtle soft contact shadow at base, 1:1 square ratio, no slide UI, no Japanese text.
+```

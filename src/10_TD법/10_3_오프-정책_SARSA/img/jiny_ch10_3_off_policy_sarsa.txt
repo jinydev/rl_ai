@@ -1,0 +1,19 @@
+### jiny_ch10_3_off_policy_sarsa.png 프롬프트 명세서
+
+- **역할 및 용도**: 오프-정책 SARSA와 중요도 샘플링 비율 w의 원리 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: Off-Policy SARSA and Importance Sampling ratio concept.
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the image: Professor Hojin on the right (early 40s youthful Korean professor, smooth skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain solid dark navy polo shirt, blue denim jeans, grey sneakers). He points to a neat chalkboard equation: "w = π(a'|s') / b(a'|s')".
+2. Exactly ONE young girl: Dorothy in the center (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' patch over an orange-striped t-shirt, red canvas sneakers) holding an open adventure map labeled "행동 정책 b(a|s)".
+3. Exactly ONE tuxedo cat: Jiny on the left (black-and-white tuxedo cat, white paws, pink nose, round scholar glasses, red bell collar) sitting on a stool holding a glowing golden book labeled "목표 정책 π(a|s)".
+4. Exactly ONE puppy: Toto the cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) happily standing on hind paws looking at the map.
+
+Pure solid clean white background (#FFFFFF), isolated educational graphic cutout, subtle soft contact shadow at feet, 1:1 square ratio, Korean and English math text only, no Japanese text.
+```

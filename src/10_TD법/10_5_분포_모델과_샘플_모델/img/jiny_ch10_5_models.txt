@@ -1,0 +1,21 @@
+### jiny_ch10_5_models.png 프롬프트 명세서
+
+- **역할 및 용도**: 이론적 분포 모델과 실증적 샘플 모델의 차이 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: Distribution Model vs Sample Model concept in Reinforcement Learning.
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the image: Professor Hojin on the right (early 40s youthful Korean professor, smooth skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain solid dark navy polo shirt, blue denim jeans, grey sneakers). He points to a chalkboard comparing:
+- Left: "분포 모델 (Distribution Model): 전체 확률 분포 P(s'|s,a)"
+- Right: "샘플 모델 (Sample Model): 실제 주사위 굴림(샘플) 시뮬레이터"
+2. Exactly ONE young girl: Dorothy in the center (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' patch over an orange-striped t-shirt, red canvas sneakers) happily tossing a big colorful wooden die with dots.
+3. Exactly ONE tuxedo cat: Jiny on the left (black-and-white tuxedo cat, white paws, pink nose, round scholar glasses, red bell collar) recording the rolled sample outcome on a clipboard.
+4. Exactly ONE puppy: Toto the cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) playfully pouncing toward the rolled die.
+
+Pure solid clean white background (#FFFFFF), isolated educational graphic cutout, subtle soft contact shadow at feet, 1:1 square ratio, Korean text, no Japanese text.
+```

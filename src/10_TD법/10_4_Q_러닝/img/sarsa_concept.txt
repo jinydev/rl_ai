@@ -1,0 +1,18 @@
+### sarsa_concept.png 프롬프트 명세서
+
+- **역할 및 용도**: SARSA 온-정책 행동 선택 흐름도 및 ε-탐욕법 갈림길 설명 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+```text
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece.
+
+Scene: SARSA On-Policy Action Flow and ε-Greedy selection.
+In the center, Dorothy (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' patch over an orange-striped t-shirt, red canvas sneakers) standing at a crossroads fork with two directional wooden signs:
+Left sign: "활용 (Exploit, 1-ε) ➔ 최고 가치 행동"
+Right sign: "탐험 (Explore, ε) ➔ 무작위 행동"
+Beside her, Toto the cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, sky-blue bandana) playfully sniffing towards the explore sign.
+Jiny the tuxedo cat (round scholar glasses, red bell collar) sitting on a small wooden post holding a chart: "On-Policy: 다음 행동 A_{t+1}도 현재 정책으로 직접 선택!".
+Pure solid clean white background (#FFFFFF), isolated educational graphic cutout, subtle soft contact shadow at base, 1:1 square ratio, Korean text, no Japanese text.
+```
