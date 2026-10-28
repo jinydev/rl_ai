@@ -1,0 +1,8 @@
+### 02_mc_vs_td_backup_flow.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 몬테카를로(MC, 에피소드 완주 후 역방향 지연 갱신)와 시간차 학습(TD, 1-스텝 즉시 부트스트랩 갱신)의 갱신 시점 및 메커니즘 시각적 대조 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. A split visual comparison of Monte Carlo (MC) vs Temporal Difference (TD) updates on floating grid stepping stones. At the top (MC): Dorothy steps across a long winding path of stone tiles all the way to the Goal flag, and a red dashed curved arrow labeled 'Wait for Goal -> Reverse Accumulation G' curves back from the end. At the bottom (TD): Dorothy (refer strictly to official character sheet: 4.5 heads tall, chestnut twin pigtails with colorful beads, 'STEM HERO' overalls, orange striped shirt, red canvas sneakers) takes just ONE single step from stone S_t to S_{t+1}, and a bright glowing golden lightning bolt arrow labeled '1-Step Immediate Update: R + gamma*V(S_{t+1})' instantly updates stone S_t! On the right, Professor Hojin (refer strictly to official character sheet: early 40s Korean professor, smooth skin, stylish salt-and-pepper short hair, thin round wire glasses, navy polo shirt, blue jeans, grey sneakers) smiles approvingly pointing a presentation stick. Toto the fluffy cream-white puppy (sky-blue bandana) wags tail, and Jiny the tuxedo cat with glasses holds a stopwatch showing 'Zero Wait Time!'. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft subtle contact shadow at feet, centered, 1:1 square ratio, clean English and Korean labels, no Japanese text.
