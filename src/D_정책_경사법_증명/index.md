@@ -1,141 +1,218 @@
 ---
 layout: docs
-title: "APPENDIX D"
+title: "APPENDIX D - 정책 경사법 증명"
 ---
 
 # APPENDIX D
 
-# 정책 경사법 증명
+# 정책 경사법 증명 (Policy Gradient Theorem Proof)
 
-**그림 D-0** 미분과 적분 기호가 빼곡한 칠판 앞에서 엄밀한 정책 경사 정리를 수학적으로 증명하는 지니와 깃펜 필기를 하는 도로시
-![정책 경사법 증명 인트로](./img/jiny_app_d_pg_proof.png)
+**그림 D-0** 미분과 적분 기호가 빼곡한 칠판 앞에서 엄밀한 정책 경사 정리를 수학적으로 증명하는 이호진 교수님과 꼼꼼히 노트를 기록하는 도로시, 호기심 가득한 지니와 토토
+![정책 경사법 증명 인트로](./img/02_policy_gradient_proof_chalkboard.jpg)
 
 ---
 
 > **도로시와 토토의 비유로 이해하기**:
-> 안경을 쓴 도로시 꼬마 박사님이 칠판 가득 적분 기호(∫)와 정책 경사(∇) 수식들을 채우며, 감각적으로 공부하던 정책 경사 정리(Policy Gradient Theorem)를 수학적으로 완벽하게 증명해 냅니다. 토토가 뒤에서 놀라 만세를 부르고 있군요!
+> 칠판 가득 적분 기호(∫)와 정책 경사(∇) 수식이 적혀 있습니다. 직관적인 감각으로만 이해했던 13장의 **정책 경사 정리(Policy Gradient Theorem)**와 **베이스라인(Baseline)의 분산 감소 원리**를 이호진 교수님과 함께 한 줄 한 줄 수학적으로 완벽하게 증명해 봅니다. 환경의 복잡한 전이 확률을 전혀 몰라도(Model-Free) 최적 정책을 찾을 수 있는 '강화학습의 기적'이 수식 속에서 아름답게 펼쳐집니다!
 
-9장에서 소개한 수식을 증명해봅시다.
+13장에서 다룬 정책 경사법의 핵심 정리 두 가지를 엄밀하게 유도해 보겠습니다.
 
-## D.1 정책 경사법 도출
+---
 
-9.1절에서 설명했듯이 $J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}} [ G(\tau) ]$일 경우 기울기는 [식 10.1]로 표현됩니다.
+## D.1 정책 경사 정리 도출
 
-$$\nabla_{\theta} J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^T G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) \right] \tag{식 9.1}$$
+13.1절에서 에이전트의 목표 함수를 궤적 *τ*의 누적 보상 기댓값인 *J*(*θ*) = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub>[*G*(*τ*)]로 정의했을 때, 파라미터 *θ*에 대한 목적 함수의 기울기는 다음과 같이 표현된다고 배웠습니다.
 
-그러면 [식 10.1]을 도출해보겠습니다.
+> ### (식 13.1) 정책 경사 정리 (Policy Gradient Theorem)
+> ∇<sub>*θ*</sub> *J*(*θ*) = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> *G*(*τ*) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
 
-먼저 기호를 확인합시다. 정책을 $\pi_{\theta}$라고 했을 때 궤적 $\tau$를 얻을 수 있는 확률을 $\text{Pr}(\tau | \theta)$로 표현합시다. 그러면 $\nabla_{\theta} J(\theta)$를 수식으로 다음처럼 전개할 수 있습니다.
+이제 [식 13.1]이 어떻게 유도되는지 한 단계씩 확인해 보겠습니다.
 
-부록 D 정책 경사법 증명 355
+### 1단계: 기댓값 전개와 미분 기호의 이동
 
+먼저 기호를 정리합니다.
+- 정책 매개변수: *θ*
+- 상태와 행동의 궤적: *τ* = (*S*<sub>0</sub>, *A*<sub>0</sub>, *S*<sub>1</sub>, *A*<sub>1</sub>, ..., *S*<sub>*T*</sub>, *A*<sub>*T*</sub>)
+- 정책 *π*<sub>*θ*</sub>를 따를 때 궤적 *τ*가 발생할 확률: Pr(*τ* | *θ*)
+- 궤적 전체에서 얻은 총 수익: *G*(*τ*)
 
-$$\begin{aligned}
-\nabla_{\theta} J(\theta) &= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta}} [ G(\tau) ] \\
-&= \nabla_{\theta} \sum_{\tau} \text{Pr}(\tau | \theta) G(\tau) \quad \text{(기댓값 확장)} \\
-&= \sum_{\tau} \nabla_{\theta} (\text{Pr}(\tau | \theta) G(\tau)) \quad \text{($\nabla_{\theta}$를 $\sum$ 안으로 이동)} \\
-&= \sum_{\tau} \{ G(\tau) \nabla_{\theta} \text{Pr}(\tau | \theta) + \text{Pr}(\tau | \theta) \nabla_{\theta} G(\tau) \} \quad \text{(곱의 미분)} \\
-&= \sum_{\tau} G(\tau) \nabla_{\theta} \text{Pr}(\tau | \theta) \quad \text{($\nabla_{\theta} G(\tau)$는 항상 0)} \\
-&= \sum_{\tau} G(\tau) \text{Pr}(\tau | \theta) \frac{\nabla_{\theta} \text{Pr}(\tau | \theta)}{\text{Pr}(\tau | \theta)} \quad \left( \text{곱하기 } \frac{\text{Pr}(\tau | \theta)}{\text{Pr}(\tau | \theta)} \right) \\
-&= \sum_{\tau} G(\tau) \text{Pr}(\tau | \theta) \nabla_{\theta} \log \text{Pr}(\tau | \theta) \quad \text{(로그-기울기 트릭)} \\
-&= \mathbb{E}_{\tau \sim \pi_{\theta}} [ G(\tau) \nabla_{\theta} \log \text{Pr}(\tau | \theta) ] \tag{식 D.1}
-\end{aligned}$$
+목적 함수 *J*(*θ*)의 정의에 따라 기울기 ∇<sub>*θ*</sub> *J*(*θ*)를 수식으로 전개합니다.
 
-수식의 오른쪽 설명을 참고하여 하나하나 따라가봅시다. 미분을 알고 있다면 특별히 어려운 점은 없을 것입니다. 다만 '로그-기울기 트릭'은 생소할 테니 설명해보겠습니다. 이 트릭은 다음 관계를 이용합니다.
+> ### (식 D.1) 기댓값 정의와 곱의 미분법
+> ∇<sub>*θ*</sub> *J*(*θ*)  
+> = ∇<sub>*θ*</sub> **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [*G*(*τ*)]  
+> = ∇<sub>*θ*</sub> Σ<sub>*τ*</sub> Pr(*τ* | *θ*) · *G*(*τ*) &nbsp;&nbsp; *(기댓값의 수학적 정의)*  
+> = Σ<sub>*τ*</sub> ∇<sub>*θ*</sub> (Pr(*τ* | *θ*) · *G*(*τ*)) &nbsp;&nbsp; *(선형 연산인 미분 기호 ∇<sub>*θ*</sub>를 합 Σ 안으로 이동)*  
+> = Σ<sub>*τ*</sub> { *G*(*τ*) · ∇<sub>*θ*</sub> Pr(*τ* | *θ*) + Pr(*τ* | *θ*) · ∇<sub>*θ*</sub> *G*(*τ*) } &nbsp;&nbsp; *(곱의 미분법 적용)*
 
-$$\nabla_{\theta} \log \text{Pr}(\tau | \theta) = \frac{\nabla_{\theta} \text{Pr}(\tau | \theta)}{\text{Pr}(\tau | \theta)}$$
+여기서 두 번째 항인 ∇<sub>*θ*</sub> *G*(*τ*)에 주목합시다. 궤적 *τ*가 주어졌을 때 총 수익 *G*(*τ*)는 환경에서 실제로 수집된 보상들의 합(*R*<sub>1</sub> + *γR*<sub>2</sub> + ...)일 뿐이므로, 정책 파라미터 *θ*에 의해 값이 변하지 않는 상수입니다. 따라서 **∇<sub>*θ*</sub> *G*(*τ*) = 0**이 되어 두 번째 항은 완전히 사라집니다!
 
-$\log$의 기울기를 구하는 식일 뿐이지만 이 식을 통해 $\nabla_{\theta} \text{Pr}(\tau | \theta)$와 $\text{Pr}(\tau | \theta) \nabla_{\theta} \log \text{Pr}(\tau | \theta)$를 '바꿔치기'할 수 있음을 알 수 있습니다. 이를 **로그-기울기 트릭**<sup>log-gradient trick</sup> 혹은 **로그-파생 트릭**<sup>log-derivative trick</sup>이라고 하며, 머신러닝에서 자주 쓰이는 식 변형입니다.
+> ∇<sub>*θ*</sub> *J*(*θ*) = Σ<sub>*τ*</sub> *G*(*τ*) · ∇<sub>*θ*</sub> Pr(*τ* | *θ*)
 
-이어서 [식 D.1]을 더욱 확장하기 위해 다음 관계를 이용합니다.
+---
 
-$$\begin{aligned}
-\text{Pr}(\tau | \theta) &= p(S_0)\pi_{\theta}(A_0 | S_0) p(S_1 | S_0, A_0) \cdots \pi_{\theta}(A_T | S_T) p(S_{T+1} | S_T, A_T) \\
-&= p(S_0) \prod_{t=0}^T \pi_{\theta}(A_t | S_t) p(S_{t+1} | S_t, A_t)
-\end{aligned}$$
+### 2단계: 로그-기울기 트릭 (Log-Derivative Trick)
 
-$p(S_0)$은 초기 상태 $S_0$의 확률입니다. 이 식과 같이 궤적 $\tau$를 얻을 확률은 초기 상태의 확률, 정책, 그리고 다음 상태의 전이 확률의 곱으로 (분해하여) 표현됩니다. 또한 $\log \text{Pr}(\tau | \theta)$는
+위 식을 에이전트가 샘플링으로 추정할 수 있는 기댓값 형태(**E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub>[ · ])로 되돌리려면 식 안에 Pr(*τ* | *θ*)가 곱해져 있어야 합니다. 이를 위해 분자와 분모에 Pr(*τ* | *θ*)를 동시에 곱해 줍니다.
 
+> Σ<sub>*τ*</sub> *G*(*τ*) · ∇<sub>*θ*</sub> Pr(*τ* | *θ*)  
+> = Σ<sub>*τ*</sub> *G*(*τ*) · Pr(*τ* | *θ*) · [ ∇<sub>*θ*</sub> Pr(*τ* | *θ*) / Pr(*τ* | *θ*) ]
 
+여기서 고등학교 미적분의 **로그 도함수(Logarithmic Derivative)** 공식을 떠올려 봅니다.
 
-다음과 같이 나타낼 수 있습니다.
+> d/d*x* [ log *f*(*x*) ] = *f* '(*x*) / *f*(*x*)
 
-$$\log \text{Pr}(\tau | \theta) = \log p(S_0) + \sum_{t=0}^T \log p(S_{t+1} | S_t, A_t) + \sum_{t=0}^T \log \pi_{\theta}(A_t | S_t)$$
+다변수 벡터 미분(기울기 ∇)에서도 동일한 규칙이 성립합니다.
 
-$\log xy = \log x + \log y$이므로, 이 식처럼 더하기로 표현할 수 있습니다. 그리고 이 식으로부터 $\nabla_{\theta} \log \text{Pr}(\tau | \theta)$는 다음과 같이 구할 수 있습니다.
+> ∇<sub>*θ*</sub> log Pr(*τ* | *θ*) = ∇<sub>*θ*</sub> Pr(*τ* | *θ*) / Pr(*τ* | *θ*)
 
-$$\begin{aligned}
-\nabla_{\theta} \log \text{Pr}(\tau | \theta) &= \nabla_{\theta} \left\{ \log p(S_0) + \sum_{t=0}^T \log p(S_{t+1} | S_t, A_t) + \sum_{t=0}^T \log \pi_{\theta}(A_t | S_t) \right\} \\
-&= \nabla_{\theta} \sum_{t=0}^T \log \pi_{\theta}(A_t | S_t)
-\end{aligned}$$
+따라서 분수 항을 로그 도함수로 바꿔치기할 수 있습니다.
 
-$\nabla_{\theta}$는 *θ*에 대한 기울기입니다. *θ*와 관계없는 원소의 기울기인 $\nabla_{\theta} \log p(S_0)$과 $\nabla_{\theta} \sum_{t=0}^T \log p(S_{t+1} | S_t, A_t)$는 결국 0이 되니, 지금까지의 식에서 다음 식을 얻을 수 있습니다.
+> ### (식 D.2) 로그-기울기 트릭을 통한 기댓값 복원
+> ∇<sub>*θ*</sub> *J*(*θ*)  
+> = Σ<sub>*τ*</sub> Pr(*τ* | *θ*) · { *G*(*τ*) · ∇<sub>*θ*</sub> log Pr(*τ* | *θ*) }  
+> = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ *G*(*τ*) · ∇<sub>*θ*</sub> log Pr(*τ* | *θ*) ]
 
-$$\begin{aligned}
-\nabla_{\theta} J(\theta) &= \mathbb{E}_{\tau \sim \pi_{\theta}} [ G(\tau) \nabla_{\theta} \log \text{Pr}(\tau | \theta) ] \tag{식 D.1} \\
-&= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^T G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) \right] \tag{식 9.1}
-\end{aligned}$$
+이처럼 미분 항을 '로그의 미분'으로 전환하여 기댓값 안으로 자연스럽게 집어넣는 기법을 **로그-기울기 트릭(Log-Gradient Trick)** 또는 **로그-도함수 트릭(Log-Derivative Trick)**이라 부르며, 현대 머신러닝과 강화학습에서 가장 광범위하게 애용되는 기법입니다.
 
-이것으로 $\nabla_{\theta} J(\theta)$의 도출이 모두 끝났습니다.
+---
 
-## D.2 베이스라인 도출
+### 3단계: 환경 전이 확률의 소거 (강화학습의 기적)
 
-9.3절에서는 다음의 식 변형을 보여주었습니다.
+이제 궤적 확률 Pr(*τ* | *θ*)의 내부를 분해해 봅니다.
+시작 상태 *S*<sub>0</sub>부터 종료 시점 *T*까지 일어나는 모든 상태 전이와 에이전트의 행동 선택 확률을 곱하면 다음과 같습니다.
 
-$$\begin{aligned}
-\nabla_{\theta} J(\theta) &= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^T G_t \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) \right] \tag{식 9.3} \\
-&= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^T (G_t - b(S_t)) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) \right] \tag{식 9.4}
-\end{aligned}$$
+> Pr(*τ* | *θ*) = *p*(*S*<sub>0</sub>) · *π*<sub>*θ*</sub>(*A*<sub>0</sub> | *S*<sub>0</sub>) · *p*(*S*<sub>1</sub> | *S*<sub>0</sub>, *A*<sub>0</sub>) ··· *π*<sub>*θ*</sub>(*A*<sub>*T*</sub> | *S*<sub>*T*</sub>) · *p*(*S*<sub>*T*+1</sub> | *S*<sub>*T*</sub>, *A*<sub>*T*</sub>)  
+> = *p*(*S*<sub>0</sub>) · Π<sub>*t*=0</sub><sup>*T*</sup> [ *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) · *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ]
 
-부록 D 정책 경사법 증명 357
+여기서 *p*(*S*<sub>0</sub>)은 환경의 초기 상태 분포이고, *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>)는 상태 *S*<sub>*t*</sub>에서 행동 *A*<sub>*t*</sub>를 취했을 때 다음 상태 *S*<sub>*t*+1</sub>로 전이될 환경의 물리 법칙(전이 확률)입니다.
 
+양변에 자연로그(log)를 취하면 곱셈이 덧셈으로 분해됩니다.
 
-[식 10.4]와 같이 *G*<sub>*t*</sub> 대신 $G_t - b(S_t)$를 사용할 수 있습니다. 여기서 $b(S_t)$는 임의의 함수이며 '베이스라인'이라고 합니다. 이번 절에서는 [식 10.4]를 도출해보겠습니다.
+> log Pr(*τ* | *θ*) = log *p*(*S*<sub>0</sub>) + Σ<sub>*t*=0</sub><sup>*T*</sup> log *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + Σ<sub>*t*=0</sub><sup>*T*</sup> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)
 
-먼저 다음 식이 성립함을 증명합니다.
+이제 양변을 정책 파라미터 *θ*에 대해 미분(∇<sub>*θ*</sub>)해 봅시다!
 
-$$\mathbb{E}_{x \sim P_{\theta}} [ \nabla_{\theta} \log P_{\theta}(x) ] = 0 \tag{식 D.2}$$
+> ∇<sub>*θ*</sub> log Pr(*τ* | *θ*)  
+> = ∇<sub>*θ*</sub> log *p*(*S*<sub>0</sub>) + ∇<sub>*θ*</sub> Σ<sub>*t*=0</sub><sup>*T*</sup> log *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + ∇<sub>*θ*</sub> Σ<sub>*t*=0</sub><sup>*T*</sup> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)
 
-확률 변수 *x*가 확률 분포 $P_{\theta}(x)$로부터 생성된다고 가정하죠. $P_{\theta}(x)$는 매개변수 *θ*에 따라 확률 분포의 형태가 달라집니다. 그러면 다음 식이 성립합니다.
+놀랍게도, 환경의 초기 상태 확률 *p*(*S*<sub>0</sub>)과 환경의 물리적 전이 확률 *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>)는 **에이전트의 정책 가중치 *θ*와 아무런 관련이 없습니다.** 따라서 *θ*에 대해 편미분하면 정확하게 **0**이 되어 완전히 소거됩니다!
 
-$$\sum_x P_{\theta}(x) = 1$$
+> ∇<sub>*θ*</sub> log *p*(*S*<sub>0</sub>) = 0  
+> ∇<sub>*θ*</sub> log *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>) = 0
 
-$P_{\theta}(x)$는 확률 분포이므로 모든 *x*의 값을 더하면 1입니다. 다음으로 이 식의 기울기를 구합니다.
+남는 항은 오직 에이전트의 정책 신경망에 관한 항뿐입니다.
 
-$$\nabla_{\theta} \sum_x P_{\theta}(x) = \nabla_{\theta} 1 = 0$$
+> ### (식 D.3) 궤적 로그 기울기의 정책 분해
+> ∇<sub>*θ*</sub> log Pr(*τ* | *θ*) = Σ<sub>*t*=0</sub><sup>*T*</sup> ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)
 
-이어서 '로그-기울기 트릭'을 이용하여 식을 다음처럼 전개합니다.
+이 결과를 [식 D.2]에 대입하면 우리가 원하는 최종 형태가 도출됩니다!
 
-$$\begin{aligned}
-0 &= \nabla_{\theta} \sum_x P_{\theta}(x) \\
-&= \sum_x \nabla_{\theta} P_{\theta}(x) \\
-&= \sum_x P_{\theta}(x) \nabla_{\theta} \log P_{\theta}(x) \\
-&= \mathbb{E}_{x \sim P_{\theta}} [ \nabla_{\theta} \log P_{\theta}(x) ]
-\end{aligned}$$
+> ### (식 D.4) 최종 정책 경사 수식
+> ∇<sub>*θ*</sub> *J*(*θ*) = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> *G*(*τ*) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
 
-이로써 [식 D.2]가 증명되었습니다.
+> [!NOTE]
+> **왜 이것이 강화학습의 기적인가?**  
+> 현실 세계(자율주행, 로봇 제어, 주식 시장 등)에서 환경의 전이 확률 *p*(*S*<sub>*t*+1</sub> | *S*<sub>*t*</sub>, *A*<sub>*t*</sub>)는 계산하기 불가능할 정도로 복잡합니다. 하지만 정책 경사 정리 덕분에 환경의 전이 모델을 전혀 몰라도(Model-Free), 에이전트가 직접 샘플링한 행동 로그 확률의 기울기 ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)에 관측된 보상 *G*(*τ*)만 곱해 주면 목표 함수를 정확하게 극대화하는 파라미터 업데이트 방향을 구할 수 있습니다.
 
-다음으로 [식 D.2]를 우리 문제에 적용해봅시다. 구체적으로 [식 D.2]의 *x* 대신 행동 *A*<sub>*t*</sub>를 사용하고, $P_{\theta}(\,\cdot\,)$ 대신 정책 $\pi_{\theta}(\,\cdot\, | S_t)$를 사용합니다. 그러면 다음 식을 얻을 수 있습니다.
+---
 
-$$\mathbb{E}_{A_t \sim \pi_{\theta}} [ \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) ] = 0 \tag{식 D.3}$$
+## D.2 베이스라인(Baseline)의 분산 감소 원리 증명
 
+13.3절에서는 학습의 분산을 획기적으로 낮추기 위해 총 수익 *G*<sub>*t*</sub>에서 임의의 상태 기준 함수 *b*(*S*<sub>*t*</sub>)를 차감한 형태를 소개했습니다.
 
+> ### (식 13.4) 베이스라인이 적용된 정책 경사
+> ∇<sub>*θ*</sub> *J*(*θ*) = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> (*G*<sub>*t*</sub> - *b*(*S*<sub>*t*</sub>)) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
 
-[식 D.3]은 행동 *A*<sub>*t*</sub>에 대한 기댓값입니다. 따라서 다음 식과 같이 임의의 함수 $b(S_t)$를 기댓값 안에 넣어도 등식이 성립합니다.
+여기서 *b*(*S*<sub>*t*</sub>)를 빼도 수식의 기댓값이 일절 왜곡되지 않는(Unbiased) 이유를 수학적으로 증명해 보겠습니다.
 
-$$\mathbb{E}_{A_t \sim \pi_{\theta}} [ b(S_t) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) ] = 0 \tag{식 D.4}$$
+### 1단계: 임의의 확률 분포에서 스코어 함수의 기댓값은 0
 
-$b(S_t)$는 *S*<sub>*t*</sub>를 인수로 받는 함수이며, *A*<sub>*t*</sub>가 바뀌어도 항상 똑같은 값입니다.
+먼저 머신러닝의 기초 정리 하나를 증명합니다.  
+매개변수 *θ*를 가지는 임의의 이산 확률 분포 *P*<sub>*θ*</sub>(*x*)에 대해 다음 등식이 성립합니다.
+
+> ### (정리) 로그 확률 도함수의 기댓값은 항상 0
+> **E**<sub>*x* ~ *P*<sub>*θ*</sub></sub> [ ∇<sub>*θ*</sub> log *P*<sub>*θ*</sub>(*x*) ] = 0
+
+**증명:**  
+확률의 기본 공리에 의해 모든 가능한 사건 *x*에 대한 확률의 합은 항상 1입니다.
+
+> Σ<sub>*x*</sub> *P*<sub>*θ*</sub>(*x*) = 1
+
+이 등식의 양변을 *θ*에 대해 미분합니다. 상수 1을 미분하면 0이 됩니다.
+
+> ∇<sub>*θ*</sub> Σ<sub>*x*</sub> *P*<sub>*θ*</sub>(*x*) = ∇<sub>*θ*</sub> 1 = 0
+
+합 기호(Σ)와 미분 연산자(∇<sub>*θ*</sub>)의 순서를 바꾸고, 다시 한번 '로그-기울기 트릭'을 적용합니다.
+
+> 0 = Σ<sub>*x*</sub> ∇<sub>*θ*</sub> *P*<sub>*θ*</sub>(*x*)  
+> = Σ<sub>*x*</sub> *P*<sub>*θ*</sub>(*x*) · [ ∇<sub>*θ*</sub> *P*<sub>*θ*</sub>(*x*) / *P*<sub>*θ*</sub>(*x*) ]  
+> = Σ<sub>*x*</sub> *P*<sub>*θ*</sub>(*x*) · ∇<sub>*θ*</sub> log *P*<sub>*θ*</sub>(*x*)  
+> = **E**<sub>*x* ~ *P*<sub>*θ*</sub></sub> [ ∇<sub>*θ*</sub> log *P*<sub>*θ*</sub>(*x*) ]
+
+증명이 완료되었습니다! 즉, **어떤 확률 분포이든 간에 '로그 확률의 기울기(Score function)'의 기댓값은 항상 수학적으로 정확히 0**입니다.
+
+---
+
+### 2단계: 강화학습 정책 분포에 적용
+
+이 일반 정리를 강화학습의 특정 시점 상태 *S*<sub>*t*</sub>에서의 행동 정책 *π*<sub>*θ*</sub>( · | *S*<sub>*t*</sub>)에 대입합니다.  
+*x* 대신 행동 *A*<sub>*t*</sub>를, *P*<sub>*θ*</sub>(*x*) 대신 *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)를 넣으면 다음을 얻습니다.
+
+> ### (식 D.5) 정책 스코어 함수의 기댓값
+> **E**<sub>*A*<sub>*t*</sub> ~ *π*<sub>*θ*</sub></sub> [ ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ] = 0
+
+이제 여기에 상태 *S*<sub>*t*</sub>에만 의존하는 임의의 스칼라 함수 *b*(*S*<sub>*t*</sub>)를 곱해 봅니다.  
+기댓값 연산 **E**<sub>*A*<sub>*t*</sub> ~ *π*<sub>*θ*</sub></sub>는 행동 *A*<sub>*t*</sub>에 대한 평균이므로, *A*<sub>*t*</sub>와 전혀 무관한 *b*(*S*<sub>*t*</sub>)는 기댓값 바깥으로 자유롭게 빠져나올 수 있습니다!
+
+> ### (식 D.6) 베이스라인 항의 소거
+> **E**<sub>*A*<sub>*t*</sub> ~ *π*<sub>*θ*</sub></sub> [ *b*(*S*<sub>*t*</sub>) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]  
+> = *b*(*S*<sub>*t*</sub>) · **E**<sub>*A*<sub>*t*</sub> ~ *π*<sub>*θ*</sub></sub> [ ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]  
+> = *b*(*S*<sub>*t*</sub>) · 0  
+> = 0
 
 > [!CAUTION]
-> 수익 *G*<sub>*t*</sub>는 행동 *A*<sub>*t*</sub>에 따라 달라지므로 다음 식은 성립하지 않습니다.
-> 
-> $$\mathbb{E}_{A_t \sim \pi_{\theta}} [ G_t \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) ] = 0$$
+> **주의: 왜 수익 *G*<sub>*t*</sub>는 기댓값 밖으로 빠져나올 수 없는가?**  
+> 수익 *G*<sub>*t*</sub> = *R*<sub>*t*+1</sub> + *γR*<sub>*t*+2</sub> + ...는 상태 *S*<sub>*t*</sub>에서 에이전트가 어떤 행동 *A*<sub>*t*</sub>를 선택했느냐에 따라 값이 극적으로 달라집니다! 즉, *G*<sub>*t*</sub>는 *A*<sub>*t*</sub>에 강하게 의존하는 확률 변수이므로 **E**[*G*<sub>*t*</sub> · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)] ≠ 0이며 결코 0이 되지 않습니다. 반면 베이스라인 *b*(*S*<sub>*t*</sub>)는 행동 *A*<sub>*t*</sub>를 결정하기 이전의 상태 평가 기준선(예: 가치 함수 *V*(*S*<sub>*t*</sub>))이므로 *A*<sub>*t*</sub>와 독립적입니다.
 
-[식 D.4]는 $t = 0 \sim T$ 모두에서 성립합니다. 이로부터 다음 식을 얻을 수 있습니다.
+---
 
-$$\mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^T b(S_t) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t) \right] = 0$$
+### 3단계: 전체 궤적에 대한 확장
 
-이상으로 [식 10.4]가 성립함을 알 수 있습니다.
+[식 D.6]은 모든 시점 *t* = 0, 1, ..., *T*에서 각각 독립적으로 성립합니다. 따라서 전체 궤적 *τ*에 대한 기댓값으로 합산해도 여전히 0입니다.
 
-부록 D 정책 경사법 증명 359
+> **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> *b*(*S*<sub>*t*</sub>) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ] = 0
+
+따라서 원래의 정책 경사 [식 13.1]에서 0을 빼는 것은 수학적으로 등식을 완벽히 보존합니다.
+
+> ∇<sub>*θ*</sub> *J*(*θ*)  
+> = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> *G*<sub>*t*</sub> · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ] - **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> *b*(*S*<sub>*t*</sub>) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]  
+> = **E**<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ Σ<sub>*t*=0</sub><sup>*T*</sup> (*G*<sub>*t*</sub> - *b*(*S*<sub>*t*</sub>)) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
+
+이로써 [식 13.4]의 베이스라인 항 차감이 증명되었습니다!
+
+```
+                                  [수학적 증명 요약도]
+                   
+       1. 기댓값 전개        ∇_θ J(θ) = Σ_τ ∇_θ [ Pr(τ|θ) G(τ) ]
+                                    ↓ (∇_θ G(τ) = 0)
+       2. 로그 트릭          ∇_θ J(θ) = E [ G(τ) · ∇_θ log Pr(τ|θ) ]
+                                    ↓ (환경 전이 확률 ∇_θ log p = 0 소거)
+       3. 정책 경사 정리     ∇_θ J(θ) = E [ Σ_t G_t · ∇_θ log π_θ(A_t|S_t) ]
+                                    ↓ (E [ b(S_t) · ∇_θ log π_θ ] = 0)
+       4. 베이스라인 감산    ∇_θ J(θ) = E [ Σ_t (G_t - b(S_t)) · ∇_θ log π_θ(A_t|S_t) ]
+                                      ▶ 평균은 보존(Unbiased), 분산만 감소(Variance Reduction)!
+```
+
+---
+
+## 🎯 부록 D 핵심 정리
+
+| 증명 단계 | 핵심 수학적 원리 | 직관적 의미 |
+| :--- | :--- | :--- |
+| **로그-기울기 트릭** | ∇ *f* = *f* · ∇ log *f* | 미분 기호가 확률 밀도 안으로 들어가 기댓값 표기 복원 |
+| **환경 모델 소거** | ∇<sub>*θ*</sub> log *p*(*S*<sub>*t*+1</sub> \| *S*<sub>*t*</sub>, *A*<sub>*t*</sub>) = 0 | 환경의 물리 법칙을 몰라도 정책 최적화 가능 (Model-Free) |
+| **스코어 함수 0** | **E**<sub>*a* ~ *π*</sub> [ ∇ log *π*(*a* \| *s*) ] = 0 | 확률 총합이 1이므로 기울기의 가중 평균은 항상 0 |
+| **베이스라인 무편향성** | **E** [ *b*(*s*) ∇ log *π* ] = 0 | 행동에 무관한 기준선을 빼도 기대 경사는 왜곡 없이 분산만 축소 |
+
+이제 독자 여러분은 13장에서 배운 정책 경사법, REINFORCE 알고리즘, 그리고 액터-크리틱(Actor-Critic)의 어드밴티지 계산식이 왜 수학적으로 흠결 없는 완벽한 토대 위에 서 있는지 명확하게 이해하셨습니다!

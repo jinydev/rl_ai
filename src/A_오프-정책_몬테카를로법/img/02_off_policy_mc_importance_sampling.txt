@@ -1,0 +1,11 @@
+Studio Ghibli 2D animation style educational concept illustration. Solid pure white background (#FFFFFF) with subtle soft contact shadow on the floor.
+
+Professor Hojin (youthful Korean engineering professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper short black hair, thin round metal wire-rim glasses, kind intelligent smile, wearing a plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue jeans, grey suede sneakers) stands on the left, explaining Off-Policy Monte Carlo importance sampling.
+
+Dorothy (adorable 9-year-old girl, 4.5 heads tall, wavy chestnut pigtails with colorful beads, cute bangs, warm amber eyes, rosy cheeks, wearing blue denim overalls with STEM HERO patch, orange-yellow striped t-shirt, ruby red canvas sneakers) holds her inventor notebook, carefully analyzing the policy comparison.
+
+Jiny the lab assistant cat (chubby tuxedo cat with cow patches, olive-green eyes, pink nose, red collar with gold bell, round scholar glasses) holds a pair of miniature glowing brass balance scales comparing 'Target Policy pi(a|s)' and 'Behavior Policy b(a|s)' with importance weight 'rho = pi / b'.
+
+Toto the puppy (solid cream-white fluffy puppy with no spots, round black button eyes, black nose, sky-blue bandana) sits cheerfully beside Dorothy.
+
+Between them floats a clean glowing diagram showing an agent exploring via Behavior Policy b, while weights rho correct the sampled returns G into the true Target Policy pi value. Clean dark espresso brown line art (#26211E), warm vibrant flat cel shading, no UI borders or slide frames.

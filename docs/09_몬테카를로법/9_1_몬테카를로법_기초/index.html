@@ -647,7 +647,7 @@
 <table>
   <tbody>
     <tr>
-      <td>수식으로 표현하면 <em>*상태 전이 확률 *p</em>(<em>s’</em></td>
+      <td>수식으로 표현하면 <em>*상태 전이 확률 *p</em>(<em>s</em>’</td>
       <td><em>s</em>, <em>a</em>)<strong>와 **보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)</strong>를 완벽하게 이용할 수 있었습니다. 만약 미끄러짐이 없는 완벽한 환경이라면 상태 전이가 결정적(Deterministic)이므로, 다음 상태를 나타내는 수학 함수 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 딱 떨어지게 나타낼 수도 있었습니다.</td>
     </tr>
   </tbody>
@@ -663,7 +663,7 @@
 
 <p>예를 들어 편의점의 ‘상품 재고 관리’나 도로 위를 달리는 ‘자율주행차의 주행 제어’를 생각해 봅시다. 재고 관리 문제에서는 ‘내일 삼각김밥이 몇 개나 팔릴 것인가’가 환경의 상태 전이 확률에 해당합니다. 그런데 내일 삼각김밥의 판매량은 계절의 변화, 당일의 날씨(비나 눈), 주변 학교의 시험 기간, SNS에서 유행하는 최신 먹방 트렌드, 경기 변동, 심지어 손님 한 사람 한 사람의 기분까지 수많은 요인이 복잡하게 얽혀 결정되기 때문에 <strong>사전에 수식으로 완벽하게 알아내기가 현실적으로 불가능</strong>합니다. 그 어떤 천재 수학자도 ‘내일 삼각김밥이 17개 팔릴 확률은 0.0842…‘와 같은 엄밀한 확률 공식을 작성해 건네줄 수 없습니다.</p>
 
-<p>또한, 물리학 법칙을 동원하여 상태 전이 확률을 이론적으로 세울 수 있더라도 <strong>계산량이 너무 방대하여 계산 불능(Tractable)에 빠지는 경우</strong>가 허다합니다. 바둑이나 체스, 스타크래프트 같은 게임만 해도 가능한 상태와 행동의 조합이 우주의 원자 수(약 $10^{80}$개)보다 훨씬 많습니다. 이 모든 경우의 수를 연립방정식으로 풀려고 들면 최신 슈퍼컴퓨터를 1억 년 동안 돌려도 답을 내지 못하고 멈춰버립니다.</p>
+<p>또한, 물리학 법칙을 동원하여 상태 전이 확률을 이론적으로 세울 수 있더라도 <strong>계산량이 너무 방대하여 계산 불능(Tractable)에 빠지는 경우</strong>가 허다합니다. 바둑이나 체스, 스타크래프트 같은 게임만 해도 가능한 상태와 행동의 조합이 우주의 원자 수(약 10<sup>80</sup>개)보다 훨씬 많습니다. 이 모든 경우의 수를 연립방정식으로 풀려고 들면 최신 슈퍼컴퓨터를 1억 년 동안 돌려도 답을 내지 못하고 멈춰버립니다.</p>
 
 <p>얼마나 계산이 복잡해지는지 피부로 실감할 수 있도록, 이번 절에서는 우선 우리가 친숙하게 접할 수 있는 ‘주사위’를 예로 들어 간단한 비교 작업을 해보겠습니다.</p>
 
@@ -682,17 +682,17 @@
 
 <p>두 주사위 눈의 합을 집계해 보면, 가장 작은 합은 1 + 1 = 2이고 가장 큰 합은 6 + 6 = 12입니다. 이때 각 합이 나오는 경우의 수를 세어보면 다음과 같습니다:</p>
 <ul>
-  <li>합이 2가 되는 경우: (1, 1) $\rightarrow$ 1가지</li>
-  <li>합이 3이 되는 경우: (1, 2), (2, 1) $\rightarrow$ 2가지</li>
-  <li>합이 4가 되는 경우: (1, 3), (2, 2), (3, 1) $\rightarrow$ 3가지</li>
-  <li>합이 5가 되는 경우: (1, 4), (2, 3), (3, 2), (4, 1) $\rightarrow$ 4가지</li>
-  <li>합이 6이 되는 경우: (1, 5), (2, 4), (3, 3), (4, 2), (5, 1) $\rightarrow$ 5가지</li>
-  <li><strong>합이 7이 되는 경우</strong>: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1) $\rightarrow$ <strong>6가지 (가장 많음!)</strong></li>
-  <li>합이 8이 되는 경우: (2, 6), (3, 5), (4, 4), (5, 3), (6, 2) $\rightarrow$ 5가지</li>
-  <li>합이 9가 되는 경우: (3, 6), (4, 5), (5, 4), (6, 3) $\rightarrow$ 4가지</li>
-  <li>합이 10이 되는 경우: (4, 6), (5, 5), (6, 4) $\rightarrow$ 3가지</li>
-  <li>합이 11이 되는 경우: (5, 6), (6, 5) $\rightarrow$ 2가지</li>
-  <li>합이 12가 되는 경우: (6, 6) $\rightarrow$ 1가지</li>
+  <li>합이 2가 되는 경우: (1, 1) → 1가지</li>
+  <li>합이 3이 되는 경우: (1, 2), (2, 1) → 2가지</li>
+  <li>합이 4가 되는 경우: (1, 3), (2, 2), (3, 1) → 3가지</li>
+  <li>합이 5가 되는 경우: (1, 4), (2, 3), (3, 2), (4, 1) → 4가지</li>
+  <li>합이 6이 되는 경우: (1, 5), (2, 4), (3, 3), (4, 2), (5, 1) → 5가지</li>
+  <li><strong>합이 7이 되는 경우</strong>: (1, 6), (2, 5), (3, 4), (4, 3), (5, 2), (6, 1) → <strong>6가지 (가장 많음!)</strong></li>
+  <li>합이 8이 되는 경우: (2, 6), (3, 5), (4, 4), (5, 3), (6, 2) → 5가지</li>
+  <li>합이 9가 되는 경우: (3, 6), (4, 5), (5, 4), (6, 3) → 4가지</li>
+  <li>합이 10이 되는 경우: (4, 6), (5, 5), (6, 4) → 3가지</li>
+  <li>합이 11이 되는 경우: (5, 6), (6, 5) → 2가지</li>
+  <li>합이 12가 되는 경우: (6, 6) → 1가지</li>
 </ul>
 
 <p>두 주사위 눈의 합을 집계하면 다음과 같은 대칭적인 확률 분포를 얻을 수 있습니다:</p>
@@ -758,7 +758,10 @@
 
 <p>이 확률 분포를 알면 이론적 기댓값(Expected Value)을 다음과 같이 계산할 수 있습니다:</p>
 
-\[\mathbb{E}[X] = \sum_{x} x \cdot P(X = x)\]
+<blockquote>
+  <h3 id="식-91-1-이산-확률-변수의-이론적-기댓값">(식 9.1-1) 이산 확률 변수의 이론적 기댓값</h3>
+  <p>E[<em>X</em>] = ∑<sub><em>x</em></sub> <em>x</em> · <em>P</em>(<em>X</em> = <em>x</em>)</p>
+</blockquote>
 
 <p>수학적으로는 각 합에 해당 확률을 곱해 모두 더하면 정확히 <strong>7.0</strong>이 나옵니다.</p>
 
@@ -771,7 +774,7 @@
 2부터 12까지 번호가 적힌 긴 나무 널빤지 위에, 각 숫자가 나올 확률만큼의 무게추를 올려놓았다고 상상해 보렴.<br />
 7 위에는 가장 무거운 6개의 추(6/36)가 올라가고, 6과 8 위에는 각각 5개, 2와 12 위에는 가장 가벼운 1개씩의 추가 올라가게 되지.<br />
 이때 시소 받침대를 정확히 <strong>‘7.0’</strong> 위치에 놓아야 시소가 양쪽으로 기울어지지 않고 완벽하게 수평을 유지한단다!<br />
-즉, <strong>기댓값 $\mathbb{E}[X]$란 모든 확률적 사건들이 평형을 이루는 수학적 무게중심</strong>이란다.”</p>
+즉, <strong>기댓값 E[<em>X</em>]란 모든 확률적 사건들이 평형을 이루는 수학적 무게중심</strong>이란다.”</p>
 </blockquote>
 
 <blockquote>
@@ -861,7 +864,7 @@
 <ul>
   <li><strong>분포 모델의 계산 폭발</strong>:
     <ul>
-      <li>주사위 10개의 합에 대한 이론적인 확률 분포 표를 미리 구하려면 무려 $6^{10}$ = <strong>60,466,176가지(약 6천만 가지!)</strong>나 되는 모든 조합을 일일이 전수 조사해야 합니다.</li>
+      <li>주사위 10개의 합에 대한 이론적인 확률 분포 표를 미리 구하려면 무려 6<sup>10</sup> = <strong>60,466,176가지(약 6천만 가지!)</strong>나 되는 모든 조합을 일일이 전수 조사해야 합니다.</li>
       <li>주사위가 20개, 50개, 100개로 늘어나면 경우의 수가 기하급수적으로 폭발하여 전 세계 슈퍼컴퓨터를 총동원해도 계산이 불가능해집니다.</li>
     </ul>
   </li>
@@ -882,31 +885,34 @@
 
 <h3 id="수학적-표현-표본-평균-공식">수학적 표현: 표본 평균 공식</h3>
 
-<p>수학적으로 몬테카를로법은 수집한 무작위 표본($s_i$)들의 <strong>표본 평균(Sample Mean)</strong>으로 참 기댓값 $V$를 추정합니다:</p>
+<p>수학적으로 몬테카를로법은 수집한 무작위 표본(<em>s</em><sub><em>i</em></sub>)들의 <strong>표본 평균(Sample Mean)</strong>으로 참 기댓값 <em>V</em>를 추정합니다:</p>
 
-\[V \approx \frac{1}{N} \sum_{i=1}^{N} s_i\]
+<blockquote>
+  <h3 id="식-91-2-표본-평균을-이용한-가치-추정">(식 9.1-2) 표본 평균을 이용한 가치 추정</h3>
+  <p><em>V</em> ≈ 1 / <em>N</em> ∑<sub><em>i</em>=1</sub><sup><em>N</em></sup> <em>s</em><sub><em>i</em></sub></p>
+</blockquote>
 
 <p><img src="./img/05_sample_mean_formula_breakdown.png" alt="표본 평균 수식 기호 해부" />
 <strong>그림 09-1-5</strong> 이호진 교수님이 칠판에서 표본 평균 기댓값 공식의 3대 블록 기호와 물리적 의미를 알기 쉽게 해설하는 직강 강의 (16:9 와이드)</p>
 
-<h4 id="-수식-돋보기-표본-평균-공식-v-approx-frac1n-sum-s_i-기호-해부">💡 수식 돋보기: 표본 평균 공식 $V \approx \frac{1}{N} \sum s_i$ 기호 해부</h4>
+<h4 id="-수식-돋보기-표본-평균-공식-v--1--n--si-기호-해부">💡 수식 돋보기: 표본 평균 공식 <em>V</em> ≈ 1 / <em>N</em> ∑ <em>s</em><sub><em>i</em></sub> 기호 해부</h4>
 
 <p>이 간단한 수식은 몬테카를로 기법 전체를 관통하는 핵심 기둥입니다. 기호 하나하나를 뜯어보면 다음과 같습니다:</p>
 
 <ol>
-  <li><strong>$V \approx$ (가치 추정치)</strong>:
+  <li><strong><em>V</em> ≈ (가치 추정치)</strong>:
     <ul>
-      <li>환경의 완전한 확률 분포를 알 때 구하는 이론적 참값 $\mathbb{E}[X]$ 대신, 실제 표본들로 추정한 값임을 물결 기호(<code class="language-plaintext highlighter-rouge">≈</code>)로 나타냅니다.</li>
+      <li>환경의 완전한 확률 분포를 알 때 구하는 이론적 참값 E[<em>X</em>] 대신, 실제 표본들로 추정한 값임을 물결 기호(<code class="language-plaintext highlighter-rouge">≈</code>)로 나타냅니다.</li>
     </ul>
   </li>
-  <li><strong>$\frac{1}{N}$ (시행 횟수 정규화)</strong>:
+  <li><strong>1 / <em>N</em> (시행 횟수 정규화)</strong>:
     <ul>
-      <li>지금까지 수집한 전체 표본의 개수 $N$으로 나누어 산술 평균을 만드는 정규화 연산자입니다.</li>
+      <li>지금까지 수집한 전체 표본의 개수 <em>N</em>으로 나누어 산술 평균을 만드는 정규화 연산자입니다.</li>
     </ul>
   </li>
-  <li><strong>$\sum_{i=1}^{N} s_i$ (경험 표본의 누적 총합)</strong>:
+  <li><strong>∑<sub><em>i</em>=1</sub><sup><em>N</em></sup> <em>s</em><sub><em>i</em></sub> (경험 표본의 누적 총합)</strong>:
     <ul>
-      <li>에이전트가 1번째부터 $N$번째까지 실제로 환경과 부딪히며 관측한 모든 표본 데이터의 합산입니다.</li>
+      <li>에이전트가 1번째부터 <em>N</em>번째까지 실제로 환경과 부딪히며 관측한 모든 표본 데이터의 합산입니다.</li>
     </ul>
   </li>
 </ol>
@@ -932,15 +938,18 @@
 
 <p>하지만 샘플 데이터가 100만 개, 1억 개로 늘어난다면 어떨까요? 모든 샘플을 <code class="language-plaintext highlighter-rouge">samples</code> 리스트에 담아두고 매번 <code class="language-plaintext highlighter-rouge">sum()</code>을 계산하면 컴퓨터 메모리가 부족해지고 연산 속도가 심각하게 느려집니다. 1억 개의 주사위 눈을 메모리에 보관하려면 수백 메가바이트의 RAM이 소모되고, 새로운 주사위를 던질 때마다 과거 1억 개의 데이터를 처음부터 다시 더해야 하는 끔찍한 비효율이 발생합니다.</p>
 
-<p>이를 해결하기 위해, 과거 데이터를 일일이 보관하지 않고 오직 <strong>직전 가치 $V$와 시행 횟수 $n$ 딱 2개만 기억</strong>하여 실시간으로 평균을 업데이트하는 <strong>증분 갱신(Incremental Update)</strong>을 사용합니다:</p>
+<p>이를 해결하기 위해, 과거 데이터를 일일이 보관하지 않고 오직 <strong>직전 가치 <em>V</em>와 시행 횟수 <em>n</em> 딱 2개만 기억</strong>하여 실시간으로 평균을 업데이트하는 <strong>증분 갱신(Incremental Update)</strong>을 사용합니다:</p>
 
-\[V_{\text{new}} = V_{\text{old}} + \frac{1}{n}(s - V_{\text{old}})\]
+<blockquote>
+  <h3 id="식-91-3-평균의-증분-갱신-점화식">(식 9.1-3) 평균의 증분 갱신 점화식</h3>
+  <p><em>V</em><sub>new</sub> = <em>V</em><sub>old</sub> + 1 / <em>n</em> (<em>s</em> − <em>V</em><sub>old</sub>)</p>
+</blockquote>
 
 <p><img src="./img/hojin_incremental_chalkboard.jpg" alt="증분 갱신 칠판 직강" />
-<strong>그림 09-1-5b</strong> 이호진 교수님이 칠판에서 증분 갱신 점화식 $V_n = V_{n-1} + \frac{1}{n}(s_n - V_{n-1})$의 단계별 수학 유도 과정을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
+<strong>그림 09-1-5b</strong> 이호진 교수님이 칠판에서 증분 갱신 점화식 <em>V</em><sub><em>n</em></sub> = <em>V</em><sub><em>n</em>−1</sub> + 1 / <em>n</em> (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>)의 단계별 수학 유도 과정을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
 
 <p><img src="./img/06_incremental_update_formula_breakdown.png" alt="증분 갱신 수식 기호 해부" />
-<strong>그림 09-1-6</strong> 조교 지니와 도로시가 가벼운 메모리 칩을 들고 오차 신호 ($s - V_{\text{old}}$)와 학습률 ($1/n$)의 상호작용을 해설하는 칠판 강의 (16:9 와이드)</p>
+<strong>그림 09-1-6</strong> 조교 지니와 도로시가 가벼운 메모리 칩을 들고 오차 신호 (<em>s</em> − <em>V</em><sub>old</sub>)와 학습률 (1 / <em>n</em>)의 상호작용을 해설하는 칠판 강의 (16:9 와이드)</p>
 
 <hr />
 
@@ -950,29 +959,29 @@
 
 <ol>
   <li>
-    <p><strong>시작점: $n$개의 데이터에 대한 일반 평균 정의식</strong>:
-\(V_n = \frac{1}{n} \sum_{i=1}^{n} s_i = \frac{s_1 + s_2 + \cdots + s_{n-1} + s_n}{n}\)</p>
+    <p><strong>시작점: <em>n</em>개의 데이터에 대한 일반 평균 정의식</strong>:
+<em>V</em><sub><em>n</em></sub> = 1 / <em>n</em> ∑<sub><em>i</em>=1</sub><sup><em>n</em></sup> <em>s</em><sub><em>i</em></sub> = (<em>s</em><sub>1</sub> + <em>s</em><sub>2</sub> + … + <em>s</em><sub><em>n</em>−1</sub> + <em>s</em><sub><em>n</em></sub>) / <em>n</em></p>
   </li>
   <li>
-    <p><strong>마지막 데이터 $s_n$만 밖으로 떼어내기</strong>:
-\(V_n = \frac{1}{n} \left( \sum_{i=1}^{n-1} s_i + s_n \right)\)</p>
+    <p><strong>마지막 데이터 <em>s</em><sub><em>n</em></sub>만 밖으로 떼어내기</strong>:
+<em>V</em><sub><em>n</em></sub> = 1 / <em>n</em> ( ∑<sub><em>i</em>=1</sub><sup><em>n</em>−1</sup> <em>s</em><sub><em>i</em></sub> + <em>s</em><sub><em>n</em></sub> )</p>
   </li>
   <li>
-    <p><strong>직전 평균 $V_{n-1}$과의 관계 찾기</strong>:
-직전 $n-1$개까지의 평균은 $V_{n-1} = \frac{1}{n-1} \sum_{i=1}^{n-1} s_i$ 이므로, 양변에 $n-1$을 곱하면:
-\(\sum_{i=1}^{n-1} s_i = (n-1) V_{n-1}\)
+    <p><strong>직전 평균 <em>V</em><sub><em>n</em>−1</sub>과의 관계 찾기</strong>:
+직전 <em>n</em>−1개까지의 평균은 <em>V</em><sub><em>n</em>−1</sub> = 1 / (<em>n</em>−1) ∑<sub><em>i</em>=1</sub><sup><em>n</em>−1</sup> <em>s</em><sub><em>i</em></sub> 이므로, 양변에 <em>n</em>−1을 곱하면:
+∑<sub><em>i</em>=1</sub><sup><em>n</em>−1</sup> <em>s</em><sub><em>i</em></sub> = (<em>n</em>−1) <em>V</em><sub><em>n</em>−1</sub><br />
 이것을 2번 식에 쏙 대입합니다!</p>
   </li>
   <li>
     <p><strong>대입하여 정리하기</strong>:
-\(V_n = \frac{1}{n} \left( (n-1)V_{n-1} + s_n \right)\)
-\(= \frac{1}{n} (n V_{n-1} - V_{n-1} + s_n)\)
-\(= \frac{n V_{n-1}}{n} + \frac{s_n - V_{n-1}}{n}\)
-\(= V_{n-1} + \frac{1}{n} (s_n - V_{n-1})\)</p>
+<em>V</em><sub><em>n</em></sub> = 1 / <em>n</em> ( (<em>n</em>−1) <em>V</em><sub><em>n</em>−1</sub> + <em>s</em><sub><em>n</em></sub> )<br />
+= 1 / <em>n</em> ( <em>n</em> <em>V</em><sub><em>n</em>−1</sub> − <em>V</em><sub><em>n</em>−1</sub> + <em>s</em><sub><em>n</em></sub> )<br />
+= (<em>n</em> <em>V</em><sub><em>n</em>−1</sub>) / <em>n</em> + (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>) / <em>n</em><br />
+= ** <em>V</em><sub><em>n</em>−1</sub> + 1 / <em>n</em> (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>) **</p>
   </li>
 </ol>
 
-<p>마침내 우리가 찾던 기적의 점화식이 완성되었습니다! 과거 $s_1$부터 $s_{n-1}$까지의 모든 데이터가 단 하나의 숫자 $V_{n-1}$ 속에 압축되어 녹아들어간 것입니다!</p>
+<p>마침내 우리가 찾던 기적의 점화식이 완성되었습니다! 과거 <em>s</em><sub>1</sub>부터 <em>s</em><sub><em>n</em>−1</sub>까지의 모든 데이터가 단 하나의 숫자 <em>V</em><sub><em>n</em>−1</sub> 속에 압축되어 녹아들어간 것입니다!</p>
 
 <hr />
 
@@ -981,21 +990,21 @@
 <p>과거 데이터를 모두 버려도 수학적으로 완벽한 평균이 유지되는 비밀은 바로 이 점화식 구조에 있습니다:</p>
 
 <ol>
-  <li><strong>$V_{\text{old}}$ ($V_{n-1}$, 기존 추정치)</strong>:
+  <li><strong><em>V</em><sub>old</sub> (<em>V</em><sub><em>n</em>−1</sub>, 기존 추정치)</strong>:
     <ul>
       <li>지금까지 누적된 경험으로 알고 있는 현재의 가치 추정치입니다.</li>
     </ul>
   </li>
-  <li><strong>$s - V_{\text{old}}$ ($s_n - V_{n-1}$, 오차 신호, Error)</strong>:
+  <li><strong><em>s</em> − <em>V</em><sub>old</sub> (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>, 오차 신호, Error)</strong>:
     <ul>
-      <li>이번에 새로 관측한 표본 $s$가 기존 지식 $V_{\text{old}}$와 얼마나 차이가 나는지를 나타내는 예측 오차입니다.</li>
+      <li>이번에 새로 관측한 표본 <em>s</em>가 기존 지식 <em>V</em><sub>old</sub>와 얼마나 차이가 나는지를 나타내는 예측 오차입니다.</li>
       <li>새 표본이 내 생각보다 컸다면 양수(+), 작았다면 음수(-)가 나와 가치를 밀거나 당겨줍니다.</li>
     </ul>
   </li>
-  <li><strong>$\frac{1}{n}$ (학습 보폭 / 학습률)</strong>:
+  <li><strong>1 / <em>n</em> (학습 보폭 / 학습률)</strong>:
     <ul>
       <li>새로운 오차를 기존 지식에 얼마나 반영할 것인가를 조절하는 계수입니다.</li>
-      <li>시행 횟수 $n$이 커질수록 계수가 $\frac{1}{2} \rightarrow \frac{1}{10} \rightarrow \frac{1}{1000}$로 줄어듭니다. 즉, 초기에는 새로운 데이터에 민감하게 반응하여 빠르게 학습하다가, 경험이 많이 쌓이면 가치가 단단하게 고정되어 안정화됩니다.</li>
+      <li>시행 횟수 <em>n</em>이 커질수록 계수가 1/2 → 1/10 → 1/1000로 줄어듭니다. 즉, 초기에는 새로운 데이터에 민감하게 반응하여 빠르게 학습하다가, 경험이 많이 쌓이면 가치가 단단하게 고정되어 안정화됩니다.</li>
     </ul>
   </li>
 </ol>
@@ -1021,7 +1030,7 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">최종 증분 평균 V:</span><span class="sh">"</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span> <span class="c1"># 출력 결과: 7.0019... (참값 7 수렴)
 </span></code></pre></div></div>
 
-<p>이 코드는 과거의 수많은 표본을 단 하나도 메모리에 보관하지 않으면서도, 매 루프마다 수학적으로 완전무결한 평균값을 실시간으로 유지합니다. 메모리 사용량은 표본이 100만 개든 100억 개든 영원히 $O(1)$(상수 크기)입니다!</p>
+<p>이 코드는 과거의 수많은 표본을 단 하나도 메모리에 보관하지 않으면서도, 매 루프마다 수학적으로 완전무결한 평균값을 실시간으로 유지합니다. 메모리 사용량은 표본이 100만 개든 100억 개든 영원히 <em>O</em>(1)(상수 크기)입니다!</p>
 
 <hr />
 
@@ -1042,12 +1051,12 @@
   </li>
   <li><strong>표본 평균과 대수의 법칙 (Sample Mean &amp; LLN)</strong>:
     <ul>
-      <li>표본 평균 $V \approx \frac{1}{N} \sum s_i$ 공식을 통해, 표본 수 $N$이 증가할수록 추정치가 오차를 좁혀가며 참 기댓값으로 정밀 수렴합니다.</li>
+      <li>표본 평균 <em>V</em> ≈ 1 / <em>N</em> ∑ <em>s</em><sub><em>i</em></sub> 공식을 통해, 표본 수 <em>N</em>이 증가할수록 추정치가 오차를 좁혀가며 참 기댓값으로 정밀 수렴합니다.</li>
     </ul>
   </li>
   <li><strong>초경량 증분 갱신 (Incremental Update)</strong>:
     <ul>
-      <li>$V \leftarrow V + \frac{1}{n}(s - V)$ 점화식을 사용하여, 과거의 모든 데이터를 버리고도 단 2개의 변수만으로 실시간 온라인 학습을 완성합니다.</li>
+      <li><em>V</em> ← <em>V</em> + 1 / <em>n</em> (<em>s</em> − <em>V</em>) 점화식을 사용하여, 과거의 모든 데이터를 버리고도 단 2개의 변수만으로 실시간 온라인 학습을 완성합니다.</li>
     </ul>
   </li>
 </ol>
