@@ -1,0 +1,8 @@
+### 08_mc_control_architecture.jpg 프롬프트 명세서
+
+- **역할 및 용도**: 몬테카를로 정책 제어(Control)의 3단계 순환 아키텍처 다이어그램 (경험 수집 → 역방향 Q 갱신 → 입실론-탐욕 정책 개선, 1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational architectural diagram showing the Monte Carlo Policy Control cycle. On the left side, Dorothy (refer strictly to official character sheet: adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, wearing classic medium blue denim overalls with rolled cuffs and 'STEM HERO' round patch, orange striped t-shirt, ruby red canvas sneakers) holds a clipboard tracking 'Q(s, a) Evaluation with alpha=0.1'. In the center, a large circular golden flow arrow links '1. 경험 수집 (Episode Sampling)' -> '2. 역방향 Q 갱신 (Q <- Q + alpha*(G - Q))' -> '3. 입실론-탐욕 정책 개선 (pi <- epsilon-greedy)'. On the right, Jiny the tuxedo cat with glasses happily points a golden wand at a glowing 3x4 grid world showing clear path arrows leading safely to the Goal. Toto the cream-white puppy with sky-blue bandana sits happily in front. Pure solid clean white background (#FFFFFF), isolated cutout graphic, soft contact shadows at feet, centered, 1:1 square ratio, clean Korean and English labels, no Japanese text.

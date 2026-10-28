@@ -636,101 +636,109 @@
 <p><img src="./img/01_mc_control_intro.png" alt="몬테카를로 정책 제어 인트로" />
 <strong>그림 09-4-1</strong> 탐색-이용(Exploration-Exploitation) 갈림길에서 지니의 입실론 주사위 마법을 보며 나아갈 길을 결정하는 도로시</p>
 
-<p>가치 함수 평가를 넘어 최적 정책을 순차적으로 갱신하는 <strong>정책 제어(Policy Control)</strong>와 탐색-이용의 균형을 다룹니다. 무작위 행동 탐색의 비율을 제어하는 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>과 최신 데이터에 적응하는 <strong>고정 학습률 <em>α</em></strong>를 활용하여 몬테카를로법으로 최적 솔루션에 수렴해 나가는 전체 루프를 요정 지니의 딜레마 주사위 놀이와 함께 정복해봅시다!</p>
+<p>가치 함수 평가를 넘어 최적 정책을 스스로 찾아 나가는 <strong>정책 제어(Policy Control)</strong>와 탐색-이용의 균형을 다룹니다. 무작위 행동 탐색의 비율을 제어하는 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>과 시시각각 발전하는 최신 데이터에 적응하는 <strong>고정 학습률 <em>α</em> 기반 지수 이동 평균</strong>을 활용하여 몬테카를로법으로 최적 솔루션에 수렴해 나가는 전체 라이프사이클을 요정 지니의 딜레마 주사위 놀이와 이호진 교수님의 4개의 문 비유로 완벽히 정복해 봅시다!</p>
 
 <hr />
 
-<p>앞서 9.2절과 9.3절에서는 몬테카를로법으로 ‘정책 평가(Policy Evaluation)’를 수행했습니다. 어떤 고정된 정책이 주어졌을 때 각 칸이 얼마나 좋은지를 평가하는 작업이었죠.</p>
+<h2 id="0941-정책-제어의-기초-평가와-개선의-탁구-핑퐁">09.4.1 정책 제어의 기초: 평가와 개선의 탁구 핑퐁</h2>
 
-<p>하지만 강화학습의 궁극적인 꿈은 단순히 남이 준 정책을 채점하는 것에 그치지 않고, <strong>“어떻게 하면 가장 많은 보상을 얻을 수 있는 최고의 행동 지침(최적 정책 $\pi^*$)을 스스로 찾아낼 수 있을까?”</strong>입니다. 이처럼 최적 정책을 찾아 나가는 과정을 <strong>‘정책 제어(Policy Control)’</strong>라고 부릅니다.</p>
+<p>앞서 9.2절과 9.3절에서는 몬테카를로법으로 ‘정책 평가(Policy Evaluation)’를 수행했습니다. 어떤 고정된 정책(예: 4방향 25% 균등 무작위 정책)이 주어졌을 때 각 칸의 가치가 얼마인지를 채점하는 작업이었습니다.</p>
 
-<p>이번 절에서는 몬테카를로법을 이용한 정책 제어를 설명합니다. 다행히도 핵심 아이디어들은 4장 동적 프로그래밍에서 이미 다 배웠기 때문에 원리는 매우 친숙합니다. 핵심은 바로 <strong>‘평가’와 ‘개선’을 탁구공을 치듯 번갈아 반복하는 것</strong>입니다. 그럼 구현에 앞서 가볍게 복습해보겠습니다.</p>
-
-<hr />
-
-<h2 id="0941-평가와-개선">09.4.1 평가와 개선</h2>
+<p>하지만 강화학습의 궁극적인 목표는 단순히 남이 준 정책을 채점하는 것에 머무르지 않고, <strong>“어떻게 하면 가장 많은 보상을 획득할 수 있는 최고의 행동 지침(최적 정책 <em>π</em><sup>*</sup>)을 스스로 찾아낼 수 있을까?”</strong>입니다. 이처럼 최적 정책을 찾아 나가는 전 과정을 <strong>‘정책 제어(Policy Control)’</strong>라고 부릅니다.</p>
 
 <p><img src="./img/02_policy_iteration_pingpong.png" alt="정책 평가와 개선의 반복" />
 <strong>그림 09-4-2</strong> 정책 평가(Evaluation)와 정책 개선(Improvement)의 과정을 탁구 핑퐁 패들로 주고받는 지니와 도로시</p>
 
-<p>최적 정책은 ‘평가’와 ‘개선’을 번갈아 반복하여 얻습니다.</p>
+<p>최적 정책은 4장에서 배운 <strong>‘정책 반복(Policy Iteration)’</strong>의 큰 틀과 마찬가지로, ‘평가’와 ‘개선’을 탁구공 치듯 번갈아 반복하여 완성됩니다:</p>
 
 <ol>
-  <li><strong>‘평가’ 단계</strong>: 현재 정책을 바탕으로 경험을 쌓아 상태나 행동의 가치 함수를 얻습니다.</li>
-  <li><strong>‘개선’ 단계</strong>: 가치 함수가 가장 높은 쪽으로 행동을 수정(탐욕화)하여 정책을 한 단계 업그레이드합니다.</li>
+  <li><strong>‘평가(Evaluation)’ 단계</strong>: 현재 정책을 바탕으로 환경 속을 직접 걸어 다니며 경험을 쌓고, 각 상태나 행동의 가치 함수를 측정합니다.</li>
+  <li><strong>‘개선(Improvement)’ 단계</strong>: 가치 함수가 가장 높은 쪽으로 행동 확률을 수정(탐욕화)하여 정책을 한 단계 업그레이드합니다.</li>
 </ol>
 
-<p>이 두 과정을 번갈아 무한히 반복함으로써 에이전트는 처음에는 서툴렀던 정책을 다듬어 최적 정책(과 최적 가치 함수)에 점점 다가갈 수 있습니다.</p>
-
-<p>앞에서는 몬테카를로법으로 정책을 평가했습니다. 예를 들어 $\pi$라는 정책이 있다면, 몬테카를로법을 이용해 $V_\pi(s)$를 얻을 수 있었습니다. 그다음은 개선 단계입니다. 개선 단계에서는 탐욕화(Greedy Selection)를 수행합니다.</p>
-
-<p>수식으로 다음처럼 표현할 수 있습니다:</p>
-
-\[\mu(s) = \arg\max_a Q(s, a) \tag{식 9.3}\]
-
-\[= \arg\max_a \sum_{s'} p(s' \mid s, a) \left\{ r(s, a, s') + \gamma V(s') \right\} \tag{식 9.4}\]
-
-<p>개선 단계에서는 가치 함수의 값을 최대로 만드는 행동을 선택합니다(이 책에서는 ‘탐욕화’라고 부릅니다).</p>
-
-<p>$Q$ 함수(행동 가치 함수)의 경우 [식 9.3]과 같이 $Q$ 함수가 최댓값을 반환하는 행동을 선택합니다. 이때 행동이 단 하나로 결정되므로 결정적 정책 함수 $\mu(s)$로 나타낼 수 있습니다. 또한 [식 9.4]와 같이 상태 가치 함수 $V$로 나타낼 수도 있습니다.</p>
-
-<p><img src="./img/hojin_q_door_signpost.jpg" alt="이호진 교수님의 Q 함수 문 표지판 강의" />
-<strong>그림 09-4-2b</strong> 이호진 교수님이 상·하·좌·우 4개의 문 위에 붙은 행동 가치 표지판($Q(s, \text{Up}) = +10$ 등)을 보여주며, 미지의 미로에서 환경 모델 없이 즉시 최선의 문을 고를 수 있는 $Q$ 함수의 결정적 위력을 도로시와 토토에게 설명하는 장면 (1:1 순백색)</p>
-
-<p><img src="./img/03_q_vs_v_model_free_choice.png" alt="Q 함수 vs V 함수 선택" />
-<strong>그림 09-4-3</strong> 환경 모델 전이 확률이 없어 막히는 $V(s)$ 대신, 행동 가치 $Q(s, a)$로 즉시 최적 행동을 선택하는 도로시와 지니</p>
+<p>이 두 단계를 끊임없이 주고받으면, 처음에는 서툴렀던 무작위 정책이 점차 다듬어져 결국 최적 정책에 도달하게 됩니다.</p>
 
 <hr />
 
-<h3 id="왜-vs-대신-qs-a를-써야만-할까요">왜 V(s) 대신 Q(s, a)를 써야만 할까요?</h3>
+<h3 id="1-왜-모델-프리-강화학습에서는-vs-대신-qs-a를-써야만-할까요">1) 왜 모델 프리 강화학습에서는 V(s) 대신 Q(s, a)를 써야만 할까요?</h3>
 
-<p>앞 절까지는 상태 가치 함수 $V$에 대한 평가를 진행했습니다. 만약 상태 가치 함수 $V$를 사용하여 정책을 개선한다면 [식 9.4]를 계산하면 됩니다. 하지만 이 식에는 치명적인 제약이 있습니다.</p>
-
-<p>일반적인 강화학습 문제에서는 <strong>환경 모델, 즉 상태 전이 확률 $p(s’ \mid s, a)$와 즉각 보상 함수 $r(s, a, s’)$를 알 수 없습니다.</strong> 그런데 [식 9.4]를 자세히 보십시오. $\sum_{s’} p(s’ \mid s, a) \dots$ 처럼 환경 모델의 수식이 통째로 들어가 있습니다! 환경 모델의 확률 수식을 모르면 [식 9.4]는 아예 계산기조차 두드릴 수 없습니다.</p>
+<p>가치 함수를 개선 단계에서 활용할 때, 우리는 4장에서 배운 탐욕화(Greedy Selection) 공식을 떠올릴 수 있습니다. 수식으로는 다음과 같이 두 가지 방식으로 표현할 수 있습니다:</p>
 
 <blockquote>
-  <p>👨‍🏫 <strong>이호진 교수님의 방과 문 비유</strong>:<br />
-“도로시야, $V(s)$는 <strong>‘지금 내가 서 있는 방이 얼마나 좋은 방인가’</strong>를 나타내는 점수란다.<br />
-만약 방에 동, 서, 남, 북 4개의 문이 있다면, 어느 문으로 나가야 할지 결정하려면 ‘각 문을 열었을 때 어떤 방으로 연결되는지’ 미로 전체의 설계도($p(s’ \mid s, a)$)를 알고 있어야만 다음 방의 점수 $V(s’)$를 비교할 수 있지.<br />
-하지만 $Q(s, a)$는 <strong>‘각 문고리 위에 직접 적혀 있는 점수 표지판’</strong>이란다!<br />
-위쪽 문에는 ‘+10점’, 오른쪽 문에는 ‘+5점’이라고 표지판이 적혀 있으니, 문 뒤에 어떤 미로가 펼쳐져 있는지 설계를 전혀 몰라도 <strong>단순히 가장 큰 숫자가 적힌 위쪽 문($\arg\max_a Q$)을 열고 나가면 끝</strong>이란다!”</p>
+  <h3 id="μs--argmaxa-qs-a--식-93-행동-가치-함수-기반"><strong><em>μ</em>(<em>s</em>) = argmax<sub><em>a</em></sub> <em>Q</em>(<em>s</em>, <em>a</em>)</strong>      <em>(식 9.3: 행동 가치 함수 기반)</em></h3>
+
+  <h3 id="μs--argmaxa-s-ps--s-a-rs-a-s--γvs--식-94-상태-가치-함수-기반"><strong><em>μ</em>(<em>s</em>) = argmax<sub><em>a</em></sub> ∑<sub><em>s</em>'</sub> <em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>') + <em>γV</em>(<em>s</em>')]</strong>      <em>(식 9.4: 상태 가치 함수 기반)</em></h3>
 </blockquote>
 
-<p>따라서 일반적인 모델 프리(Model-Free) 강화학습 문제에서는 환경 모델이 필요 없는 [식 9.3]의 <strong>행동 가치 함수 $Q(s, a)$</strong>를 반드시 이용해야 합니다. 단순히 4방향의 $Q(s, a)$ 숫자 중 가장 큰 값을 찾아내기만 하면 즉시 최적 행동이 결정되기 때문입니다.</p>
+<p>두 식 모두 ‘가장 큰 가치를 주는 행동’을 선택하여 새로운 결정적 정책 <em>μ</em>(<em>s</em>)를 만드는 탐욕화 식입니다. 그런데 왜 우리는 몬테카를로 정책 제어에서 [식 9.4]의 상태 가치 함수 <em>V</em>(<em>s</em>)를 버리고 [식 9.3]의 <strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</strong>를 필사적으로 선택해야 할까요?</p>
+
+<p><img src="./img/hojin_q_door_signpost.jpg" alt="이호진 교수님의 Q 함수 문 표지판 강의" />
+<strong>그림 09-4-3</strong> 이호진 교수님이 상·하·좌·우 4개의 문 위에 붙은 행동 가치 표지판(<em>Q</em>(<em>s</em>, Up) = +10 등)을 보여주며, 미지의 미로에서 환경 모델 없이 즉시 최선의 문을 고를 수 있는 <em>Q</em> 함수의 결정적 위력을 도로시와 토토, 지니에게 설명하는 직강 장면</p>
+
+<p><img src="./img/03_q_vs_v_model_free_choice.png" alt="Q 함수 vs V 함수 선택" />
+<strong>그림 09-4-4</strong> 환경 모델 전이 확률이 없어 막히는 <em>V</em>(<em>s</em>) 대신, 행동 가치 <em>Q</em>(<em>s</em>, <em>a</em>)로 즉시 최적 행동을 선택하는 도로시와 지니</p>
+
+<blockquote>
+  <p>👨‍🏫 <strong>이호진 교수님의 ‘방과 4개의 문’ 비유</strong>:<br />
+“도로시야, 상태 가치 함수 <em>V</em>(<em>s</em>)는 <strong>‘지금 내가 서 있는 방이 얼마나 좋은 방인가’</strong>를 나타내는 점수란다.<br />
+만약 방에 상, 하, 좌, 우 4개의 문이 있을 때, 어느 문으로 나가야 할지 결정하려면 ‘각 문을 열었을 때 어떤 방으로 이어지는지’ 미로 전체의 설계도(<em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>))를 에이전트가 미리 완벽하게 알고 있어야만 다음 방의 점수 <em>V</em>(<em>s</em>')를 가중 평균하여 비교할 수 있지.<br />
+하지만 환경 모델을 전혀 모르는 강화학습에서는 그 설계도가 아예 없단다!<br />
+반면에 행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)는 <strong>‘각 문고리 위에 직접 적혀 있는 점수 표지판’</strong>이란다!<br />
+위쪽 문 표지판에는 ‘+10점’, 오른쪽 문 표지판에는 ‘+5점’이라고 적혀 있다면, 문 뒤에 어떤 미로가 펼쳐져 있는지 설계를 전혀 몰라도 <strong>단순히 가장 큰 숫자가 적힌 위쪽 문(argmax<sub><em>a</em></sub> <em>Q</em>)을 열고 나가면 끝</strong>이란다!”</p>
+</blockquote>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이것이 바로 모델 프리(Model-Free) 강화학습의 핵심입니다. 환경 모델의 확률 수식 <em>p</em>(<em>s</em>'</td>
+      <td><em>s</em>, <em>a</em>)를 모를 때는 [식 9.4]를 계산할 방법이 전혀 없으므로, 표지판 역할을 해주는 <strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</strong>를 평가 대상으로 삼아야 합니다.</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr />
 
-<h3 id="q-함수의-평가-상태에서-행동으로의-전환">Q 함수의 평가: 상태에서 행동으로의 전환</h3>
+<h3 id="2-q-함수의-평가-상태에서-상태-행동-쌍으로의-확장">2) Q 함수의 평가: 상태에서 상태-행동 쌍으로의 확장</h3>
 
-<p>$Q$ 함수를 대상으로 정책을 개선하려면, 먼저 $Q$ 함수를 정확히 ‘평가’할 수 있어야 합니다.</p>
+<p><em>Q</em> 함수를 바탕으로 정책을 개선하려면, 먼저 <em>Q</em> 함수를 정확히 ‘평가’할 수 있어야 합니다.</p>
 
-<p>앞 절까지는 몬테카를로법으로 상태 가치 함수 $V(s)$를 평가했습니다. 이제 평가 대상을 상태-행동 쌍인 $Q(s, a)$로 바꿔주기만 하면 됩니다. 몬테카를로법의 갱신식에서 $V(s)$ 자리에 $Q(s, a)$를 쏙 넣어주면 끝납니다:</p>
+<p>9.2절과 9.3절에서 배운 상태 가치 함수 <em>V</em>(<em>s</em>) 평가 공식과 <em>Q</em>(<em>s</em>, <em>a</em>) 평가 공식을 나란히 비교해 보면, 대상이 단일 상태 <em>s</em>에서 상태-행동 쌍 <em>(s, a)</em>로 확장되었을 뿐 수학적 뼈대는 완전히 동일합니다:</p>
 
-<p><strong>[상태 가치 함수 평가]</strong></p>
+<p><strong>[상태 가치 함수 V(s) 평가]</strong></p>
 <ul>
-  <li>일반적인 표본 평균: 
-\(V_n(s) = \frac{G^{(1)} + G^{(2)} + \cdots + G^{(n)}}{n}\)</li>
-  <li>증분 갱신 점화식: 
-\(V_n(s) = V_{n-1}(s) + \frac{1}{n} \left\{ G^{(n)} - V_{n-1}(s) \right\} \tag{식 9.5}\)</li>
+  <li>표본 평균 정의:
+    <blockquote>
+      <p><strong><em>V</em><sub><em>n</em></sub>(<em>s</em>) = (<em>G</em><sup>(1)</sup> + <em>G</em><sup>(2)</sup> + … + <em>G</em><sup>(<em>n</em>)</sup>) / <em>n</em></strong></p>
+    </blockquote>
+  </li>
+  <li>증분 갱신 점화식:
+    <blockquote>
+      <p><strong><em>V</em><sub><em>n</em></sub>(<em>s</em>) = <em>V</em><sub><em>n</em>-1</sub>(<em>s</em>) + (1 / <em>n</em>) · [<em>G</em><sup>(<em>n</em>)</sup> - <em>V</em><sub><em>n</em>-1</sub>(<em>s</em>)]</strong>      <em>(식 9.5)</em></p>
+    </blockquote>
+  </li>
 </ul>
 
-<p><strong>[Q 함수(행동 가치 함수) 평가]</strong></p>
+<p><strong>[행동 가치 함수 Q(s, a) 평가]</strong></p>
 <ul>
-  <li>일반적인 표본 평균: 
-\(Q_n(s, a) = \frac{G^{(1)} + G^{(2)} + \cdots + G^{(n)}}{n}\)</li>
-  <li>증분 갱신 점화식: 
-\(Q_n(s, a) = Q_{n-1}(s, a) + \frac{1}{n} \left\{ G^{(n)} - Q_{n-1}(s, a) \right\} \tag{식 9.6}\)</li>
+  <li>표본 평균 정의:
+    <blockquote>
+      <p><strong><em>Q</em><sub><em>n</em></sub>(<em>s</em>, <em>a</em>) = (<em>G</em><sup>(1)</sup> + <em>G</em><sup>(2)</sup> + … + <em>G</em><sup>(<em>n</em>)</sup>) / <em>n</em></strong></p>
+    </blockquote>
+  </li>
+  <li>증분 갱신 점화식:
+    <blockquote>
+      <p><strong><em>Q</em><sub><em>n</em></sub>(<em>s</em>, <em>a</em>) = <em>Q</em><sub><em>n</em>-1</sub>(<em>s</em>, <em>a</em>) + (1 / <em>n</em>) · [<em>G</em><sup>(<em>n</em>)</sup> - <em>Q</em><sub><em>n</em>-1</sub>(<em>s</em>, <em>a</em>)]</strong>      <em>(식 9.6)</em></p>
+    </blockquote>
+  </li>
 </ul>
 
-<p>여기서 $G^{(n)}$은 상태 $s$에서 행동 $a$를 취한 $n$번째 에피소드에서 얻은 실제 수익이고, $V_n(s)$는 $n$번째 에피소드가 끝난 시점의 상태 가치 함수 추정치입니다. 마찬가지로 $Q_n(s, a)$는 $n$번째 에피소드가 끝난 시점의 $Q$ 함수 추정치입니다.</p>
-
-<p>이 식들에서 알 수 있듯이 상태 가치 함수든 $Q$ 함수든 대상(입력값)이 $s$에서 $(s, a)$로 바뀌었을 뿐, 몬테카를로법으로 하는 표본 평균과 증분 계산 자체는 수학적으로 완전히 동일합니다.</p>
+<p>여기서 <em>G</em><sup>(<em>n</em>)</sup>은 상태 <em>s</em>에서 행동 <em>a</em>를 취한 <em>n</em>번째 에피소드에서 실제로 얻은 누적 할인 수익입니다. [식 9.6]에 따라 에이전트는 경험이 쌓일 때마다 <em>Q</em>(<em>s</em>, <em>a</em>) 테이블을 실시간으로 갱신해 나갈 수 있습니다.</p>
 
 <hr />
 
-<h2 id="0942-몬테카를로법으로-정책-제어-구현-초기-순진한-버전">09.4.2 몬테카를로법으로 정책 제어 구현 (초기 순진한 버전)</h2>
+<h2 id="0942-몬테카를로-정책-제어의-초기-순진한-버전과-2대-함정">09.4.2 몬테카를로 정책 제어의 초기 순진한 버전과 2대 함정</h2>
 
-<p>이제 몬테카를로법으로 정책을 제어하는 에이전트를 구현하겠습니다. 클래스 이름은 <code class="language-plaintext highlighter-rouge">McAgent</code>입니다. 먼저 코드 전반부를 보겠습니다:</p>
+<p>이제 몬테카를로법으로 정책을 제어하는 기본 클래스 <code class="language-plaintext highlighter-rouge">McAgent</code>의 초기 버전을 작성해 보겠습니다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
 <span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
@@ -742,7 +750,7 @@
 
         <span class="n">random_actions</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span>
         <span class="n">self</span><span class="p">.</span><span class="n">pi</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="n">random_actions</span><span class="p">)</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">Q</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># V가 아닌 Q를 사용! 키는 (state, action)
+        <span class="n">self</span><span class="p">.</span><span class="n">Q</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># V 대신 Q를 테이블로 채택! 키는 (state, action)
 </span>        <span class="n">self</span><span class="p">.</span><span class="n">cnts</span> <span class="o">=</span> <span class="nf">defaultdict</span><span class="p">(</span><span class="k">lambda</span><span class="p">:</span> <span class="mi">0</span><span class="p">)</span>
         <span class="n">self</span><span class="p">.</span><span class="n">memory</span> <span class="o">=</span> <span class="p">[]</span>
 
@@ -760,21 +768,21 @@
         <span class="n">self</span><span class="p">.</span><span class="n">memory</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
 </code></pre></div></div>
 
-<p>앞 절에서 구현한 <code class="language-plaintext highlighter-rouge">RandomAgent</code> 클래스와 거의 같습니다. 유일한 차이는 <code class="language-plaintext highlighter-rouge">self.V</code> 대신 상태와 행동을 함께 담는 <code class="language-plaintext highlighter-rouge">self.Q</code>를 테이블로 채택한 부분입니다.</p>
+<p>9.3절의 <code class="language-plaintext highlighter-rouge">RandomAgent</code>와 비교했을 때, 가치 테이블이 <code class="language-plaintext highlighter-rouge">self.V</code>에서 <code class="language-plaintext highlighter-rouge">self.Q</code>로 바뀐 점이 가장 큰 차이점입니다. 이제 키(Key)는 단일 좌표 <code class="language-plaintext highlighter-rouge">state</code>가 아니라 <code class="language-plaintext highlighter-rouge">(state, action)</code> 튜플이 됩니다.</p>
 
-<p>이어서 정책 제어의 핵심인 <code class="language-plaintext highlighter-rouge">update()</code> 메서드와 완전 탐욕 정책 함수를 작성해 봅시다:</p>
+<p>이어서 정책을 완전 탐욕적으로 개선하는 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수와 에이전트의 <code class="language-plaintext highlighter-rouge">update()</code> 메서드를 추가해 봅시다:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action_size</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">qs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)]</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)]</span>
     <span class="n">max_action</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
 
     <span class="n">action_probs</span> <span class="o">=</span> <span class="p">{</span><span class="n">action</span><span class="p">:</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)}</span>
-    <span class="n">action_probs</span><span class="p">[</span><span class="n">max_action</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="c1"># ❶ 완전 탐욕 (오직 최고 가치 행동만 100% 선택)
+    <span class="n">action_probs</span><span class="p">[</span><span class="n">max_action</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># ❶ 완전 탐욕 (최고 가치 행동에만 100% 확률 부여)
 </span>    <span class="k">return</span> <span class="n">action_probs</span>
 
 <span class="k">class</span> <span class="nc">McAgent</span><span class="p">:</span>
-    <span class="bp">...</span>
-
+    <span class="c1"># ... (앞부분 동일) ...
+</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
         <span class="n">G</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="k">for</span> <span class="n">data</span> <span class="ow">in</span> <span class="nf">reversed</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">memory</span><span class="p">):</span>
@@ -782,56 +790,77 @@
             <span class="n">G</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">G</span> <span class="o">+</span> <span class="n">reward</span>
             <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
             <span class="n">self</span><span class="p">.</span><span class="n">cnts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="c1"># [식 9.6]에 따라 self.Q 증분 갱신
-</span>            <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">cnts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="c1"># ❷ 1/n 균일 평균
-</span>
-            <span class="c1"># state의 정책을 탐욕적으로 즉시 개선
+            <span class="c1"># ❷ 표본 평균 증분 갱신 (1/n 방식)
+</span>            <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">cnts</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+            <span class="c1"># 현재 상태의 정책을 탐욕적으로 즉시 개선
 </span>            <span class="n">self</span><span class="p">.</span><span class="n">pi</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>먼저 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수는 현재 상태 <code class="language-plaintext highlighter-rouge">state</code>에서 4가지 행동의 $Q$ 값을 비교하여, 가장 큰 값을 가진 행동에 1.0(100%)의 확률을 몰아주는 완전 탐욕 확률 분포를 만듭니다.</p>
+<p>겉보기에는 완벽해 보이지만, <strong>이 순진한 코드를 실행하면 에이전트는 미로를 제대로 탈출하지 못하고 심각한 오류에 빠집니다.</strong> 여기에는 인공지능 역사상 가장 유명한 2가지 치명적인 함정이 숨어 있습니다:</p>
 
-<p>그리고 <code class="language-plaintext highlighter-rouge">update()</code> 메서드에서는 <code class="language-plaintext highlighter-rouge">reversed(self.memory)</code>로 거슬러 올라가며 <code class="language-plaintext highlighter-rouge">self.Q</code>를 갱신하고, 곧바로 해당 상태의 정책 <code class="language-plaintext highlighter-rouge">self.pi[state]</code>를 새로운 탐욕 정책으로 업데이트합니다.</p>
+<ol>
+  <li><strong>코드 ❶의 함정 (탐색 실종)</strong>: 100% 완전 탐욕만을 고집하면 한 번 발견한 길에만 갇혀 다른 미지의 황금 경로를 영원히 탐색하지 못합니다.<br />
+→ <strong>해결책: <em>ε</em>-탐욕 정책(Epsilon-Greedy Policy)</strong></li>
+  <li><strong>코드 ❷의 함정 (비정상 문제 무시)</strong>: 정책이 매 에피소드 발전하는데, 옛날 초보 시절의 바보 같은 경험과 오늘의 고수 경험을 똑같이 1/<em>n</em> 가중치로 균일하게 평균 내고 있습니다.<br />
+→ <strong>해결책: 고정 학습률 <em>α</em> 기반 지수 이동 평균</strong></li>
+</ol>
 
-<p><strong>하지만 잠깐! 이 순진한 코드는 실제로 실행해 보면 미로를 제대로 탈출하지 못하고 심각한 실패에 빠집니다.</strong></p>
-
-<p>여기에는 인공지능 역사상 가장 유명한 2가지 치명적인 함정이 도사리고 있습니다:</p>
-<ul>
-  <li><strong>코드의 ❶의 함정</strong>: 100% 완전한 탐욕만을 고집하면 다른 미지의 길을 영영 탐색하지 못합니다. $\rightarrow$ <strong>$\epsilon$-탐욕 정책으로 해결!</strong></li>
-  <li><strong>코드의 ❷의 함정</strong>: 정책이 매번 바뀌는데 초보 시절의 데이터와 고수 시절의 데이터를 똑같이 $1/n$로 균일하게 평균 내고 있습니다. $\rightarrow$ <strong>고정 학습률 $\alpha$ 지수 이동 평균으로 해결!</strong></li>
-</ul>
+<p>이 2대 함정을 어떻게 극복하는지 차례대로 살펴봅시다.</p>
 
 <hr />
 
-<h2 id="0943-epsilon-탐욕-정책으로-변경-첫-번째-개선-탐색의-확보">09.4.3 $\epsilon$-탐욕 정책으로 변경 (첫 번째 개선: 탐색의 확보)</h2>
+<h2 id="0943-첫-번째-개선-ε-탐욕-정책으로-탐색-확보">09.4.3 첫 번째 개선: <em>ε</em>-탐욕 정책으로 탐색 확보</h2>
 
-<p>에이전트가 100% 탐욕 행동만을 고집하면 왜 망하게 될까요?</p>
+<p>완전 탐욕(100% Greedy) 정책은 왜 미로 탈출에 실패할까요?</p>
 
 <p><img src="./img/04_exploration_exploitation_dilemma.png" alt="탐색과 활용의 딜레마" />
-<strong>그림 09-4-4</strong> 초기의 작은 보상 경로에만 갇혀 더 큰 보상이 숨겨진 황금 미로를 발견하지 못하는 탐욕 경로의 함정</p>
+<strong>그림 09-4-5</strong> 초기의 작은 보상 경로에 갇혀 더 큰 보상이 숨겨진 황금 미로를 발견하지 못하는 탐욕 경로의 함정</p>
 
-<p>초기 에이전트는 무작위로 돌아다니다가 우연히 바로 앞의 작은 사탕(+1점)을 하나 발견합니다. 그러면 탐욕화 알고리즘에 의해 이 사탕을 향해 가는 행동의 확률이 100%로 굳어져 버립니다.</p>
+<p>초기 에이전트는 아무것도 모른 채 우연히 바로 앞의 작은 사탕(+0.1점)을 발견합니다. 그러면 탐욕화 알고리즘에 의해 이 사탕을 향해 가는 행동의 확률이 즉시 100%로 굳어집니다.</p>
 
-<p>그 뒤로는 평생 그 사탕 길만 걷게 되며, 저 건너편 골짜기에 엄청나게 거대한 황금 보물 상자(+100점)가 숨겨져 있다는 사실을 영원히 알아채지 못합니다!</p>
+<p>그 뒤로는 평생 그 사탕 길만 반복해서 걷게 되며, 저 건너편 골짜기에 엄청나게 거대한 황금 보물 상자(+1.0 골인 지점)가 숨겨져 있다는 사실을 영원히 탐색하지 못합니다!</p>
 
 <blockquote>
   <p>[!NOTE]
-<strong>💡 탐색과 활용의 딜레마 (Exploration vs Exploitation Dilemma)</strong></p>
+<strong>💡 탐색(Exploration)과 활용(Exploitation)의 딜레마</strong></p>
   <ul>
-    <li><strong>활용(Exploitation)</strong>: 지금까지 겪은 내 경험 중에서 현재 가장 좋다고 알려진 최선의 행동을 선택하는 것입니다 (늘 가던 단골 맛집 가기).</li>
+    <li><strong>활용(Exploitation)</strong>: 지금까지 쌓은 내 경험 중에서 현재 가장 좋다고 알려진 최선의 행동을 선택하는 것입니다 (늘 가던 단골 맛집 가기).</li>
     <li><strong>탐색(Exploration)</strong>: 현재 최고는 아닐지 몰라도, 혹시 더 훌륭한 대박이 숨겨져 있을지 모르니 새로운 시도를 해보는 것입니다 (새로 문을 연 낯선 식당 가보기).<br />
-인공지능이 진정한 최적해를 찾으려면 항상 이 둘 사이의 균형(Trade-off)을 절묘하게 잡아야 합니다.</li>
+인공지능이 진정한 최적해에 도달하려면 항상 이 둘 사이의 절묘한 균형(Trade-off)을 유지해야 합니다.</li>
   </ul>
 </blockquote>
 
-<p>에이전트에게 지혜로운 탐색을 시키는 가장 대표적인 해법이 바로 <strong>$\epsilon$-탐욕 정책($\epsilon$-greedy policy)</strong>입니다.</p>
-
-<p>기본적으로 $Q$ 함수가 가장 큰 최선 행동을 $1 - \epsilon$의 높은 확률(예: 90%)로 선택하되, 그리스 문자 <strong>$\epsilon$(입실론, 보통 0.1 즉 10%)</strong>만큼의 작은 확률을 남겨두어, 주사위를 굴리듯 아무 행동이나 무작위로 시도해 보게 하는 것입니다.</p>
+<p>이 딜레마를 해결하는 가장 대표적인 해법이 바로 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>입니다.</p>
 
 <p><img src="./img/05_epsilon_greedy_distribution.png" alt="입실론 탐욕 정책 확률 분할" />
-<strong>그림 09-4-5</strong> 최선 행동에 압도적인 확률(1-ε)을 부여하고 나머지 행동들에 고른 탐색 확률(ε/4)을 나누어주는 입실론 탐욕 마법</p>
+<strong>그림 09-4-6</strong> 최선 행동에 압도적인 확률(1 - ε + ε/4)을 부여하고 나머지 행동들에도 고른 탐색 확률(ε/4)을 나누어주는 입실론 탐욕 마법</p>
 
-<p>이제 $\epsilon$-탐욕 버전의 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수를 구현해 봅시다:</p>
+<p><em>Q</em> 함수가 가장 큰 최선 행동을 1 - <em>ε</em>의 높은 확률(예: 90%)로 선택하되, 그리스 문자 <strong><em>ε</em>(입실론, 보통 0.1 즉 10%)</strong>만큼의 작은 확률을 남겨두어, 주사위를 굴리듯 아무 행동이나 무작위로 시도해 보게 하는 것입니다.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>수학적으로 가능한 행동의 가짓수가</td>
+      <td><em>A</em></td>
+      <td>개(지금 예제에서는 4개)일 때, 각 행동이 선택될 확률은 다음과 같이 계산됩니다:</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <h3 id="최선-행동-a의-확률--1---ε--ε--a"><strong>최선 행동 <em>a</em><sup>*</sup>의 확률 = (1 - <em>ε</em>) + (<em>ε</em> / |<em>A</em>|)</strong></h3>
+  <h3 id="나머지-일반-행동의-확률--ε--a"><strong>나머지 일반 행동의 확률 = <em>ε</em> / |<em>A</em>|</strong></h3>
+</blockquote>
+
+<p><em>ε</em> = 0.1이고 행동의 가짓수가 4개일 때 실제 수치를 대입해 봅시다:</p>
+<ul>
+  <li><strong>최선 행동의 선택 확률</strong>: (1 - 0.1) + (0.1 / 4) = 0.9 + 0.025 = <strong>0.925 (92.5%)</strong></li>
+  <li><strong>나머지 3개 행동의 선택 확률</strong>: 각각 0.1 / 4 = <strong>0.025 (2.5%)</strong></li>
+  <li><strong>확률의 총합</strong>: 0.925 + 0.025 × 3 = <strong>1.0 (100%)</strong></li>
+</ul>
+
+<p>이제 <em>ε</em>-탐욕 버전의 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수를 파이썬으로 구현해 보겠습니다:</p>
 
 <div align="right"><b>ch05/mc_control.py</b></div>
 
@@ -839,72 +868,86 @@
     <span class="n">qs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)]</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)]</span>
     <span class="n">max_action</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
 
-    <span class="n">base_prob</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">/</span> <span class="n">action_size</span>
-    <span class="n">action_probs</span> <span class="o">=</span> <span class="p">{</span><span class="n">action</span><span class="p">:</span> <span class="n">base_prob</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)}</span>
-    <span class="n">action_probs</span><span class="p">[</span><span class="n">max_action</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">action_probs</span>
+    <span class="n">base_prob</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">/</span> <span class="n">action_size</span>  <span class="c1"># 기초 탐색 확률 (예: 0.1 / 4 = 0.025)
+</span>    <span class="n">action_probs</span> <span class="o">=</span> <span class="p">{</span><span class="n">action</span><span class="p">:</span> <span class="n">base_prob</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)}</span>
+    <span class="n">action_probs</span><span class="p">[</span><span class="n">max_action</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span>  <span class="c1"># 최선 행동에 0.9 보너스 추가!
+</span>    <span class="k">return</span> <span class="n">action_probs</span>
 </code></pre></div></div>
 
-<p>이 코드는 모든 4가지 행동에 공평하게 기초 탐색 확률 $\epsilon / 4$ (예: $\epsilon=0.1$이면 각각 $0.025$)를 깔아준 뒤, 오직 최선 행동 <code class="language-plaintext highlighter-rouge">max_action</code>에만 $1 - \epsilon$ ($0.9$)의 거대한 탐욕 보너스를 얹어줍니다:</p>
-
-<ul>
-  <li>최선 행동의 확률: $0.9 + 0.025 = 0.925$ (92.5%)</li>
-  <li>나머지 3개 행동의 확률: 각각 $0.025$ (2.5%)</li>
-  <li>총합: $0.925 + 0.025 \times 3 = \mathbf{1.0}$ (100%)</li>
-</ul>
-
-<p>이렇게 하면 평소에는 영리하게 최적 행동을 실천하면서도, 10번에 1번꼴로는 엉뚱한 새로운 길을 용감하게 탐색하여 숨겨진 보물을 놓치지 않게 됩니다!</p>
+<p>이렇게 수정하면 평소에는 92.5%의 높은 확률로 똑똑하게 최적 행동을 실천하면서도, 10번에 1번꼴로는 새로운 엉뚱한 길을 용감하게 탐색하여 숨겨진 최적 경로를 빠짐없이 찾아낼 수 있게 됩니다!</p>
 
 <hr />
 
-<h2 id="0944-고정값-alpha-방식으로-수행-두-번째-개선-비정상-문제-대응">09.4.4 고정값 $\alpha$ 방식으로 수행 (두 번째 개선: 비정상 문제 대응)</h2>
+<h2 id="0944-두-번째-개선-고정-학습률-α-방식으로-비정상-문제-극복">09.4.4 두 번째 개선: 고정 학습률 <em>α</em> 방식으로 비정상 문제 극복</h2>
 
-<p>다음은 두 번째 개선 사항입니다. 표본 평균 공식인 $1/n$ 대신, 고정된 학습률 계수 <strong>$\alpha$(알파, 보통 0.1)</strong>를 곱하는 방식으로 점화식을 수정합니다:</p>
+<p>다음은 두 번째 치명적 결함인 표본 평균(1/<em>n</em>) 공식을 수정할 차례입니다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 수정 전 (표본 평균 방식: 1/n)
 # self.Q[key] += (G - self.Q[key]) / self.cnts[key]
 </span>
 <span class="c1"># 수정 후 (고정 학습률 α 방식: 지수 이동 평균)
 </span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">*</span> <span class="n">alpha</span> <span class="c1"># ❷
+<span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">*</span> <span class="n">alpha</span>  <span class="c1"># [식 9.7]
 </span></code></pre></div></div>
 
-<p>이 작은 코드 한 줄의 차이가 왜 인공지능의 성패를 가를까요?</p>
-
 <p><img src="./img/06_exponential_moving_average.png" alt="지수 이동 평균 가중치" />
-<strong>그림 09-4-6</strong> 모든 과거 데이터를 똑같이 대우하는 표본 평균(왼쪽)과, 어제의 낡은 기억은 잊고 오늘의 고수 경험을 우대하는 지수 이동 평균(오른쪽)의 가중치 비교</p>
+<strong>그림 09-4-7</strong> 모든 과거 데이터를 똑같이 대우하는 표본 평균(왼쪽)과, 어제의 낡은 기억은 잊고 오늘의 고수 경험을 우대하는 지수 이동 평균(오른쪽)의 가중치 비교</p>
+
+<p>왜 1/<em>n</em> 대신 고정된 학습률 계수 <strong><em>α</em>(알파, 보통 0.1)</strong>를 곱해야 할까요?</p>
 
 <ul>
-  <li><strong>수정 전 (표본 평균 $1/n$)의 치명적 결함</strong>:
+  <li><strong>수정 전 (표본 평균 1/<em>n</em>)의 치명적 결함</strong>:
     <ul>
-      <li>표본 평균은 1번째 에피소드부터 $n$번째 에피소드까지 모든 데이터에 똑같이 $1/n$의 동일한 가중치를 부여합니다.</li>
-      <li>하지만 생각해 보십시오! 1번째 에피소드의 에이전트는 미로에서 벽에 쿵쿵 부딪히며 방황하던 <strong>‘완전 초보 시절’</strong>의 경험입니다. 반면 10,000번째 에피소드의 에이전트는 정책이 성숙해진 <strong>‘베테랑 고수 시절’</strong>의 경험입니다.</li>
-      <li>초보 시절의 바보 같은 경험과 고수 시절의 현명한 경험을 똑같이 1/n로 대등하게 평균 내는 것은 명백한 넌센스입니다!</li>
+      <li>표본 평균은 1번째 에피소드부터 <em>n</em>번째 에피소드까지 모든 데이터에 똑같이 1/<em>n</em>의 동일한 가중치를 부여합니다.</li>
+      <li>하지만 1번째 에피소드의 에이전트는 미로 벽에 쿵쿵 부딪히며 방황하던 <strong>‘완전 초보 시절’</strong>의 경험입니다. 반면 10,000번째 에피소드의 에이전트는 정책이 성숙해진 <strong>‘베테랑 고수 시절’</strong>의 경험입니다.</li>
+      <li>초보 시절의 바보 같은 경험과 고수 시절의 현명한 경험을 똑같이 1/<em>n</em>로 동등하게 평균 내는 것은 논리적으로 맞지 않습니다!</li>
     </ul>
   </li>
-  <li><strong>수정 후 (고정값 $\alpha$ 지수 이동 평균의 마법)</strong>:
+  <li><strong>수정 후 (고정 학습률 <em>α</em> 지수 이동 평균의 마법)</strong>:
     <ul>
-      <li>점화식을 전개해 보면, 가장 최근에 얻은 경험 $G^{(n)}$에는 온전한 가중치 $\alpha$가 곱해지지만, 과거 $k$스텝 전의 낡은 데이터에는 $(1 - \alpha)^k$ 배율로 가중치가 기하급수적으로 줄어듭니다!</li>
-      <li>즉, <strong>초보 시절의 낡은 기억은 자연스럽게 잊어버리고(망각), 가장 똑똑해진 최근의 경험을 압도적으로 우대</strong>하게 됩니다.</li>
+      <li>점화식을 과거로 거슬러 올라가며 전개해 보면 놀라운 수학적 사실이 드러납니다:
+        <blockquote>
+          <h3 id="qn--αgn--α1---αgn-1--α1---α2gn-2----1---αnq0"><strong><em>Q</em><sub><em>n</em></sub> = <em>αG</em><sup>(<em>n</em>)</sup> + <em>α</em>(1 - <em>α</em>)<em>G</em><sup>(<em>n</em>-1)</sup> + <em>α</em>(1 - <em>α</em>)<sup>2</sup><em>G</em><sup>(<em>n</em>-2)</sup> + … + (1 - <em>α</em>)<sup><em>n</em></sup><em>Q</em><sub>0</sub></strong></h3>
+        </blockquote>
+      </li>
+      <li>가장 최근에 얻은 경험 <em>G</em><sup>(<em>n</em>)</sup>에는 온전한 가중치 <em>α</em>가 곱해지지만, 과거 <em>k</em>스텝 전의 낡은 데이터에는 (1 - <em>α</em>)<sup><em>k</em></sup> 배율로 가중치가 기하급수적으로 줄어듭니다!</li>
+      <li>즉, <strong>초보 시절의 낡은 기억은 자연스럽게 잊어버리고(망각), 가장 최근의 똑똑해진 경험을 압도적으로 우대</strong>하게 됩니다.</li>
     </ul>
   </li>
 </ul>
 
-<p>이처럼 학습이 진행됨에 따라 정책이 진화하고, 그 결과 수익 데이터가 생성되는 확률 분포 자체가 계속해서 변화하는 문제를 통계학에서는 <strong>‘비정상 문제(Non-Stationary Problem)’</strong>라고 부릅니다. 비정상 환경에서는 고정 학습률 $\alpha$를 사용한 지수 이동 평균이 절대적인 필수 공식입니다.</p>
+<p>이처럼 학습이 진행됨에 따라 정책이 진화하고, 그 결과 수익 데이터가 생성되는 확률 분포 자체가 시시각각 변화하는 문제를 통계학에서는 <strong>‘비정상 문제(Non-Stationary Problem)’</strong>라고 부릅니다. 정책 제어처럼 데이터 분포가 변하는 비정상 환경에서는 고정 학습률 <em>α</em>를 사용한 지수 이동 평균이 절대적인 필수 공식입니다.</p>
 
 <hr />
 
-<h2 id="0945-몬테카를로법으로-정책-반복법-구현-완성-버전">09.4.5 몬테카를로법으로 정책 반복법 구현 (완성 버전)</h2>
+<h2 id="0945-완성된-몬테카를로-정책-제어-클래스와-전체-실행">09.4.5 완성된 몬테카를로 정책 제어 클래스와 전체 실행</h2>
 
-<p>앞의 2대 개선 사항($\epsilon$-탐욕 탐색 + $\alpha$ 지수 이동 평균)을 완벽하게 반영하여 완성된 <code class="language-plaintext highlighter-rouge">McAgent</code> 클래스입니다:</p>
+<p>앞서 배운 2대 개선 사항(<em>ε</em>-탐욕 탐색 + <em>α</em> 지수 이동 평균)을 완벽하게 반영한 몬테카를로 정책 제어의 전체 순환 아키텍처를 확인해 봅시다.</p>
+
+<p><img src="./img/08_mc_control_architecture.jpg" alt="몬테카를로 정책 제어 순환 아키텍처 다이어그램" />
+<strong>그림 09-4-8</strong> 몬테카를로 정책 제어의 3단계 순환 아키텍처: 경험 수집(Episode Sampling) → 역방향 Q 갱신(<em>Q</em> ← <em>Q</em> + <em>α</em>(<em>G</em> - <em>Q</em>)) → 입실론-탐욕 정책 개선(<em>π</em> ← <em>ε</em>-greedy)</p>
+
+<h3 id="1-완성된-mcagent-클래스-코드">1) 완성된 McAgent 클래스 코드</h3>
 
 <div align="right"><b>ch05/mc_control.py</b></div>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">McAgent</span><span class="p">:</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">action_size</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">qs</span> <span class="o">=</span> <span class="p">[</span><span class="n">Q</span><span class="p">[(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)]</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)]</span>
+    <span class="n">max_action</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">qs</span><span class="p">)</span>
+
+    <span class="n">base_prob</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">/</span> <span class="n">action_size</span>
+    <span class="n">action_probs</span> <span class="o">=</span> <span class="p">{</span><span class="n">action</span><span class="p">:</span> <span class="n">base_prob</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="n">action_size</span><span class="p">)}</span>
+    <span class="n">action_probs</span><span class="p">[</span><span class="n">max_action</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">epsilon</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">action_probs</span>
+
+<span class="k">class</span> <span class="nc">McAgent</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
         <span class="n">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.9</span>
-        <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># [개선 1] ε-탐욕 정책의 탐색 비율 (10%)
-</span>        <span class="n">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># [개선 2] Q 함수 갱신 시의 고정 학습률 α
+        <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1"># [개선 1] ε-탐욕 정책의 탐색 비율 (10%)
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.1</span>     <span class="c1"># [개선 2] Q 함수 갱신 시의 고정 학습률 α
 </span>        <span class="n">self</span><span class="p">.</span><span class="n">action_size</span> <span class="o">=</span> <span class="mi">4</span>
 
         <span class="n">random_actions</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">}</span>
@@ -933,13 +976,21 @@
             <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">)</span>
             <span class="c1"># ❶ 고정값 α 기반 지수 이동 평균 갱신!
 </span>            <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">alpha</span>
-            <span class="c1"># ❷ ε-탐욕 탐색을 적용하여 정책 개선!
+            <span class="c1"># ❷ ε-탐욕 탐색을 적용하여 정책 즉시 개선!
 </span>            <span class="n">self</span><span class="p">.</span><span class="n">pi</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>이제 완성된 <code class="language-plaintext highlighter-rouge">McAgent</code>를 3×4 그리드 월드 환경에 투입하여 총 10,000번의 에피소드로 학습시켜 보겠습니다:</p>
+<hr />
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">env</span> <span class="o">=</span> <span class="nc">GridWorld</span><span class="p">()</span>
+<h3 id="2-10000회-에피소드-학습-실행-스크립트">2) 10,000회 에피소드 학습 실행 스크립트</h3>
+
+<p>이제 완성된 <code class="language-plaintext highlighter-rouge">McAgent</code>를 3 × 4 그리드 월드 환경에 투입하여 총 10,000번의 에피소드로 학습시켜 보겠습니다:</p>
+
+<div align="right"><b>ch05/mc_control.py</b></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">common.gridworld</span> <span class="kn">import</span> <span class="n">GridWorld</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="nc">GridWorld</span><span class="p">()</span>
 <span class="n">agent</span> <span class="o">=</span> <span class="nc">McAgent</span><span class="p">()</span>
 
 <span class="n">episodes</span> <span class="o">=</span> <span class="mi">10000</span>
@@ -953,7 +1004,7 @@
 
         <span class="n">agent</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">done</span><span class="p">:</span>
-            <span class="n">agent</span><span class="p">.</span><span class="nf">update</span><span class="p">()</span> <span class="c1"># 에피소드 완주 시 Q 함수 및 정책 일괄 갱신!
+            <span class="n">agent</span><span class="p">.</span><span class="nf">update</span><span class="p">()</span>  <span class="c1"># 에피소드 완주 시 Q 함수 및 정책 일괄 갱신!
 </span>            <span class="k">break</span>
 
         <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
@@ -962,52 +1013,73 @@
 </span><span class="n">env</span><span class="p">.</span><span class="nf">render_q</span><span class="p">(</span><span class="n">agent</span><span class="p">.</span><span class="n">Q</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>학습 완료 후 시각화 결과는 다음과 같습니다:</p>
-
-<p><img src="./img/fig_09_17_q_policy_map.png" alt="Q 함수 시각화 결과" />
-<strong>그림 09-4-7</strong> 10,000번 에피소드 후 수렴된 4방향 Q 함수와 최적 탈출 경로 화살표 맵</p>
-
-<p>결과 지도를 보십시오!</p>
-
-<p>출발 지점에서 시작하여 위험천만한 마이너스 함정(-1.0) 칸을 멀리 피해 위쪽 안전 경로로 완벽하게 우회한 뒤, 플러스 골(+1.0) 지점으로 최단거리 진입하는 완벽한 최적 정책 화살표가 뚜렷하게 형성되었습니다!</p>
-
-<p>환경의 상태 전이 확률이나 보상 행렬 수식을 전혀 모르는 완전한 백지상태였지만, <strong>몬테카를로 경험 수집 + $Q$ 함수 탐욕화 + $\epsilon$-탐욕 탐색 + $\alpha$ 지수 이동 평균</strong>이라는 강력한 도구들이 맞물려 스스로 완벽한 인공지능 지도를 그려낸 것입니다.</p>
-
 <hr />
 
-<h3 id="0946-핵심-정리-몬테카를로-정책-제어-3대-기둥">09.4.6 핵심 정리: 몬테카를로 정책 제어 3대 기둥</h3>
+<h3 id="3-학습-결과-해석-최적-정책-화살표-맵">3) 학습 결과 해석: 최적 정책 화살표 맵</h3>
 
-<p><img src="./img/07_summary_core_takeaways.png" alt="핵심 정리 피날레" />
-<strong>그림 09-4-8</strong> Q 함수, 입실론 탐욕, 고정 알파의 3대 기둥을 세우고 오프-정책의 새로운 장으로 나아가는 도로시와 지니</p>
+<p>학습 완료 후 <code class="language-plaintext highlighter-rouge">env.render_q(agent.Q)</code>가 화면에 출력한 시각화 결과는 다음과 같습니다:</p>
+
+<p><img src="./img/fig_09_17_q_policy_map.png" alt="Q 함수 시각화 결과" />
+<strong>그림 09-4-9</strong> 10,000번 에피소드 후 수렴된 4방향 Q 함수와 최적 탈출 경로 화살표 맵</p>
+
+<p>결과 지도를 자세히 분석해 봅시다:</p>
 
 <ol>
-  <li><strong>행동 가치 함수 $Q(s, a)$의 채택</strong>:
+  <li><strong>사방 삼각형의 의미</strong>: 격자의 각 칸은 상, 하, 좌, 우 4개의 삼각형으로 분할되어 있으며, 각 삼각형의 색상과 숫자가 바로 해당 방향의 행동 가치 <em>Q</em>(<em>s</em>, <em>a</em>)를 나타냅니다.</li>
+  <li><strong>최적 경로 화살표</strong>:
     <ul>
-      <li>상태 전이 확률 $p(s’ \mid s, a)$를 모르는 환경에서는 $V(s)$만으로 다음 최적 행동을 선택할 수 없으므로, $\arg\max_a Q(s, a)$로 즉시 판단 가능한 $Q(s, a)$가 정책 제어의 유일한 나침반입니다.</li>
-    </ul>
-  </li>
-  <li><strong>$\epsilon$-탐욕 정책을 통한 탐색과 활용의 공존</strong>:
-    <ul>
-      <li>조기 수렴과 편향을 방지하기 위해 $1 - \epsilon$의 확률로 최선 행동을 실천하고, $\epsilon$의 확률로 모든 길을 골고루 탐색하여 숨겨진 최적 경로를 빠짐없이 발굴합니다.</li>
-    </ul>
-  </li>
-  <li><strong>고정 학습률 $\alpha$ 기반 지수 이동 평균</strong>:
-    <ul>
-      <li>정책 개선에 따라 데이터의 분포가 시시각각 변화하는 비정상 문제(Non-stationary)를 극복하기 위해, 과거 초보 시절의 데이터는 잊고 최신 고수 데이터에 높은 가중치를 부여합니다.</li>
+      <li>출발 지점 <code class="language-plaintext highlighter-rouge">(2, 0)</code>에서 시작한 에이전트는 위험천만한 마이너스 함정(<code class="language-plaintext highlighter-rouge">(1, 3)</code>, 보상 -1.0) 칸을 멀리 피해 위쪽 안전 경로(<code class="language-plaintext highlighter-rouge">(0, 0) → (0, 1) → (0, 2) → (0, 3)</code>)로 완벽하게 우회합니다.</li>
+      <li>플러스 골(<code class="language-plaintext highlighter-rouge">(0, 3)</code>, 보상 +1.0) 지점으로 가장 빠르고 안전하게 도달하는 완벽한 최적 정책 화살표가 뚜렷하게 형성되었습니다!</li>
     </ul>
   </li>
 </ol>
 
+<p>환경의 상태 전이 확률이나 보상 행렬 공식을 전혀 모르는 완전한 백지상태였지만, <strong>몬테카를로 경험 수집 + <em>Q</em> 함수 채택 + <em>ε</em>-탐욕 탐색 + <em>α</em> 지수 이동 평균</strong>이라는 강력한 도구들이 맞물려 스스로 완벽한 최적 정책 지도를 찾아낸 것입니다.</p>
+
+<hr />
+
+<h2 id="0946-핵심-정리-몬테카를로-정책-제어-3대-기둥">09.4.6 핵심 정리: 몬테카를로 정책 제어 3대 기둥</h2>
+
+<p><img src="./img/07_summary_core_takeaways.png" alt="핵심 정리 피날레" />
+<strong>그림 09-4-10</strong> Q 함수, 입실론 탐욕, 고정 알파의 3대 기둥을 세우고 오프-정책의 새로운 장으로 나아가는 도로시와 지니</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">3대 핵심 기둥</th>
+      <th style="text-align: left">핵심 원리 및 수학적 이유</th>
+      <th style="text-align: left">미적용 시 발생하는 문제점</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>① 행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</strong></td>
+      <td style="text-align: left">전이 확률 <em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>) 없이도 argmax<sub><em>a</em></sub> <em>Q</em>(<em>s</em>, <em>a</em>)로 즉시 최적 행동 결정 가능</td>
+      <td style="text-align: left"><em>V</em>(<em>s</em>)를 쓰면 환경 모델의 확률 수식이 필요해 모델 프리 환경에서 계산 불가</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>② <em>ε</em>-탐욕 정책 (<em>ε</em>-Greedy)</strong></td>
+      <td style="text-align: left">1 - <em>ε</em> 확률로 최선 행동을 취하고, <em>ε</em> 확률로 4방향을 골고루 탐색</td>
+      <td style="text-align: left">100% 완전 탐욕 시 조기 수렴으로 인해 더 큰 보상이 있는 경로를 영원히 미탐색</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>③ 고정 학습률 <em>α</em> (지수 이동 평균)</strong></td>
+      <td style="text-align: left">(1 - <em>α</em>)<sup><em>k</em></sup> 지수 감쇠로 과거 초보 데이터는 잊고 최신 고수 경험을 우대</td>
+      <td style="text-align: left">1/<em>n</em> 표본 평균 시 낡은 초보 시절의 데이터가 발목을 잡아 비정상 문제에서 수렴 실패</td>
+    </tr>
+  </tbody>
+</table>
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “몬테카를로 정책 제어의 완성은 강화학습이 단순한 통계 계산기를 넘어, 미지의 환경을 스스로 탐험하고 최선의 길을 개척해 나가는 ‘진정한 지능(AI)’으로 도약하는 감동적인 순간입니다.<br />
-하지만 $\epsilon$-탐욕 정책은 학습이 끝난 후에도 10%의 확률로 실수를 저지른다는 아쉬운 타협점이 있습니다.<br />
-이를 완벽하게 극복하기 위해, 다음 9.5절에서는 ‘마음껏 탐색하는 행동 정책’과 ‘순수하게 최선만을 달리는 대상 정책’을 분리하는 강화학습의 최고봉, <strong>오프-정책과 중요도 샘플링</strong>의 세계로 떠나보겠습니다!”</p>
+하지만 <em>ε</em>-탐욕 정책은 학습이 완전히 끝난 후에도 10%의 확률로 무작위 실수를 저지른다는 아쉬운 타협점이 있습니다.<br />
+이를 완벽하게 극복하기 위해, 다음 9.5절에서는 ‘마음껏 탐색하는 행동 정책’과 ‘오직 최선만을 달리는 대상 정책’을 분리하는 강화학습의 최고봉, <strong>오프-정책(Off-Policy)과 중요도 샘플링</strong>의 세계로 떠나보겠습니다!”</p>
 </blockquote>
 
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />
-“축하합니다냥, 도로시와 여러분! 이제 우리 에이전트는 미로에서 길을 헤매지 않고 스스로 최적의 탈출 지도를 그려냈어요! $Q$ 함수, 입실론($\epsilon$) 탐욕, 그리고 알파($\alpha$) 지수 이동 평균의 삼위일체를 가슴에 품고, 다음 절에서 더욱 마법 같은 오프-정책을 만나보아요!”</p>
+“축하합니다냥, 도로시와 여러분! 이제 우리 에이전트는 미로에서 길을 헤매지 않고 스스로 최적의 탈출 지도를 그려냈어요! <em>Q</em> 함수, 입실론(<em>ε</em>) 탐욕, 그리고 알파(<em>α</em>) 지수 이동 평균의 삼위일체를 가슴에 품고, 다음 절에서 더욱 마법 같은 오프-정책을 만나보아요!”</p>
 </blockquote>
 
 
