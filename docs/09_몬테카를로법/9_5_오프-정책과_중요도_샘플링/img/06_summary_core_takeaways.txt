@@ -1,12 +1,8 @@
-# Chapter 9.5: 06_summary_core_takeaways Prompt (1:1 ratio)
-# File: 06_summary_core_takeaways.png
+### 06_summary_core_takeaways.png 프롬프트 명세서
 
-Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed.
-CRITICAL: The man MUST EXACTLY MATCH the facial appearance, head shape, parted salt-and-pepper hair, and facial features of Professor Hojin from the reference image, keeping his exact facial identity, thin round wire-rim glasses, and warm encouraging smile. He is a youthful 40s Korean professor wearing a solid plain dark charcoal navy short-sleeve polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers.
-Pure solid clean white background (#FFFFFF), isolated cutout illustration, no background scenery, no gradients.
-Grand finale summary celebration for Chapter 9.5: Off-Policy & Importance Sampling.
-Dorothy (adorable 9-year-old anime girl, 4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' badge, orange and yellow striped t-shirt, ruby red canvas sneakers) happily holds up a glowing magical balance scale with two glowing orbs labeled 'b' and 'π'.
-Beside her, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, no spots, black button nose, cheerful open smile, sky-blue neckerchief bandana) wags his tail enthusiastically.
-On the right, Professor Hojin (matching reference face exactly) smiles warmly with an encouraging thumbs-up gesture.
-On the left, Jiny the lab assistant cat (the ONLY cat in the entire image, exactly one cat, chubby tuxedo cat with round scholar glasses and red bell collar) holds a celebration scroll displaying: 'Off-Policy Mastered: ρ = π/b'.
-Subtle soft contact shadows under feet, perfectly balanced 1:1 square composition, exactly one cat, exactly one dog, no duplicate animals, no slide frames, no extra UI borders, no Japanese text.
+- **역할 및 용도**: 역할 분담, 중요도 가중치, 분산 안정화의 3대 기둥을 세우고 시간차 학습(TD)의 관문으로 향하는 교수님, 도로시, 지니, 토토 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape of Professor Hojin from the reference image, keeping his exact facial identity, youthful 40s appearance (smooth skin, no wrinkles), thin round wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers, giving a proud thumbs-up. In the center is a clean white presentation board on stands with clean Korean text: '오프-정책과 중요도 샘플링 3대 기둥' and three numbered bullet points: '1. 정책 역할 분담 (행동 b vs 목표 π)', '2. 중요도 가중치 ρ = π / b', '3. 분산 통제와 Q-러닝으로의 연결'. Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) proudly points to the board with a joyful smile. Jiny the tuxedo cat (with scholar glasses and red bell collar) sits smartly on a small stool, and Toto the cream-white puppy (solid milk-white, no spots, sky-blue bandana) wags his tail happily. Pure solid clean white background (#FFFFFF), isolated character group, subtle soft contact shadow at feet, 1:1 square ratio, no slide frames, Korean and math text only, no Japanese text.

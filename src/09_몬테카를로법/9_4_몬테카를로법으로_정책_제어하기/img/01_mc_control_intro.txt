@@ -1,14 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 01_mc_control_intro.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 탐색-이용 갈림길에서 지니의 입실론 주사위 마법을 보며 나아갈 길을 결정하는 도로시 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, shoulder-length brown hair with straight bangs, red ribbon, yellow oversized hoodie with rolled cuffs, denim overalls, energetic expression, holding an exploration-exploitation compass).
-2. Toto (tiny fluffy brown puppy with floppy ears, looking at a glowing multi-sided dice on the floor).
-3. Jiny (a magical friendly glowing blue fairy floating beside Dorothy, pointing towards a fork in a whimsical cobblestone road).
-
-Scene:
-Dorothy and Jiny stand at an exploration-exploitation fork in the path. One signpost points to 'Exploit (Greedy Choice)' and the other signpost points to 'Explore (Random Discovery)'. Above them floats a luminous dice marked with the Greek letter epsilon 'ε', demonstrating balancing greedy actions with curiosity.
-
-Composition:
-16:9 wide landscape banner, centered characters, crisp outlines, vibrant warm pastel colors, soft atmospheric glow, high resolution, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. Dorothy, an adorable 9-year-old anime girl (4.5 heads tall, chestnut brown twin pigtails with colorful beads, blue denim overalls with 'STEM HERO' round patch, orange striped t-shirt, ruby red canvas sneakers), stands at a fork in the path. One signpost points left labeled in clean Korean: '활용 (이용)' toward a pathway with sparkling gold coins. Another signpost points right labeled in clean Korean: '탐색' toward an exciting sparkling rainbow trail. In front of her, Jiny the lab assistant cat (chubby tuxedo cat with olive eyes, pink nose, scholar glasses, red bell collar) rolls a glowing white 6-sided dice with a sparkling 'ε' symbol on top. Toto the fluffy cream-white puppy (solid milk-white, no spots, black nose, sky-blue bandana) wags his tail cheerfully. Pure solid clean white background (#FFFFFF), isolated subject cutout, subtle soft contact shadow at feet, 1:1 square ratio, no slide headers, Korean text only, no Japanese text.

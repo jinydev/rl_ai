@@ -1,18 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 03_importance_sampling_formula.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 칠판에 분모·분자 트릭을 전개하며 중요도 가중치 로우를 도출해내는 도로시와 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing small round glasses and yellow hoodie, carefully inspecting a glowing blackboard).
-2. Jiny (shining blue fairy holding a golden chalk, underlining a magical mathematical step).
-
-Scene:
-A wooden chalkboard floating on pure white background.
-The formula steps of Importance Sampling are neatly handwritten in glowing white and amber chalk:
-Step 1: E_π[X] = ∑ x · π(x)
-Step 2: E_π[X] = ∑ x · (π(x) / b(x)) · b(x)  (Insert b(x)/b(x) = 1)
-Step 3: E_π[X] = E_b[ X · (π(x) / b(x)) ] = E_b[ X · ρ(x) ]
-Next to the formula, Jiny holds a magnifying glass over 'ρ(x) = π(x) / b(x)' labeled 'Importance Weight'.
-
-Composition:
-16:9 wide landscape, educational mathematical infographic with whimsical fairy-tale warmth, pure white background, crisp typography, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational mathematical derivation on a pure solid clean white background (#FFFFFF). In the center is a dark wooden-framed chalkboard with clear white chalk equations: 'E_π[X] = ∑ x · (π(x) / b(x)) · b(x)' and 'E_π[X] = E_b[ X · ρ(X) ]' and highlighted in yellow chalk: '중요도 가중치: ρ(x) = π(x) / b(x)'. On the left, Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) holds a piece of white chalk and points to the formula with a proud smile. On the right, Jiny the tuxedo cat (wearing round scholar glasses and red bell collar) stands on a wooden stool pointing with a wooden wand at 'ρ(x)'. Toto the fluffy cream-white puppy (solid milk-white, no spots, sky-blue bandana) sits in front watching happily. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

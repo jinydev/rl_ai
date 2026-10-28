@@ -1,16 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 06_exponential_moving_average.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: '수정 전 방식(왼쪽, 표본 평균)'과 '고정값 방식(오른쪽, 지수 이동 평균)'에서 각 데이터에 부여되는 가중치 비교 강의 씬 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, weighing timeline hourglasses on a brass balance scale).
-2. Jiny (magical blue sprite fairy hovering near the scale, adding glowing golden dust to the most recent hourglass).
-
-Scene:
-A conceptual comparison between Sample Average (Equal Weights 1/n) and Exponential Moving Average with fixed learning rate α.
-On the left: Past and current samples all have the same flat, fading weight (1/n).
-On the right: Recent samples receive high exponential weight, rapidly fading out ancient outdated samples.
-Chalk text on a wooden easel reads: 'Non-Stationary Adaptation: Q ← Q + α(G - Q)'.
-
-Composition:
-1:1 square canvas, centered balance scale and weight graphs, soft pastel tones, warm Ghibli feeling, clean isolated white background, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. CRITICAL: The man on the right MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape of Professor Hojin from the reference image, keeping his exact facial identity, youthful 40s appearance (smooth skin, no wrinkles), thin round wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt (no logos, no badges, no SNU text), blue jeans, and grey sneakers, holding a wooden pointer. In the center is a dual whiteboard showing two bar charts comparing weight distribution: Left chart labeled '표본 평균 (1/n)' with flat equal-height bars across all past data G1, G2, G3, Gn. Right chart labeled '지수 이동 평균 (고정값 α)' with exponentially decaying bars where the newest data Gn has the tallest bar α and older data exponentially shrinks, with a label '최신 데이터 우대!'. Dorothy (4.5 heads tall, chestnut pigtails with beads, overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) observes attentively. Jiny the lab assistant cat (strictly a black-and-white bicolor tuxedo cat, black cow pattern fur, white muzzle and chest, olive-green eyes, round scholar glasses, red collar with gold bell) sits attentively. Toto the puppy (solid milk-white, no spots, sky-blue bandana) smiles happily. Pure solid clean white background (#FFFFFF), isolated lecture asset, soft shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

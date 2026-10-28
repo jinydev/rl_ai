@@ -1,14 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 02_policy_iteration_pingpong.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 정책 평가(Evaluation)와 정책 개선(Improvement)의 과정을 탁구 핑퐁 패들로 주고받는 지니와 도로시 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, shoulder-length brown hair, straight bangs, red hair ribbon, yellow hoodie, holding a wooden ping-pong paddle labeled 'Evaluation V/Q').
-2. Jiny (playful glowing blue sprite fairy, holding a magical paddle labeled 'Improvement argmax').
-3. Toto (fluffy brown puppy sitting next to the ping-pong net, watching the glowing ball bounce back and forth).
-
-Scene:
-A whimsical miniature table tennis (ping-pong) match between Dorothy and Jiny. Dorothy hits a glowing golden ball of 'Policy Evaluation' across the net, and Jiny volleys back with a radiant beam of 'Policy Improvement (Greedification)'. Above the table, an alternating cycle diagram shows 'Evaluation → Improvement → Evaluation' converging towards an optimal golden crown.
-
-Composition:
-1:1 square canvas, centered composition, bright cheerful colors, Studio Ghibli warmth, isolated on pure white, high detail, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational metaphor illustration on a pure solid clean white background (#FFFFFF). In the center is a mini wooden ping-pong table. On the left side, Dorothy (4.5 heads tall, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' badge, orange striped t-shirt, ruby red canvas sneakers) holds a red table tennis paddle labeled '평가 (Evaluation)' in clean Korean text, serving a glowing golden ball labeled '가치 Q'. On the right side, Jiny the tuxedo cat (wearing scholar glasses and red bell collar) stands on a wooden stool holding a blue paddle labeled '개선 (Improvement)' in clean Korean text, ready to return the ball. At the side of the net, Toto the fluffy cream-white puppy (solid milk-white, sky-blue bandana, happy smile) sits cheerfully as a referee. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft contact shadow at feet, 1:1 square ratio, no slide frames, Korean text only, no Japanese text.

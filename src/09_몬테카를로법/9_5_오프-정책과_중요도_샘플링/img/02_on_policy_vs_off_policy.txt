@@ -1,15 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 02_on_policy_vs_off_policy.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 자신이 달리는 트랙에서 바로 배우는 온-정책과, 탐험 로봇의 데이터를 관제실에서 분석해 챔피언 전략을 세우는 오프-정책 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, observing two paths: on-policy track where she runs while learning, and off-policy control room where she observes an explorer robot).
-2. Jiny (glowing blue fairy pointing with a glowing wand).
-
-Scene:
-A side-by-side conceptual illustration.
-Left panel: 'On-Policy (π = b)' - A runner learns directly by falling down and adjusting their own footsteps along the same path.
-Right panel: 'Off-Policy (π ≠ b)' - An explorer agent 'b' roams freely across dangerous terrain collecting experience bottles, while a master coach 'π' in the control room analyzes the data to formulate the ultimate championship strategy.
-
-Composition:
-1:1 square canvas, clean split comparison layout, bright cheerful colors, isolated on pure white, high detail, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational split comparison illustration on a pure solid clean white background (#FFFFFF). Left side labeled '온-정책 (On-Policy)': Dorothy in athletic sports shorts and red sneakers runs on a running track with a stopwatch, labeled '직접 경험에서 학습 (행동 = 목표)'. Right side labeled '오프-정책 (Off-Policy)': Dorothy (in her denim overalls with 'STEM HERO' badge) and Jiny the tuxedo cat (with scholar glasses) sit at a neat wooden desk analyzing data screens and graphs sent from a small friendly robot (Tinny) exploring a maze outside, labeled '간접 탐험 데이터로 학습 (행동 b ≠ 목표 π)'. Toto the cream-white puppy (solid milk-white, sky-blue bandana) sits happily in between. Pure solid clean white background (#FFFFFF), isolated dual-panel asset cutout, subtle contact shadow at feet, 1:1 square ratio, Korean text only, no Japanese text.

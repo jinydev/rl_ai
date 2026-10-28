@@ -1,15 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 05_variance_reduction_distribution_matching.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 확률 분포 b를 목표 분포 파이(π)에 가깝게 조율하여 분산을 안정화시키는 지니와 도로시 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, sliding two colorful curved glass bells closer together).
-2. Jiny (glowing blue fairy helping align the distributions with a magic wand).
-
-Scene:
-Visualizing variance reduction in Importance Sampling:
-When behavior distribution b is distant from target π, the importance ratio ρ = 2.4 blows up a sample of 3 to 7.2, causing massive instability.
-When behavior distribution b is gently brought closer to target π ([0.2, 0.2, 0.6] approaching [0.1, 0.1, 0.8]), importance ratio ρ stabilizes near 1.0, and variance dramatically plummets from 10.63 down to 2.48.
-
-Composition:
-1:1 square canvas, charming storybook diagram, soft watercolor curves, clean isolated white background, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational tuning concept illustration on a pure solid clean white background (#FFFFFF). In the center is a retro mint-green control board with sliding levers labeled '분포 조율: b → π'. Above the board, two colorful probability curve graphs (blue b(x) and orange π(x)) smoothly align and overlap into harmony. On the side is a round gauge meter pointing happily to a green zone labeled in clean Korean: '분산 2.48 (안정적 수렴!)' away from a crossed-out red zone '분산 10.63 (불안정)'. Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' badge, striped shirt, red canvas sneakers) happily slides a lever. Jiny the tuxedo cat (wearing scholar glasses and red bell collar) smiles approvingly. Toto the fluffy cream-white puppy (solid milk-white, sky-blue bandana) happily wags his tail. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 1:1 square ratio, Korean text only, no Japanese text.

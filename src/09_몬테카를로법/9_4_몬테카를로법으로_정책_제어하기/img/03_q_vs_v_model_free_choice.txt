@@ -1,15 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 03_q_vs_v_model_free_choice.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 환경 모델 전이 확률이 없어 막히는 V(s) 대신, 행동 가치 Q(s, a)로 즉시 최적 행동을 선택하는 도로시와 지니 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing round glasses like a curious young scholar, holding a magnifying glass inspecting a blackboard).
-2. Jiny (magical blue glowing fairy pointing with a glowing wand to contrasting mathematical formulas written on the blackboard).
-
-Scene:
-A wooden blackboard stands on an isolated white background.
-On the left side: 'State-Value V(s) Approach' with a red question mark stamped over transition probability 'p(s\'|s,a) (Model Unknown!)', showing that without the transition model, greedy action cannot be calculated.
-On the right side: 'Action-Value Q(s,a) Approach' with a glowing green checkmark next to 'argmax_a Q(s,a) (Direct & Model-Free!)', showing that Q-function directly tells which action is best without requiring any environmental probability model.
-
-Composition:
-16:9 wide landscape ratio, clear side-by-side pedagogical formula breakdown, crisp typography, clean chalk-style math symbols, whimsical Ghibli styling, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational comparison metaphor on a pure solid clean white background (#FFFFFF). On the left is a locked iron door with a red padlock labeled 'V(s) 상태 가치' and a warning sign: '전이확률 P(s\'|s,a) 모름 (계산 불가!)'. On the right is a wide-open golden archway labeled 'Q(s, a) 행동 가치' glowing with warm light, where an unlocked golden key labeled 'argmax Q(s,a) 즉시 선택!' floats. Dorothy (4.5 heads tall, chestnut brown twin pigtails with beads, blue overalls with 'STEM HERO' badge, striped shirt, red canvas sneakers) happily holds a mini golden key and steps through the open Q archway with a confident smile. Jiny the tuxedo cat (wearing scholar glasses and red bell collar) points through the open archway, and Toto the fluffy cream-white puppy (solid milk-white, sky-blue bandana) runs excitedly ahead. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 1:1 square ratio, Korean text only, no Japanese text.

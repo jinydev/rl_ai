@@ -1,16 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 04_variance_dispersion_concept.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 각 데이터가 2차원상의 점이라고 가정했을 때의 분산 비교 (원의 중심이 평균) (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing yellow hoodie, holding a compass circle tool).
-2. Toto (fluffy brown puppy watching floating colored marbles).
-
-Scene:
-A visual comparison of Variance (Dispersion of Samples) on a 2D plane:
-Left side: 'Low Variance (Var = 0.27)' - Samples form a tight, compact cluster of glowing green dots closely hugging the bullseye center.
-Right side: 'High Variance (Var = 10.63)' - Samples are scattered wildly across a wide area with large error bars and a huge glowing red dashed circle.
-Chalk text reads: 'Var[X] = E[(X - E[X])^2]'.
-
-Composition:
-1:1 square canvas, clean geometric and illustrative contrast, vibrant colors, isolated on solid pure white, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational statistical concept diagram on a pure solid clean white background (#FFFFFF). In the center is a dual target comparison board: Left circle labeled '작은 분산 (안정적)' showing sample dots clustered tightly around the central red mean dot labeled '평균 E[X]'. Right circle labeled '큰 분산 (흩어짐 심함)' showing sample dots wildly scattered far and wide across the outer boundary away from the central mean dot. Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' badge, striped shirt, red canvas sneakers) holds a brass magnifying glass measuring the scatter. Jiny the tuxedo cat (with scholar glasses and red bell collar) points with a pointer at the wide dispersion. Toto the cream-white puppy (solid milk-white, sky-blue bandana) sits happily wagging his tail. Pure solid clean white background (#FFFFFF), isolated illustration cutout, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

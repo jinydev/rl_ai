@@ -1,16 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 01_off_policy_intro.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 탐험 지도(Behavior Policy)와 타깃 지도(Target Policy)의 확률 비율을 마법 저울에 올리고 오프-정책을 계산하는 지니와 도로시 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, shoulder-length brown hair with straight bangs, red ribbon, yellow oversized hoodie, looking curious and amazed).
-2. Toto (fluffy brown puppy sitting at her feet).
-3. Jiny (magical blue glowing fairy holding a luminous golden balance scale in mid-air).
-
-Scene:
-On the left pan of Jiny's golden scale rests a blue scroll labeled 'Behavior Policy b(a|s) (Exploration)'.
-On the right pan rests a golden scroll labeled 'Target Policy π(a|s) (Optimization)'.
-Between the pans floats a radiant mathematical ratio symbol 'ρ = π / b' glowing with warm amber light, illustrating Importance Sampling.
-
-Composition:
-16:9 wide landscape banner, centered harmonious composition, crisp outlines, vibrant warm pastel colors, isolated on solid white, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational concept illustration on a pure solid clean white background (#FFFFFF). In the center is a classic vintage brass balance scale. On the left scale pan rests a rolled explorer map labeled in clean Korean: '행동 정책 b(x) (자유 탐험)'. On the right scale pan rests a neat royal scroll labeled in clean Korean: '목표 정책 π(x) (순수 최적)'. Floating above the center pivot point is a glowing golden Greek formula: 'ρ = π(x) / b(x)'. Dorothy (4.5 heads tall, chestnut pigtails with beads, blue overalls with 'STEM HERO' badge, striped shirt, red sneakers) looks curiously through a magnifying glass at the balancing weights. Jiny the tuxedo cat (wearing scholar glasses and red bell collar) gently adjusts a small brass weight with his paw. Toto the cream-white puppy (solid milk-white, no spots, sky-blue bandana) sits happily wagging his tail. Pure solid clean white background (#FFFFFF), isolated subject cutout, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

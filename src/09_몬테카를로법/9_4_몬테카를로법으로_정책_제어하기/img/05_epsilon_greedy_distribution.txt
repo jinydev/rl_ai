@@ -1,17 +1,8 @@
-Studio Ghibli style, warm hand-drawn 2D animation aesthetic, Hayao Miyazaki inspired, soft watercolor and cel shading, gentle lighting, whimsical atmosphere.
+### 05_epsilon_greedy_distribution.png 프롬프트 명세서
 
-Pure white background, clean isolated backdrop, absolute solid white #FFFFFF, no background scenery, no gradients.
+- **역할 및 용도**: 최선 행동에 압도적인 확률(1-ε)을 부여하고 나머지 행동들에 고른 탐색 확률(ε/4)을 나누어주는 입실론 탐욕 마법 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
 
-Characters:
-1. Dorothy (7-year-old Korean girl, wearing yellow hoodie and red hair ribbon, happily dividing colorful probability pies on a wooden table).
-2. Jiny (glowing blue fairy floating above, pointing with a glowing wand to four directional arrows).
-
-Scene:
-A pie-chart and probability breakdown of the ε-greedy policy.
-Four action directions (Up, Down, Left, Right) are shown.
-The best action (Up) has a large vibrant golden slice of probability equal to '1 - ε + ε/4' (e.g. 0.925).
-The remaining three exploratory actions each have smaller blue pastel slices equal to 'ε/4' (e.g. 0.025 each).
-Above the table floats a golden glowing formula card: 'π(a*|s) = 1 - ε + ε/|A|, π(a|s) = ε/|A|'.
-
-Composition:
-16:9 wide landscape, educational infographic style with warm Ghibli storybook charm, isolated on pure white #FFFFFF, sharp legible math symbols, no Japanese text.
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational mathematical probability wheel on a pure solid clean white background (#FFFFFF). In the center is a large colorful round pie chart wheel on a wooden easel stand: the dominant 92.5% slice is deep royal blue labeled with clean Korean and math: '최선 행동: 1 - ε + ε/4 (92.5%)', and three small slices are colored pastel coral, yellow, and green, each labeled: '탐색 ε/4 (2.5%)'. On the left, Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' patch, striped shirt, red canvas sneakers) smiles brightly pointing a sparkling magic wand at the big slice. On the right, Jiny the tuxedo cat (wearing scholar glasses and red bell collar) stands on a stool proudly holding a small chalkboard sign: '확률 합계 = 1.0 (100%)'. Toto the cream-white puppy (solid milk-white, sky-blue bandana) sits happily in front. Pure solid clean white background (#FFFFFF), isolated cutout illustration, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.
