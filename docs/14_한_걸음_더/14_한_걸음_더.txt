@@ -1,0 +1,20 @@
+### Chapter 14 Cover Image Prompt (16:9)
+
+**File**: `14_한_걸음_더.png`
+**Title**: CHAPTER 14 한 걸음 더
+**Subtitle**: (One Step Further: Advanced Deep RL)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "CHAPTER 14 한 걸음 더"
+Bottom line English: "(One Step Further: Advanced Deep RL)"
+
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the entire image: Professor Hojin on the far right (early 40s youthful Korean professor, smooth clear skin, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, navy polo shirt, blue jeans, grey sneakers). He points proudly to the future of AI.
+2. Exactly ONE young girl in the entire image: Dorothy in the center (4.5 heads tall, chestnut twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange striped t-shirt, red canvas sneakers) holding a golden brass telescope looking up into the bright distance. (DO NOT DRAW TWO GIRLS).
+3. Exactly ONE small milk-white puppy: Toto beside Dorothy wearing a sky-blue bandana, wagging tail.
+4. Exactly ONE tuxedo cat: Jiny on the left with round scholar glasses and red collar, holding a roadmap labeled "Advanced Deep RL".
+Pure solid clean white background (#FFFFFF), inspiring masterpiece educational anime, zero Japanese characters.
+```

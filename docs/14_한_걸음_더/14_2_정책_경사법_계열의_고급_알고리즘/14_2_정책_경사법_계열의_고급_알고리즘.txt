@@ -1,0 +1,20 @@
+### Subchapter 14.2 Cover Image Prompt (16:9)
+
+**File**: `14_2_정책_경사법_계열의_고급_알고리즘.png`
+**Title**: 14.2 정책 경사법 계열의 고급 알고리즘
+**Subtitle**: (Advanced Policy Gradients: A3C, TRPO, PPO)
+
+```
+Studio Ghibli 2D anime aesthetic, warm cel shading, crisp dark espresso line art (#26211E), pure solid clean white background (#FFFFFF) with subtle soft contact shadows under feet.
+
+Top center hangs a handsome rustic wooden frame chalkboard banner with neat clean lettering:
+Top line bold Korean: "14.2 정책 경사법 계열의 고급 알고리즘"
+Bottom line English: "(Advanced Policy Gradients: A3C, TRPO, PPO)"
+
+CRITICAL CAST CONSTRAINT:
+1. Exactly ONE man in the entire image: Professor Hojin on the right (early 40s youthful Korean professor, smooth clear skin with NO wrinkles or aging lines, stylish parted salt-and-pepper short hair, thin round wire-rim glasses, warm friendly smile, plain dark navy polo shirt, blue jeans, grey sneakers). He points to a central glowing neural network brain receiving parallel updates from distributed workers.
+2. Exactly ONE young girl in the entire image: Dorothy in the center (4.5 heads tall, chestnut twin pigtails with beads, bright sparkling curious eyes, blue denim overalls with 'STEM HERO' chest patch over an orange striped t-shirt, red canvas sneakers) happily conducting three cute miniature wind-up clockwork helper bots labeled "A3C", "TRPO", "PPO".
+3. Exactly ONE small milk-white puppy: Toto beside Dorothy wearing a sky-blue bandana, wagging tail joyfully.
+4. Exactly ONE tuxedo cat: Jiny on the left with round scholar glasses and red collar, holding a clipboard with the clipped objective equation "L^CLIP(θ)".
+Inspiring, high-tech meets cozy warm anime aesthetic, pure clean white background (#FFFFFF), zero Japanese characters.
+```
