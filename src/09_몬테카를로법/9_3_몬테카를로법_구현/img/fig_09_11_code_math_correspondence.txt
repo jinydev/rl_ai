@@ -1,0 +1,8 @@
+### fig_09_11_code_math_correspondence.png 프롬프트 명세서
+
+- **역할 및 용도**: 강화학습 수식 기호(S_t, A_t, R_t, S_{t+1})와 파이썬 코드 변수(state, action, reward, next_state)의 대응 관계를 설명하는 교육용 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational concept diagram on a pure solid clean white background (#FFFFFF) showing the correspondence between reinforcement learning math and Python code. In the center is a neat wooden whiteboard showing a clear state transition flow: a blue tile labeled 'S_t (state)' connects with an action arrow labeled 'A_t (action)' to a green tile labeled 'S_{t+1} (next_state)', while dropping a sparkling golden reward apple labeled 'R_t (reward)'. Below the diagram is clean highlighted code: 'next_state, reward, done = env.step(action)'. Dorothy (4.5 heads tall, chestnut pigtails with beads, blue denim overalls with 'STEM HERO' badge, striped shirt, red canvas sneakers) holds a pointer stick pointing to the transition. Jiny the tuxedo cat (wearing scholar glasses and red bell collar) stands on a stool proudly holding up a sign: '수식과 코드의 1:1 대응'. Toto the cream-white puppy (solid milk-white, sky-blue bandana) sits happily in front. Pure solid clean white background (#FFFFFF), isolated diagram cutout, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

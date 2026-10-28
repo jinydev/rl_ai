@@ -1,0 +1,8 @@
+### fig_09_13_mc_vs_dp_value_comparison.png 프롬프트 명세서
+
+- **역할 및 용도**: 모델 프리 몬테카를로법(MC)과 모델 기반 동적 프로그래밍(DP)으로 도출한 가치 함수의 거의 완벽한 수렴 일치를 비교 증명하는 교육용 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational comparison board on a pure solid clean white background (#FFFFFF) comparing two 3x4 value function heatmaps side-by-side. Left grid labeled in clean Korean: '〈 몬테카를로법 (MC) 〉 (모델 불필요)': showing values (0.02, 0.08, 0.21, R 1.0 / -0.03, 벽, -0.44, R -1.0 / -0.09, -0.19, -0.40, -0.76). Right grid labeled: '〈 동적 프로그래밍 (DP) 〉 (모델 필수)': showing values (0.03, 0.10, 0.21, R 1.0 / -0.03, 벽, -0.50, -0.37 / -0.10, -0.22, -0.43, -0.78). A golden banner connects them at the bottom: '수렴 결과가 거의 일치함!'. Dorothy (4.5 heads tall, chestnut pigtails with beads, overalls with 'STEM HERO' badge, striped shirt, red canvas sneakers) happily compares them with wide eyes. Jiny the tuxedo cat (wearing scholar glasses and red bell collar) points with his white paw showing the close match. Toto the fluffy cream-white puppy (solid milk-white, sky-blue bandana) smiles happily. Pure solid clean white background (#FFFFFF), isolated dual-grid comparison cutout, soft contact shadow at feet, 1:1 square ratio, Korean and math text only, no Japanese text.

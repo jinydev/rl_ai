@@ -1,0 +1,8 @@
+### fig_09_10_gridworld_3x4.png 프롬프트 명세서
+
+- **역할 및 용도**: 3 × 4 그리드 월드 환경 구조(시작, 벽, 골, 함정)를 설명하는 교육용 삽화 (1:1 정방형)
+- **배경**: 순백색(Pure Solid White, #FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 감성
+
+#### 프롬프트 본문:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece. An educational 3x4 GridWorld maze board game on a pure solid clean white background (#FFFFFF). In an isometric view is a 3-row by 4-column pastel stone grid maze: The bottom-left tile has a green flag labeled in clean Korean: '시작 (START)'. The top-right tile has a sparkling golden crown and star labeled: '도착 (+1.0)'. The tile below the goal has a trap pitfall labeled: '함정 (-1.0)'. The obstacle tile in the center-left is a solid dark grey brick wall block labeled: '벽 (WALL)'. Dorothy (4.5 heads tall junior proportions, chestnut brown twin pigtails with beads, blue denim overalls with 'STEM HERO' round patch, striped shirt, red canvas sneakers) happily stands by the start tile holding a small handheld game controller. Jiny the tuxedo cat (wearing miniature scholar glasses and red bell collar) sits smartly on the wall block pointing with a wand towards the goal. Toto the cream-white puppy (solid milk-white #FBF6EB, no spots, sky-blue bandana) sits by the start tile smiling joyfully. Pure solid clean white background (#FFFFFF), isolated isometric board cutout, subtle contact shadow at base, 1:1 square ratio, Korean text only, no Japanese text.
