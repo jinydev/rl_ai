@@ -5,6 +5,8 @@ title: "12.1 OpenAI Gym"
 
 # 12.1 OpenAI Gym
 
+![12.1 OpenAI Gym](./12_1_OpenAI_Gym.png)
+
 **그림 12-1** 카트 폴(Cart Pole) 막대의 균형을 잡기 위해 실시간으로 좌우 조작을 연습해 보는 도로시와 지니
 ![OpenAI Gym 인트로](./img/jiny_ch12_dqn.png)
 
