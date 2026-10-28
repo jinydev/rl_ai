@@ -5,6 +5,8 @@ title: "11.1 DeZero 기초"
 
 # 11.1 DeZero 기초
 
+![11.1 DeZero 기초](./11_1_DeZero_기초.png)
+
 **그림 11-1** 지니가 들려주는 DeZero 상자 속의 장난감 블록(Variable, Function) 조각들을 끼워 맞춰 보며 딥러닝 연산을 배우는 도로시와 토토
 ![DeZero 기초 인트로](./img/jiny_ch11_1_dezero_basis.png)
 
