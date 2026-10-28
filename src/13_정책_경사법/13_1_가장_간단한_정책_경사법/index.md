@@ -1,287 +1,215 @@
 ---
 layout: docs
-title: "13.1 가장 간단한 정책 경사법"
+title: "13.1 가장 간단한 정책 경사법: 정책을 직접 최적화하는 새로운 패러다임"
 ---
 
-# 13.1 가장 간단한 정책 경사법
+# 13.1 가장 간단한 정책 경사법: 정책을 직접 최적화하는 새로운 패러다임
 
-**그림 13-1** 완만하게 솟아오른 정책의 경사로 위를 밝게 걸어가며 기울기(Gradient) 방향을 체크하는 도로시와 지니
 ![13.1 가장 간단한 정책 경사법](./13_1_가장_간단한_정책_경사법.png)
 
-정책 함수 자체의 매개변수를 직접 경사(기울기)를 이용해 갱신하는 **정책 경사법(Policy Gradient)**의 기본적인 원리와 수치 유도 방법을 공부합니다. 상태와 행동의 결합 확률적 전이를 설명하는 미분 공식을 통해 가장 간단한 형태의 정책 경사 알고리즘을 지니 요정과 함께 차근차근 유도해 봅시다!
+![정책 경사법 원리 인트로](./img/02_simple_policy_gradient_flow.jpg)
+**그림 13-1-1** 높은 누적 수익 *G*(*τ*)이라는 황금 물뿌리개로 좋은 행동 확률 꽃 *π*(*a*|*s*)을 키워내는 도로시와, 로그 미분 트릭(*grad log π*) 및 목적 함수-손실 함수 변환을 유도하는 지니, 그리고 정책 성과 언덕을 오르는 경사 상승법(Gradient Ascent)을 설명하는 이호진 교수님
+
+가치 함수를 거쳐 최적 행동을 간접적으로 추론하던 기존 방식을 완전히 벗어나, 신경망이 행동의 선택 확률을 직접 출력하고 누적 수익을 최대화하도록 매개변수를 직접 조율하는 **정책 경사법(Policy Gradient)**의 기초 이론을 배웁니다. 환경의 복잡한 물리 전이 확률을 알지 못해도 미분이 가능한 **로그 미분 트릭(Log-Derivative Trick)**과 가장 단순한 형태의 정책 경사 알고리즘을 파이썬 코드로 유도해 봅시다!
 
 ---
 
-정책 경사법은 경사, 즉 기울기를 이용하여 정책을 갱신하는 기법들의 총칭입니다. 정책 경사법 기반의 알고리즘은 여러 가지가 있지만 이번 절에서는 가장 간단한 정책 경사법을 도출해보
+## 13.1.1 가치 기반에서 정책 기반으로의 패러다임 전환
 
+지금까지 우리가 배웠던 동적 계획법(DP), 몬테카를로(MC), TD, SARSA, DQN은 모두 **가치 기반(Value-Based)** 기법이었습니다:
+- 상태 가치 *V*(*s*)나 행동 가치 *Q*(*s*, *a*)를 열심히 계산하고,
+- 행동을 선택할 때는 *argmax*<sub>*a*</sub> *Q*(*s*, *a*)라는 결정론적 탐욕 규칙을 사용했습니다.
 
+하지만 **정책 기반(Policy-Based)** 기법은 완전히 다른 길을 걷습니다:
+- **정책 *π*<sub>*θ*</sub>(*a* | *s*) 자체를 신경망으로 모델링**합니다!
+- 상태 *s*가 주어지면, 신경망은 각 행동을 취할 **확률값(0.0 ~ 1.0, 합계 1.0)**을 출력합니다.
+- 그리고 **"에이전트가 얻는 총 누적 보상의 기댓값이 가장 커지도록"** 신경망의 가중치 *θ*를 직접 **경사 상승법(Gradient Ascent)**으로 밀어 올립니다!
 
-겠습니다. 그리고 다음 절부터는 이번에 배운 기법을 토대로 조금씩 개선하면서 새로운 기법들을 소개할 것입니다.
+---
 
-## 13.1.1 정책 경사법 도출
+## 13.1.2 정책 경사 정리와 로그 미분 트릭의 유도
 
-확률적 정책은 수식으로 $\pi(a|s)$로 표현합니다. $\pi(a|s)$는 상태 *s*에서 *a*라는 행동을 취할 확률입니다. 이번 장에서는 정책을 신경망으로 모델링합니다. 이를 위해 신경망의 가중치 매개변수 전체를 *θ* 기호로 집약하여 표현하기로 하죠. *θ*는 모든 매개변수의 원소들을 한 줄로 나열한 벡터입니다. 그리고 신경망으로 구현한 정책을 $\pi_{\theta}(a|s)$로 표현하겠습니다.
+### 1) 궤적(Trajectory)과 누적 수익
 
-다음으로 정책 $\pi_{\theta}$를 이용하여 목적 함수를 설정합니다. 목적 함수를 설정하면 이후 목적 함수의 값을 가장 크게 만드는 매개변수 *θ*를 찾아야 합니다. 이 일이 '최적화'라고 불리는 작업이며 일반적인 신경망 학습 과정을 말합니다.
+에이전트가 정책 *π*<sub>*θ*</sub>에 따라 환경과 상호작용하여 시작부터 끝까지 겪은 전체 시계열 경험을 **궤적(Trajectory, *τ*)**이라고 부릅니다:
 
-> [!NOTE]
-> 최적화 문제를 풀 때 이번 장에서는 일반적으로 쓰이는 손실 함수 대신 목적 함수를 설정합니다. 손실 함수는 경사 하강법으로 최솟값을 찾습니다. 반면 목적 함수는 경사 상승법으로 최댓값을 찾습니다. 경사 하강법은 기울기에 마이너스를 곱한 방향으로, 경사 상승법은 플러스를 곱한 방향으로 매개변수를 갱신합니다. 단, 목적 함수에 마이너스를 붙이면 손실 함수로 취급할 수 있으므로(반대도 마찬가지) 손실 함수와 목적 함수는 본질적으로 같은 역할을 합니다.
+> ### ***τ* = (*S*<sub>0</sub>, *A*<sub>0</sub>, *R*<sub>0</sub>, *S*<sub>1</sub>, *A*<sub>1</sub>, *R*<sub>1</sub>, &hellip;, *S*<sub>*T*</sub>, *A*<sub>*T*</sub>, *R*<sub>*T*</sub>, *S*<sub>*T*+1</sub>)**
 
-그럼 정책 $\pi_{\theta}$를 사용하여 목적 함수를 설정해보겠습니다. 먼저 문제 설정을 명확히 합시다. 일회성 과제이고 행동은 정책 $\pi_{\theta}$에 따라 선택한다고 해보죠. 그리고 매 행동의 결과로 다음과 같이 '상태, 행동, 보상'으로 구성된 시계열 데이터를 얻었다고 가정합니다.
+이 궤적 *τ*에서 얻은 할인 누적 수익의 총합은 다음과 같습니다:
 
-$$\tau = (S_0, A_0, R_0, S_1, A_1, R_1, \cdots, S_{T+1})$$
+> ### ***G*(*τ*) = *R*<sub>0</sub> + *γR*<sub>1</sub> + *γ*<sup>2</sup>*R*<sub>2</sub> + &hellip; + *γ*<sup>*T*</sup>*R*<sub>*T*</sub>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.1: 궤적 누적 수익)*
 
-$\tau$(타우)는 **궤적**<sup>trajectory</sup>; 경로를 뜻합니다. 이때 수익은 할인율을 이용하여 다음 식으로 표현할 수 있습니다.
+---
 
-$$G(\tau) = R_0 + \gamma R_1 + \gamma^2 R_2 + \cdots + \gamma^T R_T$$
+### 2) 정책의 목적 함수: 기대 수익 *J*(*θ*)
 
+우리의 목표는 정책 *π*<sub>*θ*</sub>를 따랐을 때 얻게 되는 **누적 수익의 기댓값 *J*(*θ*)를 극대화**하는 최적의 가중치 *θ*<sup>\*</sup>를 찾는 것입니다:
 
+> ### ***J*(*θ*) = E<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [*G*(*τ*)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.2: 정책의 목적 함수)*
 
-수익을 $\tau$로부터 계산할 수 있음을 명시하기 위해 $G(\tau)$로 표기했습니다. 이때 목적 함수 $J(\theta)$는 다음 식으로 표현됩니다.
+경사 상승법(Gradient Ascent)으로 *J*(*θ*)를 최대화하려면 목적 함수의 기울기인 **∇<sub>*θ*</sub> *J*(*θ*)**를 계산해야 합니다:
 
-$$J(\theta) = \mathbb{E}_{\tau \sim \pi_{\theta}} [G(\tau)]$$
+> ### ***θ* ← *θ* + *α* · ∇<sub>*θ*</sub> *J*(*θ*)**
 
-수익 $G(\tau)$는 확률적으로 변하기 때문에 그 기댓값이 목적 함수가 됩니다. 지금 식에서 기댓값 $\mathbb{E}$의 첨자로 '$\tau \sim \pi_{\theta}$'가 붙어 있습니다. 시계열 데이터 $\tau$가 정책 $\pi_{\theta}$로부터 생성됨을 뜻하는 표기 방식입니다.
+---
 
-> [!NOTE]
-> $\tau$의 생성 과정에는 에이전트의 정책 외에도 환경의 상태 전이 확률 $p(s'|s, a)$와 보상 함수 $r(s, a, s')$도 관여합니다. 그러나 우리가 통제할 수 있는 요인은 에이전트의 정책뿐입니다. 그래서 $\mathbb{E}_{\tau \sim \pi_{\theta}} [\cdots]$와 같이 '$\tau \sim \pi_{\theta}$'로만 표기하기로 합니다.
+### 3) 로그 미분 트릭 (The Log-Derivative Trick)
 
-목적 함수가 정해지면 다음으로 그 기울기를 구합니다. 매개변수 *θ*에 대한 기울기를 $\nabla_{\theta}$로 표현합니다. 우리의 목표는 $\nabla_{\theta} J(\theta)$를 구하는 것이고 결과는 [식 10.1]입니다. 도출 과정은 부록 D.1절에서 설명하니 관심 있는 분은 참고하기 바랍니다.
+여기서 거대한 난관에 부딪힙니다: 기댓값 기호 E<sub>*τ*</sub> 안에는 에이전트의 정책뿐만 아니라, **우리가 전혀 알지 못하는 환경의 물리 전이 확률 *p*(*s*&#39; | *s*, *a*)**가 깊숙이 얽혀 있습니다! 환경의 확률 분포를 미분할 수 없는데 어떻게 ∇<sub>*θ*</sub> *J*(*θ*)를 구할 수 있을까요?
 
-$$\begin{aligned}
-\nabla_{\theta} J(\theta) &= \nabla_{\theta} \mathbb{E}_{\tau \sim \pi_{\theta}} [G(\tau)] \\
-&= \mathbb{E}_{\tau \sim \pi_{\theta}} \left[ \sum_{t=0}^{T} G(\tau) \nabla_{\theta} \log \pi_{\theta} (A_t | S_t) \right]
-\end{aligned} \tag{식 9.1}$$
+이 난제를 마법처럼 해결해 주는 수학 공식이 바로 **로그 미분 트릭(Log-Derivative Trick)**입니다. 미적분학의 연쇄 법칙에 의해 다음 항등식이 성립합니다:
 
-이 식에서 주목할 점은 $\nabla_{\theta}$가 $\mathbb{E}$ 안에 들어있다는 점인데(기울기 계산은 $\nabla_{\theta} \log \pi_{\theta} (A_t | S_t)$로 이루어집니다) 이와 관련해서는 바로 뒤에서 자세히 살펴보겠습니다.
+> ### **∇<sub>*θ*</sub> log *f*(*θ*) = (∇<sub>*θ*</sub> *f*(*θ*)) / *f*(*θ*) &nbsp;&nbsp; ⟹ &nbsp;&nbsp; ∇<sub>*θ*</sub> *f*(*θ*) = *f*(*θ*) · ∇<sub>*θ*</sub> log *f*(*θ*)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.4)*
 
-$\nabla_{\theta} J(\theta)$가 구해지면 이어서 신경망의 매개변수를 갱신합니다. 적용할 수 있는 최적화 방법은 다양하며, 경사 상승법에 따른 간단한 방법을 다음 식으로 표현할 수 있습니다.
+이 항등식을 적용하면, 환경의 전이 확률 항들이 미분 과정에서 분모·분자로 기적처럼 상쇄되어 소거되며, 다음과 같은 **정책 경사 정리(Policy Gradient Theorem)**가 완성됩니다:
 
-$$\theta \leftarrow \theta + \alpha \nabla_{\theta} J(\theta)$$
+> ### **∇<sub>*θ*</sub> *J*(*θ*) = E<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ ∑<sub>*t*=0</sub><sup>*T*</sup> *G*(*τ*) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.3: 정책 경사 정리)*
 
-이 식과 같이 매개변수 *θ*를 기울기 방향으로 *α*만큼 갱신합니다. 여기서 *α*는 학습률입니다.
+---
 
-
-
-## 13.1.2 정책 경사법 알고리즘
-
-$\nabla_{\theta} J(\theta)$는 [식 10.1]과 같이 기댓값으로 표현됩니다. 이 기댓값은 몬테카를로법으로 구할 수 있습니다. 몬테카를로법은 샘플링을 여러 번 하여 평균을 구하는 방법입니다. 에이전트를 정책 $\pi_{\theta}$에 따라 실제로 행동하게 하여 $n$개의 궤적 $\tau$를 얻었다고 가정하죠. 이때 각 $\tau$에서 기댓값, 즉 [식 10.1]의 내용$(\sum_{t=0}^T G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t))$을 계산하고 평균을 구하면 $\nabla_{\theta} J(\theta)$를 근사할 수 있습니다. 수식으로는 다음과 같이 표현됩니다.
-
-$$\begin{aligned}
-&\text{샘플링: } \tau^{(i)} \sim \pi_{\theta} \quad (i = 1, 2, \cdots, n) \\
-&x^{(i)} = \sum_{t=0}^{T} G(\tau^{(i)}) \nabla_{\theta} \log \pi_{\theta} (A_t^{(i)} | S_t^{(i)}) \\
-&\nabla_{\theta} J(\theta) \simeq \frac{x^{(1)} + x^{(2)} + \cdots + x^{(n)}}{n}
-\end{aligned}$$
-
-이 식에서 $i$번째 에피소드에서 얻은 궤적을 $\tau^{(i)}$, $i$번째 에피소드의 시간 *t*에서의 행동을 $A_t^{(i)}$, 상태를 $S_t^{(i)}$로 표현했습니다.
-
-참고로 몬테카를로법의 샘플 수가 1개일 때, 즉 앞의 식에서 $n=1$일 때를 생각해보시다. 이런 경우는 다음과 같이 단순화할 수 있습니다.
-
-$$\begin{aligned}
-&\text{샘플링: } \tau \sim \pi_{\theta} \\
-&\nabla_{\theta} J(\theta) \simeq \sum_{t=0}^T G(\tau) \nabla_{\theta} \log \pi_{\theta} (A_t | S_t) \tag{식 9.2}
-\end{aligned}$$
-
-이번 장에서는 원리를 이해하기 쉽도록 [식 10.2]를 대상으로 한 정책 경사법을 다룰 것입니다. [식 10.2]는 $\nabla_{\theta} \log \pi_{\theta} (A_t | S_t)$를 모든 시간($t=0 \sim T$)에서 구하고, 각 기울기에 수익 $G(\tau)$를 '가중치'로 곱하여 모두 더합니다. 이 계산 과정을 시각화하면 [그림 13-1]과 같습니다.
-
-
-
-**그림 13-1** 정책 경사법으로 계산하는 과정
+### 💡 [식 13.3]의 물리적 의미: "칭찬은 고래도 춤추게 한다"
 
 ![그림 13-1](./img/fig_10_1.jpg)
-$G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_0|S_0) + G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_1|S_1) + \cdots + G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_T|S_T)$
+**그림 13-1-2** 정책 경사법의 계산 흐름. 각 스텝에서 취한 행동의 로그 확률 기울기에 전체 에피소드 수익 *G*(*τ*)를 가중치로 곱하여 합산합니다.
 
-이제 [그림 13-1]에서 수행하는 계산의 '의미'를 생각해봅시다. 우선 $\log$의 미분으로 다음의 식이 성립합니다.
+- **∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)**:
+  "현재 상태 *S*<sub>*t*</sub>에서 에이전트가 선택했던 행동 *A*<sub>*t*</sub>를 취할 **확률을 가장 가파르게 증가시키는 파라미터 갱신 방향**"을 가리킵니다.
+- **가중치 *G*(*τ*)**:
+  그 에피소드 전체의 결과인 누적 수익입니다!
+  - 만약 이번 에피소드에서 100점이라는 **높은 수익(*G* > 0)**을 거두었다면? 
+    방금 취했던 모든 행동들의 선택 확률을 대폭 끌어올리도록 파라미터를 강력하게 밀어붙입니다(칭찬과 강화!).
+  - 반대로 10점밖에 못 얻고 조기 침몰했다면? 
+    작은 가중치만 주어 확률 증가를 억제하거나, 상대적인 약화를 유도합니다.
 
-$$\nabla_{\theta} \log \pi_{\theta}(A_t | S_t) = \frac{\nabla_{\theta} \pi_{\theta}(A_t | S_t)}{\pi_{\theta}(A_t | S_t)}$$
+단 1개의 샘플 에피소드(궤적 *τ*)로부터 경사를 근사하는 **가장 간단한 정책 경사 갱신식**은 다음과 같습니다:
 
-이 식과 같이 $\nabla_{\theta} \log \pi_{\theta}(A_t | S_t)$는 $\nabla_{\theta} \pi_{\theta}(A_t | S_t)$라는 기울기(벡터)에 $\frac{1}{\pi_{\theta}(A_t | S_t)}$을 곱한 것입니다. 이로부터 $\nabla_{\theta} \log \pi_{\theta}(A_t | S_t)$와 $\nabla_{\theta} \pi_{\theta}(A_t | S_t)$는 같은 방향을 가리킨다는 사실을 알 수 있습니다. $\nabla_{\theta} \pi_{\theta}(A_t | S_t)$는 상태 *S*<sub>*t*</sub>에서 행동 *A*<sub>*t*</sub>를 취할 확률이 가장 높아지는 방향을 가리킵니다. 마찬가지로 $\nabla_{\theta} \log \pi_{\theta}(A_t | S_t)$도 상태 *S*<sub>*t*</sub>에서 행동 *A*<sub>*t*</sub>를 취할 확률이 가장 높아지는 방향을 가리키죠. 그 방향에 대해 식 $G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_t | S_t)$와 같이 $G(\tau)$라는 '가중치'가 곱해집니다.
+> ### **∇<sub>*θ*</sub> *J*(*θ*) ≈ ∑<sub>*t*=0</sub><sup>*T*</sup> *G*(*τ*) · ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.5)*
 
-예를 들어 에이전트가 수익 $G(\tau)$로 100을 얻었다고 해보죠. 그렇다면 수익을 얻도록 해준 직전 행동이 더 잘 선택되도록 기울기를 조절해야 하니, 가중치를 100만큼 주어 강화한다는 뜻입니다. 즉, 선택의 결과가 좋았다면 그만큼 직전 행동을 강화한다는 뜻입니다. 반대로 좋지 않은 선택에 대해서는 직전 행동을 그만큼 약화시킵니다.
+---
 
-## 13.1.3 정책 경사법 구현
+## 13.1.3 소프트맥스 정책 신경망과 대리 손실 함수
 
-정책 경사법을 구현하는 가장 간단한 방법을 알아보겠습니다. 먼저 import문과 정책을 표현하는 신경망 코드를 보여드리죠.
+### 1) 정책 신경망: `Policy` 클래스
+이산 행동 공간(좌/우 2개)에서 확률을 출력하기 위해 마지막 계층에 **소프트맥스(Softmax)** 함수를 적용합니다:
 
-
-
-<div align="right"><b>ch09/simple_pg.py</b></div>
+> ### ***y*<sub>*i*</sub> = *e*<sup>*x*<sub>*i*</sub></sup> / ∑<sub>*k*</sub> *e*<sup>*x*<sub>*k*</sub></sup>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 13.6: 소프트맥스 확률)*
 
 ```python
-import numpy as np
-import gym
 from dezero import Model
-from dezero import optimizers
 import dezero.functions as F
 import dezero.layers as L
 
 class Policy(Model):
     def __init__(self, action_size):
         super().__init__()
-        self.l1 = L.Linear(128) # # 첫 번째 계층
-        self.l2 = L.Linear(action_size) # # 두 번째 계층
+        self.l1 = L.Linear(128)
+        self.l2 = L.Linear(action_size)
 
     def forward(self, x):
-        x = F.relu(self.l1(x)) # # 첫 번째 계층에서는 ReLU 함수 사용
-        x = F.softmax(self.l2(x)) # # 두 번째 계층에서는 소프트맥스 함수 사용
+        x = F.relu(self.l1(x))
+        x = F.softmax(self.l2(x)) # 2개 행동의 합이 1.0이 되는 확률 벡터 반환
         return x
 ```
 
-정책 신경망을 2층의 완전 연결 모델로 구현했습니다. 최종 출력의 원소 수는 행동의 수(`action_size`)로 설정합니다. 최종 출력은 소프트맥스 함수의 출력이므로 결국 각 행동의 '확률'을 얻을 수 있습니다.
+---
 
-> [!NOTE]
-> 소프트맥스 함수에 원소 $n$개짜리 벡터를 입력하면 마찬가지로 원소 $n$개짜리 벡터를 출력합니다. 이때 $i$번째 출력 $y_i$는 다음 식으로 표현됩니다.
->
-> $$y_i = \frac{e^{x_i}}{\sum_{k=1}^n e^{x_k}}$$
->
-> 여기서 $e$는 자연로그의 밑(2.71828...로 이어지는 실수)입니다. 소프트맥스 함수의 출력값은 0 이상 1 이하의 실수이며 모두 더하면 항상 1이 됩니다($\sum_{i=1}^n y_i = 1$). 그래서 소프트맥스 함수의 출력은 '확률'로 사용할 수 있습니다.
+### 2) 경사 상승법을 딥러닝 손실 함수로 변환하는 비결
 
-다음은 Agent 클래스 차례입니다. 먼저 초기화 메서드와 `get_action()` 메서드를 보겠습니다.
+딥러닝 프레임워크(DeZero, PyTorch)의 옵티마이저는 손실을 최소화하는 **경사 하강법**만 지원합니다. 
+목적 함수 *J*(*θ*)를 최대화하려면, **목적 함수에 마이너스(-) 부호를 붙여 대리 손실 함수(Surrogate Loss)**로 정의하면 됩니다:
+
+> ### **Loss = - ∑<sub>*t*</sub> *G*(*τ*) · log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>)**
+
+이 `Loss`에 대해 `loss.backward()`를 실행하면, 자동으로 목적 함수 *J*(*θ*)를 최대화하는 올바른 방향으로 신경망 파라미터가 상승 갱신됩니다!
+
+---
+
+## 13.1.4 에이전트 구현 및 CartPole 실험
 
 <div align="right"><b>ch09/simple_pg.py</b></div>
 
 ```python
-class Agent:
+import numpy as np
+import gym
+from dezero import optimizers
+import dezero.functions as F
+
+class SimplePGAgent:
     def __init__(self):
         self.gamma = 0.98
         self.lr = 0.0002
         self.action_size = 2
 
-        self.memory = []
-        self.pi = Policy(self.action_size)
+        self.memory = []                         # 1 에피소드의 (보상, 행동 확률) 저장소
+        self.pi = Policy(self.action_size)       # 정책 신경망
         self.optimizer = optimizers.Adam(self.lr)
         self.optimizer.setup(self.pi)
 
     def get_action(self, state):
-        state = state[np.newaxis, :] # # 배치 처리용 축 추가
-        probs = self.pi(state)       # # 순전파 수행
-        probs = probs[0]
-        action = np.random.choice(len(probs), p=probs.data) # # 행동 선택
-        return action, probs[action] # # 선택된 행동과 확률 반환
-```
-
-`get_action()` 메서드는 상태 `state`에서의 행동을 결정합니다. 이를 위해 `self.pi(state)`로 신경망의 순전파를 수행하여 확률 분포 `probs`를 얻습니다. 그런 다음 이 확률 분포에 따라 하나의 행동을 샘플링합니다. 그리고 선택된 행동과 함께 그 행동의 확률도 반환합니다(지금 코드에서는 `probs[action]`).
-
-이제 `get_action()` 메서드를 사용해봅시다.
-
-```python
-env = gym.make('CartPole-v0', render_mode='rgb_array')
-state = env.reset()
-agent = Agent()
-
-action, prob = agent.get_action(state)
-print('행동:', action)
-print('확률:', prob)
-
-G = 100.0 # # 더미 가중치
-J = G * F.log(prob)
-print('J:', J)
-
-# # 기울기 구하기
-J.backward()
-```
-
-**출력 결과**
-```text
-행동: 1
-확률: variable(0.49956715)
-J: variable(-69.4013237953186)
-```
-
-
-
-이 코드는 초기 상태에서의 행동과 그 확률을 출력합니다. 또한 더미 가중치를 적용하여 다음 식으로 표현되는 기울기를 구하는 코드도 보여줍니다([식 10.2]에서 $t=0$일 때의 항을 추출한 식입니다).
-
-$$G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_0 | S_0)$$
-
-참고로 이 코드에 등장하는 변수들은 각각 다음 수식에 해당합니다.
-
-* `prob` (Dezero.Variable) : $\pi_{\theta}(A_0 | S_0)$
-* `G` (float) : $G(\tau)$
-* `J` (Dezero.Variable) : $G(\tau) \log \pi_{\theta}(A_0 | S_0)$
-
-J가 구해지면 `J.backward()`를 실행하여 $G(\tau) \nabla_{\theta} \log \pi_{\theta}(A_0 | S_0)$을 구합니다.
-
-이어서 Agent 클래스의 나머지 코드를 보겠습니다.
-
-<div align="right"><b>ch09/simple_pg.py</b></div>
-
-```python
-class Agent:
-    ...
+        state = state[np.newaxis, :]
+        probs = self.pi(state)[0]                # 행동 확률 벡터 [p0, p1]
+        action = np.random.choice(len(probs), p=probs.data) # 확률적 샘플링!
+        return action, probs[action]             # 선택한 행동과 그 행동의 Variable 확률 반환
 
     def add(self, reward, prob):
-        data = (reward, prob)
-        self.memory.append(data)
+        self.memory.append((reward, prob))
 
     def update(self):
         self.pi.cleargrads()
 
-        G, loss = 0, 0
-        for reward, prob in reversed(self.memory): # # 수익 G 계산
+        # ❶ 궤적 전체의 수익 G(tau)를 역방향으로 누적 계산
+        G = 0
+        for reward, prob in reversed(self.memory):
             G = reward + self.gamma * G
 
-        for reward, prob in self.memory: # # 손실 함수 계산
+        # ❷ 식 (13.5)에 따른 대리 손실 함수 계산: Loss = -G * sum(log pi)
+        loss = 0
+        for reward, prob in self.memory:
             loss += -F.log(prob) * G
 
+        # ❸ 역전파 및 정책 신경망 갱신
         loss.backward()
         self.optimizer.update()
-        self.memory = [] # # 메모리 초기화
+        self.memory.clear() # 에피소드 종료 후 메모리 비우기
 ```
 
-
-
-`add()` 메서드는 에이전트가 행동을 취해 보상을 얻을 때마다 호출됩니다. 이 메서드에서는 보상(reward)과 에이전트가 취한 행동의 확률(prob)을 메모리(`self.memory`)에 저장합니다.
-
-`update()` 메서드는 에이전트가 목표에 도달했을 때 호출됩니다. 먼저 수익 G를 계산합니다. 수익은 획득한 보상을 역방향으로 추적하면 효율적으로 계산할 수 있습니다(원리는 5.2.3절 참고). 그런 다음 손실 함수를 계산합니다. 각 시간에서의 `-F.log(prob)`를 구하고 가중치로 G를 곱하여 모두 더하면 됩니다. 나머지는 일반적인 신경망 학습과 같습니다.
-
-> [!CAUTION]
-> 신경망 학습에서는 보통 손실 함수를 이용합니다. 손실 함수를 설정하려면 목적 함수 $J(\theta)$에 마이너스를 곱하여 $-J(\theta)$로 바꿔주면 됩니다. $-J(\theta)$를 손실 함수로 쓴다면 경사 하강법용의 다양한 최적화 기법(SGD, Adam 등)을 활용하여 매개변수를 갱신할 수 있습니다.
-
-마지막으로 에이전트를 \<카트 폴\> 환경에서 동작시켜봅시다.
+### CartPole 환경 훈련 결과
 
 ```python
-episodes = 3000
 env = gym.make('CartPole-v0', render_mode='rgb_array')
-agent = Agent()
+agent = SimplePGAgent()
+episodes = 3000
 reward_history = []
 
 for episode in range(episodes):
-    state = env.reset()[0]
+    state, info = env.reset()
     done = False
     total_reward = 0
 
     while not done:
-        action, prob = agent.get_action(state) # # 행동 선택
-        # # 행동 수행
+        action, prob = agent.get_action(state)
         next_state, reward, terminated, truncated, info = env.step(action)
-        done = terminated | truncated
+        done = terminated or truncated
 
-        agent.add(reward, prob) # # ❶ 보상과 행동의 확률을 에이전트에 추가
-        state = next_state      # # 상태 전이
-        total_reward += reward  # # 보상 총합 계산
+        agent.add(reward, prob)
+        state = next_state
+        total_reward += reward
 
-    agent.update() # # ❷ 정책 갱신
+    agent.update() # 에피소드 종료 시 1회 일괄 갱신
     reward_history.append(total_reward)
 ```
 
-
-
-익숙한 코드입니다. while문 안에서 ❶ 에이전트가 받은 보상(reward)과 그 보상을 얻게 해준 행동의 확률(prob)을 에이전트에 추가합니다. 그리고 while문을 빠져나오면(에피소드가 끝나면) ❷ agent.update()를 호출해 정책을 갱신합니다.
-
-이 코드를 실행하면 에피소드가 늘어날수록 보상도 늘어납니다. 결과를 그래프로 그리면 다음과 같습니다.
-
-**그림 13-2** 에피소드별 보상 합계 추이
-
 ![그림 13-2](./img/fig_10_2.jpg)
-
-[그림 13-2]에서 볼 수 있듯이 비록 변동은 크지만 에피소드가 진행됨에 따라 결과가 점차 나아집니다. 하지만 단 한 번의 실험 결과이기 때문에 아직 신뢰하기는 어렵습니다. 그래서 같은 실험을 100번 반복하여 평균한 결과를 보겠습니다.
-
-
-
-**그림 13-3** 100번의 실험을 평균한 결과
+**그림 13-1-3** 1회 실험에서의 에피소드별 보상 합계 추이. 심한 노이즈 속에서도 점진적인 보상 상승을 보입니다.
 
 ![그림 13-3](./img/fig_10_3.jpg)
+**그림 13-1-4** 100회 실험을 평균한 결과. 완만한 학습 곡선을 그리지만 3000 에피소드가 지나도 만점(200)에 도달하지 못합니다.
 
-역시나 에피소드를 거듭할수록 보상의 총합이 커지고 있음을 알 수 있습니다. 하지만 3000회까지 진행했음에도 이번 과제의 상한인 200에는 한참 미치지 못합니다. 개선의 여지가 있어 보이죠? 그래서 다음 절에서는 방금 도출한 가장 간단한 정책 경사법을 개선해보겠습니다.
+### 💡 가장 단순한 정책 경사법의 치명적 약점: "인과율의 무시"
 
+[그림 13-1-4]를 보면 학습이 너무 느리고 만점에 도달하지 못합니다. 그 이유는 **식 (13.5)에서 에피소드의 모든 스텝에 '전체 총수익 *G*(*τ*)'를 똑같이 곱해버렸기 때문**입니다:
+- 에피소드 초반 0~10스텝에서는 완벽하게 균형을 잡았는데, 100번째 스텝에서 어이없이 실수를 저질러 게임이 끝났다고 해봅시다.
+- 이때 초반의 훌륭했던 행동들에게도 후반부 실수 때문에 깎여버린 낮은 총수익 *G*가 일괄 적용되어 억울하게 확률이 깎여버립니다!
+- 반대로 초반에 엉뚱한 짓을 저질렀는데 나중에 운 좋게 오래 버텼다면, 초반의 엉터리 행동까지 칭찬을 받는 부조리가 일어납니다.
+
+과거의 행동이 미래의 보상에만 영향을 미친다는 **인과율(Causality)**을 반영하여 이 모순을 해결하는 진짜 알고리즘, **REINFORCE**를 다음 13.2절에서 완성해 봅시다!

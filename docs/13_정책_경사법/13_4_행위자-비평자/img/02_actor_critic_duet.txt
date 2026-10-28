@@ -1,0 +1,11 @@
+Studio Ghibli 2D animation style educational concept illustration. Solid pure white background (#FFFFFF) with subtle soft contact shadow on the floor.
+
+Professor Hojin (youthful Korean engineering professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper short black hair, thin round metal wire-rim glasses, kind intelligent smile, wearing a plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue jeans, grey suede sneakers) stands on the left, warmly guiding a cooperative learning demonstration.
+
+Dorothy (adorable 9-year-old girl, 4.5 heads tall, wavy chestnut pigtails with colorful beads, cute bangs, warm amber eyes, rosy cheeks, wearing blue denim overalls with STEM HERO patch, orange-yellow striped t-shirt, ruby red canvas sneakers) acts as the 'Actor (Policy pi)', dynamically taking an action step forward while holding an inventor notebook.
+
+Jiny the lab assistant cat (chubby tuxedo cat with cow patches, olive-green eyes, pink nose, red collar with gold bell, round scholar glasses) acts as the 'Critic (Value V)', sitting attentively on a stool holding a small evaluation clipboard showing 'TD Error delta = R + gamma*V(S\') - V(S)'.
+
+Toto the puppy (solid cream-white fluffy puppy with no spots, round black button eyes, black nose, sky-blue bandana) sits happily between them watching the duet.
+
+Between Actor Dorothy and Critic Jiny floats a glowing circular feedback diagram: Dorothy outputs Action A_t, receives Reward R_t and Next State S_{t+1}, Critic Jiny computes TD Error delta_t, and sends the feedback arrow back to Dorothy to update Policy weights. Clean dark espresso brown line art (#26211E), warm vibrant flat cel shading, no UI borders or slide frames.

@@ -1,0 +1,16 @@
+Studio Ghibli 2D animation style educational concept illustration. Solid pure white background (#FFFFFF) with subtle soft contact shadow on the floor.
+
+Professor Hojin (youthful Korean engineering professor in his early 40s, smooth skin, no wrinkles, stylish salt-and-pepper short black hair, thin round metal wire-rim glasses, kind intelligent smile, wearing a plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue jeans, grey suede sneakers) points to a glowing educational chart floating between them.
+
+Dorothy (adorable 9-year-old girl, 4.5 heads tall, wavy chestnut pigtails with colorful beads, cute bangs, warm amber eyes, rosy cheeks, wearing blue denim overalls with STEM HERO patch, orange-yellow striped t-shirt, ruby red canvas sneakers) holds her inventor notebook, enthusiastically looking at the chart.
+
+Jiny the lab assistant cat (chubby tuxedo cat with cow patches, olive-green eyes, pink nose, red collar with gold bell, round scholar glasses) holds a small wooden pointer indicating the baseline zero-line.
+
+Toto the puppy (solid cream-white fluffy puppy with no spots, round black button eyes, black nose, sky-blue bandana) sits happily beside Dorothy.
+
+The central floating educational chart illustrates 'Baseline in Policy Gradient':
+A bright glowing horizontal reference line labeled 'Baseline b(S) = V(S)'.
+Above the line: emerald-green bars with upward arrows indicating 'Better than average (G_t - V(S) > 0) -> Increase Prob'.
+Below the line: coral-red bars with downward arrows indicating 'Worse than average (G_t - V(S) < 0) -> Decrease Prob'.
+Formula tag nearby: 'E[b(s) * grad log pi] = 0 (Unbiased)'.
+Clean dark espresso brown line art (#26211E), vibrant warm flat cel shading, no UI borders or slide frames.

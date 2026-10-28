@@ -1,0 +1,11 @@
+Studio Ghibli 2D animation style educational concept illustration. Solid pure white background (#FFFFFF) with subtle soft contact shadow on the floor. 
+
+Professor Hojin (youthful Korean engineering professor in his early 40s, smooth skin, no wrinkles, neat stylish salt-and-pepper short hair, thin round metal wire-rim glasses, kind intelligent smile, wearing a plain solid dark charcoal navy polo shirt with NO badges or logos, medium-wash blue jeans, grey suede sneakers) stands proudly beside a floating holographic timeline showing Reinforcement Learning 'Causality in REINFORCE'. 
+
+Dorothy (adorable 9-year-old girl, 4.5 heads tall, wavy chestnut pigtails with colorful beads, cute bangs, warm amber eyes, rosy cheeks, wearing blue denim overalls with STEM HERO patch, orange-yellow striped t-shirt, ruby red canvas sneakers) holds her inventor notebook, eyes sparkling with understanding.
+
+Jiny the lab assistant cat (chubby black-and-white tuxedo cat with cow patches, olive-green eyes, pink nose, red collar with gold bell, round scholar glasses) holds a tiny wooden pointer pointing to a floating backward equation 'G <- R + gamma * G'.
+
+Toto the puppy (pure cream-white fluffy puppy with no spots, round black button eyes, black nose, sky-blue bandana) sits happily wagging his tail.
+
+Between them floats a clean glowing visual timeline diagram: past rewards before time t are grayed out as uncorrelated noise, the current action A_t shines with a bright cyan light, and future discounted rewards G_t glow warmly in gold and emerald, feeding upward into policy gradient gradient arrow. Clean dark espresso brown outlines (#26211E), vibrant warm flat cel shading, joyful pedagogical atmosphere, no UI borders or slide frames.
