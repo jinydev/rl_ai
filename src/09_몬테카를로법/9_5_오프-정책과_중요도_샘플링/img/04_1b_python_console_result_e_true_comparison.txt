@@ -1,3 +1,12 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution technical data visualization]
 Visual comparison card of the Python code output for Importance Sampling.
 Three distinct horizontal progress meters/cards on a clean board:
@@ -6,3 +15,4 @@ Three distinct horizontal progress meters/cards on a clean board:
 3. Off-policy Importance Sampling (n=100): Mean 2.95, Variance 10.63 (Mean hits close to target 2.7, but variance bar pulses with wide shockwaves)
 Key annotation: 'Remarkable mean recovery near 2.7, but variance exploded by ~40x!'.
 Modern dashboard aesthetic, pure #FFFFFF background, dark espresso line art.
+--ar 1:1

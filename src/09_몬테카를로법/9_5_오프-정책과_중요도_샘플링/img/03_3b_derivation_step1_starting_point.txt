@@ -1,11 +1,21 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution chalkboard educational illustration]
 Step 1 of Importance Sampling Derivation.
-On a clean olive-toned blackboard framed in warm oak, Dorothy writes the classic definition of expectation in crisp chalk:
+On a clean olive-toned blackboard framed in warm oak, Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers writes the classic definition of expectation in crisp chalk:
 'Step 1: Theoretical Definition of Expectation'
 'E_π[X] = ∑_x x · π(x)'
 Callout annotations break down each symbol:
 - 'x': Possible outcome value
 - 'π(x)': Probability under target policy π
 - '∑_x': Sum over all possible events
-Genie sits on the chalk ledge holding a pointer, nodding with satisfaction. Toto sits beside observing attentively.
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose sits on the chalk ledge holding a pointer, nodding with satisfaction. Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail sits beside observing attentively.
 Pure white background outside the board, crisp typography, clean dark espresso lines.
+--ar 1:1

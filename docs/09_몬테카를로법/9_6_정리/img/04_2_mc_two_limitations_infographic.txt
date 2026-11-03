@@ -1,10 +1,19 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A cautionary educational infographic on a pure solid white background (#FFFFFF).
-Title: '몬테카를로법의 2대 결정적 한계'.
+Visual Subject: 몬테카를로법의 2대 결정적 한계 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Left warning card: '한계 ❶ 에피소드 완주 필수 (Episodic 제약)' (Amber card)
 - 반드시 골에 도달하거나 죽을 때까지 기다려야만 G를 정산 가능.
 - 주식 트레이딩이나 로봇 균형 제어처럼 무한히 지속되는 연속적(Continuing) 환경에서는 적용 불가!
 Right warning card: '한계 ❷ 높은 분산 (High Variance)' (Coral card)
 - 긴 경로 동안 수많은 확률적 주사위가 곱해져 G가 심하게 요동침.
 - 참 기댓값 수렴을 위해 수만 번의 방대한 에피소드가 필요함!
-Dorothy and Toto looking cautiously at the warning cards.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers and Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail looking cautiously at the warning cards.
 Dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

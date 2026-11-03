@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A professional software algorithm flowchart on a pure solid white background (#FFFFFF).
-Title: '파이썬 importance_sampling.py 실행 순서도'.
+Visual Subject: 파이썬 importance_sampling.py 실행 순서도 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Flowchart steps:
 1. [정의: x=[1,2,3], π=[0.1, 0.1, 0.8], b=[1/3, 1/3, 1/3]] (Rectangle)
 2. [이론적 참값 계산: e_true = ∑ x*π = 2.7] (Rectangle)

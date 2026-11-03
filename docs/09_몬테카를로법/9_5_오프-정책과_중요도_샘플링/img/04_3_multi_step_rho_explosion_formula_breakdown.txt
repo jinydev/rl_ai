@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A cautionary mathematical breakdown infographic on a pure solid white background (#FFFFFF).
-Title: '다단계 몬테카를로의 분산 폭발 저주'.
+Visual Subject: 다단계 몬테카를로의 분산 폭발 저주 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Header formula in bold typography:
 ρ_{0:T-1} = ∏_{t=0}^{T-1} [ π(A_t | S_t) / b(A_t | S_t) ]
 
@@ -9,5 +18,5 @@ Warning callout cards:
 - T=10 스텝만 지나도 가중치가 2.4^10 ≈ 6,340으로 천문학적 폭발!
 - 반대로 0.1^10 ≈ 0.0000000001로 완전히 소멸(Vanishing)!
 - 결과: 분산이 무한대로 치솟아 학습이 극도로 불안정해짐.
-Genie holding an umbrella against a shower of exploding numbers.
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose holding an umbrella against a shower of exploding numbers.
 Dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

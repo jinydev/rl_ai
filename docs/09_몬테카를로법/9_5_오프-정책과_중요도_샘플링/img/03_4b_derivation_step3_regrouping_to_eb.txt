@@ -1,3 +1,12 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution chalkboard educational illustration]
 Step 3 of Importance Sampling Derivation: Regrouping Terms and the Birth of E_b.
 On the chalkboard, the equation rearranges:
@@ -6,5 +15,6 @@ A bracket groups [π(x) / b(x)] with an arrow labeling it 'Importance Weight ρ(
 A prominent curved arrow points to the trailing '· b(x)' explaining: 'Ending with · b(x) inside a sum means taking the expectation over distribution b!'.
 The final transformation banner shines:
 '= E_b [ X · (π(X) / b(X)) ]'
-Dorothy claps her hands in delight as Genie tips his wizard hat.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers claps her hands in delight as Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose tips his wizard hat.
 Pure #FFFFFF background, dark espresso brown lines, pastel yellow and mint highlights.
+--ar 1:1

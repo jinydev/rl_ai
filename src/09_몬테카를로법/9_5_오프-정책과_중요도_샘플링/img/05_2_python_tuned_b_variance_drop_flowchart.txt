@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A software comparison flowchart and variance reduction diagram on a pure solid white background (#FFFFFF).
-Title: '조율된 행동 분포(b_tuned)와 분산 75% 급감 순서도'.
+Visual Subject: 조율된 행동 분포(b_tuned)와 분산 75% 급감 순서도 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Flowchart & Results:
 1. [분포 조율: b_tuned = [0.2, 0.2, 0.6] (π=[0.1, 0.1, 0.8]에 가깝게 정렬!)] (Rectangle)
 2. [샘플링 루프 실행: rho = pi / b_tuned (비율이 1 근처로 안정화!)] (Rectangle)
@@ -7,5 +16,5 @@ Flowchart & Results:
    - 기존 균등 b 분산: 10.63 (위험 수치 Red)
    - 조율된 b 분산: 2.48 (안정 수치 Green, 75% 급감!)
    - 평균값: 2.72 (참값 2.7에 더욱 정밀하게 밀착!)
-Dorothy and Genie giving a double thumbs up, Toto happily wagging his tail.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers and Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose giving a double thumbs up, Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail happily wagging his tail.
 Clean vector graphic, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

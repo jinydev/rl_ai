@@ -1,8 +1,17 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A deeply heartwarming mentor lecture illustration on a pure solid white background (#FFFFFF).
-Title: '이호진 교수님의 감동적인 9장 종강 멘토링 노트'.
+Visual Subject: 이호진 교수님의 감동적인 9장 종강 멘토링 노트 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Visual scene:
-Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) smiling warmly with an open notebook.
+Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, energetic kind face), neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, encouraging warm smile, dressed in a neat solid dark charcoal navy short-sleeve collared polo shirt with NO name tag, NO badges, NO SNU text, classic blue denim jeans, grey suede sneakers.
 Written on the presentation screen:
 '우리는 마침내 환경의 수학 공식을 몰라도 스스로 경험을 통해 지혜를 쌓는 진정한 강화학습에 성공했습니다. 몬테카를로법이 세운 3대 금자탑은 다음 10장 시간차 학습(TD)과 Q-러닝, 그리고 딥마인드의 심층 강화학습(DQN)으로 뻗어나가는 가장 위대한 반석입니다.'
-Dorothy, Toto, and Genie giving a heartfelt standing ovation.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers, Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail, and Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose giving a heartfelt standing ovation.
 Warm academic glow, pure solid white background (#FFFFFF). --ar 1:1

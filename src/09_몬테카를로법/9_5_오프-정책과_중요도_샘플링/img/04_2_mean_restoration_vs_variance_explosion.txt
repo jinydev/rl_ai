@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A dramatic educational comparison infographic on a pure solid white background (#FFFFFF).
-Title: '중요도 샘플링의 명과 암: 평균 복원 성공 vs 분산 40배 폭발'.
+Visual Subject: 중요도 샘플링의 명과 암: 평균 복원 성공 vs 분산 40배 폭발 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Two comparison pillars:
 Pillar 1: '평균 복원 성공 (Light)' (Emerald Green)
 - 이론적 참값: 2.7
@@ -9,5 +18,5 @@ Pillar 2: '분산의 폭발 (Shadow)' (Bright Crimson)
 - 온-정책 분산: 0.27
 - 오프-정책 분산: 10.63 (무려 40배 요동침!)
 - 파도가 심하게 출렁이듯 불안정하게 튀는 데이터 점들.
-Dorothy and Toto looking wide-eyed at the massive variance wave.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers and Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail looking wide-eyed at the massive variance wave.
 Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

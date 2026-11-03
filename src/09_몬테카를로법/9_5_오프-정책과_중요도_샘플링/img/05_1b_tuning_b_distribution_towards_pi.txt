@@ -1,3 +1,12 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution probability distribution tuning infographic]
 Infographic showing the tuning of behavior distribution b towards target distribution π.
 Three probability bar charts lined up side by side:
@@ -7,3 +16,4 @@ Three probability bar charts lined up side by side:
 A guiding hand shapes the bars of b into b_tuned, with smooth alignment curves.
 Caption: 'Bringing b closer to π keeps weights ρ close to 1, dramatically slashing variance by 75%!'.
 Elegant pastel color palette, clean vector layout, pure white background.
+--ar 1:1

@@ -1,8 +1,17 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 An exciting, motivating chapter finale teaser illustration on a pure solid white background (#FFFFFF).
-Title: '조교 지니의 응원: 09.6 몬테카를로법 최종 총정리로 출발!'.
+Visual Subject: 조교 지니의 응원: 09.6 몬테카를로법 최종 총정리로 출발! (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Visual scene:
-Genie the tuxedo cat wearing spectacles proudly waves a golden graduation flag.
-Dorothy packs her reinforcement learning notebook and compass into her explorer bag, full of confidence.
-Toto carries a scroll labeled '09장 몬테카를로법 완전 마스터'.
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose wearing spectacles proudly waves a golden graduation flag.
+Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers packs her reinforcement learning notebook and compass into her explorer bag, full of confidence.
+Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail carries a scroll labeled '09장 몬테카를로법 완전 마스터'.
 A bright archway ahead labeled: '다음 목적지: 9.6 몬테카를로법 총정리 (수학적 기초부터 오프-정책까지 완벽 정리)!'.
 Clean vector lines, joyful educational aesthetic, pure solid white background (#FFFFFF). --ar 1:1

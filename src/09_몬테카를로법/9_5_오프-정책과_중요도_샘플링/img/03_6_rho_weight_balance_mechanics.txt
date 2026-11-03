@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 An educational brass scale mechanism diagram on a pure solid white background (#FFFFFF).
-Title: '중요도 가중치 ρ = π/b 의 3대 공평 정산 메커니즘'.
+Visual Subject: 중요도 가중치 ρ = π/b 의 3대 공평 정산 메커니즘 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Three distinct balance scale states:
 1. [과다 행동 감점: b > π] -> ρ < 1 (예: ρ = 0.5)
    - "너 그 행동 너무 오버해서 많이 했어! 점수를 반으로 깎아서 정산할게!"
@@ -7,4 +16,4 @@ Three distinct balance scale states:
    - "너 그 귀한 행동을 아주 드물게 성공했구나! 가중치를 2.4배로 듬뿍 쳐줄게!"
 3. [완벽 일치 균형: b = π] -> ρ = 1.0
    - 두 정책의 확률이 같아 온-정책과 완벽히 동일한 공평 정산!
-Genie balancing golden scale pans, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose balancing golden scale pans, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

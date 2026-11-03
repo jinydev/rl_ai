@@ -1,9 +1,19 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution conceptual reinforcement learning infographic]
 Educational infographic demonstrating 'Experience-Driven Agent-Environment Dynamic Interaction Loop'.
 A circular, elegant loop showing the distinctive hallmark of Reinforcement Learning:
-- Dorothy as the agent observing State s_t from the environment.
+- Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, ruby red canvas sneakers as the agent observing State s_t from the environment.
 - Action arrow: Agent selects Action a_t into the environment.
 - Environment reaction arrow: Returns Reward R_{t+1} and Next State s_{t+1}.
 A callout banner compares this to Supervised/Unsupervised Learning:
 'Unlike static datasets, RL agents learn autonomously through active, live trial-and-error interaction with their world!'.
 Clean modern vector line art, warm pastel teal and amber accents, crisp typography, pure #FFFFFF background.
+--ar 1:1

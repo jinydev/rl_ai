@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A conceptual educational illustration on a pure solid white background (#FFFFFF).
-Title: '오프-정책과 중요도 샘플링의 정수'.
+Visual Subject: 오프-정책과 중요도 샘플링의 정수 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Visual diagram:
 Left side: '행동 정책 b(a|s)' -> 모험가 복장의 도로시가 미로 구석구석을 활발하게 탐색하며 다채로운 데이터 수집.
 Right side: '대상 정책 π(a|s)' -> 학사모를 쓴 지니가 수집된 데이터를 전달받아 무작위 실수 없는 순수 100% 최적 챔피언 전략으로 정제.

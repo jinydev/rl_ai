@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A step-by-step algebraic derivation infographic on a pure solid white background (#FFFFFF).
-Title: '중요도 샘플링의 기적: 3단계 분모·분자 끼워넣기 트릭'.
+Visual Subject: 중요도 샘플링의 기적: 3단계 분모·분자 끼워넣기 트릭 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Step 1: 원래 기댓값 정의
 E_π[X] = ∑_x x · π(x)
 Step 2: 분수 1 = b(x)/b(x) 곱하기 (수식의 값 불변!)
@@ -9,5 +18,5 @@ Step 3: 순서를 바꾸어 묶기
 = E_b [ X · ( π(X) / b(X) ) ]
 
 A golden highlight box around [ π(x) / b(x) ] labeled '중요도 가중치 ρ(x)'.
-Professor Hojin smiling in academic triumph, Dorothy clapping happily.
+Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, energetic kind face), neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, encouraging warm smile, dressed in a neat solid dark charcoal navy short-sleeve collared polo shirt with NO name tag, NO badges, NO SNU text, classic blue denim jeans, grey suede sneakers.
 Ultra-crisp typography, dark espresso lines, pure white background (#FFFFFF). --ar 1:1

@@ -1,6 +1,16 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical infographic]
 Infographic illustrating 'Unbiased Estimation via Importance Sampling'.
 A central equation banner: 'E_π[X] = E_b[ X · (π(X) / b(X)) ]'.
 A statistical transformation funnel: raw data samples from distribution b enter from the top, pass through the 'Importance Weight Filter ρ = π / b', and emerge at the bottom as perfectly unbiased estimates conforming to distribution π with zero systemic bias.
-Genie checks the output with a level ruler confirming balance (Unbiased = 참값 보존).
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose checks the output with a level ruler confirming balance (Unbiased = 참값 보존).
 Crisp vector lines, soft pastel green and blue accents, dark espresso outlines, pure white background.
+--ar 1:1

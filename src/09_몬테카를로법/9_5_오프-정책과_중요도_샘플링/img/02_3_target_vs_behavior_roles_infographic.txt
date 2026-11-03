@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A structured role-division infographic on a pure solid white background (#FFFFFF).
-Title: '오프-정책의 2대 주인공: 대상 정책(π) vs 행동 정책(b)'.
+Visual Subject: 오프-정책의 2대 주인공: 대상 정책(π) vs 행동 정책(b) (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Left character card: '대상 정책 π(a|s) - 연구실의 챔피언 전략' (Royal Blue)
 - 역할: 최종 완성할 목표 정책, 100% 완전 탐욕 (Greedy)
 - 특징: 방황하지 않고 오직 트로피를 향해 질주하는 순수 지능

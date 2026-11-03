@@ -1,3 +1,12 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical symbol breakdown infographic]
 Infographic breaking down the Greek symbol Rho (ρ) for Importance Weight.
 In the center, a large elegant Greek letter 'ρ(x)' rendered in warm indigo line art.
@@ -7,3 +16,4 @@ Formula breakdown boxes with clear arrows:
 - Ratio meaning: 'Probability Ratio (두 정책 간의 확률 비율 저울추)'
 Around the symbol are subtle balance icons showing fairness and exact correction.
 Minimalist, elegant editorial layout, pure white background, dark espresso line art.
+--ar 1:1

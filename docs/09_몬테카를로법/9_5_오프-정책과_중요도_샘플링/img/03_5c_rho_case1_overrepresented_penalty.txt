@@ -1,7 +1,17 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 [Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution educational infographic]
 Importance Weight Case 1: Overrepresented Action Penalty (b(x) > π(x) → ρ(x) < 1).
 An illustrative scale where the behavior policy side b is heavier and overloaded with too many samples.
 A stamp marked 'Discount Penalty ρ < 1 (점수 깎기)' gently presses down to reduce the weight of over-sampled actions:
 'b chose this action way too frequently! Score discounted to maintain statistical fairness!'
-Genie holds a small trimming scissor, playfully snipping excess sample weight into exact proportion.
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose holds a small trimming scissor, playfully snipping excess sample weight into exact proportion.
 Pure white background, clean pastel tones, dark espresso outlines.
+--ar 1:1

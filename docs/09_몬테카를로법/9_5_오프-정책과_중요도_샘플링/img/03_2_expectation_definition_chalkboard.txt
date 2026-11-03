@@ -1,5 +1,14 @@
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading.
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+
+[VISUAL SCENE SPECIFICATION]
 A mathematical definition infographic on a pure solid white background (#FFFFFF).
-Title: '원래 확률 분포 π에서의 기댓값 정의'.
+Visual Subject: 원래 확률 분포 π에서의 기댓값 정의 (pure isolated conceptual elements, NO top banner box, NO slide frame).
 Chalkboard-style clean white card with formula:
 E_π[X] = ∑_x x · π(x)
 
@@ -8,5 +17,5 @@ Three callout notes explaining:
 2. 'π(x)': 해당 사건이 목표 정책에서 일어날 원래 확률
 3. '∑': 모든 가능한 경우의 확률 가중합
 Below: '온-정책(On-policy)에서는 π에서 직접 n번 샘플링하여 단순히 산술 평균을 냈음: E_π[X] ≈ (x^(1) + ... + x^(n)) / n'.
-Genie holding a pointer, Toto watching attentively.
+Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose holding a pointer, Toto, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail watching attentively.
 Crisp lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1
