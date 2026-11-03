@@ -1,0 +1,6 @@
+A clear educational infographic diagram comparing Model-based Dynamic Programming vs Model-free Monte Carlo on a pure solid white background (#FFFFFF).
+Title: '블랙박스 환경과 몬테카를로법의 힘'.
+Left side: 'DP (동적 계획법)': requires opening the complex black box of the environment to inspect internal transition gears and probabilities 'p(s'|s,a)'. Genie the tuxedo cat with glasses looks overwhelmed with blueprints.
+Right side: 'MC (몬테카를로법)': treats the environment as an opaque 'Black Box' with an 'IN (Action a)' slot and 'OUT (Reward r, Next State s')' chute. Dorothy simply presses the action button and observes the output rewards, smiling with ease.
+Toto happily catches the reward tokens coming out of the chute.
+Art style: clean dark espresso outlines, modern flat vector infographic, pure solid white background, minimal warm pastel palette. --ar 1:1

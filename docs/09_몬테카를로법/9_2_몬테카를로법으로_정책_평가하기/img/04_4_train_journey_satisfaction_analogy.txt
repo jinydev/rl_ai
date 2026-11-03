@@ -1,0 +1,12 @@
+A warm, charming storybook educational illustration on a pure solid white background (#FFFFFF).
+Title: '도로시의 기차 여행 비유: 서울에서 부산까지'.
+Visual concept:
+A cute passenger steam train traveling across stations:
+[서울역 (State A)] -> [대전역 (State B)] -> [대구역 (State C)] -> [종착역 부산 (Goal)]
+Dorothy explains to Toto with passenger speech bubbles:
+- Passenger boarded at Seoul: total journey happiness G_A!
+- Passenger boarded at Daejeon: total journey happiness G_B!
+- Passenger boarded at Daegu: total journey happiness G_C!
+All settled simultaneously once the train arrives at Busan station!
+Genie dressed as a train conductor punching tickets with a smile.
+Art style: fine dark espresso brown line art, pastel storybook watercolor feel, pure white background (#FFFFFF). --ar 1:1

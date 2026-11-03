@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution conceptual reinforcement learning infographic]
+Educational infographic demonstrating 'Experience-Driven Agent-Environment Dynamic Interaction Loop'.
+A circular, elegant loop showing the distinctive hallmark of Reinforcement Learning:
+- Dorothy as the agent observing State s_t from the environment.
+- Action arrow: Agent selects Action a_t into the environment.
+- Environment reaction arrow: Returns Reward R_{t+1} and Next State s_{t+1}.
+A callout banner compares this to Supervised/Unsupervised Learning:
+'Unlike static datasets, RL agents learn autonomously through active, live trial-and-error interaction with their world!'.
+Clean modern vector line art, warm pastel teal and amber accents, crisp typography, pure #FFFFFF background.

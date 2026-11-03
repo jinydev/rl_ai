@@ -1,0 +1,10 @@
+An expressive character-driven infographic on a pure solid white background (#FFFFFF).
+Title: 'RandomAgent: 상·하·좌·우 25% 균등 무작위 나침반'.
+In the center, Dorothy holding a large, beautifully designed brass compass with 4 balanced arrows:
+- Up (상): 0.25 (25%)
+- Down (하): 0.25 (25%)
+- Left (좌): 0.25 (25%)
+- Right (우): 0.25 (25%)
+Genie the cat rolling a 4-sided balanced die labeled 0, 1, 2, 3.
+Subtitle: '환경의 지도를 모를 때 가장 공평하고 편향 없는 탐험의 시작'.
+Crisp outlines, warm pastel palette, pure solid white background (#FFFFFF). --ar 1:1

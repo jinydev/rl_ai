@@ -1,0 +1,9 @@
+A circular 4-stage lifecycle diagram on a pure solid white background (#FFFFFF).
+Title: '강화학습 에이전트와 그리드월드의 4단계 상호작용 순환'.
+Four nodes arranged in a clean clockwise circle:
+1. [행동 결정 (get_action)]: 정책 π에 따라 4방향 중 행동 a 선택
+2. [행동 실행 (step)]: 환경 콘솔에 a 전달하여 물리 전이 실행
+3. [경험 저장 (add)]: 배낭 memory에 (s, a, r) 튜플 누적
+4. [완주 판정 (if done)]: 골 도달 시 eval() 역방향 가치 갱신 호출
+Center: A glowing bidirectional interaction symbol between Agent Dorothy and Environment Console.
+Clean vector graphic, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,12 @@
+A comprehensive software flowchart on a pure solid white background (#FFFFFF).
+Title: '완성된 McAgent.update() 메서드 표준 순서도'.
+Flowchart steps:
+1. [호출: agent.update()] (Rounded oval)
+2. [G = 0 초기화] (Rectangle)
+3. <for state, action, reward in reversed(self.memory):> (Hexagon / Loop)
+   - [G = self.gamma * G + reward] (Rectangle)
+   - [key = (state, action)] (Rectangle)
+   - [Q 함수 지수 이동 평균 갱신: self.Q[key] += (G - self.Q[key]) * self.alpha] (Rectangle)
+   - [ε-탐욕 정책 즉시 개선: self.pi[state] = greedy_probs(self.Q, state, self.epsilon)] (Rectangle)
+4. [루프 종료: 완주 에피소드 제어 완료] (Rounded oval)
+Standard flowchart shapes, soft pastel colors, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

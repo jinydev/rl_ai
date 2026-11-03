@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical derivation diagram: "Step 2 of Derivation: Isolating the Very Last Data Point s_n".
+In the center, a dark-green chalkboard displaying the clever algebraic separation formula:
+"V_n = (1 / n) · [ ( ∑_{i=1}^{n-1} s_i )  +  s_n ]"
+- A warm golden chalk bracket highlights the first part: "[ ∑_{i=1}^{n-1} s_i ] → 과거 (n-1)개 데이터들의 합".
+- A bright glowing emerald bracket highlights the isolated last term: "[ + s_n ] → 이번에 새로 들어온 마지막 n번째 표본!".
+- A playful scissor/bracket icon showing the mathematical trick: "모든 과거 데이터 묶음과 최신 데이터 1개를 깔끔하게 분리!".
+In the foreground:
+Jiny the tuxedo assistant cat wearing tiny round scholar glasses and red bell collar stands on a wooden step-stool, using chalk to draw the glowing brackets around s_n with a clever wink: "마지막 최신 데이터 s_n만 살짝 밖으로 떼어내는 쪼개기 마술이다냥!".
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under chalkboard and cat, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 증분 갱신 공식 유도의 제2단계로서, 전체 n개의 합에서 과거 1부터 (n-1)번째까지의 합(∑_{i=1}^{n-1} s_i)과 가장 최신의 마지막 데이터(s_n)를 괄호 밖으로 분리해내는 대수적 쪼개기 기법을 조교 지니의 칠판 괄호 그리기로 시각화한 1:1 정방형 순백색 수식 삽화.
+

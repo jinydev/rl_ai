@@ -1,0 +1,11 @@
+An exciting chapter teaser illustration previewing Chapter 9.5 on a pure solid white background (#FFFFFF).
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+ABSOLUTE CONSTRAINTS: ZERO slide UI frames, NO header banner, NO slide borders, NO background card borders, pure #FFFFFF white background.
+Visual Scene:
+In the center: Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, white muzzle with a cute baby pink button nose, olive-green eyes, wearing a charming red collar with tiny gold bell and miniature round wire-rim scholar glasses perched on his nose.
+Jiny proudly floats slightly with magic paws, holding two glowing scrolls:
+Scroll 1 (Warm Emerald): '행동 정책 b(a|s) : 자유로운 탐험!'
+Scroll 2 (Radiant Gold): '대상 정책 π(a|s) : 완벽한 최적화!'
+On the left: Dorothy (4.5 heads tall, chestnut pigtails, denim overalls, red sneakers) pumping her fist in excitement: '탐험과 평가를 분리하는 오프-정책의 마법!'.
+On the right: Toto (fluffy solid milk-white puppy with sky-blue bandana, black button nose, plumey tail) jumping playfully with a small green ribbon in his mouth.
+Soft subtle contact shadows under characters, cheerful hopeful learning energy, pure #FFFFFF white background, no Japanese text. --ar 1:1

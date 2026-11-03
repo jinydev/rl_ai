@@ -1,0 +1,12 @@
+A mathematical observation infographic on a pure solid white background (#FFFFFF).
+Title: '정방향 계산 시 중복 연산의 비효율 관찰'.
+Visual layout showing three stacked equations:
+G_A = R_0 + [ γR_1 + γ²R_2 ]
+G_B =       [ R_1 + γR_2   ]
+G_C =               R_2
+
+A bright translucent highlight box connects the bracketed terms:
+Notice that [ γR_1 + γ²R_2 ] is exactly γ * [ R_1 + γR_2 ] = γ * G_B !
+And [ γR_2 ] inside G_B is exactly γ * G_C !
+Dorothy and Genie pointing with a magnifying glass at the repeated terms, discovering redundant computations.
+Clean chalkboard-inspired white vector card, dark espresso line art, pure white background (#FFFFFF). --ar 1:1

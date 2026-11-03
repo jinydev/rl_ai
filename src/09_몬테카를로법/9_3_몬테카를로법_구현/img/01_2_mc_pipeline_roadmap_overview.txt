@@ -1,0 +1,10 @@
+A clear, high-level educational roadmap infographic on a pure solid white background (#FFFFFF).
+Title: '몬테카를로 정책 평가 파이프라인 4단계 로드맵'.
+Four horizontal sequential stages connected by sleek golden flow arrows:
+Stage 1: [환경 상호작용 (env.step)] -> 에이전트가 행동을 취하고 피드백(s', r, done) 획득
+Stage 2: [경험 배낭 저장 (agent.add)] -> (상태, 행동, 보상) 튜플을 memory 리스트에 순서대로 패키징
+Stage 3: [완주 판정 (if done)] -> 골인/종료 도달 시까지 루프 반복 후 완주 감지
+Stage 4: [역방향 가치 정산 (agent.eval)] -> reversed(memory)로 뒤에서부터 수익 G 누적 및 가치 V 갱신
+
+Dorothy and Genie standing proudly in front of the roadmap, holding a pointer.
+Art style: crisp dark espresso brown line art, clean vector infographic, warm pastel accents, pure white background (#FFFFFF). --ar 1:1

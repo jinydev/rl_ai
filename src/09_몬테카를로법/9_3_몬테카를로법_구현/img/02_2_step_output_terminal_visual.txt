@@ -1,0 +1,12 @@
+A clear educational infographic mapping terminal output to gridworld mechanics on a pure solid white background (#FFFFFF).
+Title: 'step() 메서드 반환값 터미널 출력 시각화'.
+Left panel: A dark terminal console displaying:
+>>> next_state: (1, 0)
+>>> reward: 0.0
+>>> done: False
+Right panel: A 3x4 gridworld illustration with glowing callout pointers linking each console line to the actual grid:
+- '(1, 0)': Robot pawn moved one step up from (2,0) to tile (1,0).
+- '0.0': Neutral path tile giving 0.0 reward star.
+- 'False': Game is still running, finish line not yet reached.
+Dorothy and Toto happily reviewing the output.
+Art style: modern vector infographic, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,7 @@
+An educational infographic summarizing Pillar 2 on a pure solid white background (#FFFFFF).
+Title: '제2기둥: 단일 경로 다중 상태 수확 (Multi-state Harvesting)'.
+Core concept:
+No need to teleport or reset to individual states! A single trajectory through states A -> B -> C -> Goal provides valid return samples for every state visited along the journey simultaneously.
+Visual: A single elegant glowing path winding through a grid. Magnets over states A, B, and C attract their respective return tokens in one simultaneous swoop.
+Genie the tuxedo cat giving a thumbs up, Toto barking joyfully.
+Crisp vector lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

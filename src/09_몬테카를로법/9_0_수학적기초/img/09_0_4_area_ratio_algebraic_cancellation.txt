@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Brilliant and satisfying mathematical derivation illustration: "The Magic of Algebraic Cancellation of r²".
+In the center, a dark-green slate chalkboard with elegant, vibrant chalk calligraphy showing the step-by-step area ratio derivation:
+Line 1: "S_circle / S_square = (π · r²) / (4 · r²)"
+Line 2: A bold, bright crimson chalk slash line crossing out both the numerator "r²" and the denominator "r²" (algebraic cancellation) with tiny golden sparkling starburst effects around the cancellation:
+"(π · <s>r²</s>) / (4 · <s>r²</s>)  →  π / 4"
+A prominent chalkboard callout box states: "반지름 r의 크기(1cm든 100m든)와 무관하게 항상 성립하는 보편적 불변 비율 π/4!".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) holds a piece of crimson chalk, pumping both fists in triumphant joy with sparkling eyes: "우와! 복잡한 반지름 r²이 싹 사라지고 순수한 π/4만 남았어요!".
+Beside her, Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) smiles warmly and nods in pride, holding a wooden pointer and giving an encouraging nod of approval.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet and chalkboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 외접 정사각형 면적(4r²)과 내접원 면적(πr²)의 비례식에서 분자와 분모의 반지름 r²이 대수학적으로 깔끔하게 약분되어 사라지고 오직 순수한 기하학적 상수 비율인 π/4만 남는 쾌감의 순간을 도로시의 환호와 교수님의 지도 모습으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

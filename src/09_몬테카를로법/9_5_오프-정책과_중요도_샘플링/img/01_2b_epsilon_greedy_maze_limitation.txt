@@ -1,0 +1,6 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution educational editorial illustration]
+Dorothy, Genie the tuxedo cat with round glasses, and Toto the pure cream-colored puppy studying a maze map on an oak desk.
+On the maze map, a bright glowing golden path shows the optimal route out of the maze, but there are dashed detour arrows branching off with 'ε = 10% random mistakes' causing small collisions and setbacks.
+Dorothy looks slightly concerned and thoughtful with a hand on her chin, wondering why the agent cannot just take the 100% pure perfect route without forced random wobbles.
+A thought bubble above Dorothy displays a question mark with '100% Pure Optimal Policy vs 10% Epsilon Compromise?'.
+Neat typography, educational clarity, storybook aesthetic, cozy lighting.

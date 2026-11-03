@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Dramatic educational comparison diagram: "Computational Intractability: Combinatorial Explosion Beyond the Atoms of the Universe".
+In the upper center, an astronomical scale comparison diagram:
+- On the left: A glowing model of the Observable Universe labeled "관측 가능한 우주 전체의 원자 수 ≈ 10⁸⁰개".
+- In the center: A massive greater-than inequality sign: "10⁸⁰ << 10¹⁷⁰ (바둑의 가능한 상태-행동 조합 수)".
+- On the right: A modern supercomputer server rack overheating with smoke coils and dizzy cartoon eyes (@_@), with a digital clock flashing: "연립방정식 전수 계산 소요 시간: 1억 년 이상 소요 → 시스템 멈춤 (연산 불능 ❌)".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) gestures with an open palm toward the supercomputer, explaining why even with exact physical rules, analytical full-sweep computation completely hits a brick wall.
+Dorothy (9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) stares wide-eyed in amazement at the cosmic numbers.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under server and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 바둑이나 체스처럼 상태와 행동의 조합이 우주 전체의 원자 수(10^80)를 아득히 뛰어넘는 경우, 이론적으로 전이 확률 공식을 세울 수 있더라도 슈퍼컴퓨터로 수억 년이 걸려 연산 불능(Intractable)에 빠지는 현실적 계산 한계를 시각화한 1:1 정방형 순백색 교육 삽화.
+

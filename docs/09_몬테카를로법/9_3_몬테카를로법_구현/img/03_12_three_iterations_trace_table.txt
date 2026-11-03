@@ -1,0 +1,10 @@
+A clean step-by-step mathematical trace table on a pure solid white background (#FFFFFF).
+Title: 'eval() 역순회 3회차 정산 추적표 (γ = 0.9)'.
+A structured table with 4 columns:
+| 회차 (역순) | 정산 대상 상태 | 점화식 연산: G = 0.9 * G + R | 최종 산출된 수익 G |
+| Iteration 1 | S_2 (1, 1) | G = 0.9 * 0 + 1.0 | 1.0 |
+| Iteration 2 | S_1 (1, 0) | G = 0.9 * 1.0 + 0.0 | 0.9 |
+| Iteration 3 | S_0 (2, 0) | G = 0.9 * 0.9 + 0.0 | 0.81 |
+Bottom note banner: '단 한 번의 뒤로 걷기만으로 모든 상태의 할인 수익을 O(T)에 완벽 정산!'
+Genie holding a calculator, Toto admiring the clean numbers.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

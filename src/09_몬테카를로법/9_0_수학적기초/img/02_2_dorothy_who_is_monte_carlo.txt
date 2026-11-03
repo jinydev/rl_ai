@@ -1,0 +1,19 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed.
+Full-scene educational comedy illustration.
+On the left, Dorothy (matching reference: adorable 9-year-old girl, 4.5 heads tall, chestnut twin pigtails tied with colorful round beads, cute bangs, blue denim overalls with circular 'STEM HERO' patch, orange and yellow striped t-shirt underneath, red canvas sneakers) tilts her head with an adorably puzzled, intensely curious expression, resting her finger on her cheek in deep thought.
+Floating above Dorothy's head is a whimsical pastel thought bubble depicting her funny misconception: an imagined quirky historic mathematician grandpa with giant curly white wig and extravagant mustache labeled 'Mr. Monte Carlo?', surrounded by tiny golden question marks.
+Beside Dorothy, Toto the fluffy cream-white puppy (solid milk-white coat #FBF6EB, NO spots, black button nose, big black button eyes, sky-blue bandana) tilts his head in unison with big innocent questioning eyes.
+On the right, Professor Hojin (matching reference: handsome youthful early 40s Korean male professor, smooth youthful skin without wrinkles, neatly parted stylish salt-and-pepper short black hair, thin minimalist round metal wire-rim glasses, plain dark charcoal navy polo shirt with NO badges or logos, medium-wash blue denim jeans) smiles warmly and chuckles affectionately, raising his hand gently to explain that Monte Carlo is a famous Mediterranean casino city in Monaco, not a mathematician!
+Sitting nearby on a small wooden stool, Jiny the tuxedo cat with tiny round scholar glasses and red bell collar purrs with an amused, knowing cat smile.
+Pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadows under feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: "몬테카를로라는 사람이 도대체 누구인가요?"라는 도로시의 엉뚱하고 귀여운 호기심을 형상화한 일러스트. 도로시가 거대한 가발과 콧수염을 기른 상상 속의 수학자 할아버지 '몬테카를로 씨'를 상상하며 고개를 갸웃거리고, 이호진 교수님이 미소를 지으며 몬테카를로는 수학자가 아니라 모나코의 유명한 카지노 휴양 도시 이름임을 친절하게 설명해주는 장면. 순백색 배경(#FFFFFF) 1:1 정방형 컷.
+

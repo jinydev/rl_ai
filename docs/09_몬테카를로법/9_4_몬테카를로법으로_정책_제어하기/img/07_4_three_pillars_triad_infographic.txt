@@ -1,0 +1,14 @@
+A conceptual 3-pillar architectural infographic on a pure solid white background (#FFFFFF).
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+ABSOLUTE CONSTRAINTS: ZERO slide UI frames, NO header banner, NO slide borders, NO background cards, pure #FFFFFF white background.
+Visual Scene:
+Three warm neoclassical or futuristic glowing pedestals/pillars standing firmly side by side:
+- Pillar 1 (Left, Cyan/Gold glow): Engraved with label 'Q(s, a) 행동 가치' (Action-Value, Model-Free)
+- Pillar 2 (Center, Emerald/Gold glow): Engraved with label 'ε-탐욕 정책' (Exploration & Exploitation Balance)
+- Pillar 3 (Right, Amber/Gold glow): Engraved with label 'α 지수 이동 평균' (Exponential Decay EMA)
+On the central pedestal, a glowing golden emblem of the optimal policy crown 'π*'.
+Characters:
+Dorothy (4.5 heads tall, chestnut pigtails, denim overalls with 'STEM HERO' patch, red sneakers) proudly presenting the three pillars with open arms.
+Beside her: Toto (fluffy milk-white puppy with sky-blue bandana, black button nose) sitting happily, looking up with wagging tail.
+On top of Pillar 1: Jiny the lab assistant cat (chubby tuxedo cat, mini round glasses, red collar with gold bell) resting a paw on a tiny golden book, nodding with a clever mentor smile.
+Subtle soft contact shadows under pedestals, crisp typography, no Japanese text. --ar 1:1

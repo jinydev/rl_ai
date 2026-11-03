@@ -1,0 +1,8 @@
+A structured educational component breakdown diagram on a pure solid white background (#FFFFFF).
+Title: 'env.step()의 핵심 3대 반환 캡슐'.
+Three distinct color-coded pill containers:
+1. 'next_state' (Sky Blue): 새롭게 발을 디딘 다음 상태 좌표 S_{t+1} (예: (1, 0))
+2. 'reward' (Warm Amber): 발걸음 직후 환경이 지급한 즉각 보상 R_t (예: 0.0, 1.0)
+3. 'done' (Mint Green): 에피소드 완주/종료 여부 플래그 (True / False)
+Genie the tuxedo cat wearing spectacles presenting the three capsules with scientific precision.
+Crisp typography, fine espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

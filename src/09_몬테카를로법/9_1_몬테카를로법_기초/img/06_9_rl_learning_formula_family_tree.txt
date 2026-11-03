@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Grand and magnificent algorithmic family tree diagram: "The Universal Mother Formula of All Modern Reinforcement Learning":
+In the center, a majestic glowing golden tree of algorithms:
+- At the deep strong roots:
+  "★ 새 가치 ← 기존 가치 + 학습률 × (새로운 목표치 - 기존 가치) ★"
+- Branch 1: "Monte Carlo (MC) → Target = Return G_t"
+- Branch 2: "Temporal Difference (TD) → Target = R + γ V(s')"
+- Branch 3: "SARSA → Target = R + γ Q(s', a')"
+- Branch 4: "Q-Learning & DQN → Target = R + γ max Q(s', a')"
+- The lush golden leaves glow with the names of modern AI breakthroughs (AlphaGo, ChatGPT, DeepRL).
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) gestures with inspiring pride toward the algorithm tree.
+Dorothy (inspired 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) gazes up at the magnificent branching branches with shining, enlightened eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under tree roots and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: `새 가치 ← 기존 가치 + 학습률 × (목표치 - 기존 가치)`라는 증분 갱신 식이 훗날 몬테카를로를 넘어 TD 학습, SARSA, Q-러닝, 딥러닝 결합 DQN에 이르기까지 모든 현대 강화학습 알고리즘의 위대한 원형(Mother Formula)이 되는 족보와 계통수를 황금빛 알고리즘 가계도 트리로 시각화한 1:1 정방형 순백색 교육 삽화.
+

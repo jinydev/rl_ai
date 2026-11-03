@@ -1,0 +1,10 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution chalkboard educational illustration]
+Step 3 of Importance Sampling Derivation: Regrouping Terms and the Birth of E_b.
+On the chalkboard, the equation rearranges:
+'= ∑_x x · [ π(x) / b(x) ] · b(x)'
+A bracket groups [π(x) / b(x)] with an arrow labeling it 'Importance Weight ρ(x)'.
+A prominent curved arrow points to the trailing '· b(x)' explaining: 'Ending with · b(x) inside a sum means taking the expectation over distribution b!'.
+The final transformation banner shines:
+'= E_b [ X · (π(X) / b(X)) ]'
+Dorothy claps her hands in delight as Genie tips his wizard hat.
+Pure #FFFFFF background, dark espresso brown lines, pastel yellow and mint highlights.

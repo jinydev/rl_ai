@@ -1,0 +1,8 @@
+An educational illustration depicting Trap 2 on a pure solid white background (#FFFFFF).
+Title: '함정 ❷ 비정상 문제: 초보 시절의 낡은 기억이 발목을 잡다'.
+Visual scene:
+A veteran, sleek robot trying to sprint toward the goal, but its ankle is chained to a heavy rusty iron ball labeled '초보 시절 에피소드 1~10의 멍청한 방황 기억 (가중치 1/n)'.
+The heavy iron ball drags in the mud, slowing down the veteran robot.
+Subtitle: '정책이 매 순간 발전하는데, 초보 시절의 데이터를 똑같이 1/n로 대우하면 학습이 멈춘다!'.
+Genie holding bolt cutters labeled '고정 학습률 α 지수 이동 평균'.
+Clean line art, pure white background (#FFFFFF). --ar 1:1

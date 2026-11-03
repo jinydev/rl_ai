@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Conceptual educational illustration showing "Planning & In-Memory Simulation with the Game's Source Code":
+In the upper center, an expansive glowing thought-bubble floating above the scene:
+- Inside the bubble, a complete virtual tree diagram of the future, showing multiple branching paths (Depth 1, Depth 2, Depth 3), with every state value calculated in advance by computer RAM algorithms.
+- Dorothy's avatar in the simulation effortlessly navigates straight toward the highest reward path without taking a single physical wrong step.
+In the foreground:
+Dorothy (clever 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) sits cross-legged holding an open ancient scroll marked "Game Engine Source Code & Transition Matrix", tapping her chin thoughtfully with a confident smirk.
+Beside her, Toto the cream puppy (#FBF6EB, sky-blue bandana) snoozes peacefully beside her sneakers, knowing that Dorothy can calculate everything safely inside the computer's memory before moving a single step.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and scroll, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 환경 모델이 알려진 문제에서는 게임기 내부의 소스 코드를 에이전트가 손에 쥐고 있는 것과 같아서, 캐릭터를 현실에서 직접 움직여보지 않고도 오직 컴퓨터 메모리 시뮬레이션(계획 수립, Planning)만으로 미래의 모든 가능성을 연산해 최적의 경로를 찾아내는 장면을 도로시의 생각 방울 시뮬레이션으로 표현한 1:1 정방형 순백색 삽화.
+

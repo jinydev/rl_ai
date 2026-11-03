@@ -1,0 +1,12 @@
+A comparative mathematical breakdown infographic on a pure solid white background (#FFFFFF).
+Title: '모델 프리 강화학습에서 Q(s,a)가 필수적인 수학적 이유'.
+Top box: [식 9.3: Q 함수 기반 탐욕화]
+μ(s) = argmax_a Q(s, a)
+-> '전이 확률 몰라도 Q값만 보고 즉시 최선 행동 결정 가능! (Model-Free 완벽 적용)' (Green checkmark)
+
+Bottom box: [식 9.4: V 함수 기반 탐욕화]
+μ(s) = argmax_a ∑_{s'} p(s'|s,a) [ r(s,a,s') + γV(s') ]
+-> 'p(s'|s,a) 환경 설계도(전이 행렬)가 없으면 합산 계산 자체가 불가능!' (Red X mark)
+
+Professor Hojin pointing with a pointer to the highlighted p(s'|s,a) in red warning box.
+Crisp typography, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

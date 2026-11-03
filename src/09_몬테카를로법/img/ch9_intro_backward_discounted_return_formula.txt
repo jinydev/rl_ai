@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical formula breakdown]
+Mathematical formula breakdown infographic for 'Backward Recursive Discounted Return Calculation'.
+Upper equation banner: 'G_t = R_{t+1} + γ · G_{t+1}'
+Three color-coded breakdown callouts with precise pointers:
+- 'G_t': '누적 할인 수익 (Return at time t): 현재 시점부터 에피소드 끝까지 받을 할인 보상의 총합'
+- 'R_{t+1}': '즉각 보상 (Immediate Reward): 다음 스텝에서 즉시 획득한 보상'
+- 'γ · G_{t+1}': '할인된 미래 수익 (Discounted Future Return): 감마(γ)를 곱해 현재 가치로 환산한 잔여 미래 수익'
+Below, a reverse timeline arrow labeled 'Reversed traversal from terminal step T to step 0 achieves O(T) linear time complexity without duplicate sums!'.
+Pure #FFFFFF background, clean dark espresso brown line art.

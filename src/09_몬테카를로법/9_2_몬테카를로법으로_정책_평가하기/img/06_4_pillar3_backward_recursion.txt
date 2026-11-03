@@ -1,0 +1,6 @@
+An educational infographic summarizing Pillar 3 on a pure solid white background (#FFFFFF).
+Title: '제3기둥: 초고속 역방향 재귀 정산 (Backward Recursion)'.
+Core concept:
+Using the recurrence formula G_t = R_t + γ * G_{t+1}, we settle returns backwards from Goal to Start in O(T) linear time, completely eliminating O(T²) redundant operations.
+Visual: A sleek high-speed bullet train traveling backward from Goal to Start, leaving behind completed value cards in a flash.
+Speed lines, clock showing instant execution, clean dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

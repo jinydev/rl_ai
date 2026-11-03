@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Engaging educational diagram showing "Clear State Transition and Reward Rules in Grid World":
+In the center, a 3x3 colorful Grid World tile map:
+- The center tile shows Dorothy as an agent with four directional action arrows (Up, Down, Left, Right).
+- The right tile has a bright glowing red apple labeled "Next State s' / Reward R = +1.0 (Apple Goal)".
+- The upper tile shows a brick wall labeled "Collision: State Unchanged s' = s / Reward R = -0.1".
+- The lower tile has a cartoon purple mushroom with an X labeled "Poison Penalty / Reward R = -1.0".
+- A mechanical gamepad controller lies beside the grid with the 'Right' button lit up in gold, projecting an exact path arrow to the apple tile.
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped t-shirt) holds a digital remote control with a bright confident smile, knowing exactly what reward she will get when she steps forward.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under grid and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 그리드월드에서 에이전트가 '오른쪽' 버튼을 누르면 다음 칸으로 이동하여 사과(+1)를 받거나 벽(-0.1), 독버섯(-1) 감점을 받는 등 상태 전이와 보상 규칙이 한 치의 오차도 없이 명확하게 정해져 있는 알려진 환경 모델의 직관적 시각화. 1:1 정방형 순백색 삽화.
+

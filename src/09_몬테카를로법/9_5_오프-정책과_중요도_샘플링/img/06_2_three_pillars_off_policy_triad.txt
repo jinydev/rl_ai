@@ -1,0 +1,8 @@
+A premier summary infographic representing the 3 pillars of Off-Policy Learning on a pure solid white background (#FFFFFF).
+Title: '오프-정책과 중요도 샘플링 3대 핵심 기둥 삼위일체'.
+A magnificent triangular structure with 3 golden pillar blocks:
+Pillar 1: [역할 분담 (Behavior vs Target)] -> 탐색은 b가 전담하고, π는 100% 최선의 활용 전략으로 순수하게 학습!
+Pillar 2: [중요도 가중치 ρ = π/b] -> 확률 비율 곱셈으로 남의 데이터에서 목표 기댓값을 무편향 보정!
+Pillar 3: [분산 통제와 Q-러닝으로의 진화] -> 분포 조율로 분산 억제, 10장 Q-러닝은 ρ 없이 오프-정책 달성!
+Center: An emblem of the magic scale balancing π and b.
+Ultra-clean vector lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

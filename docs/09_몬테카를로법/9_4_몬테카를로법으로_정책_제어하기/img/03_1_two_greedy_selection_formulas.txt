@@ -1,0 +1,12 @@
+A comparative mathematical formula cards diagram on a pure solid white background (#FFFFFF).
+Title: '탐욕적 선택(Greedy Selection)의 두 가지 수학적 표현'.
+Card 1: [식 9.3: 행동 가치 함수 Q 기반]
+μ(s) = argmax_a Q(s, a)
+- 문고리 표지판 숫자가 가장 큰 행동을 즉시 선택!
+
+Card 2: [식 9.4: 상태 가치 함수 V 기반]
+μ(s) = argmax_a ∑_{s'} p(s'|s,a) [ r(s,a,s') + γV(s') ]
+- 다음 상태들의 가치와 전이 확률을 가중 평균하여 선택!
+
+Dorothy examining both cards with an inquisitive expression, Professor Hojin pointing to Card 1.
+Clean lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -631,12 +631,17 @@
         <div class="bd-content ps-lg-4">
             <h1 id="095-오프-정책과-중요도-샘플링">09.5 오프-정책과 중요도 샘플링</h1>
 
-<p><img src="./9_5_오프-정책과_중요도_샘플링.png" alt="09.5 오프-정책과 중요도 샘플링" /></p>
+<p>에이전트가 ‘행동하는 정책’과 ‘학습하려는 대상 정책’이 서로 다를 때 활용하는 <strong>오프-정책(Off-policy)</strong> 학습법을 배웁니다.</p>
 
 <p><img src="./img/01_off_policy_intro.png" alt="중요도 샘플링 인트로" />
 <strong>그림 09-5-1</strong> 탐험 지도(Behavior Policy)와 타깃 지도(Target Policy)의 확률 비율을 마법 저울에 올리고 오프-정책을 계산하는 지니와 도로시</p>
 
-<p>에이전트가 ‘행동하는 정책’과 ‘학습하려는 대상 정책’이 서로 다를 때 활용하는 <strong>오프-정책(Off-policy)</strong> 학습법을 배웁니다. 다른 에이전트가 수행한 간접 데이터로부터 유용한 정보를 추출하기 위해 두 정책의 확률 비율을 계산하여 곱해주는 <strong>중요도 샘플링(Importance Sampling)</strong> 기법을 요정 지니의 대수적 마법 저울 정산법과 이호진 교수님의 직강을 통해 완벽히 마스터해 봅시다!</p>
+<hr />
+
+<p>다른 에이전트가 수행한 간접 데이터로부터 유용한 정보를 추출하기 위해 두 정책의 확률 비율을 계산하여 곱해주는 <strong>중요도 샘플링(Importance Sampling)</strong> 기법을 요정 지니의 대수적 마법 저울 정산법과 이호진 교수님의 직강을 통해 완벽히 마스터해 봅시다!</p>
+
+<p><img src="./img/01_2_off_policy_overview_roadmap.png" alt="오프-정책과 중요도 샘플링 로드맵" />
+<strong>그림 09-5-1b</strong> 오프-정책과 중요도 샘플링 3단계 파이프라인 (행동 정책 b의 대담한 탐색 → 중요도 가중치 ρ 저울 보정 → 순수 최적 대상 정책 π 완성) 로드맵 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -644,13 +649,46 @@
 
 <p>앞서 9.4절에서 우리는 몬테카를로법에 <em>ε</em>-탐욕 정책을 결합하여 미로를 훌륭하게 탈출하는 최적에 가까운 정책을 얻었습니다.</p>
 
-<p>하지만 솔직히 짚고 넘어가야 할 한계가 있습니다. 그 결과는 <strong>100% 순수한 궁극의 최적 정책</strong>은 아닙니다. 왜 그럴까요?</p>
+<p>하지만 솔직히 짚고 넘어가야 할 한계가 있습니다.</p>
 
-<p>우리는 (할 수만 있다면) <em>Q</em> 함수의 값이 가장 큰 행동만을 100% 선택하도록 하고 싶습니다. 즉, 위험한 무작위 실수 없이 오직 ‘활용(Exploitation)’만 하고 싶은 것입니다. 하지만 탐색을 완전히 포기하면 새로운 길을 영영 찾지 못하므로, 어쩔 수 없이 <em>ε</em>(10%)이라는 작은 확률로 무작위 탐색을 하도록 남겨두었습니다. 말하자면, <strong><em>ε</em>-탐욕 정책은 탐색과 활용 사이에서 어쩔 수 없이 선택한 일종의 타협책</strong>인 셈입니다.</p>
+<p>그 결과는 <strong>100% 순수한 궁극의 최적 정책</strong>은 아닙니다.</p>
+
+<p>왜 그럴까요?</p>
+
+<p><img src="./img/01_2b_epsilon_greedy_maze_limitation.png" alt="입실론 탐욕 미로 탈출의 한계" />
+<strong>그림 09-5-1bb</strong> 미로 탈출에는 성공했으나 10%의 강제 무작위 탐험 실수로 인해 100% 순수 최적 경로를 가지 못하는 ε-탐욕 정책의 태생적 한계와 고민 (1:1 순백색)</p>
+
+<hr />
+
+<p>우리는 (할 수만 있다면) <em>Q</em> 함수의 값이 가장 큰 행동만을 100% 선택하도록 하고 싶습니다.</p>
+
+<p>즉, 위험한 무작위 실수 없이 오직 ‘활용(Exploitation)’만 하고 싶은 것입니다.</p>
+
+<p><img src="./img/01_2c_pure_exploitation_desire.png" alt="순수 활용 정책에 대한 갈망" />
+<strong>그림 09-5-1bc</strong> 위험한 방황 없이 오직 최고 가치 행동 Q(s, a)만을 100% 선택하여 최단거리로 직행하고 싶은 순수 활용(Exploitation) 정책의 갈망 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p>하지만 탐색을 완전히 포기하면 새로운 길을 영영 찾지 못하므로, 어쩔 수 없이 <em>ε</em>(10%)이라는 작은 확률로 무작위 탐색을 하도록 남겨두었습니다.</p>
+
+<p>말하자면, <strong><em>ε</em>-탐욕 정책은 탐색과 활용 사이에서 어쩔 수 없이 선택한 일종의 타협책</strong>인 셈입니다.</p>
+
+<p><img src="./img/01_2d_exploration_exploitation_dilemma_tradeoff.png" alt="탐색과 활용의 딜레마와 타협책" />
+<strong>그림 09-5-1bd</strong> 탐색(10% 새로운 길 발견)과 활용(90% 검증된 길 수확) 사이의 불가피한 저울질과 ε-탐욕의 절충안 메커니즘 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>그렇다면 <strong>“무작위 탐색으로 인한 실수 없이, 순수하게 100% 최선의 최적 정책만을 깔끔하게 학습할 수는 없을까?”</strong>라는 질문이 자연스럽게 떠오릅니다.</p>
 
+<p><img src="./img/01_3_epsilon_compromise_vs_pure_optimal.png" alt="입실론 타협책 vs 순수 최적 정책 갈망" />
+<strong>그림 09-5-1c</strong> ε-탐욕의 10% 무작위 실수(타협책)와 100% 무결점 순수 최적 챔피언 정책을 갈망하는 도로시의 비교 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p>이 질문에 답하기 위해 강화학습의 거대한 두 갈래인 <strong>‘온-정책(On-policy)’</strong>과 <strong>‘오프-정책(Off-policy)’</strong>의 차이를 이해해야 합니다.</p>
+
+<p><img src="./img/02_1b_rl_two_grand_branches_crossroad.png" alt="강화학습의 거대한 두 갈래 갈림길" />
+<strong>그림 09-5-1e</strong> 강화학습의 거대한 두 갈래 길: 자신의 발걸음으로 직접 배우는 온-정책(On-policy) vs 다른 탐험가의 지도로 배우는 오프-정책(Off-policy) 이정표 일러스트 (1:1 순백색)</p>
 
 <hr />
 
@@ -664,6 +702,11 @@
 </ul>
 
 <p>강화학습 용어로는 <strong>‘자신과 다른 환경이나 다른 정책에서 얻은 경험 데이터를 토대로 자신의 정책을 개선한다’</strong>고 표현할 수 있습니다.</p>
+
+<p><img src="./img/02_2_tennis_and_gamer_observation_analogy.png" alt="테니스와 게이머 관찰 학습 비유" />
+<strong>그림 09-5-1d</strong> 도로시와 지니의 관찰 학습 비유: 벤치에서 프로 선수의 테니스 스윙을 관찰하며 자신의 폼을 교정하고 게임 공략을 배우는 일러스트 (1:1 순백색)</p>
+
+<hr />
 
 <p><img src="./img/02_on_policy_vs_off_policy.png" alt="온-정책 vs 오프-정책 비교" />
 <strong>그림 09-5-2</strong> 자신이 달리는 트랙에서 바로 배우는 온-정책과, 탐험 로봇의 데이터를 관제실에서 분석해 챔피언 전략을 세우는 오프-정책</p>
@@ -701,6 +744,11 @@
   </tbody>
 </table>
 
+<p><img src="./img/02_2b_target_vs_behavior_table_summary.png" alt="대상 정책과 행동 정책 요약 비교표" />
+<strong>그림 09-5-2aa</strong> 안전한 연구실에서 100% 최선의 전략을 연마하는 대상 정책 π(Target Policy)와 거친 현장에서 데이터를 모아오는 행동 정책 b(Behavior Policy)의 비교 요약 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p>지금까지 9.2절 ~ 9.4절에서는 대상 정책과 행동 정책을 구분하지 않고 동일하게 취급했습니다 (<em>π</em> = <em>b</em>). 이것이 바로 온-정책(On-policy, 연결되어 있음)이었습니다.</p>
 
 <p>반면 오프-정책(Off-policy, 떨어져 있음)은 <strong>‘학습할 목표 정책 <em>π</em>와 현장에서 뛸 행동 정책 <em>b</em>가 독립적으로 분리되어 있다’</strong>는 뜻입니다:</p>
@@ -709,16 +757,29 @@
   <li><strong>대상 정책 <em>π</em></strong>: <em>b</em>가 수집해 온 방대한 데이터를 안전한 연구실에서 전달받아, 무작위 탐험의 불필요한 위험 없이 순수한 100% 최적의 ‘활용’ 정책으로 완성됩니다.</li>
 </ul>
 
-<p>하지만 여기서 수학적으로 매우 까다로운 문제가 하나 발생합니다:<br />
+<p><img src="./img/02_3_target_vs_behavior_roles_infographic.png" alt="대상 정책 vs 행동 정책 역할 분담 인포그래픽" />
+<strong>그림 09-5-2b</strong> 대상 정책 π(순수 100% 최선의 챔피언 연구실) vs 행동 정책 b(미지의 세계를 뛰어다니는 용감한 현장 탐험 요원) 역할 분담 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p>하지만 여기서 수학적으로 매우 까다로운 문제가 하나 발생합니다: 
 <strong>“행동 정책 <em>b</em>라는 엉뚱한 모험가가 주사위를 마구 굴려 가져온 데이터로부터, 어떻게 대상 정책 <em>π</em>의 참 기댓값을 왜곡 없이 올바르게 계산해낼 수 있을까?”</strong></p>
 
 <p>이 문제를 완벽하게 해결해 주는 마법 같은 통계적 도구가 바로 <strong>중요도 샘플링(Importance Sampling)</strong>입니다.</p>
+
+<p><img src="./img/02_4_importance_sampling_problem_statement.png" alt="중요도 샘플링의 핵심 질문과 과제" />
+<strong>그림 09-5-2bb</strong> 엉뚱한 모험가 b가 무작위로 가져온 데이터에서 목표 정책 π의 참 기댓값을 왜곡 없이 뽑아내는 통계적 수수께끼와 중요도 샘플링의 등장 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
 <h2 id="0952-중요도-샘플링의-수학적-원리">09.5.2 중요도 샘플링의 수학적 원리</h2>
 
 <p><strong>중요도 샘플링(Importance Sampling)</strong>은 <strong>어떤 확률 분포(<em>π</em>)에서의 기댓값을, 전혀 다른 확률 분포(<em>b</em>)에서 샘플링한 데이터를 사용하여 오차 없이(Unbiased) 완벽하게 계산해내는 통계학의 위대한 보정 기법</strong>입니다.</p>
+
+<p><img src="./img/03_1b_importance_sampling_unbiased_estimator_concept.png" alt="중요도 샘플링 무편향 추정 개념도" />
+<strong>그림 09-5-2ba</strong> 서로 다른 확률 분포 b의 거친 표본을 무편향(Unbiased) 참값 기댓값 E_π[X]로 변환해 주는 중요도 샘플링 필터의 핵심 원리 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>이해를 돕기 위해 확률 변수 <em>X</em>의 기댓값 E<sub><em>π</em></sub>[<em>X</em>]를 계산하는 과정을 통해 중요도 샘플링의 수학적 원리를 한 단계씩 유도해 보겠습니다.</p>
 
@@ -734,19 +795,28 @@
   <h3 id="eπx--x1--x2----xn--n--xi--π"><strong><em>E</em><sub><em>π</em></sub>[<em>X</em>] ≈ (<em>x</em><sup>(1)</sup> + <em>x</em><sup>(2)</sup> + … + <em>x</em><sup>(<em>n</em>)</sup>) / <em>n</em>      (<em>x</em><sup>(<em>i</em>)</sup> ~ <em>π</em>)</strong></h3>
 </blockquote>
 
+<p><img src="./img/03_2_expectation_definition_chalkboard.png" alt="원래 기댓값 정의 수식 분해" />
+<strong>그림 09-5-2c</strong> 원래 기댓값 정의식 E_π[X] = ∑ x · π(x)의 칠판 수식 기호 분해 인포그래픽 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="1-다른-분포에서-가져온-데이터를-보정하는-마법">1) 다른 분포에서 가져온 데이터를 보정하는 마법</h3>
 
 <p>하지만 지금 우리 손에 쥐어져 있는 데이터는 <em>π</em>에서 나온 것이 아니라, <strong>완전히 다른 확률 분포 <em>b</em>에서 샘플링된 표본들(<em>x</em><sup>(<em>i</em>)</sup> ~ <em>b</em>)</strong>입니다!</p>
 
-<p>이 남의 데이터를 가지고 원래 구하려 했던 E<sub><em>π</em></sub>[<em>X</em>]를 어떻게 왜곡 없이 구해낼 수 있을까요? 해결의 열쇠는 초등학교 분수에서 배우는 <strong>‘분모·분자 끼워넣기 트릭’</strong>에 있습니다!</p>
+<p>이 남의 데이터를 가지고 원래 구하려 했던 E<sub><em>π</em></sub>[<em>X</em>]를 어떻게 왜곡 없이 구해낼 수 있을까요?</p>
+
+<p>해결의 열쇠는 초등학교 분수에서 배우는 <strong>‘분모·분자 끼워넣기 트릭’</strong>에 있습니다!</p>
 
 <p><img src="./img/hojin_importance_sampling_scale.jpg" alt="이호진 교수님의 중요도 샘플링 저울 특강" />
 <strong>그림 09-5-3</strong> 이호진 교수님이 양팔 저울의 한쪽에는 행동 정책 <em>b</em>(<em>a</em> | <em>s</em>), 다른 쪽에는 대상 정책 <em>π</em>(<em>a</em> | <em>s</em>)를 올리고, 두 정책의 확률 비율인 중요도 가중치 <em>ρ</em> = <em>π</em> / <em>b</em>로 표본의 왜곡을 보정하는 원리를 도로시, 지니, 토토에게 설명하는 직강 장면</p>
 
+<hr />
+
 <p><img src="./img/03_importance_sampling_formula.png" alt="중요도 샘플링 유도" />
 <strong>그림 09-5-4</strong> 칠판에 분모·분자 트릭을 전개하며 중요도 가중치 로우(<em>ρ</em>)를 도출해내는 도로시와 지니</p>
+
+<hr />
 
 <p>기댓값 정의식에서 출발해 봅시다:</p>
 
@@ -754,11 +824,21 @@
   <p><strong><em>E</em><sub><em>π</em></sub>[<em>X</em>] = ∑<sub><em>x</em></sub> <em>x</em> · <em>π</em>(<em>x</em>)</strong></p>
 </blockquote>
 
+<p><img src="./img/03_3b_derivation_step1_starting_point.png" alt="중요도 샘플링 1단계 기댓값 출발식" />
+<strong>그림 09-5-4aa</strong> 중요도 샘플링 대수학 유도 1단계: 원래 목표 분포 π에 대한 기댓값 이론 정의식 E_π[X] = ∑ x · π(x) 칠판 해설 (1:1 순백색)</p>
+
+<hr />
+
 <p>여기에 분수 <em>b</em>(<em>x</em>) / <em>b</em>(<em>x</em>) = 1을 살짝 곱해줍니다. 1을 곱했으므로 수식의 값은 전혀 변하지 않습니다:</p>
 
 <blockquote>
   <p><strong>= ∑<sub><em>x</em></sub> <em>x</em> · [<em>b</em>(<em>x</em>) / <em>b</em>(<em>x</em>)] · <em>π</em>(<em>x</em>)</strong></p>
 </blockquote>
+
+<p><img src="./img/03_3c_derivation_step2_multiply_magic_one.png" alt="중요도 샘플링 2단계 마법의 1 곱하기" />
+<strong>그림 09-5-4ab</strong> 중요도 샘플링 대수학 유도 2단계: 식의 값을 전혀 해치지 않고 새로운 분포 b의 문을 여는 황금 트릭 [b(x) / b(x) = 1] 삽입 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>곱셈의 순서를 바꾸어 <em>π</em>(<em>x</em>) / <em>b</em>(<em>x</em>)를 한 묶음으로 묶어줍니다:</p>
 
@@ -768,11 +848,19 @@
 
 <p>[식 9.7]을 자세히 보십시오! 수식의 끝이 <strong>… · <em>b</em>(<em>x</em>)</strong>로 끝납니다. 어떤 값에 <em>b</em>(<em>x</em>)를 곱하여 시그마로 모두 더했다는 것은, 바로 <strong>확률 분포 <em>b</em>에 대한 기댓값</strong>이라는 뜻입니다!</p>
 
+<p><img src="./img/03_4b_derivation_step3_regrouping_to_eb.png" alt="중요도 샘플링 3단계 항 재배열과 기댓값 전환" />
+<strong>그림 09-5-4ac</strong> 중요도 샘플링 대수학 유도 3단계: (π/b)를 가중치로 묶고 끝을 · b(x)로 닫아 분포 b에 대한 기댓값 E_b[…] 형태로 전환되는 결정적 순간 (1:1 순백색)</p>
+
+<hr />
+
 <p>따라서 [식 9.7]을 기댓값 기호 E<sub><em>b</em></sub>로 다시 쓰면 다음과 같은 기적의 등식이 탄생합니다:</p>
 
 <blockquote>
   <h3 id="eπx--eb-x--πx--bx--식-98"><strong><em>E</em><sub><em>π</em></sub>[<em>X</em>] = E<sub><em>b</em></sub> [<em>X</em> · (<em>π</em>(<em>X</em>) / <em>b</em>(<em>X</em>))]</strong>      <em>(식 9.8)</em></h3>
 </blockquote>
+
+<p><img src="./img/03_5_importance_sampling_algebraic_derivation.png" alt="중요도 샘플링 대수학 유도 3단계" />
+<strong>그림 09-5-4b</strong> 분모·분자 끼워넣기 트릭을 통해 E_π[X] = E_b[X · (π/b)]를 유도하는 3단계 대수학 증명 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -784,6 +872,11 @@
   <h3 id="ρx--πx--bx--목표-정책의-확률--행동-정책의-확률"><strong><em>ρ</em>(<em>x</em>) = <em>π</em>(<em>x</em>) / <em>b</em>(<em>x</em>) = (목표 정책의 확률) / (행동 정책의 확률)</strong></h3>
 </blockquote>
 
+<p><img src="./img/03_5b_rho_symbolic_definition_breakdown.png" alt="중요도 가중치 로우 기호 정의 분해" />
+<strong>그림 09-5-4ba</strong> 중요도 가중치 기호 ρ(로우)의 수식 분해: 목표 정책의 확률 π(분자)와 행동 정책의 확률 b(분모)의 비율이 갖는 통계적 저울추 원리 (1:1 순백색)</p>
+
+<hr />
+
 <p>이 가중치 <em>ρ</em>(<em>x</em>)는 다음과 같이 작동하는 완벽한 ‘공평한 통계 저울추’입니다:</p>
 
 <ol>
@@ -793,24 +886,48 @@
       <li><em>“너 그 행동 너무 오버해서 많이 했어! 점수를 깎아서 정산할게!”</em>라며 가중치를 줄여줍니다.</li>
     </ul>
   </li>
-  <li><strong>행동 정책 <em>b</em>가 어떤 행동을 너무 드물게 뽑았을 때 (<em>b</em>(<em>x</em>) &lt; <em>π</em>(<em>x</em>))</strong>:
-    <ul>
-      <li>분자가 더 크므로 <em>ρ</em>(<em>x</em>) &gt; 1이 됩니다.</li>
-      <li><em>“너 그 귀한 행동을 아주 드물게 성공했구나! 가중치를 몇 배로 부풀려서 점수를 듬뿍 쳐줄게!”</em>라며 보상해 줍니다.</li>
-    </ul>
-  </li>
-  <li><strong>두 정책의 확률이 완벽히 같을 때 (<em>b</em>(<em>x</em>) = <em>π</em>(<em>x</em>))</strong>:
-    <ul>
-      <li><em>ρ</em>(<em>x</em>) = 1이 되어 일반적인 온-정책 평균과 완벽히 일치합니다.</li>
-    </ul>
-  </li>
 </ol>
+
+<p><img src="./img/03_5c_rho_case1_overrepresented_penalty.png" alt="가중치 케이스 1 과다 행동 감점" />
+<strong>그림 09-5-4bb</strong> 중요도 가중치 케이스 1: 행동 정책 b가 너무 남발한 행동에 대해 가중치를 1 미만(ρ &lt; 1)으로 깎아 공정하게 정산하는 감점 메커니즘 (1:1 순백색)</p>
+
+<hr />
+
+<ol>
+  <li><strong>행동 정책 <em>b</em>가 어떤 행동을 너무 드물게 뽑았을 때 (<em>b</em>(<em>x</em>) &lt; <em>π</em>(<em>x</em>))</strong>:</li>
+</ol>
+
+<ul>
+  <li>분자가 더 크므로 <em>ρ</em>(<em>x</em>) &gt; 1이 됩니다.</li>
+  <li><em>“너 그 귀한 행동을 아주 드물게 성공했구나! 가중치를 몇 배로 부풀려서 점수를 듬뿍 쳐줄게!”</em>라며 보상해 줍니다.</li>
+</ul>
+
+<p><img src="./img/03_5d_rho_case2_underrepresented_bonus.png" alt="가중치 케이스 2 희귀 행동 가산점" />
+<strong>그림 09-5-4bc</strong> 중요도 가중치 케이스 2: 행동 정책 b에서 매우 드물게 발생한 귀한 행동에 대해 가중치를 1 초과(ρ &gt; 1)로 듬뿍 쳐주는 가산점 보상 메커니즘 (1:1 순백색)</p>
+
+<hr />
+
+<ol>
+  <li><strong>두 정책의 확률이 완벽히 같을 때 (<em>b</em>(<em>x</em>) = <em>π</em>(<em>x</em>))</strong>:</li>
+</ol>
+
+<ul>
+  <li><em>ρ</em>(<em>x</em>) = 1이 되어 일반적인 온-정책 평균과 완벽히 일치합니다.</li>
+</ul>
+
+<p><img src="./img/03_5e_rho_case3_balanced_on_policy_match.png" alt="가중치 케이스 3 완전 일치 균형 상태" />
+<strong>그림 09-5-4bd</strong> 중요도 가중치 케이스 3: 두 정책의 확률이 완벽히 일치하여 가중치 ρ = 1.0이 되고 표준 온-정책 평균으로 자연스럽게 귀결되는 평형 상태 (1:1 순백색)</p>
+
+<hr />
 
 <p>따라서 행동 정책 <em>b</em>에서 수집한 <em>n</em>개의 표본 데이터 <em>x</em><sup>(<em>i</em>)</sup> ~ <em>b</em>에 가중치 <em>ρ</em>를 곱해 평균을 내면 목표 정책의 참 기댓값을 얻을 수 있습니다:</p>
 
 <blockquote>
   <h3 id="eπx--ρx1--x1--ρx2--x2----ρxn--xn--n"><strong><em>E</em><sub><em>π</em></sub>[<em>X</em>] ≈ [<em>ρ</em>(<em>x</em><sup>(1)</sup>) · <em>x</em><sup>(1)</sup> + <em>ρ</em>(<em>x</em><sup>(2)</sup>) · <em>x</em><sup>(2)</sup> + … + <em>ρ</em>(<em>x</em><sup>(<em>n</em>)</sup>) · <em>x</em><sup>(<em>n</em>)</sup>] / <em>n</em></strong></h3>
 </blockquote>
+
+<p><img src="./img/03_6_rho_weight_balance_mechanics.png" alt="중요도 가중치 로우의 3대 저울 메커니즘" />
+<strong>그림 09-5-4c</strong> 중요도 가중치 ρ 저울의 3대 정산 메커니즘 (과다 행동 감점 ρ&lt;1, 희소 행동 가산점 ρ&gt;1, 균형 정산 ρ=1) 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -849,6 +966,11 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">오프-정책 중요도 샘플링: {:.2f} (분산: {:.2f})</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples_off</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nf">var</span><span class="p">(</span><span class="n">samples_off</span><span class="p">)))</span>
 </code></pre></div></div>
 
+<p><img src="./img/04_1_python_importance_sampling_flowchart.png" alt="파이썬 중요도 샘플링 코드 순서도" />
+<strong>그림 09-5-4d</strong> 파이썬 중요도 샘플링 코드 동작 표준 순서도: 균등 b 샘플링부터 ρ = π/b 가중치 계산 및 가중 표본 평균/분산 산출까지 (1:1 순백색)</p>
+
+<hr />
+
 <p><strong>출력 결과</strong></p>
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>이론적 참값 (E_pi[x]): 2.7
 온-정책 몬테카를로: 2.78 (분산: 0.27)
@@ -857,7 +979,15 @@
 
 <p>출력 결과를 보십시오! 전혀 다른 균등 분포 <em>b</em>에서 데이터를 뽑았음에도 불구하고, 중요도 가중치 <em>ρ</em>를 곱해주니 평균값이 <code class="language-plaintext highlighter-rouge">2.95</code>로 이론적 참값 <code class="language-plaintext highlighter-rouge">2.7</code>에 근접하게 복원되었습니다.</p>
 
+<p><img src="./img/04_1b_python_console_result_e_true_comparison.png" alt="파이썬 시뮬레이션 콘솔 결과 카드" />
+<strong>그림 09-5-4da</strong> 파이썬 시뮬레이션 출력 결과 비교: 전혀 다른 균등 분포 b로부터 이론적 참값 2.7에 근접한 2.95를 성공적으로 복원해 낸 콘솔 데이터 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p><strong>하지만 분산(Variance)을 주목해 주십시오. 분산이 무려 <code class="language-plaintext highlighter-rouge">10.63</code>으로, 온-정책 때의 <code class="language-plaintext highlighter-rouge">0.27</code>보다 약 40배나 폭발했습니다!</strong></p>
+
+<p><img src="./img/04_2_mean_restoration_vs_variance_explosion.png" alt="평균 복원 성공과 분산 폭발의 충격" />
+<strong>그림 09-5-4e</strong> 평균값은 2.7로 훌륭하게 복원되었으나 분산이 40배(0.27 → 10.63)로 폭발한 중요도 샘플링의 명암 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -869,15 +999,24 @@
 <p>분산은 데이터들이 평균을 중심으로 얼마나 넓게 흩어져 출렁이는가를 나타냅니다. 
 분산이 작을수록 적은 개수의 샘플만으로도 참값에 빠르게 안착하지만, 분산이 크면 평균값이 심하게 출렁거리기 때문에 참값에 수렴시키려면 수만 개, 수십만 개의 방대한 샘플을 쏟아부어야 합니다.</p>
 
+<hr />
+
 <h3 id="1-왜-중요도-샘플링에서-분산이-폭발할까요">1) 왜 중요도 샘플링에서 분산이 폭발할까요?</h3>
 
-<p>이유는 간단합니다. 행동 정책 <em>b</em>에서 숫자 <code class="language-plaintext highlighter-rouge">3</code>이 뽑혔을 때의 가중치를 계산해 보면:</p>
+<p>이유는 간단합니다.</p>
+
+<p>행동 정책 <em>b</em>에서 숫자 <code class="language-plaintext highlighter-rouge">3</code>이 뽑혔을 때의 가중치를 계산해 보면:</p>
 
 <blockquote>
   <h3 id="ρ--π3--b3--08--13--24"><strong><em>ρ</em> = <em>π</em>(3) / <em>b</em>(3) = 0.8 / (1/3) = 2.4</strong></h3>
 </blockquote>
 
 <p>여기에 데이터 <em>s</em> = 3을 곱하면 <strong>3 × 2.4 = 7.2</strong>라는 엄청나게 거대한 숫자가 튀어나옵니다! 참값은 고작 2.7인데 한 번에 7.2라는 거대한 숫자가 들어오니 분산이 요동칠 수밖에 없습니다.</p>
+
+<p><img src="./img/04_2b_single_sample_rho_spike_7point2.png" alt="단일 샘플 가중치 스파이크와 분산 폭발" />
+<strong>그림 09-5-5aa</strong> 단일 샘플 가중치 곱셈 스파이크: 참값 2.7에 비해 한 번에 7.2라는 거대한 숫자가 튀어나와 평균을 뒤흔드는 분산 폭발의 순간 (1:1 순백색)</p>
+
+<hr />
 
 <p>더 심각한 문제는, 에피소드가 10스텝, 100스텝으로 길어지는 다단계 몬테카를로법에서는 각 스텝의 중요도 가중치들이 꼬리에 꼬리를 물고 곱해진다는 점입니다:</p>
 
@@ -887,6 +1026,9 @@
 
 <p>열 번만 곱해도 가중치가 수만 배로 폭발하거나 반대로 0으로 소멸해 버리는 극단적인 <strong>‘분산 폭발(Variance Explosion)’</strong>이 발생합니다.</p>
 
+<p><img src="./img/04_3_multi_step_rho_explosion_formula_breakdown.png" alt="다단계 중요도 가중치 누적곱 분산 폭발 수식" />
+<strong>그림 09-5-5b</strong> 다단계 누적 중요도 가중치 ρ_{0:T-1} = ∏ (π_t/b_t) 수식 기호 분해 및 꼬리에 꼬리를 무는 분산 폭발 경고 인포그래픽 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="2-분산을-줄이는-비결-분포의-조율">2) 분산을 줄이는 비결: 분포의 조율</h3>
@@ -895,6 +1037,8 @@
 
 <p><img src="./img/05_variance_reduction_distribution_matching.png" alt="분포 정렬을 통한 분산 축소" />
 <strong>그림 09-5-6</strong> 확률 분포 b를 목표 분포 파이(<em>π</em>)에 가깝게 조율하여 분산을 안정화시키는 지니와 도로시</p>
+
+<hr />
 
 <p>행동 분포 <code class="language-plaintext highlighter-rouge">b</code>를 완전히 엉뚱한 <code class="language-plaintext highlighter-rouge">[1/3, 1/3, 1/3]</code> 대신, 목표 분포 <code class="language-plaintext highlighter-rouge">pi([0.1, 0.1, 0.8])</code>의 형태를 적당히 닮은 <code class="language-plaintext highlighter-rouge">[0.2, 0.2, 0.6]</code>으로 살짝 가깝게 조율하여 다시 실행해 봅시다:</p>
 
@@ -909,11 +1053,20 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">개선된 중요도 샘플링: {:.2f} (분산: {:.2f})</span><span class="sh">'</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">mean</span><span class="p">(</span><span class="n">samples_tuned</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="nf">var</span><span class="p">(</span><span class="n">samples_tuned</span><span class="p">)))</span>
 </code></pre></div></div>
 
+<p><img src="./img/05_1b_tuning_b_distribution_towards_pi.png" alt="행동 분포 조율을 통한 분산 안정화 다이어그램" />
+<strong>그림 09-5-6aa</strong> 엉뚱한 균등 분포 b를 목표 분포 π를 닮은 b_tuned([0.2, 0.2, 0.6])로 조율하여 중요도 가중치 편차를 안정화시키는 분포 튜닝 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p><strong>출력 결과</strong></p>
+
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>개선된 중요도 샘플링: 2.72 (분산: 2.48)
 </code></pre></div></div>
 
 <p>평균은 <code class="language-plaintext highlighter-rouge">2.72</code>로 참값 <code class="language-plaintext highlighter-rouge">2.7</code>에 훨씬 더 정밀하게 일치하며, 분산은 기존 <code class="language-plaintext highlighter-rouge">10.63</code>에서 <code class="language-plaintext highlighter-rouge">2.48</code>로 무려 <strong>75% 이상 극적으로 감소</strong>했습니다!</p>
+
+<p><img src="./img/05_2_python_tuned_b_variance_drop_flowchart.png" alt="조율된 행동 분포 b_tuned 순서도 및 분산 급감" />
+<strong>그림 09-5-6b</strong> 조율된 행동 분포 b_tuned 파이썬 실행 순서도 및 분산 75% 급감(10.63 → 2.48) 비교 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -921,6 +1074,8 @@
 
 <p><img src="./img/06_summary_core_takeaways.png" alt="핵심 정리 피날레" />
 <strong>그림 09-5-7</strong> 역할 분담, 중요도 가중치, 분산 안정화의 3대 기둥을 세우고 시간차 학습(TD)의 관문으로 향하는 도로시와 지니</p>
+
+<hr />
 
 <table>
   <thead>
@@ -949,15 +1104,28 @@
   </tbody>
 </table>
 
+<p><img src="./img/06_2_three_pillars_off_policy_triad.png" alt="오프-정책과 중요도 샘플링 3대 기둥 입체 삼위일체" />
+<strong>그림 09-5-7b</strong> 오프-정책과 중요도 샘플링 3대 핵심 기둥 (역할 분담, 가중치 보정, 분산 통제와 Q-러닝 디딤돌) 입체 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “오프-정책과 중요도 샘플링은 강화학습에서 ‘데이터 수집(Data Collection)’과 ‘정책 최적화(Policy Optimization)’를 완전히 떼어낸(Decoupling) 거대한 사상적 도약입니다. 비록 몬테카를로법에서는 긴 에피소드 동안 가중치 곱셈이 누적되며 분산이 커지는 아쉬움이 있지만, 이 훌륭한 통찰이 바로 다음 10장의 1스텝 시간차 학습과 현대 심층 강화학습의 최고봉인 Q-러닝의 탄생으로 이어지는 든든한 디딤돌이 됩니다.”</p>
 </blockquote>
 
+<p><img src="./img/06_3_hojin_mentor_note_decoupling_revolution.png" alt="이호진 교수님의 직강 멘토링 노트" />
+<strong>그림 09-5-7c</strong> 이호진 교수님의 직강 멘토링 노트: 데이터 수집과 정책 최적화를 완전히 분리해 낸 사상적 도약과 10장 Q-러닝으로의 연결 칠판 강의 장면 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />
 “도로시와 여러분, 마법 저울의 비밀을 완벽히 마스터했어요! 다른 모험가의 경험에서 최선의 지혜를 뽑아내는 중요도 가중치 로우(<em>ρ</em>)의 놀라운 힘을 잊지 마세요. 이제 9장의 대미를 장식하는 9.6절 최종 총정리로 함께 달려가 봅시다냥!”</p>
 </blockquote>
+
+<p><img src="./img/06_4_genie_cheering_chapter_9_6_preview.png" alt="조교 지니의 응원 및 9.6절 예고" />
+<strong>그림 09-5-7d</strong> 조교 지니의 응원: 9장의 대미를 장식하는 9.6절 최종 마스터 총정리로 힘차게 달려가는 도로시, 토토, 지니 일러스트 (1:1 순백색)</p>
 
 
             <!-- 구글 애드센스 출력 -->

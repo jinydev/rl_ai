@@ -1,0 +1,8 @@
+An expressive narrative illustration on a pure solid white background (#FFFFFF).
+Title: '작은 보상 경로의 영구 고착화 딜레마'.
+Visual scene:
+A winding labyrinth where Dorothy's robot pawn is trapped walking in a small endless circular loop around a single candy (+0.1).
+The robot's footprints have worn a deep groove in that single path.
+Far away, a glorious rainbow bridge leads to the finish line (+1.0), but the robot never looks in that direction.
+Dorothy shaking her head with concern: '우연히 발견한 작은 보상에 갇혀버렸어! 탐색(Exploration)의 불꽃이 필요해!'.
+Dark espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,6 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical infographic]
+Infographic illustrating 'Unbiased Estimation via Importance Sampling'.
+A central equation banner: 'E_π[X] = E_b[ X · (π(X) / b(X)) ]'.
+A statistical transformation funnel: raw data samples from distribution b enter from the top, pass through the 'Importance Weight Filter ρ = π / b', and emerge at the bottom as perfectly unbiased estimates conforming to distribution π with zero systemic bias.
+Genie checks the output with a level ruler confirming balance (Unbiased = 참값 보존).
+Crisp vector lines, soft pastel green and blue accents, dark espresso outlines, pure white background.

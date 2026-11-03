@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear conceptual diagram illustrating "The Working Mechanism of the Distribution Model in Dynamic Programming (DP)":
+In the upper center background, a comprehensive architectural chart:
+- A complete, perfectly illuminated topographical probability map labeled "완전한 확률 분포 P(x) (Full Global Knowledge)".
+- Analytical computation arrows flowing from every possible state branch into a grand summation equation: "V(s) = ∑ p(s'|s,a) [r + γ V(s')] (전수 조사 기반 가치 연산)".
+- A banner note: "동적 프로그래밍(DP)의 기반: 전체 지도를 펼쳐두고 책상 위에서 모든 미래를 엄밀하게 계산".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with a fine wooden stylus at the mathematical probability map, explaining the theoretical perfection of the distribution model.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) studies the complete map with intense focus, taking notes on her digital tablet.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and map easel, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 환경의 모든 상태 전이 확률 분포 P(x)를 사전에 100% 알고 있는 상태에서, 전체 지도를 펼쳐놓고 모든 가능한 미래를 수식으로 전수 조사하여 가치를 엄밀히 계산해내는 '분포 모델(Distribution Model)'과 동적 프로그래밍(DP)의 작동 원리를 시각화한 1:1 정방형 순백색 교육 삽화.
+

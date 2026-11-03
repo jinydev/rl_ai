@@ -1,0 +1,28 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and intuitive programming flowchart diagram showing the standard Monte Carlo sample mean algorithm:
+In the center, an elegant and colorful algorithmic flowchart with standard nodes:
+1. Top Oval Node (Start): "시작: trial = 1000 설정"
+2. Rectangle Node (Initialization): "samples = [] (표본 보관 빈 리스트 생성)"
+3. Diamond Node (Loop Condition): "1000회 반복 완료? (for _ in range(trial))"
+   - Arrow 'Looping (반복 중)': leads to sample collection
+4. Rectangle Processing Nodes:
+   - "s = sample() (단일 시행 표본 추출)"
+   - "samples.append(s) (리스트에 표본 추가)"
+   - Arrow loops back to diamond
+   - Arrow 'Done (반복 완료)': leads to mean calculation node
+5. Rectangle Calculation Node: "V = sum(samples) / len(samples) (전체 표본 산술 평균 계산)"
+6. Parallelogram Node (Output): "출력: print('추정 기댓값 V:', V) → 6.98 (참값 7에 근접!)"
+7. Bottom Oval Node (End): "종료 (일반 표본 평균 완료 ✔️)"
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) stands beside the flowchart, holding a glowing digital checklist and happily checking off the 'V = sum / len' node with a bright smile.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under flowchart and character, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 파이썬 몬테카를로 일반 평균 코드가 `trial = 1000` 설정, 빈 리스트 `samples` 생성, 루프를 돌며 표본 추출 및 리스트 추가(`append`), 그리고 루프 종료 후 `sum / len`으로 표본 평균을 일괄 계산해 출력하는 전 과정을 단계별 표준 순서도(Flowchart)로 도로시가 명쾌하게 해설하는 1:1 정방형 순백색 알고리즘 삽화.
+

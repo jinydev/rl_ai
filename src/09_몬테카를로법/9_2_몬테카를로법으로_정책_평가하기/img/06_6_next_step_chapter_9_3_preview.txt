@@ -1,0 +1,8 @@
+An exciting, motivating chapter preview illustration on a pure solid white background (#FFFFFF).
+Title: '다음 장 예고: 09.3 몬테카를로법 순수 파이썬 구현!'.
+Visual scene:
+Dorothy sitting at a modern desk with a laptop displaying clean Python code: 'for state, action, reward in reversed(memory):'.
+Genie holding a mouse, Toto resting paws on the keyboard enthusiastically.
+On the computer monitor, a colorful gridworld heatmap is rendering real-time value updates.
+Dorothy raises her fist in motivation: '이제 이론을 완벽히 정복했으니 코드로 직접 돌려보자냥!'.
+Clean vector lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

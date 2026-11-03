@@ -1,0 +1,8 @@
+A heartwarming, inspiring mentor lecture illustration on a pure solid white background (#FFFFFF).
+Title: '이호진 교수님의 직강 멘토링 노트: 데이터 수집과 정책 최적화의 분리 혁명'.
+Visual scene:
+Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) smiling warmly by the blackboard.
+Written on the board:
+'오프-정책(Off-Policy)의 위대함은 바로 데이터 수집과 정책 최적화를 완전히 분리(Decoupling)해 낸 것입니다. 이 통찰이 바로 10장 Q-러닝과 현대 심층 강화학습의 위대한 탄생으로 이어집니다.'
+Dorothy, Toto, and Genie listening with eyes sparkling with inspiration.
+Fine line art, warm academic glow, pure solid white background (#FFFFFF). --ar 1:1

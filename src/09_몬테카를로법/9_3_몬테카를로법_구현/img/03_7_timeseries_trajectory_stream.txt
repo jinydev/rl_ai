@@ -1,0 +1,7 @@
+A dynamic sequential trajectory conveyor infographic on a pure solid white background (#FFFFFF).
+Title: '단일 에피소드의 시계열 궤적 스트림'.
+A horizontal conveyor belt flowing from left to right:
+[S_0] -> [A_0] -> [R_0] -> [S_1] -> [A_1] -> [R_1] -> [S_2] -> [A_2] -> [R_2] -> [S_3] -> [A_3] -> [R_3] -> [S_4(Goal)]
+Each state-action-reward triplet is neatly packaged by a robotic mechanical arm into a transparent glass capsule.
+Dorothy monitoring the conveyor belt with Toto barking happily.
+Art style: crisp dark espresso lines, vibrant pastel accents, pure solid white background (#FFFFFF). --ar 1:1

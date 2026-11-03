@@ -1,0 +1,10 @@
+A cautionary educational infographic on a pure solid white background (#FFFFFF).
+Title: '몬테카를로법의 2대 결정적 한계'.
+Left warning card: '한계 ❶ 에피소드 완주 필수 (Episodic 제약)' (Amber card)
+- 반드시 골에 도달하거나 죽을 때까지 기다려야만 G를 정산 가능.
+- 주식 트레이딩이나 로봇 균형 제어처럼 무한히 지속되는 연속적(Continuing) 환경에서는 적용 불가!
+Right warning card: '한계 ❷ 높은 분산 (High Variance)' (Coral card)
+- 긴 경로 동안 수많은 확률적 주사위가 곱해져 G가 심하게 요동침.
+- 참 기댓값 수렴을 위해 수만 번의 방대한 에피소드가 필요함!
+Dorothy and Toto looking cautiously at the warning cards.
+Dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

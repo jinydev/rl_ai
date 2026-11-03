@@ -1,0 +1,9 @@
+An exciting, motivating chapter teaser illustration on a pure solid white background (#FFFFFF).
+Title: '이호진 교수님의 10장 예고: 1스텝 시간차 학습(TD)의 기적'.
+Visual scene:
+Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) drawing an inspiring equation on the board:
+'MC의 경험 샘플링(Model-Free) + DP의 부트스트랩(Bootstrap) = 10장 TD법(시간차 학습)!'
+Below on the board:
+'에피소드 완주를 기다리지 않고, 단 1걸음만 내딛어도 즉시 가치를 갱신한다!'
+Dorothy, Genie, and Toto with wide curious eyes full of excitement.
+Fine line art, warm academic atmosphere, pure solid white background (#FFFFFF). --ar 1:1

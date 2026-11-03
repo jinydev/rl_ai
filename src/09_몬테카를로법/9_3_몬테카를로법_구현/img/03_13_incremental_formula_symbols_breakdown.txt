@@ -1,0 +1,11 @@
+A premier mathematical breakdown infographic on a pure solid white background (#FFFFFF).
+Main formula centered in bold elegant typography:
+V_n = V_{n-1} + (1 / n) * ( G_n - V_{n-1} )
+
+Four distinct callout cards with connecting arrows:
+1. 'V_n' (Navy card): 새롭게 갱신된 최신 상태 가치 (Updated Value)
+2. 'V_{n-1}' (Soft Blue card): 이전까지 추정해 둔 직전 가치 (Previous Value)
+3. '(1 / n)' (Emerald Green card): 학습률 / 스텝 크기 α_n = 1 / N(s) (방문 횟수가 늘수록 작아져 안정화)
+4. '( G_n - V_{n-1} )' (Coral card): 이번 모험의 참 수익 G_n과 기존 예측의 차이 (오차 신호 Error)
+Professor Hojin explaining with enthusiasm, Dorothy smiling in realization.
+Ultra-crisp typography, dark espresso lines, pure white background (#FFFFFF). --ar 1:1

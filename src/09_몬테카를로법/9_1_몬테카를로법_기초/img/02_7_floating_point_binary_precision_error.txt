@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Engaging educational technical illustration: "Why 6.999999999999999 Instead of 7.0? (Computer Floating-Point Binary Error)".
+In the center, an illuminated digital magnifying glass panel:
+- Left side: Clean human decimal fraction "1 / 36 = 0.02777777... (무한 순환소수)".
+- Center transition: A computer CPU microchip converting the decimal fraction into binary 1s and 0s:
+  "2진수 변환: 0.00000111000111... (무한 비트 스트림)".
+- Right side: A 64-bit IEEE 754 floating-point register box with a scissor icon snipping off the tail: "메모리 64비트 한계로 인한 미세 절삭(Rounding) → 미세 오차 누적으로 6.999999999999999 출력! (수학적으로는 7.0과 동일 ✔️)".
+In the foreground:
+Dorothy (9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) looks through a giant brass magnifying glass at the tiny clipped binary bits with comical curiosity.
+Beside her, Jiny the tuxedo cat with scholar glasses holds up an eraser and a tiny chalkboard showing "≈ 7.0 (컴퓨터의 귀여운 오차일 뿐이다냥!)".
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and CPU panel, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 파이썬 기댓값 출력에서 7.0 대신 6.999999999999999가 나오는 이유인 1/36의 2진수 부동소수점 무한 순환소수 표현 및 64비트 메모리 절삭 반올림 오차의 하드웨어적 원리를 도로시와 지니의 돋보기 탐구로 유쾌하게 시각화한 1:1 정방형 순백색 교육 삽화.
+

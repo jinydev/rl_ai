@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Brilliant conceptual illustration of memory compression: "The Miracle of Compressing Millions of Data Points into a Single Number V_{n-1}".
+In the center composition:
+- Left side: A swirling funnel where millions of historic data point papers [s_1, s_2, s_3, ... s_{999,999}] are drawn in, magically transforming into bright liquid gold.
+- Center: The gold liquid condenses into a single, polished glowing crystal cube marked: "V_{n-1} (직전 평균: 단 1개의 부동소수점 변수!)".
+- Right side: A microchip labeled "메모리 사용량: O(1) 영구적 상수 유지! (과거 데이터 전원 파기 가능)".
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) holds the tiny glowing crystal cube on her palm with wide, astonished eyes.
+Beside her, Jiny the tuxedo cat with tiny round scholar glasses happily discards a recycling bin of old paper data, winking: "모든 과거의 역사가 이 작은 숫자 하나에 완벽히 압축되어 녹아들어갔다냥!".
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and compression funnel, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 과거 s_1부터 s_{n-1}까지의 수백만 개 경험 데이터가 단 하나의 직전 평균 숫자 V_{n-1} 속에 완벽하게 압축되어 녹아들어감으로써, 과거 데이터를 전부 버려도 메모리 O(1)로 영구히 무한 학습을 지속할 수 있는 데이터 압축의 기적을 도로시와 지니의 압축 크리스털로 시각화한 1:1 정방형 순백색 삽화.
+

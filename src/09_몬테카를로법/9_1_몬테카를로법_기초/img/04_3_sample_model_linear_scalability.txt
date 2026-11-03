@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming and inspiring technical illustration showing "The Linear Scalability of the Sample Model: sample(10) vs sample(1000)":
+In the upper center, a clean performance comparison diagram:
+- A simple Python code snippet displayed in a glowing code terminal:
+  `sample(10)   # 10번 주사위 굴리기: 0.0001초 소요`
+  `sample(1000) # 1000번 주사위 굴리기: 0.001초 소요`
+- A gentle, flat green linear scaling curve O(N) labeled "선형적 시간 복잡도 O(N): 컴퓨터에게는 그저 루프를 몇 번 더 도는 사소한 일!".
+- A shiny golden checkmark stamp: "경우의 수 6^10이든 6^1000이든 아무런 문제 없음 ✔️".
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) sits casually typing on a bright teal laptop, resting her chin in one hand with an easy, relaxed smile while the laptop effortlessly computes 1,000 dice rolls in the blink of an eye.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under character and laptop, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 6천만 가지의 조합 폭발에 허덕이는 분포 모델과 달리, 샘플 모델은 매개변수 숫자만 바꾸어 `sample(10)`이나 `sample(1000)`을 호출하기만 하면 컴퓨터가 눈 깜짝할 사이에 루프를 돌아 단일 표본을 선형 시간 O(N)으로 뽑아내는 초간단 해결력의 위대함을 도로시의 여유로운 코딩으로 시각화한 1:1 정방형 순백색 삽화.
+

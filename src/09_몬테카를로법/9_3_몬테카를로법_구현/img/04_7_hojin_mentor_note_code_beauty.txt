@@ -1,0 +1,12 @@
+A heartwarming, inspiring mentor lecture illustration on a pure solid white background (#FFFFFF).
+Title: '이호진 교수님의 직강 멘토링 노트: 코드의 극단적 간결함과 제어로의 초대'.
+Visual scene:
+Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) smiling warmly at the blackboard.
+Written on the board:
+'for data in reversed(self.memory):
+    G = gamma * G + reward
+    cnts[s] += 1
+    V[s] += (G - V[s]) / cnts[s]'
+Caption on board: '단 4줄의 코드가 환경 모델 없는 지능의 시작입니다. 이제 정책 제어(Control)의 세계로 갑시다!'.
+Dorothy, Toto, and Genie listening with bright, inspired eyes.
+Fine line art, warm academic glow, pure solid white background (#FFFFFF). --ar 1:1

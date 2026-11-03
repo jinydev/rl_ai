@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Humorous and relatable educational concept illustration: "Dorothy Imagining the Whirlwind of Complex Calculations vs A Friendly Pair of Dice".
+In the upper center background, an expansive swirling dream bubble floating above Dorothy's head:
+- Inside the bubble, a dizzying cosmic storm of complex mathematical symbols, infinite nested matrices, differential equations, and astronomical numbers ($10^{170}$, $52!$, $\sum \prod \int$) spiraling like a chaotic galaxy.
+- Floating right in the peaceful eye of the mathematical storm is a pair of bright, friendly, glowing wooden six-sided dice (showing dots 3 and 4) radiating a warm golden halo, acting as a simple, approachable beacon!
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) rests her chin in both hands at a small research table, transitioning from comically dizzy eyes (@_@) to a bright, curious smile as she realizes that rolling dice is a fun, easy way to conquer the impossible math monster.
+Beside her, Toto the fluffy cream puppy (#FBF6EB, sky-blue neck bandana) sits attentively, tilting his head with cheerful curiosity at the floating dice.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under table and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 우주 원자 수를 넘는 천문학적인 계산 복잡도의 소용돌이를 상상하며 아찔해하다가, 친근하고 귀여운 한 쌍의 주사위를 통해 복잡한 수학 난제를 정복할 수 있다는 발상에 호기심을 반짝이는 도로시와 토토의 모습을 유쾌하게 시각화한 1:1 정방형 순백색 삽화.
+

@@ -1,0 +1,8 @@
+An educational illustration depicting Trap 1 on a pure solid white background (#FFFFFF).
+Title: '함정 ❶ 탐색 실종: 눈앞의 작은 사탕에 갇힌 에이전트'.
+Visual scene:
+A cute robot greedily eating a tiny candy labeled '+0.1 보상' right in front of its nose.
+The path behind the candy is blocked by a giant lock labeled '완전 탐욕 100%'.
+Over the hill, a shimmering golden treasure chest labeled '+1.0 GOAL' remains untouched and dark.
+Warning icon flashing: '새로운 시도를 영영 하지 못해 대박을 놓치는 조기 수렴의 비극!'.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

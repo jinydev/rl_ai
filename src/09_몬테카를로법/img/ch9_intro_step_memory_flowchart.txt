@@ -1,0 +1,13 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution software engineering flowchart]
+Technical software flowchart showing 'The Core Interaction Loop: env.step() and agent.memory'.
+Clean vertical flowchart with standard rounded rectangles and diamonds:
+1. [Start Episode: state = env.reset()]
+2. [Action Selection: action = agent.get_action(state)]
+3. [Environment Step: next_state, reward, done = env.step(action)]
+4. [Memory Storage: agent.add(state, action, reward)]
+5. [State Update: state = next_state]
+6. <Decision: Is done == True?>
+   - No → Loop back to Step 2
+   - Yes → Proceed to [Backward Return Calculation & Q-table Update]
+7. [End of Episode]
+Clean professional layout, soft pastel green and coral nodes, dark espresso borders, pure white background.

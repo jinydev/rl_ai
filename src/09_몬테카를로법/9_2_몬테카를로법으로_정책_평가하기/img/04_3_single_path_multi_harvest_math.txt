@@ -1,0 +1,11 @@
+A clear mathematical breakdown infographic on a pure solid white background (#FFFFFF).
+Title: '1타 다피: 단일 경로 다중 수확 (Single Path Multi-Harvesting)'.
+A single horizontal progression line showing an agent's journey:
+[출발 State A] --(R_0)--> [State B] --(R_1)--> [State C] --(R_2)--> [GOAL]
+Three downward bracket arrows showing simultaneous return harvesting:
+1. From A: G_A = R_0 + γR_1 + γ²R_2 (Yellow highlight card)
+2. From B: G_B = R_1 + γR_2 (Green highlight card)
+3. From C: G_C = R_2 (Blue highlight card)
+Header subtitle: '단 1회의 에피소드로 3개 상태의 수익 샘플을 동시에 수확한다!'
+Dorothy holding a basket filled with three shiny fruits labeled G_A, G_B, G_C.
+Clean vector infographic, dark espresso line art, pure white background (#FFFFFF). --ar 1:1

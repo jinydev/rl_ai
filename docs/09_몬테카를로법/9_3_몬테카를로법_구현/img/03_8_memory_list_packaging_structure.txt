@@ -1,0 +1,10 @@
+A clear data structure visualization infographic on a pure solid white background (#FFFFFF).
+Title: '파이썬 self.memory 내부 데이터 패키징 구조'.
+An elegant wooden chest of drawers with 4 labeled slots:
+Index 0: (S_0, A_0, R_0)
+Index 1: (S_1, A_1, R_1)
+Index 2: (S_2, A_2, R_2)
+Index 3: (S_3, A_3, R_3)
+Callout note on the right: '골인 종료 상태 S_4는 미래 보상이 없으므로 저장하지 않고 제외!'
+Genie placing the final capsule into Index 3 drawer with a smile.
+Crisp typography, dark espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

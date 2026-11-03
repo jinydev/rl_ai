@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Warm and inspiring mentoring scene: "Professor Hojin's Master Note: Turning Randomness into Wisdom":
+In the upper center, an illuminated chalkboard quote with warm golden glowing chalk:
+"몬테카를로법의 본질은 무작위성(Randomness)을 지혜롭게 활용하는 것입니다.
+모든 규칙을 다 알아야만 똑똑한 결정을 내릴 수 있는 것은 아닙니다.
+직접 부딪혀 보고, 오차를 조금씩 줄여나가는 이 단순한 원리가 바로 현대 강화학습을 움직이는 가장 거대한 엔진입니다."
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) crouches down slightly to meet Dorothy's eye level, speaking with a warm, encouraging smile and placing an encouraging gentle hand on her shoulder.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) listens with glowing, motivated eyes, nodding with newfound courage and confidence in her learning journey.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and chalkboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: "모든 규칙을 다 알아야만 똑똑한 결정을 내릴 수 있는 것이 아니라, 직접 부딪혀 보고 오차를 줄여나가는 단순한 원리가 강화학습의 거대한 엔진"이라는 이호진 교수님의 깊이 있는 멘토링 메시지를 도로시와의 따뜻한 사제지간 교감으로 시각화한 1:1 정방형 순백색 감성 삽화.
+

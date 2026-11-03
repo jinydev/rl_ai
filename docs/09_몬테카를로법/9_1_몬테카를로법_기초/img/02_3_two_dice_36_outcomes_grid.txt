@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and beautiful technical grid diagram: "The 6×6 = 36 Outcomes of Rolling Two Dice".
+In the center, an organized 6x6 mathematical matrix grid:
+- Horizontal header labeled with first red die (faces 1 to 6).
+- Vertical header labeled with second blue die (faces 1 to 6).
+- Each of the 36 internal cells neatly displays the resulting pair: (1,1), (1,2) ... up to (6,6), with subtle pastel gradient color-coding based on their sum.
+- A prominent title banner on the grid reads: "6 × 6 = 총 36가지 가능한 모든 경우의 수 (Equal Probability: 각 1/36)".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) sits beside the grid with a wooden stylus, pointing at cell (3, 4) with an enthusiastic smile.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) happily rests his chin on the corner of the matrix board, batting gently at a little red toy die.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under matrix and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 두 개의 주사위를 굴렸을 때 나올 수 있는 첫 번째 주사위(6가지)와 두 번째 주사위(6가지)의 곱으로 전개되는 총 36가지 경우의 수(각각 동일한 1/36 확률)를 체계적인 6x6 격자 매트릭스로 도로시와 토토가 탐색하는 1:1 정방형 순백색 교육 삽화.
+

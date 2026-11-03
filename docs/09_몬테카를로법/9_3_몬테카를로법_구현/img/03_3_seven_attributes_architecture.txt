@@ -1,0 +1,12 @@
+A structured architectural diagram of RandomAgent's internal attributes on a pure solid white background (#FFFFFF).
+Title: 'RandomAgent 내부의 7대 핵심 속성 아키텍처'.
+A large organized laboratory locker with 7 labeled compartments:
+1. 'gamma = 0.9' (할인율 다이얼)
+2. 'action_size = 4' (4방향 스위치)
+3. 'random_actions' (25% 균등 확률표)
+4. 'pi' (상태별 정책 defaultdict)
+5. 'V' (상태 가치 함수 테이블 defaultdict)
+6. 'cnts' (방문 횟수 카운터 defaultdict)
+7. 'memory = []' (에피소드 경험 보관 배낭)
+Genie presenting the locker with white laboratory gloves, Dorothy taking notes.
+Crisp lines, pastel fills, pure solid white background (#FFFFFF). --ar 1:1

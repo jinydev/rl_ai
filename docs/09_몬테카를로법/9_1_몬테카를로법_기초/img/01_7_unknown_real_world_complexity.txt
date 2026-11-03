@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Dramatic and evocative educational concept illustration: "Stepping Out of the Greenhouse into the Unknown Real World".
+In the center composition:
+- On the left: A cozy, warm, safe glass greenhouse structure labeled "알려진 온실 세계 (Known Environment: Grid World)", neat and orderly with crystal-clear rules.
+- On the right: The vast, dynamic, unpredictable real-world horizon, filled with rolling clouds, sudden rain showers, buzzing city traffic, and winding unfamiliar pathways shrouded in swirling question marks.
+In the center threshold:
+Dorothy (spirited 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) stands at the open greenhouse door, taking a brave step out onto the dynamic real-world soil with her explorer's backpack and a determined, adventurous smile.
+Beside her, Toto the cream puppy (#FBF6EB, sky-blue neck bandana) stands alert with perked ears and lively tail, sniffing the unpredictable air with brave curiosity.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet and greenhouse threshold, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 컴퓨터 안의 깔끔한 격자판(알려진 모델)이라는 온실을 벗어나, 사전에 수식으로 완벽히 알아낼 수 없는 수많은 변수와 불확실성이 소용돌이치는 현실 세계(미지 모델)로 용기 있게 첫발을 내딛는 도로시와 토토의 모험을 대비적으로 시각화한 1:1 정방형 순백색 삽화.
+

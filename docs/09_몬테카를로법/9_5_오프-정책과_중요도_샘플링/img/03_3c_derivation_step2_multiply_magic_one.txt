@@ -1,0 +1,8 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution chalkboard educational illustration]
+Step 2 of Importance Sampling Derivation: The Golden Trick of Multiplying by 1.
+On the chalkboard, Dorothy inserts the magic fraction [b(x) / b(x)] with glowing golden chalk:
+'Step 2: Multiply by Golden 1 = b(x) / b(x)'
+'E_π[X] = ∑_x x · [ b(x) / b(x) ] · π(x)'
+A sparkling magical tag points to [b(x) / b(x)] saying: 'Multiplying by 1 never changes the value, but unlocks the secret door to distribution b!'.
+Genie hovers with fairy dust sparkling around the fraction.
+Clean line art, educational clarity, pure white background, warm pastel accents.

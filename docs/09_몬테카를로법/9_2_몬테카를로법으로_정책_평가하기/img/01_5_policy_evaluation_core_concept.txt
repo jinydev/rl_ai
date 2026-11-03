@@ -1,0 +1,9 @@
+A vivid educational infographic on a pure solid white background (#FFFFFF).
+Title: '정책 평가(Policy Evaluation): 주어진 정책 π의 성적표 매기기'.
+Concept: Evaluating how good the current fixed policy π is by measuring the expected cumulative return from every state s.
+Visual elements:
+Genie the tuxedo cat wearing spectacles holds a clipboard report card titled '정책 π의 상태 가치 성적표 V_π(s)'.
+A gridworld map on the table with various cells (states A, B, C, D) marked with colorful grade stamps (A: 0.8, B: 0.9, C: 1.0).
+Dorothy points with a wooden stick to state (0,0), asking '이 정책대로 움직이면 평균 몇 점을 받을까?'.
+Toto sits beside her wagging his tail.
+Clean dark espresso line art, soft pastel color blocks, pure white background (#FFFFFF). --ar 1:1

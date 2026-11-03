@@ -1,0 +1,11 @@
+A professional software algorithm flowchart on a pure solid white background (#FFFFFF).
+Title: '파이썬 reversed(memory) 역순회 알고리즘 순서도'.
+Flowchart elements:
+1. [시작: 에피소드 완주 후 메모리 전달 memory = [(s0, a0, r0), ...]] (Rounded oval)
+2. [G = 0 초기화] (Rectangle)
+3. <for state, action, reward in reversed(memory):> (Hexagon / Decision loop)
+   - [G = gamma * G + reward (수익 누적)] (Rectangle)
+   - [cnts[state] += 1 (방문 횟수 증가)] (Rectangle)
+   - [V[state] += (G - V[state]) / cnts[state] (가치 함수 증분 갱신)] (Rectangle)
+4. [루프 종료: 업데이트된 V 테이블 반환] (Rounded oval)
+Clean flowchart symbols with pastel fill, dark espresso outlines, readable Korean/Python text, pure white background (#FFFFFF). --ar 1:1

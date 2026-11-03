@@ -1,0 +1,12 @@
+A detailed mathematical formula breakdown infographic on a pure solid white background (#FFFFFF).
+Header formula in bold elegant typography:
+Q_n(s, a) = Q_{n-1}(s, a) + (1 / n) * [ G^(n) - Q_{n-1}(s, a) ]
+
+Four distinct color-coded callout cards:
+1. 'Q_n(s, a)' (Navy card): 상태 s에서 행동 a를 취했을 때의 최신 갱신된 가치
+2. 'Q_{n-1}(s, a)' (Soft Blue card): 이전까지 추정해 둔 직전 행동 가치
+3. '(1 / n)' (Emerald Green card): 해당 (s, a) 쌍의 방문 횟수 n 기반 스텝 크기
+4. '[ G^(n) - Q_{n-1}(s, a) ]' (Coral card): 이번 모험의 참 누적 수익 G^(n)과 이전 예측 사이의 오차 신호
+
+Dorothy holding a magnifying glass examining the (s, a) pair subscript.
+Ultra-clean vector lines, dark espresso line art, pure white background (#FFFFFF). --ar 1:1

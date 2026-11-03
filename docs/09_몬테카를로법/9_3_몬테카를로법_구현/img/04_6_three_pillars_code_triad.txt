@@ -1,0 +1,8 @@
+An educational infographic summarizing the 3 pillars of MC implementation on a pure solid white background (#FFFFFF).
+Title: '몬테카를로 구현의 3대 핵심 기둥 코드 삼위일체'.
+A triangular interlocking golden structure with 3 pillar cards:
+Pillar 1: [env.step(action)] -> 블랙박스 환경과의 물리적 상호작용 인터페이스
+Pillar 2: [reversed(memory)] -> G = γG + R 점화식을 통한 O(T) 선형 시간 역방향 초고속 정산
+Pillar 3: [V[s] += (G - V[s]) / cnts[s]] -> 과거 데이터를 보관할 필요 없는 실시간 증분 평균 갱신
+Center: An emblem of Python and Reinforcement Learning in perfect harmony.
+Dark espresso outlines, elegant pastel colors, pure white background (#FFFFFF). --ar 1:1

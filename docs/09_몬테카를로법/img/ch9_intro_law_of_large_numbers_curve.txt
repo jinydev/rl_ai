@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution statistical convergence graph]
+Statistical graph illustrating 'Monte Carlo Estimation and the Law of Large Numbers (대수의 법칙)'.
+In the center, a crisp 2D coordinate graph:
+- X-axis: 'Number of Sample Episodes N (1 to 10,000)'
+- Y-axis: 'Estimated Value V(s)'
+- A dashed horizontal red line representing 'True Theoretical Value v_π(s) = 7.000'.
+- Multiple pastel-colored trajectory lines fluctuating wildly at low N (N < 50), then smoothing out dramatically and converging tightly onto the red line as N exceeds 1,000.
+Formula badge: 'V(s) = (1/N) ∑ G_i → E_π[G] as N → ∞'.
+Clean modern graphic design, sharp typography, pure white background, no cartoon characters.

@@ -1,0 +1,9 @@
+A heartwarming educational scene on a pure solid white background (#FFFFFF).
+Title: '목표 도달 후 정산: 에피소드 완주와 수익 확정'.
+Visual scene:
+Dorothy and Toto have just crossed a glowing golden archway labeled 'GOAL (종료 상태)'.
+Confetti floats gently in the air.
+Genie the cat with glasses holds an abacus and an account book labeled '에피소드 정산부', calculating the total score from the journey.
+Dorothy holds a crystal jar filled with collected reward stars labeled '총 수익 G = R_0 + γR_1 + γ²R_2...'.
+Professor Hojin looks on warmly, holding a warm mug of tea.
+Art style: fine dark espresso outlines, warm and uplifting educational aesthetic, pure solid white background. --ar 1:1

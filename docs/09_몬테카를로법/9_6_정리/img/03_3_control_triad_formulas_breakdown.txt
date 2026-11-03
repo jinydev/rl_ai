@@ -1,0 +1,11 @@
+A premier mathematical breakdown infographic on a pure solid white background (#FFFFFF).
+Title: '몬테카를로 정책 제어 3대 핵심 수식 통합 분해'.
+Three interconnected mathematical formula banners:
+Banner 1: [탐욕적 개선] μ(s) = argmax_a Q(s, a)
+-> 모델 프리 환경에서 Q값 크기 비교만으로 즉각 최선 행동 선택!
+Banner 2: [ε-탐욕 정책] π(a*|s) = 1 - ε + ε/|A|, π(a|s) = ε/|A|
+-> 92.5% 활용 + 7.5% 탐색으로 조기 수렴 방지 및 대박 경로 발굴!
+Banner 3: [고정 학습률 갱신] Q(s,a) ← Q(s,a) + α * [ G - Q(s,a) ]
+-> 지수 이동 평균으로 과거 초보 기억은 잊고 최신 고수 경험 우대!
+Professor Hojin explaining each formula with academic enthusiasm.
+Clean lines, dark espresso line art, pure white background (#FFFFFF). --ar 1:1

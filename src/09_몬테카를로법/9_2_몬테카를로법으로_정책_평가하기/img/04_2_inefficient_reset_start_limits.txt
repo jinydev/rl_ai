@@ -1,0 +1,11 @@
+An educational illustration highlighting the inefficiency of resetting from scratch for every state on a pure solid white background (#FFFFFF).
+Title: '비효율적인 독립 출발(Reset)의 한계'.
+Visual concept:
+A winding mountain road with towns A, B, C and Goal.
+Three separate Dorothy clones sweating exhaustingly:
+- Clone 1 parachuting specifically to town A, walking to Goal.
+- Clone 2 parachuting specifically to town B, walking to Goal.
+- Clone 3 parachuting specifically to town C, walking to Goal.
+A big red 'X' over the wasted helicopter fuel and time, with a sign: '현실의 자율주행차나 로봇은 중간 지점으로 순간이동(Teleport/Reset)할 수 없다!'.
+Genie holding a facepalm, Toto barking at the wasted energy.
+Clean dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

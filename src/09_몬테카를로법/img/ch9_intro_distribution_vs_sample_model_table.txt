@@ -1,0 +1,13 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution comparative overview card]
+Comparative overview card: 'Distribution Model vs Sample Model in Reinforcement Learning'.
+Two symmetrical comparison panels side-by-side:
+- Left Panel (Distribution Model / DP):
+  - Requires full transition probability p and reward r
+  - Analytical summation: E[X] = ∑ x · p(x)
+  - Limited to small, toy simulation problems
+- Right Panel (Sample Model / MC):
+  - Zero model requirement; only requires interaction simulator
+  - Arithmetic sample mean: E[X] ≈ (1/N) ∑ x_i
+  - Scales to real-world complex problems, games, robotics
+Bottom summary banner: 'From theoretical distribution math to practical sample-based empirical learning'.
+Pure solid white background, elegant dark espresso outlines, warm pastel accents.

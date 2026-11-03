@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and engaging computer programming flowchart diagram illustrating the Python expected value calculation loop:
+In the center, an elegant and colorful algorithmic flowchart with standard nodes:
+1. Top Oval Node (Start): "시작: 딕셔너리 ps 정의 (합 x: 확률 p)"
+2. Rectangle Node (Initialization): "V = 0 (기댓값 누적 변수 초기화)"
+3. Diamond Node (Loop Condition): "모든 (x, p) 항목 순회 완료? (for x, p in ps.items())"
+   - Arrow 'No (반복 중)': leads to processing node
+4. Rectangle Processing Node: "V += x * p (가중합 누적 연산: 값 x와 확률 p를 곱해 더함)"
+   - Arrow loops back to diamond
+   - Arrow 'Yes (순회 완료)': leads to output node
+5. Parallelogram Node (Output): "출력: print(V) → 6.999999... ≈ 7.0!"
+6. Bottom Oval Node (End): "종료 (이론적 기댓값 계산 완료 ✔️)"
+In the foreground:
+Jiny the tuxedo cat wearing tiny round scholar glasses and red bell collar stands beside the flowchart, holding a glowing green cursor pointer guiding the loop arrow from node 4 back to node 3 with a proud scholar's grin.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under flowchart and cat, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 파이썬 딕셔너리 ps를 for 루프로 순회하며 각 주사위 합 x에 확률 p를 곱하여 변수 V에 가산 누적(V += x * p)해 최종 기댓값 7.0을 구해내는 코드의 실행 과정을 단계별 표준 순서도(Flowchart)로 조교 지니가 알기 쉽게 안내하는 1:1 정방형 순백색 알고리즘 삽화.
+

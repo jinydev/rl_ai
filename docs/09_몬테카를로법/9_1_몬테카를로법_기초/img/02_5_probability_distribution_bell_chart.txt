@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and elegant probability curve infographic: "The Symmetrical Bell-Shaped Probability Distribution P(x)".
+In the upper center background, a clean technical coordinate chart:
+- Horizontal X-axis: "두 주사위 눈의 합 x (2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)".
+- Vertical Y-axis: "발생 확률 P(x) (0 up to 6/36 ≈ 16.7%)".
+- A smooth translucent cyan bell-curve overlaying colorful pastel probability vertical bars, rising gracefully to a glowing crest at x = 7 (P(7) = 6/36), perfectly mirrored on both sides: P(6)=P(8)=5/36, P(2)=P(12)=1/36.
+- A callout note: "💡 확률분포(Probability Distribution): 가능한 모든 값 x와 발생 확률 P(x)의 완벽한 함수 지도".
+In the foreground:
+Professor Hojin (youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, round silver wire-rim glasses, navy polo shirt, blue jeans) points with a fine stylus at the central axis of symmetry at x = 7.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) looks at the bell curve with wide, illuminated eyes, holding a digital tablet displaying the same symmetrical chart.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and chart stand, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 두 주사위 눈의 합 x(2~12)와 그에 대응하는 확률 P(x)가 x=7(6/36)을 중심으로 거울처럼 대칭을 이루며 완벽한 종 모양(Bell-shaped) 곡선을 그리는 확률 분포(Probability Distribution)의 수학적 개념을 이호진 교수님과 도로시의 차트 강의로 시각화한 1:1 정방형 순백색 교육 삽화.
+

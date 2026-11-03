@@ -1,0 +1,10 @@
+A professional software initialization flowchart on a pure solid white background (#FFFFFF).
+Title: 'McAgent 초기화 및 Q 테이블 메모리 생성 순서도'.
+Flowchart steps:
+1. [호출: agent = McAgent()] (Rounded oval)
+2. [self.gamma = 0.9, self.action_size = 4 설정] (Rectangle)
+3. [self.Q = defaultdict(lambda: 0) 생성 (키: (state, action))] (Rectangle)
+4. [self.pi = defaultdict(random_actions), self.cnts 생성] (Rectangle)
+5. [self.memory = [] 배낭 리스트 초기화] (Rectangle)
+6. [에이전트 인스턴스 준비 완료] (Rounded oval)
+Clean flowchart symbols with pastel fills, dark espresso borders, pure white background (#FFFFFF). --ar 1:1

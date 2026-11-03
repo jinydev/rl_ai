@@ -1,0 +1,10 @@
+A dramatic educational warning infographic on a pure solid white background (#FFFFFF).
+Title: '인공지능 역사상 가장 유명한 2대 치명적 함정'.
+Left panel: '함정 ❶ 탐색 실종 (No Exploration)'
+- 100% 완전 탐욕으로 인해 눈앞의 작은 사탕(+0.1)에 갇혀 뒤쪽 황금 보물(+1.0)을 영원히 보지 못함!
+- 해결책: ε-탐욕 정책 (Epsilon-Greedy)!
+Right panel: '함정 ❷ 비정상 문제 무시 (Non-Stationary Neglect)'
+- 발전하는 고수의 경험과 초보 시절의 바보 경험을 똑같이 1/n로 대우하여 학습 정체!
+- 해결책: 고정 학습률 α 지수 이동 평균!
+Dorothy and Toto looking startled at the two traps with caution signs.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

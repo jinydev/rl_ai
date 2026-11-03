@@ -1,0 +1,10 @@
+A side-by-side comparison infographic on a pure solid white background (#FFFFFF).
+Title: 'KeyError 폭발 vs defaultdict의 마법 같은 안전 금고'.
+Left panel: '일반 dict (v_dict = {})'
+- Red warning flashing: KeyError: (2, 0)!
+- Robot pawn trips over an empty locked box and crashes. Frustrated expression.
+Right panel: 'collections.defaultdict (lambda: 0)'
+- Gentle green aura: Unseen key (2, 0) entered -> Automatically serves '0.0' with zero crash!
+- Robot pawn smoothly receives a fresh score card and continues walking happily.
+Dorothy and Toto cheering for the safety of defaultdict.
+Dark espresso line art, pure white background (#FFFFFF). --ar 1:1

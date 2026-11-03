@@ -1,0 +1,10 @@
+A dramatic educational comparison infographic on a pure solid white background (#FFFFFF).
+Title: '초보 시절(에피소드 1) vs 베테랑 고수(에피소드 10,000)의 극적 대비'.
+Visual split:
+Left side: '에피소드 1 (완전 초보 시절)'
+- Robot with dizzy spiral eyes crashing head-first into a brick wall, dropping reward coins. Wasted time.
+Right side: '에피소드 10,000 (베테랑 고수 시절)'
+- Sleek, confident robot gracefully gliding through the maze directly toward the goal in minimal steps.
+Center warning: '두 경험을 똑같이 1/n로 대우하는 것은 넌센스! 고정 학습률 α로 초보 기억을 망각시켜야 한다!'.
+Dorothy and Toto agreeing wholeheartedly.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,11 @@
+A comprehensive comparison chart infographic on a pure solid white background (#FFFFFF).
+Title: '동적 프로그래밍(DP) vs 몬테카를로법(MC) 6대 핵심 비교'.
+A structured 2-column comparative table with crisp icons:
+1. 환경 모델: DP (필수 p, r) vs MC (완전 불필요 Model-Free)
+2. 학습 원천: DP (벨만 연립방정식 전개) vs MC (실제 에피소드 경험 G)
+3. 부트스트랩: DP (사용 V(s') 추정치) vs MC (미사용 실제 G)
+4. 학습 단위: DP (1스텝 전 상태 일괄) vs MC (에피소드 완주 단위)
+5. 편향과 분산: DP (편향 가능, 분산 0) vs MC (무편향 Unbiased, 높은 분산)
+6. 현실 적용성: DP (장난감 미로 국한) vs MC (미지의 실세계 로봇/게임 적용)
+Genie presenting the chart with white gloves, Dorothy writing in her diary.
+Crisp typography, dark espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

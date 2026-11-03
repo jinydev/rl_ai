@@ -1,0 +1,8 @@
+An educational illustration depicting an agent running a full episode until termination on a pure solid white background (#FFFFFF).
+Title: '골인 지점까지 자유롭게 달리는 에피소드 완주'.
+Visual narrative:
+A bright 4x4 gridworld path starting from 'Start (0,0)' winding through stepping stones to 'Goal (3,3)'.
+Dorothy guides a small cute wind-up robot toy along the path. The robot steps on tiles, leaving footprints and collecting glowing star tokens (rewards).
+At each step, time advances: t=0, t=1, t=2... until it reaches the checkered flag 'Goal (Terminal)'.
+Toto barks cheerfully at the finish line holding a stopwatch.
+Clean dark espresso line art, warm soft pastel colors, pure white background (#FFFFFF). --ar 1:1

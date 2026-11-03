@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical derivation diagram: "Step 3 of Derivation: Linking Past Sum to Previous Mean V_{n-1}".
+In the center, a dark-green chalkboard displaying the crucial algebraic substitution step:
+- Top Line: "직전 (n-1)개까지의 평균 정의: V_{n-1} = (1 / (n-1)) · ∑_{i=1}^{n-1} s_i"
+- Center Line with double golden arrows: "양변에 (n-1)을 곱하면?  →  ∑_{i=1}^{n-1} s_i = (n-1) · V_{n-1}"
+- Bottom Line showing the magical substitution arrow:
+  "과거 데이터들의 거대한 합을 단 하나의 표현 '(n-1) · V_{n-1}'로 완벽하게 치환(Substitute)!"
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with his stylus at the replacement arrow with an inspiring, illuminated smile: "과거의 수많은 데이터들을 일일이 기억할 필요 없이, 직전 평균 V_{n-1} 하나로 묶어버리는 가장 결정적인 순간이란다!".
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under blackboard and professor, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 증분 갱신 공식 유도의 제3단계이자 가장 결정적인 순간으로서, 과거 (n-1)개의 거대한 데이터 합(∑ s_i)을 직전 평균의 정의식을 변형하여 (n-1)V_{n-1}이라는 단 하나의 단일 항으로 완벽하게 치환해내는 핵심 연결 고리를 이호진 교수님의 칠판 강의로 시각화한 1:1 정방형 순백색 수식 삽화.
+

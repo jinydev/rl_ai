@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and beautiful geometric educational diagram: "The Geometry of a Square and Its Inscribed Circle".
+In the center, an elegant and crisp technical geometry drawing:
+- An outer warm wooden-textured square with side length dimension lines labeled "한 변의 길이 = 2r", and an area formula tag: "S_square = (2r) × (2r) = 4r²".
+- An inner circle perfectly inscribed inside the square, tinted in a soft translucent glowing cyan-teal, showing a center point and a clear radius arrow labeled "반지름 = r", and an area formula tag: "S_circle = πr²".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, round silver wire-rim glasses, navy polo shirt, blue jeans) points with a fine wooden stylus at the tangent points where the circle touches the square, explaining the geometry with a warm smile.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with 'STEM HERO' patch, orange striped t-shirt) holds a large golden drafting compass, looking at the inscribed circle with sparkling, inspired eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and diagram, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 한 변의 길이가 2r인 외접 정사각형(면적 4r²)과 그 안에 꼭 맞게 들어가는 반지름 r인 내접원(면적 πr²)의 기하학적 정의와 수식을 이호진 교수님과 도로시가 컴퍼스를 들고 탐구하는 명쾌한 1:1 정방형 순백색 교육 삽화.
+

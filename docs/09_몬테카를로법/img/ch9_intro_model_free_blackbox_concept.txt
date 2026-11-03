@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution technical system diagram]
+Technical system architecture diagram showing 'Model-Free Reinforcement Learning: Interacting with a Black Box'.
+On the left: 'Agent (에이전트)' box with policy π and value memory.
+On the right: A sleek dark charcoal cube labeled 'Environment (Unknown Black Box)'.
+Clear signal arrows connecting them in an active loop:
+- Top arrow (Agent → Environment): 'Action A_t (행동)'
+- Bottom arrow (Environment → Agent): 'Next State S_{t+1} and Reward R_{t+1} (관측된 피드백)'
+A key banner explains: 'The agent does not need to know the complex internal equations of the black box; it learns optimal decisions purely by observing inputs and outputs!'.
+Clean vector graphics, soft pastel highlights, pure #FFFFFF background.

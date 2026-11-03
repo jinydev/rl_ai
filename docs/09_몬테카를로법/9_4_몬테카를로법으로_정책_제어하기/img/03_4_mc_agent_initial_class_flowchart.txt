@@ -1,0 +1,12 @@
+A structured software architecture flowchart on a pure solid white background (#FFFFFF).
+Title: '초기 McAgent 클래스 구조 및 (state, action) Q 테이블'.
+Flowchart layout:
+1. [McAgent.__init__()] (Rounded oval)
+   - self.gamma = 0.9, self.action_size = 4
+   - self.Q = defaultdict(lambda: 0)  <-- Key is (state, action) pair!
+   - self.pi = defaultdict(random_actions)
+   - self.cnts = defaultdict(lambda: 0)
+   - self.memory = []
+2. [상태 단일 키(s) vs 상태-행동 튜플 키 (s, a) 비교 박스] (Rectangle)
+Genie the tuxedo cat wearing spectacles demonstrating the (state, action) 2D indexing system on a whiteboard.
+Clean flowchart geometry, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Split conceptual educational comparison demonstrating the foundational breakthrough of Monte Carlo sampling.
+Left Side: "Analytical Impossibility of 52!" - An overwhelming cosmic chalkboard filled with tangled, dizzying factorial formulas ('52! ≈ 8.065 × 10⁶⁷, exceeds total atoms in observable universe!'), showing chaotic swirling decks of cards forming an impossible astronomical constellation of combinations, with Dorothy looking up in dizzy awe.
+Right Side: "Brilliant Paradigm Shift: Random Sampling" - A warm, cozy wooden laboratory table with a neat 52-card deck being shuffled into 100 repeated trials ('N = 100 games'). A glowing tally score card displays successful games ('Success = 15 / 100 → Estimated P ≈ 15%') with brilliant emerald green checkmarks and a glowing golden eureka lightbulb radiating probability sparkles.
+Professor Hojin (youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, stylish salt-and-pepper hair, round wire-rim glasses, navy polo shirt, blue jeans) points with his wooden stylus proudly connecting the two sides, explaining the breakthrough.
+Dorothy (adorable 9yo girl, twin chestnut pigtails, denim overalls with STEM HERO patch, orange striped shirt) claps her hands in inspired delight.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) barks happily, and Jiny the tuxedo cat with tiny scholar glasses proudly taps the sample count with his white paw.
+Pure solid clean white background (#FFFFFF), perfectly centered layout, isolated presentation graphic cutout, subtle soft contact shadows under feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 52장의 카드가 만들어내는 우주적 순열 경우의 수(52! ≈ 8.065 × 10^67)로 인해 전통적 수식 계산이 불가능했던 장벽(왼쪽)과, 실제로 카드를 100번 섞어 플레이한 뒤 성공 횟수(15/100 -> 15%)를 세어 확률을 즉시 추정해내는 무작위 표본 추출(Sampling)의 위대한 발상 전환(오른쪽)을 도로시와 이호진 교수님이 생생하게 대비하여 보여주는 교육용 1:1 정방형 삽화.
+

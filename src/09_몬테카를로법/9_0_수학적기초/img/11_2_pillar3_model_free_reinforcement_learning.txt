@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Grand educational technical illustration for Pillar 3 of Monte Carlo: "The Mathematical Foundation of Model-Free Reinforcement Learning".
+In the upper center background, a structured engineering infographic diagram showing the model-free RL mechanism:
+- On the left: A dark mysterious mechanical black box with a question mark symbol, labeled "Black-Box Environment P(s'|s,a) = Unknown (환경 법칙 불필요)".
+- In the center: An adventurous trajectory pathway where an agent travels from Start to Goal, collecting glowing crystal reward blocks (Return G_t = R_1 + γR_2 + ...) along the episode path.
+- On the right: A digital computational processor taking the sample mean of multiple episode returns: "Sample Mean (1/N) ∑ G_t → Exact State Value V(s) & Action Value Q(s,a) Learned! ✔️".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) gestures with an open hand toward the diagram, explaining with an enlightened smile: "Pillar 3: 모델 프리 강화학습의 수학적 초석".
+Dorothy (enthusiastic 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) wearing a miniature explorer's satchel, proudly plants a checkered victory flag at the end of an episode trajectory, holding up a sparkling reward crystal.
+Jiny the tuxedo assistant cat wearing tiny round scholar glasses and red bell collar sits at a terminal, typing happily on a mini keyboard as the value function bar charts V(s) rise smoothly to their true values, giving a confident wink.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and diagram elements, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 환경의 복잡한 전이 확률 법칙 P(s'|s,a)를 전혀 모르는 블랙박스 환경이라 할지라도, 에이전트가 에피소드를 끝까지 완주하며 얻은 무수한 경험 보상들의 표본 평균만으로 상태 가치 함수 V(s)와 행동 가치 함수 Q(s,a)를 완벽히 찾아낼 수 있는 '몬테카를로법 제3기둥: 모델 프리 강화학습의 초석'을 도로시, 교수님, 지니의 탐험과 데이터 정산으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

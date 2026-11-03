@@ -1,0 +1,11 @@
+A fun and educational gridworld scenario illustration on a pure solid white background (#FFFFFF).
+Title: '확률적 환경에서도 완벽한 몬테카를로법: 빙판길 실험'.
+Visual concept:
+A 3x4 gridworld where the floor is made of shimmering light blue ice tiles.
+A cute wind-up robot attempts to move 'Right'.
+Two branching probability arrows emerge from the robot:
+- 80% arrow (solid green): moves right successfully to next tile.
+- 20% arrow (dashed orange): slips and stays in place.
+Signpost held by Dorothy: '확률 모델 p(s'|s,a)를 몰라도, 실제 경험 샘플들의 평균으로 참 가치를 정확히 수렴시킵니다!'.
+Toto wearing a winter scarf sliding playfully on the ice.
+Pure solid white background (#FFFFFF). --ar 1:1

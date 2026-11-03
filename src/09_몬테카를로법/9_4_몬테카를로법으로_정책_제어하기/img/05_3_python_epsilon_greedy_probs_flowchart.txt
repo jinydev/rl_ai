@@ -1,0 +1,10 @@
+A standard programming flowchart on a pure solid white background (#FFFFFF).
+Title: 'greedy_probs(Q, state, epsilon, action_size) 순서도'.
+Flowchart steps:
+1. [호출: greedy_probs(Q, state, epsilon=0.1, action_size=4)] (Rounded oval)
+2. [상태 s의 모든 Q값 추출 및 max_action = np.argmax(qs) 탐색] (Rectangle)
+3. [기초 탐색 확률 계산: base_prob = epsilon / action_size (0.025)] (Rectangle)
+4. [모든 4개 행동에 base_prob 균등 분배] (Rectangle)
+5. [최선 행동에 (1 - epsilon = 0.9) 보너스 가산: action_probs[max_action] += 0.9] (Rectangle)
+6. [확률 딕셔너리 action_probs 반환] (Rounded oval)
+Clean flowchart nodes, readable text, dark espresso borders, pure white background (#FFFFFF). --ar 1:1

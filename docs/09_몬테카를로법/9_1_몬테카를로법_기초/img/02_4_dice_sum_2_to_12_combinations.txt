@@ -1,0 +1,26 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming geometric combination tower diagram: "Symmetric Triangle Distribution of Two Dice Sums (2 to 12)".
+In the center, a tiered wooden pyramid/stepped histogram built of square wooden blocks:
+- Bottom row: Sums 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12.
+- The height of each column corresponds to the number of combinations:
+  - Sum 2 (1 block)
+  - Sum 3 (2 blocks) ...
+  - Sum 6 (5 blocks)
+  - Sum 7 (6 blocks, the towering peak with a bright glowing golden star on top marked: "가장 많은 경우의 수: 6가지! (1,6)(2,5)(3,4)(4,3)(5,2)(6,1)")
+  - Sum 8 (5 blocks) ... down to Sum 12 (1 block).
+- Perfectly symmetrical step-pyramid structure radiating balanced harmony.
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) stands proudly next to the central tower of 7, raising her hands in celebration.
+Beside her, Jiny the tuxedo cat with tiny round scholar glasses and red bell collar sits holding a wooden pointer at the peak of 7, proudly declaring the symmetry with a scholar's wink.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under block pyramid and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 두 주사위 눈의 합(2부터 12까지)의 가짓수를 세었을 때, 합 2와 12(각 1가지)에서 시작하여 합 7(6가지)에서 가장 높은 정점을 이루며 완벽한 좌우 대칭 삼각형 피라미드를 형성하는 조합론적 구조를 도로시와 지니의 블록 타워로 시각화한 1:1 정방형 순백색 삽화.
+

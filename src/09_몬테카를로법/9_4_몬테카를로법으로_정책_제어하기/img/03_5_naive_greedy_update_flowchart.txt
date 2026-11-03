@@ -1,0 +1,11 @@
+A standard programming flowchart on a pure solid white background (#FFFFFF).
+Title: '순진한 버전의 탐욕 정책 업데이트 순서도와 한계'.
+Flowchart steps:
+1. [호출: agent.update()] (Rounded oval)
+2. <for data in reversed(self.memory):> (Hexagon / Loop)
+   - key = (state, action)
+   - self.cnts[key] += 1
+   - self.Q[key] += (G - self.Q[key]) / self.cnts[key]  <-- [함정 2: 1/n 갱신]
+   - self.pi[state] = greedy_probs(self.Q, state)       <-- [함정 1: 100% 완전 탐욕]
+3. [결과: 미지의 영역 탐색 실종 + 낡은 초보 기억 정체] (Red warning banner)
+Clean flowchart symbols with pastel fills, warning badges, dark espresso borders, pure white background (#FFFFFF). --ar 1:1

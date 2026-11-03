@@ -1,0 +1,9 @@
+A structured architectural infographic on a pure solid white background (#FFFFFF).
+Title: '메인 실행 루프의 4단계 실행 구조'.
+Four clean horizontal architectural blocks:
+Block 1: [초기화 (Reset Stage)] -> 매 에피소드마다 환경 출발점 복귀 및 배낭 비우기
+Block 2: [1스텝 탐험 및 수집 (Step & Collect)] -> get_action()으로 걷고 step() 피드백을 memory에 패키징
+Block 3: [완주 정산 (Eval Stage)] -> done 감지 시 reversed(memory)로 가치 함수 테이블 일괄 점진 갱신
+Block 4: [최종 시각화 (Render Stage)] -> 1,000회 완주 후 3x4 그리드 격자에 컬러 히트맵 렌더링
+Dorothy, Genie, Toto, and Professor Hojin collaborating across the 4 stages.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

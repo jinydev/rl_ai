@@ -1,0 +1,24 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical derivation diagram: "Step 4 of Derivation: Algebraic Expansion & The Final Recurrence Formula".
+In the center, a dark-green chalkboard displaying the four-line algebraic finale in bright, clear chalk:
+Line 1: "V_n = (1 / n) · [ (n - 1) V_{n-1} + s_n ]"
+Line 2: "= (1 / n) · [ n V_{n-1} - V_{n-1} + s_n ]"
+Line 3: "= (n V_{n-1}) / n + (s_n - V_{n-1}) / n"
+Line 4 (Enclosed in a glowing golden double border box with starbursts):
+"★ V_n = V_{n-1} + (1 / n) · (s_n - V_{n-1}) ★"
+Callout banner: "대수학적 정리 완성: 기존 평균 V_{n-1}에 새로운 오차 (s_n - V_{n-1})의 (1/n)만큼을 더해 실시간 업데이트!".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) throws her hands into the air with beaming, ecstatic eyes: "와아! 마침내 기적의 점화식이 깔끔하게 완성되었어요!".
+Beside her, Professor Hojin smiles warmly, clapping his hands proudly in encouragement.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and chalkboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 증분 갱신 공식 유도의 최종 제4단계로서, 괄호 전개와 분수 분리를 통해 최종 점화식 V_n = V_{n-1} + (1/n)(s_n - V_{n-1})이 완벽하게 도출되는 대수학적 피날레를 도로시의 환호와 교수님의 박수로 축하하는 1:1 정방형 순백색 수식 인포그래픽 삽화.
+

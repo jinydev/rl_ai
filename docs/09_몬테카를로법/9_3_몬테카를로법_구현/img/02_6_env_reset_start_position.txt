@@ -1,0 +1,7 @@
+An educational mechanism illustration on a pure solid white background (#FFFFFF).
+Title: '에피소드 시작 시 환경 초기화: env.reset()'.
+Visual scene:
+A cute reset crane gently picking up Dorothy's robot pawn from the Goal checkered tile and lowering it smoothly back to the starting square '(2, 0)'.
+A green circular reset button on the side panel clicked by Genie.
+Toto waiting attentively at square (2, 0) with a starter flag.
+Clean vector illustration, dark espresso line art, pure white background (#FFFFFF). --ar 1:1

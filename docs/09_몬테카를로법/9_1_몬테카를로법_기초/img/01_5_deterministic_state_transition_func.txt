@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and intuitive technical diagram illustrating "Deterministic State Transition Function: s' = f(s, a)".
+In the center, a sleek brass-and-wood mechanical function machine diagram:
+- On the left intake funnel: Two inputs entering together — State [s] (current position (1,1)) and Action [a] (move 'Right').
+- In the center transparent glass chamber: Smooth brass gears turning labeled "결정적 전이 함수 f(s, a) (Deterministic Rule - No Slipping, 100% Certainty)".
+- On the right output chute: Exactly one single, definitive Next State [s'] exiting cleanly (position (2,1)), with zero variance and zero randomness.
+- A glowing formula banner over the machine reads:
+  "s' = f(s, a) (결정적 상태 전이)"
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped t-shirt) happily pulls a small golden lever on the machine, watching the state token slide smoothly into the exact expected slot with an enlightened, satisfied smile.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under machine and character, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 미끄러짐이 없는 완벽한 환경에서는 상태 전이가 100% 결정적(Deterministic)이므로, 입력 (s, a)를 넣으면 다음 상태 s'가 한 치의 요동 없이 기계적 함수 s' = f(s, a)로 정확히 산출되는 원리를 도로시와 기계식 함수 모델로 시각화한 1:1 정방형 순백색 삽화.
+

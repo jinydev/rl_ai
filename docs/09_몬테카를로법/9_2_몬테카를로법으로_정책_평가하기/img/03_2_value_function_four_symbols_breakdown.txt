@@ -1,0 +1,12 @@
+A detailed mathematical formula breakdown infographic on a pure solid white background (#FFFFFF).
+Header formula in large elegant typography:
+V_π(s) = E_π [ G_t | S_t = s ]
+
+Four distinct color-coded callout cards explaining each component:
+1. 'V_π(s)' (Blue card): 상태 s의 참된 가치 함수 (Value of state s under policy π)
+2. 'E_π [ ... ]' (Green card): 정책 π를 따를 때 얻게 되는 기대치 (Mathematical Expectation / Long-run Average)
+3. 'G_t' (Gold card): t시점 이후 끝까지 얻는 누적 할인 수익 (Cumulative Discounted Return: R_t + γR_{t+1} + ...)
+4. '| S_t = s' (Coral card): t시점에 정확히 상태 s에서 출발한다는 조건부 확률 (Conditioned on starting at state s)
+
+Dorothy and Genie are examining the formula cards on a clean white desk, while Professor Hojin smiles pointing at the equality sign.
+Art style: ultra-clean vector infographic, crisp legible typography, dark espresso brown line art, pure solid white background. --ar 1:1

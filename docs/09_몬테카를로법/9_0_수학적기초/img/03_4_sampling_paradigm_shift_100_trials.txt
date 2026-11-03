@@ -1,0 +1,26 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Joyful and inspiring eureka breakthrough scene: "The Great Paradigm Shift - Just Play 100 Times and Average the Results!".
+In a cozy, sunlit wooden maker research workshop:
+At the center wooden workbench, Dorothy and Professor Hojin joyfully test the empirical sampling method. On the table, a crisp 52-card deck is split into test rounds, beside a glowing illuminated wooden tally board marked:
+"무작위 시행 (Random Trials) N = 100"
+The board displays a neat grid of 100 game slots, with exactly 15 bright glowing emerald-green checkmarks:
+"성공 횟수 (Successes) = 15 / 100 → 추정 성공 확률 P ≈ 15%!"
+Hovering above the table is a brilliant glowing golden eureka lightbulb emitting radiant sparkling probability stars.
+Dorothy (cheerful 9yo girl, chestnut twin pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) throws her hands up cheering in excitement at how simple and powerful this sampling idea is!
+Professor Hojin (youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, round silver wire-rim glasses, navy polo shirt, blue jeans) smiles warmly, giving a proud encouraging thumbs-up.
+Jiny the tuxedo cat with tiny round scholar glasses and red bell collar sits on a stool, proudly pressing a green wooden stamp onto the tally board.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) jumps playfully beside Dorothy's feet, tail wagging with joyful energy.
+Pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadows under feet and workbench, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: "복잡한 순열 조합 공식으로 머리를 싸맬 필요 없이, 실제로 카드를 100번 섞어서 플레이해보고 성공한 횟수(15/100 -> 15%)를 세어 확률을 찾아내자!"라는 스타니스와프 울람의 기발하고 실용적인 발상의 대전환을 도로시, 교수님, 지니, 토토의 유쾌한 100회 무작위 시행 실험으로 시각화한 1:1 정방형 교육 삽화.
+

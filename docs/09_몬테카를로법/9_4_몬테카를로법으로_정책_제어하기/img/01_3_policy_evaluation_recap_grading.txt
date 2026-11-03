@@ -1,0 +1,8 @@
+An educational recap infographic on a pure solid white background (#FFFFFF).
+Title: '9.2~9.3 정책 평가 리캡: 주어진 정책의 성적표 매기기'.
+Visual layout:
+Genie the tuxedo cat wearing spectacles holds a clipboard report card titled '정책 π의 상태 가치 성적표 V_π(s)'.
+A 3x4 gridworld map on the table where each cell has a score stamp based on a 4-direction 25% random policy.
+Dorothy points with a wooden stick: '고정된 정책을 평가하여 성적표를 매기는 것은 마스터했어!'.
+Toto sits happily beside them.
+Art style: crisp dark espresso brown outlines, clean vector infographic, warm pastel accents, pure white background (#FFFFFF). --ar 1:1

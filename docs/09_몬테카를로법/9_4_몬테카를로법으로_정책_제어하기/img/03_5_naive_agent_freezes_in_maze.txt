@@ -1,0 +1,8 @@
+An educational storytelling illustration on a pure solid white background (#FFFFFF).
+Title: '순진한 McAgent의 오류: 미로 안에서 멈춰선 로봇'.
+Visual scene:
+In a 3x4 gridworld, a cute little robot pawn stands completely frozen with little question marks and steam coming from its head.
+Dorothy and Toto look puzzled: '어라? 왜 앞으로 안 가고 같은 곳만 맴돌거나 멈춰버리지?'.
+A speech bubble over the robot: '100% 완전 탐욕과 1/n 갱신 때문에 더 이상 새로운 길을 갈 수 없어요!'.
+Genie examining the robot with a diagnostic wrench.
+Warm educational palette, dark espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

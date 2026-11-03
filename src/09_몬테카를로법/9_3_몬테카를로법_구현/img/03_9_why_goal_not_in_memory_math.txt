@@ -1,0 +1,11 @@
+A mathematical proof infographic on a pure solid white background (#FFFFFF).
+Title: '종료 상태(Goal)를 메모리에 저장하지 않는 수학적 이유'.
+Top formula banner:
+V_π(Goal) = E[ G_t | S_t = Goal ] = 0
+
+Visual proof cards:
+Card 1: 종료 상태에 도달하면 게임이 즉시 끝나며 더 이상의 미래 행동이 존재하지 않음 (A_t = None).
+Card 2: 미래에 얻을 보상 시퀀스가 전혀 없으므로 R_{t+1} + γR_{t+2} + ... = 0.
+Card 3: 따라서 가치 V(Goal)는 정의상 항상 0이며, 알고리즘 갱신 대상에서 제외하는 것이 완벽히 옳음!
+Professor Hojin explaining with a wooden stick on a clean white whiteboard.
+Clean lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Grand and inspiring philosophical breakthrough scene: "The Essence of Monte Carlo: Finding the True Value through Sampling Average When Rules Are Unknown".
+In the upper center background, a brilliant glowing golden archway:
+- Above the arch, an illuminated philosophical quote:
+  "모든 경우의 수를 계산할 수 없을 때, 실제로 경험해 보고 그 평균으로 진짜 가치를 찾아간다!"
+- Through the arch, a golden stream of light illuminates a path leading toward a summit marked "참 기댓값 진리 (True Value Ground Truth)".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points toward the golden summit with an inspiring, visionary smile.
+Dorothy (inspired 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) stands beside him, looking up at the glowing path with eyes full of awe and confidence, holding her small sampling notebook.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) happily wags his tail at Dorothy's feet, surrounded by gentle golden sparkling probability stars.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 환경 모델을 전혀 모르거나 경우의 수가 너무 방대하여 전수 계산이 불가능할 때, 실제로 환경과 부딪혀 표본을 추출하고 그 평균값으로 진짜 참값에 도달한다는 몬테카를로법의 위대한 철학적 존재 이유를 교수님, 도로시, 토토의 감동적인 비전으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical derivation diagram: "Step 1 of Derivation: The General Arithmetic Mean of n Data Points".
+In the center, a dark-green chalkboard displaying the clean and prominent chalk formula:
+"V_n = (1 / n) ∑_{i=1}^n s_i = (s_1 + s_2 + ... + s_{n-1} + s_n) / n"
+- A green chalk bracket groups the entire numerator: "(모든 n개 데이터의 총합)".
+- An arrow points to the denominator 'n': "(전체 데이터 개수 n으로 나눔)".
+- A callout note: "1단계: 우리가 초등학교 때부터 알고 있던 지극히 당연한 평균의 원초적 정의식에서 출발!".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) stands holding a ruler under the equation, nodding with a clear understanding: "이건 모든 데이터를 다 더해서 n으로 나눈 거니까 아주 익숙해요!".
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under chalkboard and character, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 증분 갱신 공식 유도의 제1단계로서, n개의 모든 데이터를 빠짐없이 더해 전체 개수 n으로 나누는 일반 산술 평균의 원초적 정의식 V_n = (1/n) ∑ s_i = (s_1 + ... + s_n)/n을 도로시가 칠판에서 짚어보는 1:1 정방형 순백색 수식 인포그래픽 삽화.
+

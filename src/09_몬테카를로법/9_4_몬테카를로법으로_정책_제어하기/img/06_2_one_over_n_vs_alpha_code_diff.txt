@@ -1,0 +1,15 @@
+A clean code-diff comparison infographic on a pure solid white background (#FFFFFF).
+Title: '표본 평균(1/n) vs 고정 학습률(α) 코드 변경점 비교'.
+Left box: '기존: 표본 평균 (1/n)' (Red badge)
+# self.Q[key] += (G - self.Q[key]) / self.cnts[key]
+- 분모 n이 무한히 커짐에 따라 새로운 학습이 정지됨.
+- 과거 모든 경험을 1/n로 동등 대우하는 비정상 문제 취약.
+
+Right box: '개선: 고정 학습률 α 지수 이동 평균' (Green badge)
+alpha = 0.1
+self.Q[key] += (G - self.Q[key]) * alpha
+- 항상 최신 오차에 10%의 일정한 학습률 적용.
+- 오래된 과거 기억은 잊고(망각) 최신 고수 경험을 우대.
+
+Professor Hojin nodding in approval, Dorothy replacing the code block.
+Dark espresso line art, pure white background (#FFFFFF). --ar 1:1

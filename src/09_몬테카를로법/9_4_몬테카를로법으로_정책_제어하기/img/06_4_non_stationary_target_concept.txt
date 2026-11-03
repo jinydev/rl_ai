@@ -1,0 +1,9 @@
+A conceptual educational illustration on a pure solid white background (#FFFFFF).
+Title: '비정상 문제(Non-Stationary Problem): 움직이는 과녁'.
+Visual metaphor:
+Dorothy as an archer aiming an arrow at an archery target labeled '참 가치 함수 q_π(s, a)'.
+The target is mounted on sleek wheels, gliding smoothly along a track as the policy π improves.
+With 1/n, the arrow becomes heavy and frozen, missing the moving target.
+With fixed α, the arrow is agile and lightweight, constantly tracking and hitting the moving bullseye!
+Toto cheering with a bullseye flag.
+Crisp line art, pastel colors, pure white background (#FFFFFF). --ar 1:1

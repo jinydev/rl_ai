@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear and engaging computer programming flowchart diagram illustrating the Python `sample(dices=2)` function:
+In the center, an elegant and colorful algorithmic flowchart with standard nodes:
+1. Top Oval Node (Start): "함수 시작: def sample(dices=2)"
+2. Rectangle Node (Initialization): "x = 0 (눈금 합계 변수 초기화)"
+3. Diamond Node (Loop Counter): "주사위 개수만큼 반복? (for _ in range(dices))"
+   - Arrow 'Looping (반복 중)': leads to random choice node
+4. Rectangle Processing Node: "x += np.random.choice([1, 2, 3, 4, 5, 6]) (1~6 중 무작위 1개 추출 후 누적)"
+   - Arrow loops back to diamond
+   - Arrow 'Done (반복 완료)': leads to return node
+5. Parallelogram Node (Return Value): "결과 반환: return x (합산된 눈금 표본)"
+6. Bottom Oval Node (End): "함수 종료 (단일 시행 표본 추출 완료 ✔️)"
+In the foreground:
+Jiny the tuxedo cat wearing tiny round scholar glasses and red bell collar stands beside the flowchart, holding a glowing digital dice cube in one paw and a pointer stick guiding the loop flow with a proud scholar's expression.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under flowchart and cat, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 파이썬의 `sample(dices=2)` 함수가 `x = 0` 초기화부터 `for _ in range(dices)` 루프를 돌며 `np.random.choice()`로 각 주사위의 눈금을 무작위 추출하여 합산한 후 반환하는 코드의 실행 흐름을 단계별 표준 순서도(Flowchart)로 조교 지니가 명쾌하게 해설하는 1:1 정방형 순백색 알고리즘 삽화.
+

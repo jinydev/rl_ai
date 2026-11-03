@@ -1,0 +1,10 @@
+A comparative educational infographic on a pure solid white background (#FFFFFF).
+Title: 'ε-탐욕의 타협책 vs 순수 최적 정책에 대한 갈망'.
+Left box: 'ε-탐욕 정책 (어쩔 수 없는 타협)' (Soft Orange card)
+- 90% 최선 행동 + 10% 무작위 탐색.
+- 학습이 끝나도 10번 중 1번은 낭떠러지로 떨어지는 실수를 저지름!
+Right box: '궁극의 순수 최적 정책 (100% Pure Greedy)' (Mint Green card)
+- 0%의 실수, 100% 최적 행동만을 칼같이 실행하는 챔피언!
+- '어떻게 탐색 실수 없이 순수한 최적 정책을 배울 수 있을까?'라는 의문.
+Dorothy looking thoughtfully at the two options with a lightbulb above her head.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

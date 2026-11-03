@@ -1,0 +1,12 @@
+A side-by-side comparison infographic on a pure solid white background (#FFFFFF).
+Title: '에피소딕 태스크 vs 연속적 태스크 비교'.
+Left column: '에피소딕 태스크 (Episodic Task) - MC 적용 필수!'
+- Has a clear terminal state (골인, 체크메이트, 게임오버).
+- Definite end time T, allowing exact return G_t calculation.
+- Illustrated with a maze finish line and a game-over trophy.
+Right column: '연속적 태스크 (Continuing Task)'
+- Never ends (무한 루프, 지속적인 주식 트레이딩, 항구적 서버 온도 조절).
+- T = ∞, return requires infinite waiting unless bootstrapped (MC 불가, TD/DP 필요).
+- Illustrated with an infinite loop ribbon ∞.
+Dorothy and Genie analyzing the difference with checkmarks.
+Clean vector art, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

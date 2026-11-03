@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Inspiring educational technical illustration for Pillar 1 of Monte Carlo: "Overcoming Impossible Mathematics through Random Sampling".
+In the upper center background, a clean educational technical diagram:
+- On the left: A dark tangled maze of impossible analytical formulas and unsolvable multi-variable integrals behind a locked iron padlock labeled "Analytical Solution: Impossible ❌".
+- Across the center: A radiant glowing pathway labeled "무작위 표본 추출 (Massive Random Sampling N = 10,000)" flowing with tumbling cards, golden coins, and glowing probability numbers.
+- On the right: A sparkling open treasure chest radiating bright golden light labeled "Empirical Truth & Estimation: Solved! ✔️".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, round silver wire-rim glasses, navy polo shirt, blue jeans) points with pride toward the sampling flow, holding a small banner: "Pillar 1: 무작위 표본 추출".
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped t-shirt) gleefully catches sparkling random data stars in a golden butterfly net, holding a digital tablet that instantly calculates their sample counts.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue neck bandana) bounds joyfully beside her, batting playfully at a floating golden coin with cheerful black button eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and diagram, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 복잡한 확률 분포나 해석적 적분이 불가능한 극한의 난제에 부딪혔을 때, 무작위 표본을 대량으로 수집하여 문제를 극적으로 단순화하고 진리에 도달하는 '몬테카를로법 제1기둥: 무작위 표본 추출'의 위력을 도로시, 교수님, 토토의 유쾌한 탐구로 시각화한 1:1 정방형 순백색 교육 삽화.
+

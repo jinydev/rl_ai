@@ -1,0 +1,12 @@
+A detailed algorithm flowchart for the eval() method on a pure solid white background (#FFFFFF).
+Title: 'eval() 역순회 루프 알고리즘 상세 순서도'.
+Flowchart steps:
+1. [호출: agent.eval()] (Rounded oval)
+2. [누적 수익 변수 초기화: G = 0] (Rectangle)
+3. <for data in reversed(self.memory):> (Hexagon / Decision loop)
+   - [state, action, reward 언패킹] (Rectangle)
+   - [수익 재귀 갱신: G = self.gamma * G + reward] (Rectangle)
+   - [방문 카운트 증가: self.cnts[state] += 1] (Rectangle)
+   - [가치 함수 증분 갱신: self.V[state] += (G - self.V[state]) / self.cnts[state]] (Rectangle)
+4. [루프 종료: 에피소드 평가 완료] (Rounded oval)
+Clean standard flowchart symbols with soft pastel colors, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

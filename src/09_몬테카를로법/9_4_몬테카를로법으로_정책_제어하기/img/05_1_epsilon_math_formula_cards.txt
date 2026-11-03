@@ -1,0 +1,12 @@
+A mathematical formula breakdown card on a pure solid white background (#FFFFFF).
+Title: 'ε-탐욕 정책 확률 분할 수식 카드'.
+Two distinct presentation cards:
+Card 1: [최선 행동 a*의 선택 확률] (Gold card)
+P(a*) = ( 1 - ε ) + ( ε / |A| )
+- 1-ε (0.9)의 탐욕 보너스에 전체 무작위 분배분 (ε/4 = 0.025)이 더해져 총 92.5%!
+
+Card 2: [나머지 3개 일반 행동의 선택 확률] (Soft Purple card)
+P(a) = ε / |A|  (a ≠ a*)
+- 무작위 탐색 확률 10%를 가능한 행동 수(|A|=4)로 공평하게 나눈 각 2.5%!
+
+Professor Hojin explaining with a pointer, pure solid white background (#FFFFFF). --ar 1:1

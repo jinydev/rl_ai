@@ -1,0 +1,10 @@
+A dramatic educational comparison infographic on a pure solid white background (#FFFFFF).
+Title: '계산 복잡도의 기적: O(T²) vs O(T) 대혁신'.
+Left side: '정방향 계산: O(T²)의 늪'
+- A tired robot sweating while carrying a massive mountain of 5,000 calculation blocks (T=100 steps).
+- Formula: T(T+1)/2 ≈ 5,000 연산. Red warning icon.
+Right side: '역방향 점화식: O(T)의 쾌속 질주'
+- A cheerful wind-up robot gliding swiftly on rocket skates, carrying just 100 sleek calculation coins.
+- Formula: T = 100 연산. Green checkmark icon.
+Dorothy and Toto cheering for the 50x speedup!
+Clean vector style, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,11 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution statistical convergence infographic]
+Infographic illustrating 'Sample Mean Convergence to True Values via Law of Large Numbers (대수의 법칙)'.
+In the center, a clear mathematical chart:
+- X-axis: Number of Episodes N (from 1 to 10,000).
+- Y-axis: Value Estimate V(s) / Q(s, a).
+At low N (left), fluctuating lines swing widely.
+As N grows large (right), the sample mean tracks laser-straight onto the glowing golden line of 'True Value V*(s)'.
+Annotations:
+'Sample Mean: (G^(1) + G^(2) + ... + G^(n)) / n → True E[G]!'.
+Genie points at the tight convergence zone with pride, while Toto wags his tail.
+Clean editorial design, dark espresso brown line art, soft pastel blue and golden yellow highlights, pure white background.

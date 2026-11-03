@@ -1,0 +1,8 @@
+A high-level educational roadmap infographic on a pure solid white background (#FFFFFF).
+Title: '오프-정책(Off-Policy)과 중요도 샘플링 3단계 파이프라인'.
+Three horizontal connected stages with golden flowing arrows:
+Stage 1: [과감한 현장 탐색: 행동 정책 b(a|s)] -> 미지의 환경을 온갖 행동으로 자유롭게 탐색하여 데이터 (s, a, r) 수집
+Stage 2: [대수적 보정 저울: 중요도 가중치 ρ = π/b] -> 두 정책의 확률 비율을 계산하여 수집된 데이터의 왜곡을 공평하게 보정
+Stage 3: [순수 최적화: 대상 정책 π(a|s)] -> 10%의 실수나 방황 없이 100% 최선의 챔피언 전략으로 완성!
+Dorothy, Genie with a magic balance scale, and Toto proudly presenting the roadmap.
+Art style: crisp dark espresso outlines, clean vector infographic, warm pastel accents, pure white background (#FFFFFF). --ar 1:1

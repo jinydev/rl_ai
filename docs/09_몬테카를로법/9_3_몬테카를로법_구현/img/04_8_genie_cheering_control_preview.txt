@@ -1,0 +1,8 @@
+An exciting, energetic chapter teaser illustration on a pure solid white background (#FFFFFF).
+Title: '조교 지니의 응원: 09.4 최적 정책 제어(Control)로 전진!'.
+Visual scene:
+Genie the tuxedo cat wearing spectacles enthusiastically unfurls a sparkling blueprint showing the 'Q(s, a)' state-action value table.
+Dorothy puts on an explorer's adventurer hat, smiling with determination.
+Toto carries an epsilon symbol 'ε' flag proudly.
+A big signpost in the direction of travel: '다음 목적지: 9.4 몬테카를로법으로 정책 제어하기 (Q함수 & ε-탐욕 정책)!'.
+Clean vector lines, joyful educational aesthetic, pure solid white background (#FFFFFF). --ar 1:1

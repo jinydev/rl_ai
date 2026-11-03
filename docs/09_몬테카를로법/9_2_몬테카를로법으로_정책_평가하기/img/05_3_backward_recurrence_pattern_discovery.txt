@@ -1,0 +1,12 @@
+An exciting scientific discovery moment illustration on a pure solid white background (#FFFFFF).
+Title: '점화식 규칙 발견: 이전 미래 수익의 재활용'.
+Visual details:
+Genie the tuxedo cat wearing spectacles points excitedly to a blackboard with a golden pointer.
+On the board:
+G_A = R_0 + γ * (G_B)
+G_B = R_1 + γ * (G_C)
+G_C = R_2
+Glowing golden arrows connect G_C into G_B, and G_B into G_A.
+A lightbulb glows brightly above Dorothy's head as she exclaims: '이미 구한 미래 수익에 γ만 곱해서 즉시 재활용할 수 있어!'.
+Toto happily wags his tail.
+Clean lines, educational lab setting, pure white background (#FFFFFF). --ar 1:1

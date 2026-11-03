@@ -1,0 +1,9 @@
+A standard programming flowchart on a pure solid white background (#FFFFFF).
+Title: 'get_action(self, state) 확률적 샘플링 순서도'.
+Flowchart steps:
+1. [호출: get_action(state)] (Rounded oval)
+2. [정책 조회: action_probs = self.pi[state]] (Rectangle)
+3. [행동/확률 분리: actions = [0,1,2,3], probs = [0.25, 0.25, 0.25, 0.25]] (Rectangle)
+4. [넘파이 샘플링: np.random.choice(actions, p=probs)] (Rectangle)
+5. [선택된 정수형 행동 번호 반환 (예: 2)] (Rounded oval)
+Crisp flowchart geometry, pastel fills, dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

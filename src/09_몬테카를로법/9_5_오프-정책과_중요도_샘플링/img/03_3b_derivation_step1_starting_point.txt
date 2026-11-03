@@ -1,0 +1,11 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution chalkboard educational illustration]
+Step 1 of Importance Sampling Derivation.
+On a clean olive-toned blackboard framed in warm oak, Dorothy writes the classic definition of expectation in crisp chalk:
+'Step 1: Theoretical Definition of Expectation'
+'E_π[X] = ∑_x x · π(x)'
+Callout annotations break down each symbol:
+- 'x': Possible outcome value
+- 'π(x)': Probability under target policy π
+- '∑_x': Sum over all possible events
+Genie sits on the chalk ledge holding a pointer, nodding with satisfaction. Toto sits beside observing attentively.
+Pure white background outside the board, crisp typography, clean dark espresso lines.

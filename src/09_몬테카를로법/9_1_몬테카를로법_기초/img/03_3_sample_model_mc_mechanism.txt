@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Dynamic educational technical illustration showing "The Working Mechanism of the Sample Model in Monte Carlo (MC)":
+In the upper center background, a practical experimental simulation pipeline:
+- Left side: A mysterious closed mystery box with dice icons labeled "Unknown Probability Distribution (내부 분포 몰라도 됨 ❓)".
+- Center action: Shaking a leather dice cup to generate single random observations: "표본 추출 (Sampling Trial) → [ 눈금 관측: 10, 4, 8, ... ]".
+- Right side: A live tally accumulator taking the arithmetic mean of observed samples: "Average of Observed Samples → V ≈ 7.0! (참값 수렴 ✔️)".
+- Banner note: "몬테카를로법(MC)의 기반: 전체 지도는 몰라도, 직접 굴려 표본을 뽑을 수만 있으면 충분하다!".
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) joyfully rolls two dice onto a wooden felt tray, recording the results with a bright smile.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) happily wags his tail beside the tray, watching the dice stop with cheerful black button eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under tray and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 전체 확률 분포는 전혀 몰라도, '표본을 추출(샘플링)할 수만 있으면 충분하다'는 실용적 철학으로 실제 주사위를 굴려 관측한 표본들의 평균으로 참값을 찾아내는 '샘플 모델(Sample Model)'과 몬테카를로법(MC)의 작동 원리를 도로시와 토토의 주사위 실험으로 시각화한 1:1 정방형 순백색 삽화.
+

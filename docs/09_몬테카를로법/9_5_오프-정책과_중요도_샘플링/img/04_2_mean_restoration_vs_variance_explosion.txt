@@ -1,0 +1,13 @@
+A dramatic educational comparison infographic on a pure solid white background (#FFFFFF).
+Title: '중요도 샘플링의 명과 암: 평균 복원 성공 vs 분산 40배 폭발'.
+Two comparison pillars:
+Pillar 1: '평균 복원 성공 (Light)' (Emerald Green)
+- 이론적 참값: 2.7
+- 오프-정책 평균: 2.95 (참값 2.7에 훌륭하게 근접!)
+- '남의 데이터로도 완벽하게 참 기댓값을 복원할 수 있다!'
+Pillar 2: '분산의 폭발 (Shadow)' (Bright Crimson)
+- 온-정책 분산: 0.27
+- 오프-정책 분산: 10.63 (무려 40배 요동침!)
+- 파도가 심하게 출렁이듯 불안정하게 튀는 데이터 점들.
+Dorothy and Toto looking wide-eyed at the massive variance wave.
+Dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

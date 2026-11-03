@@ -1,0 +1,8 @@
+A grand golden monuments infographic on a pure solid white background (#FFFFFF).
+Title: '9장 몬테카를로 완주 3대 황금 금자탑'.
+Three magnificent golden obelisks standing on clean pedestal bases:
+Monument 1: [모델 프리 가치 평가] -> 환경 전이 확률 없이도 오직 경험 수익 G의 표본 평균으로 참 가치 V(s) 완벽 도출!
+Monument 2: [Q 함수 기반 자율 제어] -> Q(s,a) + ε-탐욕 + 고정 α의 삼위일체로 스스로 미로 탈출 최적 경로 확립!
+Monument 3: [오프-정책과 중요도 샘플링] -> 데이터 수집과 정책 최적화의 분리, 그리고 수학적 확률 비율 보정!
+Dorothy, Toto, and Genie proudly placing wreaths at the base of the monuments.
+Clean dark espresso line art, pure solid white background (#FFFFFF). --ar 1:1

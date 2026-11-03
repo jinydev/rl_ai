@@ -1,0 +1,8 @@
+A charming storybook educational illustration on a pure solid white background (#FFFFFF).
+Title: '몬테카를로법: 지도가 없는 안개 속 눈먼 탐험가'.
+Visual narrative:
+Dorothy and Toto standing at the entrance of a mysterious gridworld labyrinth veiled in light morning mist.
+Dorothy has no map in hand; instead, she holds a cute walking stick labeled 'step(action)' and taps a stone tile in front of her.
+The tile lights up with a small floating bubble showing '+0.0 reward' and coordinates '(1, 0)'.
+Genie the tuxedo cat wearing spectacles jots down the numbers on a pocket notepad.
+Art style: fine dark espresso outlines, warm gentle pastel colors, pure white background (#FFFFFF). --ar 1:1

@@ -631,23 +631,37 @@
         <div class="bd-content ps-lg-4">
             <h1 id="094-몬테카를로법으로-정책-제어하기">09.4 몬테카를로법으로 정책 제어하기</h1>
 
-<p><img src="./9_4_몬테카를로법으로_정책_제어하기.png" alt="09.4 몬테카를로법으로 정책 제어하기" /></p>
+<p>가치 함수 평가를 넘어 최적 정책을 스스로 찾아 나가는 <strong>정책 제어(Policy Control)</strong>와 탐색-이용의 균형을 다룹니다.</p>
 
 <p><img src="./img/01_mc_control_intro.png" alt="몬테카를로 정책 제어 인트로" />
 <strong>그림 09-4-1</strong> 탐색-이용(Exploration-Exploitation) 갈림길에서 지니의 입실론 주사위 마법을 보며 나아갈 길을 결정하는 도로시</p>
 
-<p>가치 함수 평가를 넘어 최적 정책을 스스로 찾아 나가는 <strong>정책 제어(Policy Control)</strong>와 탐색-이용의 균형을 다룹니다. 무작위 행동 탐색의 비율을 제어하는 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>과 시시각각 발전하는 최신 데이터에 적응하는 <strong>고정 학습률 <em>α</em> 기반 지수 이동 평균</strong>을 활용하여 몬테카를로법으로 최적 솔루션에 수렴해 나가는 전체 라이프사이클을 요정 지니의 딜레마 주사위 놀이와 이호진 교수님의 4개의 문 비유로 완벽히 정복해 봅시다!</p>
+<hr />
+
+<p>무작위 행동 탐색의 비율을 제어하는 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>과 시시각각 발전하는 최신 데이터에 적응하는 <strong>고정 학습률 <em>α</em> 기반 지수 이동 평균</strong>을 활용하여 몬테카를로법으로 최적 솔루션에 수렴해 나가는 전체 라이프사이클을 요정 지니의 딜레마 주사위 놀이와 이호진 교수님의 4개의 문 비유로 완벽히 정복해 봅시다!</p>
+
+<p><img src="./img/01_2_control_roadmap_lifecycle.png" alt="몬테카를로 정책 제어 라이프사이클 로드맵" />
+<strong>그림 09-4-1b</strong> 몬테카를로 정책 제어 3단계 라이프사이클 (에피소드 샘플링 → Q 함수 지수이동평균 갱신 → ε-탐욕 정책 개선) 로드맵 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
 <h2 id="0941-정책-제어의-기초-평가와-개선의-탁구-핑퐁">09.4.1 정책 제어의 기초: 평가와 개선의 탁구 핑퐁</h2>
 
-<p>앞서 9.2절과 9.3절에서는 몬테카를로법으로 ‘정책 평가(Policy Evaluation)’를 수행했습니다. 어떤 고정된 정책(예: 4방향 25% 균등 무작위 정책)이 주어졌을 때 각 칸의 가치가 얼마인지를 채점하는 작업이었습니다.</p>
+<p>앞서 9.2절과 9.3절에서는 몬테카를로법으로 ‘정책 평가(Policy Evaluation)’를 수행했습니다.</p>
+
+<p>어떤 고정된 정책(예: 4방향 25% 균등 무작위 정책)이 주어졌을 때 각 칸의 가치가 얼마인지를 채점하는 작업이었습니다.</p>
+
+<p><img src="./img/01_3_policy_evaluation_recap_grading.png" alt="정책 평가 리캡 성적표" />
+<strong>그림 09-4-1c</strong> 4방향 25% 무작위 정책이 주어졌을 때 각 칸의 성적표(V 가치)를 매기던 9.2~9.3 정책 평가 리캡 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>하지만 강화학습의 궁극적인 목표는 단순히 남이 준 정책을 채점하는 것에 머무르지 않고, <strong>“어떻게 하면 가장 많은 보상을 획득할 수 있는 최고의 행동 지침(최적 정책 <em>π</em><sup>*</sup>)을 스스로 찾아낼 수 있을까?”</strong>입니다. 이처럼 최적 정책을 찾아 나가는 전 과정을 <strong>‘정책 제어(Policy Control)’</strong>라고 부릅니다.</p>
 
 <p><img src="./img/02_policy_iteration_pingpong.png" alt="정책 평가와 개선의 반복" />
 <strong>그림 09-4-2</strong> 정책 평가(Evaluation)와 정책 개선(Improvement)의 과정을 탁구 핑퐁 패들로 주고받는 지니와 도로시</p>
+
+<hr />
 
 <p>최적 정책은 4장에서 배운 <strong>‘정책 반복(Policy Iteration)’</strong>의 큰 틀과 마찬가지로, ‘평가’와 ‘개선’을 탁구공 치듯 번갈아 반복하여 완성됩니다:</p>
 
@@ -656,13 +670,23 @@
   <li><strong>‘개선(Improvement)’ 단계</strong>: 가치 함수가 가장 높은 쪽으로 행동 확률을 수정(탐욕화)하여 정책을 한 단계 업그레이드합니다.</li>
 </ol>
 
+<p><img src="./img/02_3_two_steps_eval_and_improve.png" alt="정책 반복 2단계 평가와 개선 구조도" />
+<strong>그림 09-4-2c</strong> 정책 반복의 2단계: 1단계 평가(경험 축적 및 가치 측정)와 2단계 개선(최고 가치 행동 탐욕화) 구조도 (1:1 순백색)</p>
+
+<hr />
+
 <p>이 두 단계를 끊임없이 주고받으면, 처음에는 서툴렀던 무작위 정책이 점차 다듬어져 결국 최적 정책에 도달하게 됩니다.</p>
+
+<p><img src="./img/02_2_evaluation_improvement_cycle_math.png" alt="평가와 개선의 나선형 상승 수식 다이어그램" />
+<strong>그림 09-4-2b</strong> 정책 평가(Q ≈ q_π)와 정책 개선(π ← greedy(Q))이 맞물려 최적 정책 π*로 상승 수렴하는 나선형 수식 다이어그램 (1:1 순백색)</p>
 
 <hr />
 
 <h3 id="1-왜-모델-프리-강화학습에서는-vs-대신-qs-a를-써야만-할까요">1) 왜 모델 프리 강화학습에서는 V(s) 대신 Q(s, a)를 써야만 할까요?</h3>
 
-<p>가치 함수를 개선 단계에서 활용할 때, 우리는 4장에서 배운 탐욕화(Greedy Selection) 공식을 떠올릴 수 있습니다. 수식으로는 다음과 같이 두 가지 방식으로 표현할 수 있습니다:</p>
+<p>가치 함수를 개선 단계에서 활용할 때, 우리는 4장에서 배운 탐욕화(Greedy Selection) 공식을 떠올릴 수 있습니다.</p>
+
+<p>수식으로는 다음과 같이 두 가지 방식으로 표현할 수 있습니다:</p>
 
 <blockquote>
   <h3 id="μs--argmaxa-qs-a--식-93-행동-가치-함수-기반"><strong><em>μ</em>(<em>s</em>) = argmax<sub><em>a</em></sub> <em>Q</em>(<em>s</em>, <em>a</em>)</strong>      <em>(식 9.3: 행동 가치 함수 기반)</em></h3>
@@ -670,10 +694,24 @@
   <h3 id="μs--argmaxa-s-ps--s-a-rs-a-s--γvs--식-94-상태-가치-함수-기반"><strong><em>μ</em>(<em>s</em>) = argmax<sub><em>a</em></sub> ∑<sub><em>s</em>'</sub> <em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>') + <em>γV</em>(<em>s</em>')]</strong>      <em>(식 9.4: 상태 가치 함수 기반)</em></h3>
 </blockquote>
 
-<p>두 식 모두 ‘가장 큰 가치를 주는 행동’을 선택하여 새로운 결정적 정책 <em>μ</em>(<em>s</em>)를 만드는 탐욕화 식입니다. 그런데 왜 우리는 몬테카를로 정책 제어에서 [식 9.4]의 상태 가치 함수 <em>V</em>(<em>s</em>)를 버리고 [식 9.3]의 <strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</strong>를 필사적으로 선택해야 할까요?</p>
+<p>두 식 모두 ‘가장 큰 가치를 주는 행동’을 선택하여 새로운 결정적 정책 <em>μ</em>(<em>s</em>)를 만드는 탐욕화 식입니다.</p>
+
+<p><img src="./img/03_1_two_greedy_selection_formulas.png" alt="탐욕적 선택 두 가지 수학 표현" />
+<strong>그림 09-4-2d</strong> 탐욕화의 두 가지 표현 방식: Q 기반 직접 탐욕화(식 9.3)와 V 기반 전이확률 합산 탐욕화(식 9.4) 나열 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p>그런데 왜 우리는 몬테카를로 정책 제어에서 [식 9.4]의 상태 가치 함수 <em>V</em>(<em>s</em>)를 버리고 [식 9.3]의 <strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</strong>를 필사적으로 선택해야 할까요?</p>
+
+<p><img src="./img/03_2_q_vs_v_math_formula_breakdown.png" alt="Q 기반 vs V 기반 탐욕화 수식 기호 분해" />
+<strong>그림 09-4-2c</strong> 식 9.3(Q 기반 직접 argmax)과 식 9.4(V 기반 전이확률 가중합 argmax)의 수식 기호 분해 및 모델 프리에서 식 9.4 계산 불가능 이유 비교 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p><img src="./img/hojin_q_door_signpost.jpg" alt="이호진 교수님의 Q 함수 문 표지판 강의" />
 <strong>그림 09-4-3</strong> 이호진 교수님이 상·하·좌·우 4개의 문 위에 붙은 행동 가치 표지판(<em>Q</em>(<em>s</em>, Up) = +10 등)을 보여주며, 미지의 미로에서 환경 모델 없이 즉시 최선의 문을 고를 수 있는 <em>Q</em> 함수의 결정적 위력을 도로시와 토토, 지니에게 설명하는 직강 장면</p>
+
+<hr />
 
 <p><img src="./img/03_q_vs_v_model_free_choice.png" alt="Q 함수 vs V 함수 선택" />
 <strong>그림 09-4-4</strong> 환경 모델 전이 확률이 없어 막히는 <em>V</em>(<em>s</em>) 대신, 행동 가치 <em>Q</em>(<em>s</em>, <em>a</em>)로 즉시 최적 행동을 선택하는 도로시와 지니</p>
@@ -704,6 +742,11 @@
 
 <p>9.2절과 9.3절에서 배운 상태 가치 함수 <em>V</em>(<em>s</em>) 평가 공식과 <em>Q</em>(<em>s</em>, <em>a</em>) 평가 공식을 나란히 비교해 보면, 대상이 단일 상태 <em>s</em>에서 상태-행동 쌍 <em>(s, a)</em>로 확장되었을 뿐 수학적 뼈대는 완전히 동일합니다:</p>
 
+<p><img src="./img/03_2_state_to_state_action_expansion.png" alt="단일 상태 s에서 상태 행동 쌍으로의 2차원 확장" />
+<strong>그림 09-4-4a</strong> 대상의 확장: 단일 상태 s 방에서 상태-행동 쌍 (s, a) 문고리 표지판으로의 2차원 확장 개념도 (1:1 순백색)</p>
+
+<hr />
+
 <p><strong>[상태 가치 함수 V(s) 평가]</strong></p>
 <ul>
   <li>표본 평균 정의:
@@ -717,6 +760,11 @@
     </blockquote>
   </li>
 </ul>
+
+<p><img src="./img/03_2_v_evaluation_formula_box.png" alt="상태 가치 V 평가 공식 요약 박스" />
+<strong>그림 09-4-4a2</strong> 상태 가치 함수 V(s) 표본 평균 정의식과 증분 갱신 점화식 칠판 수식 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p><strong>[행동 가치 함수 Q(s, a) 평가]</strong></p>
 <ul>
@@ -732,7 +780,17 @@
   </li>
 </ul>
 
-<p>여기서 <em>G</em><sup>(<em>n</em>)</sup>은 상태 <em>s</em>에서 행동 <em>a</em>를 취한 <em>n</em>번째 에피소드에서 실제로 얻은 누적 할인 수익입니다. [식 9.6]에 따라 에이전트는 경험이 쌓일 때마다 <em>Q</em>(<em>s</em>, <em>a</em>) 테이블을 실시간으로 갱신해 나갈 수 있습니다.</p>
+<p>여기서 <em>G</em><sup>(<em>n</em>)</sup>은 상태 <em>s</em>에서 행동 <em>a</em>를 취한 <em>n</em>번째 에피소드에서 실제로 얻은 누적 할인 수익입니다.</p>
+
+<p><img src="./img/03_2_q_evaluation_sample_mean_box.png" alt="행동 가치 Q 평가 표본 평균 요약 박스" />
+<strong>그림 09-4-4a3</strong> 행동 가치 함수 Q(s, a) 표본 평균 정의 및 누적 할인 수익 G^(n) 매핑 수식 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p>[식 9.6]에 따라 에이전트는 경험이 쌓일 때마다 <em>Q</em>(<em>s</em>, <em>a</em>) 테이블을 실시간으로 갱신해 나갈 수 있습니다.</p>
+
+<p><img src="./img/03_3_q_incremental_update_formula_breakdown.png" alt="Q 함수 증분 갱신 수식 기호 분해" />
+<strong>그림 09-4-4b</strong> Q_n(s,a) = Q_{n-1}(s,a) + (1/n)[G^(n) - Q_{n-1}(s,a)] 행동 가치 증분 갱신 공식의 4대 기호 분해 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -768,7 +826,17 @@
         <span class="n">self</span><span class="p">.</span><span class="n">memory</span><span class="p">.</span><span class="nf">clear</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p><img src="./img/03_3_mc_agent_init_code_flowchart.png" alt="McAgent 초기화 코드 순서도" />
+<strong>그림 09-4-4b2</strong> McAgent 초기화 및 memory 배낭, Q 테이블 생성 파이썬 코드 순서도 (1:1 순백색)</p>
+
+<hr />
+
 <p>9.3절의 <code class="language-plaintext highlighter-rouge">RandomAgent</code>와 비교했을 때, 가치 테이블이 <code class="language-plaintext highlighter-rouge">self.V</code>에서 <code class="language-plaintext highlighter-rouge">self.Q</code>로 바뀐 점이 가장 큰 차이점입니다. 이제 키(Key)는 단일 좌표 <code class="language-plaintext highlighter-rouge">state</code>가 아니라 <code class="language-plaintext highlighter-rouge">(state, action)</code> 튜플이 됩니다.</p>
+
+<p><img src="./img/03_4_mc_agent_initial_class_flowchart.png" alt="McAgent 초기 클래스 구조도" />
+<strong>그림 09-4-4c</strong> 초기 <code class="language-plaintext highlighter-rouge">McAgent</code> 클래스 구조 및 (state, action) 키 기반 Q 테이블 초기화 순서도 (1:1 순백색)</p>
+
+<hr />
 
 <p>이어서 정책을 완전 탐욕적으로 개선하는 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수와 에이전트의 <code class="language-plaintext highlighter-rouge">update()</code> 메서드를 추가해 봅시다:</p>
 
@@ -797,14 +865,42 @@
 </span>            <span class="n">self</span><span class="p">.</span><span class="n">pi</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>겉보기에는 완벽해 보이지만, <strong>이 순진한 코드를 실행하면 에이전트는 미로를 제대로 탈출하지 못하고 심각한 오류에 빠집니다.</strong> 여기에는 인공지능 역사상 가장 유명한 2가지 치명적인 함정이 숨어 있습니다:</p>
+<p><img src="./img/03_5_naive_greedy_update_flowchart.png" alt="순진한 탐욕 정책 갱신 순서도" />
+<strong>그림 09-4-4d</strong> 순진한 버전의 탐욕 정책 업데이트 순서도: argmax 완전 탐욕의 경직성과 1/n 평균 갱신의 한계 (1:1 순백색)</p>
+
+<hr />
+
+<p>겉보기에는 완벽해 보이지만, <strong>이 순진한 코드를 실행하면 에이전트는 미로를 제대로 탈출하지 못하고 심각한 오류에 빠집니다.</strong></p>
+
+<p><img src="./img/03_5_naive_agent_freezes_in_maze.png" alt="순진한 McAgent의 미로 내 정체" />
+<strong>그림 09-4-4d2</strong> 미로 속에서 완전 탐욕의 오류에 빠져 멈춰버린 초보 McAgent 로봇과 당황하는 도로시 (1:1 순백색)</p>
+
+<hr />
+
+<p>여기에는 인공지능 역사상 가장 유명한 2가지 치명적인 함정이 숨어 있습니다:</p>
 
 <ol>
   <li><strong>코드 ❶의 함정 (탐색 실종)</strong>: 100% 완전 탐욕만을 고집하면 한 번 발견한 길에만 갇혀 다른 미지의 황금 경로를 영원히 탐색하지 못합니다.<br />
 → <strong>해결책: <em>ε</em>-탐욕 정책(Epsilon-Greedy Policy)</strong></li>
+</ol>
+
+<p><img src="./img/03_5_trap1_no_exploration_candy.png" alt="함정 1 탐색 실종 사탕" />
+<strong>그림 09-4-4d3</strong> 함정 ❶ 탐색 실종: 눈앞의 작은 사탕(0.1)에 갇혀 뒤쪽 거대한 황금 보물을 보지 못하는 100% 완전 탐욕의 함정 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<ol>
   <li><strong>코드 ❷의 함정 (비정상 문제 무시)</strong>: 정책이 매 에피소드 발전하는데, 옛날 초보 시절의 바보 같은 경험과 오늘의 고수 경험을 똑같이 1/<em>n</em> 가중치로 균일하게 평균 내고 있습니다.<br />
 → <strong>해결책: 고정 학습률 <em>α</em> 기반 지수 이동 평균</strong></li>
 </ol>
+
+<p><img src="./img/03_5_trap2_non_stationary_beginner_memory.png" alt="함정 2 비정상 문제 초보 기억" />
+<strong>그림 09-4-4d4</strong> 함정 ❷ 비정상 문제: 발전하는 고수 경험에 초보 시절의 어리숙한 경험이 1/n로 발목을 잡는 현상 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p><img src="./img/03_6_two_fatal_traps_warning.png" alt="2대 치명적 함정 경고 인포그래픽" />
+<strong>그림 09-4-4e</strong> 인공지능 역사상 가장 유명한 2대 치명적 함정 (탐색 실종의 조기 수렴 vs 비정상 문제의 낡은 데이터 발목잡기) 경고 인포그래픽 (1:1 순백색)</p>
 
 <p>이 2대 함정을 어떻게 극복하는지 차례대로 살펴봅시다.</p>
 
@@ -817,9 +913,18 @@
 <p><img src="./img/04_exploration_exploitation_dilemma.png" alt="탐색과 활용의 딜레마" />
 <strong>그림 09-4-5</strong> 초기의 작은 보상 경로에 갇혀 더 큰 보상이 숨겨진 황금 미로를 발견하지 못하는 탐욕 경로의 함정</p>
 
-<p>초기 에이전트는 아무것도 모른 채 우연히 바로 앞의 작은 사탕(+0.1점)을 발견합니다. 그러면 탐욕화 알고리즘에 의해 이 사탕을 향해 가는 행동의 확률이 즉시 100%로 굳어집니다.</p>
+<hr />
+
+<p>초기 에이전트는 아무것도 모른 채 우연히 바로 앞의 작은 사탕(+0.1점)을 발견합니다.</p>
+
+<p>그러면 탐욕화 알고리즘에 의해 이 사탕을 향해 가는 행동의 확률이 즉시 100%로 굳어집니다.</p>
 
 <p>그 뒤로는 평생 그 사탕 길만 반복해서 걷게 되며, 저 건너편 골짜기에 엄청나게 거대한 황금 보물 상자(+1.0 골인 지점)가 숨겨져 있다는 사실을 영원히 탐색하지 못합니다!</p>
+
+<p><img src="./img/04_1_candy_path_fixation_dilemma.png" alt="작은 보상 경로 영구 고착화 딜레마" />
+<strong>그림 09-4-5a</strong> 0.1점 사탕 길만 영원히 맴도는 탐욕 경로의 고착화와 숨겨진 1.0점 골짜기 대비 일러스트 (1:1 순백색)</p>
+
+<hr />
 
 <blockquote>
   <p>[!NOTE]
@@ -831,12 +936,24 @@
   </ul>
 </blockquote>
 
+<p><img src="./img/04_2_restaurant_exploration_exploitation_analogy.png" alt="단골 맛집 활용 vs 신규 식당 탐색 비유" />
+<strong>그림 09-4-5b</strong> 도로시와 지니의 맛집 선택 비유: 보장된 맛의 단골집(활용) vs 숨겨진 미슐랭을 찾기 위한 신장개업 식당 도전(탐색) 설명 일러스트 (1:1 순백색)</p>
+
+<hr />
+
 <p>이 딜레마를 해결하는 가장 대표적인 해법이 바로 <strong><em>ε</em>-탐욕 정책(<em>ε</em>-greedy policy)</strong>입니다.</p>
 
 <p><img src="./img/05_epsilon_greedy_distribution.png" alt="입실론 탐욕 정책 확률 분할" />
 <strong>그림 09-4-6</strong> 최선 행동에 압도적인 확률(1 - ε + ε/4)을 부여하고 나머지 행동들에도 고른 탐색 확률(ε/4)을 나누어주는 입실론 탐욕 마법</p>
 
+<hr />
+
 <p><em>Q</em> 함수가 가장 큰 최선 행동을 1 - <em>ε</em>의 높은 확률(예: 90%)로 선택하되, 그리스 문자 <strong><em>ε</em>(입실론, 보통 0.1 즉 10%)</strong>만큼의 작은 확률을 남겨두어, 주사위를 굴리듯 아무 행동이나 무작위로 시도해 보게 하는 것입니다.</p>
+
+<p><img src="./img/05_1_epsilon_dice_magic_concept.png" alt="지니의 마법 주사위 입실론 탐욕" />
+<strong>그림 09-4-6a</strong> 90%는 똑똑하게 최적 행동을 선택하고 10%는 신비로운 주사위를 굴려 엉뚱한 길을 모험하는 입실론 마법 주사위 일러스트 (1:1 순백색)</p>
+
+<hr />
 
 <table>
   <tbody>
@@ -853,12 +970,23 @@
   <h3 id="나머지-일반-행동의-확률--ε--a"><strong>나머지 일반 행동의 확률 = <em>ε</em> / |<em>A</em>|</strong></h3>
 </blockquote>
 
+<p><img src="./img/05_1_epsilon_math_formula_cards.png" alt="입실론 탐욕 수식 카드" />
+<strong>그림 09-4-6a2</strong> 최선 행동 확률 (1-ε) + (ε/|A|) 및 일반 행동 확률 ε/|A| 수식 카드 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p><em>ε</em> = 0.1이고 행동의 가짓수가 4개일 때 실제 수치를 대입해 봅시다:</p>
+
 <ul>
   <li><strong>최선 행동의 선택 확률</strong>: (1 - 0.1) + (0.1 / 4) = 0.9 + 0.025 = <strong>0.925 (92.5%)</strong></li>
   <li><strong>나머지 3개 행동의 선택 확률</strong>: 각각 0.1 / 4 = <strong>0.025 (2.5%)</strong></li>
   <li><strong>확률의 총합</strong>: 0.925 + 0.025 × 3 = <strong>1.0 (100%)</strong></li>
 </ul>
+
+<p><img src="./img/05_2_epsilon_greedy_math_pie_breakdown.png" alt="입실론 탐욕 확률 수식 파이차트 분해" />
+<strong>그림 09-4-6b</strong> ε-탐욕 확률 공식 기호 분해 및 92.5% 최적 부채꼴 vs 3개의 2.5% 균등 탐색 조각 분할 파이차트 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>이제 <em>ε</em>-탐욕 버전의 <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 함수를 파이썬으로 구현해 보겠습니다:</p>
 
@@ -874,7 +1002,15 @@
 </span>    <span class="k">return</span> <span class="n">action_probs</span>
 </code></pre></div></div>
 
+<p><img src="./img/05_3_python_epsilon_greedy_probs_flowchart.png" alt="greedy_probs 파이썬 순서도" />
+<strong>그림 09-4-6c</strong> <code class="language-plaintext highlighter-rouge">greedy_probs()</code> 파이썬 함수 동작 표준 순서도: 기초 탐색 확률 분배부터 max_action 보너스 가산 및 확률 반환까지 (1:1 순백색)</p>
+
+<hr />
+
 <p>이렇게 수정하면 평소에는 92.5%의 높은 확률로 똑똑하게 최적 행동을 실천하면서도, 10번에 1번꼴로는 새로운 엉뚱한 길을 용감하게 탐색하여 숨겨진 최적 경로를 빠짐없이 찾아낼 수 있게 됩니다!</p>
+
+<p><img src="./img/05_4_exploration_exploitation_harmony_path.png" alt="활용과 탐색의 조화 경로" />
+<strong>그림 09-4-6d</strong> 92.5%의 똑똑한 최적 질주와 7.5%의 과감한 탐색이 조화를 이루어 숨겨진 보물 경로를 찾아내는 도로시와 토토 (1:1 순백색)</p>
 
 <hr />
 
@@ -890,8 +1026,15 @@
 <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">[</span><span class="n">key</span><span class="p">])</span> <span class="o">*</span> <span class="n">alpha</span>  <span class="c1"># [식 9.7]
 </span></code></pre></div></div>
 
+<p><img src="./img/06_2_one_over_n_vs_alpha_code_diff.png" alt="1/n 표본 평균 vs 고정 알파 코드 비교" />
+<strong>그림 09-4-6d</strong> 1/n 표본 평균 코드 vs 고정 학습률 α=0.1 지수 이동 평균 코드의 핵심 변경점 비교 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p><img src="./img/06_exponential_moving_average.png" alt="지수 이동 평균 가중치" />
 <strong>그림 09-4-7</strong> 모든 과거 데이터를 똑같이 대우하는 표본 평균(왼쪽)과, 어제의 낡은 기억은 잊고 오늘의 고수 경험을 우대하는 지수 이동 평균(오른쪽)의 가중치 비교</p>
+
+<hr />
 
 <p>왜 1/<em>n</em> 대신 고정된 학습률 계수 <strong><em>α</em>(알파, 보통 0.1)</strong>를 곱해야 할까요?</p>
 
@@ -903,6 +1046,14 @@
       <li>초보 시절의 바보 같은 경험과 고수 시절의 현명한 경험을 똑같이 1/<em>n</em>로 동등하게 평균 내는 것은 논리적으로 맞지 않습니다!</li>
     </ul>
   </li>
+</ul>
+
+<p><img src="./img/06_2_beginner_vs_veteran_memory_conflict.png" alt="초보 시절 vs 베테랑 고수 경험 충돌" />
+<strong>그림 09-4-7a</strong> 벽에 부딪히던 초보 시절 1회차 에피소드와 능숙해진 10,000회차 베테랑 고수 에피소드의 극적 대비 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<ul>
   <li><strong>수정 후 (고정 학습률 <em>α</em> 지수 이동 평균의 마법)</strong>:
     <ul>
       <li>점화식을 과거로 거슬러 올라가며 전개해 보면 놀라운 수학적 사실이 드러납니다:
@@ -916,7 +1067,15 @@
   </li>
 </ul>
 
+<p><img src="./img/06_3_exponential_decay_weights_formula_breakdown.png" alt="지수 감쇠 가중치 전개 수식 기호 분해" />
+<strong>그림 09-4-7b</strong> 지수 감쇠 전개식 Q_n = ∑ α(1-α)^k G^(n-k) 기호 분해 및 과거 초보 기억의 기하급수적 망각 곡선 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p>이처럼 학습이 진행됨에 따라 정책이 진화하고, 그 결과 수익 데이터가 생성되는 확률 분포 자체가 시시각각 변화하는 문제를 통계학에서는 <strong>‘비정상 문제(Non-Stationary Problem)’</strong>라고 부릅니다. 정책 제어처럼 데이터 분포가 변하는 비정상 환경에서는 고정 학습률 <em>α</em>를 사용한 지수 이동 평균이 절대적인 필수 공식입니다.</p>
+
+<p><img src="./img/06_4_non_stationary_target_concept.png" alt="비정상 문제 움직이는 과녁 인포그래픽" />
+<strong>그림 09-4-7c</strong> 비정상 문제(Non-Stationary Problem)의 본질: 정책 발전에 따라 참 가치 목표물(과녁) 자체가 시시각각 이동하는 현상과 고정 알파의 신속한 추적 (1:1 순백색)</p>
 
 <hr />
 
@@ -926,6 +1085,8 @@
 
 <p><img src="./img/08_mc_control_architecture.jpg" alt="몬테카를로 정책 제어 순환 아키텍처 다이어그램" />
 <strong>그림 09-4-8</strong> 몬테카를로 정책 제어의 3단계 순환 아키텍처: 경험 수집(Episode Sampling) → 역방향 Q 갱신(<em>Q</em> ← <em>Q</em> + <em>α</em>(<em>G</em> - <em>Q</em>)) → 입실론-탐욕 정책 개선(<em>π</em> ← <em>ε</em>-greedy)</p>
+
+<hr />
 
 <h3 id="1-완성된-mcagent-클래스-코드">1) 완성된 McAgent 클래스 코드</h3>
 
@@ -980,6 +1141,9 @@
 </span>            <span class="n">self</span><span class="p">.</span><span class="n">pi</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">=</span> <span class="nf">greedy_probs</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">Q</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><img src="./img/07_1_python_mc_agent_complete_flowchart.png" alt="완성된 McAgent update 순서도" />
+<strong>그림 09-4-8b</strong> 완성된 <code class="language-plaintext highlighter-rouge">McAgent.update()</code> 메서드 알고리즘 표준 순서도: reversed(memory) 역순회 루프부터 Q 함수 α 갱신 및 정책 π ε-탐욕 개선까지 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="2-10000회-에피소드-학습-실행-스크립트">2) 10,000회 에피소드 학습 실행 스크립트</h3>
@@ -1013,6 +1177,9 @@
 </span><span class="n">env</span><span class="p">.</span><span class="nf">render_q</span><span class="p">(</span><span class="n">agent</span><span class="p">.</span><span class="n">Q</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><img src="./img/07_2_python_main_10000_episodes_control_flowchart.png" alt="메인 10000 에피소드 제어 순서도" />
+<strong>그림 09-4-8c</strong> 몬테카를로 정책 제어 메인 10,000 에피소드 루프 전체 실행 표준 순서도 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="3-학습-결과-해석-최적-정책-화살표-맵">3) 학습 결과 해석: 최적 정책 화살표 맵</h3>
@@ -1021,6 +1188,8 @@
 
 <p><img src="./img/fig_09_17_q_policy_map.png" alt="Q 함수 시각화 결과" />
 <strong>그림 09-4-9</strong> 10,000번 에피소드 후 수렴된 4방향 Q 함수와 최적 탈출 경로 화살표 맵</p>
+
+<hr />
 
 <p>결과 지도를 자세히 분석해 봅시다:</p>
 
@@ -1036,12 +1205,17 @@
 
 <p>환경의 상태 전이 확률이나 보상 행렬 공식을 전혀 모르는 완전한 백지상태였지만, <strong>몬테카를로 경험 수집 + <em>Q</em> 함수 채택 + <em>ε</em>-탐욕 탐색 + <em>α</em> 지수 이동 평균</strong>이라는 강력한 도구들이 맞물려 스스로 완벽한 최적 정책 지도를 찾아낸 것입니다.</p>
 
+<p><img src="./img/07_3_q_triangle_heatmap_interpretation.png" alt="삼각형 Q값 히트맵과 안전 우회 해석도" />
+<strong>그림 09-4-9b</strong> 3x4 그리드 격자 내 상·하·좌·우 4분할 삼각형 Q값 분석 및 함정(-1.0)을 피해 상단 안전 경로로 우회하는 최적 탈출 경로 상세 해석도 (1:1 순백색)</p>
+
 <hr />
 
 <h2 id="0946-핵심-정리-몬테카를로-정책-제어-3대-기둥">09.4.6 핵심 정리: 몬테카를로 정책 제어 3대 기둥</h2>
 
 <p><img src="./img/07_summary_core_takeaways.png" alt="핵심 정리 피날레" />
 <strong>그림 09-4-10</strong> Q 함수, 입실론 탐욕, 고정 알파의 3대 기둥을 세우고 오프-정책의 새로운 장으로 나아가는 도로시와 지니</p>
+
+<hr />
 
 <table>
   <thead>
@@ -1070,6 +1244,11 @@
   </tbody>
 </table>
 
+<p><img src="./img/07_4_three_pillars_triad_infographic.png" alt="정책 제어 3대 기둥 입체 삼위일체" />
+<strong>그림 09-4-10b</strong> 몬테카를로 정책 제어 3대 핵심 기둥 (Q 함수 즉시 결정, ε-탐욕 탐색 보장, 고정 α 비정상 극복) 입체 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “몬테카를로 정책 제어의 완성은 강화학습이 단순한 통계 계산기를 넘어, 미지의 환경을 스스로 탐험하고 최선의 길을 개척해 나가는 ‘진정한 지능(AI)’으로 도약하는 감동적인 순간입니다.<br />
@@ -1077,10 +1256,18 @@
 이를 완벽하게 극복하기 위해, 다음 9.5절에서는 ‘마음껏 탐색하는 행동 정책’과 ‘오직 최선만을 달리는 대상 정책’을 분리하는 강화학습의 최고봉, <strong>오프-정책(Off-Policy)과 중요도 샘플링</strong>의 세계로 떠나보겠습니다!”</p>
 </blockquote>
 
+<p><img src="./img/07_5_hojin_mentor_note_true_ai_leap.png" alt="이호진 교수님의 직강 멘토링 노트" />
+<strong>그림 09-4-10c</strong> 이호진 교수님의 직강 멘토링 노트: 단순 통계 계산기를 넘어 스스로 탐험하고 최선의 길을 여는 진정한 지능으로의 도약과 9.5 오프-정책 예고 칠판 강의 장면 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />
 “축하합니다냥, 도로시와 여러분! 이제 우리 에이전트는 미로에서 길을 헤매지 않고 스스로 최적의 탈출 지도를 그려냈어요! <em>Q</em> 함수, 입실론(<em>ε</em>) 탐욕, 그리고 알파(<em>α</em>) 지수 이동 평균의 삼위일체를 가슴에 품고, 다음 절에서 더욱 마법 같은 오프-정책을 만나보아요!”</p>
 </blockquote>
+
+<p><img src="./img/07_6_genie_cheering_off_policy_preview.png" alt="조교 지니의 응원 및 9.5절 예고" />
+<strong>그림 09-4-10d</strong> 조교 지니의 응원: 행동 정책과 대상 정책을 완벽히 분리하는 강화학습의 최고봉 9.5 오프-정책과 중요도 샘플링으로 전진하는 활기찬 일러스트 (1:1 순백색)</p>
 
 
             <!-- 구글 애드센스 출력 -->

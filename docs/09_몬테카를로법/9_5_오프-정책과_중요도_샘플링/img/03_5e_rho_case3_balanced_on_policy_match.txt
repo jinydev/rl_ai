@@ -1,0 +1,7 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution educational infographic]
+Importance Weight Case 3: Perfectly Balanced Equilibrium (b(x) = π(x) → ρ(x) = 1).
+A perfectly level brass scale with identical weights on both sides marked 'Target Policy π' and 'Behavior Policy b'.
+The weight multiplier display reads 'ρ(x) = 1.0 (Standard Neutral Weight)'.
+A banner explains: 'When behavior matches target, importance sampling naturally simplifies back to standard on-policy average!'.
+Genie and Dorothy smile happily at the perfect symmetry.
+Pure white background, dark espresso lines, soft pastel green and lavender colors.

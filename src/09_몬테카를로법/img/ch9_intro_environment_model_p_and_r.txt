@@ -1,0 +1,8 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical architecture infographic]
+Technical diagram dissecting 'The Two Pillars of Environment Model in Model-Based RL'.
+A central glass box labeled 'Environment Model (환경 모델)':
+Inside the box are two illuminated mechanical gear components:
+1. Gear 1 (Blue): 'State Transition Probability Matrix p(s' | s, a)' - showing conditional branching arrows from state s given action a to possible next states s'.
+2. Gear 2 (Amber): 'Immediate Reward Function r(s, a, s')' - showing numerical reward payout values associated with each transition.
+Label banner: 'In DP, both p and r must be 100% known in advance. In real-world MC, this entire box is a complete black box!'.
+Pure white background, clean dark espresso brown line art, elegant technical annotations.

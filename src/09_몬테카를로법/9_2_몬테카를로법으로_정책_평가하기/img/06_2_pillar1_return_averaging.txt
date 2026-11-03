@@ -1,0 +1,8 @@
+An educational infographic summarizing Pillar 1 on a pure solid white background (#FFFFFF).
+Title: '제1기둥: 경험 수익의 표본 평균 (Return Averaging)'.
+Core concept:
+Instead of requiring the true environmental dynamics model p(s'|s,a), Monte Carlo approximates the true value function V_π(s) using the empirical arithmetic mean of sampled cumulative returns:
+V_π(s) = (∑ G^(i)) / N
+Visual: An urn filled with sampled returns G^(1), G^(2), G^(3) being poured into a funnel that computes the exact average value, landing onto the state value table.
+Dorothy smiling proudly holding a notebook with the formula.
+Dark espresso line art, pure white background (#FFFFFF). --ar 1:1

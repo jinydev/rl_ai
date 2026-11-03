@@ -1,0 +1,8 @@
+A structured 3-step mechanism diagram on a pure solid white background (#FFFFFF).
+Title: '골에서 시작점으로 거슬러 올라가는 3단계 정산 구조'.
+Three horizontal step blocks stacked vertically:
+Step 1: 맨 끝 상태 C 정산 -> G_C = R_2 (즉각 보상으로 바로 확정!)
+Step 2: 바로 앞 상태 B 정산 -> G_B = R_1 + γ * G_C (단 1번의 곱셈과 덧셈!)
+Step 3: 맨 앞 상태 A 정산 -> G_A = R_0 + γ * G_B (단 1번의 곱셈과 덧셈!)
+Arrows showing information flowing backwards from Step 1 down to Step 3.
+Clean rounded rectangles, pastel blue, green, and orange color accents, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

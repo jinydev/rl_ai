@@ -1,0 +1,8 @@
+A cautionary educational infographic on a pure solid white background (#FFFFFF).
+Title: '결정적 정책(Deterministic Policy)의 치명적 함정'.
+Left side: An agent with a fixed deterministic rule '항상 위로만 간다'.
+- The agent only walks the exact same narrow single path: (2,0) -> (1,0) -> (0,0).
+- The rest of the 3x4 maze is shaded in dark shadow labeled '방문 횟수 N(s) = 0: 영원히 미지의 영역!'.
+Right side: A teaser billboard: '해결책 -> 9.4절 행동 가치 함수 Q(s,a)와 ε-탐욕 정책!'.
+Dorothy and Genie pointing at the dark unvisited cells with caution.
+Dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,7 @@
+An educational concept illustration on a pure solid white background (#FFFFFF).
+Title: '동적 프로그래밍(DP): 전지적 관점의 완전한 미로 지도'.
+Visual concept:
+Professor Hojin and Genie looking down at a large architectural blueprint spread out on a wooden table.
+The blueprint shows a 3x4 gridworld with every transition probability p(s'|s,a) and exact reward matrix R written in crisp mathematical ink.
+A glowing magnifying glass hovers above, calculating values top-down without taking a single physical step.
+Clean dark espresso line art, sophisticated educational aesthetic, pure solid white background (#FFFFFF). --ar 1:1

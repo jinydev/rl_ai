@@ -1,0 +1,13 @@
+A mathematical expansion and decay curve infographic on a pure solid white background (#FFFFFF).
+Title: '고정 학습률 α의 마법: 기하급수적 망각 곡선'.
+Formula expansion banner:
+Q_n = α*G^(n) + α(1-α)*G^(n-1) + α(1-α)²*G^(n-2) + ... + (1-α)^n*Q_0
+
+Graph below:
+A smooth downward exponential decay curve showing weights of past episodes:
+- Latest Episode n: Weight α (10.0%)
+- Episode n-1: Weight α(1-α) (9.0%)
+- Episode n-2: Weight α(1-α)² (8.1%)
+- Episode 1 (초보 시절): Weight ≈ 0.0001% (자연스럽게 망각!)
+Genie wiping away dusty old blackboard notes with an eraser, smiling.
+Dark espresso line art, clean vector graph, pure solid white background (#FFFFFF). --ar 1:1

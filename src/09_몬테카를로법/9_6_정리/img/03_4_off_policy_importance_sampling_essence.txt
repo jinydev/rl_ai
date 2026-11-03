@@ -1,0 +1,7 @@
+A conceptual educational illustration on a pure solid white background (#FFFFFF).
+Title: '오프-정책과 중요도 샘플링의 정수'.
+Visual diagram:
+Left side: '행동 정책 b(a|s)' -> 모험가 복장의 도로시가 미로 구석구석을 활발하게 탐색하며 다채로운 데이터 수집.
+Right side: '대상 정책 π(a|s)' -> 학사모를 쓴 지니가 수집된 데이터를 전달받아 무작위 실수 없는 순수 100% 최적 챔피언 전략으로 정제.
+Center: A glowing golden balance scale representing '중요도 가중치 ρ = π/b', multiplying each sample to guarantee unbiased expectation E_π[X] = E_b[X * ρ].
+Clean vector style, warm pastel palette, pure solid white background (#FFFFFF). --ar 1:1

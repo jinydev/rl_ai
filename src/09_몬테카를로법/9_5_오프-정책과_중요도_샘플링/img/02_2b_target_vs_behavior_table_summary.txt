@@ -1,0 +1,7 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution comparative infographic]
+Visual table summary comparing 'Target Policy π(a|s)' and 'Behavior Policy b(a|s)'.
+Two large symmetrical character cards side-by-side:
+- Left Card (Target Policy π): A champion scientist Dorothy in a clean laboratory wearing a laurel crown, holding a blueprint of 100% pure optimal actions ('argmax Q'), perfectly protected from danger.
+- Right Card (Behavior Policy b): A brave explorer Dorothy wearing an expedition helmet, carrying a compass and dice, actively trekking through misty terrain to gather raw experience data.
+Between them, an arrow shows 'Data Transfer & Importance Weight Adjustment'.
+Clean modern graphic design, sharp typography, soft pastel palette, pure #FFFFFF background.

@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Warm and inspiring chalkboard math classroom scene: "How Was the Incremental Update Formula Born? (A 4-Step Mathematical Journey)".
+In the upper center background, a clean slate chalkboard:
+- Header chalk text: "👨‍🏫 증분 갱신 공식 탄생의 4단계 비밀 유도"
+- Four neatly numbered chalk pathway steps leading to the final recurrence equation:
+  Step 1: 일반 평균 정의식
+  Step 2: 마지막 데이터 분리
+  Step 3: 직전 평균과의 연결
+  Step 4: 기적의 점화식 완성!
+- A golden spotlight illuminating the final goal equation: "V_n = V_{n-1} + (1/n)(s_n - V_{n-1})".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) holds a clean white piece of chalk, looking at the viewer with an encouraging, welcoming smile: "중학생도 쉽게 이해할 수 있도록 차근차근 증명해 보렴!".
+Dorothy (eager 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) sits at a student desk with pen in hand, eyes sparkling with enthusiasm to begin the derivation.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under desk, chalkboard, and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 과거 데이터를 단 하나도 보관하지 않고도 완벽한 실시간 평균을 계산해내는 '증분 갱신 점화식'의 4단계 수학적 탄생 과정을 이호진 교수님이 칠판에서 친절하게 열어 보이고 도로시가 설레는 마음으로 학습을 시작하는 1:1 정방형 순백색 오리엔테이션 삽화.
+

@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Clear pipeline infographic showing "The Three Core Pillars of 09.1 Monte Carlo Foundation Working Together":
+In the center, an interconnected three-stage flow diagram with glowing golden conduits:
+- Pillar 1 (Stage 1): "샘플 모델 (Sample Model)" → Mystery box generating empirical trial samples, overcoming combinatorial explosion.
+- Pillar 2 (Stage 2): "표본 평균 & 대수의 법칙 (Sample Mean & LLN)" → V ≈ (1/N) ∑ s_i accumulating samples so the average converges directly to true ground truth.
+- Pillar 3 (Stage 3): "초경량 증분 갱신 (Incremental Update)" → V ← V + (1/n)(s - V) updating online in real time with O(1) constant memory.
+- Final Output Arrow: "✨ 모델 프리 강화학습의 완벽한 수학적 엔진 완성! ✨"
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points to the unified pipeline with pride.
+Dorothy (inspired 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) looks at the three-stage pipeline with sparkling eyes, holding her tablet with an understanding smile.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under diagram and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 몬테카를로법 기초를 구성하는 3대 기둥인 1) 샘플 모델의 발상 전환, 2) 표본 평균과 대수의 법칙을 통한 참값 수렴, 3) 초경량 증분 갱신을 통한 메모리 O(1) 온라인 학습이 하나로 연결되어 완성되는 유기적 알고리즘 파이프라인을 시각화한 1:1 정방형 순백색 교육 삽화.
+

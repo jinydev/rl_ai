@@ -1,0 +1,8 @@
+An educational spiral convergence diagram on a pure solid white background (#FFFFFF).
+Title: '정책 반복(Policy Iteration)의 나선형 상승 수렴'.
+Visual concept:
+An ascending double-helix or zigzag staircase leading up to a golden star labeled '최적 정책 π* 및 최적 가치 Q*'.
+Left rung steps: '평가 (Evaluation): Q ≈ q_π' (수익 표본 수집 및 Q 갱신)
+Right rung steps: '개선 (Improvement): π ← greedy(Q)' (최대 Q 행동 방향으로 정책 업그레이드)
+Dorothy and Genie climbing up the staircase together, with Toto barking enthusiastically at the summit.
+Clean dark espresso line art, inspiring mathematical atmosphere, pure solid white background (#FFFFFF). --ar 1:1

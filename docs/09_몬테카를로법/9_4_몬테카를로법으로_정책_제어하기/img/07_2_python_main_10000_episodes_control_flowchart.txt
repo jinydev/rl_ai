@@ -1,0 +1,12 @@
+Dorothy and Tinny observing a clean vertical system flowchart on a pure solid white background (#FFFFFF).
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+ABSOLUTE CONSTRAINTS: ZERO slide UI frames, NO header banner, NO slide borders, NO background card boxes, pure #FFFFFF white background.
+Visual Scene:
+At the center, a crisp floating vertical algorithmic workflow showing the MC Control loop:
+- Top: Green start node 'GridWorld & McAgent Init'
+- Middle loop: 'for episode in 10,000' -> 'Action = agent.get_action(s) (ε-greedy)' -> 'step(a) -> add(s, a, r)' -> 'if done: agent.update() (Q & Policy)'
+- Bottom: 'render_q(agent.Q) -> Optimal Policy π*'
+On the left: Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall, wavy chestnut pigtails with colorful beads, denim overalls with 'STEM HERO' badge, orange striped t-shirt, ruby red canvas sneakers, pointing curiously at the agent.update() block.
+Beside her: Tinny the maker robot (small matte silver chassis, cyan LED dot crescent eyes, brass antenna) holding a small gear tool.
+On the right: Jiny the lab assistant cat, chubby black-and-white tuxedo cat, white muzzle, baby pink nose, olive-green eyes, mini round scholar glasses, red collar with gold bell, taking notes on a small clipboard.
+Clean typography, soft subtle contact shadows under feet, no Japanese characters. --ar 1:1

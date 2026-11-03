@@ -1,0 +1,10 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical chalkboard infographic]
+Educational chalkboard infographic breaking down 'The Importance Sampling Identity Formula'.
+On a classic dark-green chalkboard:
+'E_π [X] = E_b [ X · (π(X) / b(X)) ] = E_b [ X · ρ(X) ]'
+Detailed callout breakdown boxes:
+- 'E_π[X]': Target expectation we want to calculate
+- 'E_b[...]': Expectation calculated over samples actually drawn from behavior distribution b
+- 'ρ(X) = π(X) / b(X)': Importance Weight (두 정책 간의 확률 비율을 정산하는 통계 저울추)
+Genie uses a golden wand to illuminate the equivalence sign, while Toto holds a small weight in his paws.
+Clean line art, clear Korean annotations, pure white background outside the board.

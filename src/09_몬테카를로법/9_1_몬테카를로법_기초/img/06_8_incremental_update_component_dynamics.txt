@@ -1,0 +1,24 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical mechanics diagram: "The Dynamic Mechanics of the Three Components of Incremental Update".
+In the upper center background, an interactive mechanical-mathematical balance gear diagram:
+1. Component 1: "[ V_{old} ] (기존 지식 Anchor)" — A solid stone anchor representing accumulated past belief.
+2. Component 2: "[ (s - V_{old}) ] (오차 신호 Error Vector)" — A dynamic push-pull directional arrow:
+   - If s > V_{old}: Green forward push (+ 오차: 가치를 상향 견인)
+   - If s < V_{old}: Red backward pull (- 오차: 가치를 하향 조정)
+3. Component 3: "[ 1 / n ] (적응형 학습 보폭 Step Size)" — An adjustable vernier dial showing the shrinking step size:
+   - n=2 (1/2: 과감한 초기 탐색) → n=10 (1/10) → n=1000 (1/1000: 단단한 고정과 안정화).
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points to the shrinking step size dial with an enlightened smile.
+Beside him, Jiny the tuxedo cat with tiny scholar glasses balances playfully on top of the error vector arrow.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and diagram stand, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 증분 갱신 점화식의 3대 구성요소인 기존 추정치 V_old, 새로운 예측 오차 신호 (s - V_old), 그리고 시행 횟수 n이 증가함에 따라 1/2에서 1/1000로 보폭을 줄여 학습을 수렴·안정화시키는 적응형 학습률(1/n)의 역동적 상호작용을 이호진 교수님과 지니의 메커니즘 도식으로 시각화한 1:1 정방형 순백색 수식 삽화.
+

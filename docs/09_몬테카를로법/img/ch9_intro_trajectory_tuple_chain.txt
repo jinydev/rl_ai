@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution data structure infographic]
+Infographic visualizing 'The Experience Trajectory: A Continuous Chain of (S_t, A_t, R_{t+1}, S_{t+1})'.
+A horizontal chronological railway chain of colorful data capsules connected by gleaming golden links:
+- Node 0: '(S_0, A_0) → R_1 → S_1'
+- Node 1: '(S_1, A_1) → R_2 → S_2'
+- Node t: '(S_t, A_t) → R_{t+1} → S_{t+1}'
+- Terminal Node: '(S_{T-1}, A_{T-1}) → R_T → S_T (Goal/Terminal)'
+Below the chain, a data structure callout highlights: 'Stored in agent.memory as a sequential list of tuples: (state, action, reward)'.
+Pure solid white background, dark espresso line art, soft pastel color coding for states, actions, and rewards.

@@ -1,0 +1,9 @@
+A step-by-step backward accumulation visual diagram on a pure solid white background (#FFFFFF).
+Title: '골(Goal)에서 출발지로 거슬러 올라가는 1패스 정산 메커니즘'.
+Visual path:
+A winding timeline from right to left:
+[Goal] <-- (R_2) -- [State C: G_C=R_2] <-- (R_1 + γ*G_C) -- [State B: G_B=...] <-- (R_0 + γ*G_B) -- [State A: G_A=...]
+At each step backwards, G is updated using G = gamma * G + reward.
+No re-scanning, no repeated loops: single-pass linear time O(T)!
+Professor Hojin explaining with a pointer, Dorothy writing notes in her binder.
+Crisp typography, dark espresso lines, pure white background (#FFFFFF). --ar 1:1

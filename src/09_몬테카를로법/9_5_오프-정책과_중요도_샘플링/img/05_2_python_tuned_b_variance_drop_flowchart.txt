@@ -1,0 +1,11 @@
+A software comparison flowchart and variance reduction diagram on a pure solid white background (#FFFFFF).
+Title: '조율된 행동 분포(b_tuned)와 분산 75% 급감 순서도'.
+Flowchart & Results:
+1. [분포 조율: b_tuned = [0.2, 0.2, 0.6] (π=[0.1, 0.1, 0.8]에 가깝게 정렬!)] (Rectangle)
+2. [샘플링 루프 실행: rho = pi / b_tuned (비율이 1 근처로 안정화!)] (Rectangle)
+3. [결과 비교 게이지]:
+   - 기존 균등 b 분산: 10.63 (위험 수치 Red)
+   - 조율된 b 분산: 2.48 (안정 수치 Green, 75% 급감!)
+   - 평균값: 2.72 (참값 2.7에 더욱 정밀하게 밀착!)
+Dorothy and Genie giving a double thumbs up, Toto happily wagging his tail.
+Clean vector graphic, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

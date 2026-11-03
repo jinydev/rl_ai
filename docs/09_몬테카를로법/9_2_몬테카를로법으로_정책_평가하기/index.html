@@ -631,31 +631,57 @@
         <div class="bd-content ps-lg-4">
             <h1 id="092-몬테카를로법으로-정책-평가하기">09.2 몬테카를로법으로 정책 평가하기</h1>
 
-<p><img src="./9_2_몬테카를로법으로_정책_평가하기.png" alt="09.2 몬테카를로법으로 정책 평가하기" /></p>
+<p>주어진 정책 <em>π</em>에 따라 에피소드 시뮬레이션을 반복하여 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)를 근사하는 <strong>정책 평가(Policy Evaluation)</strong> 과정을 배웁니다.</p>
+
+<hr />
+
+<p>징검다리를 끝까지 건너는 다수의 에피소드 표본 데이터를 기반으로, 각 칸의 기대 가치 카드를 완성해 나가는 도로시의 즐거운 모험을 지니와 함께 살펴봅시다!</p>
 
 <p><img src="./img/01_stepping_stones_policy_evaluation.png" alt="몬테카를로 정책 평가 인트로" />
 <strong>그림 09-2-1</strong> 징검다리를 건너가며 에피소드를 완주하고 각 칸의 상태 가치 카드 V(s)를 갱신해나가는 도로시와 연구실 친구들 (16:9 와이드)</p>
-
-<p>주어진 정책 <em>π</em>에 따라 에피소드 시뮬레이션을 반복하여 상태 가치 함수 <em>v</em><sub><em>π</em></sub>(<em>s</em>)를 근사하는 <strong>정책 평가(Policy Evaluation)</strong> 과정을 배웁니다. 징검다리를 끝까지 건너는 다수의 에피소드 표본 데이터를 기반으로, 각 칸의 기대 가치 카드를 완성해 나가는 도로시의 즐거운 모험을 지니와 함께 살펴봅시다!</p>
 
 <hr />
 
 <h3 id="경험샘플-데이터으로-가치-함수를-추정하다">경험(샘플 데이터)으로 가치 함수를 추정하다</h3>
 
-<p>앞서 9.1절에서 우리는 몬테카를로법의 대수적 기초를 배웠습니다. 몬테카를로법은 복잡한 환경의 수학 공식이나 확률 분포표를 전부 펼쳐놓지 않고도, <strong>실제로 주사위를 굴려보는 무작위 샘플링(Sampling)</strong>을 수행하고 수집한 표본 데이터로부터 <strong>산술 평균(Average)</strong>을 내어 참된 기댓값을 계산해 냅니다.</p>
+<p>앞서 9.1절에서 우리는 몬테카를로법의 대수적 기초를 배웠습니다.</p>
+
+<p>몬테카를로법은 복잡한 환경의 수학 공식이나 확률 분포표를 전부 펼쳐놓지 않고도, <strong>실제로 주사위를 굴려보는 무작위 샘플링(Sampling)</strong>을 수행하고 수집한 표본 데이터로부터 <strong>산술 평균(Average)</strong>을 내어 참된 기댓값을 계산해 냅니다.</p>
+
+<p><img src="./img/01_2_experience_sampling_concept.png" alt="경험 데이터 수집과 표본 평균의 발상" />
+<strong>그림 09-2-1a</strong> 복잡한 수식 없이 실제 무작위 샘플링(시행)과 산술 평균만으로 참 기댓값을 찾아내는 몬테카를로법의 발상 (1:1 순백색)</p>
+
+<hr />
+
+<h4 id="이-기발한-방법은-강화학습-문제에-완벽하게-들어맞습니다">이 기발한 방법은 <strong>강화학습</strong> 문제에 완벽하게 들어맞습니다.</h4>
 
 <table>
   <tbody>
     <tr>
-      <td>이 기발한 방법은 <strong>강화학습</strong> 문제에 완벽하게 들어맞습니다. 우리가 해결하려는 미지의 세상에서는 환경의 상태 전이 확률 <em>p</em>(<em>s’</em></td>
-      <td><em>s</em>, <em>a</em>)나 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)를 사전에 알 수 없습니다. 하지만 괜찮습니다!</td>
+      <td>우리가 해결하려는 미지의 세상에서는 환경의 상태 전이 확률 <em>p</em>(<em>s’</em></td>
+      <td><em>s</em>, <em>a</em>)나 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s’</em>)를 사전에 알 수 없습니다.</td>
     </tr>
   </tbody>
 </table>
 
+<p><img src="./img/01_3_why_mc_fits_rl_blackbox.png" alt="미지의 블랙박스 환경과 몬테카를로법" />
+<strong>그림 09-2-1b</strong> 전이 확률과 보상 함수를 모르는 미지의 블랙박스 환경에 완벽히 들어맞는 몬테카를로의 경험 수집 방식 (1:1 순백색)</p>
+
+<hr />
+
+<h4 id="하지만-괜찮습니다">하지만 괜찮습니다!</h4>
+
 <p>에이전트가 세상에 직접 발을 내딛고 몸으로 부딪치며 얻은 <strong>경험(실제 누적 수익 샘플 데이터 <em>G</em>)</strong>만 모을 수 있다면, 그 경험들을 평균 내는 것만으로도 각 상태의 <strong>참 가치 함수를 놀랍도록 정확하게 추정</strong>할 수 있기 때문입니다.</p>
 
+<p><img src="./img/01_4_mc_return_ground_truth_accuracy.png" alt="실제 경험 수익 G의 평균과 참 가치 추정" />
+<strong>그림 09-2-1c</strong> 에이전트가 몸으로 부딪혀 얻은 실제 누적 수익 샘플(G)들을 모아 각 상태의 참 가치를 정밀하게 추정하는 원리 (1:1 순백색)</p>
+
+<hr />
+
 <p>이번 절에서는 에이전트의 행동 지침인 <strong>고정된 정책 <em>π</em></strong>가 주어졌을 때, 그 정책을 따랐을 때 각 상태가 얼마나 좋은 곳인지를 몬테카를로법으로 계산해내는 ‘정책 평가(Policy Evaluation)’ 과정을 집중적으로 다룹니다.</p>
+
+<p><img src="./img/01_5_policy_evaluation_core_concept.png" alt="고정된 정책 파이의 가치를 평가하는 정책 평가" />
+<strong>그림 09-2-1d</strong> 에이전트의 행동 지침인 고정 정책 π를 따를 때 각 상태의 잠재 점수를 매기는 정책 평가(Policy Evaluation)의 개념 (1:1 순백색)</p>
 
 <hr />
 
@@ -671,6 +697,8 @@
 
 <p><img src="./img/03_value_function_definition_chalk.png" alt="가치 함수 수학적 정의 칠판" />
 <strong>그림 09-2-2</strong> 가치 함수 정의식 <em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub>[<em>G</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]의 기호별 의미(정책, 출발 상태, 조건부 기댓값)를 칠판에서 해설하는 장면 (1:1 순백색)</p>
+
+<hr />
 
 <h4 id="-수식-돋보기-가치-함수-정의식-기호-해부">💡 수식 돋보기: 가치 함수 정의식 기호 해부</h4>
 
@@ -707,13 +735,30 @@
   </li>
 </ol>
 
+<p><img src="./img/03_2_value_function_four_symbols_breakdown.png" alt="가치 함수 정의식 4대 기호 정밀 해부" />
+<strong>그림 09-2-2a</strong> 가치 함수 정의식 v_π(s) = E_π[G_t | S_t = s]의 4대 핵심 기호 정밀 해부 인포그래픽 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="몬테카를로법으로-가치-함수-근사하기">몬테카를로법으로 가치 함수 근사하기</h3>
 
-<p>이 가치 함수를 몬테카를로법으로 계산하려면 어떻게 해야 할까요? 복잡한 적분이나 연립방정식을 풀 필요가 전혀 없습니다!</p>
+<p>이 가치 함수를 몬테카를로법으로 계산하려면 어떻게 해야 할까요?</p>
 
-<p>에이전트에게 정책 <em>π</em>에 따라 실제로 환경 속을 마음껏 뛰어다니도록 지시하면 됩니다. 출발 상태 <em>s</em>에서 시작하여 에피소드가 끝날 때까지 완주하면, 골인 지점에 도달했을 때 에이전트의 손에는 실제로 획득한 보상들의 누적 합인 <strong>수익 표본(<em>G</em>)</strong>이 쥐어집니다.</p>
+<p>복잡한 적분이나 연립방정식을 풀 필요가 전혀 없습니다!</p>
+
+<p><img src="./img/03_3_mc_free_running_simulation.png" alt="복잡한 적분 대신 마음껏 뛰어다니는 시뮬레이션" />
+<strong>그림 09-2-2a2</strong> 복잡한 연립방정식이나 적분 수식 없이, 정책에 따라 미로 속을 마음껏 뛰어다니며 경험을 쌓는 몬테카를로 시뮬레이션 (1:1 순백색)</p>
+
+<hr />
+
+<p>에이전트에게 정책 <em>π</em>에 따라 실제로 환경 속을 마음껏 뛰어다니도록 지시하면 됩니다.</p>
+
+<p>출발 상태 <em>s</em>에서 시작하여 에피소드가 끝날 때까지 완주하면, 골인 지점에 도달했을 때 에이전트의 손에는 실제로 획득한 보상들의 누적 합인 <strong>수익 표본(<em>G</em>)</strong>이 쥐어집니다.</p>
+
+<p><img src="./img/03_4_goal_arrival_return_token.png" alt="골인 지점 완주와 손에 쥔 수익 토큰" />
+<strong>그림 09-2-2a3</strong> 출발 상태 s에서 시작하여 목표 골 지점에 도달했을 때 에이전트 손에 쥐어지는 누적 수익 표본 G 토큰 (1:1 순백색)</p>
+
+<hr />
 
 <p>이러한 모험을 <em>n</em>번 반복하여 얻은 실제 수익들이 바로 샘플 데이터(<em>G</em><sup>(1)</sup>, <em>G</em><sup>(2)</sup>, …, <em>G</em><sup>(<em>n</em>)</sup>)가 되며, 이 샘플들의 산술 평균을 구하면 가치 함수의 추정치 <em>V</em><sub><em>π</em></sub>(<em>s</em>)가 완성됩니다:</p>
 
@@ -723,8 +768,12 @@
 
 <p>상태 <em>s</em>에서 시작하여 <em>i</em>번째 에피소드에서 얻은 실제 수익을 <em>G</em><sup>(<em>i</em>)</sup>라 할 때, <em>n</em>번의 에피소드 표본 평균으로 <em>V</em><sub><em>π</em></sub>(<em>s</em>)를 추정합니다.</p>
 
+<hr />
+
 <p><img src="./img/hojin_episode_goal_finish.jpg" alt="이호진 교수님의 에피소드 완주 환영" />
 <strong>그림 09-2-2b</strong> 에피소드 완주 지점(Goal Flag)에서 황금 사과 바구니를 들고 기뻐하는 도로시와 토토를 맞이하며, 완주된 총수익 G를 장부에 기록하여 가치 함수 평균을 갱신하는 이호진 교수님과 조교 지니 (1:1 순백색)</p>
+
+<hr />
 
 <blockquote>
   <p>[!CAUTION]
@@ -732,6 +781,9 @@
 몬테카를로법은 반드시 <strong>‘에피소드가 끝까지 완주되어 골인 지점에 도달해야만’</strong> 총수익 <em>G</em>가 확정됩니다.<br />
 만약 24시간 365일 멈추지 않고 계속되는 로봇 제어나 주식 거래 같은 지속적 과제(Continuing Task)라면, 게임에 ‘끝’이 없기 때문에 에피소드가 영원히 종료되지 않고, 따라서 수익 샘플 <em>G</em><sup>(<em>i</em>)</sup>를 영영 계산할 수 없어 몬테카를로법을 적용할 수 없습니다.</p>
 </blockquote>
+
+<p><img src="./img/03_5_episodic_vs_continuing_task_comparison.png" alt="일회성 과제 vs 지속적 과제 비교" />
+<strong>그림 09-2-2c</strong> 명확한 종료 골인 지점이 있는 일회성 과제(Episodic)와 끝없이 회전하는 지속적 과제(Continuing)의 결정적 차이 (1:1 순백색)</p>
 
 <hr />
 
@@ -742,7 +794,9 @@
 <p><img src="./img/02_episode_return_sampling.png" alt="에피소드별 수익 평균" />
 <strong>그림 09-2-3</strong> 1차 시도 수익 G^(1)=3과 2차 시도 수익 G^(2)=2를 모아 산술 평균 2.5로 가치 함수를 갱신하는 도로시와 지니 (1:1 순백색)</p>
 
-<p>이해를 돕기 위해 미래 보상을 깎지 않는 할인율 <em>γ</em> = 1이라고 가정해 봅시다:</p>
+<hr />
+
+<h4 id="이해를-돕기-위해-미래-보상을-깎지-않는-할인율-γ--1이라고-가정해-봅시다">이해를 돕기 위해 미래 보상을 깎지 않는 할인율 <em>γ</em> = 1이라고 가정해 봅시다:</h4>
 
 <ul>
   <li><strong>첫 번째 시도 (에피소드 1)</strong>:
@@ -771,14 +825,21 @@
 매 시도마다 우연에 의해 얻는 점수가 조금씩 요동치더라도, 시도 횟수 <em>n</em>이 10번, 100번, 1000번으로 늘어나면 <strong>대수의 법칙(큰 수의 법칙)</strong>에 의해 우연한 흔들림이 서로 상쇄되면서 원래 환경이 품고 있던 진짜 참값 <em>v</em><sub><em>π</em></sub>(<em>s</em>)에 자석처럼 오차 없이 수렴하게 된단다!”</p>
 </blockquote>
 
+<p><img src="./img/02_2_two_episodes_step_by_step_calculation.png" alt="시도 횟수 누적에 따른 표본 평균의 수렴 과정" />
+<strong>그림 09-2-3a</strong> 1차(3.0), 2차(2.5), 3차(3.0) 시도가 거듭될수록 우연의 흔들림이 상쇄되며 참값으로 수렴해가는 대수의 법칙 차트 (1:1 순백색)</p>
+
 <hr />
 
 <h2 id="0922-모든-상태의-가치-함수-구하기-1타-다피의-혁신">09.2.2 모든 상태의 가치 함수 구하기: 1타 다피의 혁신</h2>
 
-<p>지금까지는 오직 하나의 출발 상태 <em>s</em>에 대해서만 이야기했습니다. 그렇다면 우리가 탐험하는 미로에 상태가 수십 개, 수백 개(예: <em>A, B, C</em>, …) 있다면 이 모든 상태의 가치 함수는 대체 어떻게 구할 수 있을까요?</p>
+<p>지금까지는 오직 하나의 출발 상태 <em>s</em>에 대해서만 이야기했습니다.</p>
+
+<p>그렇다면 우리가 탐험하는 미로에 상태가 수십 개, 수백 개(예: <em>A, B, C</em>, …) 있다면 이 모든 상태의 가치 함수는 대체 어떻게 구할 수 있을까요?</p>
 
 <p><img src="./img/04_single_path_multiple_states.png" alt="단일 경로 다중 상태 수익" />
 <strong>그림 09-2-4</strong> 하나의 모험 경로(A ➔ B ➔ C)를 완주하면서 상태 A, B, C의 수익 데이터를 동시에 수확하는 스마트한 경로 학습 (1:1 순백색)</p>
+
+<hr />
 
 <ul>
   <li><strong>비효율적인 독립 출발 방식의 한계</strong>:
@@ -787,6 +848,14 @@
       <li>하지만 이 방식은 엄청난 시간과 컴퓨터 자원을 낭비합니다. 무엇보다 <strong>현실의 자율주행차나 로봇은 원하는 임의의 중간 위치로 순간이동(Reset)하여 출발할 수 없는 경우</strong>가 대부분입니다!</li>
     </ul>
   </li>
+</ul>
+
+<p><img src="./img/04_2_inefficient_reset_start_limits.png" alt="비효율적인 독립 출발 리셋의 한계" />
+<strong>그림 09-2-4a</strong> 상태마다 일일이 순간이동 리셋하여 따로따로 출발할 때 발생하는 막대한 자원 낭비와 현실 로봇의 순간이동 불가능 한계 (1:1 순백색)</p>
+
+<hr />
+
+<ul>
   <li><strong>1타 다피의 단일 경로 수확 방식 (Single Path Multi-Harvesting)</strong>:
     <ul>
       <li>놀랍게도 몬테카를로법에서는 그럴 필요가 전혀 없습니다!</li>
@@ -806,13 +875,26 @@
   </li>
 </ul>
 
+<p><img src="./img/04_3_single_path_multi_harvest_math.png" alt="단일 경로 다중 수확 수식 기호 분해" />
+<strong>그림 09-2-4c</strong> 1타 다피 단일 경로 다중 수확: 출발(A)→보상 R0→B→보상 R1→C→보상 R2→골 경로에서 상태 A, B, C의 수익 GA, GB, GC를 단 1회 주행으로 동시 산출하는 수식 기호 분해 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>👧 <strong>도로시의 기차 여행 비유</strong>:<br />
 “마치 서울역(<em>A</em>)에서 출발해 대전역(<em>B</em>)과 대구역(<em>C</em>)을 지나 부산역(골)에 도착하는 기차 여행 같아요!<br />
 기차가 부산에 도착하고 나면, 서울역에서 탄 승객이 느낀 총여행 만족도(<em>G</em><sub><em>A</em></sub>), 대전역에서 탄 승객의 만족도(<em>G</em><sub><em>B</em></sub>), 대구역에서 탄 승객의 만족도(<em>G</em><sub><em>C</em></sub>)를 단 한 번의 기차 운행으로 동시에 정산할 수 있는 것과 똑같네요!”</p>
 </blockquote>
 
+<p><img src="./img/04_4_train_journey_satisfaction_analogy.png" alt="도로시의 기차 여행 비유" />
+<strong>그림 09-2-4d</strong> 도로시의 기차 여행 비유: 서울역(A)에서 대전(B), 대구(C)를 거쳐 부산(Goal)에 도착한 기차 승객들의 총 여행 만족도를 단 한 번의 운행으로 동시 정산하는 따뜻한 설명 일러스트 (1:1 순백색)</p>
+
+<hr />
+
 <p>이처럼 <strong>단 한 번의 에피소드 완주만으로 경로 상에 방문한 모든 상태(<em>A, B, C</em>)에 대한 수익 샘플 데이터를 동시에 수확</strong>할 수 있습니다! 에이전트가 환경 속을 자유롭게 탐색하며 다양한 상태를 거쳐 가기만 하면, 출발점을 억지로 리셋하지 않아도 모든 상태의 가치 함수 카드가 골고루 채워집니다.</p>
+
+<p><img src="./img/04_5_all_states_cards_filled_triumph.png" alt="모든 상태 카드 수확의 기쁨" />
+<strong>그림 09-2-4e</strong> 억지로 리셋하지 않고 환경을 자유롭게 탐색하며 모든 상태의 가치 카드 표본을 풍성하게 채워 넣고 기뻐하는 도로시와 지니 (1:1 순백색)</p>
 
 <hr />
 
@@ -828,11 +910,22 @@
 <em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub></p>
 </blockquote>
 
+<p><img src="./img/05_2_forward_redundancy_observation.png" alt="정방향 계산 시 중복 연산 관찰" />
+<strong>그림 09-2-5a</strong> 정방향 수익 계산식 GA = R0 + γR1 + γ²R2 와 GB = R1 + γR2, GC = R2 의 나열과 겹치는 항들을 컬러 박스로 짚어보는 수식 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <p>식을 유심히 관찰해 보면 기막힌 규칙이 눈에 들어옵니다:</p>
+
 <ul>
   <li><em>G</em><sub><em>A</em></sub>의 뒷부분(<em>γR</em><sub>1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub>2</sub>)은 사실 <strong><em>γ</em>(<em>R</em><sub>1</sub> + <em>γR</em><sub>2</sub>) = <em>γG</em><sub><em>B</em></sub></strong>와 완전히 같습니다!</li>
   <li>마찬가지로 <em>G</em><sub><em>B</em></sub>의 뒷부분(<em>γR</em><sub>2</sub>)은 <strong><em>γG</em><sub><em>C</em></sub></strong>와 완전히 같습니다!</li>
 </ul>
+
+<p><img src="./img/05_3_backward_recurrence_pattern_discovery.png" alt="점화식 규칙 발견 돋보기" />
+<strong>그림 09-2-5b</strong> 점화식 패턴 발견: GA의 뒷부분이 정확히 γGB와 같음을 돋보기로 발견하고 기뻐하는 지니와 도로시의 수식 연결 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>즉, 수식을 다음과 같이 점화식 형태로 다시 쓸 수 있습니다:</p>
 
@@ -841,6 +934,11 @@
 <em>G</em><sub><em>B</em></sub> = <em>R</em><sub>1</sub> + <em>γG</em><sub><em>C</em></sub><br />
 <em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γG</em><sub><em>B</em></sub></p>
 </blockquote>
+
+<p><img src="./img/05_4_backward_three_steps_mechanism.png" alt="골에서 거슬러 올라가는 3단계 정산" />
+<strong>그림 09-2-5c</strong> 골에서 시작점으로 거슬러 올라가는 3단계 점화식 계산 구조 (GC=R2 → GB=R1+γGC → GA=R0+γGB) 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>일반화하면 어떤 임의의 시점 <em>t</em>에서의 수익 <em>G</em><sub><em>t</em></sub>는 다음과 같은 아름다운 재귀 점화식으로 표현됩니다:</p>
 
@@ -851,6 +949,8 @@
 <p><img src="./img/hojin_backward_stepping_stones.jpg" alt="이호진 교수님의 역방향 징검다리 칠판 강의" />
 <strong>그림 09-2-4b</strong> 이호진 교수님이 포인터로 골 지점에서 시작 지점으로 거슬러 올라가는 역방향 징검다리 화살표를 가리키며, 이미 구한 미래 수익 <em>G</em><sub><em>t</em>+1</sub>을 재활용하는 <em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> 점화식을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
 
+<hr />
+
 <p><img src="./img/05_backward_return_accumulation.png" alt="역방향 수익 계산 점화식" />
 <strong>그림 09-2-5</strong> 골 지점에서부터 뒤로 걸어오며 할인율 <em>γ</em>를 곱해 미래 수익을 재사용하는 역방향 수익 정산 점화식 시각화 (1:1 순백색)</p>
 
@@ -860,6 +960,11 @@
 
 <p>만약 계산을 앞에서부터 순서대로(<em>G</em><sub><em>A</em></sub> → <em>G</em><sub><em>B</em></sub> → <em>G</em><sub><em>C</em></sub>) 한다면, <em>G</em><sub><em>A</em></sub>를 구할 때 <em>R</em><sub>1</sub>, <em>R</em><sub>2</sub>를 더하고, <em>G</em><sub><em>B</em></sub>를 구할 때 <em>R</em><sub>2</sub>를 또 더하는 심각한 중복 덧셈이 발생합니다. 에피소드 길이가 100스텝이라면 약 (100 × 101) / 2 &amp;approx; 5,000번의 연산이 필요합니다.</p>
 
+<p><img src="./img/05_5_complexity_o_t2_vs_o_t_comparison.png" alt="계산 복잡도 O(T^2) vs O(T) 비교" />
+<strong>그림 09-2-5d</strong> 정방향 누적 O(T^2) vs 역방향 누적 O(T) 계산 복잡도 극적 비교: 5,000회 중복 연산의 비효율과 100회 단일 패스의 쾌속 질주 (1:1 순백색)</p>
+
+<hr />
+
 <p>하지만 <strong>골(Goal)에서부터 출발지를 향해 거꾸로(<em>G</em><sub><em>C</em></sub> → <em>G</em><sub><em>B</em></sub> → <em>G</em><sub><em>A</em></sub>) 거슬러 올라가며 계산</strong>하면:</p>
 <ol>
   <li>맨 끝 상태 <em>C</em>의 수익은 즉각 보상 <em>R</em><sub>2</sub>로 바로 확정됩니다 (<em>G</em><sub><em>C</em></sub> = <em>R</em><sub>2</sub>).</li>
@@ -867,7 +972,15 @@
   <li>가장 앞선 상태 <em>A</em>의 수익 역시 이미 구해둔 <em>G</em><sub><em>B</em></sub>에 <em>γ</em>만 곱해서 <em>R</em><sub>0</sub>와 더하면 즉시 끝납니다 (<em>G</em><sub><em>A</em></sub> = <em>R</em><sub>0</sub> + <em>γG</em><sub><em>B</em></sub>).</li>
 </ol>
 
+<p><img src="./img/05_6_backward_step_by_step_settlement.png" alt="골에서 거꾸로 정산하는 단계별 메커니즘" />
+<strong>그림 09-2-5e</strong> 골(Goal)에서 출발지를 향해 거꾸로 거슬러 올라가며 단 1회의 곱셈과 덧셈으로 상태별 수익을 확정 짓는 단계별 정산도 (1:1 순백색)</p>
+
+<hr />
+
 <p>에피소드 길이가 100스텝이어도 <strong>단 100번의 곱셈과 덧셈(<em>O</em>(<em>T</em>) 선형 시간)만으로 모든 상태의 수익 정산이 눈 깜짝할 사이에 완료</strong>됩니다! 파이썬 코드에서 에피소드 메모리 리스트를 <code class="language-plaintext highlighter-rouge">reversed(memory)</code>로 뒤집어 순회하는 이유가 바로 이 눈부신 계산 최적화 때문입니다.</p>
+
+<p><img src="./img/05_7_python_reversed_memory_flowchart.png" alt="파이썬 reversed memory 순서도" />
+<strong>그림 09-2-5f</strong> 파이썬 reversed(memory) 역순회 알고리즘 순서도: Goal 직전부터 거꾸로 돌며 G = gamma * G + reward 를 누적하고 가치 함수를 갱신하는 표준 순서도 (1:1 순백색)</p>
 
 <hr />
 
@@ -877,6 +990,8 @@
 
 <p><img src="./img/06_summary_core_takeaways.png" alt="09.2 핵심 정리" />
 <strong>그림 09-2-6</strong> 몬테카를로 정책 평가의 3대 핵심 기둥(수익 표본 평균, 단일 경로 다중 수확, 역방향 재귀 정산)을 총정리하는 연구실 4인방 (16:9 와이드)</p>
+
+<hr />
 
 <ol>
   <li><strong>경험 수익의 표본 평균 (Return Averaging)</strong>:
@@ -893,11 +1008,27 @@
       </li>
     </ul>
   </li>
+</ol>
+
+<p><img src="./img/06_2_pillar1_return_averaging.png" alt="제1기둥: 수익 표본 평균" />
+<strong>그림 09-2-6a</strong> 제1기둥: 환경 모델 없이 완주된 에피소드 수익들의 표본 평균으로 참 가치를 수렴시키는 수익 표본 평균 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<ol>
   <li><strong>단일 경로 다중 상태 수확 (Multi-state Harvesting)</strong>:
     <ul>
       <li>상태마다 따로따로 출발할 필요 없이, 단 한 번의 에피소드 주행으로 경로 상에 방문한 모든 상태(<em>A, B, C</em>)의 수익 표본을 동시에 수확합니다.</li>
     </ul>
   </li>
+</ol>
+
+<p><img src="./img/06_3_pillar2_multi_state_harvesting.png" alt="제2기둥: 단일 경로 다중 수확" />
+<strong>그림 09-2-6b</strong> 제2기둥: 단 1회의 주행 경로로 방문한 모든 상태의 수익 표본을 일거에 거두어들이는 1타 다피 수확 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<ol>
   <li><strong>초고속 역방향 재귀 정산 (Backward Recursion)</strong>:
     <ul>
       <li><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> 점화식을 이용하여 골에서부터 거꾸로 계산함으로써, 불필요한 중복 연산 없이 <em>O</em>(<em>T</em>)의 초고속으로 모든 상태의 가치를 업데이트합니다.</li>
@@ -905,15 +1036,28 @@
   </li>
 </ol>
 
+<p><img src="./img/06_4_pillar3_backward_recursion.png" alt="제3기둥: 초고속 역방향 재귀 정산" />
+<strong>그림 09-2-6c</strong> 제3기둥: G_t = R_t + gamma * G_{t+1} 점화식으로 O(T) 선형 시간에 모든 가치를 갱신하는 초고속 역방향 재귀 정산 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “몬테카를로 정책 평가의 백미는 바로 ‘끝까지 가보고 거꾸로 정산한다’는 점입니다. 인생에서도 목표를 이룬 뒤 지나온 길을 되돌아볼 때 각 순간의 가치를 비로소 명확히 평가할 수 있듯이, 몬테카를로법은 에피소드 완주 후 골에서부터 거꾸로 보상을 묶어줌으로써 복잡한 미래의 가치를 명쾌하게 밝혀냅니다.”</p>
 </blockquote>
 
+<p><img src="./img/06_5_hojin_mentor_note_life_reflection.png" alt="이호진 교수님의 직강 멘토링 노트" />
+<strong>그림 09-2-6d</strong> 이호진 교수님의 직강 멘토링 노트: 인생에서도 목표를 이룬 후 지나온 길을 되돌아볼 때 각 순간의 가치가 명쾌해지듯, 완주 후 거꾸로 정산하는 몬테카를로의 지혜 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>🐱 <strong>조교 지니의 핵심 요약 노트</strong>:<br />
 “수학적 원리를 완벽하게 마스터했으니, 이제 다음 9.3절에서는 도로시와 함께 그리드월드 환경에서 에피소드를 생성하고 <code class="language-plaintext highlighter-rouge">reversed()</code> 함수로 가치 함수를 업데이트하는 <strong>순수 파이썬 몬테카를로 코드 구현</strong>으로 신나게 넘어가 보자냥!”</p>
 </blockquote>
+
+<p><img src="./img/06_6_next_step_chapter_9_3_preview.png" alt="다음 9.3절 구현 예고" />
+<strong>그림 09-2-6e</strong> 다음 장 예고: 그리드월드에서 에피소드를 생성하고 reversed()로 가치 함수를 갱신하는 9.3 순수 파이썬 구현 코드로 신나게 출발하는 연구실 (1:1 순백색)</p>
 
 
             <!-- 구글 애드센스 출력 -->

@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Educational technical diagram illustration explaining "Neutron Diffusion Simulation via Random Numbers".
+In the upper background, a clean structured educational infographic panel:
+- On the left: Dense atomic nuclei (amber and teal glowing spheres) where an energetic neutron bounces randomly in complex zigzag paths, labeled "Complex Collision Paths (Differential Equations: Analytical Solution ❌)".
+- In the center: A gleaming roulette-style random generator spinning out random angles (θ) and path lengths (L), labeled "Random Number Sampling (무작위 난수 모사)".
+- On the right: A grid visualization of thousands of projected particle tracks flowing smoothly, labeled "Computer Simulation N = 10,000 → Accurate Diffusion Rate & Criticality (전체 확산율 도출 ✔️)".
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) stands gesturing with a wooden pointer toward the neutron scattering diagram, explaining with a confident, friendly smile how John von Neumann turned unsolvable calculus into computer simulations.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with 'STEM HERO' patch, orange-and-white striped t-shirt) stands beside him, holding a glowing digital tablet and stylus, looking up at the diagram with bright sparkling eyes and a cheerful smile as she understands the brilliant idea.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 핵분열 연쇄 반응 시 중성자가 물질 속을 튕겨 다니는 복잡한 충돌 궤적을 미분방정식으로 풀지 못했던 난제를, 폰 노이만이 무작위 난수(룰렛)를 이용한 컴퓨터 시뮬레이션으로 해결해낸 원리를 이호진 교수님이 도식을 가리키며 설명하고 도로시가 태블릿을 들고 이해하는 1:1 정방형 순백색 교육 삽화.
+

@@ -1,0 +1,22 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Dramatic educational illustration depicting the mathematical impossibility of calculating 52 factorial by analytical hand calculations.
+In the center, a gigantic dark-green slate chalkboard towering high, filled with dizzying, dense chalk formulas and equations:
+"52! = 52 × 51 × 50 × ... × 2 × 1 ≈ 8.065 × 10⁶⁷"
+Surrounding the chalkboard are swirling cosmic nebulae clouds formed of countless flying playing cards, expanding endlessly like a vast starry galaxy. A small side comparison diagram chalked on the board shows: "Observable Universe Total Atoms ≈ 10⁸⁰ vs 52! Card Permutations ≈ 10⁶⁸".
+On the floor, massive mountains of crumpled calculation papers are piled high.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt) stands looking up at the impossible cosmic chalkboard with dizzy, spiraling cartoon eyes (@_@), scratching her head in comical shock.
+Beside her, Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) peeks out from behind a small stack of crumpled paper with wide bewildered black button eyes.
+On the right, Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with his wooden stylus at the astronomical number, explaining with an empathetic smile why analytical pen-and-paper math completely hits a wall here.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet and paper heaps, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 52장의 카드가 뒤섞이는 경우의 수가 무려 52! ≈ 8.065 × 10^67(관측 가능한 우주 전체의 원자 수에 필적)에 달하여, 그 어떤 천재 수학자도 종이와 연필만으로는 해석적 정답을 구할 수 없는 '순수 수학적 접근의 한계(조합론적 폭발)'를 코믹하고 경이로운 우주적 스케일로 시각화한 1:1 정방형 삽화.
+

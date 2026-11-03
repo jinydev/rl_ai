@@ -1,0 +1,13 @@
+A heartwarming educational mentoring scene on a pure solid white background (#FFFFFF).
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+ABSOLUTE CONSTRAINTS: ZERO slide UI frames, NO header banner, NO slide borders, NO background card borders, pure #FFFFFF white background.
+Visual Scene:
+Standing in the center-right: Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, energetic kind face), neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, encouraging warm smile. Dressed in a neat solid dark charcoal navy short-sleeve collared polo shirt with NO name tag, NO badges, NO SNU text, classic medium-wash blue denim jeans, and grey suede sneakers.
+Professor Hojin is standing beside a neat standing dark green chalkboard with a wooden easel stand, holding a piece of white chalk.
+On the chalkboard, neat handwritten text and diagram:
+'MC 제어의 완성: 주어진 정책을 평가하던 수동적 AI에서, 스스로 최적의 길을 개척하는 능동적 지능으로!' with a small upward climbing arrow into a glowing star.
+Listening attentively on the left:
+Dorothy (4.5 heads tall, chestnut pigtails, denim overalls, red sneakers) holding a small notebook, eyes sparkling with inspiration.
+Toto (fluffy solid milk-white puppy with sky-blue bandana, black button nose) sitting obediently beside Dorothy.
+Jiny the lab assistant cat (chubby black-and-white tuxedo cat, mini round glasses, red collar with gold bell) perched on a small stool, taking notes with a pencil in paw.
+Soft subtle contact shadows under feet, clean warm academic atmosphere, pure #FFFFFF white background, no Japanese text. --ar 1:1

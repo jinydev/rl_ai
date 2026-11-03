@@ -1,0 +1,8 @@
+A chalkboard-style formula box on a pure solid white background (#FFFFFF).
+Title: '행동 가치 함수 Q(s, a) 평가 공식 요약'.
+Upper box: 표본 평균 정의
+Q_n(s, a) = ( G^(1) + G^(2) + ... + G^(n) ) / n
+Lower box: 증분 갱신 점화식 [식 9.6]
+Q_n(s, a) = Q_{n-1}(s, a) + (1 / n) · [ G^(n) - Q_{n-1}(s, a) ]
+Callout badge: '상태 s에서 행동 a를 취한 후 얻은 참 수익 G^(n)으로 갱신'
+Crisp typography, soft pastel green chalkboard container, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

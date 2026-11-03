@@ -1,0 +1,19 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Engaging educational infographic dissecting the physical meaning of the sample count ratio: "Why Sample Ratio Equals Area Ratio (N_circle / N_total ≈ S_circle / S_square)".
+In the center, an elegant educational infographic panel:
+- On the left: A grid showing uniformly distributed random dots falling evenly across the square and circle without any bias, labeled "균등한 무작위 표본 (Uniform Random Sampling)".
+- In the center: An equal sign (=) resting on a delicate brass balance scale, where the left pan holds a beaker of counted coin tokens labeled "표본 개수 비율 N_circle / N_total" and the right pan holds the geometric shape cutouts labeled "면적 비율 S_circle / S_square", showing perfect horizontal equilibrium.
+- An explanatory note chalked neatly: "무작위로 균등하게 던져진 표본의 개수 비율은 두 도형의 실제 기하학적 면적 비율과 완전히 일치한다냥!".
+In the foreground:
+Jiny the tuxedo cat wearing tiny round scholar glasses and a red bell collar stands proudly beside the balance scale, holding an antique magnifying glass up to inspect the balance and pointing a tiny wooden rod at the equilibrium line with an enlightened scholar's expression.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under balance scale and cat, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: "무작위로 균등하게 흩뿌려진 표본의 개수 비율(N_circle / N_total)이 왜 기하학적 실제 면적 비율과 같은가?"에 대해 균등 표본 추출(Uniform Sampling)과 물리적 저울의 수평 평형 다이어그램으로 조교 지니가 명쾌하게 해설하는 1:1 정방형 순백색 교육 삽화.
+

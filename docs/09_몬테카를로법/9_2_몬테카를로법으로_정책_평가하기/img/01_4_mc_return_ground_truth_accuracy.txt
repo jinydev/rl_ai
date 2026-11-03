@@ -1,0 +1,10 @@
+An educational mathematical concept illustration on a pure solid white background (#FFFFFF).
+Title: '몬테카를로 수익: 편향 없는 참된 경험 (Ground Truth)'.
+Concept: Because Monte Carlo waits until the very end of the episode to sum actual received rewards, its return G_t has zero bias (편향=0).
+Visual details:
+In the center, a balanced scientific brass scale on a laboratory desk.
+On the left pan, a glowing golden block labeled '실제 에피소드 완주 누적 수익 G_t (Zero Bias)'.
+On the right pan, a balanced standard weight labeled '참 기대 가치 E[G_t]'.
+Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) is gently adjusting the balance pointer, nodding with approval.
+Dorothy and Toto look on admiringly.
+Art style: clean line art, educational studio aesthetic, 1:1 aspect ratio, pure white background (#FFFFFF). --ar 1:1

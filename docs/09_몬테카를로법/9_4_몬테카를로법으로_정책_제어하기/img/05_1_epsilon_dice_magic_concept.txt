@@ -1,0 +1,9 @@
+A whimsical, inspiring educational illustration on a pure solid white background (#FFFFFF).
+Title: '요정 지니의 마법 주사위: ε-탐욕 정책의 탄생'.
+Visual scene:
+Genie the tuxedo cat wearing spectacles tosses a glowing 10-sided crystal die into the air.
+9 faces of the die glow bright gold labeled '최선 행동 실행 (Exploitation, 90%)'.
+1 face glows mystical purple labeled '엉뚱한 새로운 길 도전 (Exploration, 10%)'.
+Dorothy watches with sparkling eyes as Toto tries to catch the rolling die.
+Subtitle: '90%는 똑똑하게, 10%는 용감하게 모험하는 완벽한 조화!'.
+Clean line art, enchanting warm vector style, pure solid white background (#FFFFFF). --ar 1:1

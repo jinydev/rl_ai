@@ -1,0 +1,8 @@
+A structured educational summary infographic on a pure solid white background (#FFFFFF).
+Title: '몬테카를로법의 본질: 3대 핵심 기둥'.
+Three large glowing pillars:
+Pillar 1: '표본 평균과 대수의 법칙' -> 무수한 에피소드 반복으로 실제 누적 수익 G의 평균이 참 가치 함수에 100% 수렴!
+Pillar 2: '무편향 추정 (Unbiased Estimation)' -> 다음 상태 가치(부트스트랩)를 빌려 쓰지 않고, 오직 실제 경험한 참 보상만 정직하게 정산!
+Pillar 3: '역방향 누적 연산 (reversed)' -> 골에서 뒤로 걸어오며 G = γG + R 점화식을 적용하여 O(T) 선형 시간 초고속 정산!
+Dorothy pointing with an explorer's cane, Toto sitting proudly.
+Clean vector lines, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

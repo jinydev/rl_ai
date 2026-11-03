@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming and vivid educational illustration of the geometric probability ratio: "Random Coin Toss and the Geometric Ratio π/4".
+In the center, a flat perspective geometry mat showing a square of side 2r containing a bright cyan inscribed circle of radius r:
+- Sparkling golden coins are randomly and uniformly scattered across the mat.
+- Coins that landed inside the circle glow with bright warm gold sparkles and are marked "N_circle (원 내부 동전)".
+- All coins across the entire square are tallied as "N_total (전체 동전)".
+- A glowing floating formula banner above the board displays:
+  "N_circle / N_total ≈ (원의 넓이 / 정사각형의 넓이) = πr² / 4r² = π / 4"
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped t-shirt) playfully closes one eye with a joyful smile as she scatters a handful of shiny golden coins from her hand into the air, letting them rain down randomly onto the target mat.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana, black button eyes) sits attentively near the corner of the mat, happily wagging his tail as he watches a shiny coin spin to a stop near his paws.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and target mat, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 정사각형 내접원 영역에 동전을 무작위로 던졌을 때 전체 투척 동전 수(N_total) 대비 원 안에 떨어진 동전 수(N_circle)의 비례 관계가 정확히 두 도형의 넓이 비율인 π/4에 수렴한다는 기하학적 확률 비례식의 원리를 도로시의 유쾌한 동전 던지기로 표현한 1:1 정방형 순백색 교육 삽화.
+

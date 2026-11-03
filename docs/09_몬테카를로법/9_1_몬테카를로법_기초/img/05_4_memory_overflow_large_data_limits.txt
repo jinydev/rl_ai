@@ -1,0 +1,21 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Humorous and dramatic educational technical illustration: "Memory Bottleneck: Why Storing All 100 Million Samples in a List Fails".
+In the center, an overwhelming digital memory RAM tower:
+- An enormous, teetering skyscraper of colorful paper file boxes and glowing digital storage blocks labeled: "samples = [s_1, s_2, ... s_{100,000,000}] (1억 개 표본 누적!)".
+- Red flashing warning lights at the top: "⚠️ RAM Memory Usage: 800MB+ Exhausted! (메모리 폭발 경고 Out of Memory)".
+- A struggling computation arrow labeled: "매번 sum() 계산 시 1억 개를 처음부터 다시 덧셈 → 연산 속도 급격한 지연 O(N²) 비효율!".
+In the foreground:
+Dorothy (9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) comically tries to support the tilting mountain of data boxes with her hands, groaning with spiraling dizzy cartoon eyes (@_@).
+Beside her, Jiny the tuxedo cat with tiny scholar glasses points to the red warning light, shouting: "이러다 컴퓨터가 터지겠다냥! 획기적인 메모리 절약법이 절실하다냥!".
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under memory tower and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 샘플 데이터가 100만 개, 1억 개로 늘어날 때 모든 데이터를 리스트에 보관하면 수백 메가바이트의 메모리 낭비와 매번 처음부터 다시 합산해야 하는 O(N^2) 비효율로 컴퓨터가 멈추게 되는 하드웨어적 병목 현상을 도로시와 지니의 위태로운 데이터 타워로 시각화한 1:1 정방형 순백색 교육 삽화.
+

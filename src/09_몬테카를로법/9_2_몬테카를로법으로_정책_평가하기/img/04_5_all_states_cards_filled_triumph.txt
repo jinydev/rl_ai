@@ -1,0 +1,8 @@
+A triumphant educational scene on a pure solid white background (#FFFFFF).
+Title: '탐색을 통해 모든 상태 가치 카드가 채워지는 기쁨'.
+Visual concept:
+In the center, a large bulletin board showing a gridworld where every single state card is filled with vibrant stamps and checkmarks: V(0,0)=0.65, V(0,1)=0.78, V(1,0)=0.82...
+Dorothy and Toto jumping in joy with hands raised.
+Genie holding a filled stamp card triumphantly.
+Professor Hojin standing beside them with a gentle proud smile, pointing to the complete coverage of the state space without any forced resets.
+Clean dark espresso line art, joyful educational atmosphere, pure solid white background (#FFFFFF). --ar 1:1

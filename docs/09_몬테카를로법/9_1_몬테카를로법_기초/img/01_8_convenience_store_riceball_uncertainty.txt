@@ -1,0 +1,26 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming and realistic educational infographic: "Why Convenience Store Inventory Cannot Be Modeled by Exact Formulas".
+In the center, a bright convenience store shelf neatly stocked with triangle rice balls (삼각김밥):
+Surrounding the shelf is a swirling vortex of unpredictable real-world factor icons:
+- Rain clouds ("갑작스러운 소나기")
+- School backpacks ("인근 중고등학교 시험 기간")
+- Social media smartphone screens ("SNS 인기 먹방 트렌드")
+- Temperature drops & seasonal shifts ("기온 급변")
+- Customer mood icons ("손님들의 당일 기분")
+A mathematical speech bubble pointing to the shelf shows an impossible formula with a red slash:
+"P(내일 17개 판매) = ??? (엄밀한 수식 작성 불가능 ❌)"
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) wearing a cute convenience store clerk apron, holds an inventory scanner barcode gun, scratching her head comically at the unpredictable customer demand.
+Beside her, Jiny the tuxedo assistant cat wearing tiny round scholar glasses holds a clipboard with question marks, shrugging his paws with a witty expression.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under shelf and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 편의점 삼각김밥 판매량처럼 날씨, 시험 기간, 유행 트렌드, 손님의 기분 등 수많은 실시간 요인이 얽혀 있어 그 어떤 수학자도 사전에 엄밀한 상태 전이 확률 공식을 작성해 줄 수 없는 '현실 세계의 불확실성과 블랙박스 환경'을 도로시의 알바 현장으로 유쾌하게 시각화한 1:1 정방형 순백색 교육 삽화.
+

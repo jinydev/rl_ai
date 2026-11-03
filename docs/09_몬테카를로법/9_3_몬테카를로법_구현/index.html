@@ -631,31 +631,56 @@
         <div class="bd-content ps-lg-4">
             <h1 id="093-몬테카를로법-구현">09.3 몬테카를로법 구현</h1>
 
-<p><img src="./9_3_몬테카를로법_구현.png" alt="09.3 몬테카를로법 구현" /></p>
+<p>파이썬 코드를 기반으로 몬테카를로(Monte Carlo, MC) 정책 평가 알고리즘을 한 줄 한 줄 직접 작성해 봅니다.</p>
 
 <p><img src="./img/01_mc_implementation_intro.png" alt="몬테카를로 구현 인트로" />
 <strong>그림 09-3-1</strong> 그리드월드 조작 조종 패드를 쥐고 모니터를 보며, RandomAgent와 eval() 코드 연동을 실행하는 도로시와 지니</p>
 
-<p>파이썬 코드를 기반으로 몬테카를로(Monte Carlo, MC) 정책 평가 알고리즘을 한 줄 한 줄 직접 작성해 봅니다. 환경 클래스 <code class="language-plaintext highlighter-rouge">GridWorld</code>에 물리적 움직임을 전달하는 <code class="language-plaintext highlighter-rouge">step()</code> 메서드를 살펴보고, 에이전트 클래스 <code class="language-plaintext highlighter-rouge">RandomAgent</code>에서 실시간으로 경험(상태, 행동, 보상)을 리스트에 패키징하여 보관한 뒤, 에피소드가 끝났을 때 역방향으로 거슬러 올라가며 가치 함수를 갱신하는 전 과정을 지니 요정과 이호진 교수님의 직강 코드로 명쾌하게 실습해 봅시다!</p>
+<hr />
+
+<p>환경 클래스 <code class="language-plaintext highlighter-rouge">GridWorld</code>에 물리적 움직임을 전달하는 <code class="language-plaintext highlighter-rouge">step()</code> 메서드를 살펴보고, 에이전트 클래스 <code class="language-plaintext highlighter-rouge">RandomAgent</code>에서 실시간으로 경험(상태, 행동, 보상)을 리스트에 패키징하여 보관한 뒤, 에피소드가 끝났을 때 역방향으로 거슬러 올라가며 가치 함수를 갱신하는 전 과정을 지니 요정과 이호진 교수님의 직강 코드로 명쾌하게 실습해 봅시다!</p>
+
+<p><img src="./img/01_2_mc_pipeline_roadmap_overview.png" alt="몬테카를로 파이프라인 로드맵" />
+<strong>그림 09-3-1b</strong> 몬테카를로 정책 평가 파이프라인 4단계 로드맵 (환경 step 상호작용 → memory 배낭 저장 → 에피소드 완주 판정 → reversed 역방향 정산) 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
 <h2 id="0931-3--4-그리드월드와-상호작용-인터페이스">09.3.1 3 × 4 그리드월드와 상호작용 인터페이스</h2>
 
-<p>4장에서 다룬 ‘3 × 4 그리드 월드’ 문제를 이번에는 <strong>환경 모델(전이 확률과 보상 함수)을 전혀 모르는 상태</strong>에서 몬테카를로법으로 풀어보겠습니다.</p>
+<p>이전에 다룬 ‘3 × 4 그리드 월드’ 문제를 이번에는 <strong>환경 모델(전이 확률과 보상 함수)을 전혀 모르는 상태</strong>에서 몬테카를로법으로 풀어보겠습니다.</p>
 
 <p><img src="./img/fig_09_10_gridworld_3x4.png" alt="그림 09-10" />
 <strong>그림 09-10</strong> 3 × 4 그리드 월드 환경 구조 (시작, 벽, 골, 함정)</p>
 
-<p>동적 프로그래밍(DP)에서는 미로의 전체 지도(각 칸에서 이동했을 때의 확률적 전이 행렬과 보상 공식)를 컴퓨터에게 미리 모두 주었습니다. 하지만 몬테카를로법에서는 지도를 전혀 건네주지 않습니다.</p>
+<hr />
+
+<h4 id="환경을-알고-있을-경우">환경을 알고 있을 경우</h4>
+
+<p>동적 프로그래밍(DP)에서는 미로의 전체 지도(각 칸에서 이동했을 때의 확률적 전이 행렬과 보상 공식)를 컴퓨터에게 미리 모두 주었습니다.</p>
+
+<p><img src="./img/01_3_dp_known_model_map.png" alt="DP 전지적 환경 지도" />
+<strong>그림 09-3-1c</strong> 환경의 전이 확률 행렬과 보상 공식을 모두 펼쳐놓고 위에서 내려다보며 계산하는 DP의 전지적 관점 (1:1 순백색)</p>
+
+<hr />
+
+<h4 id="환경을-모르고-있을-경우">환경을 모르고 있을 경우</h4>
+
+<p>하지만 몬테카를로법에서는 지도를 전혀 건네주지 않습니다.</p>
 
 <p>에이전트는 눈을 가린 탐험가처럼 미로 안으로 직접 뛰어들어, 발을 한 걸음 내딛고 환경이 돌려주는 피드백만을 관찰하며 배워야 합니다. 이렇게 하려면 에이전트가 “한 걸음 앞으로 가보자!”라고 환경에게 실제로 행동을 취하도록 시키는 명령 메서드가 반드시 필요합니다.</p>
+
+<p><img src="./img/01_4_mc_blind_explorer_step.png" alt="MC 눈먼 탐험가의 발걸음" />
+<strong>그림 09-3-1d</strong> 지도가 없는 안개 속 그리드월드에서 step(action) 지팡이로 한 걸음씩 내딛으며 피드백을 받는 눈먼 탐험가 도로시와 토토 (1:1 순백색)</p>
 
 <hr />
 
 <h3 id="1-step-메서드의-동작-원리와-반환값">1) step() 메서드의 동작 원리와 반환값</h3>
 
-<p><code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스에는 에이전트에게 물리적 행동을 실행하게 하는 핵심 인터페이스인 <code class="language-plaintext highlighter-rouge">step()</code> 메서드가 있습니다. 다음 예제 코드를 함께 살펴봅시다.</p>
+<p><code class="language-plaintext highlighter-rouge">GridWorld</code> 클래스에는 에이전트에게 물리적 행동을 실행하게 하는 핵심 인터페이스인 <code class="language-plaintext highlighter-rouge">step()</code> 메서드가 있습니다.</p>
+
+<hr />
+
+<p>다음 예제 코드를 함께 살펴봅시다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">common.gridworld</span> <span class="kn">import</span> <span class="n">GridWorld</span>
 
@@ -668,13 +693,28 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">done:</span><span class="sh">'</span><span class="p">,</span> <span class="n">done</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><img src="./img/02_1_python_step_call_flowchart.png" alt="파이썬 step 메서드 호출 순서도" />
+<strong>그림 09-3-1e</strong> 파이썬 <code class="language-plaintext highlighter-rouge">env.step(action)</code> 메서드 호출과 반환값 수신 표준 순서도: action 번호 전달부터 물리 전이 후 3대 반환값 수신까지 (1:1 순백색)</p>
+
+<hr />
+
 <p><strong>출력 결과</strong></p>
+
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>next_state: (1, 0)
 reward: 0.0
 done: False
 </code></pre></div></div>
 
-<p><code class="language-plaintext highlighter-rouge">step()</code> 메서드는 에이전트가 취하고자 하는 정수형 행동 번호(<code class="language-plaintext highlighter-rouge">action</code>)를 매개변수로 받습니다. <code class="language-plaintext highlighter-rouge">env.step(action)</code>을 호출하면 환경 내부의 물리 법칙에 따라 에이전트가 실제로 이동하고, 그 물리적 상호작용의 결과로 다음 <strong>3가지 핵심 데이터</strong>를 튜플 형태로 한 묶음 반환합니다:</p>
+<p><img src="./img/02_2_step_output_terminal_visual.png" alt="step 반환 결과 터미널 시각화" />
+<strong>그림 09-3-1f</strong> 터미널 출력 결과 3대 요소(좌표 (1,0), 보상 0.0, 종료 False)를 그리드월드 실제 발판과 1:1 매핑한 시각적 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">step()</code> 메서드는 에이전트가 취하고자 하는 정수형 행동 번호(<code class="language-plaintext highlighter-rouge">action</code>)를 매개변수로 받습니다.</p>
+
+<hr />
+
+<p><code class="language-plaintext highlighter-rouge">env.step(action)</code>을 호출하면 환경 내부의 물리 법칙에 따라 에이전트가 실제로 이동하고, 그 물리적 상호작용의 결과로 다음 <strong>3가지 핵심 데이터</strong>를 튜플 형태로 한 묶음 반환합니다:</p>
 
 <table>
   <thead>
@@ -707,10 +747,17 @@ done: False
   </tbody>
 </table>
 
+<p><img src="./img/02_3_three_capsules_breakdown.png" alt="step 3총사 캡슐 구조 분해" />
+<strong>그림 09-3-1g</strong> <code class="language-plaintext highlighter-rouge">step()</code> 메서드가 배출하는 핵심 3대 캡슐: <code class="language-plaintext highlighter-rouge">next_state(S_{t+1})</code>, <code class="language-plaintext highlighter-rouge">reward(R_t)</code>, <code class="language-plaintext highlighter-rouge">done(종료플래그)</code>의 구조와 의미 분해 (1:1 순백색)</p>
+
+<hr />
+
 <p><img src="./img/fig_09_11_code_math_correspondence.png" alt="그림 09-11" />
 <strong>그림 09-11</strong> 코드 변수와 수식 기호의 1:1 대응 관계</p>
 
 <p>그림과 같이 현재 시간을 <em>t</em>라고 했을 때, <em>S</em><sub><em>t</em></sub>는 <code class="language-plaintext highlighter-rouge">state</code>, <em>A</em><sub><em>t</em></sub>는 <code class="language-plaintext highlighter-rouge">action</code>에 해당합니다. 시간 <em>t</em>에 에이전트가 행동을 하면, 보상으로 <em>R</em><sub><em>t</em></sub>를 얻고 다음 상태 <em>S</em><sub><em>t</em>+1</sub>로 전이합니다. 이때 얻은 보상 <em>R</em><sub><em>t</em></sub>가 <code class="language-plaintext highlighter-rouge">reward</code>에 해당하고 다음 상태 <em>S</em><sub><em>t</em>+1</sub>이 <code class="language-plaintext highlighter-rouge">next_state</code>에 해당합니다.</p>
+
+<hr />
 
 <p><img src="./img/02_step_method_memory_packaging.png" alt="step 메서드와 메모리 저장" />
 <strong>그림 09-3-2</strong> 행동 리모컨의 버튼을 누르고 얻은 보상 사과와 다음 상태 이동 경험을 배낭 속 memory 리스트에 패키징하여 담는 도로시와 지니</p>
@@ -730,12 +777,19 @@ done: False
 <p><img src="./img/05_agent_environment_loop_flow.jpg" alt="상호작용 루프 순환 다이어그램" />
 <strong>그림 09-3-3</strong> 강화학습 에이전트와 그리드월드 환경의 파이썬 인터랙션 루프 순환 흐름도</p>
 
+<hr />
+
 <ol>
   <li><strong>행동 결정 (<code class="language-plaintext highlighter-rouge">get_action</code>)</strong>: 도로시(에이전트)가 나침반을 보며 현재 위치 <code class="language-plaintext highlighter-rouge">state</code>에서 취할 행동 <code class="language-plaintext highlighter-rouge">action</code>을 결정합니다.</li>
   <li><strong>행동 실행 (<code class="language-plaintext highlighter-rouge">step</code>)</strong>: <code class="language-plaintext highlighter-rouge">GridWorld</code> 콘솔에 <code class="language-plaintext highlighter-rouge">action</code>을 전달하면, 콘솔 내부에서 물리 전이가 일어나 <code class="language-plaintext highlighter-rouge">(next_state, reward, done)</code> 캡슐 3개를 배출합니다.</li>
   <li><strong>경험 저장 (<code class="language-plaintext highlighter-rouge">add</code>)</strong>: 조교 지니 냥이가 세 캡슐을 가죽 가방 <code class="language-plaintext highlighter-rouge">memory</code> 속에 정갈하게 차곡차곡 담습니다.</li>
   <li><strong>목표 도달 판정 (<code class="language-plaintext highlighter-rouge">if done</code>)</strong>: 토토가 체크 플래그 깃발을 보고 “멍멍!” 짖어 모험의 완주를 알리면, 비로소 배낭을 열어 몬테카를로 역방향 정산(<code class="language-plaintext highlighter-rouge">agent.eval()</code>)을 실행합니다!</li>
 </ol>
+
+<p><img src="./img/02_4_four_steps_interaction_cycle.png" alt="4단계 상호작용 순환도" />
+<strong>그림 09-3-3b</strong> 행동결정(get_action) → 행동실행(step) → 경험저장(add) → 완주판정(done) 4단계 상호작용 순환 상세 다이어그램 (1:1 순백색)</p>
+
+<hr />
 
 <blockquote>
   <p>[!NOTE]
@@ -745,17 +799,32 @@ done: False
 상태 전이가 확률적일 때도 에이전트는 아무런 걱정이 없습니다. 그저 <code class="language-plaintext highlighter-rouge">step()</code> 메서드를 호출하고 반환되는 실제 결과를 관찰하여 메모리에 적어두기만 하면, 몬테카를로법이 알아서 평균을 내어 참 가치를 정확히 수렴시키기 때문입니다!</p>
 </blockquote>
 
+<p><img src="./img/02_5_stochastic_slippery_ice_grid.png" alt="빙판길 확률 전이와 MC" />
+<strong>그림 09-3-3c</strong> 빙판길 그리드월드에서 오른쪽 이동 시도 시 80% 성공과 20% 미끄러짐을 겪으며 실제 경험 평균으로 불확실성을 극복하는 몬테카를로법 (1:1 순백색)</p>
+
+<hr />
+
 <p>환경을 최초 출발 상태로 되돌리는 메서드는 <code class="language-plaintext highlighter-rouge">reset()</code>입니다.</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">env</span> <span class="o">=</span> <span class="nc">GridWorld</span><span class="p">()</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()</span>  <span class="c1"># 환경을 출발점 좌표 (2, 0)으로 초기화
 </span></code></pre></div></div>
 
+<p><img src="./img/02_6_env_reset_start_position.png" alt="출발점 초기화 reset" />
+<strong>그림 09-3-3d</strong> 매 에피소드 시작 시 에이전트를 출발점 좌표 (2,0) 발판으로 안전하게 리셋시키는 <code class="language-plaintext highlighter-rouge">env.reset()</code> 동작 시각화 (1:1 순백색)</p>
+
 <hr />
 
 <h2 id="0932-randomagent-클래스-상세-해부">09.3.2 RandomAgent 클래스 상세 해부</h2>
 
-<p>이제 몬테카를로법을 이용하여 정책 평가를 수행하는 에이전트를 파이썬 클래스로 구현하겠습니다. 상, 하, 좌, 우 4개 방향으로 동일하게 25%씩 무작위로 발걸음을 옮기는 에이전트를 <code class="language-plaintext highlighter-rouge">RandomAgent</code> 클래스로 작성합니다.</p>
+<p>이제 몬테카를로법을 이용하여 정책 평가를 수행하는 에이전트를 파이썬 클래스로 구현하겠습니다.</p>
+
+<p>상, 하, 좌, 우 4개 방향으로 동일하게 25%씩 무작위로 발걸음을 옮기는 에이전트를 <code class="language-plaintext highlighter-rouge">RandomAgent</code> 클래스로 작성합니다.</p>
+
+<p><img src="./img/03_1_random_agent_four_directions.png" alt="무작위 보행 4방향 나침반" />
+<strong>그림 09-3-3e</strong> 상, 하, 좌, 우 4개 방향으로 각각 25%씩 균등한 확률 나침반을 쥐고 출발선에 선 RandomAgent 도로시와 지니 (1:1 순백색)</p>
+
+<hr />
 
 <h3 id="1-클래스-초기화와-defaultdict의-마법">1) 클래스 초기화와 defaultdict의 마법</h3>
 
@@ -784,6 +853,13 @@ done: False
         <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">actions</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">probs</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><img src="./img/03_2_random_agent_init_flowchart.png" alt="RandomAgent 초기화 순서도" />
+<strong>그림 09-3-3f</strong> <code class="language-plaintext highlighter-rouge">RandomAgent</code> 초기화(<code class="language-plaintext highlighter-rouge">__init__</code>) 속성 7총사(<code class="language-plaintext highlighter-rouge">gamma</code>, <code class="language-plaintext highlighter-rouge">action_size</code>, <code class="language-plaintext highlighter-rouge">pi</code>, <code class="language-plaintext highlighter-rouge">V</code>, <code class="language-plaintext highlighter-rouge">cnts</code>, <code class="language-plaintext highlighter-rouge">memory</code>) 메모리 생성 표준 순서도 (1:1 순백색)</p>
+
+<hr />
+
+<hr />
+
 <p>초기화 메서드 <code class="language-plaintext highlighter-rouge">__init__()</code>의 각 속성을 상세히 분석해 보겠습니다:</p>
 
 <ol>
@@ -805,6 +881,9 @@ done: False
   <li><strong><code class="language-plaintext highlighter-rouge">self.memory = []</code></strong>: 에이전트가 한 에피소드 동안 겪은 경험 <code class="language-plaintext highlighter-rouge">(state, action, reward)</code>들을 순서대로 담는 리스트 배낭입니다.</li>
 </ol>
 
+<p><img src="./img/03_3_seven_attributes_architecture.png" alt="RandomAgent 7대 속성 아키텍처" />
+<strong>그림 09-3-3g</strong> RandomAgent 내부의 7대 핵심 속성(할인율, 행동크기, 정책pi, 가치함수V, 방문횟수cnts, 경험배낭memory) 구조도 (1:1 순백색)</p>
+
 <hr />
 
 <h4 id="-파이썬-defaultdict-vs-일반-dict-비교">💡 파이썬 defaultdict vs 일반 dict 비교</h4>
@@ -813,6 +892,8 @@ done: False
 
 <p><img src="./img/06_defaultdict_memory_mechanism.jpg" alt="defaultdict 메커니즘 비교" />
 <strong>그림 09-3-4</strong> 일반 dict의 KeyError 폭발과 defaultdict의 마법 같은 자동 초기화 금고 비교</p>
+
+<hr />
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1. 일반 dict를 사용할 때의 치명적 문제점
 </span><span class="n">v_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -825,6 +906,9 @@ done: False
 </span></code></pre></div></div>
 
 <p>에이전트가 낯선 좌표에 처음 발을 디뎠을 때, 일반 딕셔너리는 <code class="language-plaintext highlighter-rouge">KeyError</code>를 일으키며 멈춥니다. 하지만 <code class="language-plaintext highlighter-rouge">defaultdict(lambda: 0)</code>을 사용하면, 사전에 모든 좌표를 일일이 루프로 초기화해 두지 않아도 에이전트가 방문하는 즉시 안전하게 초깃값 0을 부여하고 계산을 이어갈 수 있습니다.</p>
+
+<p><img src="./img/03_4_keyerror_vs_defaultdict_safety.png" alt="KeyError vs defaultdict 안전 비교" />
+<strong>그림 09-3-4b</strong> 미등록 키 접근 시 KeyError 폭탄이 터지는 일반 dict와 자동으로 0을 생성하며 안전하게 계산을 잇는 defaultdict 비교 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -840,6 +924,9 @@ done: False
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">np.random.choice(actions, p=probs)</code>는 넘파이(NumPy)의 핵심 샘플링 함수입니다. <code class="language-plaintext highlighter-rouge">p</code> 매개변수에 지정된 확률 분포에 비례하여 <code class="language-plaintext highlighter-rouge">actions</code> 리스트 안에서 단 하나의 원소를 무작위 추출합니다.</p>
+
+<p><img src="./img/03_5_get_action_sampling_flowchart.png" alt="get_action 샘플링 순서도" />
+<strong>그림 09-3-4c</strong> <code class="language-plaintext highlighter-rouge">get_action()</code> 메서드 동작 순서도: 상태 s 입력부터 정책 확률 조회 후 np.random.choice() 무작위 행동 반환까지 (1:1 순백색)</p>
 
 <hr />
 
@@ -868,7 +955,13 @@ done: False
             <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">])</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">cnts</span><span class="p">[</span><span class="n">state</span><span class="p">]</span>
 </code></pre></div></div>
 
+<p><img src="./img/03_6_agent_methods_trio_flowchart.png" alt="에이전트 3대 메서드 유기적 순서도" />
+<strong>그림 09-3-4d</strong> <code class="language-plaintext highlighter-rouge">add()</code>(경험 배낭 적재), <code class="language-plaintext highlighter-rouge">reset()</code>(배낭 비우기), <code class="language-plaintext highlighter-rouge">eval()</code>(역방향 가치 갱신) 에이전트 3대 메서드 유기적 협력 표준 순서도 (1:1 순백색)</p>
+
+<hr />
+
 <h4 id="-add-메서드와-메모리-패키징-구조">① add() 메서드와 메모리 패키징 구조</h4>
+
 <p>에이전트가 한 걸음을 내딛을 때마다 <code class="language-plaintext highlighter-rouge">add(state, action, reward)</code>를 호출하여 세 요소를 튜플 <code class="language-plaintext highlighter-rouge">(state, action, reward)</code>로 묶어 <code class="language-plaintext highlighter-rouge">self.memory</code> 리스트에 순서대로 누적합니다.</p>
 
 <p>만약 에이전트가 출발점 <em>S</em><sub>0</sub>에서 시작하여 4걸음을 걸어 목표 골 지점 <em>S</em><sub>4</sub>에 도착했다면, 에이전트가 실제로 겪은 전체 시계열은 다음과 같습니다:</p>
@@ -876,6 +969,11 @@ done: False
 <blockquote>
   <h3 id="s0-a0-r0-s1-a1-r1-s2-a2-r2-s3-a3-r3-s4"><strong><em>S</em><sub>0</sub>, <em>A</em><sub>0</sub>, <em>R</em><sub>0</sub>, <em>S</em><sub>1</sub>, <em>A</em><sub>1</sub>, <em>R</em><sub>1</sub>, <em>S</em><sub>2</sub>, <em>A</em><sub>2</sub>, <em>R</em><sub>2</sub>, <em>S</em><sub>3</sub>, <em>A</em><sub>3</sub>, <em>R</em><sub>3</sub>, <em>S</em><sub>4</sub></strong></h3>
 </blockquote>
+
+<p><img src="./img/03_7_timeseries_trajectory_stream.png" alt="시계열 궤적 스트림 인포그래픽" />
+<strong>그림 09-3-4e</strong> 시간의 흐름(t=0,1,2,3)에 따라 (상태, 행동, 보상)이 컨베이어 벨트처럼 순차적으로 생성되는 시계열 궤적 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <p>이때 <code class="language-plaintext highlighter-rouge">self.memory</code>에 담기는 최종 데이터 구조는 다음과 같습니다:</p>
 
@@ -887,12 +985,17 @@ done: False
 </span><span class="p">]</span>
 </code></pre></div></div>
 
-<blockquote>
-  <p>[!IMPORTANT]
-<strong>🚨 마지막 종료 상태(<em>S</em><sub>4</sub>, 골인 지점)는 왜 memory에 저장하지 않을까요?</strong><br />
+<p><img src="./img/03_8_memory_list_packaging_structure.png" alt="메모리 리스트 패키징 구조도" />
+<strong>그림 09-3-4f</strong> 튜플 팩들이 순서대로 인덱싱되어 memory 리스트 서랍장에 차곡차곡 정돈된 파이썬 내부 메모리 구조도 (1:1 순백색)</p>
+
+<hr />
+
+<p><strong>🚨 마지막 종료 상태(<em>S</em><sub>4</sub>, 골인 지점)는 왜 memory에 저장하지 않을까요?</strong><br />
 골인 지점(종료 상태)은 게임이 완전히 끝난 곳이므로, 그 상태에서 에이전트가 새롭게 취할 수 있는 행동도 없고, 그 이후에 얻을 미래 보상도 전혀 존재하지 않습니다.<br />
 즉, 종료 상태의 참 가치 <em>V</em>(Goal)는 정의상 항상 <strong>0</strong>입니다. 갱신할 필요가 없는 상태이므로 메모리에 굳이 추가하지 않습니다.</p>
-</blockquote>
+
+<p><img src="./img/03_9_why_goal_not_in_memory_math.png" alt="종료 상태 Goal 제외 이유 수식 인포그래픽" />
+<strong>그림 09-3-4g</strong> 종료 상태(Goal)는 미래 보상이 전혀 없어 참 가치 V(Goal)=0으로 정의되므로 메모리에 저장할 필요가 없음을 증명하는 수식 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -909,8 +1012,15 @@ done: False
         <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">G</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">])</span> <span class="o">/</span> <span class="n">self</span><span class="p">.</span><span class="n">cnts</span><span class="p">[</span><span class="n">state</span><span class="p">]</span>
 </code></pre></div></div>
 
+<p><img src="./img/03_10_eval_reversed_loop_flowchart.png" alt="eval 역순회 루프 알고리즘 순서도" />
+<strong>그림 09-3-4h</strong> <code class="language-plaintext highlighter-rouge">eval()</code> 메서드의 역순회 루프 알고리즘 상세 순서도: reversed(memory) 추출부터 점화식 누적 및 가치 증분 갱신까지 (1:1 순백색)</p>
+
+<hr />
+
 <p><img src="./img/hojin_mc_code_lecture.jpg" alt="이호진 교수님의 몬테카를로 코드 실습 직강" />
 <strong>그림 09-3-5</strong> 인공지능 연구실에서 이호진 교수님이 도로시와 조교 지니에게 파이썬 코드 <code class="language-plaintext highlighter-rouge">for data in reversed(self.memory):</code> 루프와 3x4 그리드월드 가치 함수 히트맵의 1:1 연동 원리를 다정하게 지도하는 장면</p>
+
+<hr />
 
 <p><img src="./img/03_reversed_evaluation_chalkboard.png" alt="역방향 수익 계산 비유" />
 <strong>그림 09-3-6</strong> 에피소드가 골 지점에서 끝난 뒤, 역방향(reversed)으로 되짚어가며 할인율 <em>γ</em>를 곱해 효율적으로 수익 <em>G</em>를 누적하는 지니와 도로시</p>
@@ -924,6 +1034,8 @@ done: False
 <p><img src="./img/08_step_by_step_episode_trace.jpg" alt="에피소드 경로 추적 및 역방향 수익 계산" />
 <strong>그림 09-3-7</strong> 3x4 그리드월드에서 실제 에피소드 이동 경로(<em>S</em><sub>0</sub> → <em>S</em><sub>1</sub> → <em>S</em><sub>2</sub> → Goal)와 역순 거슬러 올라가기(<code class="language-plaintext highlighter-rouge">reversed</code>)를 통한 할인 수익 <em>G</em> 누적 과정</p>
 
+<hr />
+
 <p>에이전트가 다음과 같이 3걸음 만에 골 지점에 도달했다고 가정해 봅시다 (<em>γ</em> = 0.9):</p>
 <ul>
   <li><em>S</em><sub>0</sub> <code class="language-plaintext highlighter-rouge">(2, 0)</code>에서 행동 <em>A</em><sub>0</sub>(상) 취함 → 보상 <em>R</em><sub>0</sub> = 0.0 얻고 <em>S</em><sub>1</sub> <code class="language-plaintext highlighter-rouge">(1, 0)</code> 도착</li>
@@ -931,7 +1043,14 @@ done: False
   <li><em>S</em><sub>2</sub> <code class="language-plaintext highlighter-rouge">(1, 1)</code>에서 행동 <em>A</em><sub>2</sub>(우) 취함 → 골 지점에 도착하여 즉시 보상 <em>R</em><sub>2</sub> = +1.0 획득!</li>
 </ul>
 
-<p><code class="language-plaintext highlighter-rouge">self.memory</code>에는 <code class="language-plaintext highlighter-rouge">[(S0, A0, 0.0), (S1, A1, 0.0), (S2, A2, 1.0)]</code>가 저장됩니다. 이제 <code class="language-plaintext highlighter-rouge">eval()</code>의 역순 루프(<code class="language-plaintext highlighter-rouge">reversed</code>)가 돌기 시작합니다:</p>
+<p><code class="language-plaintext highlighter-rouge">self.memory</code>에는 <code class="language-plaintext highlighter-rouge">[(S0, A0, 0.0), (S1, A1, 0.0), (S2, A2, 1.0)]</code>가 저장됩니다.</p>
+
+<p><img src="./img/03_11_concrete_3steps_memory_data.png" alt="구체적 3스텝 메모리 데이터 시각화" />
+<strong>그림 09-3-7b</strong> 구체적인 3스텝 경로 (2,0)상→(1,0)우→(1,1)우→골(보상1.0)과 memory 리스트에 담긴 실제 튜플 데이터 시각화 (1:1 순백색)</p>
+
+<hr />
+
+<p>이제 <code class="language-plaintext highlighter-rouge">eval()</code>의 역순 루프(<code class="language-plaintext highlighter-rouge">reversed</code>)가 돌기 시작합니다:</p>
 
 <blockquote>
   <p><strong>[초기화]</strong>: <code class="language-plaintext highlighter-rouge">G = 0</code></p>
@@ -963,6 +1082,9 @@ done: False
 
 <p>앞에서부터 일일이 거듭제곱(<em>γ</em><sup>2</sup>, <em>γ</em><sup>3</sup>, …)을 계산하면 <em>O</em>(<em>T</em><sup>2</sup>)의 계산량이 소요되지만, 이처럼 <strong>뒤에서부터 거슬러 올라가면 단 한 번의 단일 곱셈과 덧셈만으로 모든 타임스텝의 할인 수익을 <em>O</em>(<em>T</em>) 선형 시간에 완벽히 계산</strong>할 수 있습니다!</p>
 
+<p><img src="./img/03_12_three_iterations_trace_table.png" alt="3회차 역방향 정산 추적표" />
+<strong>그림 09-3-7c</strong> <code class="language-plaintext highlighter-rouge">eval()</code> 루프 3회차 역방향 정산 추적표 (루프1: G=1.0 → 루프2: G=0.9 → 루프3: G=0.81) 및 단계별 변수 값 변화표 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="5-증분-평균-갱신과-가치-수렴-메커니즘">5) 증분 평균 갱신과 가치 수렴 메커니즘</h3>
@@ -975,6 +1097,8 @@ done: False
 
 <p><img src="./img/07_incremental_mean_convergence.jpg" alt="가치 증분 갱신과 학습 곡선 수렴" />
 <strong>그림 09-3-8</strong> 이호진 교수님과 도로시, 조교 지니가 확인하는 가치 증분 갱신 공식과 1000회 에피소드 반복에 따른 가치 수렴 곡선</p>
+
+<hr />
 
 <p>이 공식은 9.1절에서 유도했던 <strong>표본 평균의 증분 갱신 공식</strong>과 정확히 일치합니다:</p>
 
@@ -989,6 +1113,9 @@ done: False
 </ul>
 
 <p>에피소드 초기에는 <em>N</em>(<em>s</em>)가 작아 새로운 경험 <em>G</em>를 크게 반영하지만, 에피소드가 1000번 반복되며 <em>N</em>(<em>s</em>)가 커질수록 1 / <em>N</em>(<em>s</em>)가 작아져 가치 함수 <em>V</em>(<em>s</em>)는 흔들림 없이 안정적인 참 기댓값으로 완벽히 수렴하게 됩니다.</p>
+
+<p><img src="./img/03_13_incremental_formula_symbols_breakdown.png" alt="증분 갱신 공식 기호 분해 인포그래픽" />
+<strong>그림 09-3-8b</strong> 증분 갱신 공식 V_n = V_{n-1} + (1/n)(G_n - V_{n-1})의 4대 핵심 구성 기호(새로운 가치, 이전 가치, 스텝 크기 학습률, 오차 신호) 분해 인포그래픽 (1:1 순백색)</p>
 
 <hr />
 
@@ -1026,6 +1153,11 @@ done: False
 </span><span class="n">env</span><span class="p">.</span><span class="nf">render_v</span><span class="p">(</span><span class="n">agent</span><span class="p">.</span><span class="n">V</span><span class="p">)</span>
 </code></pre></div></div>
 
+<p><img src="./img/04_1_main_1000_episodes_flowchart.png" alt="메인 1,000 에피소드 전체 순서도" />
+<strong>그림 09-3-8c</strong> 파이썬 메인 1,000 에피소드 루프 전체 실행 순서도: 환경/배낭 reset()부터 while not done 걸음 상호작용 및 eval() 가치 갱신, render_v() 최종 히트맵 렌더링까지 (1:1 순백색)</p>
+
+<hr />
+
 <h3 id="1-실행-루프-한-줄-한-줄-돋보기">1) 실행 루프 한 줄 한 줄 돋보기</h3>
 
 <ol>
@@ -1043,6 +1175,9 @@ done: False
   <li><strong><code class="language-plaintext highlighter-rouge">env.render_v(agent.V)</code></strong>: 1,000번의 에피소드가 모두 끝나면 그리드월드의 각 칸에 저장된 가치 함수 숫자를 시각적 히트맵 격자로 렌더링합니다.</li>
 </ol>
 
+<p><img src="./img/04_2_main_loop_line_by_line_architecture.png" alt="메인 실행 루프 4단계 아키텍처" />
+<strong>그림 09-3-8d</strong> 메인 실행 루프 4단계 아키텍처 다이어그램: 초기화(reset) → 한걸음 탐험(step &amp; add) → 완주 정산(eval) → 시각화(render_v) (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="2-실행-결과와-가치-함수-히트맵">2) 실행 결과와 가치 함수 히트맵</h3>
@@ -1052,7 +1187,14 @@ done: False
 <p><img src="./img/fig_09_12_mc_value_function.png" alt="그림 09-12" />
 <strong>그림 09-12</strong> 몬테카를로법(1,000회 에피소드)으로 평가하여 도출한 가치 함수 V(s) 히트맵</p>
 
+<hr />
+
 <p>에이전트의 시작 위치는 왼쪽 맨 아래의 한 곳(<code class="language-plaintext highlighter-rouge">(2, 0)</code>)으로 고정되어 있지만, 사방으로 무작위로 발걸음을 옮기는 무작위 정책이기 때문에 충분한 에피소드를 반복하면 미로 구석구석 모든 위치를 적어도 수십 번 이상 경유할 수 있습니다. 그 덕분에 모든 상태의 가치 함수를 성공적으로 평가할 수 있었습니다.</p>
+
+<p><img src="./img/04_3_random_walk_full_coverage.png" alt="무작위 보행 미로 전역 탐험" />
+<strong>그림 09-3-12b</strong> 시작점은 (2,0) 하나지만 1,000번의 무작위 보행으로 3x4 그리드월드 전역을 고르게 방문하여 가치를 누적하는 탐험 인포그래픽 (1:1 순백색)</p>
+
+<hr />
 
 <blockquote>
   <p>[!CAUTION]
@@ -1062,6 +1204,9 @@ done: False
 이 중요한 문제를 해결하기 위해 도입되는 개념이 바로 다음 9.4절에서 배우게 될 <strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)와 <em>ϵ</em>-탐욕 정책(Epsilon-Greedy Policy)</strong>입니다!</p>
 </blockquote>
 
+<p><img src="./img/04_4_deterministic_deadlock_warning.png" alt="결정적 정책의 함정 인포그래픽" />
+<strong>그림 09-3-12c</strong> 결정적 정책의 함정: 늘 똑같은 외길만 걸어 나머지 칸들이 영원히 어두운 미지의 영역으로 남는 현상과 탐험(ε-탐욕)의 필요성 인포그래픽 (1:1 순백색)</p>
+
 <hr />
 
 <h3 id="3-몬테카를로법mc-vs-동적-프로그래밍dp-완벽-비교">3) 몬테카를로법(MC) vs 동적 프로그래밍(DP) 완벽 비교</h3>
@@ -1070,6 +1215,8 @@ done: False
 
 <p><img src="./img/fig_09_13_mc_vs_dp_value_comparison.png" alt="그림 09-13" />
 <strong>그림 09-13</strong> 몬테카를로법(MC, 1,000회 샘플링)과 동적 프로그래밍(DP, 이론적 해)으로 얻은 가치 함수 비교</p>
+
+<hr />
 
 <table>
   <thead>
@@ -1112,12 +1259,17 @@ done: False
 
 <p>환경 모델의 전이 확률 행렬이나 복잡한 벨만 연립방정식을 전혀 풀지 않았는데도, <strong>오직 실제로 1,000번 뛰어본 경험만으로 컴퓨터가 이론적 참 가치 함수를 완벽히 찾아낸 것</strong>입니다. 이것이 바로 모델 프리(Model-Free) 강화학습의 위대한 첫걸음입니다.</p>
 
+<p><img src="./img/04_5_model_free_triumph_milestone.png" alt="모델 프리의 위대한 첫걸음" />
+<strong>그림 09-3-13b</strong> 복잡한 연립방정식 없이 오직 1,000번의 경험만으로 이론적 참 가치 함수를 완벽히 찾아낸 모델 프리 강화학습의 위대한 승리 기념비 (1:1 순백색)</p>
+
 <hr />
 
 <h2 id="0934-핵심-정리-몬테카를로법-구현의-3대-핵심-기둥">09.3.4 핵심 정리: 몬테카를로법 구현의 3대 핵심 기둥</h2>
 
 <p><img src="./img/04_summary_core_takeaways.png" alt="핵심 정리 피날레" />
 <strong>그림 09-3-9</strong> 모험 완주 후 3대 핵심 기둥(step 상호작용, reversed 역방향 누적, incremental 실시간 갱신)을 마스터하고 다음 제어 장으로 전진하는 도로시와 지니</p>
+
+<hr />
 
 <ol>
   <li><strong>상호작용 인터페이스 (<code class="language-plaintext highlighter-rouge">env.step(action)</code>)</strong>:
@@ -1137,15 +1289,28 @@ done: False
   </li>
 </ol>
 
+<p><img src="./img/04_6_three_pillars_code_triad.png" alt="몬테카를로 구현 3대 기둥 코드 삼위일체" />
+<strong>그림 09-3-9b</strong> 몬테카를로 구현 3대 기둥(env.step() 물리상호작용, reversed() 역방향 누적, V+=(G-V)/cnt 증분갱신) 코드 삼위일체 인포그래픽 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “몬테카를로 코드의 진정한 아름다움은 바로 ‘극도의 간결함’에 있습니다. 단 3줄의 점화식 루프(<code class="language-plaintext highlighter-rouge">eval</code>)만으로 환경 모델 없이도 동적 프로그래밍과 완전히 동일한 참 가치 함수에 수렴함을 우리 두 눈으로 직접 확인했습니다. 이제 우리는 단순히 주어진 정책을 ‘평가’하는 것을 넘어, 최적의 정책을 스스로 찾아내는 ‘정책 제어(Control)’의 세계로 진입할 준비가 되었습니다!”</p>
 </blockquote>
 
+<p><img src="./img/04_7_hojin_mentor_note_code_beauty.png" alt="이호진 교수님의 직강 멘토링 노트" />
+<strong>그림 09-3-9c</strong> 이호진 교수님의 직강 멘토링 노트: 단 3줄의 점화식 루프(eval)가 지닌 수학적 아름다움과 정책 제어로의 진입을 선포하는 감동적인 칠판 강의 장면 (1:1 순백색)</p>
+
+<hr />
+
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />
 “도로시와 여러분, 정말 대단해요! 복잡한 행렬식 하나 없이 파이썬의 <code class="language-plaintext highlighter-rouge">defaultdict</code>와 리스트 뒤집기(<code class="language-plaintext highlighter-rouge">reversed</code>)만으로 몬테카를로 평가기를 뚝딱 완성했어요. 다음 9.4절에서는 행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)와 <em>ϵ</em>-탐욕 정책을 결합해 에이전트가 스스로 미로를 탈출하는 최적 정책 제어의 기적을 만들어 봅시다냥!”</p>
 </blockquote>
+
+<p><img src="./img/04_8_genie_cheering_control_preview.png" alt="조교 지니의 응원 및 9.4절 예고" />
+<strong>그림 09-3-9d</strong> 조교 지니의 응원: 행동 가치 함수 Q(s,a)와 ε-탐욕 탐험으로 스스로 최적 경로를 찾아내는 9.4 정책 제어의 기적으로 향하는 활기찬 출발 일러스트 (1:1 순백색)</p>
 
 
             <!-- 구글 애드센스 출력 -->

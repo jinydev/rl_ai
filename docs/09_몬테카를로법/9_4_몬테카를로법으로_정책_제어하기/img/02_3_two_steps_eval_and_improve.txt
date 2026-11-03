@@ -1,0 +1,10 @@
+A structured 2-step methodology diagram on a pure solid white background (#FFFFFF).
+Title: '정책 반복(Policy Iteration)의 2단계 구조'.
+Two connected architectural blocks:
+Block 1: '1단계 평가(Evaluation) 단계' (Soft Sky Blue)
+- 현재 정책으로 환경을 직접 걸으며 경험(s, a, r)을 쌓고 가치 함수 측정.
+Block 2: '2단계 개선(Improvement) 단계' (Emerald Green)
+- 가치 함수가 가장 높은 쪽으로 행동 확률을 수정(탐욕화)하여 정책 업그레이드!
+A circular arrow showing infinite iterative improvement toward the optimal policy π*.
+Dorothy and Genie standing proudly beside each stage.
+Crisp line art, pure solid white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,8 @@
+An educational illustration showing complete coverage via random walk on a pure solid white background (#FFFFFF).
+Title: '무작위 보행(Random Walk)의 위력: 3x4 미로 전역 탐험'.
+Visual scene:
+A 3x4 gridworld map. Although the agent always starts at '(2, 0)', thousands of colorful zigzag footprints spread out like gentle ripples across all 11 valid cells.
+Every single tile has footprint count tags: 'N=85회', 'N=120회', 'N=94회'.
+Dorothy smiling happily: '충분히 많이 걸으면 미로 구석구석 모든 칸의 가치 카드를 채울 수 있어요!'.
+Toto joyfully running along the colorful footprints.
+Crisp line art, vibrant pastel tones, pure solid white background (#FFFFFF). --ar 1:1

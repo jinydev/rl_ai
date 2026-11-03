@@ -1,0 +1,8 @@
+An uplifting, inspiring victory milestone illustration on a pure solid white background (#FFFFFF).
+Title: '모델 프리(Model-Free) 강화학습의 위대한 승리'.
+Visual scene:
+A grand stone monument erected on a clean laboratory pedestal.
+Engraved on the monument: '환경 모델(p, r) 없이 오직 1,000번의 직접 경험만으로 DP의 이론적 참 가치를 완벽히 찾아내다!'.
+Side-by-side comparison displays showing DP theoretical values and MC sampled values matching down to 0.40 and -0.03.
+Dorothy, Toto, Genie, and Professor Hojin celebrating around the monument with warm smiles and applause.
+Art style: clean line art, triumphant educational aesthetic, pure solid white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming and educational technical illustration demonstrating the Law of Large Numbers using dice rolls: "From Initial Random Fluctuation to the Exact Theoretical Expectation E[X] = 3.5".
+In the upper and center background, an elegant educational infographic diagram showing three progression stages:
+1. Stage 1 (Few Rolls N = 3): A small wooden tray with three red-pipped white dice showing [1, 6, 2], with an arrow pointing to "Sample Mean = (1+6+2)/3 = 3.0 (High error / 요동)".
+2. Stage 2 (Increasing Rolls N = 100 → 1,000): A flowing cascade of rolling dice creating a lively data stream, with a convergence graph line gradually smoothing out its jagged spikes toward the center horizontal line.
+3. Stage 3 (Large Numbers N = 10,000): A steady, perfectly flat glowing golden dashed line labeled "Theoretical True Expectation E[X] = 3.5000... (참 기댓값 수렴 ✔️)".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with 'STEM HERO' patch, orange-and-white striped t-shirt) happily rolls a pair of dice from a brown leather dice cup onto a low wooden research table, cheering with a beaming smile.
+Toto the fluffy cream puppy (#FBF6EB, no spots, wearing a sky-blue neck bandana) playfully paws at a dice that rolled near his paws, ears perked up in delighted curiosity.
+Jiny the tuxedo cat wearing tiny round scholar glasses and a red bell collar sits beside the graph chalkboard, proudly pointing a tiny wooden ruler at the converging 3.5 target line.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and table, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 주사위를 3번만 던졌을 때는 [1, 6, 2]로 평균 3.0의 큰 오차가 발생하지만, 시행 횟수를 100회, 1,000회, 10,000회로 늘릴수록 표본 평균이 참 기댓값 E[X]=3.5로 완벽하게 수렴해가는 '대수의 법칙'의 직관적 원리를 도로시의 유쾌한 주사위 굴리기와 지니의 수렴 도식으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

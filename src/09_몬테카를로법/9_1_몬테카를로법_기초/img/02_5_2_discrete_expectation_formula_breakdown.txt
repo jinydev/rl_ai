@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical formula breakdown diagram: "Deciphering the Theoretical Expected Value Formula E[X] = ∑ x · P(X = x)".
+In the upper center background, a large dark-green chalkboard displaying the grand, elegant chalk equation with three color-coded callout breakdown boxes:
+- Center Equation in glowing golden chalk: "E[X] = ∑_{x} x · P(X = x)"
+- Callout Box 1 (Left, Cyan border): "E[X]" → "이론적 기댓값 (Expected Value): 사건이 무한히 일어났을 때 얻게 될 평균적 가중 중심값"
+- Callout Box 2 (Center, Amber border): "∑_{x}" → "전체 합산 기호 (Summation): 가능한 모든 눈의 합 x (2부터 12까지)를 빠짐없이 더함"
+- Callout Box 3 (Right, Emerald-green border): "x · P(X = x)" → "값 × 확률 (Weighted Value): 각 값 x에 그 값이 나타날 확률(가중치)을 곱해줌 (가중 평균)"
+- Chalk note at the bottom: "2·(1/36) + 3·(2/36) + ... + 7·(6/36) + ... + 12·(1/36) = 정확히 7.0!"
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with a fine wooden stylus at the weighted term 'x · P(X=x)', explaining the weighting principle with an encouraging smile.
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) stands beside the chalkboard, holding a small digital calculator displaying "7.0", smiling brightly with understanding: "각 값에 확률을 곱해서 더한 가중 평균이군요!".
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and chalkboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 이산 확률 변수의 이론적 기댓값 공식 E[X] = ∑ x · P(X = x)의 각 기호(기댓값 E[X], 전수 합산 ∑_x, 값과 확률의 가중곱 x · P(X=x))를 칠판에서 정밀 분해하고, 2부터 12까지의 가중합이 정확히 7.0으로 떨어지는 원리를 이호진 교수님과 도로시의 수식 해설로 시각화한 1:1 정방형 순백색 수식 인포그래픽 삽화.
+

@@ -1,0 +1,8 @@
+A high-quality educational infographic illustration on a pure solid white background (#FFFFFF).
+Title at the top: '경험 샘플링(Experience Sampling): 시뮬레이션을 통한 가치 추정'.
+Concept: Instead of calculating complicated state transitions using exact mathematical probabilities, an agent collects direct experience samples by running episodes in an environment.
+Visual layout:
+On the left, a question mark floating over an intricate mathematical matrix labeled '복잡한 상태 전이 확률 p(s'|s,a)'.
+In the center, Dorothy (a cute cheerful girl with wavy orange twin tails and a green pinafore dress) and Toto (a small cream-white puppy with fluffy ears) happily running along a winding path in a gridworld lab, rolling dice and collecting glittering reward coins labeled '+1', '+5', '-1'.
+On the right, an open notebook showing average calculation formula: '평균 수익 ≈ 가치 함수'.
+Art style: crisp dark espresso brown line art, clean vector style, warm pastel accents (mint, coral, soft gold), 1:1 square aspect ratio, strictly pure white background with no drop shadows or grey borders. --ar 1:1

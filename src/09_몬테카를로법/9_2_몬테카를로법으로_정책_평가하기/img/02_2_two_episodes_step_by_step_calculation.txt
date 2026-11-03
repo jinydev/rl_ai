@@ -1,0 +1,12 @@
+A step-by-step mathematical calculation infographic on a pure solid white background (#FFFFFF).
+Title: '2개 에피소드 수익 정산과 표본 평균 계산'.
+Content divided into two clean panels:
+Panel 1: '에피소드 1 (3스텝 완주, γ=0.9)'
+- Path: A -(r=0)-> B -(r=0)-> C -(r=1)-> Goal
+- Calculation: G^(1) = 0 + 0.9*0 + (0.9^2)*1 = 0.81
+Panel 2: '에피소드 2 (4스텝 우회 완주, γ=0.9)'
+- Path: A -(r=0)-> B -(r=0)-> B' -(r=0)-> C -(r=1)-> Goal
+- Calculation: G^(2) = 0 + 0.9*0 + (0.9^2)*0 + (0.9^3)*1 = 0.729
+Bottom summary box: '상태 A의 표본 평균 가치: V(A) = (0.81 + 0.729) / 2 = 0.7695'
+Dorothy holding a calculator showing 0.7695, Toto clapping paws, clean chalk-style numbers.
+Art style: crisp typography, dark espresso lines, pure white background (#FFFFFF). --ar 1:1

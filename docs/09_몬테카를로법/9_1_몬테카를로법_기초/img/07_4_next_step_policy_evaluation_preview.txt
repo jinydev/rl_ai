@@ -1,0 +1,20 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Exciting and dynamic preview scene for the next chapter: "Setting Off to Policy Evaluation: Completing Episodes and Updating Values!".
+In the center composition:
+- Dorothy (spirited 9yo anime girl, twin chestnut pigtails with colorful beads, denim overalls with STEM HERO patch, orange striped shirt) wearing an explorer's satchel, holds up a bright rolled adventure map marked "09.2 몬테카를로 정책 평가 (Policy Evaluation)", pointing forward with a bright, adventurous grin!
+- Beside her, Jiny the tuxedo assistant cat with tiny round scholar glasses and red bell collar holds an ink quill and an evaluation ledger, giving an encouraging thumbs-up paw: "다음 절에서 에피소드를 끝까지 완주하고 가치 함수를 직접 업데이트해보자냥!".
+- Toto the fluffy cream puppy (#FBF6EB, sky-blue neck bandana) leaps happily beside Dorothy, tail wagging with joyful anticipation.
+- In the background, a glowing trail leads into an intriguing, stylized labyrinth puzzle with gleaming crystal checkpoint flags.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and path, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 샘플 모델과 증분 갱신이라는 든든한 수학적 무기를 장착하고, 다음 절인 '09.2 몬테카를로 정책 평가(Policy Evaluation)'에서 에이전트 도로시가 에피소드 미로를 끝까지 모험하고 보상들을 역방향으로 정산해 가치 함수를 직접 업데이트하는 실전으로 힘차게 출발하는 예고 장면을 시각화한 1:1 정방형 순백색 삽화.
+

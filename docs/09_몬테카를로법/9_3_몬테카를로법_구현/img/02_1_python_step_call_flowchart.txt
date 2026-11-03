@@ -1,0 +1,11 @@
+A professional software algorithm flowchart on a pure solid white background (#FFFFFF).
+Title: '파이썬 env.step(action) 메서드 호출 순서도'.
+Flowchart nodes:
+1. [호출: env.step(action 번호)] (Rounded oval)
+2. [GridWorld 환경 내부 물리 이동 처리] (Rectangle)
+   - 벽 충돌 검사 & 좌표 갱신
+   - 칸에 따른 즉각 보상(0.0 / +1.0 / -1.0) 계산
+   - 골/함정 도달 여부(done) 판정
+3. [반환: (next_state, reward, done) 3개 튜플] (Rounded oval)
+4. [에이전트 변수에 언패킹 수신] (Rectangle)
+Clean standard flowchart symbols with pastel fill, dark espresso outlines, readable Korean/Python text, pure white background (#FFFFFF). --ar 1:1

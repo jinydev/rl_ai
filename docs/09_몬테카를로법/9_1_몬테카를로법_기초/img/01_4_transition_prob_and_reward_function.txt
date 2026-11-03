@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical formula breakdown infographic: "The Core Twin Functions of a Known Environment".
+In the upper center background, a large dark-green chalkboard displaying two grand glowing chalk formulas with callout breakdown boxes:
+1. Upper Formula:
+   "p(s' | s, a) = P(S_{t+1} = s' | S_t = s, A_t = a)"
+   - Box for [s, a]: "현재 상태 s에서 행동 a를 취했을 때"
+   - Box for [s']: "다음 상태 s'로 전이할 엄밀한 수학적 확률"
+2. Lower Formula:
+   "r(s, a, s') = E[R_{t+1} | S_t = s, A_t = a, S_{t+1} = s']"
+   - Box for [r]: "상태 s에서 행동 a로 s'에 도착할 때 받는 확정적 즉각 보상"
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, neat salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with a fine wooden stylus at the transition probability formula, explaining the exact mathematical mechanism with a calm, friendly expression.
+Beside him, Jiny the tuxedo cat with tiny round scholar glasses and red bell collar sits atop a neat stack of bound mathematics treatises, holding up a golden equal sign (=) with a smart scholar's grin.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet and chalkboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 환경 모델이 알려진 문제에서 에이전트가 완벽하게 활용할 수 있는 두 개의 핵심 수학 기둥인 '상태 전이 확률 p(s'|s, a)'과 '보상 함수 r(s, a, s')'의 수식 기호 구성과 의미를 이호진 교수님과 조교 지니가 칠판에서 정밀하게 분해 해설하는 1:1 정방형 순백색 수식 인포그래픽 삽화.
+

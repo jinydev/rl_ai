@@ -1,0 +1,23 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming, humorous, and curious educational concept illustration: "Dorothy's Puzzled Curiosity: What on Earth is the Law of Large Numbers (대수의 법칙)?".
+In the upper center background, an imaginative glowing thought-bubble above Dorothy's head:
+- Inside the thought bubble, a dynamic convergence infographic:
+  - At small sample size N = 10: a wildly fluctuating zig-zag line bouncing erratically between 4.2 and 9.1.
+  - As samples increase to N = 1,000 and N = 10,000: the line smooths out dramatically, clamping onto a glowing golden target line labeled "참 기댓값 E[X] = 7.000... (Ground Truth)".
+  - A cascade of playful colorful dice raining down labeled "N → ∞ (엄청나게 많이 던질수록!)".
+- A chalkboard note behind the scene reads: "대수의 법칙 (Law of Large Numbers): 표본 개수 N이 커질수록 표본 평균은 무조건 참 기댓값에 수렴한다!".
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) holds a leather dice cup, tilting her head to the side with an adorable puzzled look, finger tapping her cheek in wonder: "대수의 법칙이요? 표본을 많이 모으면 저절로 진짜 답 7.0에 마법처럼 착 달라붙는다고요?!".
+Beside her, Toto the fluffy cream puppy (#FBF6EB, sky-blue neck bandana) tilts his head quizzically in sync with Dorothy, one ear flopped, looking at a rolling red die with curious black button eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and dice, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: "대수의 법칙(Law of Large Numbers)이 도대체 뭐예요?"라며 고개를 갸우뚱하는 도로시의 호기심 어린 질문과, 표본 수 N이 커질수록 요동치던 표본 평균이 참 기댓값 7.0으로 자석처럼 달라붙는 통계학의 기적을 도로시와 토토의 사랑스러운 모습으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

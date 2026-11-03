@@ -1,0 +1,12 @@
+A professional software algorithm flowchart on a pure solid white background (#FFFFFF).
+Title: '파이썬 importance_sampling.py 실행 순서도'.
+Flowchart steps:
+1. [정의: x=[1,2,3], π=[0.1, 0.1, 0.8], b=[1/3, 1/3, 1/3]] (Rectangle)
+2. [이론적 참값 계산: e_true = ∑ x*π = 2.7] (Rectangle)
+3. [온-정책 루프: pi에서 n=100개 샘플링 -> 평균 2.78, 분산 0.27] (Rectangle)
+4. [오프-정책 루프: for in range(n):] (Hexagon / Loop)
+   - idx = np.random.choice(b)  (행동 정책 b로 샘플링!)
+   - rho = pi[idx] / b[idx]     (중요도 가중치 계산!)
+   - samples_off.append(rho * x[idx])
+5. [오프-정책 결과 출력: 평균 2.95, 분산 10.63] (Rounded oval)
+Clean flowchart symbols with pastel colors, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

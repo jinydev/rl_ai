@@ -1,0 +1,25 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Dynamic and fun mathematical derivation scene explaining "Why We Multiply by 4: Isolating Pi (π)".
+In the center, an illuminated educational formula progression panel:
+Step 1: "N_circle / N_total ≈ π / 4"
+Step 2: Golden arrows swoop from both sides applying "× 4" to both the left and right sides of the equation:
+"[ 4 × (N_circle / N_total) ] ≈ [ 4 × (π / 4) ]"
+Step 3: The 4 in numerator and denominator cancel out on the right side, leaving the glorious isolated result highlighted in a bright glowing golden banner:
+"π ≈ 4 × (N_circle / N_total)"
+Chalkboard explanation note: "분모에 있던 정사각형 기하 상수 4를 없애고 순수한 원주율 π만 단독으로 추출하기 위해 양변에 4를 곱한 거란다냥!".
+In the foreground:
+Dorothy (cheerful 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) and Jiny the tuxedo cat (wearing tiny round scholar glasses and red bell collar) together enthusiastically hold a large, glowing 3D wooden numeral block '4', triumphantly fitting it into place at the front of the formula.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue neck bandana) jumps playfully nearby, wagging his tail happily at the glowing golden Greek letter 'π' symbol floating gently in the air.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and blocks, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 비례식 (N_circle / N_total ≈ π / 4)에서 분모의 4를 없애고 순수한 원주율 π만 단독으로 계산하기 위해 양변에 4를 곱해주는 대수학적 등식 변형의 원리를 도로시와 조교 지니가 커다란 '4' 블록을 조립하는 유쾌한 모습으로 시각화한 1:1 정방형 순백색 교육 삽화.
+

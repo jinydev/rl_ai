@@ -1,0 +1,8 @@
+A deeply heartwarming mentor lecture illustration on a pure solid white background (#FFFFFF).
+Title: '이호진 교수님의 감동적인 9장 종강 멘토링 노트'.
+Visual scene:
+Professor Hojin (handsome young Korean professor in early 30s, neat black hair, black-rimmed glasses, navy blazer) smiling warmly with an open notebook.
+Written on the presentation screen:
+'우리는 마침내 환경의 수학 공식을 몰라도 스스로 경험을 통해 지혜를 쌓는 진정한 강화학습에 성공했습니다. 몬테카를로법이 세운 3대 금자탑은 다음 10장 시간차 학습(TD)과 Q-러닝, 그리고 딥마인드의 심층 강화학습(DQN)으로 뻗어나가는 가장 위대한 반석입니다.'
+Dorothy, Toto, and Genie giving a heartfelt standing ovation.
+Warm academic glow, pure solid white background (#FFFFFF). --ar 1:1

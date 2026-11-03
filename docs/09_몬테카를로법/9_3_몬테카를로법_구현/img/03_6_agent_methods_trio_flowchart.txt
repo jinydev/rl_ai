@@ -1,0 +1,8 @@
+A comprehensive flowchart showing the synergy between agent methods on a pure solid white background (#FFFFFF).
+Title: 'RandomAgent 3대 후반부 메서드의 유기적 협력 순서도'.
+Visual arrangement:
+- Block 1: [add(state, action, reward)] -> 1스텝 걸을 때마다 (s, a, r) 튜플을 self.memory.append()로 배낭에 차곡차곡 적재
+- Block 2: [reset()] -> 에피소드 시작 시 self.memory.clear()로 배낭 비우기
+- Block 3: [eval()] -> 골 도달 시 reversed(self.memory) 역순회로 G 누적 및 self.V[s] 점진 갱신
+Interconnecting workflow arrows illustrating the lifecycle from step loop to episode completion.
+Clean vector style, dark espresso outlines, pure white background (#FFFFFF). --ar 1:1

@@ -1,0 +1,11 @@
+A standard software initialization flowchart on a pure solid white background (#FFFFFF).
+Title: 'RandomAgent.__init__() 초기화 표준 순서도'.
+Flowchart steps:
+1. [클래스 인스턴스 생성: agent = RandomAgent()] (Rounded oval)
+2. [할인율 설정: self.gamma = 0.9] (Rectangle)
+3. [행동 가짓수 설정: self.action_size = 4] (Rectangle)
+4. [균등 정책 딕셔너리 생성: random_actions = {0:0.25, 1:0.25, 2:0.25, 3:0.25}] (Rectangle)
+5. [defaultdict 생성: self.pi, self.V, self.cnts] (Rectangle)
+6. [경험 배낭 초기화: self.memory = []] (Rectangle)
+7. [에이전트 준비 완료] (Rounded oval)
+Clear flowchart nodes, dark espresso borders, pure white background (#FFFFFF). --ar 1:1

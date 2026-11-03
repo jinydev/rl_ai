@@ -1,0 +1,7 @@
+A conceptual 2D dimensional expansion diagram on a pure solid white background (#FFFFFF).
+Title: '평가 대상의 확장: 단일 상태 s에서 상태-행동 쌍 (s, a)로'.
+Visual comparison:
+Left side: '상태 가치 V(s)' -> 하나의 단일 방 s (1차원 공간 점수).
+Right side: '행동 가치 Q(s, a)' -> 방 s 안에 달린 4개의 문고리 Up, Down, Left, Right 각각에 점수 표지판이 달린 2차원 확장 구조!
+Genie demonstrating the 4 door signs with a pointer, Toto wagging tail.
+Crisp vector lines, dark espresso outlines, pure solid white background (#FFFFFF). --ar 1:1

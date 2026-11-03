@@ -1,0 +1,24 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/jiny_character_sheet.jpg (Jiny assistant cat model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+High-priority mathematical formula breakdown diagram: "The Three Essential Blocks of the Sample Mean Formula V ≈ (1/N) ∑ s_i".
+In the upper center background, a large dark-green blackboard showcasing the grand chalk equation with 3 color-coded highlighted callout boxes:
+1. Block 1 (Left, Cyan box):
+   "V ≈" → "가치 추정치 (Value Estimate): 완전한 이론값 E[X] 대신 실제 관측 표본들로 추정한 값"
+2. Block 2 (Center, Amber box):
+   "1 / N" → "시행 횟수 정규화 (Normalization): 수집한 총 표본 개수 N으로 나누어 산술 평균 완성"
+3. Block 3 (Right, Emerald-green box):
+   "∑_{i=1}^N s_i" → "경험 표본의 누적 총합 (Sum of Experiences): 1번째부터 N번째까지 실제로 부딪혀 얻은 데이터 합산"
+In the foreground:
+Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) points with a wooden pointer to the '1/N' normalization block, explaining the math with a welcoming smile.
+Jiny the tuxedo cat with tiny round scholar glasses sits beside the board, holding a miniature magnifying glass over the '∑' summation symbol.
+Pure solid clean white background (#FFFFFF), perfectly centered composition, isolated presentation graphic cutout, subtle soft contact shadows under feet and blackboard, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 몬테카를로법의 근간인 표본 평균 공식 V ≈ (1/N) ∑ s_i의 3대 핵심 블록(가치 추정치, 시행 횟수 정규화 1/N, 경험 표본 총합 ∑ s_i)의 기호별 의미와 역할을 이호진 교수님과 조교 지니가 칠판에서 정밀하게 분해 해설하는 1:1 정방형 순백색 수식 인포그래픽 삽화.
+

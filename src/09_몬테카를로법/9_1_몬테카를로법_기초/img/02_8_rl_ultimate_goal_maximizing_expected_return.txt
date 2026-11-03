@@ -1,0 +1,26 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/hojin_character_sheet.jpg (Professor Hojin canonical model sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+- /Users/hojin9/dev/projects/dorothy/data/images/toto_character_sheet.jpg (Toto puppy model sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Grand and inspiring technical concept illustration: "The Ultimate Goal of Reinforcement Learning: Maximizing Expected Return E[G_t]".
+In the upper center background, a brilliant glowing golden architectural banner:
+- The fundamental RL objective equation:
+  "★ 강화학습의 궁극적 목표: max_π E_π [ G_t ] (미래 기대 누적 수익 극대화!) ★"
+- An illuminated pathway branching into multiple future trajectories:
+  - Path A (Poor choice): Expected Return = +2.1 (dimly lit)
+  - Path B (Optimal policy π*): Expected Return = +98.5 (radiant golden path overflowing with glowing crystal stars and coins!)
+- A callout note: "💡 기댓값을 정확히 계산할 수 있어야 미래의 가장 가치 있는 행동을 선택할 수 있다!".
+In the foreground:
+Dorothy (determined 9yo anime girl, twin chestnut pigtails with beads, denim overalls with STEM HERO patch, orange striped shirt) holds a glowing brass "Expected Value Compass" in one hand, pointing boldly and confidently toward the highest expected return pathway.
+Beside her, Professor Hojin (handsome youthful early 40s Korean male engineering professor, smooth wrinkle-free skin, salt-and-pepper hair, thin round wire-rim glasses, navy polo shirt, blue jeans) smiles warmly, nodding in approval with a mentor's pride.
+Toto the fluffy cream puppy (#FBF6EB, sky-blue bandana) jumps playfully holding a small glowing crystal reward in his mouth.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under characters and path, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 강화학습의 궁극적 목표인 '미래에 받을 모든 보상의 총합에 대한 기댓값(기대 누적 수익 E[G_t]) 극대화'의 의미와, 기댓값을 정확히 계산해야만 최적의 행동 경로를 결정할 수 있다는 핵심 교훈을 기댓값 나침반을 든 도로시와 교수님의 지도로 시각화한 1:1 정방형 순백색 교육 삽화.
+

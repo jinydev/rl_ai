@@ -1,0 +1,9 @@
+[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution educational infographic]
+Infographic highlighting 'Unbiased Estimation (무편향 추정: Bias = 0)'.
+A pristine laboratory balance scale in perfect equilibrium on a clean white table.
+On the left pan: 'Full Return G (Sum of actual rewards up to episode end)'.
+On the right pan: 'True Value Expectation E[G]'.
+A golden seal of authenticity reads: 'Zero Theoretical Bias (Bias = 0)'.
+A comparison note highlights: 'No guesswork or bootstrapping from future estimates—only real, grounded experience!'.
+Dorothy and Genie examine the scale with magnifying glasses, celebrating mathematical purity.
+Crisp dark espresso brown outlines, soft emerald and sky-blue pastel accents, pure white background.

@@ -1,0 +1,19 @@
+Reference Images:
+- /Users/hojin9/dev/projects/dorothy/data/images/dorothy_character_sheet.jpg (Dorothy canonical turnaround sheet)
+
+Prompt:
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational technical infographic, masterpiece, highly detailed.
+Charming and orderly educational illustration: "The Known Environment as a Perfect Chessboard".
+In the center, an illuminated transparent glowing holographic chessboard grid floating gently above a clean minimalist research table:
+- Crisp white and sky-blue grid tiles arranged in neat mathematical order, each tile labeled with precise coordinates (x, y).
+- Every single movement path between squares is marked by clear glowing neon arrows showing 100% deterministic pathways with no fog or uncertainty.
+In the foreground:
+Dorothy (adorable 9yo anime girl, twin chestnut pigtails with colorful beads, blue denim overalls with 'STEM HERO' patch, orange striped t-shirt) leans over the table with bright, curious eyes, holding a little glowing robot pawn piece in her hand, smiling as she effortlessly plans out the pawn's future path step-by-step.
+Beside the board, Toto the cream puppy (#FBF6EB, sky-blue bandana) sits calmly, watching the glowing chessboard with tilted head and happy black button eyes.
+Pure solid clean white background (#FFFFFF), perfectly centered subject composition, isolated presentation graphic cutout, subtle soft contact shadows under table and characters, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text.
+
+Negative:
+3D CGI, realistic photo, dark background, slide frames, presentation borders, wrinkles on professor, SNU logo, spots on puppy, duplicate animals, Japanese text
+
+[해설]: 지난 단원들에서 다룬 '환경 모델이 알려진 문제'의 본질인 정밀한 바둑판/체스판처럼 다음 상태와 규칙이 100% 투명하게 정해져 있어 모든 미래를 사전에 오차 없이 내다볼 수 있는 질서정연한 이상적 환경을 도로시와 홀로그램 그리드로 시각화한 1:1 정방형 순백색 삽화.
+

@@ -1,0 +1,8 @@
+A charming educational illustration of observational learning on a pure solid white background (#FFFFFF).
+Title: '도로시와 지니의 관찰 학습 비유: 다른 이의 행동에서 배우기'.
+Left side: '테니스 벤치 관찰'
+- Dorothy sitting on a bench holding a racket, observing an expert tennis coach's powerful swing, noting improvements in her sketchbook.
+Right side: '프로게이머 공략 관찰'
+- Genie watching a pro-gamer's video stream on a tablet, learning how to safely bypass a fiery boss dragon without getting burned directly.
+Subtitle: '직접 실패하지 않고도 다른 주체의 경험 데이터로부터 최고의 전략을 학습한다!'.
+Art style: warm pastel storybook vector, dark espresso line art, pure white background (#FFFFFF). --ar 1:1
