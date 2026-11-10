@@ -1,4 +1,22 @@
-# Chapter 10.4: Q-Learning & Bellman Optimality (10.4 Q 러닝) YouTube 16:9 Cover Prompt
-# File: 10_4_Q_러닝.png (16:9 ratio)
+# Chapter 10_4_Q_러닝: YouTube 16:9 Cover Specification
+# File: 10_4_Q_러닝.png (16:9 widescreen ratio, 1376x768)
+# Guide Standard: /Users/hojin9/dev/jinysite/강화학습3/guides/cover_assets.md
 
-Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide YouTube lecture and chapter cover illustration for reinforcement learning Chapter 10.4. At the top center on a handsome wooden chalkboard banner is the clear bold Korean title: '10.4 Q 러닝' and subtitle '(Q-Learning & Bellman Optimality)'. CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape from the reference image, keeping his exact facial identity, youthful early 40s appearance (smooth skin, no wrinkles), stylish neatly parted salt-and-pepper short hair, thin round wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt with no badges, blue jeans, and grey sneakers, holding white chalk pointing toward the title banner. In the center, Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) happily picks out the brightest glowing golden crown token labeled 'max Q(s\', a\')' from multiple path choices. Beside her, Toto the cream-white puppy (solid milk-white, no spots, black button nose, sky-blue bandana) wags his tail excitedly. On the left, Jiny the tuxedo cat (round scholar glasses, red bell collar) sits at a wooden table noting the Bellman optimality update formula without importance sampling. Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, Korean and English text only, zero Japanese characters.
+[DESIGN SYSTEM & LAYOUT RULES]
+1. ZERO CHALKBOARD RULE:
+   - Absolutely NO wooden chalkboard, NO dark green chalkboard banner, NO classroom frame, NO vertical poles, NO chalk tray.
+   - NO chalkboard lecturing pose: Professor Hojin is NOT writing on a board or holding chalk in the air.
+2. 100% PURE SOLID WHITE STUDIO BACKGROUND (#FFFFFF):
+   - Flawless clean white studio background throughout the entire 1376x768 widescreen canvas.
+3. OPEN TYPOGRAPHY ZONE (UPPER-LEFT 50%):
+   - Upper-left quadrant is 100% pure solid white space reserved for vector typography.
+   - Blue rounded pill badge (#1A73E8) with crisp bold white text: 'PART 10 · 강화학습 이론' (NanumGothic Bold, 22pt, x=80, y=100).
+   - Directly beneath, large powerful dark navy (#111827) 48pt Bold title: '10.4 Q-러닝:\n오프-정책 제어의 제왕' (x=80, y=180).
+   - Directly beneath, elegant slate gray (#6B7280) 20pt Regular 3-line subtitle: '벨만 최적 방정식을 직접 샘플링하여\n중요도 가중치 없이 최적 정책을 돌파하는\n모델 프리 강화학습의 최고봉' (x=80, y=350).
+   - Author signature: '강의: 이호진 교수 · 조교 지니와 도로시 탐험대' (x=80, y=500, 20pt, #374151).
+   - Over 150px of clear breathing room between subtitle and characters, 0% overlap.
+4. CHARACTERS & COMPONENT ASSETS (Aligned to same ground baseline y=615):
+   - Asset 01 (Left Desk, x=640, y=370, target_h=245, ground_y=615, Z=1): Jiny verifying the Q-table without needing next action A_{t+1}.
+   - Asset 02 (Center-Left, x=785, y=205, target_h=410, ground_y=615, Z=2): Dorothy stepping boldly toward the maximum optimal reward.
+   - Asset 03 (Center-Right, x=940, y=410, target_h=205, ground_y=615, Z=3): Toto running happily alongside Dorothy on the shortest optimal path.
+   - Asset 04 (Right, x=1085, y=105, target_h=510, ground_y=615, Z=4): Professor Hojin (Canonical hojin_26, hands in pockets) smiling warmly.

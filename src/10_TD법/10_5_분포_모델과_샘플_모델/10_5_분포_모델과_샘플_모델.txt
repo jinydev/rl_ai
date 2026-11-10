@@ -1,4 +1,22 @@
-# Chapter 10.5: Distribution Model vs Sample Model (10.5 분포 모델과 샘플 모델) YouTube 16:9 Cover Prompt
-# File: 10_5_분포_모델과_샘플_모델.png (16:9 ratio)
+# Chapter 10_5_분포_모델과_샘플_모델: YouTube 16:9 Cover Specification
+# File: 10_5_분포_모델과_샘플_모델.png (16:9 widescreen ratio, 1376x768)
+# Guide Standard: /Users/hojin9/dev/jinysite/강화학습3/guides/cover_assets.md
 
-Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide YouTube lecture and chapter cover illustration for reinforcement learning Chapter 10.5. At the top center on a handsome wooden chalkboard banner is the clear bold Korean title: '10.5 분포 모델과 샘플 모델' and subtitle '(Distribution Model vs Sample Model)'. CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape from the reference image, keeping his exact facial identity, youthful early 40s appearance (smooth skin, no wrinkles), stylish neatly parted salt-and-pepper short hair, thin round wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt with no badges, blue jeans, and grey sneakers, holding white chalk pointing toward the title banner. In the center, Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) happily compares a neat probability distribution chart and an experiential sample tray of rolled wooden dice. Beside her, Toto the cream-white puppy (solid milk-white, no spots, black button nose, sky-blue bandana) wags his tail enthusiastically watching the dice. On the left, Jiny the tuxedo cat (round scholar glasses, red bell collar) sits at a wooden table noting the convergence of sample averages to the true distribution. Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, Korean and English text only, zero Japanese characters.
+[DESIGN SYSTEM & LAYOUT RULES]
+1. ZERO CHALKBOARD RULE:
+   - Absolutely NO wooden chalkboard, NO dark green chalkboard banner, NO classroom frame, NO vertical poles, NO chalk tray.
+   - NO chalkboard lecturing pose: Professor Hojin is NOT writing on a board or holding chalk in the air.
+2. 100% PURE SOLID WHITE STUDIO BACKGROUND (#FFFFFF):
+   - Flawless clean white studio background throughout the entire 1376x768 widescreen canvas.
+3. OPEN TYPOGRAPHY ZONE (UPPER-LEFT 50%):
+   - Upper-left quadrant is 100% pure solid white space reserved for vector typography.
+   - Blue rounded pill badge (#1A73E8) with crisp bold white text: 'PART 10 · 강화학습 이론' (NanumGothic Bold, 22pt, x=80, y=100).
+   - Directly beneath, large powerful dark navy (#111827) 48pt Bold title: '10.5 분포 모델과 샘플 모델:\n에이전트의 초경량화' (x=80, y=180).
+   - Directly beneath, elegant slate gray (#6B7280) 20pt Regular 3-line subtitle: '전체 확률 계산의 무거운 동적 계획법에서\n단일 경험 샘플링의 초경량화로 도약하는\n환경 모델의 본질과 패러다임 전환' (x=80, y=350).
+   - Author signature: '강의: 이호진 교수 · 조교 지니와 도로시 탐험대' (x=80, y=500, 20pt, #374151).
+   - Over 150px of clear breathing room between subtitle and characters, 0% overlap.
+4. CHARACTERS & COMPONENT ASSETS (Aligned to same ground baseline y=615):
+   - Asset 01 (Left Desk, x=640, y=370, target_h=245, ground_y=615, Z=1): Jiny organizing lightweight sample ledger instead of massive distribution books.
+   - Asset 02 (Center-Left, x=785, y=205, target_h=410, ground_y=615, Z=2): Dorothy stepping forward lightly and freely with zero baggage.
+   - Asset 03 (Center-Right, x=940, y=410, target_h=205, ground_y=615, Z=3): Toto running happily with agility.
+   - Asset 04 (Right, x=1085, y=105, target_h=510, ground_y=615, Z=4): Professor Hojin (Canonical hojin_26, hands in pockets) watching over warmly.

@@ -1,0 +1,6 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Scene: Standing before the Vast Sea of Continuous Space and the Curse of Dimensionality.
+Dorothy and Tin Man stand on a small floating stone step of the discrete 3x4 grid world, looking out over an infinite glowing ocean of continuous vectors [x, y, θ, ẋ, ẏ, θ̇] representing CartPole, robotics, and high-resolution video games (Atari).
+A giant wooden table dictionary on the shore collapses under the sheer number of infinite possible states (10^170 Go board states).
+Assistant Genie (tuxedo cat with spectacles) points toward a distant glowing constellation in the shape of a neural network.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO physical sky or clouds, purely isolated floating elements and characters with soft contact shadows on pure white ground. NO slide UI frames.

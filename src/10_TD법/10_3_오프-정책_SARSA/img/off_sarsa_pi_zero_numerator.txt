@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing pi(A_{t+1}|S_{t+1}) = 0 causing rho = 0. When Tinny steps into the exploratory path, the numerator dial of Target Policy pi suddenly drops to "0.0" and a soft red alert light flashes. Jiny the cat points with wide green eyes in alarm at the numerator gauge dropping flat to zero.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

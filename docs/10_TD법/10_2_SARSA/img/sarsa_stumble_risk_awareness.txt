@@ -1,0 +1,7 @@
+# sarsa_stumble_risk_awareness.png 프롬프트 명세서
+- **파일명**: sarsa_stumble_risk_awareness.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 로봇 틴맨
+- **주요 내용**: 좁은 평균대 위에서 "10% 확률로 바람에 발을 헛디딜 수 있다"는 생각풍선을 띄우며 조심스럽게 균형을 잡는 틴맨의 자기인식
+- **절대 규칙**: ZERO SLIDE UI

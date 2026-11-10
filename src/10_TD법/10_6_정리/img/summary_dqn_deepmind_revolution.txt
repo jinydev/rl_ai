@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 09_dqn_evolution_deepmind_homage.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: 딥마인드 DQN으로 진화하여 아타리 게임과 인공지능 시대를 연 Q-러닝의 미래
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A nostalgic retro-arcade celebration of deep reinforcement learning.
+Dorothy and robot Tinny play together on an arcade cabinet labeled 'Deep Q-Network (DQN) - Atari 1980s Retro Arcade'.
+On the glowing screen, Breakout and Space Invaders score counters are hitting record high scores '999,999'.
+Streams of luminous neural network connection lines flow from the arcade console into robot Tinny's glowing heart core.
+Prof. Hojin (early 40s, youthful face, round glasses, dark navy polo) smiles warmly beside the cabinet, celebrating how table Q-learning evolved into Deep Q-Networks.
+Chibi cat TA Jiny wears pixelated retro sunglasses, giving two thumbs up.
+1:1 square composition, retro-futuristic arcade warmth, sparkling particle effects.
+

@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing get_action() where the agent acts solely based on Behavior Policy b. Tinny the robot stands on the real-world checkered tiles wearing an adventurous orange scout vest, rolling a multi-colored polyhedral dice labeled "self.b" to pick his next step in the live environment, while his blue target crown stays safely in his backpack.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

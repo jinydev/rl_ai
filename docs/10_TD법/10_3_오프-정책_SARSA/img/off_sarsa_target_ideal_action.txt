@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the ideal next action A_{t+1} from Target Policy pi. A pristine shining golden railway track leading forward, with a glowing green arrow indicating the single optimal greedy choice A_{t+1}. Dorothy in her denim overalls points with a small pointer baton at the perfect golden rail.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

@@ -1,0 +1,7 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Concept: Three-dimensional crystal backup diagrams of DP, MC, and TD.
+Left (Dynamic Programming): A spherical crystal globe showing all branching decision tree paths simultaneously illuminated in blue light (full distribution sweep, model-based).
+Middle (Monte Carlo): A tall vertical hourglass pillar showing a single trajectory from top to bottom before lighting up the root state in emerald green (episode-end delayed backup).
+Right (Temporal Difference): A compact, sharp lightning rod where a single 1-step advance instantly sparks a golden lightning bolt backwards to update the current state (1-step real-time bootstrapping).
+Characters: Dorothy and Assistant Genie (tuxedo cat with spectacles) examining the golden TD lightning model with awe. Tin Man pointing with admiration.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO museum walls, NO slide UI frames or text banners. Soft contact shadows on pure white floor.

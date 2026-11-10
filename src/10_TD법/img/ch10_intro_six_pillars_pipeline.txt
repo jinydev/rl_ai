@@ -1,0 +1,19 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_six_pillars_pipeline.png
+# Chapter: CHAPTER 10 TD법
+# Concept: 제10장 시간차 학습(TD) 6대 소단원 종합 파이프라인 로드맵
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A grand sequential pipeline architecture diagram.
+Six interconnected glowing milestone stations along a majestic ascending rainbow road:
+Station 1: '10.1 TD Policy Evaluation (V-Function Bootstrapping)'
+Station 2: '10.2 On-Policy SARSA (5-Step Q-Control)'
+Station 3: '10.3 Off-Policy SARSA (Importance Sampling rho)'
+Station 4: '10.4 Q-Learning (King of Model-Free Control: max Q)'
+Station 5: '10.5 Distribution vs Sample Models (Zero-Buffer Diet)'
+Station 6: '10.6 Summary & Bridge to Neural Networks'
+Dorothy, robot Tinny, and chibi cat TA Jiny walk along the pipeline from left to right with bright enthusiastic expressions.
+Prof. Hojin stands at the final gateway waving them forward into Chapter 11.
+1:1 square composition, comprehensive architecture infographic, radiant colors.
+

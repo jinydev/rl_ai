@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing sampling immediate reward R_t and next state S_{t+1}. Tinny the robot catches a glowing golden reward gem labeled "R_t" in one mechanical hand, while stepping his foot onto a solid stone tile labeled "S_{t+1}". Clean, direct 1-step interaction with the environment.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

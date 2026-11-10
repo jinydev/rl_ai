@@ -1,0 +1,12 @@
+# Image Generation Prompt Specification
+# File: 18_td_v_one_step_foundation.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 10.1절 1-스텝 TD 상태 가치 갱신 사슬 복습
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A stepping-stone memory link. Dorothy takes a light, single hop from stone tile S_t to the very next stone tile S_{t+1}.
+As her foot lands, an instant golden chain of light connects the two stones, with a glowing formula banner hovering in the air: 'V(S_t) <- V(S_t) + alpha * [R_t + gamma * V(S_{t+1}) - V(S_t)]'.
+Prof. Hojin nods warmly, reminding the class that this 1-step foundation will now naturally upgrade to Q-values.
+1:1 square composition, magical glowing light trails, crisp educational visual.
+

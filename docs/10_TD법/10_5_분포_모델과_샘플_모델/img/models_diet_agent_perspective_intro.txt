@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the agent's internal model perspective. Tinny the robot stands thoughtfully pointing at his retro monitor head, where two thought bubbles float: one showing a thick filing cabinet (Distribution Model) and the other showing a simple rolling die (Sample Model).
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

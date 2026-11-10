@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing rho calculation: `rho = self.pi[next_state][next_action] / self.b[next_state][next_action]`. A miniature brass division mechanism on a laboratory desk. A blue gear labeled "pi (Target)" meshes on top of an orange gear labeled "b (Behavior)", outputting a numbered brass coin stamped with "rho". Jiny the cat watches intently, checking the ratio with a small ruler.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

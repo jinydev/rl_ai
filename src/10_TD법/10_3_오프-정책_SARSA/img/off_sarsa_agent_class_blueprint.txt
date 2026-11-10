@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the SarsaOffPolicyAgent software architecture. Dorothy and Tinny the robot examine a large architectural blueprint pinned to a small wooden drafting easel. The blueprint shows two modular power cores labeled "self.pi (Target: Greedy)" and "self.b (Behavior: Epsilon-Greedy)", connected to a two-slot sliding buffer "deque(maxlen=2)". Tinny happily points a brass screwdriver at the module.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

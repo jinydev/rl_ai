@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing instantaneous 1-step update without any waiting buffer. Tinny the robot takes one quick step, and an instant golden lightning bolt sparks between his foot and a pocket Q-meter display, showing zero delay and zero buffer needed. Toto the puppy runs alongside happily.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

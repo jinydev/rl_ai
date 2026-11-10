@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the fatal flaw of off-policy SARSA where rho = 0. Tinny the robot holds a glowing gold star immediate reward R_t, but as rho drops to 0, the reward dissolves into soft grey mist/smoke disappearing into thin air. Tinny looks sad with blue LED crescent eyes while Dorothy looks on with sympathy.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

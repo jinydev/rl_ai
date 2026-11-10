@@ -1,0 +1,7 @@
+# sarsa_argmax_elegance.png 프롬프트 명세서
+- **파일명**: sarsa_argmax_elegance.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 도로시, 조교 지니
+- **주요 내용**: 전이 확률 p 없이도 argmax_a Q(s, a) 크리스털 나침반 하나로 최적 행동을 즉시 가리키는 Q 함수의 명쾌한 우아함
+- **절대 규칙**: ZERO SLIDE UI

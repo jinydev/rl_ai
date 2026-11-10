@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the neural network Q-function Q_network(state). A glowing crystalline cybernetic brain module receiving a continuous state vector input beam on the left and lighting up 4 action output ports (Up, Down, Left, Right) on the right with Q-values. Tinny points at the neural core with admiration.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

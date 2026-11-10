@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the Q-learning update() process. A clean 4-step conveyor on a laboratory table: (1) state S_t & action A_t input, (2) immediate reward R_t, (3) golden crown selecting next_q_max, (4) Q-table reservoir instantly filled with new value. Jiny the cat oversees the smooth flow with a pointer stick.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

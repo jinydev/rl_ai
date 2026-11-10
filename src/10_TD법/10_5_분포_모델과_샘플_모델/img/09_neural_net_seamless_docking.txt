@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 09_neural_net_seamless_docking.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 심층 신경망(Deep Neural Network)과 완벽하게 도킹되는 샘플 모델의 미래
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A high-tech docking chamber illustration.
+A glowing neural network module labeled 'Deep Q-Network: Q_theta(state)' slides smoothly and docks perfectly into robot Tinny's open chest compartment, fitting like a custom glove into the minimalist `get_action()` socket: 'output -> np.argmax(Q)'.
+Streams of luminous blue and amber data pulses pulse between the neural net and Tinny's limbs.
+Dorothy and chibi cat TA Jiny cheer as the connection locks in with a golden mechanical latch: '100% Seamless Deep RL Compatibility!'.
+1:1 square composition, sci-fi warmth, sparkling energy filaments.
+

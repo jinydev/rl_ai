@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the gateway to Deep RL and DQN. An illuminated archway labeled "Gateway to 11. Deep Neural Networks & DQN". Dorothy and Tinny stand at the threshold looking ahead with excitement at the glowing neural pathways extending beyond.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

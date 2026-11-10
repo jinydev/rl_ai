@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 09_conservative_safety_first_driving.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: SARSA의 안전제일주의 운전 철학 (절벽 도로 비유)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic yet charming cliffside mountain road driving metaphor.
+On the right edge looms a steep rocky precipice labeled 'Fatal Cliff Edge (-100 Penalty)'.
+A narrow risky shortcut runs right beside the cliff edge, where turbulent wind gusts blow labeled '10% Exploration Mistake Risk'.
+Further inland, a well-paved, wide bypass road runs securely behind thick wooden guardrails labeled 'SARSA Conservative Safe Route'.
+Dorothy and robot Tinny happily cruise inside a small yellow retro convertible car along this safe inland route, wearing safety goggles.
+Prof. Hojin, early 40s, glasses, dark charcoal navy polo, gives a big enthusiastic thumbs-up from the roadside, approving of their smart decision.
+1:1 square composition, bright dynamic storytelling, warm Miyazaki colors.
+

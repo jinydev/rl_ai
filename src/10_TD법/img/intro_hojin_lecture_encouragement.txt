@@ -1,0 +1,8 @@
+# intro_hojin_lecture_encouragement.png 프롬프트 명세서
+
+- **파일명**: `intro_hojin_lecture_encouragement.png`
+- **배경**: 순백색(Pure Solid White, `#FFFFFF`)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 이호진 교수님, 도로시, 조교 지니, 토토
+- **주요 내용**: 시간차 학습이 컴퓨터 과학과 강화학습 역사에 던진 지적 혁명과, SARSA 및 Q-러닝으로 이어지는 웅장한 여정을 열정적으로 설파하시는 이호진 교수님
+- **절대 규칙**: ZERO SLIDE UI, 순수 누끼형 일러스트, 이호진 교수님 얼굴 데이터셋 엄격 일치

@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 10_q_learning_prophecy_bridge.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: Q-러닝의 예고와 복음 (중요도 비율 ρ 없는 완벽한 오프-정책)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A heroic scene of mathematical revelation and prophecy.
+Prof. Hojin (early 40s, youthful face, smooth skin without wrinkles, neat salt-and-pepper short black hair, round wire glasses, solid dark navy polo shirt) draws an ancient, radiant golden sword from an ornate stone pedestal.
+The blade of the sword is engraved with glowing runes: 'max_a Q(S_{t+1}, a) [No rho division needed!]'.
+Brilliant golden light rays radiate outward, illuminating the awe-struck faces of Dorothy, robot Tinny, and chibi cat TA Jiny, who look up in wonder.
+Toto the white dog barks with joyous excitement.
+1:1 square composition, epic yet heartwarming Ghibli fantasy atmosphere, triumphant golden glow.
+

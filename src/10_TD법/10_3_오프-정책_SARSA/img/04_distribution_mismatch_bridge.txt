@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 04_distribution_mismatch_bridge.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 확률 분포 불일치(Distribution Mismatch)를 잇는 중요도 비율 ρ의 징검다리
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual metaphor of bridging two different worlds across a chasm.
+On the left floating stone island sits 'Behavior Distribution b(A_{t+1}|S_{t+1})' where Tinny stands.
+On the right floating stone island sits 'Target Distribution pi(A_{t+1}|S_{t+1})' where the golden treasure rests.
+Across the misty gap between them, chibi cat TA Jiny carefully lays down an incandescent magical stepping-stone plate engraved with 'Importance Weight rho = pi / b'.
+Dorothy happily prepares to cross over the bridge, showing how importance sampling perfectly converts behavior samples into target evaluations.
+1:1 square composition, glowing magical light trails, clear mathematical concept.
+

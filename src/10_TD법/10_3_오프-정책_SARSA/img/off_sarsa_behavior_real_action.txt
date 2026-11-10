@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the actual sampled next action A_{t+1} from Behavior Policy b. A rugged winding dirt path outdoors where unpredictable autumn breeze blows and a rolling wooden 10-sided dice lands on an exploratory side-path. Tinny the robot takes an adventurous exploratory step along this path, creating fresh footprints.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

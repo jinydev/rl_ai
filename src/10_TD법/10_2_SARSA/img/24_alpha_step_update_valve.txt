@@ -1,0 +1,12 @@
+# Image Generation Prompt Specification
+# File: 24_alpha_step_update_valve.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 학습률 α 조절 밸브와 실시간 Q테이블 갱신 배관 비유
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A charming plumbing workshop metaphor. Chibi cat TA Jiny turns a shiny brass water valve labeled 'Learning Rate alpha = 0.8'.
+From an overhead pipe labeled 'TD Error Stream', a measured, sparkling stream of golden liquid flows down through the valve into a neatly organized grid table labeled 'Q(s, a) Table Reservoir', refreshing the numerical values in each cell with a fresh glow.
+Dorothy and robot Tinny adjust the dials, ensuring the update step size is neither too turbulent nor too slow.
+1:1 square composition, creative mechanism visual, warm rich tones.
+

@@ -1,0 +1,16 @@
+# Image Generation Prompt Specification
+# File: 04_epsilon_greedy_pie_roulette.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: ε-탐욕 정책(Epsilon-Greedy Policy)의 원형 룰렛 분할
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A large colorful wooden fortune roulette wheel on a wooden stand.
+The wheel is divided into two distinct sections:
+A massive 90% golden sector labeled '1 - epsilon + (epsilon/4) = 0.925: Greedy Best Action (Max Q)', sparkling with star icons.
+The remaining 10% sector is divided into four equal pastel colored slices (Up, Down, Left, Right), each labeled 'epsilon/4 = 0.025: Random Exploration'.
+Tinny the friendly silver robot gives the wheel a gentle spin, while Dorothy watches with sparkling eyes.
+Toto the white fluffy dog happily wags his tail waiting for the arrow indicator.
+Chibi cat TA Jiny sits on top of the wheel frame holding a mini pointer stick.
+1:1 square composition, festive yet mathematically precise infographic style.
+

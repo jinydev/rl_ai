@@ -1,0 +1,8 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Scene: The Grand Archery Range of Reinforcement Learning.
+Three distinct circular targets side-by-side:
+Target 1 (DP): Perfectly centered golden dot at the exact center (Zero Bias, Zero Variance).
+Target 2 (MC): Arrows scattered all across the outer rings, but their average center is the bullseye (Zero Bias, High Variance).
+Target 3 (TD): An ultra-compact, tightly grouped cluster of emerald arrows landing just a tiny millimeter next to the center (Slight Initial Bias, Ultra-Low Variance).
+Characters: Assistant Genie (tuxedo cat with spectacles) holding a precision golden caliper, showing Dorothy why the tight cluster of TD leads to much faster real-world convergence. Dorothy nodding with deep understanding. Tin Man admiring the precision.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO archery grass field or sky, NO slide UI cards or frames. Soft natural contact shadows on pure white ground.

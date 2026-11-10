@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 02_on_policy_conservative_limit.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 온-정책의 지나친 안전제일주의와 지름길 탐색 결핍
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic path divergence metaphor. In the center, a direct, short golden bridge leads straight across to the sparkling Goal castle, passing safely a few meters alongside a marked bomb pit (-1.0 danger sign).
+Robot Tinny, overly terrified by his own 10% random mistakes, takes an agonizingly long, winding detour route hugging the outer walls hundreds of meters away.
+Dorothy stands on the main path, pointing eagerly toward the straight golden bridge, exclaiming: 'If we could only follow a 100% optimal policy, that direct bridge is totally safe and fastest!'.
+Chibi cat TA Jiny scratches his whiskers thoughtfully.
+1:1 square composition, expressive characters, rich storytelling contrast.
+

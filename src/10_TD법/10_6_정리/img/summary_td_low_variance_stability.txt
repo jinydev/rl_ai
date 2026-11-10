@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing TD 1-step stability. A serene, crystal-clear calm water basin reflecting a steady warm light, with only a single emerald ring gently placed on the water causing a small single calm ripple, representing the calm, ultra-low variance of TD 1-step bootstrapping with a single rho. Dorothy kneels gently beside the basin with Toto the white puppy resting peacefully by her feet.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

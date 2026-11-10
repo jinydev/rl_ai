@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 05_one_step_rho_ratio_scale.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 1-스텝 중요도 가중치 ρ를 측정하는 정밀 저울
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A precision balance scale workshop. An antique golden brass balance scale rests on a polished wooden tabletop.
+On the left scale pan rests a glowing lavender crystal weight representing 'Target Probability pi(A_{t+1}|S_{t+1})'.
+On the right scale pan rests an amber crystal weight representing 'Behavior Probability b(A_{t+1}|S_{t+1})'.
+Chibi cat TA Jiny, wearing round spectacles, reads the central indicator needle labeled 'Ratio rho = pi / b' with a brass ruler.
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) points out that multiplying this single number rho to the TD target corrects the distribution difference in just one step.
+1:1 square composition, elegant scientific craftsmanship feel, clean lines.
+

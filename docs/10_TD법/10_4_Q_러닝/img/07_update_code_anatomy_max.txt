@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 07_update_code_anatomy_max.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: Q-러닝 update() 메서드의 간결하고 우아한 4단계 코드 해부도
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A clean modern modular block diagram of the Python code `QLearningAgent.update()`.
+Four pastel Lego-like architectural blocks stacked vertically:
+Block 1 (Mint Green): 'if done: next_q_max = 0 (Terminal zeroing)'
+Block 2 (Radiant Amber Gold): 'next_q_max = max(self.Q[next_state, :]) (Crown the Max!)'
+Block 3 (Sky Blue): 'target = reward + gamma * next_q_max; Q[s,a] += alpha * (target - Q[s,a])'
+Block 4 (Lavender Purple): 'pi[state] = greedy_probs(Q, epsilon=0); b[state] = greedy_probs(Q, epsilon=0.1)'
+Chibi cat TA Jiny, wearing a white lab coat and glasses, points to Block 2 with a laser pointer.
+Dorothy claps with delight seeing how much simpler this is than SARSA.
+1:1 square composition, high readability, beautiful code architecture illustration.
+

@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 03_env_dist_vs_sample_model.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 환경의 분포 모델(완전한 확률 지도) vs 환경의 샘플 모델(블랙박스 시뮬레이터)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual duality of environmental models.
+On the left (Distribution Model): A massive open encyclopedic atlas with detailed transition probability matrices p(s'|s,a) and reward tables written in golden calligraphy. Dorothy examines the open pages with a magnifying glass.
+On the right (Sample Model): A sleek retro vending machine simulator with a slot labeled 'Action in' and a tray dispensing '(Next State, Reward) marbles' labeled `env.step(action)`. Robot Tinny drops a brass coin in and receives a marble with a happy ding!
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) stands in the center explaining the conceptual difference.
+1:1 square composition, elegant visual contrast, rich narrative warm tones.
+

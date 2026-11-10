@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 06_zero_buffer_instant_update.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: 무거운 deque 버퍼 배낭을 버리고 즉시 1스텝 실시간 갱신하는 초경량 틴맨
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A liberating software architecture metaphor.
+In the background, an old heavy leather backpack labeled 'deque(maxlen=2) Wait Buffer' sits discarded on the ground.
+In the foreground, robot Tinny, now feather-light and streamlined, takes a brisk single forward step from state S_t to S_{t+1}.
+The instant his mechanical foot touches down and receives reward R_t, a crisp bolt of golden electricity flashes down directly updating the Q table in zero milliseconds!
+Chibi cat TA Jiny holds up a sign: 'Zero Wait! Real-Time Instant Update!'.
+1:1 square composition, speedy and dynamic motion lines, charming robot animation.
+

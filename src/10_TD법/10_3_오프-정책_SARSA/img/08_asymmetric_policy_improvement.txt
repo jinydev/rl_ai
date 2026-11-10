@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 08_asymmetric_policy_improvement.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 비대칭 정책 개선 (Asymmetric Policy Improvement)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dual-stamping craft workshop representing asymmetric policy improvement.
+On a polished wooden workbench sits a central glowing blueprint labeled 'Shared Q(s, a) Table'.
+From this single Q table, chibi cat TA Jiny carries out two distinctly different updates:
+To the left side for Target Policy pi: He stamps a magnificent 100% Golden Royal Crown labeled 'epsilon = 0, Pure Greedy'.
+To the right side for Behavior Policy b: He stamps an adventurous four-colored explorer compass with colorful dice labeled 'epsilon = 0.1, Exploration'.
+Dorothy and robot Tinny watch the synchronized dual-improvement process with great delight.
+1:1 square composition, rich workshop atmosphere, warm lively colors.
+

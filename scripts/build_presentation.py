@@ -442,6 +442,134 @@ def add_slide_header_and_avatar(prs, header1_text, header2_text, slide_num, tota
     return slide
 
 
+def add_cover_slide_elements(slide_cover, target_path, lecture_name, slides_data):
+    """
+    표지 슬라이드(Slide 01)의 순수 아트워크 위에 PPT에서 사용자가 직접 수정 가능한
+    네이티브 파워포인트 도형 및 텍스트 상자(뱃지, 타이틀, 부제목)를 삽입합니다.
+    """
+    badge_text = ""
+    title_text = ""
+    subtitle_text = ""
+
+    # (A) target_path 내 .txt 명세 파일(예: 10_1_TD법으로_정책_평가하기.txt) 우선 파싱
+    spec_candidates = [
+        os.path.join(target_path, f"{lecture_name}.txt"),
+        os.path.join(target_path, "cover_spec.txt"),
+    ]
+    for s_path in spec_candidates:
+        if os.path.exists(s_path):
+            try:
+                with open(s_path, "r", encoding="utf-8") as f:
+                    txt_content = f.read()
+                # 뱃지 정규식: '강화학습 10.1' 또는 'CHAPTER 10'
+                m_b = re.search(r"'(강화학습\s*[\d\.]+|CHAPTER\s*[\d\.]+)'", txt_content)
+                if m_b:
+                    badge_text = m_b.group(1)
+                # 타이틀 정규식: Heavy title: '...' 또는 title: '...'
+                m_t = re.search(r"Heavy title:\s*'([^']+)'", txt_content)
+                if not m_t:
+                    m_t = re.search(r"title:\s*'([^']+)'", txt_content, re.IGNORECASE)
+                if m_t:
+                    title_text = m_t.group(1)
+                # 부제목 정규식: 2-line subtitle: '...' / '...'
+                m_s = re.search(r"SemiBold 2-line subtitle:\s*'([^']+)'\s*/\s*'([^']+)'", txt_content)
+                if m_s:
+                    subtitle_text = f"{m_s.group(1)}\n{m_s.group(2)}"
+                else:
+                    m_s2 = re.search(r"subtitle:\s*'([^']+)'", txt_content, re.IGNORECASE)
+                    if m_s2:
+                        subtitle_text = m_s2.group(1).replace("\\n", "\n")
+            except Exception:
+                pass
+            if badge_text and title_text:
+                break
+
+    # (B) .txt 명세가 없거나 항목 누락 시 기본 규칙에 따라 생성
+    if not badge_text:
+        sub_m = re.match(r"^(\d+)_(\d+)_(.*)$", lecture_name)
+        ch_m = re.match(r"^(\d+)_(.*)$", lecture_name)
+        if sub_m:
+            badge_text = f"강화학습 {sub_m.group(1)}.{sub_m.group(2)}"
+        elif ch_m:
+            badge_text = f"CHAPTER {ch_m.group(1)}"
+        else:
+            badge_text = "강화학습"
+
+    if not title_text:
+        if slides_data and len(slides_data) > 0 and slides_data[0].get("header1"):
+            raw_h1 = slides_data[0]["header1"]
+            cleaned = re.sub(r"^(\d+[\.\d]*)\s*", "", raw_h1).strip()
+            title_text = cleaned
+        else:
+            sub_m = re.match(r"^\d+(?:_\d+)?_(.*)$", lecture_name)
+            if sub_m:
+                title_text = sub_m.group(1).replace("_", " ")
+            else:
+                title_text = lecture_name
+
+    # 타이틀 줄바꿈 포맷팅 (너무 길면 자연스럽게 2행 분할)
+    if "\n" not in title_text and len(title_text) > 8:
+        words = title_text.split()
+        if len(words) >= 2:
+            mid = (len(words) + 1) // 2
+            title_text = " ".join(words[:mid]) + "\n" + " ".join(words[mid:])
+
+    if not subtitle_text:
+        index_path = os.path.join(target_path, "index.md")
+        if os.path.exists(index_path):
+            with open(index_path, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+            for l in lines:
+                l_s = l.strip()
+                if l_s and not l_s.startswith("#") and not l_s.startswith("-") and not l_s.startswith("!") and not l_s.startswith(">") and not l_s.startswith("---"):
+                    cleaned_l = re.sub(r"[\*\_`]", "", l_s)
+                    if len(cleaned_l) > 36:
+                        subtitle_text = cleaned_l[:24] + "\n" + cleaned_l[24:50] + "..."
+                    else:
+                        subtitle_text = cleaned_l
+                    break
+        if not subtitle_text:
+            subtitle_text = "단 1-스텝의 다음 상태 가치로\n실시간 온라인 가치를 갱신하다"
+
+    # 1. 뱃지 (라운드 사각형 - 사용자 편집 가능)
+    badge_w = Inches(2.2) if len(badge_text) <= 9 else Inches(2.5)
+    badge = slide_cover.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.60), badge_w, Inches(0.48))
+    make_flat_shape(badge, fill_color=COLOR_BADGE, line_color=None)
+    tf_b = badge.text_frame
+    tf_b.margin_left = tf_b.margin_right = tf_b.margin_top = tf_b.margin_bottom = 0
+    tf_b.word_wrap = False
+    p_b = tf_b.paragraphs[0]
+    p_b.text = badge_text
+    p_b.alignment = PP_ALIGN.CENTER
+    p_b.font.size = Pt(17)
+    p_b.font.bold = True
+    p_b.font.color.rgb = COLOR_WHITE
+    p_b.font.name = FONT_FAMILY
+
+    # 2. 메인 타이틀 (텍스트 상자 - 사용자 편집 가능)
+    tb_t = slide_cover.shapes.add_textbox(Inches(0.8), Inches(1.28), Inches(5.8), Inches(1.5))
+    tf_t = tb_t.text_frame
+    tf_t.word_wrap = True
+    tf_t.margin_left = tf_t.margin_right = tf_t.margin_top = tf_t.margin_bottom = 0
+    p_t = tf_t.paragraphs[0]
+    p_t.text = title_text
+    p_t.font.size = Pt(38)
+    p_t.font.bold = True
+    p_t.font.color.rgb = COLOR_TITLE
+    p_t.font.name = FONT_FAMILY
+
+    # 3. 부제목 (텍스트 상자 - 사용자 편집 가능)
+    tb_s = slide_cover.shapes.add_textbox(Inches(0.8), Inches(2.92), Inches(5.8), Inches(1.2))
+    tf_s = tb_s.text_frame
+    tf_s.word_wrap = True
+    tf_s.margin_left = tf_s.margin_right = tf_s.margin_top = tf_s.margin_bottom = 0
+    p_s = tf_s.paragraphs[0]
+    p_s.text = subtitle_text
+    p_s.font.size = Pt(18)
+    p_s.font.color.rgb = COLOR_BODY
+    p_s.font.name = FONT_FAMILY
+
+
 def inject_notes(slide, script_text):
     """파워포인트 하단 슬라이드 노트(NotesPage)에 심층 강의 스크립트를 주입합니다."""
     if script_text:
@@ -661,13 +789,15 @@ def main():
     if cover_path:
         slide_cover = prs.slides.add_slide(prs.slide_layouts[6])
         slide_cover.shapes.add_picture(cover_path, Inches(0), Inches(0), Inches(13.333), Inches(7.5))
+        # 16:9 와이드스크린 표지 위에 PPT에서 직접 수정 가능한 네이티브 텍스트 요소(뱃지, 타이틀, 부제목) 삽입
+        add_cover_slide_elements(slide_cover, target_path, lecture_name, slides_data)
         intro_script = (
             "강화학습에서 환경의 수학적 모델을 전혀 알지 못할 때, 우리는 어떻게 최적의 길을 찾아낼 수 있을까요? "
             "복잡한 수식에 매달리는 대신, 직접 세상에 발을 내딛고 겪은 수많은 경험들의 평균을 내어 참된 가치를 밝혀내는 "
             "위대한 방법론이 바로 몬테카를로법입니다. 수학적 기초와 흥미진진한 역사 속으로 함께 떠나보겠습니다."
         )
         inject_notes(slide_cover, intro_script)
-        print(f"🖼️ [슬라이드 01] 유튜브 커버 전폭 표지 삽입 완료: {cover_path}")
+        print(f"🖼️ [슬라이드 01] 유튜브 커버 전폭 표지 및 네이티브 편집 텍스트 삽입 완료: {cover_path}")
 
     # 5. 공통 빌더 로직: slides.md의 내용을 파싱하여 본문 슬라이드 순차 생성
     for idx, slide_item in enumerate(slides_data):

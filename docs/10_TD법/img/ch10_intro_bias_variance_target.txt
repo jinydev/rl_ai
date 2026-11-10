@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_bias_variance_target.png
+# Chapter: CHAPTER 10 TD법
+# Concept: 편향과 분산의 양궁 과녁 대조 (MC vs TD)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+An archery target comparison of bias and variance.
+Left Target (Monte Carlo): Perfect bullseye aim on average (Zero Bias), but arrows are widely and wildly scattered all over the outer rings (High Variance). Robot Tinny looks dizzy looking at the scatter.
+Right Target (TD Learning): Arrows are clustered tightly together in a tiny 2cm cluster (Ultra-Low Variance), slightly shifted by a millimeter from center (Slight Initial Bias that shrinks to zero). Dorothy holds an archery bow with a calm, confident smile.
+Prof. Hojin nods approvingly: 'Low variance allows TD to learn dramatically faster with fewer samples!'.
+1:1 square composition, crisp visual symmetry, clean flat cel shading.
+

@@ -1,0 +1,7 @@
+# jiny_cheer_sarsa_preview.png 프롬프트 명세서
+- **파일명**: jiny_cheer_sarsa_preview.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 조교 지니, 도로시, 토토, 로봇 틴맨
+- **주요 내용**: 'Next: 10.2 SARSA!' 깃발을 힘차게 흔들며 다음 챕터로 함께 출격하는 도로시 탐험대의 신나는 응원 피날레
+- **절대 규칙**: ZERO SLIDE UI

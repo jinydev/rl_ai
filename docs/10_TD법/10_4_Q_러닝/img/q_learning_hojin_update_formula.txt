@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Professor Hojin (strictly early 40s, smooth youthful skin, no wrinkles, round wire-rim glasses, solid dark navy polo shirt, master face match) standing at a classic chalkboard. With golden chalk in hand, he clearly writes the immortal Q-learning update formula: Q(S_t, A_t) <- Q(S_t, A_t) + alpha * [R_t + gamma * max_a Q(S_{t+1}, a) - Q(S_t, A_t)]. Dorothy watches eagerly from the side.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

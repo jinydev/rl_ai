@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 07_q_diet_step2_pure_sample_model.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 2단계 궁극의 다이어트: self.b마저 없애고 동전 튕기기와 argmax만 남긴 순수 샘플 모델
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A scene of ultimate minimalist elegance.
+Robot Tinny stands sleek, shiny, and weightless, holding only a single golden coin in one hand and a sparkling sapphire magnifying glass in the other.
+In the air floats the minimalist logic:
+'if coin_flip < epsilon: random action! (Exploration)'
+'else: np.argmax(Q[state])! (Exploitation)'.
+No policy dictionaries anywhere—pure on-demand computation!
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) gives an enthusiastic two thumbs up, praising this flawless engineering simplification.
+Dorothy and chibi cat TA Jiny applaud proudly.
+1:1 square composition, radiant metallic reflections, joyful atmosphere.
+

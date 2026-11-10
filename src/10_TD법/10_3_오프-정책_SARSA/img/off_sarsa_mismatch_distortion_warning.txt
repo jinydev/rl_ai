@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing distribution mismatch distortion. Jiny the lab assistant cat wears a two-tone optical spectacle (left lens glowing sapphire blue for Target Policy pi, right lens glowing warm amber orange for Behavior Policy b). A beam of light passes through and splits into two different angles onto the ground, showing the distortion when samples from b are used for pi without correction. Jiny points with an alert expression.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

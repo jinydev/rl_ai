@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 13_policy_control_gpi_cycle.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 정책 제어의 양대 톱니바퀴 (평가와 개선의 GPI 핑퐁 메커니즘)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+Two massive interlocking golden brass gears representing Generalized Policy Iteration (GPI).
+The left gear is engraved with 'Evaluation (Measure Q)' and sparkling meter icons.
+The right gear is engraved with 'Improvement (Greedify Policy)' with upward climbing arrows.
+Dorothy and robot Tinny enthusiastically turn the brass crank handles, driving the gears forward in an endless harmonious dance toward optimal policy.
+Toto watches the spinning gears with bright joyful eyes.
+1:1 square composition, elegant clockwork steampunk aesthetic, vivid colors.
+

@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing infinite continuous state space. An endless cosmic expanse with coordinate axes (x, y, theta, velocity) where continuous trajectories loop smoothly, representing real-world autonomous vehicles and robotic joints with infinite states. Dorothy looks through a brass astrolabe in wonder.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

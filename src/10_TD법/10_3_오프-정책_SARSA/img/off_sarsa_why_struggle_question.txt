@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing why off-policy SARSA struggles in practice. Dorothy and Jiny look at a scatter plot paper filled with fluctuating arrows and zigzag lines on a wooden desk. A glowing yellow question mark hangs above Dorothy's head as she tilts her head with a curious expression: "Why does off-policy SARSA struggle to converge stably despite clean theory?". Toto the white dog tilts his head curiously too.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

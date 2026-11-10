@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 07_terminal_flush_safeguard.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 에피소드 종료 시점 마지막 스텝 강제 플러시(Flush) 메커니즘
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A triumphant finish line scene with a clever mechanical safeguard.
+Dorothy and robot Tinny cross a golden checkered finish line banner labeled 'Goal! Reward +1.0! Done=True'.
+Behind them on a short brass roller track, the final crucial footprint tile leading into the goal was about to be left un-updated.
+Chibi cat TA Jiny hurriedly pulls a shiny golden emergency lever labeled 'FLUSH: agent.update(next_state, None, None, None)'.
+As the lever clicks, a radiant golden gem with '+1.0 Reward' drops perfectly onto the final footprint tile, securing the final Q-value update in the nick of time.
+Toto the white dog barks joyfully with a festive party hat.
+1:1 square composition, humorous and instructive narrative art.
+

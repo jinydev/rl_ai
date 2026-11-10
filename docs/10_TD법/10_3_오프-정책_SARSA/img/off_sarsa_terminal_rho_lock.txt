@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing terminal state handling `if done: rho = 1.0, next_q = 0`. Tinny the robot has reached the bright yellow Goal flag. A golden safety lock snaps shut over the bootstrap counter, displaying "next_q = 0, rho = 1.0 (Safe Terminal)", preventing any phantom bootstrap computation. Dorothy cheers happily waving a small flag with Toto wagging his tail.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

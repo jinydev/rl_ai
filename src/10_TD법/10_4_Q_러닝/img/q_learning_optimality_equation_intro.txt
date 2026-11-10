@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the Bellman optimality equation. Dorothy and Jiny discover an ancient illuminated manuscript pedestal displaying the golden formula: q*(s, a) = sum p(s'|s,a) * [r + gamma * max_a' q*(s', a')]. A tiny golden crown rests on the max symbol, radiating soft warm amber light. Dorothy points in wonder.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 11_off_sarsa_summary_three_monuments.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 10.3 오프-정책 SARSA 핵심 3대 기둥 기념비와 Q-러닝으로의 출항
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A celebratory milestone conclusion. Under a warm orange morning sky, three noble classical marble monuments stand on an elevated plinth:
+Monument 1: 'Dual Policy Separation (b for explore, pi for optimal)'
+Monument 2: '1-Step Importance Sampling (Single rho, low variance)'
+Monument 3: 'rho=0 Limitation & Awakening to Q-Learning'
+In front of the monuments, the complete Dorothy exploration team poses joyfully:
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) gives an encouraging smile with a hand on Dorothy's shoulder.
+Dorothy waves a flag reading '10.3 Off-Policy SARSA Conquered!'.
+Robot Tinny and chibi cat TA Jiny point enthusiastically toward a massive golden sunlit gate in the background labeled '10.4 Q-Learning: The King of Reinforcement Learning'.
+1:1 square composition, celebratory and inspirational tone, clean studio Ghibli artwork.
+

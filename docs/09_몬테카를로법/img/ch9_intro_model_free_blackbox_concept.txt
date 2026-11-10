@@ -1,9 +1,19 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution technical system diagram]
-Technical system architecture diagram showing 'Model-Free Reinforcement Learning: Interacting with a Black Box'.
-On the left: 'Agent (에이전트)' box with policy π and value memory.
-On the right: A sleek dark charcoal cube labeled 'Environment (Unknown Black Box)'.
-Clear signal arrows connecting them in an active loop:
-- Top arrow (Agent → Environment): 'Action A_t (행동)'
-- Bottom arrow (Environment → Agent): 'Next State S_{t+1} and Reward R_{t+1} (관측된 피드백)'
-A key banner explains: 'The agent does not need to know the complex internal equations of the black box; it learns optimal decisions purely by observing inputs and outputs!'.
-Clean vector graphics, soft pastel highlights, pure #FFFFFF background.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A clear technical concept illustration of 'Model-Free RL: Interacting with a Black Box' on a pure solid white background (#FFFFFF).
+On the left: Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, white ankle socks, vibrant ruby red canvas sneakers acting as the learner Agent, accompanied by Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose watching intently.
+On the right: A mysterious, sleek dark charcoal cube with rounded edges labeled 'Environment (Unknown Black Box)'.
+Connecting them are two dynamic glowing feedback arrows forming a loop:
+- Top glowing cyan arrow (Agent → Black Box): 'Action A_t (행동)'
+- Bottom glowing warm amber arrow (Black Box → Agent): 'Next State S_{t+1}, Reward R_{t+1} (관측된 피드백)'
+A small floating label reads: 'No need to know internal equations; learn directly from interaction outcomes!'.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide borders, NO slide templates. --ar 1:1

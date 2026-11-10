@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the contrast between self.pi and self.b. On a clean wooden counter, two velvet display cushions sit side by side: on the left cushion rests a pure solid 100% gold crown labeled "self.pi (epsilon=0, pure greedy)"; on the right cushion sits a colorful party hat with a spinning antenna and a 10-sided dice labeled "self.b (epsilon=0.1, exploration)". Dorothy compares them with a cheerful smile.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

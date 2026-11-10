@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 07_two_brains_agent_coding.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 두 개의 뇌를 품은 오프-정책 에이전트 클래스 아키텍처
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A futuristic yet warm robot engineering scene. Robot Tinny sits comfortably while his top cranial plate is gently hinged open, revealing two radiant dual-core processing units side by side:
+Left Core: Glowing pure sapphire blue labeled 'self.pi: Target Brain (epsilon = 0, Pure Greedy)'.
+Right Core: Glowing energetic warm amber labeled 'self.b: Behavior Brain (epsilon = 0.1, Active Explorer)'.
+Chibi cat TA Jiny, wearing a white tech coat, uses a tiny brass screwdriver to check the signal wires connecting both cores to the motor driver.
+Dorothy reviews the Python code `ch06/sarsa_off_policy.py` on a tablet with an inspired smile.
+1:1 square composition, clever technical diagram visual, crisp clean anime lines.
+

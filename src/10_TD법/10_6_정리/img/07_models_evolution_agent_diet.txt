@@ -1,0 +1,6 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Scene: The Evolution of Agent Diet: From Distribution Model to Sample Model.
+Left: A heavy, clunky antique robot burdened with a giant backpack full of dictionary scrolls ('self.pi = defaultdict(...)', '100% Probability Tables', 999 MB).
+Right: The modern lightweight Tin Man, sleek, agile, running like a track athlete, with only a tiny glowing crystal Q-table and a 1-line sample simulator ('step() -> (s, a, r, s_next)', 10 KB).
+Characters: Dorothy holding a golden tape measure, smiling brightly at Tin Man's amazing 99.9% diet transformation. Assistant Genie (tuxedo cat with spectacles) showing a sleek fitness chart.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO gym background, NO slide UI frames. Soft natural contact shadows on pure white ground.

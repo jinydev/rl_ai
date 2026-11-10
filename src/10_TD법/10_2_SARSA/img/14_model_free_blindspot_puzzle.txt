@@ -1,0 +1,12 @@
+# Image Generation Prompt Specification
+# File: 14_model_free_blindspot_puzzle.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 모델 프리 환경의 사각지대 퍼즐 (전이 확률 p와 보상 r의 부재)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A puzzling mystery in the mist. Robot Tinny holds an antique wooden jigsaw puzzle map where crucial center pieces labeled 'Transition Probability p(s'|s,a)' and 'Reward Function r' are conspicuously missing, leaving empty jigsaw holes.
+Tinny scratches his metallic head with blue LED eyes blinking in confusion.
+Prof. Hojin, early 40s, youthful face, round glasses, dark charcoal navy polo shirt, steps forward and warmly reassures him with an encouraging smile, pointing toward an experiential compass.
+1:1 square composition, intriguing narrative art, warm Ghibli palette.
+

@@ -1,0 +1,7 @@
+# mc_high_variance_rollercoaster.png 프롬프트 명세서
+- **파일명**: mc_high_variance_rollercoaster.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 도로시, 토토
+- **주요 내용**: 안개 속에서 이리저리 심하게 출렁이는 롤러코스터 광산 열차를 타고 요동치는 MC의 고분산 궤적을 실감나게 표현
+- **절대 규칙**: ZERO SLIDE UI

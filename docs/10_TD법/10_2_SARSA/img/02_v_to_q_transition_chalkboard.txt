@@ -1,0 +1,16 @@
+# Image Generation Prompt Specification
+# File: 02_v_to_q_transition_chalkboard.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 상태 가치 V 갱신식에서 행동 가치 Q 갱신식으로의 도약
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A cozy classroom chalkboard lecture scene. Prof. Hojin, early 40s, youthful face, smooth skin without wrinkles, salt-and-pepper short hair, thin silver round wire glasses, wearing a solid dark charcoal navy polo shirt (NO badges, NO text), holding white chalk, passionately explaining on a large deep-green chalkboard.
+On the chalkboard, written in neat chalk:
+Top formula in pale green chalk: 'V(S_t) <- V(S_t) + alpha * [R_t + gamma * V(S_{t+1}) - V(S_t)]'
+A bold downward arrow pointing to the bottom formula in vibrant orange-gold chalk:
+'Q(S_t, A_t) <- Q(S_t, A_t) + alpha * [R_t + gamma * Q(S_{t+1}, A_{t+1}) - Q(S_t, A_t)]'
+With a chalk box highlighting '[R + gamma * Q - Q]' labeled 'TD Error delta_t'.
+Chibi cat TA Jiny, wearing mini glasses, uses a cute laser pointer to highlight the Q(S_{t+1}, A_{t+1}) term. Dorothy sits nearby writing notes with an inspired expression.
+1:1 square composition, clear educational typography, charming Ghibli warmth.
+

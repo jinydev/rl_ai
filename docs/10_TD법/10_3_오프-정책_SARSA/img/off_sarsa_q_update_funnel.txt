@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing `target = rho * (reward + gamma * next_q)`. A golden brass funnel device where an immediate reward gem R and a discounted future value gamma*Q enter at the top, pass through a golden ring labeled "x rho", and pour into the main Q-table reservoir below to update the Q-value. Dorothy carefully turns the valve handle with a happy smile.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the inspection of the two-step memory buffer in the update() method. Jiny the cat with scholar glasses stands on a small wooden step stool, holding a brass magnifying glass over a two-compartment mechanical tray labeled "Slot 0: (S_t, A_t, R_t)" and "Slot 1: (S_{t+1}, A_{t+1})". When both slots are filled, a green indicator lamp lights up indicating ready to compute TD error.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

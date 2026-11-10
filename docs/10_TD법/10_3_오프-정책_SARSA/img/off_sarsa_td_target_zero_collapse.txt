@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing TD target collapsing to 0 when rho = 0: "TD Target = 0 * [...] = 0". On a mechanical digital scale display, the entire calculation screen wipes to "0.000", turning off all glowing target indicators. Dorothy and Tinny stare in shock as the expected return vanishes into zero.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

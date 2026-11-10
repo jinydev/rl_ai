@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 01_models_four_milestones.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 10.5 단원 4대 마일스톤 학습 로드맵
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A vibrant educational journey roadmap. Dorothy and robot Tinny hike along a streamlined, sleek metallic footpath.
+Along the path flutter four colorful milestone flags on modern silver poles:
+Flag 1: 'Environment vs Agent Models'
+Flag 2: 'RandomAgent Zero-Memory Contrast'
+Flag 3: 'Two-Step Diet to Pure Sample Model'
+Flag 4: 'Bridge to Continuous Space & Deep RL'
+Chibi cat TA Jiny, wearing a silver visor and glasses, points forward with a glowing laser wand.
+Toto the white dog trots happily ahead.
+1:1 square composition, bright optimistic colors, clear educational iconography.
+

@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 19_sarsa_td_error_caliper.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: TD 오차(TD Error, δ_t)를 정밀 측정하는 황금 버니어 캘리퍼스
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A precision measurement workshop scene. Chibi cat TA Jiny, wearing round spectacles, holds an elegant antique brass vernier caliper.
+Between the jaws of the caliper, he precisely measures the gap between a shining Target block labeled '[R_t + gamma * Q(S_{t+1}, A_{t+1})]' and an Estimate block labeled '[Q(S_t, A_t)]'.
+The measured gap glows with electric blue sparks labeled 'TD Error delta_t'.
+Dorothy peers closely through a brass magnifying glass, taking notes in her STEM HERO journal.
+1:1 square composition, high craftsmanship feel, clean infographic aesthetic.
+

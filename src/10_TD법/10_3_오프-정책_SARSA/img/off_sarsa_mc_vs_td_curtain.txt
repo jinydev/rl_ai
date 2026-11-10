@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the dramatic contrast between MC and TD importance sampling. Dorothy stands in the center. To her left hangs a giant, heavy, tangled iron anchor chain of hundreds of links (labeled "MC Cumulative Product: rho_t * rho_{t+1} * ... * rho_T"). To her right, she lightly holds a single sleek glowing emerald carabiner ring (labeled "TD 1-Step: single rho"). Clear contrast of heavy burden vs sleek lightness.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

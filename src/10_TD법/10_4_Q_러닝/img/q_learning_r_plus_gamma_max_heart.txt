@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing "R + gamma * max Q" as the beating heart of AI. Inside Tinny the robot's circular chest window, a glowing golden core engraved with "R + gamma * max Q" pulses with warm amber energy, powering all modern deep reinforcement learning. Dorothy places her hands together admiringly.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

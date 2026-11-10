@@ -1,0 +1,12 @@
+# Image Generation Prompt Specification
+# File: 15_bellman_transition_summation_burden.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 벨만 전수조사 합 기호(∑)의 무거운 족쇄와 복잡성
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual metaphor of mathematical burden. A giant, heavy cast-iron Greek Sigma symbol (∑) sits on the floor, weighed down by thick iron chains labeled 'Sum over all s' states' and 'Exhaustive Tree Expansion'.
+Dorothy wipes a drop of sweat with a funny dramatic sigh, while robot Tinny tries to lift the massive Sigma with his metallic arms.
+Chibi cat TA Jiny holds up a red 'NO!' sign, showing that exhaustive probability calculations are impossible in unknown worlds.
+1:1 square composition, humorous educational cartoon concept, expressive characters.
+

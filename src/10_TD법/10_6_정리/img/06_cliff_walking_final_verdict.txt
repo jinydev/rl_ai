@@ -1,0 +1,8 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Scene: Final podium ceremony of the Cliff Walking Experiment.
+A stylized isometric grid platform showing the steep cliff chasm in the middle:
+The Blue Route (SARSA) winds safely along the upper edge, scoring an average safe score of -17.
+The Golden Route (Q-Learning) runs boldly along the cliff edge, achieving the optimal score of -13.
+On the podium: Tin Man standing proudly on the 1st place gold pedestal holding the Q-Learning optimal trophy, while another friendly robot on the silver pedestal holds the SARSA safety medal.
+Characters: Dorothy waving the checkered race flag, Toto barking with delight, and Assistant Genie (tuxedo cat with spectacles) showing the episode-reward learning curves on a scroll.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO stadium walls or sky, NO slide UI cards. Soft contact shadows on pure white ground.

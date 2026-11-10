@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 17_argmax_q_action_selection.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: Q 함수 기반의 직관적 argmax 최적 행동 선택
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A celebratory moment of clear decision-making. Before Dorothy sit four wooden pedestals with directional action boxes:
+Up (+0.2), Down (-0.5), Left (+0.1), Right (+0.9 Radiant Gold).
+Dorothy happily crowns the radiant 'Right (+0.9)' box with a sparkling golden laurel crown labeled 'argmax_a Q(s, a)'.
+Chibi cat TA Jiny raises both paws cheering, and robot Tinny immediately prepares his gears to step to the right.
+No complex transition math needed—just pick the highest value!
+1:1 square composition, radiant gold highlights, clear mathematical joy.
+

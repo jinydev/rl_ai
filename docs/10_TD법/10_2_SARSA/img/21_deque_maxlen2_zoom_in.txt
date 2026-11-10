@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 21_deque_maxlen2_zoom_in.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: ❶ deque(maxlen=2) 슬라이딩 윈도우 상세 동작 메커니즘
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A detailed mechanical visualization of `deque(maxlen=2)`. A precision clear acrylic tray with exactly two mechanical slots.
+Slot 0 holds an orange wooden data block labeled '(S_t, A_t, R_t) [HOLDING]'.
+Slot 1 is empty with an amber 'WAIT: len < 2' warning light until the fresh sky-blue block labeled '(S_{t+1}, A_{t+1})' clicks in.
+Once Slot 1 snaps into place, a bright green neon indicator lights up reading 'READY TO UPDATE!'.
+Chibi cat TA Jiny, wearing spectacles and a lab coat, leans over the tray inspecting the latching mechanism with a brass magnifying glass.
+Dorothy watches with fascinated understanding.
+1:1 square composition, intricate mechanical aesthetic, high educational clarity.
+

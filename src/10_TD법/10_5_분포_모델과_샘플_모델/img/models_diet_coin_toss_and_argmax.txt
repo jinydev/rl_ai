@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing get_action(): coin toss and argmax. Dorothy flips a shiny golden coin into the air labeled "rand() < epsilon (10% Explore)", while in her other hand she holds a miniature pair of precision tweezers picking up the highest score crown labeled "argmax (90% Exploit)".
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

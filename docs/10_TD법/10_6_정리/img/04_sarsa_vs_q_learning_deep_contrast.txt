@@ -1,0 +1,6 @@
+masterpiece, best quality, Studio Ghibli 2D anime style, vibrant clean colors, clear soft lighting, hand-drawn aesthetic.
+Concept: Philosophical contrast between SARSA (On-Policy Conservative) and Q-Learning (Off-Policy Bold).
+Left side (SARSA): Tin Man in protective safety gear holding an umbrella, carefully stepping onto a blue safe path labeled 'Q(S, A) <- Q + α[R + γ Q(S', A') - Q]' which takes a long detour around a hazard.
+Right side (Q-Learning): Tin Man wearing a bold golden king's crown and red cape, stepping fearlessly along a golden tightrope path labeled 'Q(S, A) <- Q + α[R + γ max_a Q(S', a) - Q]' right across the cliff to the Goal.
+Characters: Dorothy cheering for both paths with an educational gesture. Assistant Genie (tuxedo cat with spectacles) analyzing both equations on a floating holographic slate.
+Background: [CRITICAL ISOLATED CUTOUT MANDATE] Pure seamless solid white background (#FFFFFF), NO background scenery, NO slide UI frames. Soft grounding shadows on pure white ground.

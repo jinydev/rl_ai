@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing Behavior Policy b exploring a suboptimal action with 10% probability. Tinny the robot walking on a path, but nudged by a tiny playful 10% exploration wind, he takes a curious step toward an unlit candle path (an exploratory, non-greedy branch) instead of the golden path. He raises a metal finger with curiosity.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

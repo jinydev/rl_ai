@@ -1,9 +1,22 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical formula breakdown]
-Mathematical formula breakdown infographic for 'Backward Recursive Discounted Return Calculation'.
-Upper equation banner: 'G_t = R_{t+1} + γ · G_{t+1}'
-Three color-coded breakdown callouts with precise pointers:
-- 'G_t': '누적 할인 수익 (Return at time t): 현재 시점부터 에피소드 끝까지 받을 할인 보상의 총합'
-- 'R_{t+1}': '즉각 보상 (Immediate Reward): 다음 스텝에서 즉시 획득한 보상'
-- 'γ · G_{t+1}': '할인된 미래 수익 (Discounted Future Return): 감마(γ)를 곱해 현재 가치로 환산한 잔여 미래 수익'
-Below, a reverse timeline arrow labeled 'Reversed traversal from terminal step T to step 0 achieves O(T) linear time complexity without duplicate sums!'.
-Pure #FFFFFF background, clean dark espresso brown line art.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A mathematical formula breakdown of 'Backward Recursive Discounted Return Calculation' on a pure solid white background (#FFFFFF).
+In the center, a large clear formula written on a floating chalkboard surface:
+'G_t = R_{t+1} + γ · G_{t+1}'
+Three callout boxes with pointers explaining the terms:
+- 'G_t': '누적 할인 수익 (Discounted Return)'
+- 'R_{t+1}': '즉각 보상 (Immediate Reward)'
+- 'γ · G_{t+1}': '할인된 미래 수익 (Discounted Future Return)'
+Below, a reverse timeline arrow showing 'Time T ➔ 0 : O(T) Linear Time Complexity'.
+Standing beside the board: Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, energetic kind face matching hojin_master_face.jpg), neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, encouraging warm smile, dressed in a neat solid dark charcoal navy short-sleeve collared polo shirt with NO name tag, NO badges, NO SNU text, classic medium-wash blue straight denim jeans, and grey suede sneakers explaining the recursive step with a piece of chalk, warm and inspiring.
+At his feet: Toto the puppy, Dorothy's beloved companion, an adorable fluffy solid warm milk-white puppy (#FBF6EB, bichon-maltese mix, NO brown spots, NO yellow patches), cloud-like soft wavy fur, soft floppy ears, big round black button eyes, glossy black button nose, cheerful happy dog smile with pink tongue, wearing a vibrant sky-blue neckerchief bandana tied around his neck, curled plumey tail sitting attentively, looking up with bright eyes.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide frames, NO banner. --ar 1:1

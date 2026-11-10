@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 03_two_policies_behavior_and_target.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 두 개의 분리된 나침반 (행동 정책 b vs 대상 정책 π)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dual-character role division metaphor. On the left stands robot Tinny dressed as a rugged scout with a mud-splattered explorer hat and boots, holding a dynamic glowing brass compass labeled 'Behavior Policy b(a|s): Bold Explorer (epsilon = 0.1)'.
+On the right stands Dorothy in a pristine scholar's outfit with a small golden tiara, carefully holding an illuminated ancient tome labeled 'Target Policy pi(a|s): 100% Optimal Greedy (epsilon = 0)'.
+Between them, a golden stream of experience logs flows from Tinny's compass into Dorothy's book.
+Prof. Hojin (early 40s, youthful face, round wire glasses, dark navy polo) smiles approvingly at the division of labor.
+1:1 square composition, high visual balance, rich Ghibli cel shading.
+

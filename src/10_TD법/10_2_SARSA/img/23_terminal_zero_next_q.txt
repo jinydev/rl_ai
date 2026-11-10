@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 23_terminal_zero_next_q.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: ❸ 종단 상태(Terminal State)의 미래 가치 0 처리의 엄밀성
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic finish line rule illustration. A checkered finish banner arches over the ground marked 'Goal! Episode Done (done = True)'.
+Directly behind the finish line, an illuminated digital scoreboard displays 'Future Q(S', A') Value: 0.00' with a sturdy golden padlock firmly locked over the counter.
+Chibi cat TA Jiny lowers a green signal flag and declares: 'The game has ended! By definition, future reward is strictly zero!'.
+Dorothy and robot Tinny nod in clear comprehension as no phantom bootstrap value is added.
+1:1 square composition, punchy educational clarity, charming anime expressions.
+

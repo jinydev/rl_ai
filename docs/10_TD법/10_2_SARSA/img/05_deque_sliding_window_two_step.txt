@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 05_deque_sliding_window_two_step.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: deque(maxlen=2) 2칸 슬라이딩 윈도우 버퍼의 동작 메커니즘
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual metaphor for `deque(maxlen=2)`. Chibi cat TA Jiny holds a clear glowing acrylic conveyor tray with exactly 2 slots labeled 'Slot 0: Previous (S_t, A_t, R_t)' and 'Slot 1: Current (S_{t+1}, A_{t+1})'.
+In Slot 0 rests a warm terracotta block engraved with '(S_t, A_t, R_t)'.
+Into Slot 1, a fresh sky-blue block engraved with '(S_{t+1}, A_{t+1})' just slides in smoothly.
+Between the two slots, a dynamic yellow lightning spark bridges the connection, triggering an immediate update arrow on Slot 0 labeled 'TD Update! Q(S_t, A_t) refreshed!'.
+Dorothy and robot Tinny watch in amazement at how the 2-step sliding window enables instant bootstrapping without a massive memory list.
+1:1 square composition, clever technical diagram visual, clean flat anime shading.
+

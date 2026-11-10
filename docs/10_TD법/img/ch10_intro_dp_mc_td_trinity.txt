@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_dp_mc_td_trinity.png
+# Chapter: CHAPTER 10 TD법
+# Concept: DP(계획)와 MC(샘플링)의 위대한 융합으로 탄생한 시간차 학습(TD) 삼위일체
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A majestic trinity diagram of reinforcement learning paradigms.
+Top left: Dynamic Programming (DP) represented as a radiant golden key labeled 'Bootstrapping (Update from future estimates)'.
+Top right: Monte Carlo (MC) represented as a brass compass labeled 'Model-Free Sampling (Learn from direct experience)'.
+Center bottom: Temporal Difference (TD) Learning, where the golden key and brass compass fuse together in a brilliant flash of blue-gold energy, held high by Prof. Hojin (early 40s, youthful face, round wire glasses, neat dark charcoal navy polo).
+Dorothy and robot Tinny watch the fusion with awe and inspiration.
+1:1 square composition, balanced triangular composition, warm magical lighting.
+

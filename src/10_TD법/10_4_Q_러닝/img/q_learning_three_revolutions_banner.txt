@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the 3 revolutions of Q-learning. Dorothy in denim overalls proudly holds up a golden banner displaying three shining icons: a lightning bolt (1-Step TD Realtime), a dual compass (True Off-Policy), and an open broken lock (No Rho). Beside her, Toto the fluffy white puppy sits happily wagging his tail.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

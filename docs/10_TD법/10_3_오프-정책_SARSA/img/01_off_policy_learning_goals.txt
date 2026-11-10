@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 01_off_policy_learning_goals.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: 10.3 오프-정책 SARSA 4대 마일스톤 학습 로드맵
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A vibrant milestone path illustration. Dorothy and robot Tinny hike along a winding cobblestone trail.
+Along the path flutter four colorful milestone flags on carved wooden poles:
+Flag 1: 'Overcoming On-Policy Limitations'
+Flag 2: 'Two Separate Policies: b and pi'
+Flag 3: '1-Step Importance Weight rho'
+Flag 4: 'rho = 0 Pitfall and Bridge to Q-Learning'
+Chibi cat TA Jiny, wearing mini round glasses and a tiny adventurer bandana, points ahead with a brass pointer stick.
+Toto the white dog happily wags his tail leading the way.
+1:1 square composition, bright cheerful colors, high educational readability.
+

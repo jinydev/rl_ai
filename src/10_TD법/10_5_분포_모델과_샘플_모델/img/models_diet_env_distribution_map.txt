@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the environment distribution model. Dorothy sits at an antique wooden cartography desk, unrolling a large detailed parchment map showing every transition probability p(s'|s,a) and reward r calculated to the finest detail. Fully mapped, omniscient, complete probability distribution.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

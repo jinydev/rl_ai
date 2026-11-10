@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing Q-learning's fearless attitude. Tinny the robot stands firmly at next state S_{t+1}, eyes looking up boldly at the highest mountain summit where a giant golden "MAX" crown glows proudly. Even if wind blows around his feet, he looks straight at the maximum theoretical value.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

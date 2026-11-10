@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the revolutionary insight that solves the problem: "Instead of looking at the actual exploratory action, pick max_a Q(S_{t+1}, a) directly!". Professor Hojin (strictly early 40s, youthful face, smooth skin, no wrinkles, round wire glasses, solid dark navy polo shirt, master face match) holds up a glowing warm amber lightbulb above his head with a brilliant inspiring smile. Beside him, Dorothy and Jiny look up in awe as a golden banner displays the equation "max_a Q(S_{t+1}, a)".
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

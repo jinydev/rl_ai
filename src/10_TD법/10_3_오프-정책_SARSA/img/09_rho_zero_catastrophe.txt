@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 09_rho_zero_catastrophe.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: ρ = 0의 비극과 소중한 보상 정보의 허무한 증발
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic visual tragedy of mathematical information loss.
+Robot Tinny, taking an adventurous exploratory step, picks an action that has pi(a|s) = 0.
+Instantly, a large spectral mathematical multiplication stamp reading '* rho = 0' falls from above!
+As soon as rho = 0 touches the formula, a glowing golden treasure chest labeled 'Immediate Reward R_t (+1.0)' suddenly dissolves into swirling gray smoke, sucked into a dark void labeled 'TD Target = 0 (Total Data Evaporation)'.
+Dorothy clasps her cheeks in shock, while chibi cat TA Jiny cries out with an open mouth: 'Even the real reward we just earned is wiped out by zero!'.
+1:1 square composition, humorous dramatic storytelling, rich dynamic expressions.
+

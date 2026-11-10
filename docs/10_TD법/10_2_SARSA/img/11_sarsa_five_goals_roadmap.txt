@@ -1,0 +1,18 @@
+# Image Generation Prompt Specification
+# File: 11_sarsa_five_goals_roadmap.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 10.2 SARSA 학습 목표 5대 깃발 로드맵
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A vibrant educational journey roadmap. Dorothy and robot Tinny hike along a gentle grassy stone path.
+Along the path flutter five colorful milestone pennant flags on wooden posts:
+Flag 1: 'Q-Value Necessity'
+Flag 2: 'SARSA Formula Derivation'
+Flag 3: 'S-A-R-S-A 5-Step Chain'
+Flag 4: 'Epsilon-Greedy Policy'
+Flag 5: 'Safety-First Behavior'
+Chibi cat TA Jiny, wearing mini glasses, stands in front holding a brass exploration compass, guiding the team.
+Toto the white fluffy dog happily trots ahead.
+1:1 square composition, bright optimistic colors, clear educational iconography.
+

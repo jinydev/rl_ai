@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 06_q_diet_step1_pi_deletion.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: Q-러닝의 1단계 다이어트 (불필요한 self.pi 삭제와 쓰레기통 골인)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A fun software diet and cleanup scene.
+Chibi cat TA Jiny, wearing an athletic headband, performs a stylish basketball shot, tossing a crumpled paper file labeled 'self.pi Dict (Redundant Duplicate!)' straight into a neat recycling bin.
+Dorothy cheers with arms raised: 'We don't need self.pi at all because Q(s, a) already has all the answers via argmax!'.
+Robot Tinny's chest weight indicator drops by half, showing instant performance gain.
+1:1 square composition, joyful athletic cartoon motion, vivid bright colors.
+

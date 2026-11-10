@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 25_greedy_probs_crown_stamp.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: ❺ greedy_probs 정책 개선 황금 왕관 스탬프 공방
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A lively policy improvement stamping workshop. Chibi cat TA Jiny, wearing a craftsman apron, holds up a heavy golden stamp engraved with 'greedy_probs' and a sparkling royal crown.
+On the wooden workbench, four action cards are laid out (Up, Down, Left, Right).
+Jiny stamps the 'Right' card (which has the highest Q-value), leaving a glowing golden crown mark with '92.5% High Probability (1 - epsilon + epsilon/4)'.
+The other three action cards get small colorful exploration stickers reading '2.5% (epsilon/4)'.
+Dorothy proudly picks up the newly updated policy sheet `self.pi[state]`, ready for the next iteration.
+1:1 square composition, joyful workshop aesthetic, rich warm colors.
+

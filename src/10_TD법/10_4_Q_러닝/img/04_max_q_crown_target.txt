@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 04_max_q_crown_target.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: 다음 상태의 모든 선택지 중 최댓값(max Q)에 황금 왕관을 씌우는 원리
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic target selection scene. Before Dorothy and robot Tinny, four action pedestals stand for state S_{t+1}:
+Up (+0.1), Down (-0.4), Left (+0.3), Right (+0.9 Radiant Amber).
+Dorothy gently places an ornate, sparkling golden crown labeled 'max_a' onto the 'Right (+0.9)' pedestal.
+A beam of warm golden starlight shoots upward from the crown, forming the TD Target banner: '[R_t + gamma * max_a Q(S_{t+1}, a)]'.
+Chibi cat TA Jiny claps his paws, explaining: 'No matter which action the agent accidentally explores next, our learning target stays 100% focused on this crowned maximum!'.
+1:1 square composition, sparkling gold and rich colors, pedagogical clarity.
+

@@ -1,0 +1,7 @@
+# sarsa_jiny_qlearning_preview.png 프롬프트 명세서
+- **파일명**: sarsa_jiny_qlearning_preview.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 조교 지니, 도로시, 토토, 로봇 틴맨
+- **주요 내용**: 'Next Chapter 10.3: Q-Learning!' 황금 깃발을 펼쳐 들며 오프-정책 최강자로의 출격을 예고하는 지니와 환호하는 도로시 탐험대
+- **절대 규칙**: ZERO SLIDE UI

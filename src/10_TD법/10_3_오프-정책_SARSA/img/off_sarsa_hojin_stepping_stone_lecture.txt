@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Professor Hojin (strictly early 40s, youthful face, smooth skin, no wrinkles, round wire glasses, solid dark navy polo shirt, master face match) giving an inspiring lecture at the podium. Behind him, a chalkboard sketch shows off-policy SARSA as a sturdy stepping stone bridge leading across a river to the shining golden castle of "Q-Learning". Dorothy and Toto listen enthusiastically from their student desk.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

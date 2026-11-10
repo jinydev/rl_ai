@@ -645,7 +645,7 @@
 <p>우리가 지난 단원들에서 다루었던 강화학습 문제들은 모두 컴퓨터 화면 속의 정밀한 바둑판과 같았습니다.</p>
 
 <p><img src="./img/01_2_known_environment_gridworld_chessboard.png" alt="알려진 환경 모델과 정밀한 바둑판" />
-<strong>그림 09-1-1a</strong> 컴퓨터 화면 속 정밀한 바둑판처럼 상태와 규칙이 100% 투명하게 정해져 있는 알려진 환경 모델 (1:1 순백색)</p>
+<strong>그림 09-1-1a</strong> 컴퓨터 화면 속 정밀한 바둑판처럼 상태와 규칙이 100% 투명하게 정해져 있는 알려진 환경 모델</p>
 
 <hr />
 
@@ -654,7 +654,7 @@
 <p>에이전트가 어떤 칸에서 ‘오른쪽’ 버튼을 눌렀을 때, 벽에 부딪힐지 아니면 다음 칸으로 이동할지, 그리고 그 칸에 도달했을 때 사과 보상을 받을지 독버섯 감점을 받을지가 한 치의 오차도 없이 미리 정해져 있었습니다.</p>
 
 <p><img src="./img/01_3_gridworld_transition_reward_rules.png" alt="그리드월드의 상태 전이와 보상 규칙" />
-<strong>그림 09-1-1b</strong> 그리드월드에서 에이전트의 행동에 따른 다음 상태 전이와 즉각 보상 규칙이 사전에 명확하게 정해져 있는 구조 (1:1 순백색)</p>
+<strong>그림 09-1-1b</strong> 그리드월드에서 에이전트의 행동에 따른 다음 상태 전이와 즉각 보상 규칙이 사전에 명확하게 정해져 있는 구조</p>
 
 <hr />
 
@@ -668,14 +668,14 @@
 </table>
 
 <p><img src="./img/01_4_transition_prob_and_reward_function.png" alt="상태 전이 확률과 보상 함수 수식 기호 해부" />
-<strong>그림 09-1-1c</strong> 알려진 환경 모델의 2대 수학 기둥: 상태 전이 확률 p(s’|s,a)와 보상 함수 r(s,a,s’)의 수식 기호 해부 (1:1 순백색)</p>
+<strong>그림 09-1-1c</strong> 알려진 환경 모델의 2대 수학 기둥: 상태 전이 확률 p(s’|s,a)와 보상 함수 r(s,a,s’)의 수식 기호 해부</p>
 
 <hr />
 
 <p>만약 미끄러짐이 없는 완벽한 환경이라면 상태 전이가 결정적(Deterministic)이므로, 다음 상태를 나타내는 수학 함수 <em>s’</em> = <em>f</em>(<em>s</em>, <em>a</em>)로 딱 떨어지게 나타낼 수도 있었습니다.</p>
 
 <p><img src="./img/01_5_deterministic_state_transition_func.png" alt="결정적 상태 전이 함수" />
-<strong>그림 09-1-1d</strong> 미끄러짐이 없는 완벽한 환경에서의 결정적 상태 전이 함수 s’ = f(s, a) (1:1 순백색)</p>
+<strong>그림 09-1-1d</strong> 미끄러짐이 없는 완벽한 환경에서의 결정적 상태 전이 함수 s’ = f(s, a)</p>
 
 <hr />
 
@@ -684,7 +684,7 @@
 <p>마치 게임기 내부의 소스 코드를 에이전트가 손에 쥐고 있는 것과 같아서, 굳이 직접 캐릭터를 움직여보지 않고도 머릿속(메모리 연산)으로만 미래의 모든 가능성을 시뮬레이션하고 최적의 길을 찾아낼 수 있었습니다.</p>
 
 <p><img src="./img/01_6_planning_in_memory_simulation.png" alt="게임기 소스 코드를 손에 쥔 에이전트의 사전 시뮬레이션" />
-<strong>그림 09-1-1e</strong> 게임기 소스 코드를 쥔 에이전트가 메모리 연산만으로 미래의 모든 가능성을 사전 시뮬레이션하는 계획(Planning) (1:1 순백색)</p>
+<strong>그림 09-1-1e</strong> 게임기 소스 코드를 쥔 에이전트가 메모리 연산만으로 미래의 모든 가능성을 사전 시뮬레이션하는 계획(Planning)</p>
 
 <hr />
 
@@ -695,7 +695,7 @@
 <p>현실에는 환경 모델을 사전에 알 수 없는 문제가 셀 수 없이 많습니다.</p>
 
 <p><img src="./img/01_7_unknown_real_world_complexity.png" alt="온실 밖 미지의 현실 세계로의 출발" />
-<strong>그림 09-1-1f</strong> 온실 밖으로 나와 예측 불가능한 변수들이 소용돌이치는 미지의 현실 세계로 첫발을 내딛는 도로시 (1:1 순백색)</p>
+<strong>그림 09-1-1f</strong> 온실 밖으로 나와 예측 불가능한 변수들이 소용돌이치는 미지의 현실 세계로 첫발을 내딛는 도로시</p>
 
 <hr />
 
@@ -706,7 +706,7 @@
 <p>그 어떤 천재 수학자도 ‘내일 삼각김밥이 17개 팔릴 확률은 0.0842…‘와 같은 엄밀한 확률 공식을 작성해 건네줄 수 없습니다.</p>
 
 <p><img src="./img/01_8_convenience_store_riceball_uncertainty.png" alt="편의점 삼각김밥 재고 관리의 현실적 불확실성" />
-<strong>그림 09-1-1g</strong> 날씨, 시험기간, 트렌드 등 수많은 요인으로 인해 사전에 엄밀한 수식을 세울 수 없는 편의점 삼각김밥 재고 관리의 현실적 불확실성 (1:1 순백색)</p>
+<strong>그림 09-1-1g</strong> 날씨, 시험기간, 트렌드 등 수많은 요인으로 인해 사전에 엄밀한 수식을 세울 수 없는 편의점 삼각김밥 재고 관리의 현실적 불확실성</p>
 
 <hr />
 
@@ -715,14 +715,14 @@
 <p>바둑이나 체스, 스타크래프트 같은 게임만 해도 가능한 상태와 행동의 조합이 우주의 원자 수(약 10<sup>80</sup>개)보다 훨씬 많습니다. 이 모든 경우의 수를 연립방정식으로 풀려고 들면 최신 슈퍼컴퓨터를 1억 년 동안 돌려도 답을 내지 못하고 멈춰버립니다.</p>
 
 <p><img src="./img/01_9_computational_tractability_explosion.png" alt="계산 복잡도의 폭발과 슈퍼컴퓨터의 한계" />
-<strong>그림 09-1-1h</strong> 바둑이나 게임에서 우주 전체 원자 수(10^80)를 초과하는 경우의 수로 인한 슈퍼컴퓨터의 계산 불능 한계 (1:1 순백색)</p>
+<strong>그림 09-1-1h</strong> 바둑이나 게임에서 우주 전체 원자 수(10^80)를 초과하는 경우의 수로 인한 슈퍼컴퓨터의 계산 불능 한계</p>
 
 <hr />
 
 <p>얼마나 계산이 복잡해지는지 피부로 실감할 수 있도록, 이번 절에서는 우선 우리가 친숙하게 접할 수 있는 ‘주사위’를 예로 들어 간단한 비교 작업을 해보겠습니다.</p>
 
 <p><img src="./img/01_10_dorothy_imagining_complex_calculations.png" alt="복잡한 계산 상상과 친근한 주사위" />
-<strong>그림 09-1-1i</strong> 천문학적인 복잡한 계산의 소용돌이를 상상하며 아찔해하다가, 친근한 주사위 예시를 떠올리며 호기심을 반짝이는 도로시와 토토 (1:1 순백색)</p>
+<strong>그림 09-1-1i</strong> 천문학적인 복잡한 계산의 소용돌이를 상상하며 아찔해하다가, 친근한 주사위 예시를 떠올리며 호기심을 반짝이는 도로시와 토토</p>
 
 <hr />
 
@@ -733,7 +733,7 @@
 <p>주사위는 정육면체이고 모서리가 균일하게 깎여 있어서, 각 눈(1부터 6까지)이 나올 확률은 정확하게 공평한 <strong>1/6</strong>이라고 가정합니다.</p>
 
 <p><img src="./img/02_two_dice_probability_matrix.png" alt="주사위 두 개 확률 매트릭스" />
-<strong>그림 09-1-2</strong> 주사위 2개를 던졌을 때 나타나는 36가지 눈금 조합 매트릭스와 확률 분포를 분석하는 도로시, 토토, 지니 (1:1 순백색)</p>
+<strong>그림 09-1-2</strong> 주사위 2개를 던졌을 때 나타나는 36가지 눈금 조합 매트릭스와 확률 분포를 분석하는 도로시, 토토, 지니</p>
 
 <hr />
 
@@ -742,7 +742,7 @@
 <p>두 주사위를 던졌을 때 나올 수 있는 모든 경우의 수는 첫 번째 주사위의 눈(6가지)과 두 번째 주사위의 눈(6가지)을 곱한 6 × 6 = <strong>36가지</strong>입니다.</p>
 
 <p><img src="./img/02_3_two_dice_36_outcomes_grid.png" alt="두 주사위 36가지 경우의 수 전개 격자도" />
-<strong>그림 09-1-2a</strong> 두 주사위를 굴렸을 때 나타나는 6×6 = 36가지 가능한 모든 눈금 쌍의 전개 격자 매트릭스 (1:1 순백색)</p>
+<strong>그림 09-1-2a</strong> 두 주사위를 굴렸을 때 나타나는 6×6 = 36가지 가능한 모든 눈금 쌍의 전개 격자 매트릭스</p>
 
 <hr />
 
@@ -765,7 +765,7 @@
 </ul>
 
 <p><img src="./img/02_4_dice_sum_2_to_12_combinations.png" alt="주사위 눈의 합 2부터 12까지의 조합 피라미드" />
-<strong>그림 09-1-2a2</strong> 두 주사위 눈의 합(2~12) 가짓수 집계와 합 7이 6가지로 최정점을 이루는 대칭 삼각형 피라미드 다이어그램 (1:1 순백색)</p>
+<strong>그림 09-1-2a2</strong> 두 주사위 눈의 합(2~12) 가짓수 집계와 합 7이 6가지로 최정점을 이루는 대칭 삼각형 피라미드 다이어그램</p>
 
 <hr />
 
@@ -827,7 +827,7 @@
 </blockquote>
 
 <p><img src="./img/02_5_probability_distribution_bell_chart.png" alt="주사위 눈의 합 종 모양 확률 분포 그래프" />
-<strong>그림 09-1-2a3</strong> 두 주사위 눈의 합에 대한 대칭 종 모양(Bell-shaped) 확률 분포(Probability Distribution) 그래프 (1:1 순백색)</p>
+<strong>그림 09-1-2a3</strong> 두 주사위 눈의 합에 대한 대칭 종 모양(Bell-shaped) 확률 분포(Probability Distribution) 그래프</p>
 
 <hr />
 
@@ -841,14 +841,14 @@
 </blockquote>
 
 <p><img src="./img/02_5_2_discrete_expectation_formula_breakdown.png" alt="이산 확률 변수 기댓값 공식 기호 해부" />
-<strong>그림 09-1-2a4</strong> 이산 확률 변수의 이론적 기댓값 공식 E[X] = ∑ x · P(X = x) 기호 해부 및 가중합 원리 인포그래픽 (1:1 순백색)</p>
+<strong>그림 09-1-2a4</strong> 이산 확률 변수의 이론적 기댓값 공식 E[X] = ∑ x · P(X = x) 기호 해부 및 가중합 원리 인포그래픽</p>
 
 <hr />
 
 <p>수학적으로는 각 합에 해당 확률을 곱해 모두 더하면 정확히 <strong>7.0</strong>이 나옵니다.</p>
 
 <p><img src="./img/hojin_expectation_seesaw.jpg" alt="이호진 교수님의 기댓값 시소 강의" />
-<strong>그림 09-1-2b</strong> 이호진 교수님이 나무 시소(저울) 교구를 활용해 기댓값 7.0의 물리적 무게중심 원리를 도로시와 토토에게 친절하게 설명하는 장면 (1:1 순백색)</p>
+<strong>그림 09-1-2b</strong> 이호진 교수님이 나무 시소(저울) 교구를 활용해 기댓값 7.0의 물리적 무게중심 원리를 도로시와 토토에게 친절하게 설명하는 장면</p>
 
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 눈높이 특강: 기댓값은 ‘시소의 무게중심’이란다!</strong><br />
@@ -878,7 +878,7 @@
 </span></code></pre></div></div>
 
 <p><img src="./img/02_6_python_expected_value_flowchart.png" alt="파이썬 기댓값 누적 계산 알고리즘 순서도" />
-<strong>그림 09-1-2c</strong> 파이썬 기댓값 가중합 누적 계산 알고리즘 실행 순서도 (1:1 순백색)</p>
+<strong>그림 09-1-2c</strong> 파이썬 기댓값 가중합 누적 계산 알고리즘 실행 순서도</p>
 
 <hr />
 
@@ -886,7 +886,7 @@
 <p>컴퓨터는 내부적으로 모든 숫자를 0과 1로 이루어진 2진수로 처리합니다. 십진수 분수인 <code class="language-plaintext highlighter-rouge">1/36 = 0.027777...</code>은 2진수로 바꾸면 무한히 반복되는 무한소수가 됩니다. 컴퓨터는 메모리 한계로 인해 일정 자리에서 숫자를 잘라내므로, 미세한 반올림 오차가 누적되어 수학 이론값인 <code class="language-plaintext highlighter-rouge">7.0</code> 대신 <code class="language-plaintext highlighter-rouge">6.999999999999999</code>가 출력됩니다. 컴퓨터의 이러한 계산 오차를 감안하면 출력값은 수학 이론값인 7.0과 완전히 동일합니다.</p>
 
 <p><img src="./img/02_7_floating_point_binary_precision_error.png" alt="부동소수점 2진수 정밀도 오차 원리" />
-<strong>그림 09-1-2d</strong> 1/36의 2진수 변환 시 발생하는 무한 순환소수와 64비트 메모리 절삭으로 인한 6.9999… 부동소수점 오차 원리 (1:1 순백색)</p>
+<strong>그림 09-1-2d</strong> 1/36의 2진수 변환 시 발생하는 무한 순환소수와 64비트 메모리 절삭으로 인한 6.9999… 부동소수점 오차 원리</p>
 
 <hr />
 
@@ -895,7 +895,7 @@
 <p>강화학습의 궁극적 목표는 ‘에이전트가 앞으로 얻을 보상의 총합에 대한 기댓값(기대 수익)’을 극대화하는 것이므로, 기댓값의 계산 원리를 이해하는 것은 매우 중요합니다.</p>
 
 <p><img src="./img/02_8_rl_ultimate_goal_maximizing_expected_return.png" alt="강화학습의 궁극적 목표 기대 수익 극대화" />
-<strong>그림 09-1-2e</strong> 강화학습의 궁극적 목표: 미래에 얻을 모든 보상의 총합에 대한 기댓값(기대 수익 E[G_t])을 극대화하기 위해 나아가는 에이전트와 기댓값 계산의 중요성 (1:1 순백색)</p>
+<strong>그림 09-1-2e</strong> 강화학습의 궁극적 목표: 미래에 얻을 모든 보상의 총합에 대한 기댓값(기대 수익 E[G_t])을 극대화하기 위해 나아가는 에이전트와 기댓값 계산의 중요성</p>
 
 <hr />
 
@@ -929,7 +929,7 @@
 </ul>
 
 <p><img src="./img/03_2_distribution_model_dp_mechanism.png" alt="분포 모델과 DP 메커니즘" />
-<strong>그림 09-1-3a</strong> 완전한 확률 지도를 펼쳐놓고 모든 미래를 수식으로 전수 조사하는 분포 모델과 동적 프로그래밍(DP) (1:1 순백색)</p>
+<strong>그림 09-1-3a</strong> 완전한 확률 지도를 펼쳐놓고 모든 미래를 수식으로 전수 조사하는 분포 모델과 동적 프로그래밍(DP)</p>
 
 <hr />
 
@@ -944,7 +944,7 @@
 </ul>
 
 <p><img src="./img/03_3_sample_model_mc_mechanism.png" alt="샘플 모델과 몬테카를로 메커니즘" />
-<strong>그림 09-1-3b</strong> 확률 분포를 몰라도 직접 주사위를 굴려 관측한 표본들의 평균으로 가치를 학습하는 샘플 모델과 몬테카를로법(MC) (1:1 순백색)</p>
+<strong>그림 09-1-3b</strong> 확률 분포를 몰라도 직접 주사위를 굴려 관측한 표본들의 평균으로 가치를 학습하는 샘플 모델과 몬테카를로법(MC)</p>
 
 <hr />
 
@@ -964,7 +964,7 @@
 </span></code></pre></div></div>
 
 <p><img src="./img/03_4_python_sample_function_flowchart.png" alt="파이썬 sample 함수 실행 알고리즘 순서도" />
-<strong>그림 09-1-3c</strong> 파이썬 <code class="language-plaintext highlighter-rouge">sample(dices=2)</code> 함수 실행 알고리즘 순서도 (1:1 순백색)</p>
+<strong>그림 09-1-3c</strong> 파이썬 <code class="language-plaintext highlighter-rouge">sample(dices=2)</code> 함수 실행 알고리즘 순서도</p>
 
 <p>전체 확률 분포를 준비할 필요가 전혀 없기 때문에, 환경의 내부 법칙을 모르는 상태에서도 즉시 구현할 수 있습니다.</p>
 
@@ -975,7 +975,7 @@
 <p>만약 주사위를 2개가 아니라 <strong>10개</strong> 굴려서 합계를 구해야 한다면 두 모델의 차이는 어떻게 될까요?</p>
 
 <p><img src="./img/04_ten_dice_exponential_explosion.png" alt="10개 주사위 계산 폭발" />
-<strong>그림 09-1-4</strong> 6천만 가지 경우의 수에 머리를 쥐어뜯는 지니와, 단 한 줄의 <code class="language-plaintext highlighter-rouge">sample(10)</code> 코드로 즉시 표본을 뽑아내는 도로시 (1:1 순백색)</p>
+<strong>그림 09-1-4</strong> 6천만 가지 경우의 수에 머리를 쥐어뜯는 지니와, 단 한 줄의 <code class="language-plaintext highlighter-rouge">sample(10)</code> 코드로 즉시 표본을 뽑아내는 도로시</p>
 
 <hr />
 
@@ -989,7 +989,7 @@
 </ul>
 
 <p><img src="./img/04_2_ten_dice_exponential_graph.png" alt="주사위 N개의 기하급수적 계산 폭발 그래프" />
-<strong>그림 09-1-4a</strong> 주사위 개수 N에 따른 경우의 수 6^N의 기하급수적 조합론적 폭발 그래프 (1:1 순백색)</p>
+<strong>그림 09-1-4a</strong> 주사위 개수 N에 따른 경우의 수 6^N의 기하급수적 조합론적 폭발 그래프</p>
 
 <hr />
 
@@ -1002,14 +1002,14 @@
 </ul>
 
 <p><img src="./img/04_3_sample_model_linear_scalability.png" alt="샘플 모델의 선형적 확장성" />
-<strong>그림 09-1-4b</strong> 주사위가 10개든 1,000개든 가볍게 O(N) 단일 루프로 표본을 뽑아내는 샘플 모델의 선형적 확장성 (1:1 순백색)</p>
+<strong>그림 09-1-4b</strong> 주사위가 10개든 1,000개든 가볍게 O(N) 단일 루프로 표본을 뽑아내는 샘플 모델의 선형적 확장성</p>
 
 <hr />
 
 <p>이처럼 <strong>“모든 경우의 수를 일일이 계산하기가 현실적으로 불가능하거나 환경 모델을 모를 때, 실제로 굴려보면서(샘플링) 그 평균값으로 진짜 값을 찾아가는 과정”</strong>이 바로 몬테카를로법의 위대한 존재 이유입니다.</p>
 
 <p><img src="./img/04_4_monte_carlo_philosophical_breakthrough.png" alt="몬테카를로법의 철학적 도약" />
-<strong>그림 09-1-4c</strong> 전수 조사가 불가능할 때 직접 경험하고 평균을 내어 참된 가치를 찾아가는 몬테카를로법의 위대한 철학적 도약 (1:1 순백색)</p>
+<strong>그림 09-1-4c</strong> 전수 조사가 불가능할 때 직접 경험하고 평균을 내어 참된 가치를 찾아가는 몬테카를로법의 위대한 철학적 도약</p>
 
 <hr />
 
@@ -1018,7 +1018,7 @@
 <p>그렇다면 샘플 모델로 어떻게 참 기댓값 7.0을 계산할 수 있을까요? <strong>샘플링을 많이 하고 그 표본들의 산술 평균을 구하면 됩니다.</strong> 표본 수가 커질수록 평균이 참값으로 수렴한다는 통계학의 <strong>대수의 법칙(Law of Large Numbers)</strong>이 이를 완벽하게 보장합니다.</p>
 
 <p><img src="./img/04_5_dorothy_what_is_law_of_large_numbers.png" alt="도로시의 호기심 대수의 법칙이란" />
-<strong>그림 09-1-4d</strong> “대수의 법칙이 도대체 뭐예요?” 표본 수가 늘어날수록 표본 평균이 참 기댓값 7.0으로 수렴한다는 통계학의 기적에 호기심 어린 의문을 품는 도로시와 토토 (1:1 순백색)</p>
+<strong>그림 09-1-4d</strong> “대수의 법칙이 도대체 뭐예요?” 표본 수가 늘어날수록 표본 평균이 참 기댓값 7.0으로 수렴한다는 통계학의 기적에 호기심 어린 의문을 품는 도로시와 토토</p>
 
 <hr />
 
@@ -1059,7 +1059,7 @@
 </ol>
 
 <p><img src="./img/05_2_sample_mean_three_blocks_breakdown.png" alt="표본 평균 공식 3대 블록 기호 해부" />
-<strong>그림 09-1-5a</strong> 표본 평균 공식 V ≈ (1/N) ∑ s_i의 3대 핵심 블록 기호 해부 인포그래픽 (1:1 순백색)</p>
+<strong>그림 09-1-5a</strong> 표본 평균 공식 V ≈ (1/N) ∑ s_i의 3대 핵심 블록 기호 해부 인포그래픽</p>
 
 <hr />
 
@@ -1077,7 +1077,7 @@
 </span></code></pre></div></div>
 
 <p><img src="./img/05_3_python_sample_mean_algorithm_flowchart.png" alt="파이썬 몬테카를로 일반 표본 평균 알고리즘 순서도" />
-<strong>그림 09-1-5a2</strong> 파이썬 몬테카를로 일반 표본 평균 알고리즘 실행 순서도 (1:1 순백색)</p>
+<strong>그림 09-1-5a2</strong> 파이썬 몬테카를로 일반 표본 평균 알고리즘 실행 순서도</p>
 
 <p>1,000번 주사위를 던져 평균을 낸 결과 <code class="language-plaintext highlighter-rouge">6.98</code>이 나왔으며, 이론적 정답인 7에 매우 근접함을 확인할 수 있습니다. 1만 번, 10만 번으로 횟수를 늘리면 오차는 더욱 줄어듭니다.</p>
 
@@ -1088,7 +1088,7 @@
 <p>하지만 샘플 데이터가 100만 개, 1억 개로 늘어난다면 어떨까요? 모든 샘플을 <code class="language-plaintext highlighter-rouge">samples</code> 리스트에 담아두고 매번 <code class="language-plaintext highlighter-rouge">sum()</code>을 계산하면 컴퓨터 메모리가 부족해지고 연산 속도가 심각하게 느려집니다. 1억 개의 주사위 눈을 메모리에 보관하려면 수백 메가바이트의 RAM이 소모되고, 새로운 주사위를 던질 때마다 과거 1억 개의 데이터를 처음부터 다시 더해야 하는 끔찍한 비효율이 발생합니다.</p>
 
 <p><img src="./img/05_4_memory_overflow_large_data_limits.png" alt="대량 데이터 누적 시 메모리 한계와 비효율" />
-<strong>그림 09-1-5a3</strong> 1억 개의 표본을 리스트에 누적할 때 발생하는 메모리 폭발과 O(N^2) 비효율의 하드웨어적 한계 (1:1 순백색)</p>
+<strong>그림 09-1-5a3</strong> 1억 개의 표본을 리스트에 누적할 때 발생하는 메모리 폭발과 O(N^2) 비효율의 하드웨어적 한계</p>
 
 <hr />
 
@@ -1100,7 +1100,7 @@
 </blockquote>
 
 <p><img src="./img/hojin_incremental_chalkboard.jpg" alt="증분 갱신 칠판 직강" />
-<strong>그림 09-1-5b</strong> 이호진 교수님이 칠판에서 증분 갱신 점화식 <em>V</em><sub><em>n</em></sub> = <em>V</em><sub><em>n</em>−1</sub> + 1 / <em>n</em> (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>)의 단계별 수학 유도 과정을 도로시와 지니에게 설명하는 장면 (1:1 순백색)</p>
+<strong>그림 09-1-5b</strong> 이호진 교수님이 칠판에서 증분 갱신 점화식 <em>V</em><sub><em>n</em></sub> = <em>V</em><sub><em>n</em>−1</sub> + 1 / <em>n</em> (<em>s</em><sub><em>n</em></sub> − <em>V</em><sub><em>n</em>−1</sub>)의 단계별 수학 유도 과정을 도로시와 지니에게 설명하는 장면</p>
 
 <hr />
 
@@ -1114,7 +1114,7 @@
 <p>중학생도 쉽게 이해할 수 있도록, 칠판에 적힌 유도 과정을 단계별로 풀어보겠습니다:</p>
 
 <p><img src="./img/06_2_incremental_derivation_intro_chalkboard.png" alt="이호진 교수님의 증분 갱신 유도 칠판 교실" />
-<strong>그림 09-1-6a</strong> 이호진 교수님의 칠판 수학 교실: 증분 갱신 점화식 탄생의 4단계 비밀 유도 오리엔테이션 (1:1 순백색)</p>
+<strong>그림 09-1-6a</strong> 이호진 교수님의 칠판 수학 교실: 증분 갱신 점화식 탄생의 4단계 비밀 유도 오리엔테이션</p>
 
 <hr />
 
@@ -1124,7 +1124,7 @@
 </ol>
 
 <p><img src="./img/06_3_derivation_step1_general_mean_def.png" alt="증분 갱신 유도 1단계 일반 평균 정의식" />
-<strong>그림 09-1-6b1</strong> 증분 갱신 유도 1단계: n개 전체 데이터에 대한 일반 산술 평균의 원초적 정의식 (1:1 순백색)</p>
+<strong>그림 09-1-6b1</strong> 증분 갱신 유도 1단계: n개 전체 데이터에 대한 일반 산술 평균의 원초적 정의식</p>
 
 <hr />
 
@@ -1134,7 +1134,7 @@
 </ol>
 
 <p><img src="./img/06_4_derivation_step2_isolate_last_data.png" alt="증분 갱신 유도 2단계 마지막 데이터 분리" />
-<strong>그림 09-1-6b2</strong> 증분 갱신 유도 2단계: 과거 (n-1)개의 합과 마지막 최신 데이터 s_n의 분리 (1:1 순백색)</p>
+<strong>그림 09-1-6b2</strong> 증분 갱신 유도 2단계: 과거 (n-1)개의 합과 마지막 최신 데이터 s_n의 분리</p>
 
 <hr />
 
@@ -1146,7 +1146,7 @@
 </ol>
 
 <p><img src="./img/06_5_derivation_step3_link_previous_mean.png" alt="증분 갱신 유도 3단계 직전 평균 치환" />
-<strong>그림 09-1-6b3</strong> 증분 갱신 유도 3단계: 과거 데이터들의 거대한 합을 직전 평균 (n-1)V_{n-1}로 치환하는 핵심 연결 고리 (1:1 순백색)</p>
+<strong>그림 09-1-6b3</strong> 증분 갱신 유도 3단계: 과거 데이터들의 거대한 합을 직전 평균 (n-1)V_{n-1}로 치환하는 핵심 연결 고리</p>
 
 <hr />
 
@@ -1159,7 +1159,7 @@
 </ol>
 
 <p><img src="./img/06_6_derivation_step4_final_recurrence_formula.png" alt="증분 갱신 유도 4단계 최종 점화식 완성" />
-<strong>그림 09-1-6b4</strong> 증분 갱신 유도 4단계: 괄호 전개와 분수 분리를 통한 최종 점화식 V_n = V_{n-1} + (1/n)(s_n - V_{n-1})의 대수적 완성 (1:1 순백색)</p>
+<strong>그림 09-1-6b4</strong> 증분 갱신 유도 4단계: 괄호 전개와 분수 분리를 통한 최종 점화식 V_n = V_{n-1} + (1/n)(s_n - V_{n-1})의 대수적 완성</p>
 
 <hr />
 
@@ -1168,7 +1168,7 @@
 <p>과거 <em>s</em><sub>1</sub>부터 <em>s</em><sub><em>n</em>−1</sub>까지의 모든 데이터가 단 하나의 숫자 <em>V</em><sub><em>n</em>−1</sub> 속에 압축되어 녹아들어간 것입니다!</p>
 
 <p><img src="./img/06_7_memory_compression_magic.png" alt="단 하나의 숫자로 압축되는 메모리의 기적" />
-<strong>그림 09-1-6c</strong> 수백만 개의 과거 데이터가 단 1개의 숫자 V_{n-1} 속에 완벽히 압축 보존되는 메모리 절약의 기적 (1:1 순백색)</p>
+<strong>그림 09-1-6c</strong> 수백만 개의 과거 데이터가 단 1개의 숫자 V_{n-1} 속에 완벽히 압축 보존되는 메모리 절약의 기적</p>
 
 <hr />
 
@@ -1197,7 +1197,7 @@
 </ol>
 
 <p><img src="./img/06_8_incremental_update_component_dynamics.png" alt="증분 갱신 3대 구성요소 상호작용 메커니즘" />
-<strong>그림 09-1-6d</strong> 증분 갱신 공식의 3대 요소(기존 가치, 오차 신호, 적응형 학습 보폭 1/n)의 역동적 상호작용 메커니즘 (1:1 순백색)</p>
+<strong>그림 09-1-6d</strong> 증분 갱신 공식의 3대 요소(기존 가치, 오차 신호, 적응형 학습 보폭 1/n)의 역동적 상호작용 메커니즘</p>
 
 <hr />
 
@@ -1210,7 +1210,7 @@
 </blockquote>
 
 <p><img src="./img/06_9_rl_learning_formula_family_tree.png" alt="강화학습 모든 가치 갱신식의 위대한 원형 트리" />
-<strong>그림 09-1-6e</strong> 강화학습 모든 가치 갱신식의 위대한 원형(Mother Formula)과 TD·SARSA·Q-러닝·DQN으로 이어지는 계통수 가계도 (1:1 순백색)</p>
+<strong>그림 09-1-6e</strong> 강화학습 모든 가치 갱신식의 위대한 원형(Mother Formula)과 TD·SARSA·Q-러닝·DQN으로 이어지는 계통수 가계도</p>
 
 <hr />
 
@@ -1228,7 +1228,7 @@
 </span></code></pre></div></div>
 
 <p><img src="./img/06_10_python_incremental_update_flowchart.png" alt="파이썬 초경량 증분 평균 알고리즘 순서도" />
-<strong>그림 09-1-6f</strong> 파이썬 초경량 증분 평균 알고리즘 실행 순서도 (1:1 순백색)</p>
+<strong>그림 09-1-6f</strong> 파이썬 초경량 증분 평균 알고리즘 실행 순서도</p>
 
 <p>이 코드는 과거의 수많은 표본을 단 하나도 메모리에 보관하지 않으면서도, 매 루프마다 수학적으로 완전무결한 평균값을 실시간으로 유지합니다.</p>
 
@@ -1266,7 +1266,7 @@
 </ol>
 
 <p><img src="./img/07_2_three_pillars_pipeline_infographic.png" alt="몬테카를로 기초 3대 기둥 유기적 파이프라인" />
-<strong>그림 09-1-7a</strong> 몬테카를로법 기초 3대 핵심 기둥(샘플 모델, 표본 평균, 증분 갱신)의 유기적 알고리즘 파이프라인 (1:1 순백색)</p>
+<strong>그림 09-1-7a</strong> 몬테카를로법 기초 3대 핵심 기둥(샘플 모델, 표본 평균, 증분 갱신)의 유기적 알고리즘 파이프라인</p>
 
 <hr />
 
@@ -1276,7 +1276,7 @@
 </blockquote>
 
 <p><img src="./img/07_3_hojin_lecture_mentor_note.png" alt="이호진 교수님의 직강 멘토링 노트" />
-<strong>그림 09-1-7b</strong> 이호진 교수님의 직강 멘토링 노트: 무작위성을 지혜로 바꾸는 강화학습의 위대한 발상 (1:1 순백색)</p>
+<strong>그림 09-1-7b</strong> 이호진 교수님의 직강 멘토링 노트: 무작위성을 지혜로 바꾸는 강화학습의 위대한 발상</p>
 
 <hr />
 
@@ -1286,7 +1286,7 @@
 </blockquote>
 
 <p><img src="./img/07_4_next_step_policy_evaluation_preview.png" alt="다음 절 예고: 몬테카를로 정책 평가 실전" />
-<strong>그림 09-1-7c</strong> 다음 절 예고: 09.2 몬테카를로 정책 평가 실전으로 씩씩하게 출발하는 도로시와 지니 (1:1 순백색)</p>
+<strong>그림 09-1-7c</strong> 다음 절 예고: 09.2 몬테카를로 정책 평가 실전으로 씩씩하게 출발하는 도로시와 지니</p>
 
 
             <!-- 구글 애드센스 출력 -->

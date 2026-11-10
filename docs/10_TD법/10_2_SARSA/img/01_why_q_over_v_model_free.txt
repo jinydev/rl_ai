@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 01_why_q_over_v_model_free.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 왜 모델 프리 환경에서 V(s) 대신 Q(s, a)를 사용하는가?
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A crossroads in a mysterious world. On the left path stands an opaque foggy gate covered with question marks, labeled 'p(s'|s,a) Unknown, V(s) Blindfold' indicating the impossibility of greedy choice without transition probabilities. On the right path stands a bright wooden directional post with four distinct arrow signs pointing Up (+0.8), Down (-0.5), Left (+0.2), Right (-0.9), clearly labeled 'Q(s, a) Direct Value Indicators'.
+Dorothy, a 9-year-old cute anime girl with chestnut pigtails, striped t-shirt, and denim overalls, excitedly points at the highest score arrow sign (+0.8), ready to take action.
+Beside her stands Prof. Hojin in his early 40s, youthful face, smooth skin without wrinkles, neat salt-and-pepper short black hair, wearing thin silver round metal wire glasses and a solid dark charcoal navy polo shirt (NO badges, NO text), warmly smiling and nodding in agreement, gesturing toward the Q-value signpost.
+Chibi cat TA Jiny (tuxedo cat with glasses and red bell) sits on the post cheering.
+1:1 square composition, high resolution, colorful and educational.
+

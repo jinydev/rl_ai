@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing SARSA as the sampling version of the Bellman expectation equation. A connected chain of 5 glowing alphabet blocks (S_t, A_t, R_t, S_{t+1}, A_{t+1}) laid out on the floor. Dorothy and Tinny cheerfully walk along the chain one step at a time, showing honest sample-based interaction.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

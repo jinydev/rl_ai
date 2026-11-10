@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 16_unknown_transition_wind_dice.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 현실 세계의 미지의 확률 (제멋대로 부는 바람과 구르는 주사위)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dynamic gusty wind scene. A large whimsical weather vane spins wildly, changing directions unpredictably.
+In the air, several colorful translucent polyhedral dice float and tumble in the breeze, symbolizing environmental transition randomness.
+Dorothy holds onto her hat as the wind ruffles her chestnut pigtails, while Toto's fluffy white fur blows in the wind.
+Prof. Hojin stands calmly observing the wind currents, teaching how real-world environments cannot be captured by static tables.
+1:1 square composition, fluid motion lines, charming atmospheric warmth.
+

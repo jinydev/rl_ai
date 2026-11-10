@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Professor Hojin (strictly early 40s, smooth youthful skin, no wrinkles, round wire-rim glasses, solid dark navy polo shirt, medium blue jeans, grey sneakers, exact face match to master dataset) standing in front of a clean classic dark green chalkboard. With golden-yellow chalk in hand, he clearly writes out the off-policy SARSA update formula: Q(S_t, A_t) <- Q(S_t, A_t) + alpha * [rho * (R_t + gamma * Q(S_{t+1}, A_{t+1})) - Q(S_t, A_t)]. Dorothy watches from the side taking notes with a bright smile.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

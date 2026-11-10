@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 06_mc_product_vs_td_single_rho.png
+# Chapter: 10.3 오프-정책 SARSA: 중요도 샘플링 기반 제어
+# Concept: MC의 누적 곱(분산 폭발) vs TD의 1-스텝 단일 가중치(분산 안정화) 대조
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic visual comparison of variance control.
+On the left side (MC Method): A terrifyingly long, tangled chain made of hundreds of glowing red iron links labeled 'rho_0 * rho_1 * ... * rho_T', shaking uncontrollably with fiery sparks and smoke labeled 'High Variance Explosion!'. Robot Tinny recoils with fright.
+On the right side (TD Method): Dorothy calmly and proudly holds up a single, light, indestructible emerald-golden ring labeled 'Single 1-Step rho', emitting a soothing serene blue aura labeled 'Low Variance, Rock-Solid Stability'.
+Chibi cat TA Jiny raises a green checkmark sign on the right.
+1:1 square composition, high visual drama, bright contrasting lighting.
+

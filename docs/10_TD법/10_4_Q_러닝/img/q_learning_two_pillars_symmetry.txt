@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing the mathematical symmetry of reinforcement learning. Two majestic classical stone pillars stand side by side: on the left pillar stands the silver balance scale of "Bellman Expectation (SARSA)"; on the right pillar stands the golden crowned throne of "Bellman Optimality (Q-Learning)". Jiny the cat points with an admiring smile at the perfect symmetry.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

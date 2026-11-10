@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 03_bellman_expectation_vs_optimality.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: 벨만 기대 방정식(SARSA) vs 벨만 최적 방정식(Q-러닝) 대조
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual philosophical contrast of two mathematical principles.
+On the left: The Bellman Expectation scale. Multiple action weights sit on a broad wooden balance scale labeled 'Expectation: Probability-Weighted Average of pi(a|s)'. Chibi cat TA Jiny carefully balances all branches.
+On the right: The Bellman Optimality throne. A glowing golden royal crown labeled 'max_a' is directly placed on the single highest sparkling sapphire gem labeled 'q_*(s, a)', ignoring all other mediocre options. Dorothy proudly gestures to the crown.
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) stands in the center pointing out the paradigm shift.
+1:1 square composition, elegant metaphorical symmetry, vibrant warm tones.
+

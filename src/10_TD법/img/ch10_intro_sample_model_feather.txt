@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_sample_model_feather.png
+# Chapter: CHAPTER 10 TD법
+# Concept: 무거운 정책 딕셔너리를 벗어던진 깃털 같은 초경량 샘플 모델
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual metaphor of software diet and speed.
+On the left: A giant, dusty filing cabinet labeled 'Explicit Distribution Tables (pi[s] Dicts) - 100MB Memory Overflow'.
+On the right: Robot Tinny, feather-light and gleaming, holds only a single golden coin ('coin_flip < epsilon') and an argmax magnifying glass, leaping gracefully in the air labeled 'Sample Model: Zero-Memory On-Demand Speed!'.
+Dorothy cheers holding a light white goose feather to show how weightless the code has become.
+1:1 square composition, elegant contrasting balance, bright modern Ghibli tones.
+

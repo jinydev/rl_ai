@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Tinny the AI maker robot is holding a single antique brass compass, scratching his retro monitor head with cyan LED crescent eyes looking confused. On the compass dial, "Exploration (탐색)" and "Optimal (최적)" are pointing in opposite directions, showing the limitation of trying to do both with one single policy in on-policy SARSA. Standing nearby, Jiny the lab assistant cat in small wire-rim glasses points at the spinning needle.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

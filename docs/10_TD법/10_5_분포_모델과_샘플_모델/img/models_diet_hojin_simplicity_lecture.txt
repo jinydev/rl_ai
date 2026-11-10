@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Professor Hojin (strictly early 40s, smooth youthful skin, no wrinkles, round wire-rim glasses, solid dark navy polo shirt, master face match) giving an inspiring lecture at the podium. Behind him, a chalkboard sketch quotes: "Simplicity is the ultimate sophistication - Leonardo da Vinci", next to clean python code: `return np.argmax(qs)`. Dorothy and Toto listen enthusiastically.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

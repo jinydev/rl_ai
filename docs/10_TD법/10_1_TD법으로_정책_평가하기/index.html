@@ -631,22 +631,50 @@
         <div class="bd-content ps-lg-4">
             <h1 id="101-td법으로-정책-평가하기">10.1 TD법으로 정책 평가하기</h1>
 
-<p><img src="./10_1_TD법으로_정책_평가하기.png" alt="10.1 TD법으로 정책 평가하기" /></p>
+<p>동적 계획법(DP)의 부트스트랩과 몬테카를로법(MC)의 모델 프리 샘플링이라는 양대 산맥의 강력한 장점을 융합하여 탄생한 <strong>TD(시간차, Temporal Difference) 정책 평가</strong> 기법을 공부합니다.</p>
+
+<p><img src="./img/td_intro_curious_dorothy.png" alt="새로운 TD 방법을 알아보고자 하는 도로시" />
+<strong>그림 10-1-1</strong> MC(몬테카를로) 산과 DP(동적 계획법) 강 사이에서 새로운 실시간 학습의 황금 다리인 ‘TD(시간차 학습)’로 향하는 도로시와 친구들</p>
+
+<hr />
+
+<p>에피소드가 완결되기 전이라도, 행동을 취하자마자 한 단계 뒤의 다음 상태 가치를 이용해 가치 평가 카드를 실시간 갱신하는 공식을 요정 지니의 칠판 필기법과 이호진 교수님의 직강으로 통쾌하게 유도해 봅시다!</p>
 
 <p><img src="./img/jiny_ch10_1_td_evaluation.png" alt="TD 정책 평가 인트로" />
-<strong>그림 10-1-1</strong> 도로시가 징검다리를 한 걸음 내딛자마자 칠판의 점화식 공식을 이용해 즉시 상태 가치 <em>V</em>(<em>s</em>)를 갱신해 주는 지니와 이호진 교수님</p>
+<strong>그림 10-1-2</strong> 도로시가 징검다리를 한 걸음 내딛자마자 칠판의 점화식 공식을 이용해 즉시 상태 가치 <em>V</em>(<em>s</em>)를 갱신해 주는 지니와 이호진 교수님</p>
 
-<p>동적 계획법(DP)의 부트스트랩과 몬테카를로법(MC)의 모델 프리 샘플링이라는 양대 산맥의 강력한 장점을 융합하여 탄생한 <strong>TD(시간차, Temporal Difference) 정책 평가</strong> 기법을 공부합니다. 에피소드가 완결되기 전이라도, 행동을 취하자마자 한 단계 뒤의 다음 상태 가치를 이용해 가치 평가 카드를 실시간 갱신하는 공식을 요정 지니의 칠판 필기법과 이호진 교수님의 직강으로 통쾌하게 유도해 봅시다!</p>
+<hr />
+
+<ul>
+  <li><strong>학습 목표</strong>:
+    <ul>
+      <li>몬테카를로법(MC)의 한계인 ‘에피소드 완주 대기’와 동적 계획법(DP)의 한계인 ‘환경 모델 의존성’을 극복하는 TD 원리 이해</li>
+      <li>벨만 기대 방정식의 기댓값을 단 1-스텝 샘플로 근사하는 TD(0) 가치 갱신 공식 유도</li>
+      <li>TD 목표(TD Target)와 TD 오차(TD Error, <em>δ</em><sub><em>t</em></sub>)의 수학적 구조 및 물리적 의미 파악</li>
+      <li>편향(Bias)과 분산(Variance) 관점에서 MC와 TD의 트레이드오프 분석</li>
+      <li>메모리 버퍼(<code class="language-plaintext highlighter-rouge">memory</code>) 없이 실시간 1-스텝으로 동작하는 <code class="language-plaintext highlighter-rouge">TdAgent</code> 클래스 파이썬 실전 구현</li>
+    </ul>
+  </li>
+</ul>
 
 <hr />
 
 <h2 id="1011-td법의-탄생-dp와-mc의-위대한-융합">10.1.1 TD법의 탄생: DP와 MC의 위대한 융합</h2>
 
-<p>TD법은 지금까지 우리가 배운 <strong>‘몬테카를로법(MC법)’</strong>과 <strong>‘동적 프로그래밍(DP법)’</strong>의 장점만을 취합하여 합친 기법입니다. 따라서 먼저 이 두 기법의 수학적 뼈대를 복습한 후 TD법을 유도해 보겠습니다.</p>
+<p>TD법은 지금까지 우리가 배운 <strong>‘몬테카를로법(MC법)’</strong>과 <strong>‘동적 프로그래밍(DP법)’</strong>의 장점만을 취합하여 합친 기법입니다.</p>
+
+<p><img src="./img/dp_mc_concept_puzzle.png" alt="두 개의 기법을 합친 퍼즐 융합" />
+<strong>그림 10-1-3</strong> 동적 계획법(DP)의 부트스트랩 퍼즐 조각과 몬테카를로법(MC)의 실제 샘플링 퍼즐 조각이 맞물려 TD법의 황금빛 섬광을 일으키는 개념 융합</p>
+
+<p>따라서 먼저 이 두 기법의 수학적 뼈대를 복습한 후 TD법을 유도해 보겠습니다.</p>
+
+<hr />
 
 <h3 id="1-수익과-가치-함수의-재귀적-전개">1) 수익과 가치 함수의 재귀적 전개</h3>
 
-<p>먼저 ‘수익(Return)’의 정의를 복습해 봅시다. 시간 <em>t</em>부터 시작하여 할인율 <em>γ</em>를 적용한 누적 보상의 합은 다음과 같습니다:</p>
+<p>먼저 ‘수익(Return)’의 정의를 복습해 봅시다.</p>
+
+<p>시간 <em>t</em>부터 시작하여 할인율 <em>γ</em>를 적용한 누적 보상의 합은 다음과 같습니다:</p>
 
 <blockquote>
   <h3 id="gt--rt--γrt1--γ2rt2----식-101"><strong><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γR</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub><em>t</em>+2</sub> + …</strong>      <em>(식 10.1)</em></h3>
@@ -654,7 +682,21 @@
   <h3 id="-rt--γgt1--식-102-재귀적-표현"><strong>= <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub></strong>      <em>(식 10.2: 재귀적 표현)</em></h3>
 </blockquote>
 
+<p><img src="./img/return_formula_chalkboard.png" alt="수익 공식 복습 강의" />
+<strong>그림 10-1-4</strong> 누적 할인 수익의 재귀적 점화식 $G_t = R_t + \gamma G_{t+1}$의 유도 과정을 칠판에 적어주며 기초를 다져주시는 이호진 교수님</p>
+
+<hr />
+
+<h4 id="아름다운-재귀식">아름다운 재귀식</h4>
+
 <p>시간 <em>t</em>에 에이전트가 행동을 취하여 즉각 보상 <em>R</em><sub><em>t</em></sub>를 얻고, 그 이후의 모든 미래 수익을 <em>G</em><sub><em>t</em>+1</sub>로 묶어 [식 10.2]처럼 아름다운 재귀식으로 나타낼 수 있습니다.</p>
+
+<p><img src="./img/01_return_recursive_chain.png" alt="수익의 재귀적 사슬" />
+<strong>그림 10-1-5</strong> 즉각 보상 <em>R</em><sub><em>t</em></sub>(황금 사과)와 할인율 <em>γ</em>(모래시계), 미래 누적 수익 <em>G</em><sub><em>t</em>+1</sub>(보물상자)의 재귀적 연쇄 사슬 구조</p>
+
+<hr />
+
+<h4 id="상태-가치함수-정의">상태 가치함수 정의</h4>
 
 <p>이 수익을 바탕으로 정책 <em>π</em>를 따를 때의 ‘상태 가치 함수’를 정의하면 다음과 같은 두 가지 형태로 전개됩니다:</p>
 
@@ -664,7 +706,14 @@
   <h3 id="-eπ-rt--γgt1--st--s--식-104-동적-프로그래밍의-출발점"><strong>= E<sub><em>π</em></sub> [<em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong>      <em>(식 10.4: 동적 프로그래밍의 출발점)</em></h3>
 </blockquote>
 
-<p>가치 함수는 이처럼 기댓값으로 정의됩니다. 여기서 두 기법이 기댓값을 구하는 방식이 완전히 갈라집니다:</p>
+<p>가치 함수는 이처럼 기댓값으로 정의됩니다.</p>
+
+<p><img src="./img/value_function_two_forms.png" alt="정책을 따를 때 상태 가치 함수의 두 가지 전개 형태" />
+<strong>그림 10-1-6</strong> 상태 가치 함수 $v_\pi(s)$의 기댓값 정의에서 뻗어나오는 두 갈래의 길: 전체 수익의 기댓값(MC)과 재귀적 벨만 전개 기댓값(DP)</p>
+
+<hr />
+
+<h4 id="여기서-두-기법이-기댓값을-구하는-방식이-완전히-갈라집니다">여기서 두 기법이 기댓값을 구하는 방식이 완전히 갈라집니다:</h4>
 
 <ol>
   <li><strong>MC법 (몬테카를로법)</strong>: [식 10.3]에서 출발하여, 기댓값을 계산하는 대신 실제로 에피소드가 끝날 때까지 뛰어보고 얻은 <strong>실제 누적 수익의 샘플 평균</strong>으로 근사합니다.</li>
@@ -672,7 +721,7 @@
     <table>
       <tbody>
         <tr>
-          <td><strong>DP법 (동적 프로그래밍)</strong>: [식 10.4]에서 출발하여, 환경의 전이 확률 행렬 <em>p</em>(<em>s</em>'</td>
+          <td><strong>DP법 (동적 프로그래밍)</strong>: [식 10.4]에서 출발하여, 환경의 전이 확률 행렬 <em>p</em>(<em>s</em>’</td>
           <td><em>s</em>, <em>a</em>)를 이용해 <strong>벨만 방정식을 통해 모든 가능한 미래의 기댓값을 엄밀하게 계산</strong>합니다.</td>
         </tr>
       </tbody>
@@ -680,50 +729,164 @@
   </li>
 </ol>
 
+<p><img src="./img/two_paths_mc_dp.png" alt="두 가지 기법의 학습 경로 대조" />
+<strong>그림 10-1-7</strong> 실제 경험 주사위와 트랙으로 근사하는 MC 스테이션과 전이 행렬 청사진으로 엄밀 계산하는 DP 스테이션의 대조</p>
+
 <hr />
 
 <h3 id="2-mc법과-dp법의-갱신-점화식-복습">2) MC법과 DP법의 갱신 점화식 복습</h3>
 
 <p>두 기법의 가치 갱신식을 나란히 비교해 봅시다:</p>
 
-<ul>
-  <li><strong>MC법의 갱신식 (고정 학습률 <em>α</em> 기반)</strong>:
-    <blockquote>
-      <h3 id="vπst--vπst--α--gt---vπst--식-105"><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.5)</em></h3>
-    </blockquote>
-    <ul>
-      <li>에피소드가 완전히 끝난 뒤, 실제로 획득한 참 수익 <em>G</em><sub><em>t</em></sub>를 목표(Target)로 삼아 가치를 갱신합니다.</li>
-    </ul>
-  </li>
-  <li><strong>DP법의 갱신식 (벨만 기대 방정식 기반)</strong>:
-    <blockquote>
-      <h3 id="vπs--a-s-πa--s-ps--s-a-rs-a-s--γvπs--식-106"><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) ← ∑<sub><em>a</em>, <em>s</em>'</sub> <em>π</em>(<em>a</em> | <em>s</em>) <em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>') + <em>γV</em><sub><em>π</em></sub>(<em>s</em>')]</strong>      <em>(식 10.6)</em></h3>
-    </blockquote>
-    <ul>
-      <li>환경 모델(<em>p</em>, <em>r</em>)을 바탕으로, <strong>‘다음 상태의 추정 가치 <em>V</em><sub><em>π</em></sub>(<em>s</em>')’를 빌려와서 현재 상태의 가치를 갱신</strong>합니다. 이 원리를 <strong>부트스트랩(Bootstrapping)</strong>이라고 부릅니다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><img src="./img/fig_7_1.jpg" alt="MC와 TD의 갱신 시점 비교" />
-<strong>그림 10-1-2</strong> 몬테카를로법(MC)과 시간차 학습(TD)의 가치 갱신 시점 비교 (MC: 에피소드 종료 대기 vs TD: 1-스텝 즉시 갱신)</p>
-
-<p><img src="./img/02_mc_vs_td_backup_flow.jpg" alt="MC vs TD 백업 흐름 비교" />
-<strong>그림 10-1-3</strong> 에피소드 끝까지 완주한 후 거꾸로 거슬러 올라가는 MC 방식과, 단 1걸음 이동 즉시 이전 발판을 번개처럼 갱신하는 TD 방식의 시각적 대조</p>
-
-<p>[그림 10-1-2]와 [그림 10-1-3]을 보십시오.</p>
-<ul>
-  <li><strong>DP법</strong>: 환경 지도를 완벽히 알고 있으므로 모든 경로를 계산할 수 있지만, 지도가 없는 실세계에서는 아예 사용할 수 없습니다.</li>
-  <li><strong>MC법</strong>: 환경 지도가 없어도 실제 샘플 경험으로 학습할 수 있지만, 에피소드가 끝날 때까지 하염없이 기다려야만 합니다.</li>
-</ul>
-
-<p>이 두 기법의 장점만을 뽑아내면 어떨까요?<br />
-<strong>“환경 모델 없이 오직 실제 1걸음 샘플 데이터만으로 학습(MC의 장점)하면서도, 에피소드 완주를 기다리지 않고 다음 상태의 가치를 빌려와 즉시 갱신(DP의 부트스트랩 장점)하자!”</strong><br />
-이것이 바로 <strong>시간차 학습(TD법, Temporal Difference Learning)</strong>의 위대한 탄생 배경입니다!</p>
+<p><img src="./img/dorothy_comparing_updates.png" alt="두 기법의 갱신식 차이를 탐구하는 도로시" />
+<strong>그림 10-1-8</strong> 에피소드 완주 후 누적 참 수익을 쓰는 MC 갱신 카드와 전이 행렬로 가중합을 구하는 DP 갱신 카드를 비교하며 고민하는 도로시와 지니</p>
 
 <hr />
 
-<h3 id="3-td법의-수식-도출과-td-목표">3) TD법의 수식 도출과 TD 목표</h3>
+<h4 id="mc법의-갱신식-고정-학습률-α-기반">MC법의 갱신식 (고정 학습률 <em>α</em> 기반):</h4>
+
+<blockquote>
+  <h3 id="vπst--vπst--α--gt---vπst--식-105"><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.5)</em></h3>
+  <ul>
+    <li>에피소드가 완전히 끝난 뒤, 실제로 획득한 참 수익 <em>G</em><sub><em>t</em></sub>를 목표(Target)로 삼아 가치를 갱신합니다.</li>
+  </ul>
+</blockquote>
+
+<p><img src="./img/mc_waiting_limitation.png" alt="MC의 에피소드 종료 대기 한계" />
+<strong>그림 10-1-9</strong> 에피소드가 끝까지 완주되어 결승선에 도달할 때까지 모래시계를 보며 하염없이 기다려야만 가치를 갱신할 수 있는 MC법의 지연 특성</p>
+
+<hr />
+
+<h4 id="dp법의-갱신식-벨만-기대-방정식-기반">DP법의 갱신식 (벨만 기대 방정식 기반):</h4>
+
+<blockquote>
+  <h3 id="vπs--a-s-πa--s-ps--s-a-rs-a-s--γvπs--식-106"><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) ← ∑<sub><em>a</em>, <em>s</em>’</sub> <em>π</em>(<em>a</em> | <em>s</em>) <em>p</em>(<em>s</em>’ | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>’) + <em>γV</em><sub><em>π</em></sub>(<em>s</em>’)]</strong>      <em>(식 10.6)</em></h3>
+  <ul>
+    <li>환경 모델(<em>p</em>, <em>r</em>)을 바탕으로, <strong>‘다음 상태의 추정 가치 <em>V</em><sub><em>π</em></sub>(<em>s</em>’)’를 빌려와서 현재 상태의 가치를 갱신</strong>합니다. 이 원리를 <strong>부트스트랩(Bootstrapping)</strong>이라고 부릅니다.</li>
+  </ul>
+</blockquote>
+
+<p><img src="./img/dp_bootstrapping_update.png" alt="DP의 환경 모델 기반 부트스트랩 갱신" />
+<strong>그림 10-1-10</strong> 다음 상태 발판의 추정 가치 $V(S_{t+1})$를 황금 부트스트랩 열쇠로 빌려와 현재 상태 $V(S_t)$를 즉시 계산하는 DP의 가치 갱신 원리</p>
+
+<hr />
+
+<h4 id="그림으로-두-가지-방식의-갱신-시점을-비교">그림으로 두 가지 방식의 갱신 시점을 비교</h4>
+
+<p>몬테카를로법(MC)과 시간차 학습(TD)이 상태 가치를 갱신하는 시점을 다이어그램으로 나누어 살펴보면, 왜 두 기법의 학습 속도와 대기 시간에 본질적인 차이가 발생하는지 명쾌하게 파악할 수 있습니다.</p>
+
+<h5 id="-몬테카를로법-mc-에피소드-종료-대기-후-반환값--확정-시-역방향-일괄-갱신">① 몬테카를로법 (MC): 에피소드 종료 대기 후 반환값 $ 확정 시 역방향 일괄 갱신</h5>
+
+<p><img src="./img/mc_update_timing_diagram.png" alt="몬테카를로법(MC) 갱신 시점 다이어그램" />
+<strong>그림 10-1-11</strong> 몬테카를로법(MC)의 가치 갱신 시점: 에피소드가 완전히 끝날 때까지 골(Goal) 지점($)까지 도달하기를 기다린 후, 확정된 누적 반환값  이용해 지나온 상태들을 역방향으로 일괄 갱신</p>
+
+<ul>
+  <li><strong>상태 전이 흐름</strong>:  \rightarrow S_1 \rightarrow S_2 \dots \rightarrow S_{T-1} \rightarrow S_T$</li>
+  <li><strong>갱신 메커니즘</strong>: 에피소드가 완전히 끝나는 종료 상태($)에 도달해야만 참 수익  확정할 수 있습니다. 확정된  목표(Target)로 삼아 이전 상태들로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
+  <li><strong>핵심 특징 및 트레이드오프</strong>:
+    <ul>
+      <li><strong>장점</strong>: 실제 발생한 진짜 누적 보상만을 사용하므로 <strong>편향이 전혀 없습니다 (Zero Bias, Unbiased)</strong>.</li>
+      <li><strong>단점</strong>: 에피소드가 끝날 때까지 아무런 가치 갱신도 일어나지 않아 <strong>긴 대기 시간</strong>이 발생하며, 긴 경로 동안 겪은 모든 무작위 사건들이 누적되어 <strong>분산(Variance)이 매우 높습니다</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>가치 갱신 공식</strong>:
+    <blockquote>
+      <h3 id="vst--vst--α--gt---vst"><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></h3>
+    </blockquote>
+  </li>
+</ul>
+
+<hr />
+
+<h5 id="-시간차-학습-td0-1-스텝-이동-직후-부트스트랩-즉시-갱신">② 시간차 학습 (TD(0)): 1-스텝 이동 직후 부트스트랩 즉시 갱신</h5>
+
+<p><img src="./img/td_update_timing_diagram.png" alt="시간차 학습(TD) 갱신 시점 다이어그램" />
+<strong>그림 10-1-12</strong> 시간차 학습(TD(0))의 가치 갱신 시점: 에피소드 종료를 기다리지 않고, 1단계 행동 직후 관측된 보상과 다음 상태 가치 추정치 (S_{t+1}) 현재 상태 가치를 즉시 갱신 (미래 전개 불필요)</p>
+
+<ul>
+  <li><strong>상태 전이 흐름</strong>:  \xrightarrow{A_t, R_{t+1}} S_{t+1}$ (미래 궤적 전개 불필요)</li>
+  <li><strong>갱신 메커니즘</strong>: 단 1단계 행동($)을 취해 즉각 보상 {t+1} 받고 다음 상태 {t+1} 도달하자마자, 아직 가보지 않은 미래를 기다리지 않고 <strong>다음 상태의 현재 추정 가치 (S_{t+1}) 빌려와(Bootstrapping)</strong> 현재 상태  가치를 실시간으로 즉시 갱신합니다.</li>
+  <li><strong>핵심 특징 및 트레이드오프</strong>:
+    <ul>
+      <li><strong>장점</strong>: 단 1스텝 뒤의 결과만을 반영하므로 무작위성이 적게 개입하여 <strong>분산이 매우 낮고(Low Variance)</strong>, 에피소드가 끝나지 않는 지속적 과제에서도 <strong>즉각적인 온라인 실시간 학습</strong>이 가능합니다.</li>
+      <li><strong>단점</strong>: 아직 참값이 아닌 추정치 (S_{t+1}) 바탕으로 갱신하므로 학습 초기에 <strong>약간의 편향(Bias)</strong>이 존재합니다 (학습이 반복될수록 참값으로 수렴하여 소멸).</li>
+    </ul>
+  </li>
+  <li><strong>가치 갱신 공식</strong>:
+    <blockquote>
+      <h3 id="vst--vst--α--rt1--γvst1---vst"><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em>+1</sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></h3>
+    </blockquote>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-갱신-시점과-백업-흐름의-본질적-차이">3) 갱신 시점과 백업 흐름의 본질적 차이</h3>
+
+<p>몬테카를로법(MC)과 시간차 학습(TD)의 백업 흐름을 각각 징검다리 경로 그림으로 나누어 살펴보면, 가치 갱신이 일어나는 시점과 메커니즘의 결정적 차이를 선명하게 파악할 수 있습니다.</p>
+
+<h4 id="-몬테카를로법mc의-백업-흐름-에피소드-완주-후-역방향-지연-갱신">① 몬테카를로법(MC)의 백업 흐름: 에피소드 완주 후 역방향 지연 갱신</h4>
+
+<p><img src="./img/02_mc_backup_flow.png" alt="몬테카를로(MC)의 백업 흐름" />
+<strong>그림 10-1-13</strong> 몬테카를로법(MC)의 백업 흐름: 에피소드가 끝날 때까지 골인(Goal) 지점까지 완주한 후, 전체 경로를 역방향으로 거슬러 올라가며 가치를 지연 갱신 (대기 시간 발생)</p>
+
+<ul>
+  <li>에이전트 도로시가 출발점에서 출발하여 최종 골(Goal) 깃발에 도달할 때까지 가치는 전혀 갱신되지 않습니다.</li>
+  <li>에피소드가 끝난 뒤에야 비로소 실제로 획득한 보상들의 총합(수익 $)을 바탕으로, 지나온 발판들을 거꾸로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
+</ul>
+
+<hr />
+
+<h4 id="-시간차-학습td의-백업-흐름-1-스텝-이동-즉시-부트스트랩-갱신">② 시간차 학습(TD)의 백업 흐름: 1-스텝 이동 즉시 부트스트랩 갱신</h4>
+
+<p><img src="./img/02_td_backup_flow.png" alt="시간차 학습(TD)의 백업 흐름" />
+<strong>그림 10-1-14</strong> 시간차 학습(TD)의 백업 흐름: 단 1걸음 이동 직후 다음 상태의 추정 가치 (S_{t+1}) 빌려와 번개(⚡)처럼 즉시 현재 발판  갱신 (대기 시간 제로!)</p>
+
+<ul>
+  <li>에이전트 도로시가 발판  다음 발판 {t+1} 단 한 걸음 내딛자마자, 즉시 보상  다음 상태의 가치 (S_{t+1}) 이용해  가치를 실시간으로 갱신합니다.</li>
+  <li>에피소드가 끝나기를 기다릴 필요가 전혀 없으므로 대기 시간이 0(Zero Wait Time)이며, 메모리 버퍼 없이 극도로 가볍고 기민하게 학습이 진행됩니다.</li>
+</ul>
+
+<hr />
+
+<p>[그림 10-1-11]부터 [그림 10-1-14]까지의 갱신 시점과 백업 흐름을 종합 비교해 보면 각 기법의 장단점이 극명하게 드러납니다:</p>
+
+<ul>
+  <li><strong>DP법</strong>: 환경 지도를 완벽히 알고 있으므로 모든 경로를 수학적으로 계산할 수 있지만, 지도가 없는 실세계에서는 아예 사용할 수 없습니다.</li>
+  <li><strong>MC법</strong>: 환경 지도가 없어도 실제 샘플 경험으로 학습할 수 있지만, 에피소드가 끝날 때까지 하염없이 기다려야만 합니다.</li>
+  <li><strong>TD법</strong>: 환경 지도 없이 오직 1걸음 실제 경험만으로 학습하면서도, 에피소드 완주를 기다리지 않고 매 순간 실시간으로 가치를 갱신합니다.</li>
+</ul>
+
+<hr />
+
+<h3 id="4-하이브리드의-탄생-dp의-부트스트랩--mc의-샘플링">4) 하이브리드의 탄생: DP의 부트스트랩 + MC의 샘플링</h3>
+
+<p>이 두 기법의 장점만을 뽑아내면 어떨까요?</p>
+
+<blockquote>
+  <p><strong>“환경 모델 없이 오직 실제 1걸음 샘플 데이터만으로 학습(MC의 장점)하면서도, 에피소드 완주를 기다리지 않고 다음 상태의 가치를 빌려와 즉시 갱신(DP의 부트스트랩 장점)하자!”</strong></p>
+</blockquote>
+
+<p><img src="./img/03_dp_mc_hybrid_birth.png" alt="DP와 MC의 하이브리드 탄생" />
+<strong>그림 10-1-15</strong> DP의 황금 부트스트랩 열쇠와 MC의 경험 나침반이 융합하여 탄생한 시간차 학습(TD)의 탄생</p>
+
+<hr />
+
+<h4 id="td-탄생-배경">TD 탄생 배경</h4>
+
+<p>이것이 바로 <strong>시간차 학습(TD법, Temporal Difference Learning)</strong>의 위대한 탄생 배경입니다!</p>
+
+<ul>
+  <li>모델이 없어도 학습할 수 있는 <strong>모델 프리(Model-Free)</strong> 속성을 유지하면서,</li>
+  <li>에피소드가 끝날 때까지 기다리지 않고 매 스텝 즉시 가치를 갱신하는 <strong>온라인 실시간 갱신(Online Real-time Update)</strong>을 완벽히 실현합니다.</li>
+</ul>
+
+<p><img src="./img/td_eureka_birth.png" alt="TD 탄생 유레카 모먼트" />
+<strong>그림 10-1-16</strong> 한 걸음 딛자마자 번개처럼 실시간 가치 갱신이 일어나는 TD 학습의 기적을 발견하고 환호하는 도로시와 지니, 토토</p>
+
+<hr />
+
+<h3 id="5-td법의-수식-도출-단-1스텝-샘플에-의한-기댓값-근사">5) TD법의 수식 도출: 단 1스텝 샘플에 의한 기댓값 근사</h3>
 
 <p>DP법의 벨만 방정식 [식 10.6]을 기댓값 형태로 다시 표현해 봅시다:</p>
 
@@ -731,13 +894,41 @@
   <h3 id="vπs--eπ-rt--γvπst1--st--s--식-107"><strong><em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub> [<em>R</em><sub><em>t</em></sub> + <em>γv</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong>      <em>(식 10.7)</em></h3>
 </blockquote>
 
-<p>DP법은 모든 가능한 전이를 계산하여 이 기댓값을 구했습니다. 반면 TD법은 <strong>실제로 한 걸음 이동하여 관측된 단 하나의 샘플 데이터 (<em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)로 이 기댓값을 대담하게 근사</strong>합니다!</p>
+<hr />
+
+<table>
+  <tbody>
+    <tr>
+      <td>DP법은 모든 가능한 전이 확률 <em>p</em>(<em>s</em>’</td>
+      <td><em>s</em>, <em>a</em>)를 알고 있어야만 이 기댓값을 <strong>연립방정식 가중합</strong>으로 풀 수 있었습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="./img/dp_curse_of_model.png" alt="환경 모델 부재 시 DP의 한계점" />
+<strong>그림 10-1-17</strong> 복잡한 실세계 환경 지도가 찢겨져 물음표로 가려졌을 때 전이 확률 행렬을 구할 수 없어 멈춰 서는 DP법의 치명적 한계</p>
+
+<hr />
+
+<p>반면 TD법은 <strong>실제로 한 걸음 이동하여 관측된 단 하나의 샘플 데이터 (<em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)로 이 기댓값을 대담하게 근사</strong>합니다!</p>
+
+<p><img src="./img/04_td0_sample_approximation_chalkboard.png" alt="단 1스텝 샘플 근사 칠판 강의" />
+<strong>그림 10-1-18</strong> DP의 거대한 전수조사 합 기호(∑)를 소거하고 단 1스텝 관측치 <em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>)로 대담하게 근사하는 TD(0) 유도 칠판 강의</p>
+
+<hr />
 
 <p>이 샘플 근사를 가치 갱신 점화식에 대입하면, 마침내 <strong>TD(0) 가치 갱신 공식</strong>이 유도됩니다:</p>
 
 <blockquote>
   <h3 id="vπst--vπst--α--rt--γvπst1---vπst--식-108-td-정책-평가-공식"><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γV</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.8: TD 정책 평가 공식)</em></h3>
 </blockquote>
+
+<p><img src="./img/td0_update_formula_spotlight.png" alt="TD(0) 가치 갱신 공식 강의 씬" />
+<strong>그림 10-1-19</strong> 칠판에 황금빛으로 빛나는 TD(0) 가치 갱신 공식 [식 10.8]을 열강하시는 이호진 교수님과 열정적으로 호응하는 도로시</p>
+
+<hr />
+
+<h3 id="6-td-공식의-3대-핵심-기둥-현재-예측-td-목표-td-오차">6) TD 공식의 3대 핵심 기둥: 현재 예측, TD 목표, TD 오차</h3>
 
 <p>[식 10.8]의 구조를 돋보기로 들여다보면 3개의 핵심 요소가 들어 있습니다:</p>
 
@@ -768,23 +959,45 @@
   </tbody>
 </table>
 
-<p><img src="./img/td_target.png" alt="TD 목표와 시간차 오차" />
-<strong>그림 10-1-4</strong> 과녁판의 TD 목표(<em>R</em> + <em>γV</em>(<em>S</em>'))와 현재 예측 상자 사이의 간격인 TD 오차(<em>δ</em>)를 줄자로 정밀 측정하는 도로시와 지니</p>
+<hr />
 
-<blockquote>
-  <p>👧 <strong>도로시와 토토의 비유로 이해하기</strong>:<br />
-도로시가 현재 예상하는 가치 상자 <em>V</em>(<em>S</em><sub><em>t</em></sub>)를, 한 걸음 걷고 발견한 더 믿을 만한 기준 상자인 <em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>) (TD 목표)에 맞추려고 합니다.<br />
-두 상자의 차이인 <strong>TD 오차(<em>δ</em><sub><em>t</em></sub>)</strong>를 측정한 뒤, 학습 속도를 제어하는 다이얼인 <strong>학습률 <em>α</em></strong>만큼만 살짝 그 방향으로 당겨주어 가치를 실시간으로 보정해 나가는 것입니다!</p>
-</blockquote>
+<p>도로시가 현재 예상하는 가치 상자 <em>V</em>(<em>S</em><sub><em>t</em></sub>)를, 한 걸음 걷고 발견한 더 믿을 만한 기준 상자인 <em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>) (TD 목표)에 맞추려고 합니다.</p>
+
+<p><img src="./img/td_target.png" alt="TD 목표와 시간차 오차" />
+<strong>그림 10-1-20</strong> 과녁판의 TD 목표(<em>R</em> + <em>γV</em>(<em>S</em>’))와 현재 예측 상자 사이의 간격인 TD 오차(<em>δ</em>)를 줄자로 정밀 측정하는 도로시와 지니</p>
+
+<p>두 상자의 차이인 <strong>TD 오차(<em>δ</em><sub><em>t</em></sub>)</strong>를 측정한 뒤, 학습 속도를 제어하는 다이얼인 <strong>학습률 <em>α</em></strong>만큼만 살짝 그 방향으로 당겨주어 가치를 실시간으로 보정해 나가는 것입니다!</p>
+
+<hr />
+
+<h3 id="7-td0의-백업-다이어그램">7) TD(0)의 백업 다이어그램</h3>
+
+<p>백업 다이어그램은 강화학습 알고리즘의 갱신 구조를 시각화한 트리 구조입니다:</p>
 
 <p><img src="./img/fig_7_4.jpg" alt="TD(0)의 백업 다이어그램" />
-<strong>그림 10-1-5</strong> TD(0)의 백업 다이어그램 (Backup Diagram): 다음 상태 <em>S</em><sub><em>t</em>+1</sub>의 가치를 샘플링하여 현재 상태 <em>S</em><sub><em>t</em></sub>의 가치를 즉시 백업</p>
+<strong>그림 10-1-21</strong> TD(0)의 백업 다이어그램 (Backup Diagram): 다음 상태 <em>S</em><sub><em>t</em>+1</sub>의 가치를 샘플링하여 현재 상태 <em>S</em><sub><em>t</em></sub>의 가치를 즉시 백업</p>
+
+<hr />
+
+<ul>
+  <li><strong>현재 상태 <em>S</em><sub><em>t</em></sub> (빈 원)</strong>에서 행동 하나를 취합니다.</li>
+  <li>행동 결과 즉각 보상 <em>R</em><sub><em>t</em></sub>를 받고 <strong>다음 상태 <em>S</em><sub><em>t</em>+1</sub></strong>에 도달합니다.</li>
+  <li>에피소드 끝까지 내려가지 않고, 오직 <strong>1스텝 아래의 <em>S</em><sub><em>t</em>+1</sub> 가치</strong>만을 빌려와서 현재 상태 <em>S</em><sub><em>t</em></sub>로 즉시 되돌려 보냅니다(Backup).</li>
+  <li>이처럼 단 1스텝 앞만 바라보고 즉시 갱신하는 방식을 <strong>TD(0)</strong> 또는 <strong>1-스텝 TD</strong>라고 부릅니다.</li>
+</ul>
 
 <hr />
 
 <h2 id="1012-mc법과-td법의-심층-비교-편향과-분산의-트레이드오프">10.1.2 MC법과 TD법의 심층 비교: 편향과 분산의 트레이드오프</h2>
 
 <p>환경 모델을 전혀 모를 때, 우리는 MC법과 TD법 중 무엇을 선택해야 할까요?</p>
+
+<p><img src="./img/dilemma_mc_vs_td.png" alt="MC와 TD 사이의 딜레마" />
+<strong>그림 10-1-22</strong> 저울의 양쪽에 MC(무편향 고분산)와 TD(저분산 신속수렴)를 올려놓고 어떤 알고리즘을 선택할지 저울질하는 도로시</p>
+
+<hr />
+
+<p>두 기법의 특성을 체계적으로 비교해 봅시다.</p>
 
 <table>
   <thead>
@@ -835,31 +1048,99 @@
 
 <hr />
 
+<p><img src="./img/06_bias_variance_archery_target.png" alt="편향과 분산의 양궁 과녁 비교" />
+<strong>그림 10-1-23</strong> 편향(조준 오차)과 분산(탄착군 퍼짐도)의 양궁 과녁 비교: MC(무편향 + 고분산) vs TD(약간의 초기 편향 + 초저분산)</p>
+
+<hr />
+
 <h3 id="1-왜-mc법은-분산이-크고-td법은-분산이-작을까요">1) 왜 MC법은 분산이 크고, TD법은 분산이 작을까요?</h3>
 
 <p>운전자가 안개 낀 고속도로를 달리는 상황을 상상해 보십시오.</p>
 
-<ul>
-  <li><strong>MC법의 목표 <em>G</em><sub><em>t</em></sub></strong>: 운전자가 10분, 1시간 동안 핸들을 이리저리 꺾으며 수없이 마주친 무작위 돌발 상황들의 결과가 꼬리에 꼬리를 물고 누적된 값입니다. 경로가 길어질수록 운이나 우연의 개입이 심해져 <strong>값의 출렁임(분산)이 극도로 커집니다.</strong></li>
-  <li><strong>TD법의 목표 <em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>)</strong>: 방금 지나간 <strong>단 1초(1스텝)</strong> 동안의 결과만을 바탕으로 계산합니다. 단 1단계 앞의 사건만 반영하므로 무작위성이 적게 개입하여 <strong>값의 출렁임(분산)이 매우 작고 안정적입니다.</strong></li>
-</ul>
+<p><img src="./img/07_highway_fog_variance_comparison.png" alt="안개 낀 고속도로 분산 비교" />
+<strong>그림 10-1-24</strong> 안개 낀 도로 주행 비유: 1시간 장기 항해의 요동치는 궤적(MC 고분산) vs 1초 전조등 앞길의 안정적인 직진(TD 저분산)</p>
 
 <hr />
 
-<h3 id="2-편향bias의-차이">2) 편향(Bias)의 차이</h3>
+<ul>
+  <li><strong>MC법의 목표 <em>G</em><sub><em>t</em></sub></strong>:
+    <ul>
+      <li>운전자가 10분, 1시간 동안 핸들을 이리저리 꺾으며 수없이 마주친 무작위 돌발 상황들의 결과가 꼬리에 꼬리를 물고 누적된 값입니다.</li>
+      <li>경로가 길어질수록 운이나 우연의 개입이 심해져 <strong>값의 출렁임(분산)이 극도로 커집니다.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/mc_high_variance_rollercoaster.png" alt="MC의 고분산 롤러코스터 궤적" />
+<strong>그림 10-1-25</strong> 수많은 불확실한 돌발 상황과 우연의 주사위가 꼬리를 물며 누적되어 극심하게 요동치는 MC의 고분산 롤러코스터</p>
+
+<hr />
+
+<ul>
+  <li><strong>TD법의 목표 <em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>)</strong>:
+    <ul>
+      <li>방금 지나간 <strong>단 1초(1스텝)</strong> 동안의 결과만을 바탕으로 계산합니다.</li>
+      <li>단 1단계 앞의 사건만 반영하므로 무작위성이 적게 개입하여 <strong>값의 출렁임(분산)이 매우 작고 안정적입니다.</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<p><img src="./img/td_low_variance_beam.png" alt="TD의 안정적인 저분산 조명 경로" />
+<strong>그림 10-1-26</strong> 단 한 걸음 앞의 확실한 발판만을 밝히며 극도의 안정성과 저분산으로 직진하는 TD법의 전조등 효과</p>
+
+<hr />
+
+<h3 id="2-편향bias의-차이와-신속한-수렴">2) 편향(Bias)의 차이와 신속한 수렴</h3>
+
+<p>다음으로 편향(Bias)의 차이를 살펴봅시다. 편향이란 에이전트의 추정치가 참값으로부터 구조적으로 얼마나 치우쳐 있는가를 나타냅니다.</p>
+
+<p><img src="./img/bias_concept_target.png" alt="과녁판을 통한 편향과 분산 강의" />
+<strong>그림 10-1-27</strong> 과녁판을 통해 영점 오차(편향)와 탄착군 산포도(분산)의 통계적 차이를 도로시에게 쉽게 풀어주시는 이호진 교수님</p>
+
+<hr />
 
 <ul>
   <li><strong>MC법</strong>: 실제 발생한 진짜 보상들의 누적 합 <em>G</em><sub><em>t</em></sub>만을 온전히 사용하므로, 어떠한 가짜 추정치도 섞이지 않아 <strong>수학적으로 편향이 0(Unbiased)</strong>입니다.</li>
+</ul>
+
+<p><img src="./img/mc_unbiased_scale.png" alt="MC의 100% 무편향 참 수익 측정" />
+<strong>그림 10-1-28</strong> 실제 수확한 진짜 황금 사과를 저울에 달아 어떠한 가공이나 추정도 섞이지 않은 100% 무편향 참 수익 G_t를 달아보는 도로시</p>
+
+<hr />
+
+<ul>
   <li><strong>TD법</strong>: 아직 정확하지 않은 다음 상태의 추정 가치 <em>V</em>(<em>S</em><sub><em>t</em>+1</sub>)를 빌려 써서 갱신하므로, 학습 초기에는 <strong>약간의 편향(Bias)</strong>이 존재합니다. 하지만 학습이 반복될수록 <em>V</em>(<em>S</em><sub><em>t</em>+1</sub>) 자체가 참 가치로 수렴해 가기 때문에, 편향은 결국 0으로 사라지게 됩니다.</li>
 </ul>
 
+<p><img src="./img/td_bias_decay_self_correct.png" alt="학습이 반복되며 편향이 사라지는 과정" />
+<strong>그림 10-1-29</strong> 초기 스케치의 거친 오차(초기 편향)가 학습이 반복될수록 자가 교정되어 완전한 명화(참값)로 수렴해가는 3단계 변화</p>
+
+<hr />
+
 <p>대부분의 실세계 강화학습 문제에서는 <strong>“약간의 초기 편향을 감수하더라도 분산이 훨씬 작은 TD법”</strong>이 훨씬 적은 데이터로도 압도적으로 빠르게 참 가치에 수렴합니다!</p>
+
+<p><img src="./img/08_bias_decay_fast_convergence.png" alt="초기 편향의 소멸과 빠른 수렴 곡선" />
+<strong>그림 10-1-30</strong> 학습이 반복됨에 따라 초기 편향이 0으로 사르르 소멸하며 참값에 신속하고 안정적으로 수렴하는 TD 학습 곡선</p>
 
 <hr />
 
 <h2 id="1013-td-정책-평가-에이전트-구현">10.1.3 TD 정책 평가 에이전트 구현</h2>
 
-<p>이제 파이썬으로 TD 정책 평가를 수행하는 <code class="language-plaintext highlighter-rouge">TdAgent</code> 클래스를 구현해 보겠습니다. 상, 하, 좌, 우 4방향으로 25%씩 무작위로 이동하는 에이전트를 작성합니다.</p>
+<p>이제 파이썬으로 TD 정책 평가를 수행하는 <code class="language-plaintext highlighter-rouge">TdAgent</code> 클래스를 구현해 보겠습니다.</p>
+
+<p><img src="./img/09_lightweight_td_agent_coding.png" alt="경량 TdAgent 파이썬 코딩" />
+<strong>그림 10-1-31</strong> 무거운 메모리 가방(<code class="language-plaintext highlighter-rouge">memory = []</code>)을 던져버리고 매 스텝 실시간으로 가볍게 달리는 초경량 <code class="language-plaintext highlighter-rouge">TdAgent</code>의 파이썬 구현</p>
+
+<hr />
+
+<p>상, 하, 좌, 우 4방향으로 25%씩 무작위로 이동하는 에이전트를 작성합니다.</p>
+
+<p><img src="./img/four_direction_random_agent.png" alt="4방향 무작위 정책 에이전트" />
+<strong>그림 10-1-32</strong> 3D 격자 타일 위에서 상, 하, 좌, 우 각 25%의 균등 확률로 이동하며 탐색하는 무작위 정책 에이전트 틴맨</p>
+
+<hr />
+
+<h4 id="tdagent-클래스-구현">TDAgent 클래스 구현</h4>
 
 <div align="right"><b>ch06/td_eval.py</b></div>
 
@@ -893,7 +1174,16 @@
 </span>        <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">]</span> <span class="o">+=</span> <span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">V</span><span class="p">[</span><span class="n">state</span><span class="p">])</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">alpha</span>
 </code></pre></div></div>
 
+<hr />
+
 <h3 id="1-eval-메서드-한-줄-한-줄-돋보기">1) eval() 메서드 한 줄 한 줄 돋보기</h3>
+
+<p>코드를 한 줄 한 줄 분해하여 체계적으로 살펴봅시다.</p>
+
+<p><img src="./img/10_eval_method_code_anatomy.png" alt="eval 메서드 코드 해부도" />
+<strong>그림 10-1-33</strong> <code class="language-plaintext highlighter-rouge">eval()</code> 메서드의 4대 핵심 라인이 레고 블록처럼 유기적으로 맞물려 가치를 즉각 갱신하는 코드 해부도</p>
+
+<hr />
 
 <ol>
   <li><strong><code class="language-plaintext highlighter-rouge">eval(self, state, reward, next_state, done)</code>의 매개변수</strong>:
@@ -904,23 +1194,54 @@
       <li><code class="language-plaintext highlighter-rouge">done</code>: 에피소드가 종료되었는지 여부(<code class="language-plaintext highlighter-rouge">True</code>/<code class="language-plaintext highlighter-rouge">False</code>) 플래그입니다.</li>
     </ul>
   </li>
+</ol>
+
+<p><img src="./img/eval_parameters_breakdown.png" alt="eval 매개변수 4종 카드" />
+<strong>그림 10-1-34</strong> <code class="language-plaintext highlighter-rouge">eval()</code> 함수의 4대 핵심 전달 인자인 <code class="language-plaintext highlighter-rouge">state</code>, <code class="language-plaintext highlighter-rouge">reward</code>, <code class="language-plaintext highlighter-rouge">next_state</code>, <code class="language-plaintext highlighter-rouge">done</code> 카드를 도로시가 펼쳐 보여주는 해설</p>
+
+<hr />
+
+<ol>
   <li><strong><code class="language-plaintext highlighter-rouge">next_V = 0 if done else self.V[next_state]</code></strong>:
     <ul>
       <li>만약 목표 지점(골 또는 함정)에 도달하여 게임이 끝났다면(<code class="language-plaintext highlighter-rouge">done == True</code>), 더 이상 미래에 얻을 보상이 없으므로 종료 상태의 참 가치는 항상 <strong>0</strong>입니다.</li>
       <li>게임이 계속 진행 중이라면 테이블에서 다음 상태의 현재 추정치 <code class="language-plaintext highlighter-rouge">self.V[next_state]</code>를 부트스트랩하여 가져옵니다.</li>
     </ul>
   </li>
+</ol>
+
+<p><img src="./img/terminal_state_zero_value.png" alt="종료 상태 가치 0 규칙" />
+<strong>그림 10-1-35</strong> 게임 종료(<code class="language-plaintext highlighter-rouge">done == True</code>) 시 더 이상의 미래 보상이 존재하지 않아 남은 가치 <code class="language-plaintext highlighter-rouge">next_V</code>가 정확히 0이 되는 원리</p>
+
+<hr />
+
+<ol>
   <li><strong><code class="language-plaintext highlighter-rouge">target = reward + self.gamma * next_V</code></strong>:
     <ul>
       <li>[식 10.8]의 <strong>TD 목표 (<em>R</em><sub><em>t</em></sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>))</strong>를 계산합니다.</li>
-    </ul>
-  </li>
-  <li><strong><code class="language-plaintext highlighter-rouge">self.V[state] += (target - self.V[state]) * self.alpha</code></strong>:
-    <ul>
-      <li>TD 오차 <code class="language-plaintext highlighter-rouge">(target - self.V[state])</code>에 학습률 <code class="language-plaintext highlighter-rouge">self.alpha</code>를 곱해 현재 상태의 가치를 즉각 갱신합니다.</li>
+      <li>방금 획득한 즉시 보상과 미래의 할인된 추정 가치를 결합하여 새로운 기준점을 형성합니다.</li>
     </ul>
   </li>
 </ol>
+
+<p><img src="./img/td_target_assembly.png" alt="TD 목표 조립 공정" />
+<strong>그림 10-1-36</strong> 작업대에서 즉시 보상 동전 $R_t$와 할인된 다음 가치 구슬 $\gamma V(S_{t+1})$을 결합해 TD 목표 기준판을 조립하는 지니와 틴맨</p>
+
+<hr />
+
+<ol>
+  <li><strong><code class="language-plaintext highlighter-rouge">self.V[state] += (target - self.V[state]) * self.alpha</code></strong>:
+    <ul>
+      <li>TD 오차 <code class="language-plaintext highlighter-rouge">(target - self.V[state])</code>에 학습률 <code class="language-plaintext highlighter-rouge">self.alpha</code>를 곱해 현재 상태의 가치를 즉각 갱신합니다.</li>
+      <li>한 걸음 내딛을 때마다 오차 신호의 크기에 비례하여 가치를 실시간으로 보정합니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/td_error_alpha_nudge.png" alt="학습률 다이얼을 통한 실시간 가치 보정" />
+<strong>그림 10-1-37</strong> 학습률 $\alpha=0.01$ 다이얼을 미세 조정하여 현재 가치를 TD 목표 방향으로 부드럽게 한 걸음 당겨주는 도로시와 지니</p>
+
+<hr />
 
 <blockquote>
   <p>[!NOTE]
@@ -931,9 +1252,14 @@
 
 <hr />
 
-<h3 id="2-전체-학습-스크립트-실행-1000-에피소드">2) 전체 학습 스크립트 실행 (1,000 에피소드)</h3>
+<h3 id="2-전체-학습-스크립트-실행-1000-에피소드-실시간-상호작용">2) 전체 학습 스크립트 실행 (1,000 에피소드 실시간 상호작용)</h3>
 
 <p>이제 <code class="language-plaintext highlighter-rouge">GridWorld</code> 환경과 <code class="language-plaintext highlighter-rouge">TdAgent</code>를 연결하여 1,000번의 에피소드를 실행해 봅시다:</p>
+
+<p><img src="./img/11_realtime_step_update_flow.png" alt="1스텝 실시간 상호작용 흐름" />
+<strong>그림 10-1-38</strong> 틴맨 로봇이 그리드월드 발판을 밟을 때마다 번개(⚡)처럼 즉시 가치가 실시간으로 갱신되는 1,000 에피소드 루프</p>
+
+<hr />
 
 <div align="right"><b>ch06/td_eval.py</b></div>
 
@@ -968,7 +1294,9 @@
 <p>스크립트를 실행하면 화면에 다음과 같은 가치 함수 히트맵 격자가 렌더링됩니다:</p>
 
 <p><img src="./img/fig_7_5.jpg" alt="TD법으로 평가한 상태 가치 함수" />
-<strong>그림 10-1-6</strong> 3 × 4 그리드 월드에서 TD법(1,000회 에피소드)으로 평가한 무작위 정책의 상태 가치 함수 <em>V</em>(<em>s</em>)</p>
+<strong>그림 10-1-39</strong> 3 × 4 그리드 월드에서 TD법(1,000회 에피소드)으로 평가한 무작위 정책의 상태 가치 함수 <em>V</em>(<em>s</em>)</p>
+
+<hr />
 
 <p>결과 지도를 살펴봅시다:</p>
 <ul>
@@ -977,9 +1305,17 @@
   <li>환경 모델(전이 확률과 보상 함수)을 전혀 모르고, 에피소드 완주를 기다리는 지연 정산도 없이, <strong>오직 매 순간 한 걸음씩 밟으며 TD 오차를 갱신했을 뿐인데도 환경의 공간적 참 가치 지도가 놀랍도록 정확하게 완성</strong>되었습니다!</li>
 </ul>
 
+<p><img src="./img/gridworld_heatmap_analysis.png" alt="그리드월드 가치 히트맵 지형 분석" />
+<strong>그림 10-1-40</strong> 3×4 그리드월드 가치 지형도에서 +1.0 골을 향한 오르막길과 -1.0 함정을 피하는 안전한 가치 등고선을 설명하시는 이호진 교수님</p>
+
 <hr />
 
 <h2 id="1014-핵심-정리-td-정책-평가-3대-핵심-기둥">10.1.4 핵심 정리: TD 정책 평가 3대 핵심 기둥</h2>
+
+<p><img src="./img/13_td_summary_three_monuments.png" alt="TD 정책 평가 3대 금자탑과 출항" />
+<strong>그림 10-1-41</strong> TD 정책 평가 3대 금자탑 기념비와 10.2 SARSA 최적 정책 제어로의 출항 피날레</p>
+
+<hr />
 
 <ol>
   <li><strong>DP와 MC의 하이브리드 결합</strong>:
@@ -999,10 +1335,20 @@
   </li>
 </ol>
 
+<hr />
+
+<p><img src="./img/hojin_master_insight_baduk.png" alt="바둑을 통한 시간차 평가의 통찰" />
+<strong>그림 10-1-42</strong> 바둑판에서 돌을 한 수 놓자마자 계가를 기다리지 않고 판세를 즉각 재평가하는 시간차 학습의 본질을 전수하시는 이호진 교수님</p>
+
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
 “TD법의 진정한 위력은 ‘기다리지 않는 성격’에 있습니다. 바둑을 둘 때 대국이 완전히 끝나 계가를 마칠 때까지 기다리는 것이 몬테카를로법이라면, 돌을 한 수 놓자마자 판세를 즉시 재평가하는 것이 바로 시간차 학습(TD)입니다. 이 놀라운 평가 방식을 행동 가치 <em>Q</em> 함수와 정책 개선에 결합하면, 마침내 스스로 최적의 수를 두는 <strong>SARSA와 Q-러닝</strong>이라는 전설적인 제어 알고리즘이 탄생하게 됩니다!”</p>
 </blockquote>
+
+<hr />
+
+<p><img src="./img/jiny_cheer_sarsa_preview.png" alt="SARSA로 나아가는 응원 피날레" />
+<strong>그림 10-1-43</strong> ‘Next: 10.2 SARSA!’ 깃발을 힘차게 흔들며 다음 챕터로 신나게 함께 전진하는 지니와 도로시 탐험대</p>
 
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />

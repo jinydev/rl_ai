@@ -1,9 +1,20 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution statistical convergence graph]
-Statistical graph illustrating 'Monte Carlo Estimation and the Law of Large Numbers (대수의 법칙)'.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A statistical convergence graph of 'The Law of Large Numbers in Monte Carlo' on a pure solid white background (#FFFFFF).
 In the center, a crisp 2D coordinate graph:
 - X-axis: 'Number of Sample Episodes N (1 to 10,000)'
-- Y-axis: 'Estimated Value V(s)'
-- A dashed horizontal red line representing 'True Theoretical Value v_π(s) = 7.000'.
-- Multiple pastel-colored trajectory lines fluctuating wildly at low N (N < 50), then smoothing out dramatically and converging tightly onto the red line as N exceeds 1,000.
-Formula badge: 'V(s) = (1/N) ∑ G_i → E_π[G] as N → ∞'.
-Clean modern graphic design, sharp typography, pure white background, no cartoon characters.
+- Y-axis: 'Estimated State Value V(s)'
+- A dashed horizontal red line representing 'True Theoretical Value V*(s) = 7.000'.
+- Multiple fluctuating colorful sample path lines fluctuating wildly at low N, then converging tightly onto the red horizontal line as N increases.
+Floating label: 'V(s) = (1/N) ∑ G_i → E_π[G] as N → ∞'.
+On the right: Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose pointing with a wand to the converged line, while Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, white ankle socks, vibrant ruby red canvas sneakers claps her hands in understanding.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide frames, NO header card. --ar 1:1

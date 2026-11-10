@@ -1,13 +1,23 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution comparative overview card]
-Comparative overview card: 'Distribution Model vs Sample Model in Reinforcement Learning'.
-Two symmetrical comparison panels side-by-side:
-- Left Panel (Distribution Model / DP):
-  - Requires full transition probability p and reward r
-  - Analytical summation: E[X] = ∑ x · p(x)
-  - Limited to small, toy simulation problems
-- Right Panel (Sample Model / MC):
-  - Zero model requirement; only requires interaction simulator
-  - Arithmetic sample mean: E[X] ≈ (1/N) ∑ x_i
-  - Scales to real-world complex problems, games, robotics
-Bottom summary banner: 'From theoretical distribution math to practical sample-based empirical learning'.
-Pure solid white background, elegant dark espresso outlines, warm pastel accents.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A comparative visual infographic of 'Distribution Model vs Sample Model' on a pure solid white background (#FFFFFF).
+Two balanced neoclassical marble pedestals side by side:
+- Left Pedestal (Distribution Model / DP):
+  - Model blueprint paper with 'p(s'|s,a) & r'
+  - Formula: 'E[X] = ∑ x · p(x)'
+  - Text: '완전한 환경 모델 필수, 계산 복잡도 폭발'
+- Right Pedestal (Sample Model / MC):
+  - A friendly pair of dice and a path compass
+  - Formula: 'E[X] ≈ (1/N) ∑ x_i'
+  - Text: '모델 불필요, 오직 시뮬레이터와의 상호작용'
+Standing between the pedestals: Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, white ankle socks, vibrant ruby red canvas sneakers comparing the two with open arms, Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose sitting on the right pedestal with a knowing nod.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide UI, NO slide frames. --ar 1:1

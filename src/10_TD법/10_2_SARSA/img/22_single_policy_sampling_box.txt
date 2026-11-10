@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 22_single_policy_sampling_box.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: ❷ get_action(self, state) 온-정책 단일 정책 확률 샘플링
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+An on-policy sampling mystery box scene. Dorothy and chibi cat TA Jiny stand beside an ornate wooden box labeled 'Single Integrated Policy pi(a|s)'.
+Inside the open top, glowing colored action marbles (Up, Down, Left, Right) float in proportion to their policy probabilities.
+Robot Tinny, with a playful blindfold over his cyan LED eyes, reaches his robotic hand into the box to draw a marble, performing stochastic sampling (`np.random.choice`).
+No separate behavior policy needed—acting and learning share the exact same box!
+Toto the white dog wags his tail eagerly watching the drawn marble.
+1:1 square composition, whimsical and clever narrative art, warm vibrant cel shading.
+

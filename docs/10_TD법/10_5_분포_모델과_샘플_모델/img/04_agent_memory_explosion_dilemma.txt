@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 04_agent_memory_explosion_dilemma.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 에이전트의 메모리 폭발 딜레마 (수많은 상태별 딕셔너리 부담)
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A humorous memory burden scene. Robot Tinny is groaning under an enormous, wobbling tower of heavy leather-bound filing binders strapped to his back, each labeled 'Policy pi[state_12450] Dict'.
+Small warning steam puffs rise from his metallic joints as an alarm gauge reads 'Memory RAM Overflow!'.
+Chibi cat TA Jiny, wearing a red safety helmet, gestures urgently: 'We cannot store explicit probability dictionaries for millions of states!'.
+Dorothy looks on with concerned determination to optimize the agent.
+1:1 square composition, expressive cartoon physics, warm rich lighting.
+

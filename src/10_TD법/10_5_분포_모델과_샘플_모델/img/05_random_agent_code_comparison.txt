@@ -1,0 +1,14 @@
+# Image Generation Prompt Specification
+# File: 05_random_agent_code_comparison.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: RandomAgent의 극명한 코드 및 메모리 대조
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A visual side-by-side code comparison on two antique parchment scrolls.
+Top scroll (Distribution Model): Crowded with bulky code lines `defaultdict`, `action_probs`, `np.random.choice(p=probs)` with a heavy 100MB iron weight sitting on it.
+Bottom scroll (Sample Model): Clean, elegant single-line code `return np.random.choice(4)` floating effortlessly with a white bird's feather sitting on it, labeled '0-Byte Overhead, Lightning Fast!'.
+Chibi cat TA Jiny raises both paws cheering at the feather-light bottom scroll.
+Dorothy claps with a brilliant smile.
+1:1 square composition, high visual contrast, clear educational graphic.
+

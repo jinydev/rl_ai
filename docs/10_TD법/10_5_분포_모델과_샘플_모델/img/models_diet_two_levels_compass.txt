@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing two levels of "Model" in reinforcement learning. Dorothy holds a dual-tiered brass navigational compass: the upper tier is labeled "Environment Model (환경의 모델)" and the lower tier is labeled "Agent Model (에이전트의 모델)". Beside her, Jiny the lab assistant cat in small wire-rim glasses points at the two tiers.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

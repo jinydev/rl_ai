@@ -1,0 +1,7 @@
+# sarsa_bomb_penalty_repulsion.png 프롬프트 명세서
+- **파일명**: sarsa_bomb_penalty_repulsion.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 로봇 틴맨
+- **주요 내용**: 폭탄(-1.0) 타일에서 뿜어져 나오는 붉은 위험 척력 파동이 틴맨을 안전한 벽 쪽으로 부드럽게 밀어내는 안전 완충지대 형성
+- **절대 규칙**: ZERO SLIDE UI

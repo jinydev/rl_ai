@@ -1,13 +1,21 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution software engineering flowchart]
-Technical software flowchart showing 'The Core Interaction Loop: env.step() and agent.memory'.
-Clean vertical flowchart with standard rounded rectangles and diamonds:
-1. [Start Episode: state = env.reset()]
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A software interaction flowchart of 'env.step() and agent.memory Trajectory' on a pure solid white background (#FFFFFF).
+A vertical flowchart with friendly pastel nodes:
+1. [Episode Start: state = env.reset()]
 2. [Action Selection: action = agent.get_action(state)]
 3. [Environment Step: next_state, reward, done = env.step(action)]
 4. [Memory Storage: agent.add(state, action, reward)]
-5. [State Update: state = next_state]
-6. <Decision: Is done == True?>
-   - No → Loop back to Step 2
-   - Yes → Proceed to [Backward Return Calculation & Q-table Update]
-7. [End of Episode]
-Clean professional layout, soft pastel green and coral nodes, dark espresso borders, pure white background.
+5. [Decision: if done == True ➔ Backward Return Update]
+On the left: Tinny the AI maker robot, a cute small bipedal humanoid robot with a warm matte silver tin chassis, smooth white ceramic enamel panels, brass servo joints, round retro monitor head with glowing cyan blue LED dot-matrix crescent eyes, brass spring antenna carrying an action box labeled 'a' toward the environment slot.
+On the right: Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose taking note of the memory tuple (s, a, r) on a digital tablet.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide borders, NO header box. --ar 1:1

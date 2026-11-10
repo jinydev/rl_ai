@@ -1,11 +1,18 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution reinforcement learning loop diagram]
-System diagram illustrating 'Generalized Policy Iteration (GPI) with Action-Value Function Q(s, a)'.
-A dynamic circular cycle with two major alternating phases:
-1. Left Half (Policy Evaluation): '몬테카를로 정책 평가 (Policy Evaluation)'
-   - Simulates episodes using current policy π
-   - Updates Q(s, a) using sample mean of returns G
-2. Right Half (Policy Improvement): '입실론-탐욕 정책 개선 (Policy Improvement)'
-   - Greedily improves policy: a* = argmax Q(s, a)
-   - Guarantees ongoing exploration with probability ε (10%)
-Center core: 'Optimal Policy π* and Optimal Value Q* Convergence Anchor'.
-Clean vector lines, soft pastel turquoise and orange palette, pure white background.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+A dynamic system diagram of 'Generalized Policy Iteration (GPI) with Action-Value Q' on a pure solid white background (#FFFFFF).
+A circular loop diagram with two alternating arcs:
+- Left Arc (Emerald green): '몬테카를로 정책 평가: 경험으로 Q(s, a) 학습'
+- Right Arc (Amber orange): 'ε-탐욕 정책 개선: a* = argmax Q(s, a) (탐색과 활용)'
+At the center: A radiant golden compass anchor labeled '최적 정책 π* 및 최적 가치 Q* 수렴'.
+Standing at the helm: Dorothy, an adorable 9-year-old anime girl, 4.5 heads tall junior proportions, wavy chestnut brown hair in twin pigtails tied with colorful round beads, cute bangs, warm amber-brown eyes, rosy cheeks, cheerful bright smile, classic medium blue denim overalls with rolled cuffs and a 'STEM HERO' round patch on the chest, orange and yellow horizontal striped t-shirt underneath, white ankle socks, vibrant ruby red canvas sneakers holding the ship steering wheel confidently, guided by Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose perched on the console with mini glasses.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide frames, NO top banner. --ar 1:1

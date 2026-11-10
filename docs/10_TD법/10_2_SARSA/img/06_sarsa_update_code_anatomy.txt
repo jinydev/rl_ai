@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 06_sarsa_update_code_anatomy.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: SARSA update() 메서드의 5대 핵심 라인 코드 해부도
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A large vertical stack of five colorful modular Lego-like blocks representing the Python lines of `update()` method:
+Block 1 (Coral Pink): 'len(memory) < 2: return (Wait for 2 steps)'
+Block 2 (Sky Blue): 'state, action, reward, done = memory[0]; next_state, next_action = memory[1]'
+Block 3 (Mint Green): 'next_q = 0 if done else Q[next_state, next_action] (Terminal zeroing)'
+Block 4 (Warm Amber): 'target = reward + gamma * next_q; Q[s,a] += alpha * (target - Q[s,a])'
+Block 5 (Lavender Purple): 'pi[state] = greedy_probs(Q, state, epsilon) (Policy Improvement)'
+Chibi cat TA Jiny, wearing spectacles and a white lab coat, inspects the interlocking joints between Block 3 and Block 4 with a brass magnifying glass.
+Dorothy claps with delight seeing the tidy architecture.
+1:1 square composition, high readability, beautiful code architecture illustration.
+

@@ -1,0 +1,15 @@
+# Image Generation Prompt Specification
+# File: 08_sarsa_cliff_grid_path_analysis.png
+# Chapter: 10.2 SARSA: 온-정책 시간차 제어
+# Concept: 3x4 그리드월드 Q 히트맵 분석 및 안전 우회 경로 디오라마
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A detailed 3D miniature architectural diorama model of the 3x4 GridWorld floating on a wooden base.
+At coordinate (1, 3), a fiery red lava pit labeled 'Danger Bomb Trap -1.0' with small warning skull signs.
+At (0, 3), a gleaming golden chest labeled 'Goal +1.0'.
+Robot Tinny (matte silver robot, blue LED eyes) walks cautiously along the top row path (0,0 -> 0,1 -> 0,2 -> 0,3), far away from the bomb pit.
+Glowing green footprints and directional arrows trace this upper perimeter route.
+Dorothy stands beside the diorama holding a green safety flag, while Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) points out the wide safety margin with a wooden pointer stick.
+1:1 square composition, isometric diorama feel, crisp miniature details.
+

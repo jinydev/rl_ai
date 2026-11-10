@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_sarsa_vs_q_racing.png
+# Chapter: CHAPTER 10 TD법
+# Concept: SARSA의 안전 우회 카트 vs Q-러닝의 대담한 최단 지름길 레이서
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dynamic cliffside race track visual comparison.
+On the outer detour road: Dorothy drives a yellow safety cart far away from the dangerous cliff edge, representing SARSA's on-policy conservative safety-first behavior.
+On the inner direct speedway: Robot Tinny speeds ahead in a sleek aerodynamic red race kart right beside the marked danger pit, taking the razor-sharp optimal shortcut straight to the goal, representing Q-Learning's off-policy optimal mastery.
+Chibi cat TA Jiny waves a checkered flag from the finish line arch.
+1:1 square composition, high speed lines, bright contrasting cheerful colors.
+

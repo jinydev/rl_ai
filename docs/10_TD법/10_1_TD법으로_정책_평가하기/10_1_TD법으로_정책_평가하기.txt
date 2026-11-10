@@ -1,4 +1,69 @@
-# Chapter 10.1: Policy Evaluation with TD (10.1 TD법으로 정책 평가하기) YouTube 16:9 Cover Prompt
-# File: 10_1_TD법으로_정책_평가하기.png (16:9 ratio)
+# Chapter 10.1: Policy Evaluation with TD (TD법으로 정책 평가하기) YouTube 16:9 Cover Specification
+# File: 10_1_TD법으로_정책_평가하기.png (16:9 widescreen ratio, 1376x768)
+# Guide Standard: /Users/hojin9/dev/jinysite/강화학습3/guides/cover_assets.md
+# Content Source: /Users/hojin9/dev/jinysite/강화학습3/src/10_TD법/10_1_TD법으로_정책_평가하기/index.md
 
-Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide YouTube lecture and chapter cover illustration for reinforcement learning Chapter 10.1. At the top center on a handsome wooden chalkboard banner is the clear bold Korean title: '10.1 TD법으로 정책 평가하기' and subtitle '(Policy Evaluation with TD)'. CRITICAL: Exactly ONE man in the entire image. On the right, Professor Hojin MUST EXACTLY MATCH the facial appearance, hairstyle, and head shape from the reference image, keeping his exact facial identity, youthful early 40s appearance (smooth skin, no wrinkles), stylish neatly parted salt-and-pepper short hair, thin round wire-rim glasses, and warm encouraging smile. He wears a plain solid dark charcoal navy polo shirt with no badges, blue jeans, and grey sneakers, holding white chalk pointing toward the title banner. In the center, Dorothy (4.5 heads tall, chestnut twin pigtails with beads, blue denim overalls with 'STEM HERO' patch, orange striped shirt, red canvas sneakers) happily hops one single step forward across 3x4 grid stepping tiles labeled with state values 'V(s)'. Beside her, Toto the cream-white puppy (solid milk-white, no spots, black button nose, sky-blue bandana) wags his tail enthusiastically. On the left, Jiny the tuxedo cat (round scholar glasses, red bell collar) sits at a wooden table noting one-step TD targets 'R + γV(s\')' with a glowing pointer. Pure solid clean white background (#FFFFFF), perfectly balanced wide 16:9 composition, subtle soft contact shadows under feet, Korean and English text only, zero Japanese characters.
+================================================================================
+[1. 커버 페이지 연출 기획 및 고민 (Cover Concept & Narrative Design)]
+================================================================================
+본 강의(10.1 TD법으로 정책 평가하기)의 핵심은 동적 계획법(DP)의 부트스트랩과 몬테카를로법(MC)의 
+샘플링을 융합하여, "에피소드가 완결되기를 기다리지 않고 단 1-스텝 이동하자마자 실시간으로 가치 함수를 
+갱신하는 혁신성"입니다.
+
+이 본질을 커버 한 장에 담아내기 위해 다음과 같이 장면을 구상합니다:
+- 배경: 어떤 복잡한 교실 프레임이나 칠판 틀 없이, 피사체의 생동감을 극대화하는 무결점 순백색 스튜디오(#FFFFFF).
+- 좌측 50%: 직관적이고 강력한 타이포그래피 (뱃지, 48pt 메인 타이틀, 3줄 부제목, 강사 서명).
+- 우측 50%: "1-스텝 실시간 가치 갱신의 순간"을 완성하는 4대 등장인물의 연계 씬.
+  * 지니: 매 1-스텝 시간차를 정밀 측정하는 황금 회중시계를 높이 들고 실시간 갱신을 확인.
+  * 도로시: 1-스텝 앞의 다음 상태(S_{t+1})를 향해 씩씩하게 발을 내딛으며 가치 발견에 활짝 웃음.
+  * 토토: 도로시의 발걸음과 즉각 보상(R_{t+1})에 신나서 함께 뛰며 응원.
+  * 이호진 교수님: 수학적 점화식의 기초를 든든하게 받쳐주며 학생의 성장을 따뜻한 미소로 지켜보는 멘토.
+
+================================================================================
+[2. 부분별 애셋 선(先) 제작 및 분할 기획 (Modular Component Assets)]
+================================================================================
+통합 씬을 한 번에 생성하여 크롭하면 인물 간 경계선에서 신체 일부가 잘려나가는 글리치가 발생하므로,
+반드시 아래의 독립된 투명 배경(RGBA) 부분 애셋으로 나누어 각각 먼저 생성합니다:
+
+1) 조교 지니 애셋 (asset_01_jiny_scholar.png):
+   - 프롬프트/연출: 턱시도 코숏, 미니 조교 안경, 원목 책상 뒤에 앉아 대형 황금 회중시계를 높이 들고 
+     1스텝 시간차를 정밀 체크하는 집중 표정.
+   - 배경: 순백색(#FFFFFF) -> 알파 마스킹 투명화.
+   - 규격: 810x810, Zero-Clipping.
+
+2) 도로시 애셋 (asset_02_dorothy_stepping.png):
+   - 원천 출처: 몸통과 골반, 다리 축이 꼬이는 인체학적 왜곡을 전면 차단하고, 
+     척추와 양 다리의 관절이 완벽히 정렬된 공식 데이터셋(dorothy_01) 기반 추출.
+   - 포즈/연출: 4.5등신 치비 비례, 밤색 양갈래, STEM HERO 멜빵, 빨간 운동화, 당당하고 경쾌한 전신 포즈.
+   - 규격: 501x983, RGBA 투명 배경, Zero-Clipping.
+
+3) 토토 애셋 (asset_03_toto_running.png):
+   - 프롬프트/연출: 단색 웜밀크 화이트 비숑-말티즈 강아지, 스카이블루 반다나, 핑크빛 혀를 내밀고 
+     활짝 웃으며 네 발로 경쾌하게 달리는 전신 포즈.
+   - 배경: 순백색(#FFFFFF) -> 알파 마스킹 투명화.
+   - 규격: 820x819, 귀 털과 꼬리 보존.
+
+4) 이호진 교수님 애셋 (asset_04_prof_hojin.png):
+   - 원천 출처: AI 텍스트 생성 전면 배제, hojin_26 공식 기준 데이터셋 원본에서 직접 정밀 추출.
+   - 얼굴 형태: 갸름하고 부드러운 40대 초반 동안 윤곽, 얇은 메탈 안경, 온화한 미소 라인 100% 보존.
+   - 착장/포즈: 무지 네이비 폴로(로고 없음), 청바지 주머니에 손을 넣은 전신 포즈, 그레이 스니커즈.
+   - 규격: 373x984, RGBA 투명 배경, Zero-Clipping.
+
+================================================================================
+[3. 결합 및 합성 레이아웃 사양 (Composition & Synthesis Rules)]
+================================================================================
+1376x768 순백색 캔버스 위에서 각 부분 애셋을 아래 좌표 및 Z-Order(레이어 순서)로 합성합니다:
+
+[우측 캐릭터 레이어 배치]
+- Layer 1 (Z=1, 지니): x=640, y=360, height=230 (책상과 회중시계로 좌측 경계 형성)
+- Layer 2 (Z=2, 도로시): x=785, y=220, height=450 (중앙에서 씩씩하게 1스텝 전진)
+- Layer 3 (Z=3, 토토): x=935, y=425, height=215 (도로시 발걸음 옆에서 신나게 러닝)
+- Layer 4 (Z=4, 교수님): x=1075, y=95, height=635 (우측에서 전체를 따뜻하게 굽어살피는 전신 멘토)
+- 각 인물 발 밑에 부드러운 타원형 앰비언트 오클루전 그림자(Gaussian Blur) 합성.
+
+[좌측 타이포그래피 배치]
+- Badge: x=80, y=110, Sky Blue (#0284C7) 라운드 사각 뱃지 ('PART 10 · 강화학습 이론', 22pt Bold White)
+- Title: x=80, y=185, Dark Navy (#0F172A) 48pt Bold ('10.1 TD법으로\n정책 평가하기', 행간 12px)
+- Subtitle: x=80, y=335, Slate Gray (#475569) 24pt Regular (3줄 설명문, 행간 10px)
+- Author: x=80, y=480, Dark Slate (#1E293B) 22pt ('강의: 이호진 교수 · 조교 지니와 도로시 탐험대')
+- 타이포그래피와 우측 캐릭터 영역 사이에 180px 이상의 쾌적한 호흡 여백 유지.

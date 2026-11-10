@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing 100% greedy Target Policy pi distribution: only the #1 best action gets 1.0 probability, while all other 3 actions get 0.0. Four small wooden pedestals for 4 actions (Up, Down, Left, Right): the 'Right' pedestal has a blazing bright lantern glowing with "1.0", while the other three pedestals have unlit extinguished candles labeled "0.0". Dorothy points at the sharp all-or-nothing contrast.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

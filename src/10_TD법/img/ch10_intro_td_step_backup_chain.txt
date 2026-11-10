@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: ch10_intro_td_step_backup_chain.png
+# Chapter: CHAPTER 10 TD법
+# Concept: 징검다리 1-스텝 실시간 백업 사슬 구조
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A stepping stone progression. Dorothy takes a single light hop from stone tile S_t to stone tile S_{t+1}.
+Between her feet, a shimmering golden recursive chain connects the two stones, with a glowing immediate reward apple R_t and hourglass discount factor gamma.
+Directly above the step, a clean mathematical banner hovers: 'V(S_t) <- V(S_t) + alpha * [R_t + gamma * V(S_{t+1}) - V(S_t)]'.
+Chibi cat TA Jiny, wearing round spectacles, takes notes on a clipboard: 'No need to wait for the end! Update instantly at every single step!'.
+1:1 square composition, high visual motion, clear educational infographic.
+

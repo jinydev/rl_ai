@@ -1,0 +1,17 @@
+# Image Generation Prompt Specification
+# File: 10_q_learning_king_monuments.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: 10.4 Q-러닝 핵심 3대 기둥 기념비와 모델 프리 TD 제어의 완성 피날레
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A grand triumphant coronation scene. Under a brilliant golden high noon sky, three towering classical marble monuments stand on a raised marble podium:
+Monument 1: 'Bellman Optimality Sampled (max_a Target)'
+Monument 2: 'Zero-Buffer Instant Online Update'
+Monument 3: 'King of Off-Policy Control & DQN Ancestor'
+In front of the monuments, the complete Dorothy exploration team celebrates:
+Prof. Hojin (early 40s, youthful face, round wire glasses, neat dark charcoal navy polo) proudly places a golden laurel crown on a grand trophy labeled 'Q-Learning: The King of RL'.
+Dorothy, robot Tinny, and chibi cat TA Jiny raise their hands in triumphant cheer.
+Toto the white dog leaps joyfully with confetti raining down.
+1:1 square composition, celebratory majesty, warm radiant lighting.
+

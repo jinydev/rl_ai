@@ -1,0 +1,19 @@
+# Image Generation Prompt Specification
+# File: 10_models_summary_three_pillars.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 10.5 초경량화 3대 핵심 기둥 기념비와 제10장 TD법 대단원의 완성 피날레
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A grand, magnificent culmination scene. Under a brilliant sunrise sky, three massive classical marble pillars stand tall on an elevated stone terrace:
+Pillar 1: 'Environment Models: Transition Map vs Simulator'
+Pillar 2: 'Agent Models: Distribution Dict vs On-Demand Sample'
+Pillar 3: 'Zero-Memory Simplicity & Gateway to Deep RL (DQN)'
+In front of the pillars, the entire Dorothy exploration team gathers for a grand group photo:
+Prof. Hojin (early 40s, youthful face, round glasses, dark charcoal navy polo) proudly holds an open textbook labeled 'Chapter 10 TD Methods: Complete!'.
+Dorothy and robot Tinny raise a victory flag together.
+Chibi cat TA Jiny tosses graduation confetti into the air.
+Toto the white dog leaps with joy.
+In the background, the grand golden gates of 'Chapter 11: Neural Networks & Deep Q-Learning' shine brightly.
+1:1 square composition, celebratory triumph, majestic studio Ghibli artwork.
+

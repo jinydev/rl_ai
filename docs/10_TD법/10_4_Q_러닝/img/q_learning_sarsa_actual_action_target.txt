@@ -1,0 +1,4 @@
+[ROLE & SCENE]
+Dorothy STEM universe, 2D anime illustration.
+Visualizing SARSA's target selection. Tinny the robot standing at state S_{t+1}, looking down cautiously at his own feet to see which action A_{t+1} he actually decided to step on next. Cautious, careful on-policy inspection.
+Pure solid #FFFFFF white background, subtle soft contact shadow at feet, Studio Ghibli warm 2D anime aesthetic, clean dark espresso brown lines (#26211E), no frames, no borders.

@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 08_continuous_state_space_infinity.png
+# Chapter: 10.5 분포 모델과 샘플 모델: 에이전트의 초경량화
+# Concept: 무한한 연속 상태 공간의 광활한 우주와 샘플 모델의 승리
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A vast cosmic exploration scene. Dorothy and robot Tinny stand on an observation platform gazing at a magnificent starry celestial sphere labeled 'Continuous State Space (Infinite States!)'.
+Constellations form shapes of autonomous driving cars (with continuous velocity and angle vectors) and video game screens (with millions of continuous pixel inputs).
+"In an infinite universe, a table-based distribution dictionary is impossible, but our on-demand sample model navigates effortlessly!"
+Prof. Hojin stands beside them pointing a brass telescope toward the stars.
+1:1 square composition, awe-inspiring celestial wonders, warm Ghibli astronomy vibe.
+

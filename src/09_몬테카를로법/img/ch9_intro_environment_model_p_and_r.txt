@@ -1,8 +1,19 @@
-[Square 1:1 format, clean pure #FFFFFF white background, dark espresso brown line art, warm soft pastel tones, high-resolution mathematical architecture infographic]
-Technical diagram dissecting 'The Two Pillars of Environment Model in Model-Based RL'.
-A central glass box labeled 'Environment Model (환경 모델)':
-Inside the box are two illuminated mechanical gear components:
-1. Gear 1 (Blue): 'State Transition Probability Matrix p(s' | s, a)' - showing conditional branching arrows from state s given action a to possible next states s'.
-2. Gear 2 (Amber): 'Immediate Reward Function r(s, a, s')' - showing numerical reward payout values associated with each transition.
-Label banner: 'In DP, both p and r must be 100% known in advance. In real-world MC, this entire box is a complete black box!'.
-Pure white background, clean dark espresso brown line art, elegant technical annotations.
+Studio Ghibli inspired 2D animation aesthetic, clean dark espresso brown line art (#26211E), warm vibrant flat cel shading.
+[ABSOLUTE GOLDEN CONSTRAINTS]
+1. ZERO SLIDE UI FRAMES: NEVER generate complete slide templates, text boxes, headers, footers, card outlines, or presentation borders. Output ONLY isolated characters and conceptual props.
+2. PURE SOLID WHITE BACKGROUND: Every isolated illustration MUST have a pure, solid #FFFFFF white background with clean cutout silhouettes and subtle soft contact shadows under feet/objects.
+3. ART STYLE UNIFORMITY: Studio Ghibli inspired 2D premium animation aesthetic. Clean dark espresso brown line art (#26211E, NO pure black lines), warm vibrant flat cel shading (2-3 levels of shading, NO realistic 3D CGI, NO oily chrome glare).
+4. NO DUPLICATE ANIMALS: Exactly ONE dog (Toto) and/or ONE cat (Jiny). NEVER duplicate cats or spawn extra pets.
+5. STRICT LANGUAGE RULE: ONLY English or Korean text allowed. NEVER generate Japanese characters.
+6. NO AGING ON PROFESSOR HOJIN: Professor Hojin is strictly in his early 40s (smooth youthful skin, no wrinkles, energetic kind smile). NO "SNU" badge or text on his clothes. Plain solid navy polo shirt only. (Reference: /Users/hojin9/dev/projects/dorothy/data/images/hojin_master_face.jpg)
+7. TOTO COAT CONSISTENCY: Toto is a solid warm milk-white / cream-white puppy (#FBF6EB) with NO spots, a sky-blue bandana, black button nose, and black button eyes. NEVER make him yellow, brown, or spotted.
+
+[VISUAL SCENE SPECIFICATION]
+An educational concept diagram exploring 'The Two Pillars of the Environment Model: p and r' on a pure solid white background (#FFFFFF).
+In the center: An elegant transparent glass cube labeled 'Environment Model (환경 모델)':
+Inside the cube, two large glowing mechanical gears are interconnected:
+- Gear 1 (Cyan/Blue glow): 'State Transition Probability Matrix p(s' | s, a)' with branching probability arrows.
+- Gear 2 (Warm Amber/Gold glow): 'Immediate Reward Function r(s, a, s')' with numeric reward tokens (+1.0, -1.0).
+On the left: Professor Hojin, a youthful and friendly Korean engineering professor in his early 40s (smooth skin, no wrinkles, energetic kind face matching hojin_master_face.jpg), neatly parted stylish salt-and-pepper short black hair with subtle silver streaks, thin minimalist round metal wire-rim glasses, kind intelligent warm brown eyes, encouraging warm smile, dressed in a neat solid dark charcoal navy short-sleeve collared polo shirt with NO name tag, NO badges, NO SNU text, classic medium-wash blue straight denim jeans, and grey suede sneakers pointing gently with a wooden pointer toward the gears, explaining their necessity in DP.
+On the right: Jiny the lab assistant cat, an adorable slightly chubby black-and-white bicolor tuxedo cat with cow pattern fur, black mask over ears and forehead, pure white muzzle with a cute baby pink button nose, white chest and white paws, intelligent olive-green eyes, wearing a charming red collar with a tiny gold bell and miniature round wire-rim scholar glasses perched on his nose perching on a textbook, examining the gear teeth with a magnifying glass.
+Pure solid white background (#FFFFFF), soft contact shadows, ZERO slide frames, NO header banner. --ar 1:1

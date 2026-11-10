@@ -1,0 +1,7 @@
+# four_direction_random_agent.png 프롬프트 명세서
+- **파일명**: four_direction_random_agent.png
+- **배경**: 순백색 (#FFFFFF)
+- **화풍**: 스튜디오 지브리 2D 애니메이션 스타일
+- **등장인물**: 로봇 틴맨
+- **주요 내용**: 3D 격자 타일 위에서 상, 하, 좌, 우 4방향으로 각각 25%의 확률 화살표를 띄우며 무작위 정책을 수행하는 틴맨 로봇
+- **절대 규칙**: ZERO SLIDE UI

@@ -1,0 +1,13 @@
+# Image Generation Prompt Specification
+# File: 08_cliff_bold_shortcut_racing.png
+# Chapter: 10.4 Q-러닝: 모델 프리 오프-정책 제어의 제왕
+# Concept: SARSA의 안전 우회 카트 vs Q-러닝의 대담한 최단 지름길 레이서
+
+[Prompt]
+Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, pure solid white background (#FFFFFF), NO background scenery, isolated character and props cutout, gentle soft drop shadow at feet.
+A dramatic racing comparison along a treacherous cliff track.
+In the background outer loop: Dorothy drives a yellow turtle-shaped safety cart along an enormous, slow, padded detour road far away from the drop, representing SARSA's conservative behavior.
+In the foreground inner track: Robot Tinny confidently pilots a sleek, fast aerodynamic red racing kart straight along the paved cliff edge road, passing safely beside the warning skull sign with razor-sharp precision, heading straight for the checkered Goal banner in record time, representing Q-Learning's optimal policy.
+Prof. Hojin stands on the winner's podium with a checkered flag.
+1:1 square composition, dynamic speed lines, vibrant contrasting vehicles.
+
