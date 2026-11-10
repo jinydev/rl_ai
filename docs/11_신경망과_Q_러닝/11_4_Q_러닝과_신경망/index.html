@@ -603,15 +603,17 @@
         <div class="bd-content ps-lg-4">
             <h1 id="114-q-러닝과-신경망-심층-강화학습으로의-진화">11.4 Q-러닝과 신경망: 심층 강화학습으로의 진화</h1>
 
-<p><img src="./11_4_Q_러닝과_신경망.png" alt="11.4 Q 러닝과 신경망" /></p>
+<p>테이블형 강화학습의 한계를 깨부수고 드디어 <strong>신경망 기반 Q-러닝(Neural Q-Learning)</strong>을 구현합니다.</p>
 
 <p><img src="./img/jiny_ch11_4_neural_q_learning.png" alt="신경망 Q러닝 인트로" />
 <strong>그림 11-4-1</strong> 현재 상태를 입력받아 각 행동 방향(상, 하, 좌, 우)의 예측 Q 가치들을 입체적으로 출력하는 마법 전광판을 확인하는 지니와 도로시</p>
 
+<hr />
+
+<p>상태(State)의 원-핫 인코딩 전처리부터, 행동 가치 테이블을 인공신경망으로 대체하여 병렬로 Q값을 예측하고, 준기울기(Semi-gradient) TD 오차를 MSE 회귀 손실로 변환하여 역전파하는 전 과정을 깊이 있게 정복해 봅시다!</p>
+
 <p><img src="./img/02_neural_q_learning_architecture.jpg" alt="신경망 Q-러닝 아키텍처" />
 <strong>그림 11-4-2</strong> 12차원 원-핫 상태 벡터를 2층 신경망 QNet에 입력하여 4개 행동의 Q값을 한 번에 뽑아내는 도로시와, TD 타깃의 역전파 선을 가위(<em>unchain()</em>)로 끊어 기울기 누수를 방지하는 지니, 그리고 회귀 손실 결합 원리를 강의하는 이호진 교수님</p>
-
-<p>테이블형 강화학습의 한계를 깨부수고 드디어 <strong>신경망 기반 Q-러닝(Neural Q-Learning)</strong>을 구현합니다. 상태(State)의 원-핫 인코딩 전처리부터, 행동 가치 테이블을 인공신경망으로 대체하여 병렬로 Q값을 예측하고, 준기울기(Semi-gradient) TD 오차를 MSE 회귀 손실로 변환하여 역전파하는 전 과정을 깊이 있게 정복해 봅시다!</p>
 
 <hr />
 
@@ -619,12 +621,26 @@
 
 <p>인공신경망은 사칙연산(행렬 곱과 덧셈)을 수행하므로 문자열이나 튜플 좌표 <code class="language-plaintext highlighter-rouge">(2, 0)</code>를 그대로 입력받을 수 없습니다. 반드시 <strong>숫자 벡터</strong> 형태로 변환해야 합니다.</p>
 
-<p>‘3x4 그리드 월드’의 상태는 총 12개의 격자 칸 중 하나를 가리키는 <strong>범주형 데이터(Categorical Data)</strong>입니다. 이러한 범주형 데이터를 표현하는 가장 표준적인 방법이 바로 <strong>원-핫 벡터(One-Hot Vector)</strong>입니다.</p>
+<p><img src="./img/ch11_4_01_state_preprocessing_coords_to_vector.png" alt="좌표 문자열을 숫자 벡터로 전처리하는 장치" /></p>
+
+<hr />
+
+<p>‘3x4 그리드 월드’의 상태는 총 12개의 격자 칸 중 하나를 가리키는 <strong>범주형 데이터(Categorical Data)</strong>입니다.</p>
+
+<p><img src="./img/ch11_4_02_gridworld_3x4_categorical_cells.png" alt="3x4 그리드 월드의 12개 이산 칸을 나타내는 범주형 데이터" /></p>
+
+<hr />
+
+<p>이러한 범주형 데이터를 표현하는 가장 표준적인 방법이 바로 <strong>원-핫 벡터(One-Hot Vector)</strong>입니다.</p>
 
 <ul>
   <li><strong>원-핫 벡터(One-Hot Vector)</strong>:
 전체 원소 중 해당 상태에 대응하는 단 하나의 원소만 <strong>1.0</strong>이고, 나머지 모든 원소는 <strong>0.0</strong>으로 채워진 벡터입니다.</li>
 </ul>
+
+<p><img src="./img/ch11_4_03_one_hot_vector_single_lightbulb.png" alt="단 하나의 원소만 1.0으로 점등되는 원-핫 벡터" /></p>
+
+<hr />
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 
@@ -642,7 +658,10 @@
 <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">원-핫 벡터:</span><span class="se">\n</span><span class="sh">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </code></pre></div></div>
 
+<hr />
+
 <p><strong>출력 결과</strong>:</p>
+
 <div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>형상: (1, 12)
 원-핫 벡터:
  [[0. 0. 0. 0. 0. 0. 0. 0. 1. 0. 0. 0.]]
@@ -652,18 +671,34 @@
 
 <h2 id="1142-q-함수를-신경망으로-설계하기">11.4.2 Q 함수를 신경망으로 설계하기</h2>
 
-<p>테이블 방식에서는 <code class="language-plaintext highlighter-rouge">Q[state, action]</code>처럼 상태와 행동의 모든 조합(12 × 4 = 48개)을 딕셔너리에 개별 보관했습니다. 이제 이 테이블을 <strong>입력을 받아 출력을 계산하는 신경망 함수 근사기</strong>로 바꿉니다.</p>
+<p>테이블 방식에서는 <code class="language-plaintext highlighter-rouge">Q[state, action]</code>처럼 상태와 행동의 모든 조합(12 × 4 = 48개)을 딕셔너리에 개별 보관했습니다.</p>
+
+<p><img src="./img/ch11_4_04_bulky_q_table_cabinet_limitation.png" alt="48개의 서랍을 일일이 열어야 하는 거대한 Q 테이블 수납장의 한계" /></p>
+
+<hr />
+
+<p>이제 이 테이블을 <strong>입력을 받아 출력을 계산하는 신경망 함수 근사기</strong>로 바꿉니다.</p>
+
+<p><img src="./img/ch11_4_05_neural_net_as_compact_function_approximator.png" alt="수납장을 손바닥만 한 신경망 함수 근사기로 압축하는 마법" /></p>
+
+<hr />
 
 <p>신경망의 입출력 구조는 크게 두 가지를 생각할 수 있습니다:</p>
 
 <p><img src="./img/fig_8_13.jpg" alt="그림 11-13" />
 <strong>그림 11-4-3</strong> Q 함수를 표현하는 두 가지 신경망 아키텍처 비교</p>
 
+<hr />
+
 <h3 id="구조-a-상태와-행동을-모두-입력받아-단일-q값을-출력-s-a--scalar-q">구조 A: 상태와 행동을 모두 입력받아 단일 Q값을 출력 (<code class="language-plaintext highlighter-rouge">[s, a] → scalar Q</code>)</h3>
 <ul>
   <li>최적 행동을 찾으려면 가능한 모든 행동(상, 하, 좌, 우 4개)에 대해 <strong>신경망 순전파를 4번 반복 실행</strong>해야 합니다.</li>
   <li>행동 수가 수십~수백 개로 늘어나면 계산 비용이 감당할 수 없을 만큼 폭증합니다!</li>
 </ul>
+
+<p><img src="./img/ch11_4_06_architecture_a_slow_four_passes.png" alt="행동마다 4번의 순전파를 반복해야 하는 구조 A의 병목 현상" /></p>
+
+<hr />
 
 <h3 id="구조-b-상태만-입력받아-모든-행동의-q값을-벡터로-출력-s--vector-qs-a0-qs-a1-">구조 B: 상태만 입력받아 모든 행동의 Q값을 벡터로 출력 (<code class="language-plaintext highlighter-rouge">[s] → vector [Q(s, a0), Q(s, a1), ...]</code>)</h3>
 <ul>
@@ -672,7 +707,15 @@
   <li>따라서 <strong>딥 강화학습(DQN)의 표준은 무조건 구조 B</strong>를 채택합니다!</li>
 </ul>
 
+<p><img src="./img/ch11_4_07_architecture_b_instant_parallel_q_vector.png" alt="1번의 순전파로 4개 행동의 Q값을 동시 출력하는 구조 B의 압도적 효율성" /></p>
+
+<hr />
+
 <h3 id="qnet-신경망-클래스-구현">QNet 신경망 클래스 구현</h3>
+
+<p><img src="./img/ch11_4_08_qnet_architecture_internal_circuit.png" alt="100개 은닉 뉴런과 ReLU 및 4개 출력을 갖춘 QNet 회로망" /></p>
+
+<hr />
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">dezero</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">import</span> <span class="n">dezero.functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -700,13 +743,22 @@
   <h3 id="qst-at--qst-at--α--rt--γ-maxa-qst1-a---qst-at--식-116-q-러닝"><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>) - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.6: Q-러닝)</em></h3>
 </blockquote>
 
+<p><img src="./img/ch11_4_09_qlearning_recurrence_formula_review.png" alt="벨만 최적 방정식에 기반한 Q-러닝 점화식 복습" /></p>
+
+<hr />
+
 <p>여기서 목표 항인 <strong>[<em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>)]</strong>를 타깃 레이블 <strong><em>T</em></strong>로 묶어봅시다:</p>
 
 <blockquote>
   <h3 id="qst-at--qst-at--α--t---qst-at--식-117"><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.7)</em></h3>
 </blockquote>
 
+<p><img src="./img/ch11_4_10_target_t_bundling.png" alt="즉각 보상과 할인된 미래 가치를 타깃 T로 묶어내기" /></p>
+
+<hr />
+
 <p>이 식의 의미를 딥러닝 관점에서 해석하면 놀라운 통찰을 얻게 됩니다:</p>
+
 <ul>
   <li><strong>입력 데이터</strong>: 상태 <em>S</em><sub><em>t</em></sub>에서 선택한 행동 <em>A</em><sub><em>t</em></sub></li>
   <li><strong>모델의 예측값</strong>: 신경망이 추정한 <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)</li>
@@ -718,22 +770,53 @@
   <h3 id="l--t---qst-at2--식-118-q-러닝의-회귀-손실"><strong><em>L</em> = (<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>))<sup>2</sup></strong>      <em>(식 11.8: Q-러닝의 회귀 손실)</em></h3>
 </blockquote>
 
+<p><img src="./img/ch11_4_11_q_learning_as_regression_loss.png" alt="TD 타깃과 예측 Q값 사이의 오차를 측정하는 MSE 회귀 손실 저울" /></p>
+
+<hr />
+
 <p>즉, 강화학습의 Q-러닝은 <strong>“신경망의 출력 <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)가 TD 타깃 <em>T</em>에 가까워지도록 오차역전파를 수행하는 지도 학습 회귀 문제”</strong>로 완벽하게 치환됩니다!</p>
+
+<p><img src="./img/ch11_4_12_rl_to_supervised_deep_insight.png" alt="강화학습을 지도학습 회귀 문제로 치환하는 딥 강화학습의 통찰" /></p>
 
 <hr />
 
 <h3 id="-핵심-주의-next_qunchainpytorch의-detach은-왜-필수일까">💡 핵심 주의: <code class="language-plaintext highlighter-rouge">next_q.unchain()</code>(PyTorch의 <code class="language-plaintext highlighter-rouge">.detach()</code>)은 왜 필수일까?</h3>
 
 <p>타깃 <strong><em>T</em> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>)</strong> 안에도 신경망 <em>Q</em>가 들어있습니다!</p>
+
+<p><img src="./img/ch11_4_13_danger_q_inside_target_t.png" alt="타깃 T 내부에도 신경망 Q가 살아 숨쉬고 있음을 발견하는 도로시" /></p>
+
+<hr />
+
 <ul>
   <li>만약 아무 조치 없이 <code class="language-plaintext highlighter-rouge">loss.backward()</code>를 실행하면, <strong>정답 레이블이어야 할 타깃 <em>T</em> 내부의 신경망 가중치까지 미분이 흘러들어가는 심각한 오류(기울기 누수)</strong>가 발생합니다.</li>
+</ul>
+
+<p><img src="./img/ch11_4_14_gradient_leakage_hazard.png" alt="정답 레이블 내부로 미분이 흘러들어가는 기울기 누수의 위험 경고" /></p>
+
+<hr />
+
+<ul>
   <li>강화학습 이론(준기울기 TD, Semi-gradient TD)에서는 타깃을 현재 순간의 고정된 ‘상수 정답’으로 취급해야 합니다.</li>
+</ul>
+
+<p><img src="./img/ch11_4_15_semi_gradient_fixed_anchor.png" alt="타깃을 고정된 상수 정답으로 다루는 준기울기 원리의 닻" /></p>
+
+<hr />
+
+<ul>
   <li>따라서 <code class="language-plaintext highlighter-rouge">next_q.unchain()</code>(파이토치에서는 <code class="language-plaintext highlighter-rouge">next_q.detach()</code>)을 호출하여 <strong>계산 그래프의 사슬을 끊어줌으로써 불필요하고 왜곡된 역전파를 완벽히 차단</strong>해야 합니다!</li>
 </ul>
+
+<p><img src="./img/ch11_4_16_unchain_scissors_detach.png" alt="가위로 역전파 사슬을 끊어 타깃을 보호하는 next_q.unchain()" /></p>
 
 <hr />
 
 <h2 id="1144-신경망-q-러닝-에이전트-구현">11.4.4 신경망 Q-러닝 에이전트 구현</h2>
+
+<p><img src="./img/ch11_4_17_qlearning_agent_complete_blueprint.png" alt="행동 선택과 가중치 갱신을 전담하는 QLearningAgent 설계도" /></p>
+
+<hr />
 
 <div align="right"><b>ch07/q_learning_nn.py</b></div>
 
@@ -789,6 +872,10 @@
 
 <p>1000 에피소드 동안 그리드 월드 환경에서 <code class="language-plaintext highlighter-rouge">QLearningAgent</code>를 훈련시켜 봅시다.</p>
 
+<p><img src="./img/ch11_4_18_gridworld_1000_episodes_training.png" alt="그리드 월드에서 1000 에피소드 고속 훈련을 달리는 토토와 에이전트" /></p>
+
+<hr />
+
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">common.gridworld</span> <span class="kn">import</span> <span class="n">GridWorld</span>
 
 <span class="n">env</span> <span class="o">=</span> <span class="nc">GridWorld</span><span class="p">()</span>
@@ -811,27 +898,51 @@
 <span class="n">env</span><span class="p">.</span><span class="nf">render_q</span><span class="p">(</span><span class="n">agent</span><span class="p">.</span><span class="n">qnet</span><span class="p">)</span> <span class="c1"># 신경망 기반 Q 함수 시각화
 </span></code></pre></div></div>
 
+<hr />
+
 <p><img src="./img/fig_8_14.jpg" alt="그림 11-14" />
 <strong>그림 11-4-4</strong> 에피소드 진행에 따른 손실(Loss) 추이. 일반적인 지도 학습과 달리 요동치면서도 전반적으로 우하향 수렴합니다.</p>
+
+<hr />
 
 <p><img src="./img/fig_8_15.jpg" alt="그림 11-15" />
 <strong>그림 11-4-5</strong> 신경망 Q-러닝으로 획득한 그리드 월드의 최종 정책. 최적 경로 화살표가 선명하게 형성되었습니다.</p>
 
+<hr />
+
 <h3 id="-왜-신경망-강화학습의-손실-그래프는-요동칠까">💡 왜 신경망 강화학습의 손실 그래프는 요동칠까?</h3>
 <p>[그림 11-4-4]를 보면 지도 학습처럼 매끄럽게 떨어지지 않고 톱니바퀴처럼 심하게 요동칩니다. 
 그 이유는 강화학습의 고유한 특성 때문입니다:</p>
+
+<p><img src="./img/ch11_4_19_why_rl_loss_oscillates.png" alt="강화학습 손실 곡선이 요동치는 두 가지 근본 원인" /></p>
+
+<hr />
+
 <ol>
   <li><strong>타깃이 계속 움직인다 (Moving Target Problem)</strong>:
 정답 레이블 <em>T</em> 자체가 아직 덜 학습된 신경망 <code class="language-plaintext highlighter-rouge">self.qnet</code>의 출력으로 만들어지기 때문에, 가중치를 갱신할 때마다 정답 기준선도 함께 흔들립니다.</li>
+</ol>
+
+<p><img src="./img/ch11_4_19b_moving_target_problem.png" alt="움직이는 표적 문제(Moving Target Problem)로 인한 불안정성" /></p>
+
+<hr />
+
+<ol>
   <li><strong>샘플 간 강한 상관관계 (Correlated Samples)</strong>:
 연속된 시간 스텝의 경험 (<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)은 서로 매우 비슷하여 데이터의 독립성(i.i.d) 가정이 깨집니다.</li>
 </ol>
+
+<p><img src="./img/ch11_4_19c_correlated_samples_filmstrip.png" alt="시간적 연속 샘플 간의 강한 상관관계(Correlated Samples)" /></p>
+
+<hr />
 
 <blockquote>
   <p>[!IMPORTANT]
 <strong>다음 장(12장 DQN)의 예고</strong>:
 바로 이 요동치는 불안정성을 잠재우기 위해 딥마인드(DeepMind)가 고안한 두 가지 혁신, <strong>경험 재생(Experience Replay)</strong>과 <strong>타깃 네트워크(Target Network)</strong>가 등장합니다. 12장에서는 이 두 핵심 기술을 탑재하여 진정한 심층 Q-네트워크(DQN)를 완성하게 됩니다!</p>
 </blockquote>
+
+<p><img src="./img/ch11_4_20_gateway_to_chapter12_dqn.png" alt="경험 재생과 타깃 네트워크가 기다리는 제12장 DQN의 관문" /></p>
 
 
             <!-- 구글 애드센스 출력 -->

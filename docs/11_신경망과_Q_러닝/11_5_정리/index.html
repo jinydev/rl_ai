@@ -603,15 +603,17 @@
         <div class="bd-content ps-lg-4">
             <h1 id="115-제11장-정리-딥러닝과-q-러닝의-융합-심층-강화학습의-서막">11.5 제11장 정리: 딥러닝과 Q-러닝의 융합, 심층 강화학습의 서막</h1>
 
-<p><img src="./11_5_정리.png" alt="11.5 정리" /></p>
+<p>강화학습이 테이블의 한계를 벗어나 무한한 차원의 바다로 항해할 수 있도록 만들어 준 <strong>제11장 인공신경망과 Q-러닝</strong>의 핵심 이론과 실습 내용을 총정리합니다.</p>
 
 <p><img src="./img/jiny_ch11_5_summary.png" alt="11장 정리 인트로" />
 <strong>그림 11-5-1</strong> 뉴럴 네트워크 형태의 홀로그램을 보며 신경망에 의한 행동 가치 근사를 요점 복습하는 도로시와 지니</p>
 
+<hr />
+
+<p>딥러닝 프레임워크 DeZero의 자동 미분부터 비선형 신경망, 그리고 QNet을 결합한 심층 Q-러닝의 원리를 정리하고, 딥마인드의 전설적인 <strong>DQN</strong>이 기다리는 12장으로 전진해 봅시다!</p>
+
 <p><img src="./img/02_chapter11_graduation_to_dqn.jpg" alt="11장 수료와 DQN 시대로의 도약" />
 <strong>그림 11-5-2</strong> 11장 신경망 Q-러닝 마스터 메달을 목에 걸고 조이스틱을 쥔 도로시와 아타리(Atari) 벽돌깨기 게임 화면을 비추는 지니, 그리고 12장 DQN의 2대 비밀 병기(경험 재생 &amp; 타깃 네트워크)를 소개하는 이호진 교수님과 토토</p>
-
-<p>강화학습이 테이블의 한계를 벗어나 무한한 차원의 바다로 항해할 수 있도록 만들어 준 <strong>제11장 인공신경망과 Q-러닝</strong>의 핵심 이론과 실습 내용을 총정리합니다. 딥러닝 프레임워크 DeZero의 자동 미분부터 비선형 신경망, 그리고 QNet을 결합한 심층 Q-러닝의 원리를 정리하고, 딥마인드의 전설적인 <strong>DQN</strong>이 기다리는 12장으로 전진해 봅시다!</p>
 
 <hr />
 
@@ -696,6 +698,10 @@
 
 <p>11.4절에서 우리는 그리드 월드 문제를 신경망으로 멋지게 풀어냈지만, 동시에 심층 강화학습의 치명적인 불안정성을 목격했습니다:</p>
 
+<p><img src="./img/ch11_5_01_neural_q_learning_triumph_and_instability.png" alt="신경망 Q-러닝의 완주 성공과 동시에 드러난 치명적 불안정성" /></p>
+
+<hr />
+
 <ol>
   <li><strong>움직이는 표적 문제 (Moving Target Problem)</strong>:
     <ul>
@@ -703,12 +709,23 @@
       <li>사격 연습을 하는데 과녁이 이리저리 뛰어다니는 꼴이 되어 학습 곡선이 심하게 요동칩니다.</li>
     </ul>
   </li>
-  <li><strong>데이터의 강한 시간적 상관관계 (Correlated Samples)</strong>:
-    <ul>
-      <li>연속된 시간 스텝의 경험 (<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)은 서로 매우 비슷하여 머신러닝의 독립 동일 분포(i.i.d) 가정을 정면으로 위반합니다.</li>
-    </ul>
-  </li>
 </ol>
+
+<p><img src="./img/ch11_5_02_moving_target_shooting_range.png" alt="과녁이 사방으로 뛰어다니는 움직이는 표적 문제" /></p>
+
+<hr />
+
+<ol>
+  <li><strong>데이터의 강한 시간적 상관관계 (Correlated Samples)</strong>:</li>
+</ol>
+
+<ul>
+  <li>연속된 시간 스텝의 경험 (<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)은 서로 매우 비슷하여 머신러닝의 독립 동일 분포(i.i.d) 가정을 정면으로 위반합니다.</li>
+</ul>
+
+<p><img src="./img/ch11_5_03_correlated_samples_dominoes.png" alt="연속 시간 스텝 간의 강한 상관관계 도미노 현상" /></p>
+
+<hr />
 
 <blockquote>
   <p>[!IMPORTANT]
@@ -720,7 +737,13 @@
   </ol>
 </blockquote>
 
+<p><img src="./img/ch11_5_04_dqn_two_weapons_replay_target_net.png" alt="불안정성을 잠재우는 DQN의 2대 비밀 병기(경험 재생과 타깃 네트워크)" /></p>
+
+<hr />
+
 <p>이제 도로시, 지니, 토토, 그리고 이호진 교수님과 함께 12장으로 넘어가, 전 세계 인공지능 연구자들을 전율케 했던 진정한 <strong>DQN(Deep Q-Network)</strong>을 직접 만들어 봅시다!</p>
+
+<p><img src="./img/ch11_5_05_graduation_forward_to_chapter12_dqn.png" alt="전설적인 12장 심층 Q-네트워크(DQN) 시대로의 당당한 도약" /></p>
 
 
             <!-- 구글 애드센스 출력 -->
