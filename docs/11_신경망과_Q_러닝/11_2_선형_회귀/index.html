@@ -672,7 +672,7 @@
 <p>이때 가장 단순한 가설로 <strong>직선 모델</strong>을 세우는 것이 <strong>선형 회귀(Linear Regression)</strong>입니다:</p>
 
 <blockquote>
-  <h3 id="y--w--x--b"><strong><em>y</em> = <em>W</em> · <em>x</em> + <em>b</em></strong></h3>
+  <p><strong><em>y</em> = <em>W</em> · <em>x</em> + <em>b</em></strong></p>
 </blockquote>
 
 <ul>
@@ -706,7 +706,7 @@
 <p>이 잔차들을 제곱하여 평균을 낸 것이 <strong>평균 제곱 오차(MSE)</strong> 손실 함수입니다:</p>
 
 <blockquote>
-  <h3 id="l--1--n--i1n-w--xi--b---yi2--식-113-평균-제곱-오차-mse"><strong><em>L</em> = (1 / <em>N</em>) · ∑<sub><em>i</em>=1</sub><sup><em>N</em></sup> (<em>W</em> · <em>x</em><sub><em>i</em></sub> + <em>b</em> - <em>y</em><sub><em>i</em></sub>)<sup>2</sup></strong>      <em>(식 11.3: 평균 제곱 오차, MSE)</em></h3>
+  <p><strong><em>L</em> = (1 / <em>N</em>) · ∑<sub><em>i</em>=1</sub><sup><em>N</em></sup> (<em>W</em> · <em>x</em><sub><em>i</em></sub> + <em>b</em> - <em>y</em><sub><em>i</em></sub>)<sup>2</sup></strong>      <em>(식 11.3: 평균 제곱 오차, MSE)</em></p>
 </blockquote>
 
 <p><img src="./img/ch11_2_08_mse_loss_formula_squared_boxes.png" alt="잔차의 제곱 면적으로 계산하는 평균 제곱 오차" /></p>
@@ -724,7 +724,7 @@
 
 <hr />
 
-<p>우리의 목표는 이 손실 함수 <em>L</em>을 최소화하는 최적의 가중치 <em>W</em><sup>*</sup>와 편향 <em>b</em><sup>*</sup>를 경사 하강법으로 찾아내는 것입니다.</p>
+<p>우리의 목표는 이 손실 함수 $L$ 을 최소화하는 최적의 가중치 $W^<em>$ 와 편향 $b^</em>$ 를 경사 하강법으로 찾아내는 것입니다.</p>
 
 <p><img src="./img/ch11_2_10_optimization_goal_minimizing_loss.png" alt="손실 함수를 최소화하는 최적화 목표" /></p>
 
@@ -844,7 +844,7 @@
 <hr />
 
 <p>초기 손실 42.29에서 단 10회 만에 0.24로 급락하며 최종적으로 <strong>0.0799</strong>까지 수렴했습니다. 
-도출된 가중치 <strong><em>W</em> = 2.118</strong>과 편향 <strong><em>b</em> = 5.466</strong>은 우리가 처음에 노이즈를 섞어 만든 참 모델(기울기 2.0, 절편 5.5)과 거의 완벽하게 일치합니다!</p>
+도출된 가중치 <strong>$W = 2.118$</strong> 과 편향 <strong>$b = 5.466$</strong> 은 우리가 처음에 노이즈를 섞어 만든 참 모델(기울기 2.0, 절편 5.5)과 거의 완벽하게 일치합니다!</p>
 
 <p><img src="./img/ch11_2_14_perfect_convergence_celebration.png" alt="손실이 수렴하고 최적 직선을 찾아낸 기쁨" /></p>
 

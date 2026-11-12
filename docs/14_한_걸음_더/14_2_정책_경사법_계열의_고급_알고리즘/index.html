@@ -518,7 +518,7 @@
   <li>각 워커는 일정 스텝(예: 5스텝) 동안 경험을 모아 그래디언트를 계산한 뒤, 중앙 전역 신경망에 <strong>비동기적(Asynchronous)</strong>으로 밀어 넣어 파라미터를 갱신합니다.</li>
 </ul>
 
-<p>또한 A3C는 [그림 14-3]처럼 합성곱(CNN) 특징 추출 계층의 가중치를 정책망(<em>π</em>)과 가치망(<em>V</em>)이 공유하는 효율적인 멀티태스크 구조를 확립했습니다.</p>
+<p>또한 A3C는 [그림 14-3]처럼 합성곱(CNN) 특징 추출 계층의 가중치를 정책망($\pi$)과 가치망($V$)이 공유하는 효율적인 멀티태스크 구조를 확립했습니다.</p>
 
 <p><img src="./img/fig_14_3.jpg" alt="그림 14-3" /></p>
 
@@ -531,7 +531,7 @@
 <p><img src="./img/fig_14_4.jpg" alt="그림 14-4" /></p>
 
 <ul>
-  <li>모든 병렬 환경에서 시점 <em>t</em>의 상태 <em>S</em><sub><em>t</em></sub><sup>(1)</sup>, …, <em>S</em><sub><em>t</em></sub><sup>(<em>N</em>)</sup>을 동시에 관측합니다.</li>
+  <li>모든 병렬 환경에서 시점 $t$ 의 상태 $S_t^{(1)}, \dots, S_t^{(N)}$ 을 동시에 관측합니다.</li>
   <li>이를 크기 <em>N</em>의 텐서 배치로 만들어 단일 GPU에서 고속 순전파 및 역전파를 수행합니다.</li>
   <li>실험 결과 A2C는 A3C와 대등하거나 더 우수한 성능을 내면서도, 최신 GPU 텐서 가속을 100% 활용할 수 있어 오늘날 모든 심층 강화학습 라이브러리의 표준 구현체가 되었습니다.</li>
 </ul>
@@ -542,7 +542,7 @@
 
 <p>로봇의 관절 각도 제어나 자율주행 차량의 조향각처럼 행동이 무한한 실수 범위인 환경에서, DQN의 argmax 연산은 불가능에 가깝습니다.</p>
 
-<p>13.5절에서 살펴본 것처럼 가우스 정규분포 <em>N</em>(<em>μ</em>, <em>σ</em><sup>2</sup>)에서 행동을 샘플링하는 방법도 있지만, <strong>DDPG(Deep Deterministic Policy Gradient)</strong><sup>[24]</sup>는 행동을 확률적으로 뽑지 않고 <strong>결정론적 실수 벡터 <em>a</em> = <em>μ</em><sub><em>θ</em></sub>(<em>s</em>)</strong>로 신경망이 직접 출력하도록 설계했습니다.</p>
+<p>13.5절에서 살펴본 것처럼 가우스 정규분포 $\mathcal{N}(\mu, \sigma^2)$ 에서 행동을 샘플링하는 방법도 있지만, <strong>DDPG(Deep Deterministic Policy Gradient)</strong><sup>[24]</sup>는 행동을 확률적으로 뽑지 않고 <strong>결정론적 실수 벡터 <em>a</em> = <em>μ</em><sub><em>θ</em></sub>(<em>s</em>)</strong>로 신경망이 직접 출력하도록 설계했습니다.</p>
 
 <p><img src="./img/fig_14_6.jpg" alt="그림 14-6" /></p>
 
@@ -550,28 +550,19 @@
 
 <p>DDPG는 Actor-Critic 아키텍처에 DQN의 경험 재생 버퍼와 타깃 네트워크를 성공적으로 이식했습니다:</p>
 <ul>
-  <li><strong>행위자 (Actor, <em>μ</em><sub><em>θ</em></sub>):</strong> 상태 <em>s</em>를 입력받아 연속 행동 <em>a</em> = <em>μ</em><sub><em>θ</em></sub>(<em>s</em>)를 직접 출력</li>
-  <li><strong>비평자 (Critic, <em>Q</em><sub><em>ϕ</em></sub>):</strong> 상태 <em>s</em>와 연속 행동 <em>a</em>를 입력받아 스칼라 행동 가치 <em>Q</em><sub><em>ϕ</em></sub>(<em>s</em>, <em>a</em>)를 평가</li>
+  <li><strong>행위자 (Actor, $\mu_\theta$):</strong> 상태 $s$ 를 입력받아 연속 행동 $a = \mu_\theta(s)$ 를 직접 출력</li>
+  <li><strong>비평자 (Critic, $Q_\phi$):</strong> 상태 $s$ 와 연속 행동 $a$ 를 입력받아 스칼라 행동 가치 $Q_\phi(s, a)$ 를 평가</li>
 </ul>
 
 <p><img src="./img/fig_14_7.jpg" alt="그림 14-7" /></p>
 
-<p>비평자 <em>Q</em><sub><em>ϕ</em></sub>(<em>s</em>, <em>a</em>)의 출력이 최대화되도록 행위자 <em>μ</em><sub><em>θ</em></sub>(<em>s</em>)를 갱신할 때, 역전파의 연쇄 법칙이 아름답게 적용됩니다:</p>
+<p>비평자 $Q_\phi(s, a)$ 의 출력이 최대화되도록 행위자 $\mu_\theta(s)$ 를 갱신할 때, 역전파의 연쇄 법칙이 아름답게 적용됩니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E [ ∇<sub><em>a</em></sub> <em>Q</em><sub><em>ϕ</em></sub>(<em>s</em>, <em>a</em>)</td>
-        <td><sub><em>a</em> = <em>μ</em><sub><em>θ</em></sub>(<em>s</em>)</sub> · ∇<sub><em>θ</em></sub> <em>μ</em><sub><em>θ</em></sub>(<em>s</em>) ]</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E} \left[ \left. \nabla_a Q_\phi(s, a) \right|_{a = \mu_\theta(s)} \cdot \nabla_\theta \mu_\theta(s) \right]\]
 
 <ol>
-  <li>비평자 신경망을 통해 “행동 <em>a</em>를 어느 방향으로 수정해야 Q값이 커지는가”라는 기울기 ∇<sub><em>a</em></sub> <em>Q</em>를 먼저 구합니다.</li>
-  <li>이 기울기를 행위자 신경망으로 그대로 흘려보내 행위자의 가중치 <em>θ</em>를 갱신합니다!</li>
+  <li>비평자 신경망을 통해 “행동 $a$ 를 어느 방향으로 수정해야 $Q$ 값이 커지는가”라는 기울기 $\nabla_a Q$ 를 먼저 구합니다.</li>
+  <li>이 기울기를 행위자 신경망으로 그대로 흘려보내 행위자의 가중치 $\theta$ 를 갱신합니다!</li>
 </ol>
 
 <h3 id="max-연산의-소거와-소프트-타깃-갱신">max 연산의 소거와 소프트 타깃 갱신</h3>
@@ -605,28 +596,12 @@ DDPG의 Q값 과대평가 및 하이퍼파라미터 취약성을 해결하기 �
 
 <h3 id="1-trpo-trust-region-policy-optimization">1) TRPO (Trust Region Policy Optimization)</h3>
 
-<p>TRPO<sup>[25]</sup>는 정책을 갱신할 때 이전 정책 <em>π</em><sub>old</sub>와 새 정책 <em>π</em> 사이의 확률 분포 차이를 <strong>쿨백-라이블러 발산(Kullback-Leibler Divergence, KLD)</strong>으로 측정하고, 이 값이 안전 임곗값 <em>δ</em> 이하가 되도록 엄격한 수학적 제약 조건을 부여합니다:</p>
+<p>TRPO<sup>[25]</sup>는 정책을 갱신할 때 이전 정책 $\pi_{\text{old}}$ 와 새 정책 $\pi$ 사이의 확률 분포 차이를 <strong>쿨백-라이블러 발산(Kullback-Leibler Divergence, KLD)</strong> 으로 측정하고, 이 값이 안전 임곗값 $\delta$ 이하가 되도록 엄격한 수학적 제약 조건을 부여합니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>max<sub><em>θ</em></sub> E [ (<em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-        <td><em>s</em>) / <em>π</em><sub><em>θ</em><sub>old</sub></sub>(<em>a</em></td>
-        <td><em>s</em>)) <em>A</em>(<em>s</em>, <em>a</em>) ]</td>
-        <td> </td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td>s.t. E [ <em>D</em><sub>KL</sub>(<em>π</em><sub><em>θ</em><sub>old</sub></sub>(·</td>
-        <td><em>s</em>)</td>
-        <td> </td>
-        <td><em>π</em><sub><em>θ</em></sub>(·</td>
-        <td><em>s</em>)) ] ≤ <em>δ</em></td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\begin{aligned}
+\max_\theta &amp; \quad \mathbb{E} \left[ \frac{\pi_\theta(a \mid s)}{\pi_{\theta_{\text{old}}}(a \mid s)} A(s, a) \right] \\
+\text{s.t.} &amp; \quad \mathbb{E} \left[ D_{\text{KL}}(\pi_{\theta_{\text{old}}}(\cdot \mid s) \parallel \pi_\theta(\cdot \mid s)) \right] \le \delta
+\end{aligned}\]
 
 <p>이 제약 조건 덕분에 정책 성능이 단조 증가(Monotonic Improvement)함을 수학적으로 보장할 수 있었습니다. 하지만 2차 미분인 헤세 행렬(Hessian Matrix)과 켤레 기울기법(Conjugate Gradient)을 연산해야 하므로 계산 비용이 너무 크고 구현이 대단히 복잡했습니다.</p>
 
@@ -634,28 +609,19 @@ DDPG의 Q값 과대평가 및 하이퍼파라미터 취약성을 해결하기 �
 
 <p>2017년 OpenAI의 존 슐만(John Schulman) 연구팀은 TRPO의 복잡한 2차 제약 최적화를 획기적으로 단순화한 <strong>PPO</strong><sup>[26]</sup>를 발표했습니다.</p>
 
-<p>핵심 아이디어는 이전 정책 대비 새 정책의 확률 비 <em>r</em><sub><em>t</em></sub>(<em>θ</em>)가 1 근처의 안전 구간 [1 − <em>ϵ</em>, 1 + <em>ϵ</em>]을 벗어나지 못하도록 강제로 잘라내는(Clipping) 것입니다 (보통 <em>ϵ</em> = 0.2 사용).</p>
+<p>핵심 아이디어는 이전 정책 대비 새 정책의 확률 비 $r_t(\theta)$ 가 1 근처의 안전 구간 $[1 - \epsilon, 1 + \epsilon]$ 을 벗어나지 못하도록 강제로 잘라내는(Clipping) 것입니다 (보통 $\epsilon = 0.2$ 사용).</p>
 
-<blockquote>
-  <h3 id="식-141-ppo-클리핑-목적-함수-clipped-surrogate-objective">(식 14.1) PPO 클리핑 목적 함수 (Clipped Surrogate Objective)</h3>
-  <p><em>L</em><sup>CLIP</sup>(<em>θ</em>) = E [ min( <em>r</em><sub><em>t</em></sub>(<em>θ</em>) <em>A</em><sub><em>t</em></sub>, clip(<em>r</em><sub><em>t</em></sub>(<em>θ</em>), 1 − <em>ϵ</em>, 1 + <em>ϵ</em>) <em>A</em><sub><em>t</em></sub> ) ]</p>
+\[L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}_t \right) \right]\]
 
-  <table>
-    <tbody>
-      <tr>
-        <td>여기서 확률 변화율 <em>r</em><sub><em>t</em></sub>(<em>θ</em>) = <em>π</em><sub><em>θ</em></sub>(<em>a</em><sub><em>t</em></sub></td>
-        <td><em>s</em><sub><em>t</em></sub>) / <em>π</em><sub><em>θ</em><sub>old</sub></sub>(<em>a</em><sub><em>t</em></sub></td>
-        <td><em>s</em><sub><em>t</em></sub>)</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+<p>[식 14.1] PPO 클리핑 목적 함수 (Clipped Surrogate Objective)</p>
+
+<p>여기서 확률 변화율 $r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}$ 입니다.</p>
 
 <ul>
-  <li><strong>이점 <em>A</em><sub><em>t</em></sub> &gt; 0 (좋은 행동):</strong><br />
-행동 확률을 높여야 하지만, <em>r</em><sub><em>t</em></sub>(<em>θ</em>)가 1 + <em>ϵ</em>(예: 1.2)을 초과하면 목적 함수가 상수로 묶여 그래디언트가 0이 됩니다. 즉, 한 번에 너무 욕심부려 정책을 급변시키지 못하도록 차단합니다.</li>
-  <li><strong>이점 <em>A</em><sub><em>t</em></sub> &lt; 0 (나쁜 행동):</strong><br />
-행동 확률을 낮추어야 하지만, <em>r</em><sub><em>t</em></sub>(<em>θ</em>)가 1 − <em>ϵ</em>(예: 0.8) 밑으로 떨어지면 역시 클리핑되어 과도한 패널티로 인한 정책 붕괴를 예방합니다.</li>
+  <li><strong>이점 $\hat{A}_t &gt; 0$ (좋은 행동):</strong><br />
+행동 확률을 높여야 하지만, $r_t(\theta)$ 가 $1 + \epsilon$(예: 1.2)을 초과하면 목적 함수가 상수로 묶여 그래디언트가 0이 됩니다. 즉, 한 번에 너무 욕심부려 정책을 급변시키지 못하도록 차단합니다.</li>
+  <li><strong>이점 $\hat{A}_t &lt; 0$ (나쁜 행동):</strong><br />
+행동 확률을 낮추어야 하지만, $r_t(\theta)$ 가 $1 - \epsilon$(예: 0.8) 밑으로 떨어지면 역시 클리핑되어 과도한 패널티로 인한 정책 붕괴를 예방합니다.</li>
 </ul>
 
 <p>PPO는 1차 미분(일반 역전파)만으로 간단히 구현할 수 있으면서도 TRPO 이상의 뛰어난 성능과 놀라운 학습 안정성을 보여주었습니다. 그 결과 OpenAI Five(도타 2 세계 챔피언 격파), 물리 로봇 손(루빅스 큐브 해결), 그리고 오늘날 ChatGPT를 비롯한 대규모 언어 모델의 인간 피드백 기반 강화학습(RLHF)에 이르기까지 <strong>현존하는 가장 성공적인 강화학습 알고리즘의 왕좌</strong>를 차지하고 있습니다.</p>

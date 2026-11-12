@@ -118,7 +118,7 @@ variable(75.0)
 
 이 함수를 *x*로 미분하면 도함수는 다음과 같습니다:
 
-> ### **d*y* / d*x* = 6*x***
+> **d*y* / d*x* = 6*x***
 
 ![도함수와 접선의 기울기](./img/ch11_1_07_derivative_tangent_slope.png)
 
@@ -160,7 +160,7 @@ variable(30.0)
 
 길이가 같은 두 벡터 **a** = (*a*<sub>1</sub>, &hellip;, *a*<sub>*n*</sub>)과 **b** = (*b*<sub>1</sub>, &hellip;, *b*<sub>*n*</sub>)의 내적은 대응하는 원소끼리의 곱의 총합입니다:
 
-> ### ***a* · *b* = *a*<sub>1</sub>*b*<sub>1</sub> + *a*<sub>2</sub>*b*<sub>2</sub> + &hellip; + *a*<sub>*n*</sub>*b*<sub>*n*</sub>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.1: 벡터의 내적)*
+> ***a* · *b* = *a*<sub>1</sub>*b*<sub>1</sub> + *a*<sub>2</sub>*b*<sub>2</sub> + &hellip; + *a*<sub>*n*</sub>*b*<sub>*n*</sub>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.1: 벡터의 내적)*
 
 ![벡터 내적 연산 원리](./img/ch11_1_09_vector_dot_product.png)
 
@@ -175,7 +175,9 @@ variable(30.0)
 
 행렬 곱이 유효하게 성립하려면 **왼쪽 행렬의 열 수와 오른쪽 행렬의 행 수가 반드시 일치**해야 합니다:
 
-> ### **행렬 A (*N* × *K*) × 행렬 B (*K* × *M*) = 행렬 C (*N* × *M*)**
+$$
+\text{행렬 A } (N \times K) \times \text{행렬 B } (K \times M) = \text{행렬 C } (N \times M)
+$$
 
 ![행렬 곱 차원 형상 일치 규칙](./img/ch11_1_10_matrix_multiplication_shape_rule.png)
 
@@ -213,7 +215,7 @@ print(C)
 
 이제 DeZero의 자동 미분을 이용해 유명한 최적화 벤치마크 문제인 **로젠브록(Rosenbrock) 바나나 함수**의 최솟값을 찾아봅시다:
 
-> ### ***y* = 100 · (*x*<sub>1</sub> - *x*<sub>0</sub><sup>2</sup>)<sup>2</sup> + (*x*<sub>0</sub> - 1)<sup>2</sup>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.2: 로젠브록 함수)*
+> ***y* = 100 · (*x*<sub>1</sub> - *x*<sub>0</sub><sup>2</sup>)<sup>2</sup> + (*x*<sub>0</sub> - 1)<sup>2</sup>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.2: 로젠브록 함수)*
 
 이 함수는 완만한 곡면 골짜기를 이루고 있어 최솟값을 찾기가 까다롭기로 유명합니다. 이론적인 정답 최솟값은 (*x*<sub>0</sub>, *x*<sub>1</sub>) = **(1.0, 1.0)**일 때 *y* = 0입니다.
 
@@ -259,7 +261,9 @@ x0의 편미분: variable(-2.0) x1의 편미분: variable(400.0)
 
 함숫값을 최소화하려면 **기울기의 정반대 방향(-grad)**으로 변수들을 조금씩 이동시키면 됩니다:
 
-> ### ***x* ← *x* - *lr* · (∂*y* / ∂*x*)**
+$$
+x \leftarrow x - \text{lr} \cdot \frac{\partial y}{\partial x}
+$$
 
 ![경사 하강법 골짜기 하강 스텝](./img/ch11_1_12_gradient_descent_valley_steps.png)
 

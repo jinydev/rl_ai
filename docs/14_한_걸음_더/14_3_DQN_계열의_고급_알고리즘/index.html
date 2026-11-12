@@ -499,18 +499,9 @@
 
 <h2 id="1431-분포-강화학습distributional-rl과-범주형-dqn-c51">14.3.1 분포 강화학습(Distributional RL)과 범주형 DQN (C51)</h2>
 
-<p>전통적인 가치 기반 강화학습(Q-러닝, DQN)의 핵심 목적은 다음 수식처럼 미래 누적 수익 <em>G</em><sub><em>t</em></sub>의 <strong>단일한 평균값(기댓값)</strong>을 예측하는 것이었습니다:</p>
+<p>전통적인 가치 기반 강화학습(Q-러닝, DQN)의 핵심 목적은 다음 수식처럼 미래 누적 수익 $G_t$ 의 <strong>단일한 평균값(기댓값)</strong> 을 예측하는 것이었습니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td><em>Q</em><sup><em>π</em></sup>(<em>s</em>, <em>a</em>) = E<sub><em>π</em></sub> [ <em>G</em><sub><em>t</em></sub></td>
-        <td><em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>a</em> ]</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[Q^\pi(s, a) = \mathbb{E}_\pi [ G_t \mid S_t = s, A_t = a ]\]
 
 <p><img src="./img/fig_14_9.jpg" alt="그림 14-9" /></p>
 
@@ -524,13 +515,13 @@
 
 <p>오리지널 DQN의 Q 함수는 두 행동을 모두 똑같이 10점으로 평가하여 구별하지 못합니다. 단 하나의 스칼라 평균값 뒤에 숨겨진 <strong>확률적 변동성과 위험(Risk)</strong>의 전모가 완전히 뭉개져 버리기 때문입니다.</p>
 
-<p>2017년 마크 벨마르(Marc Bellemare) 연구팀은 기댓값 대신 <strong>수익의 확률 분포 자체 <em>Z</em><sup><em>π</em></sup>(<em>s</em>, <em>a</em>)를 학습하자</strong>는 <strong>분포 강화학습(Distributional RL)</strong><sup>[27]</sup>의 패러다임을 열었습니다!</p>
+<p>2017년 마크 벨마르(Marc Bellemare) 연구팀은 기댓값 대신 <strong>수익의 확률 분포 자체 $Z^\pi(s, a)$ 를 학습하자</strong>는 <strong>분포 강화학습(Distributional RL)</strong><sup>[27]</sup>의 패러다임을 열었습니다!</p>
 
 <p><img src="./img/fig_14_10.jpg" alt="그림 14-10" /></p>
 
 <h3 id="범주형-dqn-categorical-dqn--c51의-원리">범주형 DQN (Categorical DQN / C51)의 원리</h3>
 
-<p>수익 <em>G</em><sub><em>t</em></sub>가 취할 수 있는 범위를 최소값 <em>V</em><sub>min</sub>부터 최대값 <em>V</em><sub>max</sub>까지 일정 간격의 구간(Bin)으로 잘게 쪼갠 뒤, 신경망이 각 구간에 속할 확률을 소프트맥스로 출력하도록 만듭니다.</p>
+<p>수익 $G_t$ 가 취할 수 있는 범위를 최소값 $V_{\min}$ 부터 최대값 $V_{\max}$ 까지 일정 간격의 구간(Bin)으로 잘게 쪼갠 뒤, 신경망이 각 구간에 속할 확률을 소프트맥스로 출력하도록 만듭니다.</p>
 
 <ul>
   <li>아타리 게임 벤치마크에서 구간의 개수(Atom)를 <strong>51개</strong>로 설정했을 때 가장 압도적인 성능을 보였기 때문에 <strong>C51</strong>이라는 별칭으로 널리 불립니다.</li>
@@ -544,11 +535,9 @@
 <p>전통적인 DQN은 <em>ϵ</em>-탐욕 정책(Epsilon-Greedy)을 사용했습니다.<br />
 하지만 <em>ϵ</em>값을 얼마로 시작하여 어떤 속도로 감쇠(Decay)시킬 것인지는 환경마다 전혀 다른 지독한 하이퍼파라미터 튜닝의 늪이었습니다. 또한 무작위 행동 선택은 아무런 맥락 없이 무의미하게 비틀거리는 ‘몸부림 탐색’에 불과했습니다.</p>
 
-<p><strong>Noisy Network</strong><sup>[28]</sup>는 신경망의 완전 연결 계층 가중치 자체에 <strong>학습 가능한 가우스 잡음(Parametric Noise)</strong>을 직접 주입합니다:</p>
+<p><strong>Noisy Network</strong><sup>[28]</sup>는 신경망의 완전 연결 계층 가중치 자체에 <strong>학습 가능한 가우스 잡음(Parametric Noise)</strong> 을 직접 주입합니다:</p>
 
-<blockquote>
-  <p><em>y</em> = (<em>W</em> + <em>σ</em><sup><em>W</em></sup> ⊙ <em>ϵ</em><sup><em>W</em></sup>) <em>x</em> + (<em>b</em> + <em>σ</em><sup><em>b</em></sup> ⊙ <em>ϵ</em><sup><em>b</em></sup>)</p>
-</blockquote>
+\[y = (W + \sigma^W \odot \epsilon^W) x + (b + \sigma^b \odot \epsilon^b)\]
 
 <ul>
   <li>신경망이 순전파를 수행할 때마다 가중치가 노이즈에 의해 자연스럽게 미세하게 요동치므로, <em>ϵ</em>-탐욕 정책 없이 순수한 탐욕 선택(<code class="language-plaintext highlighter-rouge">argmax</code>)만으로도 매우 지능적인 탐색이 이루어집니다.</li>

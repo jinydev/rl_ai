@@ -619,9 +619,7 @@
 
 <p>기존 DQN의 TD 목표를 다시 살펴봅시다:</p>
 
-<blockquote>
-  <h3 id="tdqn--rt--γ-maxa-qst1-a-θ---식-123-기본-dqn의-타깃"><strong><em>T</em><sub>DQN</sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em><sup>-</sup>)</strong>      <em>(식 12.3: 기본 DQN의 타깃)</em></h3>
-</blockquote>
+<p>\(T_{\text{DQN}} = R_t + \gamma \max_a Q(S_{t+1}, a; \theta^-)\)      <em>(식 12.3: 기본 DQN의 타깃)</em></p>
 
 <h3 id="1-왜-과대평가overestimation가-일어날까">1) 왜 과대평가(Overestimation)가 일어날까?</h3>
 <p>신경망의 가치 추정치에는 항상 노이즈나 오차가 섞여 있습니다:</p>
@@ -629,10 +627,7 @@
   <li>실제 참 가치가 모든 행동에 대해 0이라고 해도, 오차 때문에 어떤 행동은 +0.5, 어떤 행동은 -0.5로 추정될 수 있습니다.</li>
   <li>이때 <strong>max 연산자</strong>를 취하면, 항상 양의 노이즈(+0.5)를 가진 행동만 골라 채택하게 됩니다!</li>
   <li>수학적으로 기댓값에 대해 다음 부등식이 항상 성립합니다:
-    <blockquote>
-      <p><strong>E[max(<em>X</em><sub>1</sub>, <em>X</em><sub>2</sub>)] ≥ max(E[<em>X</em><sub>1</sub>], E[<em>X</em><sub>2</sub>])</strong></p>
-    </blockquote>
-  </li>
+\(\mathbb{E}[\max(X_1, X_2)] \ge \max(\mathbb{E}[X_1], \mathbb{E}[X_2])\)</li>
   <li>이로 인해 Q값이 실제보다 항상 지나치게 부풀려지는 <strong>최대화 편향(Maximization Bias)</strong>이 누적되어 학습이 왜곡됩니다.</li>
 </ul>
 
@@ -657,7 +652,7 @@
 <p>두 과정을 하나로 합치면 다음과 같은 <strong>Double DQN의 TD 타깃 수식</strong>이 완성됩니다:</p>
 
 <blockquote>
-  <h3 id="tdouble--rt--γ--qst1-argmaxa-qst1-a-θ-θ---식-124-double-dqn-타깃"><strong><em>T</em><sub>Double</sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> · <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, argmax<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em>); <em>θ</em><sup>-</sup>)</strong>      <em>(식 12.4: Double DQN 타깃)</em></h3>
+  <p><strong><em>T</em><sub>Double</sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> · <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, argmax<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em>); <em>θ</em><sup>-</sup>)</strong>      <em>(식 12.4: Double DQN 타깃)</em></p>
 </blockquote>
 
 <p>행동을 고르는 기준과 점수를 매기는 기준이 서로 다른 네트워크로 분리되었기 때문에, 한쪽에서 우연히 발생한 양의 노이즈가 다른 쪽에 전파되지 않아 <strong>과대평가 편향이 완벽하게 소멸</strong>합니다!</p>
@@ -677,7 +672,15 @@
 <p>어떤 경험이 ‘중요한 경험’일까요? 바로 모델의 예측과 실제 결과 사이의 오차가 큰 경험입니다:</p>
 
 <blockquote>
-  <h3 id="δi---rt--γ-maxa-qst1-a-θ----qst-at-θ---식-125-td-오차-절댓값"><strong><em>δ</em><sub><em>i</em></sub> = | <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em><sup>-</sup>) - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>; <em>θ</em>) |</strong>      <em>(식 12.5: TD 오차 절댓값)</em></h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><em>**δ</em><sub><em>i</em></sub> =</td>
+        <td><em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em><sup>-</sup>) - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>; <em>θ</em>)</td>
+        <td>**      <em>(식 12.5: TD 오차 절댓값)</em></td>
+      </tr>
+    </tbody>
+  </table>
 </blockquote>
 
 <ul>
@@ -711,8 +714,8 @@
 <p>버퍼에 담긴 <em>N</em>개의 경험 중 <em>i</em>번째 경험이 샘플링될 확률 <em>P</em>(<em>i</em>)는 TD 오차에 비례하여 설정됩니다:</p>
 
 <blockquote>
-  <h3 id="pi--δiα--k-δkα--식-126-per-추출-확률"><strong><em>P</em>(<em>i</em>) = |<em>δ</em><sub><em>i</em></sub>|<sup><em>α</em></sup> / ∑<sub><em>k</em></sub> |<em>δ</em><sub><em>k</em></sub>|<sup><em>α</em></sup></strong>      <em>(식 12.6: PER 추출 확률)</em></h3>
-  <p><em>(여기서 α는 우선순위의 반영 강도를 조절하는 하이퍼파라미터)</em></p>
+  <p><strong><em>P</em>(<em>i</em>) = |<em>δ</em><sub><em>i</em></sub>|<sup><em>α</em></sup> / ∑<sub><em>k</em></sub> |<em>δ</em><sub><em>k</em></sub>|<sup><em>α</em></sup></strong>      <em>(식 12.6: PER 추출 확률)</em>
+<em>(여기서 α는 우선순위의 반영 강도를 조절하는 하이퍼파라미터)</em></p>
 </blockquote>
 
 <p>오차가 큰 경험만 편식해서 뽑으면 데이터 분포가 심하게 왜곡되므로, 손실 함수에 <strong>중요도 가중치 <em>w</em><sub><em>i</em></sub> = (1 / (<em>N</em> · <em>P</em>(<em>i</em>)))<sup><em>β</em></sup></strong>를 곱해 학습의 편향을 보정합니다. 
@@ -727,9 +730,9 @@
 <h3 id="1-어드밴티지-함수-advantage-function">1) 어드밴티지 함수 (Advantage Function)</h3>
 <p>행동 가치 <em>Q</em>(<em>s</em>, <em>a</em>)와 상태 가치 <em>V</em>(<em>s</em>)의 차이를 <strong>어드밴티지(이득) 함수</strong>라고 부릅니다:</p>
 
-<blockquote>
-  <h3 id="as-a--qs-a---vs--식-127-어드밴티지-함수"><strong><em>A</em>(<em>s</em>, <em>a</em>) = <em>Q</em>(<em>s</em>, <em>a</em>) - <em>V</em>(<em>s</em>)</strong>      <em>(식 12.7: 어드밴티지 함수)</em></h3>
-</blockquote>
+\[A(s, a) = Q(s, a) - V(s)\]
+
+<p>[식 12.7] 어드밴티지 함수</p>
 
 <ul>
   <li><strong><em>V</em>(<em>s</em>) (상태 가치)</strong>: 현재 상태 <em>s</em> 자체가 에이전트에게 얼마나 유리하거나 위험한 상태인가?</li>
@@ -766,7 +769,15 @@
 따라서 실제 Dueling DQN에서는 어드밴티지의 평균을 빼주는 다음과 같은 안정적인 결합식을 사용합니다:</p>
 
 <blockquote>
-  <h3 id="qs-a-θ--vs-θv--as-a-θa---1--a--a-as-a-θa--식-128-dueling-q-결합식"><strong><em>Q</em>(<em>s</em>, <em>a</em>; <em>θ</em>) = <em>V</em>(<em>s</em>; <em>θ</em><sub><em>V</em></sub>) + [<em>A</em>(<em>s</em>, <em>a</em>; <em>θ</em><sub><em>A</em></sub>) - (1 / |<em>A</em>|) · ∑<sub><em>a</em>'</sub> <em>A</em>(<em>s</em>, <em>a</em>'; <em>θ</em><sub><em>A</em></sub>)]</strong>      <em>(식 12.8: Dueling Q 결합식)</em></h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><em>**Q</em>(<em>s</em>, <em>a</em>; <em>θ</em>) = <em>V</em>(<em>s</em>; <em>θ</em><sub><em>V</em></sub>) + [<em>A</em>(<em>s</em>, <em>a</em>; <em>θ</em><sub><em>A</em></sub>) - (1 /</td>
+        <td><em>A</em></td>
+        <td>) · ∑<sub><em>a</em>'</sub> <em>A</em>(<em>s</em>, <em>a</em>'; <em>θ</em><sub><em>A</em></sub>)]**      <em>(식 12.8: Dueling Q 결합식)</em></td>
+      </tr>
+    </tbody>
+  </table>
 </blockquote>
 
 <hr />

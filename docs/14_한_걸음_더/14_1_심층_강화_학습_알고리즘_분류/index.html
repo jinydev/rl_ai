@@ -545,30 +545,26 @@
       <th style="text-align: left">최적화 대상</th>
       <th style="text-align: left">대표 알고리즘</th>
       <th style="text-align: left">주요 특징 및 적합 분야</th>
-      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><strong>가치 기반 (Value-Based)</strong></td>
-      <td style="text-align: left">행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)</td>
+      <td style="text-align: left">행동 가치 함수 $Q(s, a)$</td>
       <td style="text-align: left"><strong>DQN, Double DQN, Dueling DQN, Rainbow</strong></td>
       <td style="text-align: left">이산 행동 공간에서 탁월한 안정성과 오프-정책 샘플 효율성 발휘 (게임, 추천 시스템)</td>
-      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>정책 기반 (Policy-Based)</strong></td>
-      <td style="text-align: left">정책 신경망 <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td style="text-align: left"><em>s</em>)</td>
+      <td style="text-align: left">정책 신경망 $\pi_\theta(a \mid s)$</td>
       <td style="text-align: left"><strong>REINFORCE, PPO, TRPO</strong></td>
-      <td>연속 행동 공간 지원, 확률적 정책 학습, 직관적 수렴성 (자율주행, LLM 정렬)</td>
+      <td style="text-align: left">연속 행동 공간 지원, 확률적 정책 학습, 직관적 수렴성 (자율주행, LLM 정렬)</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>행위자-비평자 (Actor-Critic)</strong></td>
-      <td style="text-align: left">정책 <em>π</em><sub><em>θ</em></sub>와 가치 <em>V</em><sub><em>w</em></sub> 동시 최적화</td>
+      <td style="text-align: left">정책 $\pi_\theta$ 와 가치 $V_w$ 동시 최적화</td>
       <td style="text-align: left"><strong>A2C, A3C, DDPG, SAC</strong></td>
       <td style="text-align: left">정책의 유연성과 가치의 분산 저감 효과를 결합한 현대 심층 강화학습의 최고 주류</td>
-      <td> </td>
     </tr>
   </tbody>
 </table>

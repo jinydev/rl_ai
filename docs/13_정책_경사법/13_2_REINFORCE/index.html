@@ -607,7 +607,7 @@
 <img src="./13_2_REINFORCE.png" alt="13.2 REINFORCE" /></p>
 
 <blockquote>
-  <p>에피소드 전체의 미래 수익 <em>G</em><sub><em>t</em></sub>를 정책 경사에 반영하여 실용적이고 안정적인 갱신을 가능하게 하는 <strong>REINFORCE(레인포스)</strong> 알고리즘을 공부합니다. 과거의 무관한 보상 노이즈를 인과율(Causality)로 시원하게 걸러내고, 에이전트의 성공적인 경험 확률을 쑥쑥 키우는 최적 정책 계산법을 도로시, 지니 조교와 함께 구현해봅시다!</p>
+  <p>에피소드 전체의 미래 수익 $G_t$ 를 정책 경사에 반영하여 실용적이고 안정적인 갱신을 가능하게 하는 <strong>REINFORCE(레인포스)</strong> 알고리즘을 공부합니다. 과거의 무관한 보상 노이즈를 인과율(Causality)로 시원하게 걸러내고, 에이전트의 성공적인 경험 확률을 쑥쑥 키우는 최적 정책 계산법을 도로시, 지니 조교와 함께 구현해봅시다!</p>
 </blockquote>
 
 <hr />
@@ -625,94 +625,67 @@ REINFORCE라는 이름은 ‘<strong>RE</strong>ward <strong>I</strong>ncrement 
 
 <p>앞 절(13.1절)의 내용을 복습해보겠습니다. 가장 기본적인 정책 경사법은 에피소드 궤적 전체의 누적 할인 수익 <em>G</em>(<em>τ</em>)를 가중치로 삼아 정책 경사를 추정했습니다.</p>
 
-<blockquote>
-  <h3 id="식-137-궤적-전체-반환값-기반-정책-경사">(식 13.7) 궤적 전체 반환값 기반 정책 경사</h3>
-  <p>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> <em>G</em>(<em>τ</em>) ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</p>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T G(\tau) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-<p>(식 13.7)의 <em>G</em>(<em>τ</em>)는 에피소드 시작 시점(<em>t</em>=0)부터 끝 시점(<em>t</em>=<em>T</em>)까지 얻은 모든 보상의 할인 총합입니다:</p>
+<p>[식 13.7] 궤적 전체 반환값 기반 정책 경사</p>
 
-<blockquote>
-  <p><em>G</em>(<em>τ</em>) = <em>R</em><sub>0</sub> + <em>γ</em> <em>R</em><sub>1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub>2</sub> + … + <em>γ</em><sup><em>T</em></sup> <em>R</em><sub><em>T</em></sub></p>
-</blockquote>
+<p>[식 13.7]의 $G(\tau)$ 는 에피소드 시작 시점($t=0$)부터 끝 시점($t=T$)까지 얻은 모든 보상의 할인 총합입니다:</p>
 
-<table>
-  <tbody>
-    <tr>
-      <td>여기서 <em>G</em>(<em>τ</em>) ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub></td>
-      <td><em>S</em><sub><em>t</em></sub>) 항을 면밀히 살펴보면 한 가지 심각한 낭비와 비효율이 숨어 있음을 발견할 수 있습니다. 특정 시점 <em>t</em>에서 행동 <em>A</em><sub><em>t</em></sub>를 선택할 확률에 ‘항상 일정한 전체 수익’ <em>G</em>(<em>τ</em>)를 통째로 곱하고 있다는 점입니다.</td>
-    </tr>
-  </tbody>
-</table>
+\[G(\tau) = R_0 + \gamma R_1 + \gamma^2 R_2 + \dots + \gamma^T R_T\]
+
+<p>여기서 $G(\tau) \nabla_\theta \log \pi_\theta(A_t \mid S_t)$ 항을 면밀히 살펴보면 한 가지 심각한 낭비와 비효율이 숨어 있음을 발견할 수 있습니다. 특정 시점 $t$ 에서 행동 $A_t$ 를 선택할 확률에 ‘항상 일정한 전체 수익’ $G(\tau)$ 를 통째로 곱하고 있다는 점입니다.</p>
 
 <h3 id="인과율causality-미래의-보상만이-현재의-행동을-평가할-수-있다">인과율(Causality): 미래의 보상만이 현재의 행동을 평가할 수 있다</h3>
 
 <p>어떤 행동이 좋은 행동인지 나쁜 행동인지는 오직 <strong>그 행동을 취한 직후부터 미래에 걸쳐 얻게 되는 보상의 총합</strong>으로만 평가되어야 합니다. 이것이 바로 강화학습과 물리 세계의 대원칙인 <strong>인과율(Causality)</strong>입니다.</p>
 
-<p>행동을 취하기 ‘이전에’ 이미 얻었던 과거의 보상(<em>R</em><sub>0</sub>, <em>R</em><sub>1</sub>, …, <em>R</em><sub><em>t</em>−1</sub>)은 시점 <em>t</em>에서 취한 행동 <em>A</em><sub><em>t</em></sub>의 좋고 나쁨과 아무런 인과적 관련이 없습니다. 예를 들어 바둑에서 50수째에 멋진 묘수를 두었는지 여부를 평가할 때, 10수째에 상대 돌을 잡았던 보상은 50수째 묘수의 가치와 아무 상관이 없습니다.</p>
+<p>행동을 취하기 ‘이전에’ 이미 얻었던 과거의 보상($R_0, R_1, \dots, R_{t-1}$)은 시점 $t$ 에서 취한 행동 $A_t$ 의 좋고 나쁨과 아무런 인과적 관련이 없습니다. 예를 들어 바둑에서 50수째에 멋진 묘수를 두었는지 여부를 평가할 때, 10수째에 상대 돌을 잡았던 보상은 50수째 묘수의 가치와 아무 상관이 없습니다.</p>
 
-<p>그럼에도 불구하고 (식 13.7)처럼 전체 수익 <em>G</em>(<em>τ</em>)를 곱해버리면, 시점 <em>t</em> 이전의 무관한 보상들이 거대한 <strong>통계적 노이즈(분산, Variance)</strong>로 끼어들게 됩니다.</p>
+<p>그럼에도 불구하고 [식 13.7]처럼 전체 수익 $G(\tau)$ 를 곱해버리면, 시점 $t$ 이전의 무관한 보상들이 거대한 <strong>통계적 노이즈(분산, Variance)</strong> 로 끼어들게 됩니다.</p>
 
-<p><strong>그림 13-3</strong> 과거의 무관한 보상 노이즈를 제거하고 인과율에 기반해 미래 보상 <em>G</em><sub><em>t</em></sub>만을 정책 갱신에 반영하는 REINFORCE
+<p><strong>그림 13-3</strong> 과거의 무관한 보상 노이즈를 제거하고 인과율에 기반해 미래 보상 $G_t$ 만을 정책 갱신에 반영하는 REINFORCE
 <img src="./img/02_reinforce_causality_flow.jpg" alt="그림 13-3 인과율을 적용한 REINFORCE의 보상 가중치 구조" /></p>
 
-<p>수학적으로 시점 <em>t</em> 이전의 보상과 현재 정책 경사의 내적 기댓값을 전개하면 놀랍게도 정확히 <strong>0</strong>이 됩니다:</p>
+<p>수학적으로 시점 $t$ 이전의 보상과 현재 정책 경사의 내적 기댓값을 전개하면 놀랍게도 정확히 <strong>0</strong>이 됩니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>E [ ∑<sub><em>k</em>=0</sub><sup><em>t</em>−1</sup> <em>γ</em><sup><em>k</em></sup> <em>R</em><sub><em>k</em></sub> ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub></td>
-        <td><em>S</em><sub><em>t</em></sub>) ] = 0</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\mathbb{E} \left[ \sum_{k=0}^{t-1} \gamma^k R_k \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right] = 0\]
 
-<table>
-  <tbody>
-    <tr>
-      <td>이유는 단순합니다. 시점 <em>t</em> 이전의 보상 합은 시점 <em>t</em>의 행동 <em>A</em><sub><em>t</em></sub>에 대해 상수처럼 취급될 수 있으며, 행동 확률의 총합이 1이므로 ∇<sub><em>θ</em></sub> ∑<sub><em>a</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>S</em><sub><em>t</em></sub>) = ∇<sub><em>θ</em></sub> (1) = 0이 되기 때문입니다.</td>
-    </tr>
-  </tbody>
-</table>
+<p>이유는 단순합니다. 시점 $t$ 이전의 보상 합은 시점 $t$ 의 행동 $A_t$ 에 대해 상수처럼 취급될 수 있으며, 행동 확률의 총합이 1이므로 $\nabla_\theta \sum_a \pi_\theta(a \mid S_t) = \nabla_\theta (1) = 0$ 이 되기 때문입니다.</p>
 
-<p>따라서 기댓값에 전혀 기여하지 못하면서 분산만 극단적으로 키우는 과거 보상들을 과감히 제거하고, <strong>시점 <em>t</em>부터 에피소드 끝까지의 미래 누적 할인 보상 <em>G</em><sub><em>t</em></sub></strong>만을 가중치로 사용하는 REINFORCE 목적식을 도출할 수 있습니다!</p>
+<p>따라서 기댓값에 전혀 기여하지 못하면서 분산만 극단적으로 키우는 과거 보상들을 과감히 제거하고, <strong>시점 $t$ 부터 에피소드 끝까지의 미래 누적 할인 보상 $G_t$</strong> 만을 가중치로 사용하는 REINFORCE 목적식을 도출할 수 있습니다!</p>
 
-<blockquote>
-  <h3 id="식-138-reinforce-알고리즘-인과율-기반-정책-경사-정리">(식 13.8) REINFORCE 알고리즘 (인과율 기반 정책 경사 정리)</h3>
-  <p>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> <em>G</em><sub><em>t</em></sub> ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</p>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T G_t \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-  <p>여기서 미래 누적 할인 수익 <em>G</em><sub><em>t</em></sub>는 다음과 같이 정의됩니다:</p>
+<p>[식 13.8] REINFORCE 알고리즘 (인과율 기반 정책 경사 정리)</p>
 
-  <p><em>G</em><sub><em>t</em></sub> = ∑<sub><em>k</em>=<em>t</em></sub><sup><em>T</em></sup> <em>γ</em><sup><em>k</em>−<em>t</em></sup> <em>R</em><sub><em>k</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em>+2</sub> + … + <em>γ</em><sup><em>T</em>−<em>t</em></sup> <em>R</em><sub><em>T</em></sub></p>
-</blockquote>
+<p>여기서 미래 누적 할인 수익 $G_t$ 는 다음과 같이 정의됩니다:</p>
 
-<p>이처럼 가중치를 <em>G</em><sub><em>t</em></sub>로 변경하면, 시점 <em>t</em> 이전의 노이즈가 완벽히 소거되어 추정량의 편향(Bias)은 0을 유지하면서 분산(Variance)을 획기적으로 낮출 수 있습니다.</p>
+\[G_t = \sum_{k=t}^T \gamma^{k-t} R_k = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \dots + \gamma^{T-t} R_T\]
+
+<p>이처럼 가중치를 $G_t$ 로 변경하면, 시점 $t$ 이전의 노이즈가 완벽히 소거되어 추정량의 편향(Bias)은 0을 유지하면서 분산(Variance)을 획기적으로 낮출 수 있습니다.</p>
 
 <blockquote>
   <p>[!NOTE]
 <strong>편향-분산 트레이드오프 관점:</strong>
-(식 13.7)의 단순 정책 경사와 (식 13.8)의 REINFORCE는 샘플 수가 무한대로 가면 모두 참된 정책 경사 ∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>)에 동일하게 수렴합니다. 즉 두 식 모두 ‘불편 추정량(Unbiased Estimator)’입니다. 그러나 샘플이 유한한 실제 학습 환경에서 REINFORCE의 분산이 압도적으로 작기 때문에, 훨씬 적은 에피소드로도 빠르고 안정적인 최적 정책 수렴이 가능해집니다.</p>
+[식 13.7]의 단순 정책 경사와 [식 13.8]의 REINFORCE는 샘플 수가 무한대로 가면 모두 참된 정책 경사 $\nabla_\theta J(\theta)$ 에 동일하게 수렴합니다. 즉 두 식 모두 ‘불편 추정량(Unbiased Estimator)’입니다. 그러나 샘플이 유한한 실제 학습 환경에서 REINFORCE의 분산이 압도적으로 작기 때문에, 훨씬 적은 에피소드로도 빠르고 안정적인 최적 정책 수렴이 가능해집니다.</p>
 </blockquote>
 
 <hr />
 
 <h2 id="1322-reinforce-알고리즘-구현">13.2.2 REINFORCE 알고리즘 구현</h2>
 
-<p>REINFORCE의 파이썬 구현은 13.1절의 <code class="language-plaintext highlighter-rouge">simple_pg.py</code>와 구조적으로 거의 동일합니다. 단 하나의 결정적인 차이는 에피소드가 끝난 후 호출되는 <code class="language-plaintext highlighter-rouge">Agent</code> 클래스의 <code class="language-plaintext highlighter-rouge">update()</code> 메서드에서 수익 <em>G</em><sub><em>t</em></sub>를 계산하는 방식입니다.</p>
+<p>REINFORCE의 파이썬 구현은 13.1절의 <code class="language-plaintext highlighter-rouge">simple_pg.py</code>와 구조적으로 거의 동일합니다. 단 하나의 결정적인 차이는 에피소드가 끝난 후 호출되는 <code class="language-plaintext highlighter-rouge">Agent</code> 클래스의 <code class="language-plaintext highlighter-rouge">update()</code> 메서드에서 수익 $G_t$ 를 계산하는 방식입니다.</p>
 
 <h3 id="에피소드-역방향-순회backward-traversal-기법">에피소드 역방향 순회(Backward Traversal) 기법</h3>
 
-<p>시점 <em>t</em>=0부터 <em>T</em>까지 정방향으로 매 시점마다 <em>G</em><sub><em>t</em></sub> = ∑<sub><em>k</em>=<em>t</em></sub><sup><em>T</em></sup> <em>γ</em><sup><em>k</em>−<em>t</em></sup> <em>R</em><sub><em>k</em></sub>를 일일이 계산하면 <em>O</em>(<em>T</em><sup>2</sup>)의 시간 복잡도가 소요됩니다.</p>
+<p>시점 $t=0$ 부터 $T$ 까지 정방향으로 매 시점마다 $G_t = \sum_{k=t}^T \gamma^{k-t} R_k$ 를 일일이 계산하면 $\mathcal{O}(T^2)$ 의 시간 복잡도가 소요됩니다.</p>
 
-<p>하지만 에피소드의 마지막 시점 <em>T</em>부터 시작점 0까지 <strong>역방향(reversed)</strong>으로 거꾸로 거슬러 올라가면 다음의 벨만 점화 관계식을 활용하여 단 <em>O</em>(<em>T</em>)만에 모든 시점의 <em>G</em><sub><em>t</em></sub>를 완벽하게 계산할 수 있습니다:</p>
+<p>하지만 에피소드의 마지막 시점 $T$ 부터 시작점 0까지 <strong>역방향(reversed)</strong> 으로 거꾸로 거슬러 올라가면 다음의 벨만 점화 관계식을 활용하여 단 $\mathcal{O}(T)$ 만에 모든 시점의 $G_t$ 를 완벽하게 계산할 수 있습니다:</p>
 
-<blockquote>
-  <p><em>G</em><sub><em>T</em></sub> = <em>R</em><sub><em>T</em></sub><br />
-<em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>G</em><sub><em>t</em>+1</sub></p>
-</blockquote>
+\[\begin{aligned}
+G_T &amp;= R_T \\
+G_t &amp;= R_t + \gamma G_{t+1}
+\end{aligned}\]
 
 <div align="right"><b>ch09/reinforce.py</b></div>
 
@@ -778,27 +751,18 @@ REINFORCE라는 이름은 ‘<strong>RE</strong>ward <strong>I</strong>ncrement 
   </li>
   <li><strong><code class="language-plaintext highlighter-rouge">G = reward + self.gamma * G</code></strong>:
     <ul>
-      <li>점화식 <em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>G</em><sub><em>t</em>+1</sub>을 단 한 줄의 코드로 구현했습니다. 이전 스텝의 수익에 할인율 <code class="language-plaintext highlighter-rouge">self.gamma</code>를 곱하고 현재 스텝의 보상을 더해 즉시 <em>G</em><sub><em>t</em></sub>를 완성합니다.</li>
+      <li>점화식 $G_t = R_t + \gamma G_{t+1}$ 을 단 한 줄의 코드로 구현했습니다. 이전 스텝의 수익에 할인율 <code class="language-plaintext highlighter-rouge">self.gamma</code>를 곱하고 현재 스텝의 보상을 더해 즉시 $G_t$ 를 완성합니다.</li>
     </ul>
   </li>
   <li><strong><code class="language-plaintext highlighter-rouge">loss += -F.log(prob) * G</code></strong>:
     <ul>
-      <li>
-        <table>
-          <tbody>
-            <tr>
-              <td>DeZero의 함수 <code class="language-plaintext highlighter-rouge">F.log(prob)</code>를 통해 log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub></td>
-              <td><em>S</em><sub><em>t</em></sub>)를 계산하고 여기에 미래 수익 <code class="language-plaintext highlighter-rouge">G</code>를 곱한 후 부호를 뒤집어 손실 함수에 더합니다.</td>
-            </tr>
-          </tbody>
-        </table>
-      </li>
-      <li>이 대리 손실(Surrogate Loss)을 최소화(경사 하강)하는 것은 목적 함수 <em>J</em>(<em>θ</em>)를 최대화(경사 상승)하는 것과 완벽히 동치입니다.</li>
+      <li>DeZero의 함수 <code class="language-plaintext highlighter-rouge">F.log(prob)</code>를 통해 $\log \pi_\theta(A_t \mid S_t)$ 를 계산하고 여기에 미래 수익 <code class="language-plaintext highlighter-rouge">G</code>를 곱한 후 부호를 뒤집어 손실 함수에 더합니다.</li>
+      <li>이 대리 손실(Surrogate Loss)을 최소화(경사 하강)하는 것은 목적 함수 $J(\theta)$ 를 최대화(경사 상승)하는 것과 완벽히 동치입니다.</li>
     </ul>
   </li>
   <li><strong><code class="language-plaintext highlighter-rouge">loss.backward()</code> 및 <code class="language-plaintext highlighter-rouge">self.optimizer.update()</code></strong>:
     <ul>
-      <li>DeZero 계산 그래프를 따라 누적된 모든 시점의 그래디언트를 한 번에 역전파하고, 정책 신경망 파라미터 <em>θ</em>를 한 번에 갱신합니다.</li>
+      <li>DeZero 계산 그래프를 따라 누적된 모든 시점의 그래디언트를 한 번에 역전파하고, 정책 신경망 파라미터 $\theta$ 를 한 번에 갱신합니다.</li>
     </ul>
   </li>
 </ol>

@@ -664,7 +664,7 @@
 <hr />
 
 <p><img src="./img/02_dist_vs_sample_model_concept.jpg" alt="분포 모델 vs 샘플 모델 비교도" />
-<strong>그림 10-5-4</strong> 모든 상태마다 거대한 행동 확률 원판 $\pi(a \mid s)$을 유지해야 하는 분포 모델(왼쪽)과, 동전 튕기기($\varepsilon$)와 최고 점수 블록 직접 선택($\operatorname{argmax}$)만으로 초경량 실행과 메모리 절약을 달성하는 샘플 모델(오른쪽)의 차이를 설명하는 이호진 교수님과 도로시</p>
+<strong>그림 10-5-4</strong> 모든 상태마다 거대한 행동 확률 원판 $\pi(a \mid s)$ 을 유지해야 하는 분포 모델(왼쪽)과, 동전 튕기기($\varepsilon$)와 최고 점수 블록 직접 선택($\operatorname{argmax}$)만으로 초경량 실행과 메모리 절약을 달성하는 샘플 모델(오른쪽)의 차이를 설명하는 이호진 교수님과 도로시</p>
 
 <hr />
 
@@ -682,7 +682,7 @@
 <ol>
   <li><strong>환경의 분포 모델 (Distribution Model)</strong>:
     <ul>
-      <li>동적 계획법(DP)처럼 상태 전이 확률 행렬 $p(s’ \mid s, a)$과 보상 함수 $r(s, a, s’)$의 <strong>완전한 확률 분포 표</strong>를 에이전트가 손에 쥐고 있는 경우입니다.</li>
+      <li>동적 계획법(DP)처럼 상태 전이 확률 행렬 $p(s’ \mid s, a)$ 과 보상 함수 $r(s, a, s’)$ 의 <strong>완전한 확률 분포 표</strong>를 에이전트가 손에 쥐고 있는 경우입니다.</li>
       <li>다음 상태로 넘어갈 모든 경우의 수와 확률 가중치를 완벽하게 알고 있습니다.</li>
     </ul>
   </li>
@@ -706,7 +706,7 @@
 <ol>
   <li><strong>에이전트의 분포 모델</strong>:
     <ul>
-      <li>모든 상태 $s$마다 “위로 갈 확률 70%, 아래로 갈 확률 10%, 좌 10%, 우 10%”와 같은 <strong>명시적인 확률 분포 딕셔너리(<code class="language-plaintext highlighter-rouge">self.pi[state]</code>, <code class="language-plaintext highlighter-rouge">self.b[state]</code>)를 메모리에 할당하여 보관</strong>하는 방식입니다.</li>
+      <li>모든 상태 $s$ 마다 “위로 갈 확률 70%, 아래로 갈 확률 10%, 좌 10%, 우 10%”와 같은 <strong>명시적인 확률 분포 딕셔너리(<code class="language-plaintext highlighter-rouge">self.pi[state]</code>, <code class="language-plaintext highlighter-rouge">self.b[state]</code>)를 메모리에 할당하여 보관</strong>하는 방식입니다.</li>
       <li>지금까지 우리가 구현했던 에이전트들이 채택해 온 전통적인 구조입니다.</li>
     </ul>
   </li>

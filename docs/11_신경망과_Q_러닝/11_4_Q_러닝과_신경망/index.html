@@ -740,7 +740,7 @@
 <p>10장에서 배운 Q-러닝의 갱신 점화식은 다음과 같았습니다:</p>
 
 <blockquote>
-  <h3 id="qst-at--qst-at--α--rt--γ-maxa-qst1-a---qst-at--식-116-q-러닝"><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>) - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.6: Q-러닝)</em></h3>
+  <p><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>) - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.6: Q-러닝)</em></p>
 </blockquote>
 
 <p><img src="./img/ch11_4_09_qlearning_recurrence_formula_review.png" alt="벨만 최적 방정식에 기반한 Q-러닝 점화식 복습" /></p>
@@ -750,7 +750,7 @@
 <p>여기서 목표 항인 <strong>[<em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>)]</strong>를 타깃 레이블 <strong><em>T</em></strong>로 묶어봅시다:</p>
 
 <blockquote>
-  <h3 id="qst-at--qst-at--α--t---qst-at--식-117"><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.7)</em></h3>
+  <p><strong><em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) ← <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) + <em>α</em> · [<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)]</strong>      <em>(식 11.7)</em></p>
 </blockquote>
 
 <p><img src="./img/ch11_4_10_target_t_bundling.png" alt="즉각 보상과 할인된 미래 가치를 타깃 T로 묶어내기" /></p>
@@ -767,7 +767,7 @@
 </ul>
 
 <blockquote>
-  <h3 id="l--t---qst-at2--식-118-q-러닝의-회귀-손실"><strong><em>L</em> = (<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>))<sup>2</sup></strong>      <em>(식 11.8: Q-러닝의 회귀 손실)</em></h3>
+  <p><strong><em>L</em> = (<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>))<sup>2</sup></strong>      <em>(식 11.8: Q-러닝의 회귀 손실)</em></p>
 </blockquote>
 
 <p><img src="./img/ch11_4_11_q_learning_as_regression_loss.png" alt="TD 타깃과 예측 Q값 사이의 오차를 측정하는 MSE 회귀 손실 저울" /></p>
@@ -782,7 +782,7 @@
 
 <h3 id="-핵심-주의-next_qunchainpytorch의-detach은-왜-필수일까">💡 핵심 주의: <code class="language-plaintext highlighter-rouge">next_q.unchain()</code>(PyTorch의 <code class="language-plaintext highlighter-rouge">.detach()</code>)은 왜 필수일까?</h3>
 
-<p>타깃 <strong><em>T</em> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>)</strong> 안에도 신경망 <em>Q</em>가 들어있습니다!</p>
+<p>타깃 <strong>$T = R_{t+1} + \gamma \max_a Q(S_{t+1}, a)$</strong> 안에도 신경망 $Q$ 가 들어있습니다!</p>
 
 <p><img src="./img/ch11_4_13_danger_q_inside_target_t.png" alt="타깃 T 내부에도 신경망 Q가 살아 숨쉬고 있음을 발견하는 도로시" /></p>
 
@@ -929,7 +929,7 @@
 
 <ol>
   <li><strong>샘플 간 강한 상관관계 (Correlated Samples)</strong>:
-연속된 시간 스텝의 경험 (<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>R</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>)은 서로 매우 비슷하여 데이터의 독립성(i.i.d) 가정이 깨집니다.</li>
+연속된 시간 스텝의 경험 ($S_t, A_t, R_t, S_{t+1}$) 은 서로 매우 비슷하여 데이터의 독립성(i.i.d) 가정이 깨집니다.</li>
 </ol>
 
 <p><img src="./img/ch11_4_19c_correlated_samples_filmstrip.png" alt="시간적 연속 샘플 간의 강한 상관관계(Correlated Samples)" /></p>

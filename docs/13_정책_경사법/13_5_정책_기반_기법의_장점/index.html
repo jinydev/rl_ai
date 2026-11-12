@@ -657,15 +657,14 @@
 
 <p>반면 정책 기반 기법은 신경망의 출력층을 <strong>연속 확률 분포의 모수(Parameter)</strong>로 설계함으로써 연속 행동 문제를 우아하게 해결합니다. 가장 대표적인 것이 <strong>가우스 정책(정규분포 정책)</strong>입니다.</p>
 
-<blockquote>
-  <h3 id="식-1316-1차원-연속-가우스-정책의-확률-밀도-함수">(식 13.16) 1차원 연속 가우스 정책의 확률 밀도 함수</h3>
-  <p><em>π</em><sub><em>θ</em></sub>(<em>a</em> | <em>s</em>) = 1 / (√(2<em>π</em>) <em>σ</em><sub><em>θ</em></sub>(<em>s</em>)) · exp( − (<em>a</em> − <em>μ</em><sub><em>θ</em></sub>(<em>s</em>))<sup>2</sup> / (2 <em>σ</em><sub><em>θ</em></sub>(<em>s</em>)<sup>2</sup>) )</p>
-</blockquote>
+\[\pi_\theta(a \mid s) = \frac{1}{\sqrt{2\pi}\sigma_\theta(s)} \exp\left( - \frac{(a - \mu_\theta(s))^2}{2\sigma_\theta(s)^2} \right)\]
 
-<p>신경망은 상태 <em>s</em>를 입력받아 다음 두 가지 값을 직접 출력합니다:</p>
+<p>[식 13.16] 1차원 연속 가우스 정책의 확률 밀도 함수</p>
+
+<p>신경망은 상태 $s$ 를 입력받아 다음 두 가지 값을 직접 출력합니다:</p>
 <ol>
-  <li><strong>평균 <em>μ</em><sub><em>θ</em></sub>(<em>s</em>):</strong> 지금 상태에서 에이전트가 가할 최적 행동의 중심값 (예: 모터 회전 토크 +1.82 Nm)</li>
-  <li><strong>표준편차 <em>σ</em><sub><em>θ</em></sub>(<em>s</em>):</strong> 탐색의 분산 정도 (학습 초기에는 크게 탐색하다가, 최적 정책에 수렴할수록 스스로 0에 가깝게 줄어듦)</li>
+  <li><strong>평균 $\mu_\theta(s)$:</strong> 지금 상태에서 에이전트가 가할 최적 행동의 중심값 (예: 모터 회전 토크 +1.82 Nm)</li>
+  <li><strong>표준편차 $\sigma_\theta(s)$:</strong> 탐색의 분산 정도 (학습 초기에는 크게 탐색하다가, 최적 정책에 수렴할수록 스스로 0에 가깝게 줄어듦)</li>
 </ol>
 
 <p><strong>그림 13-13</strong> 신경망이 평균과 분산을 출력하고, 연속 가우스 정규분포로부터 매끄러운 실수 모터 토크를 직접 샘플링하는 물리 AI 로봇 제어
@@ -677,7 +676,7 @@
 
 <h2 id="3-확률적-최적-정책stochastic-policy을-스스로-학습할-수-있다">3. 확률적 최적 정책(Stochastic Policy)을 스스로 학습할 수 있다</h2>
 
-<p>가치 기반 기법은 본질적으로 <em>Q</em>(<em>s</em>, <em>a</em>)가 가장 높은 행동 하나만을 무조건 선택하는 <strong>결정론적 정책(Deterministic Policy)</strong>으로 귀결됩니다(<em>ϵ</em>-탐욕의 탐색 구간을 제외하면).</p>
+<p>가치 기반 기법은 본질적으로 $Q(s, a)$ 가 가장 높은 행동 하나만을 무조건 선택하는 <strong>결정론적 정책(Deterministic Policy)</strong> 으로 귀결됩니다($\varepsilon$-탐욕의 탐색 구간을 제외하면).</p>
 
 <p>하지만 현실 세계에는 <strong>결정론적 행동을 취하면 무조건 패배하는 게임과 환경</strong>이 무수히 존재합니다!</p>
 
@@ -723,45 +722,38 @@
       <th style="text-align: left">비교 항목</th>
       <th style="text-align: left">가치 기반 기법 (DQN)</th>
       <th style="text-align: left">정책 기반 기법 (PG / Actor-Critic)</th>
-      <th> </th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td style="text-align: left"><strong>최적화 대상</strong></td>
-      <td style="text-align: left">행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>) 간접 추정</td>
-      <td style="text-align: left">정책 <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>s</em>) 직접 최적화</td>
+      <td style="text-align: left">행동 가치 함수 $Q(s, a)$ 간접 추정</td>
+      <td style="text-align: left">정책 $\pi_\theta(a \mid s)$ 직접 최적화</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>행동 공간</strong></td>
       <td style="text-align: left">이산적 행동 공간 (Discrete Only)</td>
       <td style="text-align: left"><strong>이산 및 연속 행동 공간 (Continuous) 모두 완벽 지원</strong></td>
-      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>최적 정책 형태</strong></td>
       <td style="text-align: left">결정론적 정책 (Deterministic, argmax)</td>
       <td style="text-align: left"><strong>확률적 정책 (Stochastic) 및 결정론적 정책 모두 가능</strong></td>
-      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>행동 확률 변화</strong></td>
       <td style="text-align: left">급격한 계단식 불연속 변화 (<em>ϵ</em>-greedy)</td>
       <td style="text-align: left"><strong>매끄럽고 부드러운 연속 변화 (Softmax / Gaussian)</strong></td>
-      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>샘플 효율성</strong></td>
       <td style="text-align: left">리플레이 버퍼를 통한 오프-정책 샘플 재사용 (우수)</td>
       <td style="text-align: left">온-정책 기반일 때 샘플 효율 낮음 (Actor-Critic으로 보완)</td>
-      <td> </td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>주요 응용 분야</strong></td>
       <td style="text-align: left">바둑, 체스, 아타리 비디오 게임</td>
       <td style="text-align: left"><strong>로봇 제어, 자율주행, 드론 비행, LLM 정렬 (RLHF/PPO)</strong></td>
-      <td> </td>
     </tr>
   </tbody>
 </table>

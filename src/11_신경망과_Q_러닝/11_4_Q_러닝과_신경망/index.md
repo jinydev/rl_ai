@@ -144,7 +144,7 @@ class QNet(Model):
 
 10장에서 배운 Q-러닝의 갱신 점화식은 다음과 같았습니다:
 
-> ### ***Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γ* max<sub>*a*</sub> *Q*(*S*<sub>*t*+1</sub>, *a*) - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.6: Q-러닝)*
+> ***Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γ* max<sub>*a*</sub> *Q*(*S*<sub>*t*+1</sub>, *a*) - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.6: Q-러닝)*
 
 ![벨만 최적 방정식에 기반한 Q-러닝 점화식 복습](./img/ch11_4_09_qlearning_recurrence_formula_review.png)
 
@@ -152,7 +152,7 @@ class QNet(Model):
 
 여기서 목표 항인 **[*R*<sub>*t*</sub> + *γ* max<sub>*a*</sub> *Q*(*S*<sub>*t*+1</sub>, *a*)]**를 타깃 레이블 ***T***로 묶어봅시다:
 
-> ### ***Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*T* - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.7)*
+> ***Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*T* - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.7)*
 
 ![즉각 보상과 할인된 미래 가치를 타깃 T로 묶어내기](./img/ch11_4_10_target_t_bundling.png)
 
@@ -165,7 +165,7 @@ class QNet(Model):
 - **정답 정답 레이블(Target)**: 환경 보상과 다음 상태 가치로 계산된 타깃 *T*
 - **손실 함수(Loss)**: 둘 사이의 평균 제곱 오차!
 
-> ### ***L* = (*T* - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>))<sup>2</sup>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.8: Q-러닝의 회귀 손실)*
+> ***L* = (*T* - *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>))<sup>2</sup>** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.8: Q-러닝의 회귀 손실)*
 
 ![TD 타깃과 예측 Q값 사이의 오차를 측정하는 MSE 회귀 손실 저울](./img/ch11_4_11_q_learning_as_regression_loss.png)
 
@@ -179,7 +179,7 @@ class QNet(Model):
 
 ### 💡 핵심 주의: `next_q.unchain()`(PyTorch의 `.detach()`)은 왜 필수일까?
 
-타깃 ***T* = *R*<sub>*t*</sub> + *γ* max<sub>*a*</sub> *Q*(*S*<sub>*t*+1</sub>, *a*)** 안에도 신경망 *Q*가 들어있습니다!
+타깃 **$T = R_{t+1} + \gamma \max_a Q(S_{t+1}, a)$** 안에도 신경망 $Q$ 가 들어있습니다!
 
 ![타깃 T 내부에도 신경망 Q가 살아 숨쉬고 있음을 발견하는 도로시](./img/ch11_4_13_danger_q_inside_target_t.png)
 
@@ -329,7 +329,7 @@ env.render_q(agent.qnet) # 신경망 기반 Q 함수 시각화
 
 
 2. **샘플 간 강한 상관관계 (Correlated Samples)**:
-   연속된 시간 스텝의 경험 (*S*<sub>*t*</sub>, *A*<sub>*t*</sub>, *R*<sub>*t*</sub>, *S*<sub>*t*+1</sub>)은 서로 매우 비슷하여 데이터의 독립성(i.i.d) 가정이 깨집니다.
+   연속된 시간 스텝의 경험 ($S_t, A_t, R_t, S_{t+1}$) 은 서로 매우 비슷하여 데이터의 독립성(i.i.d) 가정이 깨집니다.
 
 ![시간적 연속 샘플 간의 강한 상관관계(Correlated Samples)](./img/ch11_4_19c_correlated_samples_filmstrip.png)
 

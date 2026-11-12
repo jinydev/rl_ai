@@ -137,7 +137,7 @@ title: "10.2 SARSA: 온-정책 시간차 제어"
 
 만약 *V*<sub>*π*</sub>(*s*)를 사용하여 상태 *s*에서 **가장 좋은 최선의 행동**을 고르려면 다음과 같이 **환경 모델**을 알아야만 합니다:
 
-> ### **탐욕 행동 = argmax<sub>*a*</sub> ∑<sub>*s*'</sub> *p*(*s*' | *s*, *a*) · [*r*(*s*, *a*, *s*') + *γV*<sub>*π*</sub>(*s*')]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.8b: 상태 가치 기반의 행동 선택)*
+> **탐욕 행동 = argmax<sub>*a*</sub> ∑<sub>*s*'</sub> *p*(*s*' | *s*, *a*) · [*r*(*s*, *a*, *s*') + *γV*<sub>*π*</sub>(*s*')]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.8b: 상태 가치 기반의 행동 선택)*
 
 ![벨만 전수조사 합 기호의 무거운 족쇄](./img/15_bellman_transition_summation_burden.png)
 **그림 10-2-10** 모든 가능한 다음 상태 *s*'를 전수조사해야 하는 시그마(∑)의 무거운 쇠사슬 족쇄: 환경 전이 지도를 모르면 결코 계산할 수 없는 근본적 한계
@@ -175,7 +175,7 @@ title: "10.2 SARSA: 온-정책 시간차 제어"
 
 반면, 각 상태에서 특정 행동을 취했을 때의 미래 누적 수익을 담고 있는 **행동 가치 함수(Q 함수, *Q*<sub>*π*</sub>(*s*, *a*))**가 준비되어 있다면 상황은 완전히 달라집니다:
 
-> ### ***μ*(*s*) = argmax<sub>*a*</sub> *Q*<sub>*π*</sub>(*s*, *a*)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.9: Q 함수 기반의 최적 행동 선택)*
+> ***μ*(*s*) = argmax<sub>*a*</sub> *Q*<sub>*π*</sub>(*s*, *a*)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.9: Q 함수 기반의 최적 행동 선택)*
 
 [식 10.9]를 보면 복잡한 전이 확률 *p*나 기댓값 계산이 전혀 필요 없습니다! 
 
@@ -217,7 +217,7 @@ title: "10.2 SARSA: 온-정책 시간차 제어"
 
 10.1절에서 배운 상태 가치 *V*의 1-스텝 TD 갱신식을 다시 떠올려 봅시다:
 
-> ### ***V*<sub>*π*</sub>(*S*<sub>*t*</sub>) ← *V*<sub>*π*</sub>(*S*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γV*<sub>*π*</sub>(*S*<sub>*t*+1</sub>) - *V*<sub>*π*</sub>(*S*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.10: 상태 가치 1-스텝 TD 갱신식)*
+> ***V*<sub>*π*</sub>(*S*<sub>*t*</sub>) ← *V*<sub>*π*</sub>(*S*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γV*<sub>*π*</sub>(*S*<sub>*t*+1</sub>) - *V*<sub>*π*</sub>(*S*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.10: 상태 가치 1-스텝 TD 갱신식)*
 
 ![10.1절 1-스텝 TD 상태 가치 사슬 복습](./img/18_td_v_one_step_foundation.png)
 **그림 10-2-16** 징검다리에서 이전 발판 *S*<sub>*t*</sub>에서 다음 발판 *S*<sub>*t*+1</sub>로 딱 한 걸음 이동하자마자 즉시 가치를 갱신하던 10.1절 1-스텝 TD 사슬의 탄탄한 토대
@@ -246,7 +246,7 @@ title: "10.2 SARSA: 온-정책 시간차 제어"
 
 이 치환을 적용하면 Q 함수를 위한 TD 갱신식이 마침내 완성됩니다:
 
-> ### ***Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γQ*<sub>*π*</sub>(*S*<sub>*t*+1</sub>, *A*<sub>*t*+1</sub>) - *Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.11: SARSA 갱신 점화식)*
+> ***Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) ← *Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>) + *α* · [*R*<sub>*t*</sub> + *γQ*<sub>*π*</sub>(*S*<sub>*t*+1</sub>, *A*<sub>*t*+1</sub>) - *Q*<sub>*π*</sub>(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)]** &nbsp;&nbsp;&nbsp;&nbsp; *(식 10.11: SARSA 갱신 점화식)*
 
 ![SARSA 갱신 공식 강의 씬](./img/sarsa_update_formula_board.png)
 **그림 10-2-18** 칠판에 황금빛 분필로 적힌 SARSA 가치 갱신 점화식 [식 10.11]을 가리키며 열강하시는 이호진 교수님과 도로시
@@ -360,7 +360,7 @@ SARSA는 대표적인 **온-정책(On-Policy)** 알고리즘입니다.
 
 따라서 온-정책 SARSA에서는 다음과 같은 절묘한 타협안인 ***ε*-탐욕 정책(*ε*-greedy Policy)**을 채택합니다:
 
-> ### ***π*(*a* | *S*<sub>*t*</sub>) =**
+> ***π*(*a* | *S*<sub>*t*</sub>) =**
 > - **1 - *ε* + (*ε* / |*A*|) &nbsp;&nbsp;&nbsp;&nbsp; *(탐욕 행동: a = argmax<sub>a'</sub> Q<sub>π</sub>(S<sub>t</sub>, a'))***
 > - ***ε* / |*A*| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *(그 외 탐색 행동)***
 > *(식 10.12: ε-탐욕 정책의 확률 분포)*
@@ -692,7 +692,7 @@ env.render_q(agent.Q)
 2. 다음 상태에서 취할 행동 *A*<sub>*t*+1</sub> 역시 *ε*-탐욕 정책으로 선택됩니다.
 
 ![10% 탐색 확률이 담긴 주사위로 다음 행동 선택](./img/sarsa_next_action_epsilon_dice.png)
-**그림 10-2-42** 90% 최선 행동과 10% 무작위 탐색이 새겨진 주사위를 굴려 다음 행동 $A_{t+1}$을 결정하는 도로시와 지니
+**그림 10-2-42** 90% 최선 행동과 10% 무작위 탐색이 새겨진 주사위를 굴려 다음 행동 $A_{t+1}$ 을 결정하는 도로시와 지니
 
 > "SARSA 공식의 타깃을 보면 다음 행동 A_{t+1}의 Q 값을 씁니다. 이때 A_{t+1} 역시 10%의 무작위 탐험 확률을 안고 있으므로, 위험한 절벽 근처에서는 언제든 낭떠러지로 떨어지는 행동이 선택될 수 있습니다."
 

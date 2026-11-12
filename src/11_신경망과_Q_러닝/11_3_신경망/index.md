@@ -72,7 +72,9 @@ y = np.sin(2 * np.pi * x) + np.random.rand(100, 1) # 구불구불한 사인 파�
 
 ### 1) 선형 변환 (Linear / Affine Transformation)
 입력 벡터에 가중치 행렬을 곱하고 편향을 더하는 연산입니다:
-> ### ***y* = *x* · *W* + *b***
+$$
+y = x \cdot W + b
+$$
 
 DeZero에서는 이를 `F.linear(x, W, b)` 함수로 지원합니다.
 
@@ -82,9 +84,9 @@ DeZero에서는 이를 `F.linear(x, W, b)` 함수로 지원합니다.
 
 ### 2) 비선형 활성화 함수 (Activation Function)
 만약 선형 변환만 100층, 1000층을 쌓으면 어떻게 될까요?
-- 1층: *y*<sub>1</sub> = *x* · *W*<sub>1</sub> + *b*<sub>1</sub>
-- 2층: *y*<sub>2</sub> = *y*<sub>1</sub> · *W*<sub>2</sub> + *b*<sub>2</sub> = (*x* · *W*<sub>1</sub> + *b*<sub>1</sub>) · *W*<sub>2</sub> + *b*<sub>2</sub> = *x* · (*W*<sub>1</sub>*W*<sub>2</sub>) + (*b*<sub>1</sub>*W*<sub>2</sub> + *b*<sub>2</sub>)
-- 행렬 곱의 결합 법칙에 의해, 아무리 깊게 쌓아도 결국 **하나의 단일 선형 변환(*y* = *xW*&#39; + *b*&#39;)으로 완전히 축약**되어 버립니다!
+- 1층: $y_1 = x \cdot W_1 + b_1$
+- 2층: $y_2 = y_1 \cdot W_2 + b_2 = (x \cdot W_1 + b_1) \cdot W_2 + b_2 = x \cdot (W_1 W_2) + (b_1 W_2 + b_2)$
+- 행렬 곱의 결합 법칙에 의해, 아무리 깊게 쌓아도 결국 **하나의 단일 선형 변환($y = xW' + b'$)으로 완전히 축약**되어 버립니다!
 
 ![선형 계층만 쌓으면 결국 하나의 단일 선형 계층으로 축약되는 원리](./img/ch11_3_06_collapse_of_linear_stacking.png)
 
@@ -102,7 +104,11 @@ DeZero에서는 이를 `F.linear(x, W, b)` 함수로 지원합니다.
 ---
 
 - **시그모이드(Sigmoid) 함수**:
-  > ### ***y* = 1 / (1 + *e*<sup>-*x*</sup>)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.4: 시그모이드 함수)*
+  $$
+y = \frac{1}{1 + e^{-x}}
+$$
+
+[식 11.4] 시그모이드 함수
   - 입력값을 0과 1 사이의 부드러운 S자 곡선으로 압축합니다.
 
 ![입력값을 0과 1 사이로 압축하는 부드러운 S자 시그모이드 함수](./img/ch11_3_08_sigmoid_smooth_s_compression.png)
@@ -110,7 +116,11 @@ DeZero에서는 이를 `F.linear(x, W, b)` 함수로 지원합니다.
 ---
 
 - **렐루(ReLU: Rectified Linear Unit) 함수**:
-  > ### ***y* = max(0, *x*)** &nbsp;&nbsp;&nbsp;&nbsp; *(식 11.5: ReLU 함수)*
+  $$
+y = \max(0, x)
+$$
+
+[식 11.5] ReLU 함수
   - 0 이하의 값은 0으로 차단하고, 양수 값은 그대로 통과시킵니다.
   - 연산이 극도로 단순하여 계산 속도가 빠르고, 깊은 층에서도 기울기 소실(Vanishing Gradient) 문제가 발생하지 않아 **현대 딥러닝과 DQN의 절대적인 표준**으로 쓰입니다.
 

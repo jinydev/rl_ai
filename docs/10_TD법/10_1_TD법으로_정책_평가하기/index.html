@@ -677,13 +677,13 @@
 <p>시간 <em>t</em>부터 시작하여 할인율 <em>γ</em>를 적용한 누적 보상의 합은 다음과 같습니다:</p>
 
 <blockquote>
-  <h3 id="gt--rt--γrt1--γ2rt2----식-101"><strong><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γR</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub><em>t</em>+2</sub> + …</strong>      <em>(식 10.1)</em></h3>
+  <p><strong><em>G</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γR</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub><em>t</em>+2</sub> + …</strong>      <em>(식 10.1)</em></p>
 
-  <h3 id="-rt--γgt1--식-102-재귀적-표현"><strong>= <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub></strong>      <em>(식 10.2: 재귀적 표현)</em></h3>
+  <p><strong>= <em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub></strong>      <em>(식 10.2: 재귀적 표현)</em></p>
 </blockquote>
 
 <p><img src="./img/return_formula_chalkboard.png" alt="수익 공식 복습 강의" />
-<strong>그림 10-1-4</strong> 누적 할인 수익의 재귀적 점화식 $G_t = R_t + \gamma G_{t+1}$의 유도 과정을 칠판에 적어주며 기초를 다져주시는 이호진 교수님</p>
+<strong>그림 10-1-4</strong> 누적 할인 수익의 재귀적 점화식 $G_t = R_t + \gamma G_{t+1}$ 의 유도 과정을 칠판에 적어주며 기초를 다져주시는 이호진 교수님</p>
 
 <hr />
 
@@ -701,15 +701,29 @@
 <p>이 수익을 바탕으로 정책 <em>π</em>를 따를 때의 ‘상태 가치 함수’를 정의하면 다음과 같은 두 가지 형태로 전개됩니다:</p>
 
 <blockquote>
-  <h3 id="vπs--eπ-gt--st--s--식-103-몬테카를로법의-출발점"><strong><em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub> [<em>G</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong>      <em>(식 10.3: 몬테카를로법의 출발점)</em></h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><em>**v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub> [<em>G</em><sub><em>t</em></sub></td>
+        <td><em>S</em><sub><em>t</em></sub> = <em>s</em>]**      <em>(식 10.3: 몬테카를로법의 출발점)</em></td>
+      </tr>
+    </tbody>
+  </table>
 
-  <h3 id="-eπ-rt--γgt1--st--s--식-104-동적-프로그래밍의-출발점"><strong>= E<sub><em>π</em></sub> [<em>R</em><sub><em>t</em></sub> + <em>γG</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong>      <em>(식 10.4: 동적 프로그래밍의 출발점)</em></h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><em>*= E<sub>*π*</sub> [</em>R<em><sub>*t*</sub> + *γG</em><sub><em>t</em>+1</sub></td>
+        <td><em>S</em><sub><em>t</em></sub> = <em>s</em>]**      <em>(식 10.4: 동적 프로그래밍의 출발점)</em></td>
+      </tr>
+    </tbody>
+  </table>
 </blockquote>
 
 <p>가치 함수는 이처럼 기댓값으로 정의됩니다.</p>
 
 <p><img src="./img/value_function_two_forms.png" alt="정책을 따를 때 상태 가치 함수의 두 가지 전개 형태" />
-<strong>그림 10-1-6</strong> 상태 가치 함수 $v_\pi(s)$의 기댓값 정의에서 뻗어나오는 두 갈래의 길: 전체 수익의 기댓값(MC)과 재귀적 벨만 전개 기댓값(DP)</p>
+<strong>그림 10-1-6</strong> 상태 가치 함수 $v_\pi(s)$ 의 기댓값 정의에서 뻗어나오는 두 갈래의 길: 전체 수익의 기댓값(MC)과 재귀적 벨만 전개 기댓값(DP)</p>
 
 <hr />
 
@@ -746,7 +760,7 @@
 <h4 id="mc법의-갱신식-고정-학습률-α-기반">MC법의 갱신식 (고정 학습률 <em>α</em> 기반):</h4>
 
 <blockquote>
-  <h3 id="vπst--vπst--α--gt---vπst--식-105"><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.5)</em></h3>
+  <p><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.5)</em></p>
   <ul>
     <li>에피소드가 완전히 끝난 뒤, 실제로 획득한 참 수익 <em>G</em><sub><em>t</em></sub>를 목표(Target)로 삼아 가치를 갱신합니다.</li>
   </ul>
@@ -760,14 +774,14 @@
 <h4 id="dp법의-갱신식-벨만-기대-방정식-기반">DP법의 갱신식 (벨만 기대 방정식 기반):</h4>
 
 <blockquote>
-  <h3 id="vπs--a-s-πa--s-ps--s-a-rs-a-s--γvπs--식-106"><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) ← ∑<sub><em>a</em>, <em>s</em>’</sub> <em>π</em>(<em>a</em> | <em>s</em>) <em>p</em>(<em>s</em>’ | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>’) + <em>γV</em><sub><em>π</em></sub>(<em>s</em>’)]</strong>      <em>(식 10.6)</em></h3>
+  <p><strong><em>V</em><sub><em>π</em></sub>(<em>s</em>) ← ∑<sub><em>a</em>, <em>s</em>’</sub> <em>π</em>(<em>a</em> | <em>s</em>) <em>p</em>(<em>s</em>’ | <em>s</em>, <em>a</em>) [<em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>’) + <em>γV</em><sub><em>π</em></sub>(<em>s</em>’)]</strong>      <em>(식 10.6)</em></p>
   <ul>
     <li>환경 모델(<em>p</em>, <em>r</em>)을 바탕으로, <strong>‘다음 상태의 추정 가치 <em>V</em><sub><em>π</em></sub>(<em>s</em>’)’를 빌려와서 현재 상태의 가치를 갱신</strong>합니다. 이 원리를 <strong>부트스트랩(Bootstrapping)</strong>이라고 부릅니다.</li>
   </ul>
 </blockquote>
 
 <p><img src="./img/dp_bootstrapping_update.png" alt="DP의 환경 모델 기반 부트스트랩 갱신" />
-<strong>그림 10-1-10</strong> 다음 상태 발판의 추정 가치 $V(S_{t+1})$를 황금 부트스트랩 열쇠로 빌려와 현재 상태 $V(S_t)$를 즉시 계산하는 DP의 가치 갱신 원리</p>
+<strong>그림 10-1-10</strong> 다음 상태 발판의 추정 가치 $V(S_{t+1})$ 를 황금 부트스트랩 열쇠로 빌려와 현재 상태 $V(S_t)$ 를 즉시 계산하는 DP의 가치 갱신 원리</p>
 
 <hr />
 
@@ -775,14 +789,14 @@
 
 <p>몬테카를로법(MC)과 시간차 학습(TD)이 상태 가치를 갱신하는 시점을 다이어그램으로 나누어 살펴보면, 왜 두 기법의 학습 속도와 대기 시간에 본질적인 차이가 발생하는지 명쾌하게 파악할 수 있습니다.</p>
 
-<h5 id="-몬테카를로법-mc-에피소드-종료-대기-후-반환값--확정-시-역방향-일괄-갱신">① 몬테카를로법 (MC): 에피소드 종료 대기 후 반환값 $ 확정 시 역방향 일괄 갱신</h5>
+<h5 id="-몬테카를로법-mc-에피소드-종료-대기-후-반환값-g_t-확정-시-역방향-일괄-갱신">① 몬테카를로법 (MC): 에피소드 종료 대기 후 반환값 $G_t$ 확정 시 역방향 일괄 갱신</h5>
 
 <p><img src="./img/mc_update_timing_diagram.png" alt="몬테카를로법(MC) 갱신 시점 다이어그램" />
-<strong>그림 10-1-11</strong> 몬테카를로법(MC)의 가치 갱신 시점: 에피소드가 완전히 끝날 때까지 골(Goal) 지점($)까지 도달하기를 기다린 후, 확정된 누적 반환값  이용해 지나온 상태들을 역방향으로 일괄 갱신</p>
+<strong>그림 10-1-11</strong> 몬테카를로법(MC)의 가치 갱신 시점: 에피소드가 완전히 끝날 때까지 골(Goal) 지점($S_T$)까지 도달하기를 기다린 후, 확정된 누적 반환값 $G_t$ 를 이용해 지나온 상태들을 역방향으로 일괄 갱신</p>
 
 <ul>
-  <li><strong>상태 전이 흐름</strong>:  \rightarrow S_1 \rightarrow S_2 \dots \rightarrow S_{T-1} \rightarrow S_T$</li>
-  <li><strong>갱신 메커니즘</strong>: 에피소드가 완전히 끝나는 종료 상태($)에 도달해야만 참 수익  확정할 수 있습니다. 확정된  목표(Target)로 삼아 이전 상태들로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
+  <li><strong>상태 전이 흐름</strong>: $S_0 \rightarrow S_1 \rightarrow S_2 \dots \rightarrow S_{T-1} \rightarrow S_T$</li>
+  <li><strong>갱신 메커니즘</strong>: 에피소드가 완전히 끝나는 종료 상태($S_T$)에 도달해야만 참 수익 $G_t$ 를 확정할 수 있습니다. 확정된 $G_t$ 를 목표(Target)로 삼아 이전 상태들로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
   <li><strong>핵심 특징 및 트레이드오프</strong>:
     <ul>
       <li><strong>장점</strong>: 실제 발생한 진짜 누적 보상만을 사용하므로 <strong>편향이 전혀 없습니다 (Zero Bias, Unbiased)</strong>.</li>
@@ -791,7 +805,7 @@
   </li>
   <li><strong>가치 갱신 공식</strong>:
     <blockquote>
-      <h3 id="vst--vst--α--gt---vst"><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></h3>
+      <p><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>G</em><sub><em>t</em></sub> - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></p>
     </blockquote>
   </li>
 </ul>
@@ -801,20 +815,20 @@
 <h5 id="-시간차-학습-td0-1-스텝-이동-직후-부트스트랩-즉시-갱신">② 시간차 학습 (TD(0)): 1-스텝 이동 직후 부트스트랩 즉시 갱신</h5>
 
 <p><img src="./img/td_update_timing_diagram.png" alt="시간차 학습(TD) 갱신 시점 다이어그램" />
-<strong>그림 10-1-12</strong> 시간차 학습(TD(0))의 가치 갱신 시점: 에피소드 종료를 기다리지 않고, 1단계 행동 직후 관측된 보상과 다음 상태 가치 추정치 (S_{t+1}) 현재 상태 가치를 즉시 갱신 (미래 전개 불필요)</p>
+<strong>그림 10-1-12</strong> 시간차 학습(TD(0))의 가치 갱신 시점: 에피소드 종료를 기다리지 않고, 1단계 행동 직후 관측된 보상과 다음 상태 가치 추정치 $V(S_{t+1})$ 로 현재 상태 가치를 즉시 갱신 (미래 전개 불필요)</p>
 
 <ul>
-  <li><strong>상태 전이 흐름</strong>:  \xrightarrow{A_t, R_{t+1}} S_{t+1}$ (미래 궤적 전개 불필요)</li>
-  <li><strong>갱신 메커니즘</strong>: 단 1단계 행동($)을 취해 즉각 보상 {t+1} 받고 다음 상태 {t+1} 도달하자마자, 아직 가보지 않은 미래를 기다리지 않고 <strong>다음 상태의 현재 추정 가치 (S_{t+1}) 빌려와(Bootstrapping)</strong> 현재 상태  가치를 실시간으로 즉시 갱신합니다.</li>
+  <li><strong>상태 전이 흐름</strong>: $S_t \xrightarrow{A_t, R_{t+1}} S_{t+1}$ (미래 궤적 전개 불필요)</li>
+  <li><strong>갱신 메커니즘</strong>: 단 1단계 행동($A_t$)을 취해 즉각 보상 $R_{t+1}$ 을 받고 다음 상태 $S_{t+1}$ 에 도달하자마자, 아직 가보지 않은 미래를 기다리지 않고 <strong>다음 상태의 현재 추정 가치 $V(S_{t+1})$ 를 빌려와(Bootstrapping)</strong> 현재 상태 $S_t$ 의 가치를 실시간으로 즉시 갱신합니다.</li>
   <li><strong>핵심 특징 및 트레이드오프</strong>:
     <ul>
       <li><strong>장점</strong>: 단 1스텝 뒤의 결과만을 반영하므로 무작위성이 적게 개입하여 <strong>분산이 매우 낮고(Low Variance)</strong>, 에피소드가 끝나지 않는 지속적 과제에서도 <strong>즉각적인 온라인 실시간 학습</strong>이 가능합니다.</li>
-      <li><strong>단점</strong>: 아직 참값이 아닌 추정치 (S_{t+1}) 바탕으로 갱신하므로 학습 초기에 <strong>약간의 편향(Bias)</strong>이 존재합니다 (학습이 반복될수록 참값으로 수렴하여 소멸).</li>
+      <li><strong>단점</strong>: 아직 참값이 아닌 추정치 $V(S_{t+1})$ 를 바탕으로 갱신하므로 학습 초기에 <strong>약간의 편향(Bias)</strong>이 존재합니다 (학습이 반복될수록 참값으로 수렴하여 소멸).</li>
     </ul>
   </li>
   <li><strong>가치 갱신 공식</strong>:
     <blockquote>
-      <h3 id="vst--vst--α--rt1--γvst1---vst"><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em>+1</sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></h3>
+      <p><strong><em>V</em>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em>+1</sub> + <em>γV</em>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em>(<em>S</em><sub><em>t</em></sub>)]</strong></p>
     </blockquote>
   </li>
 </ul>
@@ -832,7 +846,7 @@
 
 <ul>
   <li>에이전트 도로시가 출발점에서 출발하여 최종 골(Goal) 깃발에 도달할 때까지 가치는 전혀 갱신되지 않습니다.</li>
-  <li>에피소드가 끝난 뒤에야 비로소 실제로 획득한 보상들의 총합(수익 $)을 바탕으로, 지나온 발판들을 거꾸로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
+  <li>에피소드가 끝난 뒤에야 비로소 실제로 획득한 보상들의 총합(수익 $G_t$)을 바탕으로, 지나온 발판들을 거꾸로 거슬러 올라가며 가치를 한 번에 사후 정산합니다.</li>
 </ul>
 
 <hr />
@@ -891,7 +905,14 @@
 <p>DP법의 벨만 방정식 [식 10.6]을 기댓값 형태로 다시 표현해 봅시다:</p>
 
 <blockquote>
-  <h3 id="vπs--eπ-rt--γvπst1--st--s--식-107"><strong><em>v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub> [<em>R</em><sub><em>t</em></sub> + <em>γv</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) | <em>S</em><sub><em>t</em></sub> = <em>s</em>]</strong>      <em>(식 10.7)</em></h3>
+  <table>
+    <tbody>
+      <tr>
+        <td><em>**v</em><sub><em>π</em></sub>(<em>s</em>) = E<sub><em>π</em></sub> [<em>R</em><sub><em>t</em></sub> + <em>γv</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>)</td>
+        <td><em>S</em><sub><em>t</em></sub> = <em>s</em>]**      <em>(식 10.7)</em></td>
+      </tr>
+    </tbody>
+  </table>
 </blockquote>
 
 <hr />
@@ -920,7 +941,7 @@
 <p>이 샘플 근사를 가치 갱신 점화식에 대입하면, 마침내 <strong>TD(0) 가치 갱신 공식</strong>이 유도됩니다:</p>
 
 <blockquote>
-  <h3 id="vπst--vπst--α--rt--γvπst1---vπst--식-108-td-정책-평가-공식"><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γV</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.8: TD 정책 평가 공식)</em></h3>
+  <p><strong><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> · [<em>R</em><sub><em>t</em></sub> + <em>γV</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) - <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>)]</strong>      <em>(식 10.8: TD 정책 평가 공식)</em></p>
 </blockquote>
 
 <p><img src="./img/td0_update_formula_spotlight.png" alt="TD(0) 가치 갱신 공식 강의 씬" />
@@ -1225,7 +1246,7 @@
 </ol>
 
 <p><img src="./img/td_target_assembly.png" alt="TD 목표 조립 공정" />
-<strong>그림 10-1-36</strong> 작업대에서 즉시 보상 동전 $R_t$와 할인된 다음 가치 구슬 $\gamma V(S_{t+1})$을 결합해 TD 목표 기준판을 조립하는 지니와 틴맨</p>
+<strong>그림 10-1-36</strong> 작업대에서 즉시 보상 동전 $R_t$ 와 할인된 다음 가치 구슬 $\gamma V(S_{t+1})$ 을 결합해 TD 목표 기준판을 조립하는 지니와 틴맨</p>
 
 <hr />
 

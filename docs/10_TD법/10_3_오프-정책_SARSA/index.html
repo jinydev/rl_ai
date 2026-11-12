@@ -705,7 +705,7 @@
 </ol>
 
 <p><img src="./img/off_sarsa_behavior_scout_tinman.png" alt="행동 정책 스카우트 틴맨" />
-<strong>그림 10-3-8</strong> 거친 필드에서 $\varepsilon$-탐욕 정책 나침반을 들고 온갖 경험 데이터 $(S, A, R)$을 활발히 수집하는 필드 스카우트 틴맨</p>
+<strong>그림 10-3-8</strong> 거친 필드에서 $\varepsilon$-탐욕 정책 나침반을 들고 온갖 경험 데이터 $(S, A, R)$ 을 활발히 수집하는 필드 스카우트 틴맨</p>
 
 <hr />
 
@@ -728,23 +728,23 @@
 <p>기존 온-정책 SARSA의 갱신식을 다시 상기해 봅시다:</p>
 
 <blockquote>
-  <h3 id="q_pis_t-a_t-leftarrow-q_pis_t-a_t--alpha-cdot-r_t--gamma-q_pis_t1-a_t1---q_pis_t-a_t--식-1013-온-정책-sarsa-갱신식"><strong>$Q_{\pi}(S_t, A_t) \leftarrow Q_{\pi}(S_t, A_t) + \alpha \cdot [R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1}) - Q_{\pi}(S_t, A_t)]$</strong>      <em>(식 10.13: 온-정책 SARSA 갱신식)</em></h3>
+  <p><strong>$Q_{\pi}(S_t, A_t) \leftarrow Q_{\pi}(S_t, A_t) + \alpha \cdot [R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1}) - Q_{\pi}(S_t, A_t)]$</strong>      <em>(식 10.13: 온-정책 SARSA 갱신식)</em></p>
 </blockquote>
 
 <p><img src="./img/fig_7_8.jpg" alt="SARSA 백업 다이어그램" />
-<strong>그림 10-3-10</strong> SARSA의 백업 다이어그램. 현재 상태-행동 쌍 $(S_t, A_t)$에서 보상 $R_t$와 다음 상태 $S_{t+1}$을 얻은 뒤, 다음 행동 $A_{t+1}$을 정책으로부터 샘플링하는 구조</p>
+<strong>그림 10-3-10</strong> SARSA의 백업 다이어그램. 현재 상태-행동 쌍 $(S_t, A_t)$ 에서 보상 $R_t$ 와 다음 상태 $S_{t+1}$ 을 얻은 뒤, 다음 행동 $A_{t+1}$ 을 정책으로부터 샘플링하는 구조</p>
 
 <hr />
 
 <p><img src="./img/02_off_policy_sarsa_concept.jpg" alt="오프-정책 SARSA 개념도" />
-<strong>그림 10-3-11</strong> 도로시가 행동 정책 $b(a|s)$의 나침반을 들고 모험을 떠나는 동안, 지니가 1-스텝 중요도 가중치 $\rho$를 계산하여 이호진 교수님의 목표 정책 $\pi$ 갱신식에 보정해 주는 오프-정책 SARSA 협업 메커니즘</p>
+<strong>그림 10-3-11</strong> 도로시가 행동 정책 $b(a|s)$ 의 나침반을 들고 모험을 떠나는 동안, 지니가 1-스텝 중요도 가중치 $\rho$ 를 계산하여 이호진 교수님의 목표 정책 $\pi$ 갱신식에 보정해 주는 오프-정책 SARSA 협업 메커니즘</p>
 
 <hr />
 
-<p>[그림 10-3-10]과 [그림 10-3-11]에서 주목할 핵심 지점은 다음 상태 $S_{t+1}$에서 선택되는 다음 행동 <strong>$A_{t+1}$</strong>입니다:</p>
+<p>[그림 10-3-10]과 [그림 10-3-11]에서 주목할 핵심 지점은 다음 상태 $S_{t+1}$ 에서 선택되는 다음 행동 <strong>$A_{t+1}$</strong> 입니다:</p>
 
 <ul>
-  <li><strong>대상 정책 관점 ($A_{t+1} \sim \pi$)</strong>: 만약 $A_{t+1}$이 대상 정책 $\pi$로부터 선택된다면, TD 목표치 $[R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1})]$은 정책 $\pi$를 따를 때의 참된 기댓값을 편향 없이 대변합니다.</li>
+  <li><strong>대상 정책 관점 ($A_{t+1} \sim \pi$)</strong>: 만약 $A_{t+1}$ 이 대상 정책 $\pi$ 로부터 선택된다면, TD 목표치 $[R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1})]$ 은 정책 $\pi$ 를 따를 때의 참된 기댓값을 편향 없이 대변합니다.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_target_ideal_action.png" alt="대상 정책의 이상적인 다음 행동" />
@@ -753,11 +753,11 @@
 <hr />
 
 <ul>
-  <li><strong>행동 정책 관점 ($A_{t+1} \sim b$)</strong>: 하지만 오프-정책에서는 에이전트가 현실 환경에서 실제로 움직이는 정책이 <strong>행동 정책 $b$</strong>이므로, 실제로 관측되는 다음 행동은 반드시 <strong>$A_{t+1} \sim b$</strong>로부터 샘플링됩니다!</li>
+  <li><strong>행동 정책 관점 ($A_{t+1} \sim b$)</strong>: 하지만 오프-정책에서는 에이전트가 현실 환경에서 실제로 움직이는 정책이 <strong>행동 정책 $b$</strong>이므로, 실제로 관측되는 다음 행동은 반드시 <strong>$A_{t+1} \sim b$</strong> 로부터 샘플링됩니다!</li>
 </ul>
 
 <p><img src="./img/off_sarsa_behavior_real_action.png" alt="행동 정책의 실제 관측 행동" />
-<strong>그림 10-3-13</strong> 현실 필드에서 바람과 10% 탐색 주사위에 의해 실제로 발을 디딘 행동 정책 $b$의 발자국</p>
+<strong>그림 10-3-13</strong> 현실 필드에서 바람과 10% 탐색 주사위에 의해 실제로 발을 디딘 행동 정책 $b$ 의 발자국</p>
 
 <hr />
 
@@ -777,10 +777,10 @@
 
 <h3 id="2-1-스텝-중요도-샘플링-가중치-rho">2) 1-스텝 중요도 샘플링 가중치 $\rho$</h3>
 
-<p>9.5절에서 배운 중요도 샘플링의 원리를 1-스텝 시간차 학습에 적용하여 가중치 $\rho$(로)를 정의합니다:</p>
+<p>9.5절에서 배운 중요도 샘플링의 원리를 1-스텝 시간차 학습에 적용하여 가중치 $\rho$ (로)를 정의합니다:</p>
 
 <blockquote>
-  <h3 id="rho--fracpia_t1-mid-s_t1ba_t1-mid-s_t1--식-1014-1-스텝-중요도-가중치"><strong>$\rho = \frac{\pi(A_{t+1} \mid S_{t+1})}{b(A_{t+1} \mid S_{t+1})}$</strong>      <em>(식 10.14: 1-스텝 중요도 가중치)</em></h3>
+  <p><strong>$\rho = \frac{\pi(A_{t+1} \mid S_{t+1})}{b(A_{t+1} \mid S_{t+1})}$</strong>      <em>(식 10.14: 1-스텝 중요도 가중치)</em></p>
 </blockquote>
 
 <p><img src="./img/off_sarsa_one_step_rho_formula.png" alt="1-스텝 중요도 가중치 수식판" />
@@ -788,17 +788,17 @@
 
 <hr />
 
-<p>이 가중치 $\rho$는 <strong>“행동 정책 $b$가 다음 행동 $A_{t+1}$을 선택할 확률 대비, 우리가 목표로 하는 대상 정책 $\pi$가 그 행동을 선택했을 확률의 비율”</strong>을 의미합니다.</p>
+<p>이 가중치 $\rho$ 는 <strong>“행동 정책 $b$ 가 다음 행동 $A_{t+1}$ 을 선택할 확률 대비, 우리가 목표로 하는 대상 정책 $\pi$ 가 그 행동을 선택했을 확률의 비율”</strong>을 의미합니다.</p>
 
 <p><img src="./img/05_one_step_rho_ratio_scale.png" alt="1-스텝 중요도 가중치를 측정하는 정밀 저울" />
 <strong>그림 10-3-17</strong> 대상 정책의 확률 <em>π</em>와 행동 정책의 확률 <em>b</em>의 비율을 정밀하게 측정하여 TD 목표의 왜곡을 1-스텝 만에 바로잡는 황금 저울 비유</p>
 
 <hr />
 
-<p>이 가중치 $\rho$를 TD 목표에 곱해주면 다음과 같은 <strong>오프-정책 SARSA 갱신 점화식</strong>이 마침내 도출됩니다:</p>
+<p>이 가중치 $\rho$ 를 TD 목표에 곱해주면 다음과 같은 <strong>오프-정책 SARSA 갱신 점화식</strong>이 마침내 도출됩니다:</p>
 
 <blockquote>
-  <h3 id="q_pis_t-a_t-leftarrow-q_pis_t-a_t--alpha-cdot-left-rho-cdot-r_t--gamma-q_pis_t1-a_t1---q_pis_t-a_t-right--식-1015-오프-정책-sarsa-갱신식"><strong>$Q_{\pi}(S_t, A_t) \leftarrow Q_{\pi}(S_t, A_t) + \alpha \cdot \left[ \rho \cdot (R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1})) - Q_{\pi}(S_t, A_t) \right]$</strong>      <em>(식 10.15: 오프-정책 SARSA 갱신식)</em></h3>
+  <p><strong>$Q_{\pi}(S_t, A_t) \leftarrow Q_{\pi}(S_t, A_t) + \alpha \cdot \left[ \rho \cdot (R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1})) - Q_{\pi}(S_t, A_t) \right]$</strong>      <em>(식 10.15: 오프-정책 SARSA 갱신식)</em></p>
 </blockquote>
 
 <p><img src="./img/off_sarsa_hojin_board_derivation.png" alt="이호진 교수님의 오프-정책 SARSA 갱신식 유도 강의" />
@@ -806,7 +806,7 @@
 
 <hr />
 
-<p>행동 정책 $b$가 수집한 한 걸음의 결과($R_t, S_{t+1}, A_{t+1}$)에 비율 $\rho$를 곱해줌으로써, 대상 정책 $\pi$가 실제로 겪었을 때의 참된 기댓값으로 정확하게 환산하여 가치를 갱신합니다.</p>
+<p>행동 정책 $b$ 가 수집한 한 걸음의 결과($R_t, S_{t+1}, A_{t+1}$)에 비율 $\rho$ 를 곱해줌으로써, 대상 정책 $\pi$ 가 실제로 겪었을 때의 참된 기댓값으로 정확하게 환산하여 가치를 갱신합니다.</p>
 
 <p><img src="./img/off_sarsa_rho_weight_converter.png" alt="중요도 비율 환산기" />
 <strong>그림 10-3-19</strong> 행동 정책이 모아온 거친 샘플 원석을 $\rho$ 배율 기어로 연마하여 대상 정책의 참된 기댓값 보석으로 변환하는 정밀 기계 장치</p>
@@ -905,7 +905,7 @@
 <p>이어서 에이전트의 <code class="language-plaintext highlighter-rouge">update()</code> 메서드를 구현합니다:</p>
 
 <p><img src="./img/off_sarsa_update_step_inspection.png" alt="update 메서드 2단계 버퍼 점검" />
-<strong>그림 10-3-26</strong> 2칸 슬라이딩 윈도우 버퍼에서 $(S_t, A_t, R_t)$와 $(S_{t+1}, A_{t+1})$가 온전히 갖추어졌는지 돋보기로 정밀 검사하는 지니 조교</p>
+<strong>그림 10-3-26</strong> 2칸 슬라이딩 윈도우 버퍼에서 $(S_t, A_t, R_t)$ 와 $(S_{t+1}, A_{t+1})$ 가 온전히 갖추어졌는지 돋보기로 정밀 검사하는 지니 조교</p>
 
 <hr />
 
@@ -975,21 +975,21 @@
 
 <ul>
   <li><strong>❺ 1-스텝 가중치 <code class="language-plaintext highlighter-rouge">rho</code></strong>:
-다음 상태에서 에이전트가 실제로 취한 행동 $A_{t+1}$에 대해 두 정책의 확률 비율을 계산합니다: <code class="language-plaintext highlighter-rouge">rho = self.pi[next_state][next_action] / self.b[next_state][next_action]</code>.</li>
+다음 상태에서 에이전트가 실제로 취한 행동 $A_{t+1}$ 에 대해 두 정책의 확률 비율을 계산합니다: <code class="language-plaintext highlighter-rouge">rho = self.pi[next_state][next_action] / self.b[next_state][next_action]</code>.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_rho_division_gear.png" alt="rho 계산 나눗셈 기어" />
-<strong>그림 10-3-31</strong> 대상 정책 $\pi$와 행동 정책 $b$의 톱니가 맞물려 정밀하게 비율 $\rho$ 코인을 찍어내는 나눗셈 기어 메커니즘</p>
+<strong>그림 10-3-31</strong> 대상 정책 $\pi$ 와 행동 정책 $b$ 의 톱니가 맞물려 정밀하게 비율 $\rho$ 코인을 찍어내는 나눗셈 기어 메커니즘</p>
 
 <hr />
 
 <ul>
   <li><strong>❻ <code class="language-plaintext highlighter-rouge">target = rho * (reward + self.gamma * next_q)</code></strong>:
-중요도 비율 $\rho$를 TD 목표에 곱하여 대상 정책 $\pi$ 관점에서의 올바른 기댓값으로 즉시 환산합니다.</li>
+중요도 비율 $\rho$ 를 TD 목표에 곱하여 대상 정책 $\pi$ 관점에서의 올바른 기댓값으로 즉시 환산합니다.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_q_update_funnel.png" alt="Q 갱신 깔때기 장치" />
-<strong>그림 10-3-32</strong> 즉각 보상 $R$과 할인된 미래 가치 $\gamma Q$가 $\rho$ 배율 링을 거쳐 메인 Q테이블 저수조로 신선하게 유입되는 모습</p>
+<strong>그림 10-3-32</strong> 즉각 보상 $R$ 과 할인된 미래 가치 $\gamma Q$ 가 $\rho$ 배율 링을 거쳐 메인 Q테이블 저수조로 신선하게 유입되는 모습</p>
 
 <hr />
 
@@ -1014,18 +1014,18 @@
 <h4 id="1-rho--0-이-되는-비극-소중한-보상-데이터의-허무한-증발">1. $\rho = 0$ 이 되는 비극: 소중한 보상 데이터의 허무한 증발</h4>
 
 <ul>
-  <li><strong>대상 정책 $\pi$의 엄격한 100% 탐욕성</strong>:
-대상 정책 $\pi$는 100% 완전 탐욕 정책(<code class="language-plaintext highlighter-rouge">epsilon=0</code>)입니다. 따라서 가장 높은 Q값을 가진 단 하나의 최선 행동에만 확률 <strong>1.0</strong>을 부여하고, 나머지 3개 행동에는 확률 <strong>0.0</strong>을 줍니다.</li>
+  <li><strong>대상 정책 $\pi$ 의 엄격한 100% 탐욕성</strong>:
+대상 정책 $\pi$ 는 100% 완전 탐욕 정책(<code class="language-plaintext highlighter-rouge">epsilon=0</code>)입니다. 따라서 가장 높은 Q값을 가진 단 하나의 최선 행동에만 확률 <strong>1.0</strong>을 부여하고, 나머지 3개 행동에는 확률 <strong>0.0</strong>을 줍니다.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_pi_greedy_one_hot.png" alt="100% 완전 탐욕 대상 정책의 원-핫 분포" />
-<strong>그림 10-3-35</strong> 오직 1등 행동에만 1.0의 불이 밝혀지고, 나머지 3개 행동에는 가차 없이 0.0의 불이 꺼져 있는 대상 정책 $\pi$의 극단적 원-핫(One-hot) 특성</p>
+<strong>그림 10-3-35</strong> 오직 1등 행동에만 1.0의 불이 밝혀지고, 나머지 3개 행동에는 가차 없이 0.0의 불이 꺼져 있는 대상 정책 $\pi$ 의 극단적 원-핫(One-hot) 특성</p>
 
 <hr />
 
 <ul>
-  <li><strong>행동 정책 $b$의 호기심(탐색 시도)</strong>:
-반면 행동 정책 $b$는 탐험을 장려하기 위해 10%의 확률로 비탐욕적 행동(상, 하, 좌, 우 중 최선이 아닌 행동)을 시도합니다.</li>
+  <li><strong>행동 정책 $b$ 의 호기심(탐색 시도)</strong>:
+반면 행동 정책 $b$ 는 탐험을 장려하기 위해 10%의 확률로 비탐욕적 행동(상, 하, 좌, 우 중 최선이 아닌 행동)을 시도합니다.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_b_explores_suboptimal.png" alt="행동 정책 b의 10% 탐색 발걸음" />
@@ -1035,7 +1035,7 @@
 
 <ul>
   <li><strong>분자가 0이 되는 순간</strong>:
-이때 $b$가 탐험을 위해 비탐욕적 행동을 선택하는 순간, 대상 정책의 확률은 분자에서 <strong>0</strong>이 되어버립니다:
+이때 $b$ 가 탐험을 위해 비탐욕적 행동을 선택하는 순간, 대상 정책의 확률은 분자에서 <strong>0</strong>이 되어버립니다:
     <blockquote>
       <p><strong>$\pi(A_{t+1} \mid S_{t+1}) = 0 \implies \rho = \frac{0}{b} = 0$</strong></p>
     </blockquote>
@@ -1049,7 +1049,7 @@
 
 <ul>
   <li><strong>TD 목표의 총체적 붕괴</strong>:
-가중치 $\rho$가 0이 되면 어떤 일이 일어날까요? [식 10.15]의 TD 목표를 다시 봅시다:
+가중치 $\rho$ 가 0이 되면 어떤 일이 일어날까요? [식 10.15]의 TD 목표를 다시 봅시다:
     <blockquote>
       <p><strong>TD 목표 = $\rho \cdot [R_t + \gamma Q_{\pi}(S_{t+1}, A_{t+1})] = 0 \cdot [\cdots] = 0$</strong></p>
     </blockquote>
@@ -1057,17 +1057,17 @@
 </ul>
 
 <p><img src="./img/off_sarsa_td_target_zero_collapse.png" alt="TD 목표의 0 붕괴 현상" />
-<strong>그림 10-3-38</strong> $\rho = 0$이 곱해지는 순간 계산대 위의 모든 목표 점수가 0.000으로 흔적도 없이 소멸해 버리는 비극</p>
+<strong>그림 10-3-38</strong> $\rho = 0$ 이 곱해지는 순간 계산대 위의 모든 목표 점수가 0.000으로 흔적도 없이 소멸해 버리는 비극</p>
 
 <hr />
 
 <ul>
   <li><strong>진짜 즉각 보상의 허무한 증발</strong>:
-에이전트가 방금 온갖 고생 끝에 얻은 <strong>진짜 즉각 보상 $R_t$마저 0으로 곱해져 허무하게 지워져 버립니다!</strong> 그 결과 $Q$ 값은 엉뚱하게 0을 향해 곤두박질치는 치명적인 정보 유실이 발생합니다.</li>
+에이전트가 방금 온갖 고생 끝에 얻은 <strong>진짜 즉각 보상 $R_t$ 마저 0으로 곱해져 허무하게 지워져 버립니다!</strong> 그 결과 $Q$ 값은 엉뚱하게 0을 향해 곤두박질치는 치명적인 정보 유실이 발생합니다.</li>
 </ul>
 
 <p><img src="./img/off_sarsa_reward_vanishes_smoke.png" alt="소중한 즉각 보상의 증발" />
-<strong>그림 10-3-39</strong> 피땀 흘려 획득한 황금 보상 별 $R_t$가 $0$의 마법에 걸려 한 줌의 연기처럼 허공으로 흩어져 버리는 슬픈 순간</p>
+<strong>그림 10-3-39</strong> 피땀 흘려 획득한 황금 보상 별 $R_t$ 가 $0$ 의 마법에 걸려 한 줌의 연기처럼 허공으로 흩어져 버리는 슬픈 순간</p>
 
 <hr />
 
@@ -1079,7 +1079,7 @@
 <h4 id="2-극단적인-가중치-진폭-0-아니면-1-초과">2. 극단적인 가중치 진폭 (0 아니면 1 초과)</h4>
 
 <ul>
-  <li>행동 정책 $b$가 탐욕 행동을 고르면 $\rho$는 1보다 큰 값이 되고, 탐색 행동을 고르면 $\rho$는 0으로 뚝 떨어집니다.</li>
+  <li>행동 정책 $b$ 가 탐욕 행동을 고르면 $\rho$ 는 1보다 큰 값이 되고, 탐색 행동을 고르면 $\rho$ 는 0으로 뚝 떨어집니다.</li>
   <li>매 걸음마다 TD 목표치가 0과 큰 양수를 널뛰기하듯 요동치기 때문에, 학습 곡선의 분산이 커져 수렴이 대단히 더뎌집니다.</li>
 </ul>
 
@@ -1088,22 +1088,22 @@
 
 <hr />
 
-<h3 id="중요도-비율-rho를-곱하지-않고도-완벽한-오프-정책을-달성할-수는-없을까">“중요도 비율 $\rho$를 곱하지 않고도 완벽한 오프-정책을 달성할 수는 없을까?”</h3>
+<h3 id="중요도-비율-rho-를-곱하지-않고도-완벽한-오프-정책을-달성할-수는-없을까">“중요도 비율 $\rho$ 를 곱하지 않고도 완벽한 오프-정책을 달성할 수는 없을까?”</h3>
 
 <p>이 질문은 강화학습 역사에서 가장 위대한 돌파구의 출발점이 되었습니다!</p>
 
 <blockquote>
-  <p><strong>“행동 정책 $b$가 아무리 제멋대로 탐험을 하더라도, 다음 가치를 계산할 때 ‘실제로 취한 행동’을 보지 말고, 다음 상태에서 취할 수 있는 ‘이론상 최고의 행동 $\max_a Q(S_{t+1}, a)$’를 직접 꺼내 쓰면 어떨까?”</strong></p>
+  <p><strong>“행동 정책 $b$ 가 아무리 제멋대로 탐험을 하더라도, 다음 가치를 계산할 때 ‘실제로 취한 행동’을 보지 말고, 다음 상태에서 취할 수 있는 ‘이론상 최고의 행동 $\max_a Q(S_{t+1}, a)$’를 직접 꺼내 쓰면 어떨까?”</strong></p>
 </blockquote>
 
 <p><img src="./img/off_sarsa_max_q_golden_idea.png" alt="Q-러닝의 황금 아이디어" />
-<strong>그림 10-3-42</strong> “실제 행동 대신 다음 상태의 이론상 최고 가치 $\max_a Q$를 직접 꺼내자!” 번뜩이는 황금 영감 전구를 들어 올리시는 이호진 교수님과 환호하는 도로시</p>
+<strong>그림 10-3-42</strong> “실제 행동 대신 다음 상태의 이론상 최고 가치 $\max_a Q$ 를 직접 꺼내자!” 번뜩이는 황금 영감 전구를 들어 올리시는 이호진 교수님과 환호하는 도로시</p>
 
 <hr />
 
 <p>이 놀라운 발상의 전환이 바로 다음 10.4절에서 다룰 전설적인 알고리즘, <strong>Q-러닝(Q-Learning)</strong>의 핵심 비밀입니다!</p>
 
-<p>Q-러닝은 중요도 가중치 $\rho$의 나눗셈을 공식에서 완전히 지워버림으로써 오프-정책 학습의 모든 골칫거리를 단번에 해결합니다.</p>
+<p>Q-러닝은 중요도 가중치 $\rho$ 의 나눗셈을 공식에서 완전히 지워버림으로써 오프-정책 학습의 모든 골칫거리를 단번에 해결합니다.</p>
 
 <p><img src="./img/10_q_learning_prophecy_bridge.png" alt="Q-러닝의 예고와 복음" />
 <strong>그림 10-3-43</strong> 중요도 비율 <em>ρ</em> 없이도 완벽한 오프-정책 제어를 실현하는 전설의 공식 <code class="language-plaintext highlighter-rouge">max_a Q</code>의 황금 검을 꺼내 들며 다음 단원의 위대한 도약을 예고하시는 이호진 교수님</p>
@@ -1133,12 +1133,12 @@
     </tr>
     <tr>
       <td style="text-align: left"><strong>2. 1-스텝 중요도 가중치 $\rho$</strong></td>
-      <td style="text-align: left">$\rho = \pi(A_{t+1})/ b(A_{t+1})$로 확률 분포 차이를 단 1-스텝 만에 보정</td>
+      <td style="text-align: left">$\rho = \pi(A_{t+1})/ b(A_{t+1})$ 로 확률 분포 차이를 단 1-스텝 만에 보정</td>
       <td style="text-align: left">두 세계를 잇는 정밀 황금 징검다리</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>3. $\rho = 0$ 한계와 Q-러닝의 예고</strong></td>
-      <td style="text-align: left">탐색 행동 시 $\pi=0$이 되어 즉각 보상까지 지워지는 한계를 극복하기 위해 Q-러닝으로 진화</td>
+      <td style="text-align: left">탐색 행동 시 $\pi=0$ 이 되어 즉각 보상까지 지워지는 한계를 극복하기 위해 Q-러닝으로 진화</td>
       <td style="text-align: left">$\rho$ 없는 완벽한 알고리즘을 향한 위대한 도약</td>
     </tr>
   </tbody>
@@ -1148,7 +1148,7 @@
 
 <blockquote>
   <p>👨‍🏫 <strong>이호진 교수님의 직강 노트</strong>:<br />
-“오프-정책 SARSA는 비록 $\rho = 0$이라는 한계 때문에 실무에서 널리 쓰이지는 않지만, 강화학습 역사에서 ‘행동 정책과 대상 정책을 완벽히 분리한다’는 위대한 패러다임을 확립한 기념비적인 디딤돌입니다. 이 디딤돌이 있었기에 인류는 중요도 가중치의 족쇄를 끊어낸 절대강자 <strong>Q-러닝</strong>을 만날 수 있었습니다!”</p>
+“오프-정책 SARSA는 비록 $\rho = 0$ 이라는 한계 때문에 실무에서 널리 쓰이지는 않지만, 강화학습 역사에서 ‘행동 정책과 대상 정책을 완벽히 분리한다’는 위대한 패러다임을 확립한 기념비적인 디딤돌입니다. 이 디딤돌이 있었기에 인류는 중요도 가중치의 족쇄를 끊어낸 절대강자 <strong>Q-러닝</strong>을 만날 수 있었습니다!”</p>
 </blockquote>
 
 <p><img src="./img/off_sarsa_hojin_stepping_stone_lecture.png" alt="이호진 교수님의 디딤돌 특강" />
@@ -1158,7 +1158,7 @@
 
 <blockquote>
   <p>🐱 <strong>조교 지니의 응원 노트</strong>:<br />
-“도로시와 여러분, 두 개의 나침반을 들고 떠난 오프-정책의 모험이 흥미진진하셨나요? $\rho$의 나눗셈 때문에 소중한 보상이 지워지는 아픔을 겪었지만, 이제 우리는 해답을 알고 있어요! 다음 10.4절에서는 마침내 강화학습의 영원한 베스트셀러이자 현대 딥러닝(DQN)의 뿌리가 된 <strong>Q-러닝</strong>의 눈부신 세계로 다 함께 뛰어들어 봅시다냥!”</p>
+“도로시와 여러분, 두 개의 나침반을 들고 떠난 오프-정책의 모험이 흥미진진하셨나요? $\rho$ 의 나눗셈 때문에 소중한 보상이 지워지는 아픔을 겪었지만, 이제 우리는 해답을 알고 있어요! 다음 10.4절에서는 마침내 강화학습의 영원한 베스트셀러이자 현대 딥러닝(DQN)의 뿌리가 된 <strong>Q-러닝</strong>의 눈부신 세계로 다 함께 뛰어들어 봅시다냥!”</p>
 </blockquote>
 
 <p><img src="./img/off_sarsa_jiny_qlearning_rocket.png" alt="조교 지니의 Q-러닝 로켓 발사 피날레" />

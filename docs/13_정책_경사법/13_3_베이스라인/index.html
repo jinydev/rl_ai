@@ -697,111 +697,51 @@
 
 <p>이제 이 통계적 지혜를 REINFORCE 목적식에 그대로 이식해 보겠습니다. 13.2절의 REINFORCE는 다음 수식으로 표현되었습니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> <em>G</em><sub><em>t</em></sub> ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub></td>
-        <td><em>S</em><sub><em>t</em></sub>) ]</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T G_t \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-<p>여기에 상태 <em>S</em><sub><em>t</em></sub>에만 의존하는 임의의 기준 함수 <em>b</em>(<em>S</em><sub><em>t</em></sub>)를 빼주는 형태로 수식을 확장합니다.</p>
+<p>여기에 상태 $S_t$ 에만 의존하는 임의의 기준 함수 $b(S_t)$ 를 빼주는 형태로 수식을 확장합니다.</p>
 
-<blockquote>
-  <h3 id="식-139-베이스라인을-적용한-정책-경사-수식">(식 13.9) 베이스라인을 적용한 정책 경사 수식</h3>
-  <p>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> (<em>G</em><sub><em>t</em></sub> − <em>b</em>(<em>S</em><sub><em>t</em></sub>)) ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</p>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T (G_t - b(S_t)) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-<p>여기서 빼주는 항 <em>b</em>(<em>S</em><sub><em>t</em></sub>)를 <strong>베이스라인(Baseline)</strong>이라고 부릅니다. 놀랍게도 <em>b</em>(<em>S</em><sub><em>t</em></sub>)가 행동 <em>A</em><sub><em>t</em></sub>에 의존하지 않고 오직 상태 <em>S</em><sub><em>t</em></sub>에만 의존하는 함수라면, <strong>어떤 함수를 가져다 써도 정책 경사의 기댓값은 전혀 변하지 않습니다!</strong></p>
+<p>[식 13.9] 베이스라인을 적용한 정책 경사 수식</p>
+
+<p>여기서 빼주는 항 $b(S_t)$ 를 <strong>베이스라인(Baseline)</strong> 이라고 부릅니다. 놀랍게도 $b(S_t)$ 가 행동 $A_t$ 에 의존하지 않고 오직 상태 $S_t$ 에만 의존하는 함수라면, <strong>어떤 함수를 가져다 써도 정책 경사의 기댓값은 전혀 변하지 않습니다!</strong></p>
 
 <h3 id="수학적-증명-베이스라인-항의-기댓값은-왜-0인가">수학적 증명: 베이스라인 항의 기댓값은 왜 0인가?</h3>
 
-<p>베이스라인을 뺀 항의 기댓값을 직접 전개해 증명해 보겠습니다. 상태 <em>S</em><sub><em>t</em></sub>가 주어진 상황에서 행동 <em>A</em><sub><em>t</em></sub>에 대한 기댓값 부분만 떼어내어 계산합니다:</p>
+<p>베이스라인을 뺀 항의 기댓값을 직접 전개해 증명해 보겠습니다. 상태 $S_t$ 가 주어진 상황에서 행동 $A_t$ 에 대한 기댓값 부분만 떼어내어 계산합니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>E<sub><em>A</em><sub><em>t</em></sub> ~ <em>π</em><sub><em>θ</em></sub></sub> [ <em>b</em>(<em>S</em><sub><em>t</em></sub>) ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub></td>
-        <td><em>S</em><sub><em>t</em></sub>) ]</td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td>= ∑<sub><em>a</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-        <td><em>S</em><sub><em>t</em></sub>) · <em>b</em>(<em>S</em><sub><em>t</em></sub>) · ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-        <td><em>S</em><sub><em>t</em></sub>)</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\begin{aligned}
+\mathbb{E}_{A_t \sim \pi_\theta} [ b(S_t) \nabla_\theta \log \pi_\theta(A_t \mid S_t) ] &amp;= \sum_a \pi_\theta(a \mid S_t) \cdot b(S_t) \cdot \nabla_\theta \log \pi_\theta(a \mid S_t) \\
+&amp;= b(S_t) \sum_a \nabla_\theta \pi_\theta(a \mid S_t) \\
+&amp;= b(S_t) \nabla_\theta \left[ \sum_a \pi_\theta(a \mid S_t) \right] \\
+&amp;= b(S_t) \nabla_\theta (1) \\
+&amp;= b(S_t) \cdot 0 = 0
+\end{aligned}\]
 
-<table>
-  <tbody>
-    <tr>
-      <td>여기서 로그 미분법 공식 (∇ log <em>f</em> = ∇ <em>f</em> / <em>f</em>)에 의해 <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>S</em><sub><em>t</em></sub>) · ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>S</em><sub><em>t</em></sub>) = ∇<sub><em>θ</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>S</em><sub><em>t</em></sub>)가 됩니다. 또한 <em>b</em>(<em>S</em><sub><em>t</em></sub>)는 행동 <em>a</em>와 무관하므로 시그마 밖으로 묶어낼 수 있습니다:</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td>= <em>b</em>(<em>S</em><sub><em>t</em></sub>) ∑<sub><em>a</em></sub> ∇<sub><em>θ</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-        <td><em>S</em><sub><em>t</em></sub>)</td>
-      </tr>
-      <tr>
-        <td>= <em>b</em>(<em>S</em><sub><em>t</em></sub>) ∇<sub><em>θ</em></sub> [ ∑<sub><em>a</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-        <td><em>S</em><sub><em>t</em></sub>) ]</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
-
-<table>
-  <tbody>
-    <tr>
-      <td>모든 가능한 행동 확률의 합은 정의상 항상 1입니다 (∑<sub><em>a</em></sub> <em>π</em><sub><em>θ</em></sub>(<em>a</em></td>
-      <td><em>S</em><sub><em>t</em></sub>) = 1). 상수 1의 기울기는 0입니다:</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-  <p>= <em>b</em>(<em>S</em><sub><em>t</em></sub>) ∇<sub><em>θ</em></sub> (1)<br />
-= <em>b</em>(<em>S</em><sub><em>t</em></sub>) · 0 = <strong>0</strong></p>
-</blockquote>
+<p>여기서 로그 미분법 공식 ($\nabla \log f = \nabla f / f$)에 의해 $\pi_\theta(a \mid S_t) \cdot \nabla_\theta \log \pi_\theta(a \mid S_t) = \nabla_\theta \pi_\theta(a \mid S_t)$ 가 됩니다. 또한 $b(S_t)$ 는 행동 $a$ 와 무관하므로 시그마 밖으로 묶어낼 수 있습니다. 모든 가능한 행동 확률의 합은 정의상 항상 1입니다 ($\sum_a \pi_\theta(a \mid S_t) = 1$). 상수 1의 기울기는 0입니다.</p>
 
 <p><strong>증명 종료!</strong><br />
-베이스라인 항의 기댓값은 완전히 0이 되므로, 목적 함수의 기울기 ∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>)에 단 1%의 편향(Bias)도 주지 않습니다. 그러면서도 (<em>G</em><sub><em>t</em></sub> − <em>b</em>(<em>S</em><sub><em>t</em></sub>))의 분산은 획기적으로 낮아지게 됩니다.</p>
+베이스라인 항의 기댓값은 완전히 0이 되므로, 목적 함수의 기울기 $\nabla_\theta J(\theta)$ 에 단 1%의 편향(Bias)도 주지 않습니다. 그러면서도 $(G_t - b(S_t))$ 의 분산은 획기적으로 낮아지게 됩니다.</p>
 
 <hr />
 
 <h2 id="1333-최적의-베이스라인-상태-가치-함수-vs와-상대적-이점">13.3.3 최적의 베이스라인: 상태 가치 함수 V(s)와 상대적 이점</h2>
 
-<p>그렇다면 베이스라인 <em>b</em>(<em>S</em><sub><em>t</em></sub>)로 어떤 함수를 선택하는 것이 가장 이상적일까요?<br />
-수학적으로 분산을 최소화하는 최적의 베이스라인은 바로 <strong>현재 상태의 기대 수익을 나타내는 상태 가치 함수 <em>V</em><sup><em>π</em><sub><em>θ</em></sub></sup>(<em>S</em><sub><em>t</em></sub>)</strong>입니다!</p>
+<p>그렇다면 베이스라인 $b(S_t)$ 로 어떤 함수를 선택하는 것이 가장 이상적일까요?<br />
+수학적으로 분산을 최소화하는 최적의 베이스라인은 바로 <strong>현재 상태의 기대 수익을 나타내는 상태 가치 함수 $V^{\pi_\theta}(S_t)$</strong> 입니다!</p>
 
-<blockquote>
-  <h3 id="식-1310-가치-함수를-베이스라인으로-사용하는-정책-경사">(식 13.10) 가치 함수를 베이스라인으로 사용하는 정책 경사</h3>
-  <p>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> (<em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>)) ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</p>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T (G_t - V(S_t)) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-<p>여기서 가중치 항인 (<em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>))를 주목해 주십시오. 이 항은 강화학습에서 대단히 중요한 개념인 <strong>이점(Advantage, <em>A</em>(<em>s</em>, <em>a</em>))</strong>의 몬테카를로 추정량입니다:</p>
+<p>[식 13.10] 가치 함수를 베이스라인으로 사용하는 정책 경사</p>
 
-<blockquote>
-  <h3 id="식-1311-이점advantage의-개념">(식 13.11) 이점(Advantage)의 개념</h3>
-  <p><em>A</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) = <em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>)<br />
-(실제 얻은 결과 − 그 상태에서 평균적으로 기대했던 결과)</p>
-</blockquote>
+<p>여기서 가중치 항인 $(G_t - V(S_t))$ 를 주목해 주십시오. 이 항은 강화학습에서 대단히 중요한 개념인 <strong>이점(Advantage, $A(s, a)$)</strong> 의 몬테카를로 추정량입니다:</p>
 
-<p><strong>그림 13-6</strong> 가치 함수 기준선 <em>V</em>(<em>S</em>)를 빼줌으로써 평균보다 뛰어난 행동만 선별 강화하고 양수 보상 쏠림을 방지하는 베이스라인의 원리
+\[A(S_t, A_t) = G_t - V(S_t)\]
+
+<p>[식 13.11] 이점(Advantage)의 개념 (실제 얻은 결과 - 그 상태에서 평균적으로 기대했던 결과)</p>
+
+<p><strong>그림 13-6</strong> 가치 함수 기준선 $V(S)$ 를 빼줌으로써 평균보다 뛰어난 행동만 선별 강화하고 양수 보상 쏠림을 방지하는 베이스라인의 원리
 <img src="./img/02_baseline_variance_reduction.jpg" alt="그림 13-6 베이스라인을 통한 분산 저감과 상대적 이점 구조" /></p>
 
 <h3 id="양수-보상-쏠림-현상positive-reward-problem의-해결">양수 보상 쏠림 현상(Positive Reward Problem)의 해결</h3>
@@ -809,12 +749,12 @@
 <p>CartPole 환경처럼 매 타임스텝마다 항상 +1의 보상을 주는 환경을 생각해 보십시오.</p>
 <ul>
   <li><strong>베이스라인이 없을 때:</strong><br />
-모든 시점의 보상이 양수이므로 <em>G</em><sub><em>t</em></sub> &gt; 0입니다. 따라서 에이전트가 어떤 멍청한 실수를 저질렀더라도, 에피소드가 우연히 조금 길게 이어졌다면 그 실수 행동의 확률조차 강제로 상승합니다! 모든 행동의 확률이 함께 올라가기 때문에 최적 행동을 가려내는 데 엄청난 양의 시행착오가 낭비됩니다.</li>
-  <li><strong>베이스라인 <em>V</em>(<em>S</em><sub><em>t</em></sub>)을 적용했을 때:</strong><br />
-현재 상태에서 평균적으로 50스텝을 버틸 수 있었다면 <em>V</em>(<em>S</em><sub><em>t</em></sub>) ≈ 50입니다.
+모든 시점의 보상이 양수이므로 $G_t &gt; 0$ 입니다. 따라서 에이전트가 어떤 멍청한 실수를 저질렀더라도, 에피소드가 우연히 조금 길게 이어졌다면 그 실수 행동의 확률조차 강제로 상승합니다! 모든 행동의 확률이 함께 올라가기 때문에 최적 행동을 가려내는 데 엄청난 양의 시행착오가 낭비됩니다.</li>
+  <li><strong>베이스라인 $V(S_t)$ 을 적용했을 때:</strong><br />
+현재 상태에서 평균적으로 50스텝을 버틸 수 있었다면 $V(S_t) \approx 50$ 입니다.
     <ul>
-      <li>만약 이번 행동으로 70스텝을 버텼다면: <em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>) = 70 − 50 = <strong>+20 (기대 이상! 확률 대폭 상향)</strong></li>
-      <li>만약 이번 행동으로 20스텝만에 넘어져버렸다면: <em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>) = 20 − 50 = <strong>−30 (기대 이하! 실수이므로 확률 하향)</strong></li>
+      <li>만약 이번 행동으로 70스텝을 버텼다면: $G_t - V(S_t) = 70 - 50 = \mathbf{+20}$ (기대 이상! 확률 대폭 상향)</li>
+      <li>만약 이번 행동으로 20스텝만에 넘어져버렸다면: $G_t - V(S_t) = 20 - 50 = \mathbf{-30}$ (기대 이하! 실수이므로 확률 하향)</li>
     </ul>
   </li>
 </ul>
@@ -829,20 +769,20 @@
 
 <p><img src="./img/fig_10_8.jpg" alt="그림 13-8" /></p>
 
-<p>카트 폴의 막대가 심하게 기울어져서 어떤 조작을 하더라도 앞으로 정확히 3단계 뒤에 쓰러질 수밖에 없는 절망적인 상태 <em>s</em>가 되었다고 가정해 봅시다.</p>
+<p>카트 폴의 막대가 심하게 기울어져서 어떤 조작을 하더라도 앞으로 정확히 3단계 뒤에 쓰러질 수밖에 없는 절망적인 상태 $s$ 가 되었다고 가정해 봅시다.</p>
 
 <ol>
   <li><strong>기본 REINFORCE:</strong><br />
-3단계 뒤에 끝나므로 이 상태의 수익은 <em>G</em> = 3입니다. 순진한 REINFORCE는 이 상태에서 에이전트가 취한 행동 <em>a</em>에 대해 가중치 +3을 부여하여 행동 확률을 강화합니다. 어차피 3스텝 뒤에 죽을 운명인데, 무의미한 행동의 확률을 올리는 심각한 자원 낭비가 발생합니다.</li>
+3단계 뒤에 끝나므로 이 상태의 수익은 $G = 3$ 입니다. 순진한 REINFORCE는 이 상태에서 에이전트가 취한 행동 $a$ 에 대해 가중치 +3을 부여하여 행동 확률을 강화합니다. 어차피 3스텝 뒤에 죽을 운명인데, 무의미한 행동의 확률을 올리는 심각한 자원 낭비가 발생합니다.</li>
   <li><strong>베이스라인 적용:</strong><br />
-가치 함수가 이 상태를 학습했다면 이미 <em>V</em>(<em>s</em>) = 3임을 알고 있습니다.<br />
-따라서 실제 가중치는 <em>G</em> − <em>V</em>(<em>s</em>) = 3 − 3 = <strong>0</strong>이 됩니다!<br />
+가치 함수가 이 상태를 학습했다면 이미 $V(s) = 3$ 임을 알고 있습니다.<br />
+따라서 실제 가중치는 $G - V(s) = 3 - 3 = 0$ 이 됩니다!<br />
 가중치가 0이므로 정책 네트워크는 쓸데없이 행동 확률을 건드리지 않고 파라미터를 그대로 보존합니다.</li>
 </ol>
 
 <p>이처럼 베이스라인은 불가피한 상태에서의 학습 낭비를 차단하고, 의미 있는 차이를 만드는 결정적 순간의 행동에만 집중적으로 학습 역량을 투입하게 해줍니다.</p>
 
-<p>그렇다면 베이스라인으로 쓰이는 상태 가치 함수 <em>V</em>(<em>s</em>)는 어떻게 알아낼 수 있을까요? 바로 또 다른 신경망을 두어 가치 함수를 함께 학습시키면 됩니다. 이것이 다음 절에서 배울 현대 강화학습의 최고봉, <strong>행위자-비평자(Actor-Critic)</strong>의 탄생 배경입니다!</p>
+<p>그렇다면 베이스라인으로 쓰이는 상태 가치 함수 $V(s)$ 는 어떻게 알아낼 수 있을까요? 바로 또 다른 신경망을 두어 가치 함수를 함께 학습시키면 됩니다. 이것이 다음 절에서 배울 현대 강화학습의 최고봉, <strong>행위자-비평자(Actor-Critic)</strong>의 탄생 배경입니다!</p>
 
 
             <!-- 구글 애드센스 출력 -->

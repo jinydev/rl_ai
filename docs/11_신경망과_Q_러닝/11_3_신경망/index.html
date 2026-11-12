@@ -662,10 +662,8 @@
 <hr />
 
 <h3 id="1-선형-변환-linear--affine-transformation">1) 선형 변환 (Linear / Affine Transformation)</h3>
-<p>입력 벡터에 가중치 행렬을 곱하고 편향을 더하는 연산입니다:</p>
-<blockquote>
-  <h3 id="y--x--w--b"><strong><em>y</em> = <em>x</em> · <em>W</em> + <em>b</em></strong></h3>
-</blockquote>
+<p>입력 벡터에 가중치 행렬을 곱하고 편향을 더하는 연산입니다:
+\(y = x \cdot W + b\)</p>
 
 <p>DeZero에서는 이를 <code class="language-plaintext highlighter-rouge">F.linear(x, W, b)</code> 함수로 지원합니다.</p>
 
@@ -676,9 +674,9 @@
 <h3 id="2-비선형-활성화-함수-activation-function">2) 비선형 활성화 함수 (Activation Function)</h3>
 <p>만약 선형 변환만 100층, 1000층을 쌓으면 어떻게 될까요?</p>
 <ul>
-  <li>1층: <em>y</em><sub>1</sub> = <em>x</em> · <em>W</em><sub>1</sub> + <em>b</em><sub>1</sub></li>
-  <li>2층: <em>y</em><sub>2</sub> = <em>y</em><sub>1</sub> · <em>W</em><sub>2</sub> + <em>b</em><sub>2</sub> = (<em>x</em> · <em>W</em><sub>1</sub> + <em>b</em><sub>1</sub>) · <em>W</em><sub>2</sub> + <em>b</em><sub>2</sub> = <em>x</em> · (<em>W</em><sub>1</sub><em>W</em><sub>2</sub>) + (<em>b</em><sub>1</sub><em>W</em><sub>2</sub> + <em>b</em><sub>2</sub>)</li>
-  <li>행렬 곱의 결합 법칙에 의해, 아무리 깊게 쌓아도 결국 <strong>하나의 단일 선형 변환(<em>y</em> = <em>xW</em>' + <em>b</em>')으로 완전히 축약</strong>되어 버립니다!</li>
+  <li>1층: $y_1 = x \cdot W_1 + b_1$</li>
+  <li>2층: $y_2 = y_1 \cdot W_2 + b_2 = (x \cdot W_1 + b_1) \cdot W_2 + b_2 = x \cdot (W_1 W_2) + (b_1 W_2 + b_2)$</li>
+  <li>행렬 곱의 결합 법칙에 의해, 아무리 깊게 쌓아도 결국 <strong>하나의 단일 선형 변환($y = xW’ + b’$)으로 완전히 축약</strong>되어 버립니다!</li>
 </ul>
 
 <p><img src="./img/ch11_3_06_collapse_of_linear_stacking.png" alt="선형 계층만 쌓으면 결국 하나의 단일 선형 계층으로 축약되는 원리" /></p>
@@ -698,13 +696,12 @@
 
 <ul>
   <li><strong>시그모이드(Sigmoid) 함수</strong>:
-    <blockquote>
-      <h3 id="y--1--1--e-x--식-114-시그모이드-함수"><strong><em>y</em> = 1 / (1 + <em>e</em><sup>-<em>x</em></sup>)</strong>      <em>(식 11.4: 시그모이드 함수)</em></h3>
-    </blockquote>
-    <ul>
-      <li>입력값을 0과 1 사이의 부드러운 S자 곡선으로 압축합니다.</li>
-    </ul>
-  </li>
+\(y = \frac{1}{1 + e^{-x}}\)</li>
+</ul>
+
+<p>[식 11.4] 시그모이드 함수</p>
+<ul>
+  <li>입력값을 0과 1 사이의 부드러운 S자 곡선으로 압축합니다.</li>
 </ul>
 
 <p><img src="./img/ch11_3_08_sigmoid_smooth_s_compression.png" alt="입력값을 0과 1 사이로 압축하는 부드러운 S자 시그모이드 함수" /></p>
@@ -713,14 +710,13 @@
 
 <ul>
   <li><strong>렐루(ReLU: Rectified Linear Unit) 함수</strong>:
-    <blockquote>
-      <h3 id="y--max0-x--식-115-relu-함수"><strong><em>y</em> = max(0, <em>x</em>)</strong>      <em>(식 11.5: ReLU 함수)</em></h3>
-    </blockquote>
-    <ul>
-      <li>0 이하의 값은 0으로 차단하고, 양수 값은 그대로 통과시킵니다.</li>
-      <li>연산이 극도로 단순하여 계산 속도가 빠르고, 깊은 층에서도 기울기 소실(Vanishing Gradient) 문제가 발생하지 않아 <strong>현대 딥러닝과 DQN의 절대적인 표준</strong>으로 쓰입니다.</li>
-    </ul>
-  </li>
+\(y = \max(0, x)\)</li>
+</ul>
+
+<p>[식 11.5] ReLU 함수</p>
+<ul>
+  <li>0 이하의 값은 0으로 차단하고, 양수 값은 그대로 통과시킵니다.</li>
+  <li>연산이 극도로 단순하여 계산 속도가 빠르고, 깊은 층에서도 기울기 소실(Vanishing Gradient) 문제가 발생하지 않아 <strong>현대 딥러닝과 DQN의 절대적인 표준</strong>으로 쓰입니다.</li>
 </ul>
 
 <p><img src="./img/ch11_3_09_relu_zero_barrier_gradient_highway.png" alt="음수를 차단하고 양수를 고속 통과시키는 현대 딥러닝 표준 ReLU" /></p>

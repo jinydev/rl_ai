@@ -616,24 +616,15 @@
 
 <p>지금까지 우리가 배웠던 동적 계획법(DP), 몬테카를로(MC), TD, SARSA, DQN은 모두 <strong>가치 기반(Value-Based)</strong> 기법이었습니다:</p>
 <ul>
-  <li>상태 가치 <em>V</em>(<em>s</em>)나 행동 가치 <em>Q</em>(<em>s</em>, <em>a</em>)를 열심히 계산하고,</li>
-  <li>행동을 선택할 때는 <em>argmax</em><sub><em>a</em></sub> <em>Q</em>(<em>s</em>, <em>a</em>)라는 결정론적 탐욕 규칙을 사용했습니다.</li>
+  <li>상태 가치 $V(s)$ 나 행동 가치 $Q(s, a)$ 를 열심히 계산하고,</li>
+  <li>행동을 선택할 때는 $\arg\max_a Q(s, a)$ 라는 결정론적 탐욕 규칙을 사용했습니다.</li>
 </ul>
 
 <p>하지만 <strong>정책 기반(Policy-Based)</strong> 기법은 완전히 다른 길을 걷습니다:</p>
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td><em>*정책 *π</em><sub><em>θ</em></sub>(<em>a</em></td>
-          <td><em>s</em>) 자체를 신경망으로 모델링**합니다!</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>상태 <em>s</em>가 주어지면, 신경망은 각 행동을 취할 <strong>확률값(0.0 ~ 1.0, 합계 1.0)</strong>을 출력합니다.</li>
-  <li>그리고 <strong>“에이전트가 얻는 총 누적 보상의 기댓값이 가장 커지도록”</strong> 신경망의 가중치 <em>θ</em>를 직접 <strong>경사 상승법(Gradient Ascent)</strong>으로 밀어 올립니다!</li>
+  <li><strong>정책 $\pi_\theta(a \mid s)$ 자체를 신경망으로 모델링</strong>합니다!</li>
+  <li>상태 $s$ 가 주어지면, 신경망은 각 행동을 취할 <strong>확률값(0.0 ~ 1.0, 합계 1.0)</strong>을 출력합니다.</li>
+  <li>그리고 <strong>“에이전트가 얻는 총 누적 보상의 기댓값이 가장 커지도록”</strong> 신경망의 가중치 $\theta$ 를 직접 <strong>경사 상승법(Gradient Ascent)</strong>으로 밀어 올립니다!</li>
 </ul>
 
 <hr />
@@ -642,73 +633,62 @@
 
 <h3 id="1-궤적trajectory과-누적-수익">1) 궤적(Trajectory)과 누적 수익</h3>
 
-<p>에이전트가 정책 <em>π</em><sub><em>θ</em></sub>에 따라 환경과 상호작용하여 시작부터 끝까지 겪은 전체 시계열 경험을 <strong>궤적(Trajectory, <em>τ</em>)</strong>이라고 부릅니다:</p>
+<p>에이전트가 정책 $\pi_\theta$ 에 따라 환경과 상호작용하여 시작부터 끝까지 겪은 전체 시계열 경험을 <strong>궤적(Trajectory, $\tau$)</strong> 이라고 부릅니다:</p>
 
-<blockquote>
-  <h3 id="τ--s0-a0-r0-s1-a1-r1--st-at-rt-st1"><strong><em>τ</em> = (<em>S</em><sub>0</sub>, <em>A</em><sub>0</sub>, <em>R</em><sub>0</sub>, <em>S</em><sub>1</sub>, <em>A</em><sub>1</sub>, <em>R</em><sub>1</sub>, …, <em>S</em><sub><em>T</em></sub>, <em>A</em><sub><em>T</em></sub>, <em>R</em><sub><em>T</em></sub>, <em>S</em><sub><em>T</em>+1</sub>)</strong></h3>
-</blockquote>
+\[\tau = (S_0, A_0, R_0, S_1, A_1, R_1, \dots, S_T, A_T, R_T, S_{T+1})\]
 
-<p>이 궤적 <em>τ</em>에서 얻은 할인 누적 수익의 총합은 다음과 같습니다:</p>
+<p>이 궤적 $\tau$ 에서 얻은 할인 누적 수익의 총합은 다음과 같습니다:</p>
 
-<blockquote>
-  <h3 id="gτ--r0--γr1--γ2r2----γtrt--식-131-궤적-누적-수익"><strong><em>G</em>(<em>τ</em>) = <em>R</em><sub>0</sub> + <em>γR</em><sub>1</sub> + <em>γ</em><sup>2</sup><em>R</em><sub>2</sub> + … + <em>γ</em><sup><em>T</em></sup><em>R</em><sub><em>T</em></sub></strong>      <em>(식 13.1: 궤적 누적 수익)</em></h3>
-</blockquote>
+\[G(\tau) = R_0 + \gamma R_1 + \gamma^2 R_2 + \dots + \gamma^T R_T\]
+
+<p>[식 13.1] 궤적 누적 수익</p>
 
 <hr />
 
 <h3 id="2-정책의-목적-함수-기대-수익-jθ">2) 정책의 목적 함수: 기대 수익 <em>J</em>(<em>θ</em>)</h3>
 
-<p>우리의 목표는 정책 <em>π</em><sub><em>θ</em></sub>를 따랐을 때 얻게 되는 <strong>누적 수익의 기댓값 <em>J</em>(<em>θ</em>)를 극대화</strong>하는 최적의 가중치 <em>θ</em><sup>*</sup>를 찾는 것입니다:</p>
+<p>우리의 목표는 정책 $\pi_\theta$ 를 따랐을 때 얻게 되는 <strong>누적 수익의 기댓값 $J(\theta)$ 를 극대화</strong>하는 최적의 가중치 $\theta^*$ 를 찾는 것입니다:</p>
 
-<blockquote>
-  <h3 id="jθ--eτ--πθ-gτ--식-132-정책의-목적-함수"><strong><em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [<em>G</em>(<em>τ</em>)]</strong>      <em>(식 13.2: 정책의 목적 함수)</em></h3>
-</blockquote>
+\[J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} [G(\tau)]\]
 
-<p>경사 상승법(Gradient Ascent)으로 <em>J</em>(<em>θ</em>)를 최대화하려면 목적 함수의 기울기인 <strong>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>)</strong>를 계산해야 합니다:</p>
+<p>[식 13.2] 정책의 목적 함수</p>
 
-<blockquote>
-  <h3 id="θ--θ--α--θ-jθ"><strong><em>θ</em> ← <em>θ</em> + <em>α</em> · ∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>)</strong></h3>
-</blockquote>
+<p>경사 상승법(Gradient Ascent)으로 $J(\theta)$ 를 최대화하려면 목적 함수의 기울기인 <strong>$\nabla_\theta J(\theta)$</strong> 를 계산해야 합니다:</p>
+
+\[\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)\]
 
 <hr />
 
 <h3 id="3-로그-미분-트릭-the-log-derivative-trick">3) 로그 미분 트릭 (The Log-Derivative Trick)</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>여기서 거대한 난관에 부딪힙니다: 기댓값 기호 E<sub><em>τ</em></sub> 안에는 에이전트의 정책뿐만 아니라, <em>*우리가 전혀 알지 못하는 환경의 물리 전이 확률 *p</em>(<em>s</em>'</td>
-      <td><em>s</em>, <em>a</em>)<em>*가 깊숙이 얽혀 있습니다! 환경의 확률 분포를 미분할 수 없는데 어떻게 ∇<sub>*θ*</sub> *J</em>(<em>θ</em>)를 구할 수 있을까요?</td>
-    </tr>
-  </tbody>
-</table>
+<p>여기서 거대한 난관에 부딪힙니다: 기댓값 기호 $\mathbb{E}<em>\tau$ 안에는 에이전트의 정책뿐만 아니라, <strong>우리가 전혀 알지 못하는 환경의 물리 전이 확률 $p(s’ \mid s, a)$</strong> 가 깊숙이 얽혀 있습니다! 환경의 확률 분포를 미분할 수 없는데 어떻게 $\nabla</em>\theta J(\theta)$ 를 구할 수 있을까요?</p>
 
 <p>이 난제를 마법처럼 해결해 주는 수학 공식이 바로 <strong>로그 미분 트릭(Log-Derivative Trick)</strong>입니다. 미적분학의 연쇄 법칙에 의해 다음 항등식이 성립합니다:</p>
 
-<blockquote>
-  <h3 id="θ-log-fθ--θ-fθ--fθ----θ-fθ--fθ--θ-log-fθ--식-134"><strong>∇<sub><em>θ</em></sub> log <em>f</em>(<em>θ</em>) = (∇<sub><em>θ</em></sub> <em>f</em>(<em>θ</em>)) / <em>f</em>(<em>θ</em>)    ⟹    ∇<sub><em>θ</em></sub> <em>f</em>(<em>θ</em>) = <em>f</em>(<em>θ</em>) · ∇<sub><em>θ</em></sub> log <em>f</em>(<em>θ</em>)</strong>      <em>(식 13.4)</em></h3>
-</blockquote>
+\[\nabla_\theta \log f(\theta) = \frac{\nabla_\theta f(\theta)}{f(\theta)} \implies \nabla_\theta f(\theta) = f(\theta) \cdot \nabla_\theta \log f(\theta)\]
+
+<p>[식 13.4] 로그 미분 트릭</p>
 
 <p>이 항등식을 적용하면, 환경의 전이 확률 항들이 미분 과정에서 분모·분자로 기적처럼 상쇄되어 소거되며, 다음과 같은 <strong>정책 경사 정리(Policy Gradient Theorem)</strong>가 완성됩니다:</p>
 
-<blockquote>
-  <h3 id="θ-jθ--eτ--πθ--t0t-gτ--θ-log-πθat--st---식-133-정책-경사-정리"><strong>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> <em>G</em>(<em>τ</em>) · ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</strong>      <em>(식 13.3: 정책 경사 정리)</em></h3>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T G(\tau) \cdot \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
+
+<p>[식 13.3] 정책 경사 정리 (Policy Gradient Theorem)</p>
 
 <hr />
 
 <h3 id="-식-133의-물리적-의미-칭찬은-고래도-춤추게-한다">💡 [식 13.3]의 물리적 의미: “칭찬은 고래도 춤추게 한다”</h3>
 
 <p><img src="./img/fig_10_1.jpg" alt="그림 13-1" />
-<strong>그림 13-1-2</strong> 정책 경사법의 계산 흐름. 각 스텝에서 취한 행동의 로그 확률 기울기에 전체 에피소드 수익 <em>G</em>(<em>τ</em>)를 가중치로 곱하여 합산합니다.</p>
+<strong>그림 13-1-2</strong> 정책 경사법의 계산 흐름. 각 스텝에서 취한 행동의 로그 확률 기울기에 전체 에피소드 수익 $G(\tau)$ 를 가중치로 곱하여 합산합니다.</p>
 
 <ul>
-  <li><strong>∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>)</strong>:
-“현재 상태 <em>S</em><sub><em>t</em></sub>에서 에이전트가 선택했던 행동 <em>A</em><sub><em>t</em></sub>를 취할 <strong>확률을 가장 가파르게 증가시키는 파라미터 갱신 방향</strong>“을 가리킵니다.</li>
-  <li><strong>가중치 <em>G</em>(<em>τ</em>)</strong>:
+  <li><strong>$\nabla_\theta \log \pi_\theta(A_t \mid S_t)$</strong>:
+“현재 상태 $S_t$ 에서 에이전트가 선택했던 행동 $A_t$ 를 취할 <strong>확률을 가장 가파르게 증가시키는 파라미터 갱신 방향</strong>“을 가리킵니다.</li>
+  <li><strong>가중치 $G(\tau)$</strong>:
 그 에피소드 전체의 결과인 누적 수익입니다!
     <ul>
-      <li>만약 이번 에피소드에서 100점이라는 <strong>높은 수익(<em>G</em> &gt; 0)</strong>을 거두었다면? 
+      <li>만약 이번 에피소드에서 100점이라는 <strong>높은 수익($G &gt; 0$)</strong> 을 거두었다면? 
 방금 취했던 모든 행동들의 선택 확률을 대폭 끌어올리도록 파라미터를 강력하게 밀어붙입니다(칭찬과 강화!).</li>
       <li>반대로 10점밖에 못 얻고 조기 침몰했다면? 
 작은 가중치만 주어 확률 증가를 억제하거나, 상대적인 약화를 유도합니다.</li>
@@ -716,11 +696,11 @@
   </li>
 </ul>
 
-<p>단 1개의 샘플 에피소드(궤적 <em>τ</em>)로부터 경사를 근사하는 <strong>가장 간단한 정책 경사 갱신식</strong>은 다음과 같습니다:</p>
+<p>단 1개의 샘플 에피소드(궤적 $\tau$)로부터 경사를 근사하는 <strong>가장 간단한 정책 경사 갱신식</strong>은 다음과 같습니다:</p>
 
-<blockquote>
-  <h3 id="θ-jθ--t0t-gτ--θ-log-πθat--st--식-135"><strong>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) ≈ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> <em>G</em>(<em>τ</em>) · ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>)</strong>      <em>(식 13.5)</em></h3>
-</blockquote>
+\[\nabla_\theta J(\theta) \approx \sum_{t=0}^T G(\tau) \cdot \nabla_\theta \log \pi_\theta(A_t \mid S_t)\]
+
+<p>[식 13.5] 단일 궤적 기반 정책 경사 근사</p>
 
 <hr />
 
@@ -729,9 +709,9 @@
 <h3 id="1-정책-신경망-policy-클래스">1) 정책 신경망: <code class="language-plaintext highlighter-rouge">Policy</code> 클래스</h3>
 <p>이산 행동 공간(좌/우 2개)에서 확률을 출력하기 위해 마지막 계층에 <strong>소프트맥스(Softmax)</strong> 함수를 적용합니다:</p>
 
-<blockquote>
-  <h3 id="yi--exi--k-exk--식-136-소프트맥스-확률"><strong><em>y</em><sub><em>i</em></sub> = <em>e</em><sup><em>x</em><sub><em>i</em></sub></sup> / ∑<sub><em>k</em></sub> <em>e</em><sup><em>x</em><sub><em>k</em></sub></sup></strong>      <em>(식 13.6: 소프트맥스 확률)</em></h3>
-</blockquote>
+\[y_i = \frac{e^{x_i}}{\sum_k e^{x_k}}\]
+
+<p>[식 13.6] 소프트맥스 확률</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="n">dezero</span> <span class="kn">import</span> <span class="n">Model</span>
 <span class="kn">import</span> <span class="n">dezero.functions</span> <span class="k">as</span> <span class="n">F</span>
@@ -754,13 +734,11 @@
 <h3 id="2-경사-상승법을-딥러닝-손실-함수로-변환하는-비결">2) 경사 상승법을 딥러닝 손실 함수로 변환하는 비결</h3>
 
 <p>딥러닝 프레임워크(DeZero, PyTorch)의 옵티마이저는 손실을 최소화하는 <strong>경사 하강법</strong>만 지원합니다. 
-목적 함수 <em>J</em>(<em>θ</em>)를 최대화하려면, <strong>목적 함수에 마이너스(-) 부호를 붙여 대리 손실 함수(Surrogate Loss)</strong>로 정의하면 됩니다:</p>
+목적 함수 $J(\theta)$ 를 최대화하려면, <strong>목적 함수에 마이너스(-) 부호를 붙여 대리 손실 함수(Surrogate Loss)</strong> 로 정의하면 됩니다:</p>
 
-<blockquote>
-  <h3 id="loss----t-gτ--log-πθat--st"><strong>Loss = - ∑<sub><em>t</em></sub> <em>G</em>(<em>τ</em>) · log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>)</strong></h3>
-</blockquote>
+\[\text{Loss} = - \sum_t G(\tau) \cdot \log \pi_\theta(A_t \mid S_t)\]
 
-<p>이 <code class="language-plaintext highlighter-rouge">Loss</code>에 대해 <code class="language-plaintext highlighter-rouge">loss.backward()</code>를 실행하면, 자동으로 목적 함수 <em>J</em>(<em>θ</em>)를 최대화하는 올바른 방향으로 신경망 파라미터가 상승 갱신됩니다!</p>
+<p>이 <code class="language-plaintext highlighter-rouge">Loss</code>에 대해 <code class="language-plaintext highlighter-rouge">loss.backward()</code>를 실행하면, 자동으로 목적 함수 $J(\theta)$ 를 최대화하는 올바른 방향으로 신경망 파라미터가 상승 갱신됩니다!</p>
 
 <hr />
 

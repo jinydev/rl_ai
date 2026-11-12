@@ -705,12 +705,10 @@
 
 <p>하지만 Q-러닝의 TD 목표 수식을 다시 살펴봅시다:</p>
 
-<blockquote>
-  <h3 id="t--rt--γ-maxa-qst1-a-θ"><strong><em>T</em> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em>)</strong></h3>
-</blockquote>
+\[T = R_t + \gamma \max_a Q(S_{t+1}, a; \theta)\]
 
 <ul>
-  <li>가중치 <em>θ</em>를 갱신할 때마다, 정답이어야 할 목표값 <em>T</em>마저 동일한 가중치 <em>θ</em>에 의해 매 순간 함께 움직여 버립니다!</li>
+  <li>가중치 $\theta$ 를 갱신할 때마다, 정답이어야 할 목표값 $T$ 마저 동일한 가중치 $\theta$ 에 의해 매 순간 함께 움직여 버립니다!</li>
   <li>과녁판이 이리저리 도망치며 춤을 추는 상황에서 화살을 쏘는 것과 같아서, 학습이 수렴하지 못하고 소용돌이치며 튕겨져 나갑니다.</li>
 </ul>
 
@@ -725,9 +723,9 @@
 </ol>
 
 <blockquote>
-  <h3 id="t--rt--γ-maxa-qst1-a-θ---식-121-목표-신경망-기반-td-타깃"><strong><em>T</em> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em><sup>-</sup>)</strong>      <em>(식 12.1: 목표 신경망 기반 TD 타깃)</em></h3>
+  <p><strong><em>T</em> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> max<sub><em>a</em></sub> <em>Q</em>(<em>S</em><sub><em>t</em>+1</sub>, <em>a</em>; <em>θ</em><sup>-</sup>)</strong>      <em>(식 12.1: 목표 신경망 기반 TD 타깃)</em></p>
 
-  <h3 id="l--1--b---t---qst-at-θ2--식-122-dqn의-mse-손실-함수"><strong><em>L</em> = (1 / <em>B</em>) · ∑ [<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>; <em>θ</em>)]<sup>2</sup></strong>      <em>(식 12.2: DQN의 MSE 손실 함수)</em></h3>
+  <p><strong><em>L</em> = (1 / <em>B</em>) · ∑ [<em>T</em> - <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>; <em>θ</em>)]<sup>2</sup></strong>      <em>(식 12.2: DQN의 MSE 손실 함수)</em></p>
 </blockquote>
 
 <p>그리고 일정한 주기(예: 20 에피소드마다)가 되었을 때만, 메인 신경망의 가중치를 목표 신경망으로 복사(<code class="language-plaintext highlighter-rouge">copy.deepcopy</code>)하여 과녁판의 위치를 한 번씩 동기화해 줍니다. 

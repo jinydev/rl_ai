@@ -616,19 +616,18 @@
 
 <p>13장에서 배운 모든 정책 경사 기법들은 놀랍게도 <strong>단 하나의 일반화된 마스터 수식</strong>으로 완벽하게 통합될 수 있습니다.</p>
 
-<blockquote>
-  <h3 id="식-1317-정책-경사법-일반-통합-공식-the-generalized-policy-gradient-formula">(식 13.17) 정책 경사법 일반 통합 공식 (The Generalized Policy Gradient Formula)</h3>
-  <p>∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>) = E<sub><em>τ</em> ~ <em>π</em><sub><em>θ</em></sub></sub> [ ∑<sub><em>t</em>=0</sub><sup><em>T</em></sup> Ψ<sub><em>t</em></sub> ∇<sub><em>θ</em></sub> log <em>π</em><sub><em>θ</em></sub>(<em>A</em><sub><em>t</em></sub> | <em>S</em><sub><em>t</em></sub>) ]</p>
-</blockquote>
+\[\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T \Psi_t \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]\]
 
-<p>이 식에서 본질적인 차이를 만드는 것은 단 하나, 바로 각 타임스텝의 행동이 얼마나 훌륭했는지를 평가하는 <strong>가중치 함수 Ψ<sub><em>t</em></sub></strong>입니다. 우리가 학습을 거듭하며 발전시켜 온 알고리즘들의 궤적은 곧 <strong>“Ψ<sub><em>t</em></sub>의 노이즈와 분산을 어떻게 줄이고, 편향을 어떻게 다룰 것인가”</strong>의 역사였습니다:</p>
+<p>[식 13.17] 정책 경사법 일반 통합 공식 (The Generalized Policy Gradient Formula)</p>
+
+<p>이 식에서 본질적인 차이를 만드는 것은 단 하나, 바로 각 타임스텝의 행동이 얼마나 훌륭했는지를 평가하는 <strong>가중치 함수 $\Psi_t$</strong> 입니다. 우리가 학습을 거듭하며 발전시켜 온 알고리즘들의 궤적은 곧 <strong>”$\Psi_t$ 의 노이즈와 분산을 어떻게 줄이고, 편향을 어떻게 다룰 것인가”</strong> 의 역사였습니다:</p>
 
 <table>
   <thead>
     <tr>
       <th style="text-align: center">단계</th>
       <th style="text-align: left">알고리즘</th>
-      <th style="text-align: left">가중치 항 Ψ<sub><em>t</em></sub>의 형태</th>
+      <th style="text-align: left">가중치 항 $\Psi_t$ 의 형태</th>
       <th style="text-align: left">수학적 의의 및 특징</th>
     </tr>
   </thead>
@@ -636,37 +635,37 @@
     <tr>
       <td style="text-align: center"><strong>1단계</strong></td>
       <td style="text-align: left"><strong>가장 간단한 정책 경사법</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>G</em>(<em>τ</em>)</td>
+      <td style="text-align: left">$\Psi_t = G(\tau)$</td>
       <td style="text-align: left">에피소드 전체의 반환값을 사용. 과거의 무관한 보상이 노이즈로 끼어들어 <strong>분산이 가장 큼</strong>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>2단계</strong></td>
       <td style="text-align: left"><strong>REINFORCE</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>G</em><sub><em>t</em></sub> = ∑<sub><em>k</em>=<em>t</em></sub><sup><em>T</em></sup> <em>γ</em><sup><em>k</em>−<em>t</em></sup> <em>R</em><sub><em>k</em></sub></td>
+      <td style="text-align: left">$\Psi_t = G_t = \sum_{k=t}^T \gamma^{k-t} R_k$</td>
       <td style="text-align: left"><strong>인과율(Causality)</strong> 도입. 미래의 누적 보상만 반영하여 편향 없이 분산을 1차 저감.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>3단계</strong></td>
       <td style="text-align: left"><strong>베이스라인 적용 REINFORCE</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>G</em><sub><em>t</em></sub> − <em>b</em>(<em>S</em><sub><em>t</em></sub>)</td>
-      <td style="text-align: left">상태 기준선 <em>b</em>(<em>s</em>)를 차감. E[<em>b</em>(<em>s</em>) ∇ log <em>π</em>] = 0이므로 <strong>편향 없이 분산을 대폭 추가 저감</strong>.</td>
+      <td style="text-align: left">$\Psi_t = G_t - b(S_t)$</td>
+      <td style="text-align: left">상태 기준선 $b(s)$ 를 차감. $\mathbb{E}[b(s) \nabla \log \pi] = 0$ 이므로 <strong>편향 없이 분산을 대폭 추가 저감</strong>.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>4단계</strong></td>
       <td style="text-align: left"><strong>행동 가치 기반 정책 경사</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>Q</em><sup><em>π</em></sup>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>)</td>
+      <td style="text-align: left">$\Psi_t = Q^\pi(S_t, A_t)$</td>
       <td style="text-align: left">샘플 수익 대신 참된 행동 가치를 사용. (기댓값 기준 REINFORCE와 동치)</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>5단계</strong></td>
       <td style="text-align: left"><strong>어드밴티지 기반 정책 경사</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>A</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) = <em>Q</em>(<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) − <em>V</em>(<em>S</em><sub><em>t</em></sub>)</td>
+      <td style="text-align: left">$\Psi_t = A(S_t, A_t) = Q(S_t, A_t) - V(S_t)$</td>
       <td style="text-align: left">상태 평균 대비 해당 행동의 순수한 우수함(Advantage)만을 추출하여 최적의 분산 달성.</td>
     </tr>
     <tr>
       <td style="text-align: center"><strong>6단계</strong></td>
       <td style="text-align: left"><strong>행위자-비평자 (Actor-Critic)</strong></td>
-      <td style="text-align: left">Ψ<sub><em>t</em></sub> = <em>δ</em><sub><em>t</em></sub> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>V</em><sub><em>w</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) − <em>V</em><sub><em>w</em></sub>(<em>S</em><sub><em>t</em></sub>)</td>
+      <td style="text-align: left">$\Psi_t = \delta_t = R_t + \gamma V_w(S_{t+1}) - V_w(S_t)$</td>
       <td style="text-align: left">1스텝 TD 오차를 이점 추정량으로 채택. <strong>에피소드 종료를 기다리지 않고 매 스텝 즉시 갱신</strong>.</td>
     </tr>
   </tbody>
@@ -690,11 +689,11 @@
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><strong>핵심 가중치 Ψ<sub><em>t</em></sub></strong></td>
-      <td style="text-align: center">전체 수익 <em>G</em>(<em>τ</em>)</td>
-      <td style="text-align: center">미래 수익 <em>G</em><sub><em>t</em></sub></td>
-      <td style="text-align: center">상대 이점 <em>G</em><sub><em>t</em></sub> − <em>V</em>(<em>S</em><sub><em>t</em></sub>)</td>
-      <td style="text-align: center">TD 오차 <em>δ</em><sub><em>t</em></sub> = <em>R</em> + <em>γ</em> <em>V</em>(<em>S</em>’) − <em>V</em>(<em>S</em>)</td>
+      <td style="text-align: left"><strong>핵심 가중치 $\Psi_t$</strong></td>
+      <td style="text-align: center">전체 수익 $G(\tau)$</td>
+      <td style="text-align: center">미래 수익 $G_t$</td>
+      <td style="text-align: center">상대 이점 $G_t - V(S_t)$</td>
+      <td style="text-align: center">TD 오차 $\delta_t = R + \gamma V(S’) - V(S)$</td>
     </tr>
     <tr>
       <td style="text-align: left"><strong>학습 갱신 주기</strong></td>
@@ -741,22 +740,22 @@
 <ol>
   <li><strong>정책 경사 정리 (Policy Gradient Theorem):</strong>
     <ul>
-      <li>환경 전이 확률의 그래디언트 ∇<em>P</em>를 몰라도, 로그 미분법(Log-derivative Trick)을 통해 누적 보상의 기댓값 경사 ∇<sub><em>θ</em></sub> <em>J</em>(<em>θ</em>)를 에이전트의 경험 샘플만으로 계산할 수 있습니다.</li>
+      <li>환경 전이 확률의 그래디언트 $\nabla P$ 를 몰라도, 로그 미분법(Log-derivative Trick)을 통해 누적 보상의 기댓값 경사 $\nabla_\theta J(\theta)$ 를 에이전트의 경험 샘플만으로 계산할 수 있습니다.</li>
     </ul>
   </li>
   <li><strong>인과율 (Causality):</strong>
     <ul>
-      <li>과거의 보상은 현재 행동의 평가와 무관합니다. 미래 보상 <em>G</em><sub><em>t</em></sub>만을 가중치로 삼음으로써 분산을 크게 줄일 수 있습니다.</li>
+      <li>과거의 보상은 현재 행동의 평가와 무관합니다. 미래 보상 $G_t$ 만을 가중치로 삼음으로써 분산을 크게 줄일 수 있습니다.</li>
     </ul>
   </li>
   <li><strong>베이스라인과 무편향성:</strong>
     <ul>
-      <li>행동에 무관한 상태 기준 함수 <em>b</em>(<em>s</em>)를 차감해도 기댓값은 정확히 0이 되어 편향을 유발하지 않으며, 분산만을 효과적으로 감소시킵니다.</li>
+      <li>행동에 무관한 상태 기준 함수 $b(s)$ 를 차감해도 기댓값은 정확히 0이 되어 편향을 유발하지 않으며, 분산만을 효과적으로 감소시킵니다.</li>
     </ul>
   </li>
   <li><strong>행위자-비평자(Actor-Critic)의 실시간성:</strong>
     <ul>
-      <li>비평자가 가치 함수를 TD법으로 학습하고, 행위자가 TD 오차 <em>δ</em><sub><em>t</em></sub>를 받아 매 스텝마다 실시간으로 정책을 진화시킵니다.</li>
+      <li>비평자가 가치 함수를 TD법으로 학습하고, 행위자가 TD 오차 $\delta_t$ 를 받아 매 스텝마다 실시간으로 정책을 진화시킵니다.</li>
     </ul>
   </li>
 </ol>

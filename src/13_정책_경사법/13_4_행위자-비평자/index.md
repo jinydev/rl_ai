@@ -27,57 +27,72 @@ title: "13.4 행위자-비평자"
 
 13.3절에서 도출한 '베이스라인을 적용한 정책 경사 수식'을 다시 확인해 보겠습니다.
 
-> ### (식 13.12) 베이스라인 적용 정책 경사
-> ∇<sub>*θ*</sub> *J*(*θ*) = E<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ ∑<sub>*t*=0</sub><sup>*T*</sup> (*G*<sub>*t*</sub> − *b*(*S*<sub>*t*</sub>)) ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
+$$
+\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T (G_t - b(S_t)) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]
+$$
 
-(식 13.12)에서 베이스라인 *b*(*S*<sub>*t*</sub>)로 신경망 파라미터 *w*로 모델링된 상태 가치 함수 *V*<sub>*w*</sub>(*S*<sub>*t*</sub>)를 채택합니다.
+[식 13.12] 베이스라인 적용 정책 경사
 
-> ∇<sub>*θ*</sub> *J*(*θ*) = E<sub>*τ* ~ *π*<sub>*θ*</sub></sub> [ ∑<sub>*t*=0</sub><sup>*T*</sup> (*G*<sub>*t*</sub> − *V*<sub>*w*</sub>(*S*<sub>*t*</sub>)) ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
+[식 13.12]에서 베이스라인 $b(S_t)$ 로 신경망 파라미터 $w$ 로 모델링된 상태 가치 함수 $V_w(S_t)$ 를 채택합니다.
+
+$$
+\nabla_\theta J(\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_{t=0}^T (G_t - V_w(S_t)) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]
+$$
 
 ### 몬테카를로 반환값 *G*<sub>*t*</sub>를 TD 타깃으로 대체하기
 
-여전히 치명적인 약점이 하나 남아 있습니다. 바로 가중치에 들어 있는 **수익 *G*<sub>*t*</sub>**입니다.  
-*G*<sub>*t*</sub> = *R*<sub>*t*</sub> + *γ* *R*<sub>*t*+1</sub> + ... + *γ*<sup>*T*−*t*</sup> *R*<sub>*T*</sub>는 에피소드가 완전히 끝날 때까지 기다려야만 얻을 수 있는 몬테카를로 샘플입니다. 따라서 에피소드가 끝나기 전까지는 정책 신경망도, 가치 신경망도 단 한 걸음조차 갱신할 수 없습니다.
+여전히 치명적인 약점이 하나 남아 있습니다. 바로 가중치에 들어 있는 **수익 $G_t$** 입니다.  
+$G_t = R_t + \gamma R_{t+1} + \dots + \gamma^{T-t} R_T$ 는 에피소드가 완전히 끝날 때까지 기다려야만 얻을 수 있는 몬테카를로 샘플입니다. 따라서 에피소드가 끝나기 전까지는 정책 신경망도, 가치 신경망도 단 한 걸음조차 갱신할 수 없습니다.
 
 ![그림 13-10](./img/fig_10_10.jpg)
 
 여기서 10장에서 배운 **시간차(TD, Temporal Difference) 학습법**의 지혜가 빛을 발합니다!  
-수익 *G*<sub>*t*</sub>의 기댓값은 정의상 상태 행동 가치 *Q*(*S*<sub>*t*</sub>, *A*<sub>*t*</sub>)이며, 1단계 벨만 방정식에 따라 다음과 같이 1스텝 보상과 다음 상태 가치로 근사할 수 있습니다:
+수익 $G_t$ 의 기댓값은 정의상 상태 행동 가치 $Q(S_t, A_t)$ 이며, 1단계 벨만 방정식에 따라 다음과 같이 1스텝 보상과 다음 상태 가치로 근사할 수 있습니다:
 
-> *G*<sub>*t*</sub> ≈ *R*<sub>*t*</sub> + *γ* *V*<sub>*w*</sub>(*S*<sub>*t*+1</sub>)
+$$
+G_t \approx R_t + \gamma V_w(S_{t+1})
+$$
 
-이 1스텝 TD 타깃을 *G*<sub>*t*</sub> 자리에 과감히 대입하면, 역사적인 **Actor-Critic 정책 경사 정리**가 완성됩니다!
+이 1스텝 TD 타깃을 $G_t$ 자리에 과감히 대입하면, 역사적인 **Actor-Critic 정책 경사 정리**가 완성됩니다!
 
-> ### (식 13.13) Actor-Critic 정책 경사 목적식
-> ∇<sub>*θ*</sub> *J*(*θ*) = E [ ∑<sub>*t*=0</sub><sup>*T*</sup> (*R*<sub>*t*</sub> + *γ* *V*<sub>*w*</sub>(*S*<sub>*t*+1</sub>) − *V*<sub>*w*</sub>(*S*<sub>*t*</sub>)) ∇<sub>*θ*</sub> log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) ]
+$$
+\nabla_\theta J(\theta) = \mathbb{E} \left[ \sum_{t=0}^T (R_t + \gamma V_w(S_{t+1}) - V_w(S_t)) \nabla_\theta \log \pi_\theta(A_t \mid S_t) \right]
+$$
+
+[식 13.13] Actor-Critic 정책 경사 목적식
 
 여기서 괄호 안의 핵심 가중치를 자세히 보십시오:
 
-> ### (식 13.14) TD 오차(Temporal Difference Error, *δ*<sub>*t*</sub>)
-> *δ*<sub>*t*</sub> = *R*<sub>*t*</sub> + *γ* *V*<sub>*w*</sub>(*S*<sub>*t*+1</sub>) − *V*<sub>*w*</sub>(*S*<sub>*t*</sub>)
+$$
+\delta_t = R_t + \gamma V_w(S_{t+1}) - V_w(S_t)
+$$
 
-*δ*<sub>*t*</sub>는 바로 **1단계 시간차 오차(TD Error)**입니다!  
-- *R*<sub>*t*</sub> + *γ* *V*<sub>*w*</sub>(*S*<sub>*t*+1</sub>): 행동 *A*<sub>*t*</sub>를 직접 실행해본 후 실제로 관측된 '현실적인 가치'
-- *V*<sub>*w*</sub>(*S*<sub>*t*</sub>): 행동을 취하기 전에 상태 *S*<sub>*t*</sub>에서 평균적으로 예상했던 '기대 가치'
+[식 13.14] TD 오차(Temporal Difference Error, $\delta_t$)
 
-따라서 *δ*<sub>*t*</sub>는 **"예상보다 얼마나 더 좋았는가(이점, Advantage)"**를 정확히 대변하는 완벽한 성적표가 됩니다!
+$\delta_t$ 는 바로 **1단계 시간차 오차(TD Error)** 입니다!  
+- $R_t + \gamma V_w(S_{t+1})$: 행동 $A_t$ 를 직접 실행해본 후 실제로 관측된 '현실적인 가치'
+- $V_w(S_t)$: 행동을 취하기 전에 상태 $S_t$ 에서 평균적으로 예상했던 '기대 가치'
 
-**그림 13-10** 행위자 도로시가 행동을 탐색하고 비평자 지니가 TD 오차 *δ*<sub>*t*</sub>로 성적을 매겨 매 스텝 실시간 피드백을 전달하는 Actor-Critic 협력 순환
+따라서 $\delta_t$ 는 **"예상보다 얼마나 더 좋았는가(이점, Advantage)"** 를 정확히 대변하는 완벽한 성적표가 됩니다!
+
+**그림 13-10** 행위자 도로시가 행동을 탐색하고 비평자 지니가 TD 오차 $\delta_t$ 로 성적을 매겨 매 스텝 실시간 피드백을 전달하는 Actor-Critic 협력 순환
 ![그림 13-10 행위자 도로시와 비평자 지니의 2인 3각 Actor-Critic 협력 순환도](./img/02_actor_critic_duet.jpg)
 
 ### 행위자와 비평자의 손실 함수 구성
 
 Actor-Critic에서는 두 개의 신경망이 서로 다른 손실 함수를 최소화하며 병렬로 동시에 진화합니다:
 
-> ### (식 13.15) 행위자(Actor)와 비평자(Critic)의 손실 함수
-> **행위자 손실 (대리 손실):**  
-> *L*<sub>*π*</sub>(*θ*) = − log *π*<sub>*θ*</sub>(*A*<sub>*t*</sub> | *S*<sub>*t*</sub>) · *δ*<sub>*t*</sub>
->
-> **비평자 손실 (평균 제곱 오차):**  
-> *L*<sub>*v*</sub>(*w*) = 1/2 (*V*<sub>*w*</sub>(*S*<sub>*t*</sub>) − (*R*<sub>*t*</sub> + *γ* *V*<sub>*w*</sub>(*S*<sub>*t*+1</sub>))<sup>2</sup>
+$$
+\begin{aligned}
+L_\pi(\theta) &= - \log \pi_\theta(A_t \mid S_t) \cdot \delta_t \quad (\text{행위자 대리 손실}) \\
+L_v(w) &= \frac{1}{2} \left( V_w(S_t) - (R_t + \gamma V_w(S_{t+1})) \right)^2 \quad (\text{비평자 평균 제곱 오차})
+\end{aligned}
+$$
 
-- **비평자(Critic, *V*<sub>*w*</sub>):** TD 타깃과 자신의 예측값 *V*<sub>*w*</sub>(*S*<sub>*t*</sub>) 사이의 평균 제곱 오차(MSE)를 최소화하여 상태 평가의 정확도를 끊임없이 끌어올립니다.
-- **행위자(Actor, *π*<sub>*θ*</sub>):** 비평자가 매겨준 점수 *δ*<sub>*t*</sub>가 양수이면(*δ*<sub>*t*</sub> > 0, 기대 이상!) 해당 행동의 선택 확률을 높이고, 음수이면(*δ*<sub>*t*</sub> < 0, 기대 이하!) 선택 확률을 낮춥니다.
+[식 13.15] 행위자(Actor)와 비평자(Critic)의 손실 함수
+
+- **비평자(Critic, $V_w$):** TD 타깃과 자신의 예측값 $V_w(S_t)$ 사이의 평균 제곱 오차(MSE)를 최소화하여 상태 평가의 정확도를 끊임없이 끌어올립니다.
+- **행위자(Actor, $\pi_\theta$):** 비평자가 매겨준 점수 $\delta_t$ 가 양수이면($\delta_t > 0$, 기대 이상!) 해당 행동의 선택 확률을 높이고, 음수이면($\delta_t < 0$, 기대 이하!) 선택 확률을 낮춥니다.
 
 ---
 

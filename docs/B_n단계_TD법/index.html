@@ -518,7 +518,7 @@
 <img src="./img/jiny_app_b_nstep_td.png" alt="n단계 TD 인트로" /></p>
 
 <blockquote>
-  <p>바로 눈앞의 1단계 보상만을 관찰하던 기본 TD법과, 에피소드가 완전히 끝날 때까지 기다려야 했던 몬테카를로법(MC) 사이의 거대한 간극을 잇는 <strong>n단계 TD법</strong>과 <strong>TD(<em>λ</em>)</strong>의 원리를 탐구합니다. 편향(Bias)과 분산(Variance) 사이의 황금 타협점을 찾고, 모든 n단계의 통찰을 기하학적으로 통합하는 람다 수익(λ-return)의 수학적 아름다움을 도로시, 지니 조교와 함께 파헤쳐봅시다!</p>
+  <p>바로 눈앞의 1단계 보상만을 관찰하던 기본 TD법과, 에피소드가 완전히 끝날 때까지 기다려야 했던 몬테카를로법(MC) 사이의 거대한 간극을 잇는 <strong>n단계 TD법</strong>과 <strong>TD($\lambda$)</strong> 의 원리를 탐구합니다. 편향(Bias)과 분산(Variance) 사이의 황금 타협점을 찾고, 모든 $n$ 단계의 통찰을 기하학적으로 통합하는 람다 수익($\lambda$-return)의 수학적 아름다움을 도로시, 지니 조교와 함께 파헤쳐봅시다!</p>
 </blockquote>
 
 <hr />
@@ -527,98 +527,92 @@
 
 <p>7장에서 배운 1단계 시간차 학습(1-step TD)은 바로 다음 1단계의 실제 보상과 다음 상태 가치 추정치만을 이용하여 즉각적으로 가치를 갱신했습니다:</p>
 
-<blockquote>
-  <p><em>G</em><sub><em>t</em></sub><sup>(1)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>)</p>
-</blockquote>
+\[G_t^{(1)} = R_t + \gamma V_\pi(S_{t+1})\]
 
 <p>반면 5장에서 배운 몬테카를로법(MC)은 에피소드가 완전히 끝날 때까지의 모든 미래 보상을 남김없이 더한 전체 수익을 사용했습니다:</p>
 
-<blockquote>
-  <p><em>G</em><sub><em>t</em></sub><sup>(∞)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em>+2</sub> + … + <em>γ</em><sup><em>T</em>−<em>t</em></sup> <em>R</em><sub><em>T</em></sub></p>
-</blockquote>
+\[G_t^{(\infty)} = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \dots + \gamma^{T-t} R_T\]
 
 <p>그렇다면 왜 우리는 극단적으로 1단계만 보거나, 아니면 끝까지 다 보아야만 할까요? 2단계, 3단계, 5단계 앞까지만 실제로 경험해보고 그 이후를 가치 함수로 추정하는 ‘중간 다리’는 없을까요?</p>
 
 <p>이 자연스러운 질문에서 출발한 것이 바로 <strong>n단계 TD법(n-step TD Learning)</strong>입니다.</p>
 
-<p><strong>그림 B-1</strong> 1단계 TD의 높은 편향과 몬테카를로의 높은 분산 사이에서 가장 낮은 오차를 달성하는 n단계 TD법과 TD(<em>λ</em>)의 연속 스펙트럼
-<img src="./img/02_n_step_td_and_td_lambda.jpg" alt="그림 B-1 1단계 TD와 몬테카를로 사이의 편향-분산 스펙트럼을 잇는 n단계 TD법과 TD(λ)의 최적 균형점" /></p>
+<p><strong>그림 B-1</strong> 1단계 TD의 높은 편향과 몬테카를로의 높은 분산 사이에서 가장 낮은 오차를 달성하는 n단계 TD법과 TD($\lambda$) 의 연속 스펙트럼
+<img src="./img/02_n_step_td_and_td_lambda.jpg" alt="그림 B-1 1단계 TD와 몬테카를로 사이의 편향-분산 스펙트럼을 잇는 n단계 TD법과 TD($\lambda$) 의 최적 균형점" /></p>
 
 <hr />
 
 <h2 id="b2-n단계-수익n-step-return과-가치-갱신">B.2 n단계 수익(n-step Return)과 가치 갱신</h2>
 
-<p><em>n</em>단계 TD법에서는 현재 시점 <em>t</em>부터 앞으로 <em>n</em>스텝 동안 실제로 발생한 보상들을 할인하여 직접 누적하고, <em>n</em>번째 도달한 미래 상태 <em>S</em><sub><em>t</em>+<em>n</em></sub>의 가치만을 신경망(또는 테이블) 가치 함수로 부트스트랩합니다.</p>
+<p>$n$ 단계 TD법에서는 현재 시점 $t$ 부터 앞으로 $n$ 스텝 동안 실제로 발생한 보상들을 할인하여 직접 누적하고, $n$ 번째 도달한 미래 상태 $S_{t+n}$ 의 가치만을 신경망(또는 테이블) 가치 함수로 부트스트랩합니다.</p>
 
-<blockquote>
-  <h3 id="식-b1-n단계-수익-n-step-return">(식 B.1) n단계 수익 (n-step Return)</h3>
-  <p><em>G</em><sub><em>t</em></sub><sup>(<em>n</em>)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em>+2</sub> + … + <em>γ</em><sup><em>n</em>−1</sup> <em>R</em><sub><em>t</em>+<em>n</em>−1</sub> + <em>γ</em><sup><em>n</em></sup> <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+<em>n</em></sub>)</p>
-</blockquote>
+\[G_t^{(n)} = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \dots + \gamma^{n-1} R_{t+n-1} + \gamma^n V_\pi(S_{t+n})\]
+
+<p>[식 B.1] n단계 수익 (n-step Return)</p>
 
 <p><em>n</em>의 크기에 따라 수익이 어떻게 확장되는지 살펴보겠습니다:</p>
 <ul>
-  <li><strong>1단계 (<em>n</em> = 1):</strong> <em>G</em><sub><em>t</em></sub><sup>(1)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+1</sub>) → <strong>표준 1-step TD</strong></li>
-  <li><strong>2단계 (<em>n</em> = 2):</strong> <em>G</em><sub><em>t</em></sub><sup>(2)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+2</sub>)</li>
-  <li><strong>3단계 (<em>n</em> = 3):</strong> <em>G</em><sub><em>t</em></sub><sup>(3)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em>+2</sub> + <em>γ</em><sup>3</sup> <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em>+3</sub>)</li>
-  <li><strong>무한대 (<em>n</em> = ∞):</strong> <em>G</em><sub><em>t</em></sub><sup>(∞)</sup> = <em>R</em><sub><em>t</em></sub> + <em>γ</em> <em>R</em><sub><em>t</em>+1</sub> + <em>γ</em><sup>2</sup> <em>R</em><sub><em>t</em>+2</sub> + … → <strong>몬테카를로법 (MC)</strong></li>
+  <li><strong>1단계 ($n = 1$):</strong> $G_t^{(1)} = R_t + \gamma V_\pi(S_{t+1}) \rightarrow$ <strong>표준 1-step TD</strong></li>
+  <li><strong>2단계 ($n = 2$):</strong> $G_t^{(2)} = R_t + \gamma R_{t+1} + \gamma^2 V_\pi(S_{t+2})$</li>
+  <li><strong>3단계 ($n = 3$):</strong> $G_t^{(3)} = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \gamma^3 V_\pi(S_{t+3})$</li>
+  <li><strong>무한대 ($n = \infty$):</strong> $G_t^{(\infty)} = R_t + \gamma R_{t+1} + \gamma^2 R_{t+2} + \dots \rightarrow$ <strong>몬테카를로법 (MC)</strong></li>
 </ul>
 
 <p>이 <em>n</em>단계 수익을 목표치(TD Target)로 삼아 가치 함수를 갱신합니다:</p>
 
-<blockquote>
-  <h3 id="식-b2-n단계-td-가치-함수-갱신식">(식 B.2) n단계 TD 가치 함수 갱신식</h3>
-  <p><em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) ← <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) + <em>α</em> ( <em>G</em><sub><em>t</em></sub><sup>(<em>n</em>)</sup> − <em>V</em><sub><em>π</em></sub>(<em>S</em><sub><em>t</em></sub>) )</p>
-</blockquote>
+\[V_\pi(S_t) \leftarrow V_\pi(S_t) + \alpha \left( G_t^{(n)} - V_\pi(S_t) \right)\]
+
+<p>[식 B.2] n단계 TD 가치 함수 갱신식</p>
 
 <h3 id="편향과-분산의-트레이드오프-bias-variance-tradeoff">편향과 분산의 트레이드오프 (Bias-Variance Tradeoff)</h3>
 
 <ul>
-  <li><strong>1단계 TD (<em>n</em> = 1):</strong><br />
-단 1스텝의 보상만 보므로 확률적 변동(분산)은 매우 작지만, 아직 부정확한 초기 가치 추정치 <em>V</em>(<em>S</em><sub><em>t</em>+1</sub>)에 전적으로 의존하므로 <strong>편향(Bias)이 큽니다</strong>.</li>
-  <li><strong>몬테카를로 (<em>n</em> = ∞):</strong><br />
+  <li><strong>1단계 TD ($n = 1$):</strong><br />
+단 1스텝의 보상만 보므로 확률적 변동(분산)은 매우 작지만, 아직 부정확한 초기 가치 추정치 $V(S_{t+1})$ 에 전적으로 의존하므로 <strong>편향(Bias)이 큽니다</strong>.</li>
+  <li><strong>몬테카를로 ($n = \infty$):</strong><br />
 가치 함수의 추정치를 전혀 빌려 쓰지 않고 오직 실제 보상만으로 계산하므로 편향은 0(Unbiased)이지만, 수많은 확률적 전이가 누적되어 <strong>분산(Variance)이 극도로 치솟습니다</strong>.</li>
-  <li><strong>최적의 n (<em>n</em> = 3 ~ 5):</strong><br />
-수많은 실제 실험에서 <em>n</em>을 3에서 5 정도로 설정했을 때, 편향과 분산이 절묘하게 상쇄되어 1-step TD나 순수 MC보다 <strong>훨씬 빠르고 안정적으로 참 가치에 수렴</strong>하는 현상이 확인됩니다. (14.3절의 레인보우 DQN에서도 다중 스텝 학습 <em>n</em>=3이 필수 요소로 채택된 이유가 바로 여기에 있습니다!)</li>
+  <li><strong>최적의 n ($n = 3 \sim 5$):</strong><br />
+수많은 실제 실험에서 $n$ 을 3에서 5 정도로 설정했을 때, 편향과 분산이 절묘하게 상쇄되어 1-step TD나 순수 MC보다 <strong>훨씬 빠르고 안정적으로 참 가치에 수렴</strong>하는 현상이 확인됩니다. (14.3절의 레인보우 DQN에서도 다중 스텝 학습 $n = 3$ 이 필수 요소로 채택된 이유가 바로 여기에 있습니다!)</li>
 </ul>
 
 <hr />
 
-<h2 id="b3-tdλ-모든-n단계-수익의-기하학적-통합">B.3 TD(λ): 모든 n단계 수익의 기하학적 통합</h2>
+<h2 id="b3-tdlambda-모든-n단계-수익의-기하학적-통합">B.3 TD($\lambda$): 모든 n단계 수익의 기하학적 통합</h2>
 
-<p>그렇다면 현실의 복잡한 문제에서 “최적의 <em>n</em>은 3인가, 4인가, 아니면 7인가?”를 두고 끊임없이 고민해야 할까요?<br />
-강화학습의 거장 리처드 서튼(Richard Sutton) 교수는 특정한 <em>n</em> 하나만을 편식하지 않고, <strong>모든 <em>n</em>단계 수익들을 기하급수적으로 감쇠하는 가중치로 부드럽게 섞어 쓰는 천재적인 아이디어인 TD(<em>λ</em>)</strong>를 제안했습니다!</p>
+<p>그렇다면 현실의 복잡한 문제에서 “최적의 $n$ 은 3인가, 4인가, 아니면 7인가?”를 두고 끊임없이 고민해야 할까요?<br />
+강화학습의 거장 리처드 서튼(Richard Sutton) 교수는 특정한 $n$ 하나만을 편식하지 않고, <strong>모든 $n$ 단계 수익들을 기하급수적으로 감쇠하는 가중치로 부드럽게 섞어 쓰는 천재적인 아이디어인 TD($\lambda$)</strong> 를 제안했습니다!</p>
 
-<blockquote>
-  <h3 id="식-b3-λ-수익-the-λ-return">(식 B.3) λ-수익 (The λ-return)</h3>
-  <p><em>G</em><sub><em>t</em></sub><sup><em>λ</em></sup> = (1 − <em>λ</em>) ∑<sub><em>n</em>=1</sub><sup>∞</sup> <em>λ</em><sup><em>n</em>−1</sup> <em>G</em><sub><em>t</em></sub><sup>(<em>n</em>)</sup><br />
-= (1 − <em>λ</em>) <em>G</em><sub><em>t</em></sub><sup>(1)</sup> + (1 − <em>λ</em>)<em>λ</em> <em>G</em><sub><em>t</em></sub><sup>(2)</sup> + (1 − <em>λ</em>)<em>λ</em><sup>2</sup> <em>G</em><sub><em>t</em></sub><sup>(3)</sup> + …</p>
-</blockquote>
+\[\begin{aligned}
+G_t^\lambda &amp;= (1 - \lambda) \sum_{n=1}^\infty \lambda^{n-1} G_t^{(n)} \\
+&amp;= (1 - \lambda) G_t^{(1)} + (1 - \lambda)\lambda G_t^{(2)} + (1 - \lambda)\lambda^2 G_t^{(3)} + \dots
+\end{aligned}\]
 
-<p>여기서 감쇠 계수 <em>λ</em>는 0과 1 사이의 실수(0 ≤ <em>λ</em> ≤ 1)입니다.<br />
+<p>[식 B.3] $\lambda$-수익 (The $\lambda$-return)</p>
+
+<p>여기서 감쇠 계수 $\lambda$ 는 0과 1 사이의 실수($0 \le \lambda \le 1$)입니다.<br />
 가중치들의 총합을 무한등비급수 공식으로 계산해 보면 정확하게 <strong>1.0</strong>이 됨을 쉽게 증명할 수 있습니다:</p>
 
-<blockquote>
-  <p>(1 − <em>λ</em>) + (1 − <em>λ</em>)<em>λ</em> + (1 − <em>λ</em>)<em>λ</em><sup>2</sup> + …<br />
-= (1 − <em>λ</em>) (1 + <em>λ</em> + <em>λ</em><sup>2</sup> + …)<br />
-= (1 − <em>λ</em>) · 1 / (1 − <em>λ</em>) = <strong>1</strong></p>
-</blockquote>
+\[\begin{aligned}
+(1 - \lambda) + (1 - \lambda)\lambda + (1 - \lambda)\lambda^2 + \dots &amp;= (1 - \lambda) (1 + \lambda + \lambda^2 + \dots) \\
+&amp;= (1 - \lambda) \cdot \frac{1}{1 - \lambda} = 1
+\end{aligned}\]
 
-<h3 id="파라미터-λ에-따른-거동">파라미터 <em>λ</em>에 따른 거동</h3>
+<h3 id="파라미터-lambda-에-따른-거동">파라미터 $\lambda$ 에 따른 거동</h3>
 
 <ul>
-  <li>** <em>λ</em> = 0 일 때:**<br />
-첫 번째 항의 가중치만 (1 − 0) · 0<sup>0</sup> = 1이 되고 나머지 항은 모두 0이 됩니다. 즉, 정확히 <strong>1-step TD</strong>와 일치합니다!</li>
-  <li>** <em>λ</em> = 1 일 때:**<br />
+  <li><strong>$\lambda = 0$ 일 때:</strong><br />
+첫 번째 항의 가중치만 $(1 - 0) \cdot 0^0 = 1$ 이 되고 나머지 항은 모두 0이 됩니다. 즉, 정확히 <strong>1-step TD</strong>와 일치합니다!</li>
+  <li><strong>$\lambda = 1$ 일 때:</strong><br />
 모든 중간 항들이 소거되고 에피소드 끝의 전체 누적 수익만을 반영하는 <strong>순수 몬테카를로법(MC)</strong>과 정확히 일치합니다!</li>
-  <li>** 0 &lt; <em>λ</em> &lt; 1 일 때:**<br />
+  <li><strong>$0 &lt; \lambda &lt; 1$ 일 때:</strong><br />
 가까운 미래의 TD 수익에는 큰 가중치를, 먼 미래의 수익에는 지수적으로 줄어드는 작은 가중치를 부여하여, 편향과 분산이 가장 완벽하게 조화된 최상의 학습 효율을 발휘합니다.</li>
 </ul>
 
 <blockquote>
   <p>[!NOTE]
 <strong>자격 흔적 (Eligibility Traces):</strong><br />
-(식 B.3)의 람다 수익은 에피소드가 끝나야만 과거의 모든 <em>n</em>단계 수익을 계산할 수 있는 ‘전방향 관점(Forward View)’입니다.<br />
-하지만 놀랍게도 과거에 방문했던 상태들에 감쇠하는 흔적(Trace)을 남겨두는 <strong>자격 흔적(Eligibility Trace, <em>e</em><sub><em>t</em></sub>(<em>s</em>))</strong> 메커니즘을 사용하면, 에피소드 종료를 기다릴 필요 없이 <strong>매 타임스텝마다 즉각적으로 TD(<em>λ</em>)와 수학적으로 100% 동일한 갱신</strong>을 수행하는 ‘후방향 관점(Backward View)’을 구현할 수 있습니다!</p>
+[식 B.3]의 람다 수익은 에피소드가 끝나야만 과거의 모든 $n$ 단계 수익을 계산할 수 있는 ‘전방향 관점(Forward View)’입니다.<br />
+하지만 놀랍게도 과거에 방문했던 상태들에 감쇠하는 흔적(Trace)을 남겨두는 <strong>자격 흔적(Eligibility Trace, $e_t(s)$)</strong> 메커니즘을 사용하면, 에피소드 종료를 기다릴 필요 없이 <strong>매 타임스텝마다 즉각적으로 TD($\lambda$) 와 수학적으로 100% 동일한 갱신</strong>을 수행하는 ‘후방향 관점(Backward View)’을 구현할 수 있습니다!</p>
 </blockquote>
 
 

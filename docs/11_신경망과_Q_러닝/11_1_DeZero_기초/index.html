@@ -706,7 +706,7 @@ DeZero는 파이토치와 API 설계 철학이 99% 동일합니다:</p>
 <p>이 함수를 <em>x</em>로 미분하면 도함수는 다음과 같습니다:</p>
 
 <blockquote>
-  <h3 id="dy--dx--6x"><strong>d<em>y</em> / d<em>x</em> = 6<em>x</em></strong></h3>
+  <p><strong>d<em>y</em> / d<em>x</em> = 6<em>x</em></strong></p>
 </blockquote>
 
 <p><img src="./img/ch11_1_07_derivative_tangent_slope.png" alt="도함수와 접선의 기울기" /></p>
@@ -750,7 +750,7 @@ DeZero는 파이토치와 API 설계 철학이 99% 동일합니다:</p>
 <p>길이가 같은 두 벡터 <strong>a</strong> = (<em>a</em><sub>1</sub>, …, <em>a</em><sub><em>n</em></sub>)과 <strong>b</strong> = (<em>b</em><sub>1</sub>, …, <em>b</em><sub><em>n</em></sub>)의 내적은 대응하는 원소끼리의 곱의 총합입니다:</p>
 
 <blockquote>
-  <h3 id="a--b--a1b1--a2b2----anbn--식-111-벡터의-내적"><strong><em>a</em> · <em>b</em> = <em>a</em><sub>1</sub><em>b</em><sub>1</sub> + <em>a</em><sub>2</sub><em>b</em><sub>2</sub> + … + <em>a</em><sub><em>n</em></sub><em>b</em><sub><em>n</em></sub></strong>      <em>(식 11.1: 벡터의 내적)</em></h3>
+  <p><strong><em>a</em> · <em>b</em> = <em>a</em><sub>1</sub><em>b</em><sub>1</sub> + <em>a</em><sub>2</sub><em>b</em><sub>2</sub> + … + <em>a</em><sub><em>n</em></sub><em>b</em><sub><em>n</em></sub></strong>      <em>(식 11.1: 벡터의 내적)</em></p>
 </blockquote>
 
 <p><img src="./img/ch11_1_09_vector_dot_product.png" alt="벡터 내적 연산 원리" /></p>
@@ -766,9 +766,7 @@ DeZero는 파이토치와 API 설계 철학이 99% 동일합니다:</p>
 
 <p>행렬 곱이 유효하게 성립하려면 <strong>왼쪽 행렬의 열 수와 오른쪽 행렬의 행 수가 반드시 일치</strong>해야 합니다:</p>
 
-<blockquote>
-  <h3 id="행렬-a-n--k--행렬-b-k--m--행렬-c-n--m"><strong>행렬 A (<em>N</em> × <em>K</em>) × 행렬 B (<em>K</em> × <em>M</em>) = 행렬 C (<em>N</em> × <em>M</em>)</strong></h3>
-</blockquote>
+\[\text{행렬 A } (N \times K) \times \text{행렬 B } (K \times M) = \text{행렬 C } (N \times M)\]
 
 <p><img src="./img/ch11_1_10_matrix_multiplication_shape_rule.png" alt="행렬 곱 차원 형상 일치 규칙" /></p>
 
@@ -804,7 +802,7 @@ DeZero는 파이토치와 API 설계 철학이 99% 동일합니다:</p>
 <p>이제 DeZero의 자동 미분을 이용해 유명한 최적화 벤치마크 문제인 <strong>로젠브록(Rosenbrock) 바나나 함수</strong>의 최솟값을 찾아봅시다:</p>
 
 <blockquote>
-  <h3 id="y--100--x1---x022--x0---12--식-112-로젠브록-함수"><strong><em>y</em> = 100 · (<em>x</em><sub>1</sub> - <em>x</em><sub>0</sub><sup>2</sup>)<sup>2</sup> + (<em>x</em><sub>0</sub> - 1)<sup>2</sup></strong>      <em>(식 11.2: 로젠브록 함수)</em></h3>
+  <p><strong><em>y</em> = 100 · (<em>x</em><sub>1</sub> - <em>x</em><sub>0</sub><sup>2</sup>)<sup>2</sup> + (<em>x</em><sub>0</sub> - 1)<sup>2</sup></strong>      <em>(식 11.2: 로젠브록 함수)</em></p>
 </blockquote>
 
 <p>이 함수는 완만한 곡면 골짜기를 이루고 있어 최솟값을 찾기가 까다롭기로 유명합니다. 이론적인 정답 최솟값은 (<em>x</em><sub>0</sub>, <em>x</em><sub>1</sub>) = <strong>(1.0, 1.0)</strong>일 때 <em>y</em> = 0입니다.</p>
@@ -843,9 +841,7 @@ DeZero는 파이토치와 API 설계 철학이 99% 동일합니다:</p>
 
 <p>함숫값을 최소화하려면 <strong>기울기의 정반대 방향(-grad)</strong>으로 변수들을 조금씩 이동시키면 됩니다:</p>
 
-<blockquote>
-  <h3 id="x--x---lr--y--x"><strong><em>x</em> ← <em>x</em> - <em>lr</em> · (∂<em>y</em> / ∂<em>x</em>)</strong></h3>
-</blockquote>
+\[x \leftarrow x - \text{lr} \cdot \frac{\partial y}{\partial x}\]
 
 <p><img src="./img/ch11_1_12_gradient_descent_valley_steps.png" alt="경사 하강법 골짜기 하강 스텝" /></p>
 

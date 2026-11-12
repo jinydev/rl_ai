@@ -518,7 +518,7 @@
 <img src="./img/jiny_app_a_off_policy_mc.png" alt="오프-정책 MC 인트로" /></p>
 
 <blockquote>
-  <p>행동 정책(Behavior Policy <em>b</em>)을 통해 환경을 마음껏 탐색하며 수집한 경험 데이터로부터, 우리가 진정으로 도달하고자 하는 최적 목표 정책(Target Policy <em>π</em>)의 가치를 정확하게 학습하는 <strong>오프-정책 몬테카를로법</strong>의 이론과 구현을 다룹니다. 궤적 확률 비에서 환경 전이 확률이 마법처럼 소거되는 수학적 증명과 중요도 샘플링(Importance Sampling)의 역방향 누적 알고리즘을 도로시, 지니 조교와 함께 완성해봅시다!</p>
+  <p>행동 정책(Behavior Policy $b$)을 통해 환경을 마음껏 탐색하며 수집한 경험 데이터로부터, 우리가 진정으로 도달하고자 하는 최적 목표 정책(Target Policy $\pi$)의 가치를 정확하게 학습하는 <strong>오프-정책 몬테카를로법</strong>의 이론과 구현을 다룹니다. 궤적 확률 비에서 환경 전이 확률이 마법처럼 소거되는 수학적 증명과 중요도 샘플링(Importance Sampling)의 역방향 누적 알고리즘을 도로시, 지니 조교와 함께 완성해봅시다!</p>
 </blockquote>
 
 <hr />
@@ -527,98 +527,76 @@
 
 <h3 id="1-온-정책과-오프-정책의-본질적-차이">1) 온-정책과 오프-정책의 본질적 차이</h3>
 
-<p>온-정책(On-Policy) 몬테카를로법에서는 평가하고자 하는 대상 정책 <em>π</em>에 따라 에이전트가 직접 행동하고, 그 과정에서 얻은 수익 샘플들의 산술 평균을 구했습니다:</p>
+<p>온-정책(On-Policy) 몬테카를로법에서는 평가하고자 하는 대상 정책 $\pi$ 에 따라 에이전트가 직접 행동하고, 그 과정에서 얻은 수익 샘플들의 산술 평균을 구했습니다:</p>
 
-<blockquote>
-  <p><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) = E<sub><em>π</em></sub> [ <em>G</em> | <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>a</em> ]<br />
-<em>Q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) ≈ ( <em>G</em><sup>(1)</sup> + <em>G</em><sup>(2)</sup> + … + <em>G</em><sup>(<em>n</em>)</sup> ) / <em>n</em>  (단, <em>G</em><sup>(<em>i</em>)</sup> ~ <em>π</em>)</p>
-</blockquote>
+\[\begin{aligned}
+q_\pi(s, a) &amp;= \mathbb{E}_\pi [ G_t \mid S_t = s, A_t = a ] \\
+Q_\pi(s, a) &amp;\approx \frac{1}{n} \sum_{i=1}^n G^{(i)} \quad (G^{(i)} \sim \pi)
+\end{aligned}\]
 
 <p>하지만 온-정책 방식은 <strong>“탐색(Exploration)을 위해 무작위성을 유지해야 하면서도, 동시에 최적 행동(Greedy)을 찾아야 한다”</strong>는 모순에 부딪힙니다.</p>
 
 <p>반면 <strong>오프-정책(Off-Policy)</strong> 방식은 역할을 둘로 명확히 분리합니다:</p>
 <ol>
-  <li><strong>행동 정책 (Behavior Policy, <em>b</em>):</strong> 온갖 모험과 무작위 탐색을 감행하며 다양한 경험 데이터를 수집하는 정책</li>
-  <li><strong>대상 정책 (Target Policy, <em>π</em>):</strong> 행동 정책이 가져온 데이터를 바탕으로 100% 탐욕적(Greedy)인 최적의 길만을 날카롭게 벼려내는 정책</li>
+  <li><strong>행동 정책 (Behavior Policy, $b$):</strong> 온갖 모험과 무작위 탐색을 감행하며 다양한 경험 데이터를 수집하는 정책</li>
+  <li><strong>대상 정책 (Target Policy, $\pi$):</strong> 행동 정책이 가져온 데이터를 바탕으로 100% 탐욕적(Greedy)인 최적의 길만을 날카롭게 벼려내는 정책</li>
 </ol>
 
-<p><strong>그림 A-0b</strong> 행동 정책 <em>b</em>가 수집한 경험 샘플을 중요도 비율 <em>ρ</em> = <em>π</em>/<em>b</em> 저울로 보정하여 대상 정책 <em>π</em>의 참 가치로 환산하는 오프-정책 몬테카를로 학습도
+<p><strong>그림 A-0b</strong> 행동 정책 $b$ 가 수집한 경험 샘플을 중요도 비율 $\rho = \pi / b$ 저울로 보정하여 대상 정책 $\pi$ 의 참 가치로 환산하는 오프-정책 몬테카를로 학습도
 <img src="./img/02_off_policy_mc_importance_sampling.jpg" alt="그림 A-0b 중요도 샘플링을 통해 행동 정책의 탐험 경험을 대상 정책의 참값으로 환산하는 오프-정책 몬테카를로 메커니즘" /></p>
 
 <hr />
 
-<h3 id="2-중요도-샘플링-importance-sampling과-궤적-가중치-ρ">2) 중요도 샘플링 (Importance Sampling)과 궤적 가중치 <em>ρ</em></h3>
+<h3 id="2-중요도-샘플링-importance-sampling과-궤적-가중치-rho">2) 중요도 샘플링 (Importance Sampling)과 궤적 가중치 $\rho$</h3>
 
-<p>행동 정책 <em>b</em>로부터 수집된 데이터는 당연히 <em>b</em>의 확률 분포를 따릅니다. 이를 대상 정책 <em>π</em>의 가치로 올바르게 환산하려면, 두 확률 분포의 차이를 보정하는 <strong>중요도 가중치(Importance Weight, <em>ρ</em>)</strong>를 곱해주어야 합니다:</p>
+<p>행동 정책 $b$ 로부터 수집된 데이터는 당연히 $b$ 의 확률 분포를 따릅니다. 이를 대상 정책 $\pi$ 의 가치로 올바르게 환산하려면, 두 확률 분포의 차이를 보정하는 <strong>중요도 가중치(Importance Weight, $\rho$)</strong> 를 곱해주어야 합니다:</p>
 
-<blockquote>
-  <h3 id="식-a1-중요도-샘플링을-적용한-행동-가치-함수">(식 A.1) 중요도 샘플링을 적용한 행동 가치 함수</h3>
-  <p><em>q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) = E<sub><em>b</em></sub> [ <em>ρ</em> <em>G</em> | <em>S</em><sub><em>t</em></sub> = <em>s</em>, <em>A</em><sub><em>t</em></sub> = <em>a</em> ]</p>
-</blockquote>
+\[q_\pi(s, a) = \mathbb{E}_b [ \rho G_t \mid S_t = s, A_t = a ]\]
+
+<p>[식 A.1] 중요도 샘플링을 적용한 행동 가치 함수</p>
 
 <p>이 수식을 몬테카를로 표본 평균으로 근사하면 다음과 같습니다:</p>
 
-<blockquote>
-  <p><em>Q</em><sub><em>π</em></sub>(<em>s</em>, <em>a</em>) ≈ ( <em>ρ</em><sup>(1)</sup> <em>G</em><sup>(1)</sup> + <em>ρ</em><sup>(2)</sup> <em>G</em><sup>(2)</sup> + … + <em>ρ</em><sup>(<em>n</em>)</sup> <em>G</em><sup>(<em>n</em>)</sup> ) / <em>n</em>  (단, <em>G</em><sup>(<em>i</em>)</sup> ~ <em>b</em>)</p>
-</blockquote>
+\[Q_\pi(s, a) \approx \frac{1}{n} \sum_{i=1}^n \rho^{(i)} G^{(i)} \quad (G^{(i)} \sim b)\]
 
-<p>그렇다면 시점 <em>t</em>부터 에피소드 종료 시점 <em>T</em>까지의 궤적(Trajectory)에 대한 중요도 가중치 <em>ρ</em>는 어떻게 계산할까요?</p>
+<p>그렇다면 시점 $t$ 부터 에피소드 종료 시점 $T$ 까지의 궤적(Trajectory)에 대한 중요도 가중치 $\rho$ 는 어떻게 계산할까요?</p>
 
-<p><strong>그림 A-1</strong> 상태 <em>S</em><sub><em>t</em></sub> = <em>s</em>, 행동 <em>A</em><sub><em>t</em></sub> = <em>a</em>에서 시작하여 행동 정책 <em>b</em>에 의해 생성된 에피소드 시계열 궤적
+<p><strong>그림 A-1</strong> 상태 $S_t = s$, 행동 $A_t = a$ 에서 시작하여 행동 정책 $b$ 에 의해 생성된 에피소드 시계열 궤적
 <img src="./img/fig_A_1.svg" alt="그림 A-1" /></p>
 
-<p>궤적을 <em>τ</em> = (<em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>, <em>S</em><sub><em>t</em>+1</sub>, <em>A</em><sub><em>t</em>+1</sub>, …, <em>A</em><sub><em>T</em>−1</sub>, <em>S</em><sub><em>T</em></sub>)라고 정의할 때, 가중치 <em>ρ</em>는 두 정책 하에서 이 궤적이 발생할 확률의 비율입니다:</p>
+<p>궤적을 $\tau = (S_t, A_t, S_{t+1}, A_{t+1}, \dots, A_{T-1}, S_T)$ 라고 정의할 때, 가중치 $\rho$ 는 두 정책 하에서 이 궤적이 발생할 확률의 비율입니다:</p>
 
-<blockquote>
-  <table>
-    <tbody>
-      <tr>
-        <td><em>ρ</em> = Pr(<em>τ</em></td>
-        <td><em>π</em>) / Pr(<em>τ</em></td>
-        <td><em>b</em>)</td>
-      </tr>
-    </tbody>
-  </table>
-</blockquote>
+\[\rho = \frac{\Pr(\tau \mid \pi)}{\Pr(\tau \mid b)}\]
 
 <hr />
 
 <h3 id="3-환경-전이-확률의-기적적인-상쇄-증명">3) 환경 전이 확률의 기적적인 상쇄 증명</h3>
 
-<table>
-  <tbody>
-    <tr>
-      <td>마르코프 결정 과정(MDP)의 마르코프 성질에 따라, 상태 전이 확률 <em>p</em>(<em>s</em>’</td>
-      <td><em>s</em>, <em>a</em>)와 에이전트 정책 <em>b</em>(<em>a</em></td>
-      <td><em>s</em>)의 상호작용으로 궤적이 생성될 결합 확률을 펼쳐보겠습니다:</td>
-    </tr>
-  </tbody>
-</table>
+<p>마르코프 결정 과정(MDP)의 마르코프 성질에 따라, 상태 전이 확률 $p(s’ \mid s, a)$ 와 에이전트 정책 $b(a \mid s)$ 의 상호작용으로 궤적이 생성될 결합 확률을 펼쳐보겠습니다:</p>
 
 <p><img src="./img/fig_A_2.svg" alt="그림 A-2" /></p>
 
-<blockquote>
-  <h3 id="식-a2-행동-정책-b-하에서의-궤적-발생-확률">(식 A.2) 행동 정책 <em>b</em> 하에서의 궤적 발생 확률</h3>
-  <p>Pr(<em>τ</em> | <em>b</em>) = <em>p</em>(<em>S</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) · <em>b</em>(<em>A</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em>+1</sub>) · <em>p</em>(<em>S</em><sub><em>t</em>+2</sub> | <em>S</em><sub><em>t</em>+1</sub>, <em>A</em><sub><em>t</em>+1</sub>) … <em>p</em>(<em>S</em><sub><em>T</em></sub> | <em>S</em><sub><em>T</em>−1</sub>, <em>A</em><sub><em>T</em>−1</sub>)</p>
-</blockquote>
+\[\Pr(\tau \mid b) = p(S_{t+1} \mid S_t, A_t) \cdot b(A_{t+1} \mid S_{t+1}) \cdot p(S_{t+2} \mid S_{t+1}, A_{t+1}) \dots p(S_T \mid S_{T-1}, A_{T-1})\]
+
+<p>[식 A.2] 행동 정책 $b$ 하에서의 궤적 발생 확률</p>
 
 <p>마찬가지로 대상 정책 <em>π</em> 하에서 동일한 궤적이 발생했을 확률은 다음과 같습니다:</p>
 
-<blockquote>
-  <h3 id="식-a3-대상-정책-π-하에서의-궤적-발생-확률">(식 A.3) 대상 정책 <em>π</em> 하에서의 궤적 발생 확률</h3>
-  <p>Pr(<em>τ</em> | <em>π</em>) = <em>p</em>(<em>S</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em></sub>, <em>A</em><sub><em>t</em></sub>) · <em>π</em>(<em>A</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em>+1</sub>) · <em>p</em>(<em>S</em><sub><em>t</em>+2</sub> | <em>S</em><sub><em>t</em>+1</sub>, <em>A</em><sub><em>t</em>+1</sub>) … <em>p</em>(<em>S</em><sub><em>T</em></sub> | <em>S</em><sub><em>T</em>−1</sub>, <em>A</em><sub><em>T</em>−1</sub>)</p>
-</blockquote>
+\[\Pr(\tau \mid \pi) = p(S_{t+1} \mid S_t, A_t) \cdot \pi(A_{t+1} \mid S_{t+1}) \cdot p(S_{t+2} \mid S_{t+1}, A_{t+1}) \dots p(S_T \mid S_{T-1}, A_{T-1})\]
 
-<p>이제 두 식의 비율인 <em>ρ</em>를 분수 형태로 놓으면 놀라운 일이 벌어집니다:</p>
+<p>[식 A.3] 대상 정책 $\pi$ 하에서의 궤적 발생 확률</p>
 
-<blockquote>
-  <h3 id="식-a4-환경-전이-확률의-소거와-최종-중요도-가중치">(식 A.4) 환경 전이 확률의 소거와 최종 중요도 가중치</h3>
-  <p><em>ρ</em> = Pr(<em>τ</em> | <em>π</em>) / Pr(<em>τ</em> | <em>b</em>)<br />
-= ( <em>π</em>(<em>A</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em>+1</sub>) · <em>π</em>(<em>A</em><sub><em>t</em>+2</sub> | <em>S</em><sub><em>t</em>+2</sub>) … <em>π</em>(<em>A</em><sub><em>T</em>−1</sub> | <em>S</em><sub><em>T</em>−1</sub>) ) / ( <em>b</em>(<em>A</em><sub><em>t</em>+1</sub> | <em>S</em><sub><em>t</em>+1</sub>) · <em>b</em>(<em>A</em><sub><em>t</em>+2</sub> | <em>S</em><sub><em>t</em>+2</sub>) … <em>b</em>(<em>A</em><sub><em>T</em>−1</sub> | <em>S</em><sub><em>T</em>−1</sub>) )<br />
-= ∏<sub><em>k</em>=<em>t</em>+1</sub><sup><em>T</em>−1</sup> ( <em>π</em>(<em>A</em><sub><em>k</em></sub> | <em>S</em><sub><em>k</em></sub>) / <em>b</em>(<em>A</em><sub><em>k</em></sub> | <em>S</em><sub><em>k</em></sub>) )</p>
-</blockquote>
+<p>이제 두 식의 비율인 $\rho$ 를 분수 형태로 놓으면 놀라운 일이 벌어집니다:</p>
 
-<p>분모와 분자에 똑같이 들어 있던 <strong>환경의 물리 전이 확률 <em>p</em>(<em>s</em>’ | <em>s</em>, <em>a</em>)들이 완벽하게 약분되어 사라집니다!<br />
+\[\begin{aligned}
+\rho &amp;= \frac{\Pr(\tau \mid \pi)}{\Pr(\tau \mid b)} \\
+&amp;= \frac{\pi(A_{t+1} \mid S_{t+1}) \cdot \pi(A_{t+2} \mid S_{t+2}) \dots \pi(A_{T-1} \mid S_{T-1})}{b(A_{t+1} \mid S_{t+1}) \cdot b(A_{t+2} \mid S_{t+2}) \dots b(A_{T-1} \mid S_{T-1})} \\
+&amp;= \prod_{k=t+1}^{T-1} \frac{\pi(A_k \mid S_k)}{b(A_k \mid S_k)}
+\end{aligned}\]
+
+<p>[식 A.4] 환경 전이 확률의 소거와 최종 중요도 가중치</p>
+
+<p>분모와 분자에 똑같이 들어 있던 <strong>환경의 물리 전이 확률 $p(s’ \mid s, a)$ 들이 완벽하게 약분되어 사라집니다!<br />
 이것이 의미하는 바는 실로 위대합니다: **우리는 환경의 내부 물리 법칙이나 복잡한 전이 확률을 1%도 알지 못해도(Model-Free), 오직 에이전트 자신이 제어하는 두 정책의 확률 비율만을 곱해주는 것만으로 오프-정책 학습을 완벽히 수행할 수 있습니다!</strong></p>
 
 <hr />
@@ -627,34 +605,14 @@
 
 <h3 id="1-역방향-효율적-가중치-갱신">1) 역방향 효율적 가중치 갱신</h3>
 
-<p>정방향으로 시점마다 ∏를 계산하면 중복 연산이 <em>O</em>(<em>T</em><sup>2</sup>)으로 늘어납니다. 따라서 에피소드의 끝점 <em>S</em><sub><em>T</em></sub>부터 거꾸로 역방향(reversed)으로 거슬러 올라가며 가중치를 누적 곱하는 방식을 채택합니다.</p>
+<p>정방향으로 시점마다 $\prod$ 를 계산하면 중복 연산이 $\mathcal{O}(T^2)$ 으로 늘어납니다. 따라서 에피소드의 끝점 $S_T$ 부터 거꾸로 역방향(reversed)으로 거슬러 올라가며 가중치를 누적 곱하는 방식을 채택합니다.</p>
 
 <p><img src="./img/fig_A_3.svg" alt="그림 A-3" /></p>
 
 <ul>
-  <li>끝 시점 <em>T</em>−1: <em>ρ</em> = 1</li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>이전 시점 <em>T</em>−2: <em>ρ</em> ← <em>ρ</em> · ( <em>π</em>(<em>A</em><sub><em>T</em>−1</sub></td>
-          <td><em>S</em><sub><em>T</em>−1</sub>) / <em>b</em>(<em>A</em><sub><em>T</em>−1</sub></td>
-          <td><em>S</em><sub><em>T</em>−1</sub>) )</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>이전 시점 <em>T</em>−3: <em>ρ</em> ← <em>ρ</em> · ( <em>π</em>(<em>A</em><sub><em>T</em>−2</sub></td>
-          <td><em>S</em><sub><em>T</em>−2</sub>) / <em>b</em>(<em>A</em><sub><em>T</em>−2</sub></td>
-          <td><em>S</em><sub><em>T</em>−2</sub>) )</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li>끝 시점 $T - 1$: $\rho = 1$</li>
+  <li>이전 시점 $T - 2$: $\rho \leftarrow \rho \cdot \frac{\pi(A_{T-1} \mid S_{T-1})}{b(A_{T-1} \mid S_{T-1})}$</li>
+  <li>이전 시점 $T - 3$: $\rho \leftarrow \rho \cdot \frac{\pi(A_{T-2} \mid S_{T-2})}{b(A_{T-2} \mid S_{T-2})}$</li>
 </ul>
 
 <h3 id="2-파이썬-전체-코드-mc_control_offpolicypy">2) 파이썬 전체 코드 (<code class="language-plaintext highlighter-rouge">mc_control_offpolicy.py</code>)</h3>
@@ -723,9 +681,9 @@
   <li><strong><code class="language-plaintext highlighter-rouge">self.pi</code> vs <code class="language-plaintext highlighter-rouge">self.b</code>:</strong><br />
 대상 정책 <code class="language-plaintext highlighter-rouge">self.pi</code>는 학습 목표인 100% 최적 탐욕 정책(<code class="language-plaintext highlighter-rouge">epsilon=0</code>)이며, 행동 정책 <code class="language-plaintext highlighter-rouge">self.b</code>는 지속적인 모험을 위해 <code class="language-plaintext highlighter-rouge">epsilon=0.1</code>의 무작위성을 유지합니다.</li>
   <li><strong><code class="language-plaintext highlighter-rouge">G = self.gamma * rho * G + reward</code>:</strong><br />
-미래에서 거꾸로 전달되는 할인 수익 <em>G</em>에 중요도 비율 <code class="language-plaintext highlighter-rouge">rho</code>를 곱해 보정합니다.</li>
+미래에서 거꾸로 전달되는 할인 수익 $G$ 에 중요도 비율 <code class="language-plaintext highlighter-rouge">rho</code>를 곱해 보정합니다.</li>
   <li><strong><code class="language-plaintext highlighter-rouge">if rho == 0: break</code> (조기 종료 최적화):</strong><br />
-대상 정책 <em>π</em>는 결정론적 탐욕 정책이므로, 행동 정책 <em>b</em>가 탐색 중에 취한 행동이 대상 정책의 최적 행동과 일치하지 않는 순간 <em>π</em>(<em>a</em> | <em>s</em>) = 0이 됩니다.<br />
+대상 정책 $\pi$ 는 결정론적 탐욕 정책이므로, 행동 정책 $b$ 가 탐색 중에 취한 행동이 대상 정책의 최적 행동과 일치하지 않는 순간 $\pi(a \mid s) = 0$ 이 됩니다.<br />
 이때 <code class="language-plaintext highlighter-rouge">rho</code>는 즉시 0이 되며, 그보다 과거 시점들의 곱 역시 영원히 0이 되므로 더 이상 루프를 돌 필요 없이 즉각 탈출(break)할 수 있습니다!</li>
 </ol>
 
@@ -743,7 +701,7 @@
   <p>[!CAUTION]
 <strong>오프-정책 몬테카를로법의 치명적 한계: 분산 폭발(Variance Explosion)</strong><br />
 그리드 월드 같은 작은 환경에서는 잘 작동하지만, 에피소드 길이가 길어지는 복잡한 환경에서는 오프-정책 MC가 극도로 취약해집니다.<br />
-<em>ρ</em>는 비율들의 연속된 곱(∏) 형태이기 때문에, 비정상적으로 큰 값이 곱해지면 <em>ρ</em>가 수백만으로 폭발하거나, 반대로 0으로 순식간에 소멸해 버립니다. 이 극심한 분산 문제를 해결하기 위해 부트스트랩을 도입한 것이 바로 10장에서 배운 <strong>오프-정책 SARSA</strong>와 <strong>Q-러닝</strong>입니다!</p>
+$\rho$ 는 비율들의 연속된 곱($\prod$) 형태이기 때문에, 비정상적으로 큰 값이 곱해지면 $\rho$ 가 수백만으로 폭발하거나, 반대로 0으로 순식간에 소멸해 버립니다. 이 극심한 분산 문제를 해결하기 위해 부트스트랩을 도입한 것이 바로 10장에서 배운 <strong>오프-정책 SARSA</strong>와 <strong>Q-러닝</strong>입니다!</p>
 </blockquote>
 
 

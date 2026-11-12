@@ -40,7 +40,7 @@ A3C는 하나의 중앙 전역 신경망(Global Network)과 여러 개의 독립
 - 워커마다 환경 상태가 완전히 제각각이므로, 이들이 수집하는 데이터 사이에는 시간적 상관관계가 완전히 사라집니다.
 - 각 워커는 일정 스텝(예: 5스텝) 동안 경험을 모아 그래디언트를 계산한 뒤, 중앙 전역 신경망에 **비동기적(Asynchronous)**으로 밀어 넣어 파라미터를 갱신합니다.
 
-또한 A3C는 [그림 14-3]처럼 합성곱(CNN) 특징 추출 계층의 가중치를 정책망(*π*)과 가치망(*V*)이 공유하는 효율적인 멀티태스크 구조를 확립했습니다.
+또한 A3C는 [그림 14-3]처럼 합성곱(CNN) 특징 추출 계층의 가중치를 정책망($\pi$)과 가치망($V$)이 공유하는 효율적인 멀티태스크 구조를 확립했습니다.
 
 ![그림 14-3](./img/fig_14_3.jpg)
 
@@ -52,7 +52,7 @@ OpenAI는 이를 개선한 **A2C(Advantage Actor-Critic)**를 제시했습니다
 
 ![그림 14-4](./img/fig_14_4.jpg)
 
-- 모든 병렬 환경에서 시점 *t*의 상태 *S*<sub>*t*</sub><sup>(1)</sup>, ..., *S*<sub>*t*</sub><sup>(*N*)</sup>을 동시에 관측합니다.
+- 모든 병렬 환경에서 시점 $t$ 의 상태 $S_t^{(1)}, \dots, S_t^{(N)}$ 을 동시에 관측합니다.
 - 이를 크기 *N*의 텐서 배치로 만들어 단일 GPU에서 고속 순전파 및 역전파를 수행합니다.
 - 실험 결과 A2C는 A3C와 대등하거나 더 우수한 성능을 내면서도, 최신 GPU 텐서 가속을 100% 활용할 수 있어 오늘날 모든 심층 강화학습 라이브러리의 표준 구현체가 되었습니다.
 
@@ -62,24 +62,26 @@ OpenAI는 이를 개선한 **A2C(Advantage Actor-Critic)**를 제시했습니다
 
 로봇의 관절 각도 제어나 자율주행 차량의 조향각처럼 행동이 무한한 실수 범위인 환경에서, DQN의 argmax 연산은 불가능에 가깝습니다.
 
-13.5절에서 살펴본 것처럼 가우스 정규분포 *N*(*μ*, *σ*<sup>2</sup>)에서 행동을 샘플링하는 방법도 있지만, **DDPG(Deep Deterministic Policy Gradient)**<sup>[24]</sup>는 행동을 확률적으로 뽑지 않고 **결정론적 실수 벡터 *a* = *μ*<sub>*θ*</sub>(*s*)**로 신경망이 직접 출력하도록 설계했습니다.
+13.5절에서 살펴본 것처럼 가우스 정규분포 $\mathcal{N}(\mu, \sigma^2)$ 에서 행동을 샘플링하는 방법도 있지만, **DDPG(Deep Deterministic Policy Gradient)**<sup>[24]</sup>는 행동을 확률적으로 뽑지 않고 **결정론적 실수 벡터 *a* = *μ*<sub>*θ*</sub>(*s*)**로 신경망이 직접 출력하도록 설계했습니다.
 
 ![그림 14-6](./img/fig_14_6.jpg)
 
 ### 결정론적 정책 경사 정리와 연쇄 법칙(Chain Rule)
 
 DDPG는 Actor-Critic 아키텍처에 DQN의 경험 재생 버퍼와 타깃 네트워크를 성공적으로 이식했습니다:
-- **행위자 (Actor, *μ*<sub>*θ*</sub>):** 상태 *s*를 입력받아 연속 행동 *a* = *μ*<sub>*θ*</sub>(*s*)를 직접 출력
-- **비평자 (Critic, *Q*<sub>*ϕ*</sub>):** 상태 *s*와 연속 행동 *a*를 입력받아 스칼라 행동 가치 *Q*<sub>*ϕ*</sub>(*s*, *a*)를 평가
+- **행위자 (Actor, $\mu_\theta$):** 상태 $s$ 를 입력받아 연속 행동 $a = \mu_\theta(s)$ 를 직접 출력
+- **비평자 (Critic, $Q_\phi$):** 상태 $s$ 와 연속 행동 $a$ 를 입력받아 스칼라 행동 가치 $Q_\phi(s, a)$ 를 평가
 
 ![그림 14-7](./img/fig_14_7.jpg)
 
-비평자 *Q*<sub>*ϕ*</sub>(*s*, *a*)의 출력이 최대화되도록 행위자 *μ*<sub>*θ*</sub>(*s*)를 갱신할 때, 역전파의 연쇄 법칙이 아름답게 적용됩니다:
+비평자 $Q_\phi(s, a)$ 의 출력이 최대화되도록 행위자 $\mu_\theta(s)$ 를 갱신할 때, 역전파의 연쇄 법칙이 아름답게 적용됩니다:
 
-> ∇<sub>*θ*</sub> *J*(*θ*) = E [ ∇<sub>*a*</sub> *Q*<sub>*ϕ*</sub>(*s*, *a*) |<sub>*a* = *μ*<sub>*θ*</sub>(*s*)</sub> · ∇<sub>*θ*</sub> *μ*<sub>*θ*</sub>(*s*) ]
+$$
+\nabla_\theta J(\theta) = \mathbb{E} \left[ \left. \nabla_a Q_\phi(s, a) \right|_{a = \mu_\theta(s)} \cdot \nabla_\theta \mu_\theta(s) \right]
+$$
 
-1. 비평자 신경망을 통해 "행동 *a*를 어느 방향으로 수정해야 Q값이 커지는가"라는 기울기 ∇<sub>*a*</sub> *Q*를 먼저 구합니다.
-2. 이 기울기를 행위자 신경망으로 그대로 흘려보내 행위자의 가중치 *θ*를 갱신합니다!
+1. 비평자 신경망을 통해 "행동 $a$ 를 어느 방향으로 수정해야 $Q$ 값이 커지는가"라는 기울기 $\nabla_a Q$ 를 먼저 구합니다.
+2. 이 기울기를 행위자 신경망으로 그대로 흘려보내 행위자의 가중치 $\theta$ 를 갱신합니다!
 
 ### max 연산의 소거와 소프트 타깃 갱신
 
@@ -106,10 +108,14 @@ DQN에서는 다음 상태의 최댓값 max<sub>*a*</sub> *Q*(*S*<sub>*t*+1</sub
 
 ### 1) TRPO (Trust Region Policy Optimization)
 
-TRPO<sup>[25]</sup>는 정책을 갱신할 때 이전 정책 *π*<sub>old</sub>와 새 정책 *π* 사이의 확률 분포 차이를 **쿨백-라이블러 발산(Kullback-Leibler Divergence, KLD)**으로 측정하고, 이 값이 안전 임곗값 *δ* 이하가 되도록 엄격한 수학적 제약 조건을 부여합니다:
+TRPO<sup>[25]</sup>는 정책을 갱신할 때 이전 정책 $\pi_{\text{old}}$ 와 새 정책 $\pi$ 사이의 확률 분포 차이를 **쿨백-라이블러 발산(Kullback-Leibler Divergence, KLD)** 으로 측정하고, 이 값이 안전 임곗값 $\delta$ 이하가 되도록 엄격한 수학적 제약 조건을 부여합니다:
 
-> max<sub>*θ*</sub> E [ (*π*<sub>*θ*</sub>(*a* | *s*) / *π*<sub>*θ*<sub>old</sub></sub>(*a* | *s*)) *A*(*s*, *a*) ]  
-> s.t. E [ *D*<sub>KL</sub>(*π*<sub>*θ*<sub>old</sub></sub>(· | *s*) || *π*<sub>*θ*</sub>(· | *s*)) ] ≤ *δ*
+$$
+\begin{aligned}
+\max_\theta & \quad \mathbb{E} \left[ \frac{\pi_\theta(a \mid s)}{\pi_{\theta_{\text{old}}}(a \mid s)} A(s, a) \right] \\
+\text{s.t.} & \quad \mathbb{E} \left[ D_{\text{KL}}(\pi_{\theta_{\text{old}}}(\cdot \mid s) \parallel \pi_\theta(\cdot \mid s)) \right] \le \delta
+\end{aligned}
+$$
 
 이 제약 조건 덕분에 정책 성능이 단조 증가(Monotonic Improvement)함을 수학적으로 보장할 수 있었습니다. 하지만 2차 미분인 헤세 행렬(Hessian Matrix)과 켤레 기울기법(Conjugate Gradient)을 연산해야 하므로 계산 비용이 너무 크고 구현이 대단히 복잡했습니다.
 
@@ -117,16 +123,19 @@ TRPO<sup>[25]</sup>는 정책을 갱신할 때 이전 정책 *π*<sub>old</sub>�
 
 2017년 OpenAI의 존 슐만(John Schulman) 연구팀은 TRPO의 복잡한 2차 제약 최적화를 획기적으로 단순화한 **PPO**<sup>[26]</sup>를 발표했습니다.
 
-핵심 아이디어는 이전 정책 대비 새 정책의 확률 비 *r*<sub>*t*</sub>(*θ*)가 1 근처의 안전 구간 [1 − *ϵ*, 1 + *ϵ*]을 벗어나지 못하도록 강제로 잘라내는(Clipping) 것입니다 (보통 *ϵ* = 0.2 사용).
+핵심 아이디어는 이전 정책 대비 새 정책의 확률 비 $r_t(\theta)$ 가 1 근처의 안전 구간 $[1 - \epsilon, 1 + \epsilon]$ 을 벗어나지 못하도록 강제로 잘라내는(Clipping) 것입니다 (보통 $\epsilon = 0.2$ 사용).
 
-> ### (식 14.1) PPO 클리핑 목적 함수 (Clipped Surrogate Objective)
-> *L*<sup>CLIP</sup>(*θ*) = E [ min( *r*<sub>*t*</sub>(*θ*) *A*<sub>*t*</sub>, clip(*r*<sub>*t*</sub>(*θ*), 1 − *ϵ*, 1 + *ϵ*) *A*<sub>*t*</sub> ) ]
->
-> 여기서 확률 변화율 *r*<sub>*t*</sub>(*θ*) = *π*<sub>*θ*</sub>(*a*<sub>*t*</sub> | *s*<sub>*t*</sub>) / *π*<sub>*θ*<sub>old</sub></sub>(*a*<sub>*t*</sub> | *s*<sub>*t*</sub>)
+$$
+L^{\text{CLIP}}(\theta) = \hat{\mathbb{E}}_t \left[ \min\left( r_t(\theta) \hat{A}_t, \, \text{clip}(r_t(\theta), 1 - \epsilon, 1 + \epsilon) \hat{A}_t \right) \right]
+$$
 
-- **이점 *A*<sub>*t*</sub> > 0 (좋은 행동):**  
-  행동 확률을 높여야 하지만, *r*<sub>*t*</sub>(*θ*)가 1 + *ϵ*(예: 1.2)을 초과하면 목적 함수가 상수로 묶여 그래디언트가 0이 됩니다. 즉, 한 번에 너무 욕심부려 정책을 급변시키지 못하도록 차단합니다.
-- **이점 *A*<sub>*t*</sub> < 0 (나쁜 행동):**  
-  행동 확률을 낮추어야 하지만, *r*<sub>*t*</sub>(*θ*)가 1 − *ϵ*(예: 0.8) 밑으로 떨어지면 역시 클리핑되어 과도한 패널티로 인한 정책 붕괴를 예방합니다.
+[식 14.1] PPO 클리핑 목적 함수 (Clipped Surrogate Objective)
+
+여기서 확률 변화율 $r_t(\theta) = \frac{\pi_\theta(a_t \mid s_t)}{\pi_{\theta_{\text{old}}}(a_t \mid s_t)}$ 입니다.
+
+- **이점 $\hat{A}_t > 0$ (좋은 행동):**  
+  행동 확률을 높여야 하지만, $r_t(\theta)$ 가 $1 + \epsilon$(예: 1.2)을 초과하면 목적 함수가 상수로 묶여 그래디언트가 0이 됩니다. 즉, 한 번에 너무 욕심부려 정책을 급변시키지 못하도록 차단합니다.
+- **이점 $\hat{A}_t < 0$ (나쁜 행동):**  
+  행동 확률을 낮추어야 하지만, $r_t(\theta)$ 가 $1 - \epsilon$(예: 0.8) 밑으로 떨어지면 역시 클리핑되어 과도한 패널티로 인한 정책 붕괴를 예방합니다.
 
 PPO는 1차 미분(일반 역전파)만으로 간단히 구현할 수 있으면서도 TRPO 이상의 뛰어난 성능과 놀라운 학습 안정성을 보여주었습니다. 그 결과 OpenAI Five(도타 2 세계 챔피언 격파), 물리 로봇 손(루빅스 큐브 해결), 그리고 오늘날 ChatGPT를 비롯한 대규모 언어 모델의 인간 피드백 기반 강화학습(RLHF)에 이르기까지 **현존하는 가장 성공적인 강화학습 알고리즘의 왕좌**를 차지하고 있습니다.
