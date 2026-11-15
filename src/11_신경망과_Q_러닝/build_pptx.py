@@ -53,7 +53,7 @@ class PresentationBuilder:
         self.blank_layout = self.prs.slide_layouts[6]
 
     def create_editable_cover_slide(self, script_text=""):
-        """첫 번째 슬라이드: 16:9 커버 이미지 PNG를 전면 바탕(하위 레이어)으로 깔고, 상위 레이어에 편집 가능한 텍스트 배치"""
+        """첫 번째 슬라이드: 16:9 커버 이미지 PNG를 전면 바탕(하위 레이어)으로 깔고, 상위 레이어의 좌상단 여백(Safe Zone)에 캐릭터와 겹치지 않게 편집 가능한 텍스트 배치"""
         slide = self.prs.slides.add_slide(self.blank_layout)
 
         # 1. 하위 레이어: 16:9 와이드스크린 커버 이미지 PNG 삽입 (전면 바탕)
@@ -61,9 +61,9 @@ class PresentationBuilder:
         if os.path.exists(cover_png_path):
             slide.shapes.add_picture(cover_png_path, Inches(0), Inches(0), width=SLIDE_WIDTH, height=SLIDE_HEIGHT)
 
-        # 2. 상위 레이어: 파란색 뱃지 (14pt Bold)
+        # 2. 상위 레이어: 파란색 뱃지 (12pt Bold, x=0.8", y=0.5", w=2.5", h=0.38")
         badge = slide.shapes.add_shape(
-            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.0), Inches(3.0), Inches(0.5)
+            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.5), Inches(2.5), Inches(0.38)
         )
         badge.fill.solid()
         badge.fill.fore_color.rgb = COLOR_PRIMARY
@@ -72,42 +72,70 @@ class PresentationBuilder:
 
         tf = badge.text_frame
         tf.word_wrap = False
+        tf.margin_top = 0
+        tf.margin_bottom = 0
         p = tf.paragraphs[0]
         p.text = "PART 11 · 심층 강화학습"
         p.font.name = FONT_NAME
-        p.font.size = Pt(14)
+        p.font.size = Pt(12)
         p.font.bold = True
         p.font.color.rgb = COLOR_WHITE
         p.alignment = PP_ALIGN.CENTER
 
-        # 3. 상위 레이어: 메인 강의 타이틀 (44pt 볼드, 편집 가능 텍스트)
-        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(5.8), Inches(1.5))
+        # 3. 상위 레이어: 메인 강의 타이틀 (x=0.8", y=1.0", w=3.8", h=0.95")
+        # 캐릭터(도로시 x>=4.8", 지니 y>=3.2")와 겹치지 않는 x <= 4.6", y <= 3.0" 안전 영역 엄수
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.0), Inches(3.8), Inches(0.95))
         tf = title_box.text_frame
         tf.word_wrap = True
-        p = tf.paragraphs[0]
-        p.text = "CHAPTER 11\n신경망과 Q 러닝"
-        p.font.name = FONT_NAME
-        p.font.size = Pt(44)
-        p.font.bold = True
-        p.font.color.rgb = COLOR_TITLE
+        tf.margin_top = 0
+        tf.margin_bottom = 0
+        tf.margin_left = 0
+        tf.margin_right = 0
+        
+        # 챕터 식별자 Kicker
+        p0 = tf.paragraphs[0]
+        p0.text = "CHAPTER 11"
+        p0.font.name = FONT_NAME
+        p0.font.size = Pt(15)
+        p0.font.bold = True
+        p0.font.color.rgb = RGBColor(75, 85, 99) # Slate Gray
+        
+        # 메인 타이틀
+        p1 = tf.add_paragraph()
+        p1.text = "신경망과 Q 러닝"
+        p1.font.name = FONT_NAME
+        p1.font.size = Pt(32)
+        p1.font.bold = True
+        p1.font.color.rgb = COLOR_TITLE
 
-        # 4. 상위 레이어: 부제목 설명문 (20pt 회색, 편집 가능 텍스트)
-        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.45), Inches(5.8), Inches(1.8))
+        # 4. 상위 레이어: 부제목 설명문 (x=0.8", y=2.05", w=3.8", h=0.55", 13pt)
+        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(2.05), Inches(3.8), Inches(0.55))
         tf = sub_box.text_frame
         tf.word_wrap = True
+        tf.margin_top = 0
+        tf.margin_bottom = 0
+        tf.margin_left = 0
+        tf.margin_right = 0
         p = tf.paragraphs[0]
-        p.text = "테이블의 한계를 넘어 무한한 상태 공간으로 확장하는\n인공신경망 기반 Q-러닝의 원리와 실전 구현"
+        p.text = "테이블의 한계를 넘어 무한한 상태 공간으로 확장하는\n인공신경망 기반 Q-러닝 원리와 실전 구현"
         p.font.name = FONT_NAME
-        p.font.size = Pt(20)
+        p.font.size = Pt(13)
         p.font.color.rgb = COLOR_SUBTITLE
 
-        # 5. 상위 레이어: 강사 정보
-        p2 = tf.add_paragraph()
-        p2.text = "\n강의: 이호진 교수 · 조교 지니와 도로시 탐험대"
-        p2.font.name = FONT_NAME
-        p2.font.size = Pt(16)
-        p2.font.bold = True
-        p2.font.color.rgb = RGBColor(55, 65, 81)
+        # 5. 상위 레이어: 강사 정보 (x=0.8", y=2.68", w=3.8", h=0.32", 11.5pt Bold)
+        author_box = slide.shapes.add_textbox(Inches(0.8), Inches(2.68), Inches(3.8), Inches(0.32))
+        af = author_box.text_frame
+        af.word_wrap = True
+        af.margin_top = 0
+        af.margin_bottom = 0
+        af.margin_left = 0
+        af.margin_right = 0
+        ap = af.paragraphs[0]
+        ap.text = "강의: 이호진 교수 · 조교 지니와 도로시 탐험대"
+        ap.font.name = FONT_NAME
+        ap.font.size = Pt(11.5)
+        ap.font.bold = True
+        ap.font.color.rgb = RGBColor(75, 85, 99)
 
         # 6. 슬라이드 노트 (TTS 최적화 구술문)
         if script_text:
