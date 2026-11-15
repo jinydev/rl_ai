@@ -53,10 +53,15 @@ class PresentationBuilder:
         self.blank_layout = self.prs.slide_layouts[6]
 
     def create_editable_cover_slide(self, script_text=""):
-        """첫 번째 슬라이드: 온전한 독립 투명 배경 애셋 4종을 삽입한 편집 가능 커버 슬라이드"""
+        """첫 번째 슬라이드: 16:9 커버 이미지 PNG를 전면 바탕(하위 레이어)으로 깔고, 상위 레이어에 편집 가능한 텍스트 배치"""
         slide = self.prs.slides.add_slide(self.blank_layout)
 
-        # 1. 좌측 상단 파란색 뱃지 (14pt Bold)
+        # 1. 하위 레이어: 16:9 와이드스크린 커버 이미지 PNG 삽입 (전면 바탕)
+        cover_png_path = os.path.join(BASE_DIR, "11_신경망과_Q_러닝.png")
+        if os.path.exists(cover_png_path):
+            slide.shapes.add_picture(cover_png_path, Inches(0), Inches(0), width=SLIDE_WIDTH, height=SLIDE_HEIGHT)
+
+        # 2. 상위 레이어: 파란색 뱃지 (14pt Bold)
         badge = slide.shapes.add_shape(
             MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.0), Inches(3.0), Inches(0.5)
         )
@@ -75,8 +80,8 @@ class PresentationBuilder:
         p.font.color.rgb = COLOR_WHITE
         p.alignment = PP_ALIGN.CENTER
 
-        # 2. 메인 강의 타이틀 (44pt 볼드)
-        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(5.6), Inches(1.5))
+        # 3. 상위 레이어: 메인 강의 타이틀 (44pt 볼드, 편집 가능 텍스트)
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(5.8), Inches(1.5))
         tf = title_box.text_frame
         tf.word_wrap = True
         p = tf.paragraphs[0]
@@ -86,8 +91,8 @@ class PresentationBuilder:
         p.font.bold = True
         p.font.color.rgb = COLOR_TITLE
 
-        # 3. 부제목 설명문 (20pt 회색)
-        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.45), Inches(5.6), Inches(1.8))
+        # 4. 상위 레이어: 부제목 설명문 (20pt 회색, 편집 가능 텍스트)
+        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.45), Inches(5.8), Inches(1.8))
         tf = sub_box.text_frame
         tf.word_wrap = True
         p = tf.paragraphs[0]
@@ -96,32 +101,13 @@ class PresentationBuilder:
         p.font.size = Pt(20)
         p.font.color.rgb = COLOR_SUBTITLE
 
-        # 4. 강사 서명
+        # 5. 상위 레이어: 강사 정보
         p2 = tf.add_paragraph()
         p2.text = "\n강의: 이호진 교수 · 조교 지니와 도로시 탐험대"
         p2.font.name = FONT_NAME
         p2.font.size = Pt(16)
         p2.font.bold = True
         p2.font.color.rgb = RGBColor(55, 65, 81)
-
-        # 5. 우측 등장인물 애셋 개별 Picture 삽입 (동일 바닥선 y=6.0"에 배치)
-        ground_y = Inches(6.0)
-
-        p_jiny = os.path.join(ASSETS_DIR, "asset_01_jiny_scholar.png")
-        if os.path.exists(p_jiny):
-            slide.shapes.add_picture(p_jiny, Inches(6.5), ground_y - Inches(2.4), width=Inches(2.0))
-
-        p_dorothy = os.path.join(ASSETS_DIR, "asset_02_dorothy_stepping.png")
-        if os.path.exists(p_dorothy):
-            slide.shapes.add_picture(p_dorothy, Inches(8.3), ground_y - Inches(4.0), width=Inches(2.0))
-
-        p_toto = os.path.join(ASSETS_DIR, "asset_03_toto_running.png")
-        if os.path.exists(p_toto):
-            slide.shapes.add_picture(p_toto, Inches(9.8), ground_y - Inches(2.0), width=Inches(1.5))
-
-        p_hojin = os.path.join(ASSETS_DIR, "asset_04_prof_hojin.png")
-        if os.path.exists(p_hojin):
-            slide.shapes.add_picture(p_hojin, Inches(11.0), ground_y - Inches(5.0), width=Inches(1.9))
 
         # 6. 슬라이드 노트 (TTS 최적화 구술문)
         if script_text:

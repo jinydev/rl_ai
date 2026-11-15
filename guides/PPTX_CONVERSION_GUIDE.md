@@ -1,6 +1,6 @@
 # 교재 슬라이드(slides.md) 기반 PPTX 변환 및 제작 마스터 가이드
 
-본 가이드는 [`slides.md`](file:///Users/hojin9/dev/jinysite/강화학습3/src/10_TD법/10_1_TD법으로_정책_평가하기/slides.md) 문서를 입력받아 고품질의 강의용 파워포인트(PPTX) 프레젠테이션 파일로 변환 및 제작하기 위한 표준 규격서입니다. 16:9 와이드스크린 레이아웃, 헤더/본문/표지의 엄격한 좌표 및 타이포그래피 시스템, 독립 애셋 기반 커버 슬라이드, 2단 분할 레이아웃, **슬라이드 노트(강의 스크립트)의 향후 TTS(음성 합성) 발음 최적화 구술 변환 규칙**을 총망라합니다.
+본 가이드는 [`slides.md`](file:///Users/hojin9/dev/jinysite/강화학습3/src/10_TD법/10_1_TD법으로_정책_평가하기/slides.md) 문서를 입력받아 고품질의 강의용 파워포인트(PPTX) 프레젠테이션 파일로 변환 및 제작하기 위한 표준 규격서입니다. 16:9 와이드스크린 레이아웃, 헤더/본문/표지의 엄격한 좌표 및 타이포그래피 시스템, 동일 디렉토리 내 16:9 커버 이미지 기반 편집 가능 표지 슬라이드, 2단 분할 레이아웃, **슬라이드 노트(강의 스크립트)의 향후 TTS(음성 합성) 발음 최적화 구술 변환 규칙**을 총망라합니다.
 
 ---
 
@@ -38,29 +38,60 @@
 
 ## 2. 표지 슬라이드 규격 (Cover Slide Specification)
 
-표지 슬라이드는 배경 패널 없이 순백색 캔버스 위에서 좌측 타이포그래피와 우측 캐릭터 애셋이 수평적으로 완벽한 균형을 이루도록 구성합니다.
+표지 슬라이드는 `slides.md`와 **동일한 디렉토리에 위치한 16:9 커버 이미지 PNG 파일**을 바탕 그림(하위 레이어)으로 삽입하고, 그 위에 **강의 타이틀, 배지, 부제목, 강사 정보**를 **100% 편집 가능한 파워포인트 네이티브 텍스트 상자(상위 레이어)**로 배치합니다. 
+
+이를 통해 전문 일러스트레이션의 풍부한 시각적 완성도를 누리면서도, 프레젠테이션 발표자가 강의 제목과 문구를 파워포인트 내에서 직접 클릭하여 언제든지 수정·편집·복사할 수 있는 최상의 유연성을 제공합니다.
 
 ```
-[표지 슬라이드 레이아웃 구조]
+[표지 슬라이드 레이아웃 구조 (16:9 Widescreen)]
 ┌────────────────────────────────────────────────────────────────────────┐
+│  [상위 레이어: 편집 가능 네이티브 타이포그래피 존]                     │
 │  [배지: 파란 알약 모양, 흰 글씨 14pt Bold]                             │
 │                                                                        │
-│  [제목: 44pt Bold, #111827]                     [캐릭터 애셋 존]       │
-│                                                 (동일한 바닥선에 맞춰   │
-│  [부제: 20pt 회색, #6B7280]                      나란히 배치)          │
+│  [제목: 44pt Bold, #111827]                     [16:9 커버 이미지 PNG] │
+│                                                 (slides.md 동일 위치   │
+│  [부제: 20pt 회색, #4B5563]                      전면 바탕 삽입)       │
 │                                                                        │
-│  [강사 정보: 16pt]                              [지니][도로시][토토][교수님]│
+│  [강사 정보: 16pt Bold, #374151]                                       │
 └────────────────────────────────────────────────────────────────────────┘
 ```
 
-- **좌측 영역 (Typography Zone)**:
-  - **배지 (Badge)**: 파란색 알약 모양 (`#1A73E8`, Rounded Rectangle), 흰색 글씨 **`14pt Bold`**
-  - **강의 제목 (Main Title)**: **`44pt Bold`** (`#111827`), 왼쪽 정렬
-  - **부제목 (Subtitle)**: **`20pt Regular`** (`#6B7280`), 왼쪽 정렬
-  - **강사 서명 (Author Info)**: `16pt Regular` (`#374151`)
-- **우측 영역 (Character Assets Zone)**:
-  - 캐릭터 이미지들을 **동일한 바닥선(Ground Line, 예: y=5.8" ~ 6.0")에 맞춰 나란히 배치**.
-  - 배경 패널이나 박스 없이, [`/Users/hojin9/dev/jinysite/강화학습3/guides/cover_assets.md`](file:///Users/hojin9/dev/jinysite/강화학습3/guides/cover_assets.md) 규격에 따라 단독 전신 투명 PNG 애셋(`assets/*.png`)을 개별 Picture 객체로 삽입.
+### 2.1 커버 이미지 파일 탐색 및 삽입 원칙 (Base Layer)
+- **파일 위치 및 명명 규칙**:
+  - `slides.md`가 위치한 **동일한 폴더** 내에서 해당 챕터/서브챕터의 대표 16:9 커버 이미지 PNG 파일을 자동 탐색합니다.
+  - 탐색 우선순위:
+    1. `<현재_폴더명>.png` (예: `11_신경망과_Q_러닝.png`, `11_1_DeZero_기초.png`, `10_1_TD법으로_정책_평가하기.png`, `07_1_유래.png` 등)
+    2. 디렉토리 내 존재하는 대표 16:9 커버 PNG 파일
+- **이미지 배치 및 레이어**:
+  - `slide.shapes.add_picture(cover_png_path, Inches(0), Inches(0), width=Inches(13.333), height=Inches(7.500))`
+  - 슬라이드 캔버스 전체에 16:9 비율을 유지하며 하위 레이어(가장 아래 Z-order)로 삽입합니다.
+
+### 2.2 상위 레이어 편집 가능 타이포그래피 규격 (Top Layer)
+커버 이미지 위에 마우스를 클릭하여 직접 수정할 수 있는 네이티브 파워포인트 도형과 텍스트 상자를 순차적으로 오버레이합니다:
+
+- **1) 상단 배지 (Badge Shape)**:
+  - **위치 및 크기**: `x = Inches(0.8)`, `y = Inches(1.0)`, 너비 `3.0 inch`, 높이 `0.5 inch`
+  - **도형 유형**: 모서리가 둥근 직사각형 (`MSO_SHAPE.ROUNDED_RECTANGLE`), 조정값 `0.5` (알약 모양)
+  - **색상 및 폰트**: 배경 채우기 브랜드 블루 (`#1A73E8`), 외곽선 동일, 흰색 글씨 **`14pt Bold`**, 가운데 정렬
+  - **텍스트 내용 예시**: `PART 11 · 심층 강화학습`, `CHAPTER 10 · 강화학습 이론` 등
+
+- **2) 메인 강의 제목 (Main Title Textbox)**:
+  - **위치 및 크기**: `x = Inches(0.8)`, `y = Inches(1.75)`, 너비 `5.8 ~ 6.5 inch`, 높이 `1.5 inch`
+  - **타이포그래피**: **`44pt Bold`**, 텍스트 색상 다크 차콜 (`#111827`, 거의 검정), 왼쪽 정렬, 단락 간격 `0pt`
+  - **텍스트 형식 예시**: `CHAPTER 11\n신경망과 Q 러닝`
+
+- **3) 부제목 설명문 (Subtitle Textbox)**:
+  - **위치 및 크기**: `x = Inches(0.8)`, `y = Inches(3.45)`, 너비 `5.8 ~ 6.5 inch`, 높이 `1.8 inch`
+  - **타이포그래피**: **`20pt Regular`**, 텍스트 색상 다크 그레이 (`#4B5563` 또는 `#6B7280`), 줄 간격 `140~150%`, 왼쪽 정렬
+  - **텍스트 형식 예시**: 해당 챕터의 핵심 목표 및 학습 의의를 2~3줄로 명쾌하게 요약
+
+- **4) 강사 및 조교 정보 (Author Info)**:
+  - 부제목 텍스트 상자 하단 추가 단락 또는 독립 텍스트 상자 (`y = Inches(5.15)`)
+  - **타이포그래피**: **`16pt Bold`**, 텍스트 색상 `#374151`
+  - **텍스트 내용**: `강의: 이호진 교수 · 조교 지니와 도로시 탐험대`
+
+### 2.3 표지 슬라이드 노트 (Lecture Script)
+- 해당 챕터/서브챕터의 전체 학습 목표와 동기부여를 다루는 50대 정교수 강의 대본(TTS 발음 최적화 구술문)을 `slide.notes_slide`에 필수 삽입합니다.
 
 ---
 
@@ -252,6 +283,68 @@ COLOR_DIVIDER = RGBColor(156, 163, 175) # #9CA3AF (실선)
 COLOR_BRAND = RGBColor(26, 115, 232)  # #1A73E8 (배지)
 
 # ==========================================
+# 0. 표지 슬라이드 생성 (16:9 커버 이미지 바탕 + 상위 레이어 편집 가능 타이포그래피)
+# ==========================================
+def create_editable_cover_slide(prs, cover_png_path, badge_text, title_text, subtitle_text, script_text=""):
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+
+    # 1. 하위 레이어 (Base Layer): 16:9 와이드스크린 커버 이미지 삽입
+    if os.path.exists(cover_png_path):
+        slide.shapes.add_picture(cover_png_path, Inches(0), Inches(0), width=Inches(13.333), height=Inches(7.500))
+
+    # 2. 상위 레이어 (Top Layer): 배지 (파란 알약 모양, 14pt Bold)
+    badge = slide.shapes.add_shape(
+        MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.0), Inches(3.0), Inches(0.5)
+    )
+    badge.fill.solid()
+    badge.fill.fore_color.rgb = COLOR_BRAND
+    badge.line.color.rgb = COLOR_BRAND
+    badge.adjustments[0] = 0.5
+
+    tf = badge.text_frame
+    tf.word_wrap = False
+    p = tf.paragraphs[0]
+    p.text = badge_text
+    p.font.name = FONT_NAME
+    p.font.size = Pt(14)
+    p.font.bold = True
+    p.font.color.rgb = RGBColor(255, 255, 255)
+    p.alignment = PP_ALIGN.CENTER
+
+    # 3. 상위 레이어: 메인 강의 제목 (44pt Bold, 100% 편집 가능 텍스트)
+    title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(5.8), Inches(1.5))
+    tf = title_box.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = title_text
+    p.font.name = FONT_NAME
+    p.font.size = Pt(44)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_TITLE
+
+    # 4. 상위 레이어: 부제목 설명문 (20pt, 100% 편집 가능 텍스트)
+    sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.45), Inches(5.8), Inches(1.8))
+    tf = sub_box.text_frame
+    tf.word_wrap = True
+    p = tf.paragraphs[0]
+    p.text = subtitle_text
+    p.font.name = FONT_NAME
+    p.font.size = Pt(20)
+    p.font.color.rgb = COLOR_SUBTITLE
+
+    p2 = tf.add_paragraph()
+    p2.text = "\n강의: 이호진 교수 · 조교 지니와 도로시 탐험대"
+    p2.font.name = FONT_NAME
+    p2.font.size = Pt(16)
+    p2.font.bold = True
+    p2.font.color.rgb = RGBColor(55, 65, 81)
+
+    # 5. 슬라이드 노트 (TTS 최적화 구술문)
+    if script_text:
+        notes_slide = slide.notes_slide
+        notes_slide.notes_text_frame.text = script_text.strip()
+
+# ==========================================
 # 1. 헤더 영역 생성 (모든 본문 슬라이드 동일 적용)
 # ==========================================
 def add_header(slide, title_text, subtitle_text, page_str):
@@ -380,6 +473,6 @@ def add_code_wide_box(slide, code_text, left=Inches(0.8), top=Inches(2.0), width
   - 분할된 코드 슬라이드마다 50초 내외의 상세한 강의 스크립트(Notes)가 각각 작성되었는가?
   - 본문 텍스트가 과다하여 슬라이드 편집 영역(`y=6.4"`)을 벗어나는 경우 슬라이드를 여러 개로 분할하였는가?
 - [ ] **7. 표지 슬라이드**:
-  - 왼쪽: 배지(파란 `#1A73E8`, 흰 글씨 14pt Bold) $\to$ 제목 `44pt Bold` $\to$ 부제 `20pt 회색` 순으로 배치되었는가?
-  - 오른쪽: 캐릭터 이미지가 배경 패널 없이 같은 바닥선에 맞춰 나란히 배치되었는가?
+  - `slides.md`와 동일한 디렉토리에 위치한 16:9 커버 이미지 PNG 파일(`<폴더명>.png` 등)이 하위 레이어 전면 바탕으로 올바르게 삽입되었는가?
+  - 커버 이미지 상위 레이어에 배지(파란 `#1A73E8`, 흰 글씨 14pt Bold) $\to$ 강의 제목 `44pt Bold` $\to$ 부제 `20pt` $\to$ 강사 정보 `16pt Bold`가 마우스로 직접 수정 가능한 네이티브 텍스트 상자로 배치되었는가?
 - [ ] **8. 슬라이드 노트 TTS 최적화**: 모든 슬라이드 노트가 수식 기호 없이 자연스러운 한국어 구술 독음으로 기록되었는가?
