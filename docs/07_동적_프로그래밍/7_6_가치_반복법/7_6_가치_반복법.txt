@@ -1,4 +1,4 @@
-# Chapter 07.6: Value Iteration: One-Sweep Optimality Backup (가치 반복법) YouTube 16:9 Cover Specification & Prompt
+# Chapter 07.6: Value Iteration and Direct Bellman Optimality Backup (가치 반복법) YouTube 16:9 Cover Specification & Prompt
 # File: 7_6_가치_반복법.png (16:9 widescreen ratio, 1376x768)
 # Guide Standard: /Users/hojin9/dev/jinysite/강화학습3/guides/커버생성_가이드.md
 # Reference Dataset: /Users/hojin9/dev/projects/dorothy/data/dataset/hojin & 11_3_신경망.png (Professor Hojin Facial Style)
@@ -35,9 +35,9 @@
    - 어떠한 대학 마크('SNU'), 기업 로고, 명찰, 배지도 일체 없는 순수 단색 솔리드 다크 차콜 네이비 반팔 폴로 셔츠 (#1F242C).
    - 클래식 스트레이트 핏 중청 데님 청바지 (#3F638A) 및 뉴발란스 모티브의 레트로 그레이 스웨이드 스니커즈 (#7F8287).
 
-6. 상단 간판/칠판 배제와 자연스러운 멘토 자세 (Zero Blackboard & Natural Mentor Pose):
+6. 상단 간판/칠판 배제와 강좌 맞춤형 멘토 자세 (Zero Blackboard & Dynamic Contextual Mentor Pose):
    - 칠판에 분필로 글씨를 쓰거나 허공에 칠판 배너를 배치하는 일체의 연출을 전면 배제.
-   - 한 손은 청바지 주머니에 넣고, 다른 손은 제자들을 향해 따뜻한 '엄지 척(Thumbs-up)' 격려를 취함.
+   - 모든 커버에서 단순히 서서 엄지척만 하는 고정 자세를 지양하고, 해당 강좌의 핵심 교구를 직접 손에 들거나 손가락으로 짚으며 제자들에게 원리를 따뜻하게 설명·지도하는 역동적인 동작 연출.
 
 7. 상단 강의 텍스트 및 챕터 타이틀 절대 배제 (Strict Zero Lecture / Chapter Title Text Rule):
    - 이미지 상단 여백에 강의 제목, 챕터 타이틀, 영문 헤드라인 텍스트 일체 표기 금지 (PPT 편집용 순수 여백 확보).
@@ -46,10 +46,11 @@
 ================================================================================
 [2. 최종 이미지 생성 실행 프롬프트 (Master Production Prompt)]
 ================================================================================
-Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide educational concept illustration for Chapter 07.6: 'Value Iteration: Combining Evaluation and Improvement in Single Bellman Optimality Sweeps (가치 반복법)'. STRICT RULE: ABSOLUTELY NO text, NO chapter title, NO lecture headline at the top of the image; the upper area above characters must be completely pure empty solid white space (#FFFFFF). CRITICAL: Exactly ONE man in the entire image.
-On the right, Professor Hojin: EXACTLY matching the facial appearance, hairstyle, and head shape from 11_3_신경망.png. An adult Korean male engineering professor in his early 40s, 7 heads tall adult proportions (NOT a young boy, NOT teenage), dignified and handsome mature face with smooth healthy skin, stylish neatly parted 7:3 short dark hair with clear visible silver salt-and-pepper streaks along the sides and temples, thin minimalist round metal wire-rim glasses, kind intelligent narrow warm brown eyes with a gentle crinkle, and a proud warm encouraging mentor smile. He wears a plain solid dark charcoal navy short-sleeve collared polo shirt with NO badges or logos, medium-wash blue denim jeans, and classic grey suede sneakers. He stands confidently with one hand in his pocket and gesturing gently with an encouraging thumbs-up toward Dorothy.
-In the center, Dorothy: an energetic 10-year-old girl with twin brown pigtails in red ribbons, bright sparkling hazel eyes, coral-orange striped t-shirt under classic blue denim overalls, and red sneakers. She turns a single master golden gear that simultaneously updates value and policy in a single sweeping motion, cutting through intermediate policy evaluations. Next to her, Toto: an adorable fluffy white bichon frise puppy with a bright sky-blue neck bandana, leaping with joy as the single master gear completes its smooth sweep.
-On the left, Jiny: a charming tuxedo cat wearing small round glasses and a red bell collar, sitting at a classic wooden study desk, measuring Bellman optimality error margins with a fine brass compass divider.
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide educational concept illustration for Chapter 07.6: Value Iteration and Direct Bellman Optimality Backup (가치 반복법). STRICT RULE: ABSOLUTELY NO text, NO chapter title, NO lecture headline at the top of the image; the upper area above characters must be completely pure empty solid white space (#FFFFFF). CRITICAL: Exactly ONE man in the entire image.
+On the right, Professor Hojin: EXACTLY matching the facial appearance, hairstyle, and head shape from 11_3_신경망.png. An adult Korean male engineering professor in his early 40s, 7 heads tall adult proportions (NOT a young boy, NOT teenage), dignified and handsome mature face with smooth healthy skin, stylish neatly parted 7:3 short dark hair with clear visible silver salt-and-pepper streaks along the sides and temples, thin minimalist round metal wire-rim glasses, kind intelligent narrow warm brown eyes with a gentle crinkle, and a proud warm encouraging mentor smile. He wears a plain solid dark charcoal navy short-sleeve collared polo shirt with NO badges or logos, medium-wash blue denim jeans, and classic grey suede sneakers. He holds a glowing optical prism with a prominent golden MAX glyph, demonstrating to Dorothy how directly taking the maximum adjacent value cuts straight to the optimal values without waiting for policy evaluation.
+In the center, Dorothy: an energetic 10-year-old girl with twin brown pigtails in red ribbons, bright sparkling hazel eyes, coral-orange striped t-shirt under classic blue denim overalls, and red sneakers. She uses a magnetic wand to snap optimal maximum value blocks directly into place on the grid, gasping with delight at how fast the optimal value function forms in a single sweep.
+Next to her, Toto: an adorable fluffy white bichon frise puppy with a bright sky-blue neck bandana, joyfully jumping into the air to catch a floating golden star token right above the maximum value cell, paws extended in celebration.
+On the left, Jiny: a charming tuxedo cat wearing small round glasses and a red bell collar, sitting at a classic wooden study desk, sliding a swift single-action brass lever labeled Direct Max Backup, charting an exponential surge of optimal value numbers in his notebook.
 Clean solid pure white background (#FFFFFF) with subtle soft floor contact shadows under feet. Bright, insightful, and academically inspiring atmosphere.
 NEGATIVE PROMPT: top title text, lecture header text, chapter title text, typography at top, headline text, words above characters, chalkboard, blackboard, green board, chalk tray, writing on board, SNU, logo, multiple adult men, realistic photo, 3D render, elderly facial features, wrinkles, facial hair.
 ASPECT RATIO: 16:9 widescreen (1376x768).
