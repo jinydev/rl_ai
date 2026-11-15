@@ -6,6 +6,8 @@ from pptx.util import Inches, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE, MSO_CONNECTOR
+from pptx.oxml import parse_xml
+from pptx.oxml.ns import nsdecls
 
 # ==========================================
 # 1. 디자인 상수 정의 (16:9 규격 및 컬러 시스템)
@@ -201,9 +203,9 @@ class PresentationBuilder:
         with Image.open(img_path) as im:
             orig_w, orig_h = im.size
 
-        # 여백을 고려하여 최대한 크게 배치 (최대 폭 5.1", 최대 높이 4.4")
-        max_w = Inches(5.1)
-        max_h = Inches(4.4)
+        # 좌측 이미지 바운딩 박스: 폭 4.2", 높이 3.9" (비율 유지)
+        max_w = Inches(4.2)
+        max_h = Inches(3.9)
         aspect = orig_w / orig_h
         box_aspect = max_w / max_h
 
@@ -214,15 +216,16 @@ class PresentationBuilder:
             dest_h = max_h
             dest_w = dest_h * aspect
 
-        left = Inches(0.8) + (max_w - dest_w) / 2
-        top = Inches(1.95) + (max_h - dest_h) / 2
+        left = Inches(1.0) + (max_w - dest_w) / 2
+        top = Inches(2.15) + (max_h - dest_h) / 2
 
-        # 1. 레이어 순서 맨 뒤 (가장 먼저 삽입하여 다른 영역 콘텐츠를 가리지 않음)
+        # 1. 레이어 순서 맨 뒤 (가장 먼저 삽입하여 다른 영역 콘텐츠 침범 방지)
         slide.shapes.add_picture(img_path, left, top, width=dest_w, height=dest_h)
 
-        # 2. 그림에 대한 설명(캡션): 그림 배치 위치 기준 가장 아래(y 6.48"), 오른쪽 영역(x 1.6~5.9")에 배치, 왼쪽 정렬
+        # 2. 이미지 캡션: 이미지 바로 아래, 13pt로 확대, 이미지 위치와 맞추어 가운데 정렬
         if caption:
-            cap_box = slide.shapes.add_textbox(Inches(1.6), Inches(6.48), Inches(4.3), Inches(0.48))
+            cap_top = top + dest_h + Inches(0.18)
+            cap_box = slide.shapes.add_textbox(left, cap_top, dest_w, Inches(0.65))
             tf = cap_box.text_frame
             tf.word_wrap = True
             tf.margin_top = 0
@@ -233,30 +236,31 @@ class PresentationBuilder:
             clean_cap = clean_math_and_symbols(caption)
             p.text = clean_cap
             p.font.name = FONT_NAME
-            p.font.size = Pt(11)
+            p.font.size = Pt(13)  # 11pt에서 13pt로 확대!
             p.font.color.rgb = COLOR_CAPTION
-            p.alignment = PP_ALIGN.LEFT  # 왼쪽 정렬
+            p.alignment = PP_ALIGN.CENTER  # 이미지와 캡션 위치 일치
+            p.line_spacing = 1.3
 
-        # 3. 우측 본문 텍스트 영역: 여유로운 너비 6.233" (단어 끊김 방지) 및 높이 4.6"
-        r_box = slide.shapes.add_textbox(Inches(6.3), Inches(1.95), Inches(6.233), Inches(4.6))
+        # 3. 우측 본문 텍스트 영역: 세로 중앙 맞춤, 줄 간격 및 문단 간격 확대
+        r_box = slide.shapes.add_textbox(Inches(6.0), Inches(1.90), Inches(6.4), Inches(4.8))
         tf = r_box.text_frame
         tf.word_wrap = True
-        tf.vertical_anchor = MSO_ANCHOR.TOP
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE  # 세로 중앙에 맞춤!
         tf.margin_left = 0
         tf.margin_right = 0
-        tf.margin_top = Inches(0.1)
+        tf.margin_top = 0
         tf.margin_bottom = 0
 
         self._populate_text_frame(tf, body_text)
 
     def _render_wide_layout(self, slide, body_text):
-        box = slide.shapes.add_textbox(Inches(0.8), Inches(1.95), Inches(11.733), Inches(4.6))
+        box = slide.shapes.add_textbox(Inches(1.0), Inches(1.90), Inches(11.333), Inches(4.8))
         tf = box.text_frame
         tf.word_wrap = True
-        tf.vertical_anchor = MSO_ANCHOR.TOP
+        tf.vertical_anchor = MSO_ANCHOR.MIDDLE  # 세로 중앙에 맞춤!
         tf.margin_left = 0
         tf.margin_right = 0
-        tf.margin_top = Inches(0.1)
+        tf.margin_top = 0
         tf.margin_bottom = 0
         self._populate_text_frame(tf, body_text, is_wide=True)
 
@@ -280,33 +284,45 @@ class PresentationBuilder:
                 first = False
                 p.text = clean_quote
                 p.font.name = FONT_NAME
-                p.font.size = Pt(18 if not is_wide else 19)
+                p.font.size = Pt(20 if not is_wide else 21)
                 p.font.color.rgb = COLOR_BODY
-                p.line_spacing = 1.4
-                p.space_after = Pt(10)
+                p.line_spacing = 1.45
+                p.space_after = Pt(14)
                 continue
 
-            # 불릿 포인트
-            is_bullet = line_str.startswith("- ") or line_str.startswith("• ") or re.match(r"^\d+\.\s", line_str)
-            text_content = clean_math_and_symbols(re.sub(r"^[-•]\s*", "• ", line_str))
-            if not is_bullet and not text_content.startswith("💡") and not text_content.startswith("⚠️"):
-                text_content = "• " + text_content
-
-            base_pt = 19 if len(clean_text) < 220 else (18 if len(clean_text) < 300 else 17)
+            # 본문 텍스트: 앞머리 기호("- ", "• ", 숫자 등) 제거하고 순수 내용 추출
+            text_content = clean_math_and_symbols(re.sub(r"^([-•]|\d+\.)\s*", "", line_str))
 
             p = tf.paragraphs[0] if first else tf.add_paragraph()
             first = False
             p.text = text_content
             p.font.name = FONT_NAME
-            p.font.size = Pt(base_pt if not is_wide else base_pt + 1)
+            p.font.size = Pt(22)  # 본문 22pt 유지!
             p.font.color.rgb = COLOR_BODY
-            p.space_before = Pt(4)
-            p.space_after = Pt(14)
-            p.line_spacing = 1.4
+            p.line_spacing = 1.45  # 줄 간격 넓힘
+            p.space_after = Pt(20)  # 문단 간격 넓힘
+
+            # 실제 파워포인트 글머리 기호(buChar •) 및 Hanging Indent 설정
+            # 줄이 바뀌어도 둘째 줄이 첫 줄 글자에 맞춰 정렬되도록 marL/indent 설정
+            pPr = p._p.get_or_add_pPr()
+            pPr.set('marL', '342900')    # 0.375 inch left margin
+            pPr.set('indent', '-342900') # -0.375 inch hanging indent
+            for child in list(pPr):
+                if child.tag.endswith(('buClr', 'buSzPct', 'buSzPts', 'buFont', 'buChar', 'buNone')):
+                    pPr.remove(child)
 
             if text_content.startswith("💡") or text_content.startswith("⚠️"):
                 p.font.bold = True
                 p.font.color.rgb = COLOR_PRIMARY
+                buNone = parse_xml(f'<a:buNone {nsdecls("a")}/>')
+                pPr.append(buNone)
+                pPr.set('marL', '0')
+                pPr.set('indent', '0')
+            else:
+                buClr = parse_xml(f'<a:buClr {nsdecls("a")}><a:srgbClr val="2563EB"/></a:buClr>')
+                buChar = parse_xml(f'<a:buChar {nsdecls("a")} char="•"/>')
+                pPr.append(buClr)
+                pPr.append(buChar)
 
     def create_ending_slide(self, page_num, total_pages):
         """마지막 슬라이드: 감사합니다 인사말로 강의 슬라이드 종료"""
