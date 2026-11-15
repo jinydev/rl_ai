@@ -280,45 +280,83 @@ class PresentationBuilder:
         self._populate_text_frame(tf, body_text, is_wide=True)
 
     def _render_wide_code_slide(self, slide, body_text, code_block):
-        """검정 바탕의 와이드 터미널 코드 박스 + 흰색 글자 슬라이드 (들여쓰기 100% 보존)"""
-        has_desc = bool(body_text.strip())
-        if has_desc:
-            code_left = Inches(0.8)
-            code_top = Inches(2.0)
-            code_width = Inches(6.0)
-            code_height = Inches(4.7)
+        """검정 바탕의 와이드 터미널 코드 박스 + 흰색 글자 슬라이드 (폭 11.733" 와이드 전체 활용, 들여쓰기 100% 보존)"""
+        has_intro = bool(body_text and body_text.strip())
 
-            desc_box = slide.shapes.add_textbox(Inches(7.1), Inches(2.0), Inches(5.4), Inches(4.7))
-            tf_desc = desc_box.text_frame
-            tf_desc.word_wrap = True
-            tf_desc.vertical_anchor = MSO_ANCHOR.MIDDLE
-            tf_desc.margin_left = 0
-            tf_desc.margin_right = 0
-            tf_desc.margin_top = 0
-            tf_desc.margin_bottom = 0
-            self._populate_text_frame(tf_desc, body_text)
-            pad_h = Inches(0.25)
-            pad_v = Inches(0.25)
+        raw_lines = code_block.strip().split("\n")
+        num_lines = len(raw_lines)
+
+        code_left = Inches(0.8)
+        code_width = Inches(11.733)
+
+        # 1. 상단 안내/도입 텍스트가 있는 경우 (폭 11.733", 동적 높이 및 y 조정)
+        if has_intro:
+            intro_clean = clean_math_and_symbols(body_text.replace("\n", " ").strip())
+            if len(intro_clean) > 80:
+                intro_h = Inches(0.55)
+                code_top = Inches(2.45)
+                code_height = Inches(4.55)
+                font_sz = Pt(16.5)
+            else:
+                intro_h = Inches(0.38)
+                code_top = Inches(2.25)
+                code_height = Inches(4.75)
+                font_sz = Pt(18.0)
+
+            intro_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.78), Inches(11.733), intro_h)
+            itf = intro_box.text_frame
+            itf.word_wrap = True
+            itf.margin_top = 0
+            itf.margin_bottom = 0
+            itf.margin_left = 0
+            itf.margin_right = 0
+            ip = itf.paragraphs[0]
+            ip.text = intro_clean
+            ip.font.name = FONT_NAME
+            ip.font.size = font_sz
+            ip.font.color.rgb = COLOR_BODY
+            ip.line_spacing = 1.3
         else:
-            code_left = Inches(0.8)
-            code_top = Inches(2.0)
-            code_width = Inches(11.733)
-            code_height = Inches(4.8)
-            pad_h = Inches(0.35)
-            pad_v = Inches(0.3)
+            code_top = Inches(1.95)
+            code_height = Inches(5.05)
 
-        # 다크 터미널 배경
+        # 2. 다크 터미널 박스 배경 도형 (폭 11.733" 와이드 전체)
         bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, code_left, code_top, code_width, code_height)
         bg.fill.solid()
         bg.fill.fore_color.rgb = COLOR_CODE_BG
         bg.line.color.rgb = COLOR_CODE_BORDER
         bg.line.width = Pt(1.0)
 
-        # 코드 텍스트 상자
-        c_box = slide.shapes.add_textbox(
-            code_left + pad_h, code_top + pad_v,
-            code_width - (pad_h * 2), code_height - (pad_v * 2)
-        )
+        # 3. 내부 코드 렌더링
+        pad_h = Inches(0.40)
+        pad_v = Inches(0.30)
+
+        if num_lines > 26:
+            # 26줄 초과 시: 터미널 내부를 2단(Left/Right) 분할 렌더링하여 세로 넘침 및 폰트 급락 방지
+            half = (num_lines + 1) // 2
+            col1_lines = raw_lines[:half]
+            col2_lines = raw_lines[half:]
+
+            col_w = (code_width - (pad_h * 2) - Inches(0.5)) / 2  # 약 5.2 inch
+            font_size = Pt(10.5) if num_lines <= 38 else Pt(9.5)
+
+            # Left Column
+            self._render_code_column(slide, col1_lines, code_left + pad_h, code_top + pad_v, col_w, code_height - (pad_v * 2), font_size)
+            # Right Column
+            col2_left = code_left + pad_h + col_w + Inches(0.5)
+            self._render_code_column(slide, col2_lines, col2_left, code_top + pad_v, col_w, code_height - (pad_v * 2), font_size)
+        else:
+            # 26줄 이하: 단일 와이드 컬럼 렌더링
+            font_size = Pt(13.5) if num_lines <= 12 else (Pt(12.0) if num_lines <= 18 else Pt(11.0))
+            self._render_code_column(
+                slide, raw_lines,
+                code_left + pad_h, code_top + pad_v,
+                code_width - (pad_h * 2), code_height - (pad_v * 2),
+                font_size
+            )
+
+    def _render_code_column(self, slide, lines, left, top, width, height, font_size):
+        c_box = slide.shapes.add_textbox(left, top, width, height)
         tf = c_box.text_frame
         tf.word_wrap = False
         tf.margin_left = 0
@@ -326,16 +364,11 @@ class PresentationBuilder:
         tf.margin_top = 0
         tf.margin_bottom = 0
 
-        raw_lines = code_block.strip().split("\n")
-        num_lines = len(raw_lines)
-        font_size = Pt(11.5) if num_lines > 16 else (Pt(13.0) if num_lines > 10 else Pt(14.0))
-
         first = True
-        for line in raw_lines:
+        for line in lines:
             p = tf.paragraphs[0] if first else tf.add_paragraph()
             first = False
 
-            # 선행 공백을 \u00A0으로 변환하여 들여쓰기 100% 보존
             leading_match = re.match(r"^(\s+)", line)
             if leading_match:
                 spaces = leading_match.group(1)
@@ -347,10 +380,15 @@ class PresentationBuilder:
             p.text = line_content
             p.font.name = "Consolas"
             p.font.size = font_size
-            p.font.color.rgb = COLOR_WHITE
+            if line.strip().startswith("# --- [") or line.strip().startswith("# [실행 결과"):
+                p.font.color.rgb = RGBColor(96, 165, 250)  # 연파랑 (결과 헤더)
+                p.font.bold = True
+            elif line.strip().startswith("#"):
+                p.font.color.rgb = RGBColor(156, 163, 175) # 주석 회색
+            else:
+                p.font.color.rgb = COLOR_WHITE
             p.line_spacing = 1.25
 
-            # OpenXML xml:space="preserve" 주입
             pPr = p._p.get_or_add_pPr()
             buNone = parse_xml(f'<a:buNone {nsdecls("a")}/>')
             pPr.append(buNone)
@@ -556,10 +594,16 @@ def parse_subchapter_slides():
             p_content = p_raw
 
         # B. 코드 블록 추출
+        code_matches = list(re.finditer(r"```(?:python|bash|text)?\n([\s\S]*?)```", p_content))
         code_block = None
-        c_m = re.search(r"```(?:python|bash|text)?\n([\s\S]*?)```", p_content)
-        if c_m:
-            code_block = c_m.group(1)
+        if code_matches:
+            if len(code_matches) == 1:
+                code_block = code_matches[0].group(1)
+            else:
+                main_code = code_matches[0].group(1).rstrip()
+                output_code = code_matches[1].group(1).strip()
+                out_lines = "\n".join(f"# {l}" for l in output_code.split("\n"))
+                code_block = f"{main_code}\n\n# --- [실행 결과] ---\n{out_lines}"
 
         # C. 헤딩 파싱 (코드 블록 제외)
         no_code = re.sub(r"```[\s\S]*?```", "", p_content)
@@ -604,7 +648,13 @@ def parse_subchapter_slides():
                 continue
             if l.startswith("![") or l.startswith("**그림"):
                 continue
-            text_lines.append(l)
+            if "<div" in l and ("ch07/" in l or "dezero" in l or "py" in l):
+                continue
+            clean_l = clean_math_and_symbols(l)
+            if clean_l.startswith("출력 결과:") or clean_l.startswith("학습 진행 로그:"):
+                continue
+            if clean_l:
+                text_lines.append(clean_l)
 
         body_text = "\n".join(text_lines).strip()
 

@@ -2,9 +2,9 @@
 
 Provides dual-mode normalization:
 1. clean_slide_math(text: str) -> str:
-   Transforms LaTeX syntax, mathematical notations, and Greek codes into
-   clean, professional Unicode typography for visual PowerPoint slides.
-   Ensures 0 raw LaTeX commands (e.g. \\varepsilon, \\frac, $, ₩) remain on screen.
+   Transforms LaTeX syntax, mathematical notations, HTML formatting (sup/sub/b/i),
+   and Markdown markers into clean, professional Unicode typography for visual PowerPoint slides.
+   Ensures 0 raw LaTeX commands (e.g. \\varepsilon, \\frac, $, ₩) and 0 raw HTML/Markdown markers remain on screen.
 
 2. clean_notes_math(text: str) -> str:
    Translates mathematical notation, Greek letters, RL variables, and equations
@@ -54,6 +54,39 @@ GREEK_TO_UNICODE: Dict[str, str] = {
     "Psi": "Ψ",
     "Omega": "Ω",
 }
+
+SUPERSCRIPT_MAP: Dict[str, str] = {
+    "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴",
+    "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹",
+    "+": "⁺", "-": "⁻", "=": "⁼", "(": "⁽", ")": "⁾",
+    "n": "ⁿ", "i": "ⁱ", "T": "ᵀ", "N": "ᴺ", "x": "ˣ",
+    "y": "ʸ", "*": "",
+}
+
+SUBSCRIPT_MAP: Dict[str, str] = {
+    "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
+    "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
+    "+": "₊", "-": "₋", "=": "₌", "(": "₍", ")": "₎",
+    "a": "ₐ", "e": "ₑ", "h": "ₕ", "i": "ᵢ", "j": "ⱼ",
+    "k": "ₖ", "l": "ₗ", "m": "ₘ", "n": "ₙ", "o": "ₒ",
+    "p": "ₚ", "r": "ᵣ", "s": "ₛ", "t": "ₜ", "u": "ᵤ",
+    "v": "ᵥ", "x": "ₓ", "*": "",
+}
+
+
+def to_superscript(s: str) -> str:
+    cleaned = s.replace("*", "").replace(" ", "")
+    if all(c in SUPERSCRIPT_MAP for c in cleaned):
+        return "".join(SUPERSCRIPT_MAP.get(c, c) for c in cleaned)
+    return f"^{cleaned}"
+
+
+def to_subscript(s: str) -> str:
+    cleaned = s.replace("*", "").replace(" ", "")
+    if all(c in SUBSCRIPT_MAP for c in cleaned):
+        return "".join(SUBSCRIPT_MAP.get(c, c) for c in cleaned)
+    return f"_{cleaned}"
+
 
 # Number to Korean phonetic reading for percentages and small numbers
 KOREAN_NUM_MAP = {
@@ -144,10 +177,12 @@ def decimal_to_korean(match: Match) -> str:
 
 
 def clean_slide_math(text: str) -> str:
-    """Transform LaTeX math markup into clear, beautiful Unicode typography for slides.
+    """Transform LaTeX math markup, HTML tags, and Markdown emphasis into clear Unicode typography for slides.
 
     Examples:
-        '강제로 \\varepsilon(10%)의 무작위 탐색' -> '강제로 ε(10%)의 무작위 탐색'
+        '*y* = 3*x*<sup>2</sup>' -> 'y = 3x²'
+        '**d*y* / d*x* = 6*x***' -> 'dy / dx = 6x'
+        '`y.backward()`' -> 'y.backward()'
         '$\\rho = \\frac{\\pi(a|s)}{b(a|s)}$' -> 'ρ = π(a|s) / b(a|s)'
         '할인율 $\\gamma = 0.9$' -> '할인율 γ = 0.9'
     """
@@ -156,16 +191,26 @@ def clean_slide_math(text: str) -> str:
 
     t = text
 
-    # 0. Fix ASCII control characters caused by faulty escape decoding
+    # 0. Strip metadata div blocks like <div align="right"><b>...</b></div>
+    t = re.sub(r"<div\b[^>]*>.*?</div>", "", t, flags=re.IGNORECASE | re.DOTALL)
+
+    # 1. HTML sup / sub conversions
+    t = re.sub(r"<sup\b[^>]*>(.*?)</sup>", lambda m: to_superscript(m.group(1)), t, flags=re.IGNORECASE)
+    t = re.sub(r"<sub\b[^>]*>(.*?)</sub>", lambda m: to_subscript(m.group(1)), t, flags=re.IGNORECASE)
+
+    # 2. HTML formatting tags strip: <b>, </b>, <i>, </i>, <code>, </code>, <span...>, </p>, etc.
+    t = re.sub(r"</?(?:b|strong|i|em|code|span|p|br|div)\b[^>]*>", "", t, flags=re.IGNORECASE)
+
+    # 3. Fix ASCII control characters caused by faulty escape decoding
     t = t.replace("\x07", "\\a").replace("\x08", "\\b")
     t = t.replace("\x0b", "\\v").replace("\x0c", "\\f")
     t = re.sub(r"₩([a-zA-Z]+)", r"\\\1", t)
 
-    # 1. LaTeX Greek symbols to Unicode (longer names first)
+    # 4. LaTeX Greek symbols to Unicode (longer names first)
     for cmd in sorted(GREEK_TO_UNICODE.keys(), key=len, reverse=True):
         t = re.sub(rf"\\{cmd}\b", GREEK_TO_UNICODE[cmd], t)
 
-    # 2. Fractions: \frac{A}{B} -> A / B or (A) / (B)
+    # 5. Fractions: \frac{A}{B} -> A / B or (A) / (B)
     while "\\frac" in t:
         idx = t.find("\\frac")
         open1 = t.find("{", idx)
@@ -196,10 +241,16 @@ def clean_slide_math(text: str) -> str:
 
         t = t[:idx] + f"{num} / {den}" + t[close2 + 1 :]
 
-    # 3. Square roots: \sqrt{x} -> √(x)
+    # 6. Square roots: \sqrt{x} -> √(x)
     t = re.sub(r"\\sqrt\{([^{}]+)\}", r"√(\1)", t)
 
-    # 4. Operators and relation symbols
+    # 7. LaTeX Subscripts & Superscripts
+    t = re.sub(r"\^\{([^{}]+)\}", lambda m: to_superscript(m.group(1)), t)
+    t = re.sub(r"\^([0-9a-zA-Z*])", lambda m: to_superscript(m.group(1)), t)
+    t = re.sub(r"_\{([^{}]+)\}", lambda m: to_subscript(m.group(1)), t)
+    t = re.sub(r"_([0-9a-zA-Z*])", lambda m: to_subscript(m.group(1)), t)
+
+    # 8. Operators and relation symbols
     t = re.sub(r"\\leftarrow|\\gets", "←", t)
     t = re.sub(r"\\rightarrow|\\to", "→", t)
     t = re.sub(r"\\leftrightarrow", "↔", t)
@@ -216,7 +267,7 @@ def clean_slide_math(text: str) -> str:
     t = re.sub(r"\\in\b", "∈", t)
     t = re.sub(r"\\notin\b", "∉", t)
 
-    # 5. Text formatting wrappers inside formulas
+    # 9. Text formatting wrappers inside formulas
     t = re.sub(r"\\(text|mathbf|mathit|mathrm|bm|operatorname)\{([^{}]+)\}", r"\2", t)
     t = re.sub(r"\\mathbb\{E\}", "E", t)
     t = re.sub(r"\\mathbb\{R\}", "ℝ", t)
@@ -224,19 +275,30 @@ def clean_slide_math(text: str) -> str:
     t = re.sub(r"\\min\b", "min", t)
     t = re.sub(r"\\argmax|\\arg\\max", "argmax", t)
 
-    # 6. Common superscripts
-    t = re.sub(r"\^2\b|\^\{2\}", "²", t)
-    t = re.sub(r"\^3\b|\^\{3\}", "³", t)
-    t = re.sub(r"\^T\b|\^\{T\}", "ᵀ", t)
-    t = re.sub(r"\^\*|\^\{\*\}", "*", t)
-
-    # 7. Strip dollar delimiters ($ ... $ or $$ ... $$)
+    # 10. Strip dollar delimiters ($ ... $ or $$ ... $$)
     t = re.sub(r"\$\$(.*?)\$\$", r"\1", t, flags=re.DOTALL)
     t = re.sub(r"\$(.*?)\$", r"\1", t)
 
-    # 8. Clean any remaining raw LaTeX backslashes attached to word identifiers
+    # 11. Inline code backticks: `code` -> code
+    t = re.sub(r"`([^`\n]+)`", r"\1", t)
+
+    # 12. Markdown Italics in math/variables: *y* -> y, *x* -> x
+    t = re.sub(r"\*([a-zA-Z0-9가-힣α-ωΑ-Ω_+=/-]+)\*", r"\1", t)
+
+    # 13. Mathematical multiplication: 3*x -> 3x
+    t = re.sub(r"(\d+)\s*\*\s*([a-zA-Z])", r"\1\2", t)
+
+    # 14. Markdown Bold: **text** -> text
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    t = re.sub(r"\*{2,}", "", t)
+    t = re.sub(r"(?<!\d)\*(?!\d)", "", t)
+
+    # 15. Clean any remaining raw LaTeX backslashes attached to word identifiers
     t = re.sub(r"\\([a-zA-Z]+)", r"\1", t)
     t = t.replace("\\", "")
+
+    # 16. Normalize extra spaces
+    t = re.sub(r"[ \t]+", " ", t)
 
     return t.strip()
 
@@ -251,116 +313,29 @@ def clean_notes_math(text: str) -> str:
 
     t = text
 
-    # 0. Fix ASCII control characters caused by faulty escape decoding
-    t = t.replace("\x07", "\\a").replace("\x08", "\\b")
-    t = t.replace("\x0b", "\\v").replace("\x0c", "\\f")
-    t = re.sub(r"₩([a-zA-Z]+)", r"\\\1", t)
+    # Strip HTML and markdown markup first
+    t = re.sub(r"<div\b[^>]*>.*?</div>", "", t, flags=re.IGNORECASE | re.DOTALL)
+    t = re.sub(r"<sup\b[^>]*>(.*?)</sup>", lambda m: to_superscript(m.group(1)), t, flags=re.IGNORECASE)
+    t = re.sub(r"<sub\b[^>]*>(.*?)</sub>", lambda m: to_subscript(m.group(1)), t, flags=re.IGNORECASE)
+    t = re.sub(r"</?[a-zA-Z]+\b[^>]*>", "", t)
+    t = re.sub(r"`([^`\n]+)`", r"\1", t)
+    t = re.sub(r"\*([a-zA-Z0-9가-힣α-ωΑ-Ω_+=/-]+)\*", r"\1", t)
+    t = re.sub(r"\*\*([^*]+)\*\*", r"\1", t)
+    t = re.sub(r"\*{2,}", "", t)
+    t = re.sub(r"(?<!\d)\*(?!\d)", "", t)
 
-    # 1. Clean markdown headers, bold, code wrappers
-    t = re.sub(r"^\s*>\s*", "", t)  # strip leading blockquote marker
-    t = re.sub(r"\*\*", "", t)
-    t = re.sub(r"\*", "", t)
-    t = re.sub(r"`", "", t)
-    t = re.sub(r"\[(식\s*[0-9\.]+)\]", r"\1", t)
-    t = re.sub(r"\[(그림\s*[0-9\.]+)\]", r"\1", t)
+    # Numbers as Korean phonetics for chapter titles if present: e.g. "11.1" -> "십일점일"
+    def ch_num_repl(m):
+        n1 = _int_to_korean(int(m.group(1)))
+        n2 = _int_to_korean(int(m.group(2)))
+        return f"{n1}점{n2}"
+    t = re.sub(r"\b(\d+)\.(\d+)\b", ch_num_repl, t)
 
-    # 2. High-priority composite phrases: e.g. \varepsilon(10%) -> 탐색 확률 입실론 십 퍼센트
-    t = re.sub(
-        r"(?:\\?varepsilon|\\?epsilon|\\?vareps|ε|ϵ)\s*\(\s*(\d+(?:\.\d+)?)\s*%\s*\)",
-        lambda m: f"탐색 확률 입실론 {number_to_korean_percentage(m)}",
-        t,
-    )
-    t = re.sub(
-        r"(?:\\?varepsilon|\\?epsilon|\\?vareps|ε|ϵ)\s*\(([^)]+)\)",
-        r"탐색 확률 입실론 \1",
-        t,
-    )
+    # Parenthesized duplicate English removal: e.g. "연쇄 법칙(Chain Rule)" -> "연쇄 법칙"
+    t = re.sub(r"([가-힣]+)\s*\([a-zA-Z0-9\s_\-./]+\)", r"\1", t)
 
-    # 3. Percentages in general: (10%) -> 십 퍼센트, 10% -> 십 퍼센트
-    t = re.sub(r"\(\s*(\d+(?:\.\d+)?)\s*%\s*\)", lambda m: f" {number_to_korean_percentage(m)}", t)
+    # Math percentages: e.g. 10% -> 십 퍼센트
     t = re.sub(r"(\d+(?:\.\d+)?)\s*%", number_to_korean_percentage, t)
-
-    # 4. Fractions: \frac{A}{B} -> B 분의 A
-    while "\\frac" in t or "frac{" in t:
-        idx = t.find("\\frac")
-        if idx == -1:
-            idx = t.find("frac{")
-        open1 = t.find("{", idx)
-        if open1 == -1:
-            break
-        depth, pos1 = 1, open1 + 1
-        while pos1 < len(t) and depth > 0:
-            if t[pos1] == "{":
-                depth += 1
-            elif t[pos1] == "}":
-                depth -= 1
-            pos1 += 1
-        close1 = pos1 - 1
-        num = t[open1 + 1 : close1].strip()
-
-        open2 = t.find("{", close1)
-        if open2 == -1:
-            break
-        depth, pos2 = 1, open2 + 1
-        while pos2 < len(t) and depth > 0:
-            if t[pos2] == "{":
-                depth += 1
-            elif t[pos2] == "}":
-                depth -= 1
-            pos2 += 1
-        close2 = pos2 - 1
-        den = t[open2 + 1 : close2].strip()
-
-        t = t[:idx] + f" {den} 분의 {num} " + t[close2 + 1 :]
-
-    # 5. Composite RL functions & equations
-    # Q and V functions
-    t = re.sub(r"\bq_π\(s,\s*a\)|\bq_\\?pi\(s,\s*a\)", "큐 파이 에스 에이", t)
-    t = re.sub(r"\bq_π\(s\',\s*a\'\)|\bq_\\?pi\(s\',\s*a\'\)", "큐 파이 에스 프라임 에이 프라임", t)
-    t = re.sub(r"\bv_π\(s\)|\bv_\\?pi\(s\)", "브이 파이 에스", t)
-    t = re.sub(r"\bv_π\(s\'\)|\bv_\\?pi\(s\'\)", "브이 파이 에스 프라임", t)
-    t = re.sub(r"\bq_\*\(s,\s*a\)", "큐 스타 에스 에이", t)
-    t = re.sub(r"\bv_\*\(s\)", "브이 스타 에스", t)
-
-    t = re.sub(r"\bQ\(s,\s*a\)", "큐 에스 에이", t)
-    t = re.sub(r"\bQ\(s\',\s*a\'\)", "큐 에스 프라임 에이 프라임", t)
-    t = re.sub(r"\bQ\(S_\{t\+1\},\s*A_\{t\+1\}\)|\bQ\(S_t\+1,\s*A_t\+1\)", "큐 오브 에스티 플러스 원 에이티 플러스 원", t)
-    t = re.sub(r"\bQ\(S_t,\s*A_t\)", "큐 오브 에스티 에이티", t)
-    t = re.sub(r"\bV\(s\)", "브이 에스", t)
-    t = re.sub(r"\bV\(s\'\)", "브이 에스 프라임", t)
-    t = re.sub(r"\bV\(S_\{t\+1\}\)|\bV\(S_t\+1\)", "브이 오브 에스티 플러스 원", t)
-    t = re.sub(r"\bV\(S_t\)", "브이 오브 에스티", t)
-
-    # Transition probability & Policies
-    t = re.sub(r"p\(s\'\s*\|\s*s,\s*a\)", "피 에스 프라임 기븐 에스 에이", t)
-    t = re.sub(r"p\(s\'\s*\|\s*s\)", "피 에스 프라임 기븐 에스", t)
-    t = re.sub(r"(?:π|\\?pi)\(a\'\s*\|\s*s\'\)", "파이 에이 프라임 기븐 에스 프라임", t)
-    t = re.sub(r"(?:π|\\?pi)\(a\s*\|\s*s\)", "파이 에이 기븐 에스", t)
-    t = re.sub(r"b\(a\'\s*\|\s*s\'\)", "비 에이 프라임 기븐 에스 프라임", t)
-    t = re.sub(r"b\(a\s*\|\s*s\)", "비 에이 기븐 에스", t)
-    t = re.sub(r"r\(s,\s*a,\s*s\'\)", "알 에스 에이 에스 프라임", t)
-    t = re.sub(r"r\(s,\s*a\)", "알 에스 에이", t)
-
-    # Summations
-    t = re.sub(r"(?:\\sum|∑)_\{s\'\}|(?:\\sum|∑)_\{s'\}|(?:\\sum|∑)_s\'|(?:\\sum|∑)_s'", "시그마 에스 프라임,", t)
-    t = re.sub(r"(?:\\sum|∑)_\{a\'\}|(?:\\sum|∑)_\{a'\}|(?:\\sum|∑)_a\'|(?:\\sum|∑)_a'", "시그마 에이 프라임,", t)
-    t = re.sub(r"(?:\\sum|∑)_\{s\}|(?:\\sum|∑)_s", "시그마 에스,", t)
-    t = re.sub(r"(?:\\sum|∑)_\{a\}|(?:\\sum|∑)_a", "시그마 에이,", t)
-    t = re.sub(r"\\sum\b|∑", "시그마 합 ", t)
-
-    # Subscripts with time t
-    t = re.sub(r"\bR_\{t\+1\}|\bR_t\+1", "알 티 플러스 일", t)
-    t = re.sub(r"\bS_\{t\+1\}|\bS_t\+1", "에스 티 플러스 일", t)
-    t = re.sub(r"\bA_\{t\+1\}|\bA_t\+1", "에이 티 플러스 일", t)
-    t = re.sub(r"\bG_t\b|G_t", "수익 지 티", t)
-    t = re.sub(r"\bS_t\b|S_t", "에스 티", t)
-    t = re.sub(r"\bA_t\b|A_t", "에이 티", t)
-    t = re.sub(r"\bR_t\b|R_t", "알 티", t)
-    t = re.sub(r"\bdelta_t\b|δ_t|델타_t", "시간차 오차 델타 티", t)
-
-    # Primed variables
-    t = re.sub(r"\bs\'|\bs’", "에스 프라임", t)
-    t = re.sub(r"\ba\'|\ba’", "에이 프라임", t)
 
     # Greek letters with appropriate particles
     t = re.sub(r"\\?varepsilon|\\?epsilon|\\?vareps|\bepsilon\b|ε|ϵ", "입실론", t)
@@ -383,75 +358,16 @@ def clean_notes_math(text: str) -> str:
     # Math operators and expectations
     t = re.sub(r"\\mathbb\{E\}|E\[", "기댓값 이 대괄호 ", t)
     t = re.sub(r"\\argmax|\\arg\\max|\bargmax\b", "아그맥스 ", t)
-    t = re.sub(r"\\max_a|\bmax_a\b", "맥스 에이 ", t)
+    t = re.sub(r"\\max_a|\bmax_a\b|maxₐ", "맥스 에이 ", t)
     t = re.sub(r"\\max\b", "최댓값 맥스 ", t)
     t = re.sub(r"\\min\b", "최솟값 민 ", t)
 
-    # RL programming and algorithm terms
-    t = re.sub(r"ε-탐욕|입실론-탐욕|\\epsilon-greedy", "입실론 탐욕", t)
-    t = re.sub(r"TD\(0\)", "티디 제로", t)
-    t = re.sub(r"\bTD\b", "티디", t)
-    t = re.sub(r"\bMC\b", "엠씨", t)
-    t = re.sub(r"\bDP\b", "디피", t)
-    t = re.sub(r"\bSARSA\b", "살사", t)
-    t = re.sub(r"Q-러닝|Q-Learning|\bQLearning\b", "큐러닝", t)
-    t = re.sub(r"\bDQN\b", "디큐엔", t)
-    t = re.sub(r"SarsaOffPolicyAgent", "살사 오프 정책 에이전트", t)
-    t = re.sub(r"SarsaAgent", "살사 에이전트", t)
-    t = re.sub(r"TdAgent", "티디 에이전트", t)
-    t = re.sub(r"QLearningAgentSimple", "큐러닝 에이전트 심플", t)
-    t = re.sub(r"QLearningAgentStep1", "큐러닝 에이전트 스텝 원", t)
-    t = re.sub(r"QLearningAgent", "큐러닝 에이전트", t)
-    t = re.sub(r"GridWorld", "그리드월드", t)
-    t = re.sub(r"defaultdict", "디폴트딕트", t)
-    t = re.sub(r"\bdeque\b", "디큐", t)
-    t = re.sub(r"maxlen", "맥스렌", t)
-    t = re.sub(r"get_action", "겟 액션 메서드", t)
-    t = re.sub(r"greedy_probs", "그리디 프랍스 함수", t)
-    t = re.sub(r"\bupdate\b", "업데이트 메서드", t)
-    t = re.sub(r"\breset\b", "리셋 메서드", t)
-    t = re.sub(r"\beval\b", "이밸 메서드", t)
-    t = re.sub(r"\bstep\b", "스텝 메서드", t)
-    t = re.sub(r"\bdone\b", "던 플래그", t)
-    t = re.sub(r"self\.pi", "셀프 닷 파이", t)
-    t = re.sub(r"self\.b", "셀프 닷 비", t)
-    t = re.sub(r"self\.Q", "셀프 닷 큐", t)
-    t = re.sub(r"self\.V", "셀프 닷 브이", t)
-    t = re.sub(r"self\.memory", "셀프 닷 메모리", t)
-    t = re.sub(r"self\.gamma", "셀프 닷 감마", t)
-    t = re.sub(r"self\.alpha", "셀프 닷 알파", t)
-    t = re.sub(r"self\.epsilon", "셀프 닷 입실론", t)
-    t = re.sub(r"next_state", "넥스트 스테이트", t)
-    t = re.sub(r"next_action", "넥스트 액션", t)
-    t = re.sub(r"next_q_max", "넥스트 큐 맥스", t)
-    t = re.sub(r"next_q", "넥스트 큐", t)
-    t = re.sub(r"\btarget\b", "타겟", t)
-
-    # Relations and arrows
-    t = re.sub(r"\\leftarrow|\\gets|←", "로 갱신", t)
-    t = re.sub(r"\\rightarrow|\\to|→", "에서", t)
-    t = re.sub(r"\\approx|≈", " 약 ", t)
-    t = re.sub(r"\\neq|≠", " 다르다 ", t)
-    t = re.sub(r"\\leq|\\le|≤", " 이하 ", t)
-    t = re.sub(r"\\geq|\\ge|≥", " 이상 ", t)
-
-    # Convert small decimals like 0.1, 0.01, 0.9 when following math terms
-    t = re.sub(r"(?<=[=:\s])(0\.\d+)", decimal_to_korean, t)
-
-    # Equals in formula context (avoid changing Korean sentences without formulas)
-    t = re.sub(r"\s*=\s*", "는 ", t)
-    # Fix particle agreement: e.g. 입실론는 -> 입실론은
-    t = t.replace("입실론는", "입실론은")
-
-    # Math plus / multiply in formula context
-    t = re.sub(r"\s*\+\s*", " 더하기 ", t)
-    t = re.sub(r"\s*[×·]\s*|\\times|\\cdot", " 곱하기 ", t)
-
-    # Strip dollar signs
-    t = re.sub(r"\$\$|\$", "", t)
+    # Common equations
+    t = re.sub(r"\bdy\s*/\s*dx\b", "디와이 디엑스", t)
 
     # Clean double spaces, brackets, remaining backslashes
     t = re.sub(r"\\[a-zA-Z]+", "", t)
+    t = re.sub(r"\$\$|\$", "", t)
     t = re.sub(r"[{}\[\]]", " ", t)
     t = re.sub(r"\s+", " ", t)
 
