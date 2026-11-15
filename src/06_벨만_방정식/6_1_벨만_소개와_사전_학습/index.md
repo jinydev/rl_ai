@@ -5,7 +5,8 @@ title: "06.1 벨만 소개와 사전 학습"
 
 # 06.1 벨만 소개와 사전 학습
 
-**그림 06-1** 요술 액자 속 역사적인 대수학자 리처드 벨만 교수의 모습을 경외스럽게 올려다보는 지니와 도로시
+![리처드 벨만과 최적성의 원리](./6_1_벨만_소개와_사전_학습.png)
+
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
     <span style="font-size: 1.1rem;">🎧</span>

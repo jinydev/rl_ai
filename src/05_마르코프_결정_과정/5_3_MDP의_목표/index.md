@@ -5,6 +5,8 @@ title: "05.3 MDP의 목표"
 
 # 05.3 MDP의 목표
 
+![할인 누적 보상과 최적 정책의 목표](./5_3_MDP의_목표.png)
+
 에이전트가 오즈의 세계에서 달성해야 할 궁극적인 목적지인 **할인 누적 수익(Discounted Return, <i>G<sub>t</sub></i>)**과 미래 보상의 가치를 조율하는 **할인율(Discount Factor, <i>&gamma;</i>)**, 그리고 모든 상태에서 최고의 성과를 보장하는 **최적 정책(Optimal Policy, <i>&pi;</i><sub>&ast;</sub>)**의 수학적 원리를 지니와 도로시의 즐거운 수업을 통해 정복해 봅시다!
 
 ![MDP의 목표 인트로](./img/jiny_mdp_ch5_3_target.png)

@@ -5,6 +5,8 @@ title: "06.7 정리"
 
 # 06.7 정리
 
+![벨만 방정식 단원 총정리와 동적 프로그래밍의 기초](./6_7_정리.png)
+
 <div class="dialogue-audio-player" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; background: #f8fafc; border-left: 4px solid #0284c7; border-radius: 6px; padding: 8px 14px; margin: 16px 0 10px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
   <div style="display: flex; align-items: center; gap: 6px;">
     <span style="font-size: 1.1rem;">🎧</span>

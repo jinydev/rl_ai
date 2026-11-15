@@ -5,6 +5,11 @@ title: "5강 마르코프 결정 과정"
 
 # 5강 마르코프 결정 과정 (Markov Decision Process, MDP)
 
+![05 마르코프 결정 과정](./05_마르코프_결정_과정.png)
+**그림 05-Intro** 상태, 행동, 보상, 상태 전이, 할인율의 5요소로 에이전트와 환경의 상호작용을 모델링하는 MDP (이호진 교수와 도로시 탐험대)
+
+---
+
 
 ![MDP 인트로](./img/jiny_dorothy_mdp_intro.png)
 

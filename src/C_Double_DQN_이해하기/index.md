@@ -5,6 +5,11 @@ title: "APPENDIX C Double DQN 이해하기"
 
 # APPENDIX C: Double DQN 이해하기
 
+![APPENDIX C Double DQN 이해하기](./C_Double_DQN_이해하기.png)
+**그림 C-Intro-1** 행동 선택(온라인 네트워크)과 가치 평가(타깃 네트워크)를 분리하여 과대평가 편향을 원천 차단하는 Double DQN의 핵심 원리 (이호진 교수와 도로시 탐험대)
+
+---
+
 **그림 C-0** Q1, Q2 두 장의 보물가치 카드를 교차 검증하며 과대평가 거품을 걷어내는 쌍둥이 지니 요정과 도로시
 ![Double DQN 인트로](./img/jiny_app_c_double_dqn.png)
 

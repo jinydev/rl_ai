@@ -1,0 +1,55 @@
+# Chapter 01.5: Exploration vs Exploitation Dilemma (탐색과 활용의 딜레마) YouTube 16:9 Cover Specification & Prompt
+# File: 05_탐색과_활용의_딜레마.png (16:9 widescreen ratio, 1376x768)
+# Guide Standard: /Users/hojin9/dev/jinysite/강화학습3/guides/커버생성_가이드.md
+# Reference Dataset: /Users/hojin9/dev/projects/dorothy/data/dataset/hojin & 11_3_신경망.png (Professor Hojin Facial Style)
+# Content Source: /Users/hojin9/dev/jinysite/강화학습3/src/01_강화학습이란/05_탐색과_활용의_딜레마/index.md
+
+================================================================================
+[1. 이호진 교수님 얼굴 데이터셋 및 11_3 스타일 참조 유의사항 (Facial Consistency Guidelines)]
+================================================================================
+본 챕터 일러스트레이션의 이호진 교수님(Professor Hojin)은 11_3_신경망.png 및 공식 데이터셋
+(/Users/hojin9/dev/projects/dorothy/data/dataset/hojin)의 얼굴 조형을 100% 영구 보존해야 합니다:
+
+1. 얼굴 조형 및 성인 동안 유지 (Anti-Aging & Adult Male Anatomy):
+   - 참조 기준: 11_3_신경망.png 원본의 스마트하고 지적인 얼굴형과 이목구비 완전 일치.
+   - 신체 비율: 정확한 7등신(7 heads tall) 성인 남성 2D 애니메이션 비율 (절대 소년/치비 체형 금지).
+   - 연령대: 40대 초반의 지적이고 건강한 성인 남성 (Early 40s adult Korean professor).
+   - 안면 특징: 10대 소년 같은 둥근 얼굴이나 거대한 만화 눈망울을 엄격히 배제하고, 지적이고 온화한 성인 인상 유지.
+   - 피부결: 잔주름, 팔자주름, 눈가 처짐(eye bags), 노안 인상이 일체 없는 매끄럽고 건강한 웜톤 살구빛 피부 (#FEEFE6 / #F5CEBA).
+   - 턱선 및 윤곽: 갸름하면서도 단정하고 신뢰감을 주는 스마트한 성인 턱선.
+
+2. 헤어스타일 (Hairstyle):
+   - 스타일: 세련된 7:3 가르마 숏 컷 (Stylishly parted short hair with forehead exposed).
+   - 색상: 자연스러운 다크 차콜 흑발 베이스 (#2C2D30)에 이마 양옆과 구레나룻에 뚜렷하게 섞인 은빛 솔트앤페퍼 스트릭 (#8C9098).
+
+3. 안경 (Glasses):
+   - 스티브 잡스 스타일의 슬림하고 얇은 실버 라운드 메탈 와이어테 안경 (Thin minimalist round metal wire-rim glasses, #9EA7B0).
+   - 렌즈 투과율이 높아 눈동자를 가리지 않으며, 두꺼운 뿔테나 사각/검은 테 안경 엄격 금지.
+
+4. 눈 & 온화한 표정 (Eyes & Expression):
+   - 깊고 지적인 밤색/에스프레소 브라운 눈동자 (Kind warm brown eyes, #422A1D).
+   - 제자들을 대견하게 바라보며 부드럽게 반달형으로 가늘어지는 따뜻한 눈매 (성인 멘토의 신뢰감 있는 미소).
+   - 권위적이거나 엄격하지 않고, 친근한 멘토로서의 따뜻함.
+
+5. 복장 및 로고 금지 (Strict No SNU / Plain Outfit Rule):
+   - 어떠한 대학 마크('SNU'), 기업 로고, 명찰, 배지도 일체 없는 순수 단색 솔리드 다크 차콜 네이비 반팔 폴로 셔츠 (#1F242C).
+   - 클래식 스트레이트 핏 중청 데님 청바지 (#3F638A) 및 뉴발란스 모티브의 레트로 그레이 스웨이드 스니커즈 (#7F8287).
+
+6. 상단 간판/칠판 배제와 자연스러운 멘토 자세 (Zero Blackboard & Natural Mentor Pose):
+   - 칠판에 분필로 글씨를 쓰거나 허공에 칠판 배너를 배치하는 일체의 연출을 전면 배제.
+   - 한 손은 청바지 주머니에 넣고, 다른 손은 제자들을 향해 따뜻한 '엄지 척(Thumbs-up)' 격려를 취함.
+
+7. 상단 강의 텍스트 및 챕터 타이틀 절대 배제 (Strict Zero Lecture / Chapter Title Text Rule):
+   - 이미지 상단 여백에 강의 제목, 챕터 타이틀, 영문 헤드라인 텍스트 일체 표기 금지 (PPT 편집용 순수 여백 확보).
+   - 캐릭터 머리 위쪽 공간 전체는 타이포그래피 없이 완전히 비어 있는 100% 순수 솔리드 화이트(#FFFFFF) 여백으로 유지.
+
+================================================================================
+[2. 최종 이미지 생성 실행 프롬프트 (Master Production Prompt)]
+================================================================================
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, highly detailed. Grand 16:9 wide educational concept illustration for Chapter 01.5: 'The Exploration vs Exploitation Dilemma: Balancing Known Rewards and Unknown Potential (탐색과 활용의 딜레마)'. STRICT RULE: ABSOLUTELY NO text, NO chapter title, NO lecture headline at the top of the image; the upper area above characters must be completely pure empty solid white space (#FFFFFF). CRITICAL: Exactly ONE man in the entire image.
+On the right, Professor Hojin: EXACTLY matching the facial appearance, hairstyle, and head shape from 11_3_신경망.png. An adult Korean male engineering professor in his early 40s, 7 heads tall adult proportions (NOT a young boy, NOT teenage), dignified and handsome mature face with smooth healthy skin, stylish neatly parted 7:3 short dark hair with clear visible silver salt-and-pepper streaks along the sides and temples, thin minimalist round metal wire-rim glasses, kind intelligent narrow warm brown eyes with a gentle crinkle, and a proud warm encouraging mentor smile. He wears a plain solid dark charcoal navy short-sleeve collared polo shirt with NO badges or logos, medium-wash blue denim jeans, and classic grey suede sneakers. He stands confidently with one hand in his pocket and gesturing gently with an encouraging thumbs-up toward Dorothy.
+In the center, Dorothy: an energetic 10-year-old girl with twin brown pigtails in red ribbons, bright sparkling hazel eyes, coral-orange striped t-shirt under classic blue denim overalls, and red sneakers. She contemplates a glowing dual-path decision guide: one glowing path leads to a familiar basket of bright red ripe apples (Exploitation), while the other path leads to a sparkling mysterious treasure chest concealed in soft mist (Exploration), holding a delicate navigation compass with thoughtful curiosity. Next to her, Toto: an adorable fluffy white bichon frise puppy with a bright sky-blue neck bandana, curiously sniffing toward the sparkling mist path with ears perked up.
+On the left, Jiny: a charming tuxedo cat wearing small round glasses and a red bell collar, sitting at a classic wooden study desk, balancing an exquisite vintage brass beam scale that weighs an apple icon against a question mark crystal, computing the optimal epsilon trade-off.
+Clean solid pure white background (#FFFFFF) with subtle soft floor contact shadows under feet. Bright, insightful, and academically inspiring atmosphere.
+NEGATIVE PROMPT: top title text, lecture header text, chapter title text, typography at top, headline text, words above characters, chalkboard, blackboard, green board, chalk tray, writing on board, SNU, logo, multiple adult men, realistic photo, 3D render, elderly facial features, wrinkles, facial hair.
+ASPECT RATIO: 16:9 widescreen (1376x768).

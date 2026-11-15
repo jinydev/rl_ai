@@ -5,6 +5,11 @@ title: "APPENDIX B n단계 TD법"
 
 # APPENDIX B: n단계 TD법 (n-step Temporal Difference)
 
+![APPENDIX B n단계 TD법](./B_n단계_TD법.png)
+**그림 B-Intro-1** 1단계 시간차 학습과 몬테카를로법의 장점을 융합하여 연속된 n-step 누적 보상과 부트스트랩으로 가치를 갱신하는 n단계 TD법 (이호진 교수와 도로시 탐험대)
+
+---
+
 **그림 B-0** 한 걸음 전진 대신 세 걸음(n-step)을 한꺼번에 껑충 뛰어 발판의 누적 보상을 한 번에 갱신하는 도로시와 지니
 ![n단계 TD 인트로](./img/jiny_app_b_nstep_td.png)
 
