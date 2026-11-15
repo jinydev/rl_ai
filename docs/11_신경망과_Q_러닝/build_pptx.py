@@ -17,7 +17,7 @@ COLOR_PRIMARY = RGBColor(26, 115, 232)      # #1A73E8 (Brand Blue Badge)
 COLOR_TITLE = RGBColor(17, 24, 39)          # #111827 (Dark Charcoal, 거의 검정)
 COLOR_SUBTITLE = RGBColor(107, 114, 128)    # #6B7280 (Medium Gray, 회색)
 COLOR_BODY = RGBColor(31, 41, 55)           # #1F2937 (Body Text)
-COLOR_DIVIDER = RGBColor(156, 163, 175)     # #9CA3AF (Divider Line, 실선)
+COLOR_DIVIDER = RGBColor(226, 232, 240)     # #E2E8F0 (Divider Line, 깔끔하고 심플한 1px 연회색 실선)
 COLOR_CAPTION = RGBColor(75, 85, 99)        # #4B5563 (Caption Gray)
 COLOR_CODE_BG = RGBColor(17, 24, 39)        # #111827 (Dark Charcoal Terminal)
 COLOR_WHITE = RGBColor(255, 255, 255)
@@ -149,7 +149,7 @@ class PresentationBuilder:
         sp.font.size = Pt(20)
         sp.font.color.rgb = COLOR_SUBTITLE
 
-        # 페이지 번호: 오른쪽 위 x 11.33, y 0.5, 14pt, '02 / 11' 형식, 오른쪽 정렬
+        # 페이지 번호: 오른쪽 위 x 11.33, y 0.5, 14pt, '02 / 12' 형식, 오른쪽 정렬
         p_box = slide.shapes.add_textbox(Inches(11.333), Inches(0.5), Inches(1.2), Inches(0.4))
         pf = p_box.text_frame
         pp = pf.paragraphs[0]
@@ -158,14 +158,14 @@ class PresentationBuilder:
         pp.font.name = FONT_NAME
         pp.font.size = Pt(14)
         pp.font.bold = True
-        pp.font.color.rgb = COLOR_DIVIDER
+        pp.font.color.rgb = RGBColor(156, 163, 175)
 
-        # 구분선: y 1.7, 가로 x 0.8~12.53, 색 #9CA3AF, 굵기 0.75pt(1px), 실선
+        # 구분선: y 1.7, 가로 x 0.8~12.533, 색 #E2E8F0, 굵기 1.0pt(1px), 단색 실선
         line = slide.shapes.add_connector(
             MSO_CONNECTOR.STRAIGHT, Inches(0.8), Inches(1.7), Inches(12.533), Inches(1.7)
         )
         line.line.color.rgb = COLOR_DIVIDER
-        line.line.width = Pt(0.75)
+        line.line.width = Pt(1.0)
 
     def create_body_slide(self, slide_data, page_num, total_pages):
         """일반 강의 슬라이드 생성 (2단 레이아웃 표준)"""
@@ -201,51 +201,63 @@ class PresentationBuilder:
         with Image.open(img_path) as im:
             orig_w, orig_h = im.size
 
-        max_box = Inches(4.4)
+        # 여백을 고려하여 최대한 크게 배치 (최대 폭 5.1", 최대 높이 4.4")
+        max_w = Inches(5.1)
+        max_h = Inches(4.4)
         aspect = orig_w / orig_h
+        box_aspect = max_w / max_h
 
-        if aspect >= 1.0:
-            dest_w = max_box
+        if aspect >= box_aspect:
+            dest_w = max_w
             dest_h = dest_w / aspect
         else:
-            dest_h = max_box
+            dest_h = max_h
             dest_w = dest_h * aspect
 
-        left = Inches(1.0) + (max_box - dest_w) / 2
-        top = Inches(2.0) + (max_box - dest_h) / 2
+        left = Inches(0.8) + (max_w - dest_w) / 2
+        top = Inches(1.95) + (max_h - dest_h) / 2
 
+        # 1. 레이어 순서 맨 뒤 (가장 먼저 삽입하여 다른 영역 콘텐츠를 가리지 않음)
         slide.shapes.add_picture(img_path, left, top, width=dest_w, height=dest_h)
 
+        # 2. 그림에 대한 설명(캡션): 그림 배치 위치 기준 가장 아래(y 6.48"), 오른쪽 영역(x 1.6~5.9")에 배치, 왼쪽 정렬
         if caption:
-            cap_box = slide.shapes.add_textbox(Inches(1.0), Inches(6.4), Inches(4.4), Inches(0.55))
+            cap_box = slide.shapes.add_textbox(Inches(1.6), Inches(6.48), Inches(4.3), Inches(0.48))
             tf = cap_box.text_frame
             tf.word_wrap = True
             tf.margin_top = 0
             tf.margin_bottom = 0
+            tf.margin_left = 0
+            tf.margin_right = 0
             p = tf.paragraphs[0]
             clean_cap = clean_math_and_symbols(caption)
             p.text = clean_cap
             p.font.name = FONT_NAME
             p.font.size = Pt(11)
             p.font.color.rgb = COLOR_CAPTION
-            p.alignment = PP_ALIGN.CENTER
+            p.alignment = PP_ALIGN.LEFT  # 왼쪽 정렬
 
-        r_box = slide.shapes.add_textbox(Inches(6.6), Inches(2.0), Inches(5.9), Inches(4.4))
+        # 3. 우측 본문 텍스트 영역: 여유로운 너비 6.233" (단어 끊김 방지) 및 높이 4.6"
+        r_box = slide.shapes.add_textbox(Inches(6.3), Inches(1.95), Inches(6.233), Inches(4.6))
         tf = r_box.text_frame
         tf.word_wrap = True
-        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
-        tf.margin_left = Inches(0.1)
-        tf.margin_right = Inches(0.1)
-        tf.margin_top = 0
+        tf.vertical_anchor = MSO_ANCHOR.TOP
+        tf.margin_left = 0
+        tf.margin_right = 0
+        tf.margin_top = Inches(0.1)
         tf.margin_bottom = 0
 
         self._populate_text_frame(tf, body_text)
 
     def _render_wide_layout(self, slide, body_text):
-        box = slide.shapes.add_textbox(Inches(0.8), Inches(2.0), Inches(11.733), Inches(4.6))
+        box = slide.shapes.add_textbox(Inches(0.8), Inches(1.95), Inches(11.733), Inches(4.6))
         tf = box.text_frame
         tf.word_wrap = True
-        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+        tf.vertical_anchor = MSO_ANCHOR.TOP
+        tf.margin_left = 0
+        tf.margin_right = 0
+        tf.margin_top = Inches(0.1)
+        tf.margin_bottom = 0
         self._populate_text_frame(tf, body_text, is_wide=True)
 
     def _populate_text_frame(self, tf, body_text, is_wide=False):
@@ -268,10 +280,10 @@ class PresentationBuilder:
                 first = False
                 p.text = clean_quote
                 p.font.name = FONT_NAME
-                p.font.size = Pt(18 if not is_wide else 20)
+                p.font.size = Pt(18 if not is_wide else 19)
                 p.font.color.rgb = COLOR_BODY
-                p.line_spacing = 1.45
-                p.space_after = Pt(6)
+                p.line_spacing = 1.4
+                p.space_after = Pt(10)
                 continue
 
             # 불릿 포인트
@@ -280,7 +292,7 @@ class PresentationBuilder:
             if not is_bullet and not text_content.startswith("💡") and not text_content.startswith("⚠️"):
                 text_content = "• " + text_content
 
-            base_pt = 22 if len(clean_text) < 180 else (19 if len(clean_text) < 280 else 17)
+            base_pt = 19 if len(clean_text) < 220 else (18 if len(clean_text) < 300 else 17)
 
             p = tf.paragraphs[0] if first else tf.add_paragraph()
             first = False
@@ -289,12 +301,89 @@ class PresentationBuilder:
             p.font.size = Pt(base_pt if not is_wide else base_pt + 1)
             p.font.color.rgb = COLOR_BODY
             p.space_before = Pt(4)
-            p.space_after = Pt(8)
-            p.line_spacing = 1.5
+            p.space_after = Pt(14)
+            p.line_spacing = 1.4
 
             if text_content.startswith("💡") or text_content.startswith("⚠️"):
                 p.font.bold = True
                 p.font.color.rgb = COLOR_PRIMARY
+
+    def create_ending_slide(self, page_num, total_pages):
+        """마지막 슬라이드: 감사합니다 인사말로 강의 슬라이드 종료"""
+        slide = self.prs.slides.add_slide(self.blank_layout)
+
+        # 페이지 번호: 오른쪽 위 x 11.33, y 0.5
+        p_box = slide.shapes.add_textbox(Inches(11.333), Inches(0.5), Inches(1.2), Inches(0.4))
+        pf = p_box.text_frame
+        pp = pf.paragraphs[0]
+        pp.text = f"{page_num:02d} / {total_pages:02d}"
+        pp.alignment = PP_ALIGN.RIGHT
+        pp.font.name = FONT_NAME
+        pp.font.size = Pt(14)
+        pp.font.bold = True
+        pp.font.color.rgb = RGBColor(156, 163, 175)
+
+        # 완강 알약 배지
+        badge = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(5.166), Inches(2.2), Inches(3.0), Inches(0.44)
+        )
+        badge.fill.solid()
+        badge.fill.fore_color.rgb = COLOR_PRIMARY
+        badge.line.color.rgb = COLOR_PRIMARY
+        badge.adjustments[0] = 0.5
+
+        tf = badge.text_frame
+        tf.word_wrap = False
+        p = tf.paragraphs[0]
+        p.text = "PART 11 · 심층 강화학습 완강"
+        p.font.name = FONT_NAME
+        p.font.size = Pt(13)
+        p.font.bold = True
+        p.font.color.rgb = COLOR_WHITE
+        p.alignment = PP_ALIGN.CENTER
+
+        # 메인 감사 타이틀: "감사합니다"
+        t_box = slide.shapes.add_textbox(Inches(2.0), Inches(2.9), Inches(9.333), Inches(1.0))
+        tf = t_box.text_frame
+        p = tf.paragraphs[0]
+        p.text = "감사합니다"
+        p.font.name = FONT_NAME
+        p.font.size = Pt(46)
+        p.font.bold = True
+        p.font.color.rgb = COLOR_TITLE
+        p.alignment = PP_ALIGN.CENTER
+
+        # 서브 설명문
+        s_box = slide.shapes.add_textbox(Inches(2.0), Inches(4.05), Inches(9.333), Inches(0.8))
+        sf = s_box.text_frame
+        sp = sf.paragraphs[0]
+        sp.text = "Q-러닝과 인공신경망의 결합으로 심층 강화학습의 기초를 완성하셨습니다.\n다음 강의에서는 DeZero 프레임워크와 실전 심층 Q-네트워크를 구현합니다."
+        sp.font.name = FONT_NAME
+        sp.font.size = Pt(18)
+        sp.font.color.rgb = COLOR_SUBTITLE
+        sp.alignment = PP_ALIGN.CENTER
+        sp.line_spacing = 1.4
+
+        # Q&A 안내
+        q_box = slide.shapes.add_textbox(Inches(2.0), Inches(5.1), Inches(9.333), Inches(0.45))
+        qf = q_box.text_frame
+        qp = qf.paragraphs[0]
+        qp.text = "질의응답(Q&A) 및 토론"
+        qp.font.name = FONT_NAME
+        qp.font.size = Pt(15)
+        qp.font.bold = True
+        qp.font.color.rgb = COLOR_PRIMARY
+        qp.alignment = PP_ALIGN.CENTER
+
+        # 슬라이드 노트 (정교수 클로징 인사)
+        notes_slide = slide.notes_slide
+        closing_script = (
+            "이상으로 십일장 신경망과 큐러닝 강의를 모두 마치겠습니다. "
+            "테이블 방식의 물리적 한계를 넘어 인공신경망이라는 강력한 함수 근사기를 통해 "
+            "무한한 상태 공간으로 확장해 나가는 심층 강화학습의 핵심 원리를 함께 확인했습니다. "
+            "경청해 주셔서 대단히 감사합니다."
+        )
+        notes_slide.notes_text_frame.text = convert_to_tts_script(closing_script)
 
 # ==========================================
 # 4. 슬라이드 파싱 및 메인 변환 로직
@@ -415,8 +504,8 @@ def parse_ch11_slides():
 def main():
     print(f"[1/3] Parsing Chapter 11 slides from: {SLIDES_MD_PATH}")
     cover_script, body_slides = parse_ch11_slides()
-    total_slides = len(body_slides) + 1
-    print(f"      Parsed cover slide + {len(body_slides)} body slides (Total {total_slides} slides)")
+    total_slides = len(body_slides) + 2  # Cover + Body Slides + Ending Slide
+    print(f"      Parsed cover slide + {len(body_slides)} body slides + 1 ending slide (Total {total_slides} slides)")
 
     print("[2/3] Building PPTX with python-pptx (16:9 Widescreen, Clean Unicode, TTS Narration)...")
     builder = PresentationBuilder()
@@ -429,7 +518,10 @@ def main():
         page_num = idx + 2
         builder.create_body_slide(slide_data, page_num, total_slides)
 
-    # 3. PPTX 저장
+    # 3. 마지막 슬라이드: 감사합니다 인사말로 강의 슬라이드 종료 (Page 12)
+    builder.create_ending_slide(total_slides, total_slides)
+
+    # 4. PPTX 저장
     print(f"[3/3] Saving final presentation to: {OUTPUT_PPTX_PATH}")
     builder.prs.save(OUTPUT_PPTX_PATH)
     print("      Done! PPTX presentation generated successfully!")
