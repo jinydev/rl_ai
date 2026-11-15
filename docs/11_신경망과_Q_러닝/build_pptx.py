@@ -53,17 +53,21 @@ class PresentationBuilder:
         self.blank_layout = self.prs.slide_layouts[6]
 
     def create_editable_cover_slide(self, script_text=""):
-        """첫 번째 슬라이드: 16:9 커버 이미지 PNG를 전면 바탕(하위 레이어)으로 깔고, 상위 레이어에 편집 가능한 텍스트 배치"""
+        """첫 번째 슬라이드: 커버 이미지를 약 84.5%로 축소하여 우하단에 고정하고, 좌상단 여백에 챕터정보, 타이틀, 서브설명만 배치"""
         slide = self.prs.slides.add_slide(self.blank_layout)
 
-        # 1. 하위 레이어: 16:9 와이드스크린 커버 이미지 PNG 삽입 (전면 바탕)
+        # 1. 하위 레이어: 16:9 와이드스크린 커버 이미지 PNG를 약 84.5%로 축소하여 우하단 고정
         cover_png_path = os.path.join(BASE_DIR, "11_신경망과_Q_러닝.png")
         if os.path.exists(cover_png_path):
-            slide.shapes.add_picture(cover_png_path, Inches(0), Inches(0), width=SLIDE_WIDTH, height=SLIDE_HEIGHT)
+            img_w = Inches(11.27)
+            img_h = Inches(6.34)
+            img_left = SLIDE_WIDTH - img_w
+            img_top = SLIDE_HEIGHT - img_h
+            slide.shapes.add_picture(cover_png_path, img_left, img_top, width=img_w, height=img_h)
 
-        # 2. 상위 레이어: 파란색 뱃지 (14pt Bold)
+        # 2. 상위 레이어: 챕터 정보 배지 (13pt Bold, x=0.8", y=0.60", w=2.6", h=0.42")
         badge = slide.shapes.add_shape(
-            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.0), Inches(3.0), Inches(0.5)
+            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.60), Inches(2.6), Inches(0.42)
         )
         badge.fill.solid()
         badge.fill.fore_color.rgb = COLOR_PRIMARY
@@ -72,44 +76,46 @@ class PresentationBuilder:
 
         tf = badge.text_frame
         tf.word_wrap = False
+        tf.margin_top = 0
+        tf.margin_bottom = 0
         p = tf.paragraphs[0]
         p.text = "PART 11 · 심층 강화학습"
         p.font.name = FONT_NAME
-        p.font.size = Pt(14)
+        p.font.size = Pt(13)
         p.font.bold = True
         p.font.color.rgb = COLOR_WHITE
         p.alignment = PP_ALIGN.CENTER
 
-        # 3. 상위 레이어: 메인 강의 타이틀 (44pt 볼드, 편집 가능 텍스트)
-        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.75), Inches(5.8), Inches(1.5))
+        # 3. 상위 레이어: 메인 강의 타이틀 (38pt Bold, x=0.8", y=1.22", w=7.0", h=0.65")
+        title_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.22), Inches(7.0), Inches(0.65))
         tf = title_box.text_frame
         tf.word_wrap = True
+        tf.margin_top = 0
+        tf.margin_bottom = 0
+        tf.margin_left = 0
+        tf.margin_right = 0
         p = tf.paragraphs[0]
-        p.text = "CHAPTER 11\n신경망과 Q 러닝"
+        p.text = "신경망과 Q 러닝"
         p.font.name = FONT_NAME
-        p.font.size = Pt(44)
+        p.font.size = Pt(38)
         p.font.bold = True
         p.font.color.rgb = COLOR_TITLE
 
-        # 4. 상위 레이어: 부제목 설명문 (20pt 회색, 편집 가능 텍스트)
-        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(3.45), Inches(5.8), Inches(1.8))
+        # 4. 상위 레이어: 부제목 설명문 (19pt Regular, x=0.8", y=1.98", w=7.5", h=1.10")
+        sub_box = slide.shapes.add_textbox(Inches(0.8), Inches(1.98), Inches(7.5), Inches(1.10))
         tf = sub_box.text_frame
         tf.word_wrap = True
+        tf.margin_top = 0
+        tf.margin_bottom = 0
+        tf.margin_left = 0
+        tf.margin_right = 0
         p = tf.paragraphs[0]
-        p.text = "테이블의 한계를 넘어 무한한 상태 공간으로 확장하는\n인공신경망 기반 Q-러닝의 원리와 실전 구현"
+        p.text = "테이블의 한계를 넘어 무한한 상태 공간으로 확장하는\n인공신경망 기반 Q-러닝 원리와 실전 구현"
         p.font.name = FONT_NAME
-        p.font.size = Pt(20)
+        p.font.size = Pt(19)
         p.font.color.rgb = COLOR_SUBTITLE
 
-        # 5. 상위 레이어: 강사 정보
-        p2 = tf.add_paragraph()
-        p2.text = "\n강의: 이호진 교수 · 조교 지니와 도로시 탐험대"
-        p2.font.name = FONT_NAME
-        p2.font.size = Pt(16)
-        p2.font.bold = True
-        p2.font.color.rgb = RGBColor(55, 65, 81)
-
-        # 6. 슬라이드 노트 (TTS 최적화 구술문)
+        # 5. 슬라이드 노트 (TTS 최적화 구술문)
         if script_text:
             notes_slide = slide.notes_slide
             notes_slide.notes_text_frame.text = convert_to_tts_script(script_text.strip())
