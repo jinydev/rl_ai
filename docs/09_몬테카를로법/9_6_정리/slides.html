@@ -1,0 +1,1171 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Begin Jekyll SEO tag v2.9.0 -->
+<title>09.6 정리 | 밑바닥부터 시작하는 딥러닝 4</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="09.6 정리" />
+<meta name="author" content="Hojin" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<meta name="twitter:description" property="og:description" content="직접 구현하며 익히는 강화 학습 알고리즘 강의 노트" />
+<link rel="canonical" href="https://rl.ai.jiny.dev/09_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95/9_6_%EC%A0%95%EB%A6%AC/slides.html" />
+<meta property="og:url" content="https://rl.ai.jiny.dev/09_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95/9_6_%EC%A0%95%EB%A6%AC/slides.html" />
+<meta property="og:site_name" content="밑바닥부터 시작하는 딥러닝 4" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="09.6 정리" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Hojin"},"description":"직접 구현하며 익히는 강화 학습 알고리즘 강의 노트","headline":"09.6 정리","url":"https://rl.ai.jiny.dev/09_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95/9_6_%EC%A0%95%EB%A6%AC/slides.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/assets/css/docs.css" rel="stylesheet" />
+  <link href="/assets/css/highlight.css" rel="stylesheet" />
+
+  <style>
+    blockquote {
+      border-left: solid 5px #dee2e6;
+      padding: 5px 10px;
+      background-color: #f8f9fa;
+    }
+  </style>
+
+  <style>
+    h1 a {
+      text-decoration: none;
+    }
+
+    h2 a {
+      text-decoration: none;
+    }
+
+    h3 a {
+      text-decoration: none;
+    }
+
+    h4 a {
+      text-decoration: none;
+    }
+
+    h5 a {
+      text-decoration: none;
+    }
+
+    h6 a {
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      vertical-align: top
+    }
+
+    strong a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* 스크롤바 커스텀 */
+    /* 임의의 영역 생성 */
+    .scrollBar {}
+
+    /* 아래의 모든 코드는 영역::코드로 사용 */
+    .scrollBar::-webkit-scrollbar {
+      width: 7px;
+      /* 스크롤바의 너비 */
+    }
+
+    .scrollBar::-webkit-scrollbar-thumb {
+      height: 30%;
+      /* 스크롤바의 길이 */
+      background: #cccccc;
+      /* 스크롤바의 색상 */
+
+      border-radius: 5px;
+    }
+
+    .scrollBar::-webkit-scrollbar-track {
+      background: rgba(33, 122, 244, .1);
+      /*스크롤바 뒷 배경 색상*/
+    }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-R4VBPCT3CR"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-R4VBPCT3CR');
+  </script>
+
+  <!-- MathJax for LaTeX Rendering -->
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+  </script>
+
+</head>
+
+<body>
+  <header class="navbar navbar-expand-lg bd-navbar sticky-top">
+    <nav class="container bd-gutter flex-wrap flex-lg-nowrap position-relative" aria-label="Main navigation">
+
+      <!-- Mobile: Left Toggle (Browse) -->
+      <div class="bd-navbar-toggle d-lg-none">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdSidebar"
+          aria-controls="bdSidebar" aria-label="Toggle docs navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi" fill="currentColor"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
+            </path>
+          </svg>
+          <span class="d-none fs-6 pe-1">Browse</span>
+        </button>
+      </div>
+
+      <!-- Brand: Desktop (Static), Mobile (Absolute Center) -->
+      <a class="navbar-brand p-0 me-0 me-lg-2 ms-lg-0 d-none d-lg-inline-block" href="/" aria-label="jinydev">
+        <svg width="32" height="26" viewBox="0 0 32 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="navbar-brand p-0 me-0 position-absolute top-50 start-50 translate-middle d-lg-none" href="/"
+        aria-label="jinydev">
+        <svg width="100" height="26" viewBox="0 0 112 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M24.2746 5.33377C25.8486 7.33981 25.1183 11.1792 24.3961 13.0177C24.4028 13.0199 24.4094 13.0221 24.4161 13.0243L24.4013 13.0248L22.649 12.9082C22.649 12.9053 22.6488 12.9013 22.649 12.8993C22.9902 8.93373 22.5975 7.34575 22.2147 7.07677C17.6316 10.3896 13.5379 9.33658 12.2725 9.01111C11.928 8.9225 11.7932 8.88781 11.9152 9.00988C12.2872 9.38185 13.1336 9.82821 13.7371 10.1465H13.7372L13.7376 10.1467C13.8743 10.2188 13.9985 10.2843 14.1019 10.3409C9.12673 10.3984 7.12659 8.00279 6.53855 7.29846C6.47859 7.22664 6.4333 7.1724 6.40105 7.14015C6.11408 6.85318 4.49961 5.87252 3.99256 7.74227C3.50142 9.55335 3.81246 11.6775 3.97665 12.7988C3.99089 12.896 3.99257 12.8981 3.99257 12.9298L2.37635 13.0248L2.37213 13.0247C0.223493 8.05534 1.83854 5.26971 3.29536 4.2246C3.29536 1.78444 6.27428 -0.592359 10.0455 0.263262C14.8768 1.64043 16.3468 1.18409 18.0759 0.647278C18.774 0.430562 19.5143 0.200726 20.5351 0.073124C25.2219 -0.512739 26.7993 2.56612 27 4.16122C26.2141 3.70487 24.8556 4.73165 24.2746 5.33377ZM12.3374 1.5872C11.1225 1.16466 7.99257 0.717209 6.3478 2.41116C5.98397 2.78587 5.55554 3.48864 5.55554 3.48864C5.55554 3.48864 4.82665 4.81961 4.25622 4.24919C3.68579 3.67878 5.0168 1.96749 6.06259 1.46044C7.10838 0.953388 9.70703 0.0660505 12.3374 1.5872Z"
+            fill="currentColor" />
+          <path
+            d="M10.078 13.5002H3.10601C2.2309 13.5002 1.52148 14.2097 1.52148 15.0848V18.3172C1.52148 19.1923 2.2309 19.9018 3.10601 19.9018H10.078C10.9531 19.9018 11.6625 19.1923 11.6625 18.3172V15.0848C11.6625 14.2097 10.9531 13.5002 10.078 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M0.823513 14.6094H0.379847C0.187322 14.6094 0.03125 14.7654 0.03125 14.958V15.9721C0.03125 16.1646 0.187322 16.3207 0.379847 16.3207H0.823513C1.01604 16.3207 1.17211 16.1646 1.17211 15.9721V14.958C1.17211 14.7654 1.01604 14.6094 0.823513 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M16.7326 13.5002H23.7045C24.5796 13.5002 25.2891 14.2097 25.2891 15.0848V18.3172C25.2891 19.1923 24.5796 19.9018 23.7045 19.9018H16.7326C15.8575 19.9018 15.1481 19.1923 15.1481 18.3172V15.0848C15.1481 14.2097 15.8575 13.5002 16.7326 13.5002Z"
+            stroke="currentColor" stroke-width="1.26763" />
+          <path
+            d="M25.9861 14.6094H26.4297C26.6222 14.6094 26.7783 14.7654 26.7783 14.958V15.9721C26.7783 16.1646 26.6222 16.3207 26.4297 16.3207H25.9861C25.7935 16.3207 25.6375 16.1646 25.6375 15.9721V14.958C25.6375 14.7654 25.7935 14.6094 25.9861 14.6094Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M12.2954 15.5601H14.5137C14.7062 15.5601 14.8623 15.7161 14.8623 15.9087V16.9228C14.8623 17.1153 14.7062 17.2713 14.5137 17.2713H12.2954C12.1028 17.2713 11.9468 17.1153 11.9468 16.9228V15.9087C11.9468 15.7161 12.1028 15.5601 12.2954 15.5601Z"
+            fill="currentColor" stroke="currentColor" stroke-width="0.0633813" />
+          <path
+            d="M9.93343 16.3937C9.93343 16.7087 9.76317 16.9641 9.55314 16.9641C9.34311 16.9641 9.17285 16.7087 9.17285 16.3937C9.17285 16.0786 9.34311 15.8232 9.55314 15.8232C9.76317 15.8232 9.93343 16.0786 9.93343 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M16.9688 16.3937C16.9688 16.7087 17.139 16.9641 17.3491 16.9641C17.5591 16.9641 17.7293 16.7087 17.7293 16.3937C17.7293 16.0786 17.5591 15.8232 17.3491 15.8232C17.139 15.8232 16.9688 16.0786 16.9688 16.3937Z"
+            fill="currentColor" />
+          <path
+            d="M14.2758 20.1016C13.642 20.6086 12.7863 20.3551 12.5645 20.1016C12.6278 20.4185 12.8687 20.8622 13.4518 20.8622C14.0349 20.8622 14.2441 20.3551 14.2758 20.1016Z"
+            fill="currentColor" />
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M12.1312 22.411C12.1575 22.2914 12.2759 22.2157 12.3956 22.2421L14.6347 22.735C14.7544 22.7614 14.83 22.8797 14.8036 22.9994C14.7773 23.119 14.659 23.1947 14.5393 23.1683L12.3002 22.6753C12.1805 22.649 12.1049 22.5307 12.1312 22.411Z"
+            fill="currentColor" />
+          <path
+            d="M13.4203 27.6754C9.00897 27.7261 5.77228 23.6613 4.70536 21.6225C4.54691 21.3197 4.42016 21.2739 4.32509 21.3373C4.17297 21.4387 4.28282 21.6437 4.32507 21.7493C4.85747 22.9916 5.58213 24.0416 5.87791 24.4113C4.83846 26.1353 4.49409 27.855 4.45183 28.4994C6.1758 26.8008 7.91668 26.8832 8.57162 27.1367C13.7055 29.7987 16.5577 27.929 18.1739 27.1367C19.4669 26.5029 21.4803 27.7388 22.3254 28.436C22.224 26.8642 21.3747 25.1402 20.9627 24.4747C21.6282 23.5873 22.1669 22.5099 22.4522 21.9711C22.6803 21.5401 22.6106 21.369 22.5472 21.3373C22.3951 21.2613 22.2092 21.4958 22.1353 21.6225C21.6599 22.4148 18.9345 27.6121 13.4203 27.6754Z"
+            fill="currentColor" />
+          <text x="32" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="22"
+            fill="currentColor">Jiny</text>
+        </svg>
+      </a>
+
+      <!-- Mobile: Right Toggle (Menu) -->
+      <div class="d-flex d-lg-none ms-auto">
+        <button class="navbar-toggler p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar"
+          aria-controls="bdNavbar" aria-label="Toggle navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+            viewBox="0 0 16 16">
+            <path
+              d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- OffCanvas -->
+      <div class="offcanvas-lg offcanvas-end flex-grow-1" tabindex="-1" id="bdNavbar"
+        aria-labelledby="bdNavbarOffcanvasLabel" data-bs-scroll="true">
+        <!-- OffCanver Header -->
+        <div class="offcanvas-header px-4 pb-0">
+          <h5 class="offcanvas-title text-white" id="bdNavbarOffcanvasLabel">Jiny</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"
+            data-bs-target="#bdNavbar">
+          </button>
+        </div>
+
+        <!-- OffCanver Body -->
+        <div class="offcanvas-body p-4 pt-0 p-lg-0">
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-column flex-lg-row bd-navbar-nav">
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/01_강화학습이란/">소개하기</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/02_확률과_기초수학/">기초수학</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part1/">이론적 배경</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part2/">강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part3/">고급강화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/part4/">심화학습</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link py-2 px-0 px-lg-2 "
+                href="/A_오프-정책_몬테카를로법/">부록</a>
+            </li>
+            
+          </ul>
+
+          <hr class="d-lg-none text-white-50">
+
+          <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://github.com/jinydev/rl_ai" target="_blank"
+                rel="noopener">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 512 499.36" role="img">
+                  <title>GitHub</title>
+                  <path fill="currentColor" fill-rule="evenodd"
+                    d="M256 0C114.64 0 0 114.61 0 256c0 113.09 73.34 209 175.08 242.9 12.8 2.35 17.47-5.56 17.47-12.34 0-6.08-.22-22.18-.35-43.54-71.2 15.49-86.2-34.34-86.2-34.34-11.64-29.57-28.42-37.45-28.42-37.45-23.27-15.84 1.73-15.55 1.73-15.55 25.69 1.81 39.21 26.38 39.21 26.38 22.84 39.12 59.92 27.82 74.5 21.27 2.33-16.54 8.94-27.82 16.25-34.22-56.84-6.43-116.6-28.43-116.6-126.49 0-27.95 10-50.8 26.35-68.69-2.63-6.48-11.42-32.5 2.51-67.75 0 0 21.49-6.88 70.4 26.24a242.65 242.65 0 0 1 128.18 0c48.87-33.13 70.33-26.24 70.33-26.24 14 35.25 5.18 61.27 2.55 67.75 16.41 17.9 26.31 40.75 26.31 68.69 0 98.35-59.85 120-116.88 126.32 9.19 7.9 17.38 23.53 17.38 47.41 0 34.22-.31 61.83-.31 70.23 0 6.85 4.61 14.81 17.6 12.31C438.72 464.97 512 369.08 512 256.02 512 114.62 397.37 0 256 0z">
+                  </path>
+                </svg>
+                <small class="d-lg-none ms-2">GitHub</small>
+              </a>
+            </li>
+
+            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto">
+              <div class="vr d-none d-lg-flex h-100 mx-lg-2 text-white"></div>
+              <hr class="d-lg-none my-2 text-white-50">
+            </li>
+
+            <li class="nav-item col-6 col-lg-auto">
+              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
+                  viewBox="0 0 16 16" role="img">
+                  <title>Home</title>
+                  <path fill="currentColor"
+                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
+                </svg>
+                <small class="d-lg-none ms-2">Home</small>
+              </a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container bd-gutter mt-3 my-md-4 bd-layout">
+    <aside class="bd-sidebar scrollBar">
+        <div class="offcanvas-lg offcanvas-start" tabindex="-1" id="bdSidebar"
+            aria-labelledby="bdSidebarOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title" id="bdSidebarOffcanvasLabel">학습목차</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"
+                    data-bs-target="#bdSidebar"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                <!-- 네비게이션 -->
+                <nav class="bd-links w-100" id="bd-docs-nav" aria-label="Docs navigation">
+  <ul class="bd-links-nav list-unstyled mb-0 pb-3 pb-md-2 pe-lg-2">
+    <li class="bd-links-group py-2">
+      <strong class="bd-links-heading d-flex w-100 align-items-center fw-semibold">
+        강의 목차
+      </strong>
+      <ul class="list-unstyled fw-normal pb-2 small">
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        <li>
+          
+          <a href="/part2/"
+            class="bd-links-link d-inline-block rounded ">
+            강화학습 개요
+          </a>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-2"
+            aria-expanded="false">
+            7강 동적 프로그래밍
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-2">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_1_유래/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.1 동적 프로그래밍의 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_2_동적_프로그래밍과_정책_평가/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.2 동적 프로그래밍과 정책 평가
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_3_더_큰_문제를_향해/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.3 더 큰 문제를 향해
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_4_정책_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.4 정책 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_5_정책_반복법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.5 정책 반복법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_6_가치_반복법/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.6 가치 반복법
+                </a>
+              </li>
+              
+              <li>
+                <a href="/07_동적_프로그래밍/7_7_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  07.7 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-3"
+            aria-expanded="false">
+            9강 몬테카를로법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-3">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/09_몬테카를로법/9_0_수학적기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.0 몬테카를로법의 수학적 기초와 역사적 유래
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_1_몬테카를로법_기초/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.1 몬테카를로법 기초
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_2_몬테카를로법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.2 몬테카를로법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_3_몬테카를로법_구현/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.3 몬테카를로법 구현
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_4_몬테카를로법으로_정책_제어하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.4 몬테카를로법으로 정책 제어하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_5_오프-정책과_중요도_샘플링/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.5 오프-정책과 중요도 샘플링
+                </a>
+              </li>
+              
+              <li>
+                <a href="/09_몬테카를로법/9_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  09.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+        
+        
+
+        
+        <li>
+          
+          
+          
+          <button
+            class="bd-links-link bd-links-btn btn d-inline-flex align-items-center rounded border-0 collapsed w-100"
+            data-bs-toggle="collapse" data-bs-target="#collapse-4"
+            aria-expanded="false">
+            10강 TD법
+            <svg class="bi ms-auto" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </button>
+          <div class="collapse " id="collapse-4">
+            <ul class="list-unstyled fw-normal pb-1 small ms-3">
+              
+              <li>
+                <a href="/10_TD법/10_1_TD법으로_정책_평가하기/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.1 TD법으로 정책 평가하기
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_2_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.2 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_3_오프-정책_SARSA/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.3 오프-정책 SARSA
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_4_Q_러닝/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.4 Q 러닝
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_5_분포_모델과_샘플_모델/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.5 분포 모델과 샘플 모델
+                </a>
+              </li>
+              
+              <li>
+                <a href="/10_TD법/10_6_정리/"
+                  class="bd-links-link d-inline-block rounded ">
+                  10.6 정리
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+          
+        </li>
+        
+        
+      </ul>
+    </li>
+  </ul>
+</nav>
+            </div>
+        </div>
+    </aside>
+
+    <main class="bd-main order-1">
+        <nav aria-label="breadcrumb" class="mt-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/09_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95/">09 몬테카를로법</a></li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item"><a href="/09_%EB%AA%AC%ED%85%8C%EC%B9%B4%EB%A5%BC%EB%A1%9C%EB%B2%95/9_6_%EC%A0%95%EB%A6%AC/">9 6 정리</a></li>
+        
+        
+        
+        
+        
+        
+        <li class="breadcrumb-item active" aria-current="page">09.6 정리</li>
+        
+        
+        
+    </ol>
+</nav>
+
+        <div class="bd-content ps-lg-4">
+            <h1 id="096-정리">09.6 정리</h1>
+<h2 id="경험으로-미지의-세계를-정복한-몬테카를로법-총결산과-10장-td법으로의-도약">경험으로 미지의 세계를 정복한 몬테카를로법 총결산과 10장 TD법으로의 도약</h2>
+
+<p><img src="./9_6_정리.png" alt="09.6 정리" />
+<strong>그림 09-6-Intro</strong> 몬테카를로법 총정리 (이호진 교수와 도로시 탐험대)</p>
+
+<ul>
+  <li><strong>핵심 목표</strong>: 9장에서 학습한 모델 프리 경험 학습의 전 과정을 총괄 정리하고 차세대 학습 패러다임 조망</li>
+  <li><strong>주요 내용</strong>:
+    <ul>
+      <li>모델 기반(DP) vs 경험 기반(MC) 패러다임의 완벽한 대조</li>
+      <li>정책 제어의 삼위일체: Q 함수, ε-탐욕, 지수 이동 평균</li>
+      <li>오프-정책과 중요도 샘플링의 핵심 의의</li>
+      <li>몬테카를로의 한계(완주 대기, 분산)와 10장 TD(시간차) 학습으로의 필연적 연결</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+이번 구점육 장에서는 9장 몬테카를로법의 긴 탐험을 마무리하며, 우리가 개척해 온 모델 프리 강화학습의 핵심 원리들을 총정리합니다. 환경의 사전 지도가 없는 완벽한 암흑 속에서도 에이전트의 경험 표본만으로 가치를 평가하고 최적 정책을 제어했던 위대한 성취를 되짚어보고, 몬테카를로의 한계를 극복하기 위해 이어질 10장 시간차 학습으로의 도약을 준비해 보겠습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-1">09.6 정리</h1>
+<h2 id="096-정리-개요">09.6 정리 개요</h2>
+
+<p>환경 모델을 전혀 모르는 완전한 백지상태에서도 오직 실제 부딪히며 얻은 경험만으로 가치 함수를 평가하고 최적 정책을 자율 제어해 낸 9장의 대장정을 총결산합니다.</p>
+
+<p><img src="./img/01_ch9_grand_summary_intro.png" alt="9장 정리 인트로" />
+<strong>그림 09-6-1</strong> 몬테카를로 정상에 올라 경험 학습의 전체 지도를 벅찬 감동으로 내려다보는 도로시, 지니, 토토</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육 정리 개요입니다. 환경 모델을 전혀 모르는 백지상태에서도 오직 실제 부딪히며 쌓은 에피소드 경험으로 최적 정책을 찾아내는 몬테카를로 대장정의 정상에 섰습니다. 화면의 일러스트처럼 발아래 펼쳐진 광활한 경험 학습의 전체 지형을 조망하며 핵심 이론을 하나로 꿰어보겠습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-2">09.6 정리</h1>
+<h2 id="096-정리-개요-1">09.6 정리 개요</h2>
+
+<p>실제 경험에 기반하여 환경의 전체 지도를 알지 못해도 가치와 최적 경로를 찾아낸 도로시처럼, 다음 장인 10장 TD법(시간차 학습)으로 나아가기 위한 몬테카를로식 통찰을 최종 복습해 봅시다!</p>
+
+<p><img src="./img/01_2_ch9_epic_journey_recap.png" alt="9장 대장정 6대 봉우리 완등 인포그래픽" />
+<strong>그림 09-6-1b</strong> 9.0 수학적 기초부터 9.5 오프-정책까지 몬테카를로법 정복의 6대 봉우리를 완등한 연구실 4인방</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점영 수학적 기초부터 구점오 오프 정책 중요도 샘플링까지 일곱 개의 관문을 모두 통과했습니다. 주사위 던지기에서 시작된 통계적 아이디어가 어떻게 자율적인 인공지능 제어 시스템으로 완성되었는지 로드맵을 통해 전체 맥락을 점검해 봅시다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-3">09.6 정리</h1>
+<h2 id="0961-경험-기반-학습과-모델-프리-패러다임">09.6.1 경험 기반 학습과 모델 프리 패러다임</h2>
+
+<p>강화학습에서는 에이전트가 주어진 환경 속에서 실제로 행동하고 거기서 얻은 경험을 바탕으로 더 나은 정책을 스스로 찾아냅니다. 환경과 에이전트의 이러한 역동적인 상호작용이야말로 강화학습이 지도학습이나 비지도학습과 구별되는 가장 본질적인 특징입니다.</p>
+
+<p><img src="./img/01_3_experience_driven_agent_env_interaction.png" alt="에이전트와 환경의 동적 상호작용 루프" />
+<strong>그림 09-6-1c</strong> 에이전트와 환경의 역동적인 상호작용(상태 관측 → 행동 실행 → 보상 획득)과 경험 기반 학습의 본질 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점일 절에서는 경험 기반 학습의 본질을 되짚어봅니다. 에이전트가 환경과 상호작용하며 상태를 관측하고, 행동을 취해 보상을 얻는 동적 루프야말로 강화학습 본연의 정체성입니다. 정답 라벨이 없어도 보상 신호만으로 스스로 지능을 진화시킵니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-4">09.6 정리</h1>
+<h2 id="0961-경험-기반-학습과-모델-프리-패러다임-1">09.6.1 경험 기반 학습과 모델 프리 패러다임</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>이번 9장에서 우리가 배운 핵심 기술은 <strong>몬테카를로법(Monte Carlo Method)</strong>이었습니다. 몬테카를로법을 이용하면 환경의 상태 전이 확률 행렬 <em>p</em>(<em>s</em>'</td>
+      <td><em>s</em>, <em>a</em>)나 보상 함수 <em>r</em>(<em>s</em>, <em>a</em>, <em>s</em>')를 사전에 전혀 알지 못해도, 에이전트가 온몸으로 부딪쳐 수집한 실제 경험 데이터(누적 할인 수익 <em>G</em>)의 표본 평균을 계산함으로써 참 가치 함수를 오차 없이 근사적으로 구해낼 수 있습니다.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="./img/02_mc_core_concepts_map.png" alt="몬테카를로 핵심 개념 지도" />
+<strong>그림 09-6-2</strong> 샘플링에서 시작해 역방향 평가, Q 함수 제어, 중요도 샘플링으로 뻗어나가는 몬테카를로 지식 나무</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+경험 표본 수집에서 시작하여 역방향 수익 정산, 행동 가치 큐 함수를 통한 정책 평가, 그리고 입실론 탐욕 정책 제어로 이어지는 몬테카를로 전체 파이프라인입니다. 모든 과정이 외부 지도가 아닌 에이전트 자신의 발자취만으로 굴러갑니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-5">09.6 정리</h1>
+<h2 id="0961-경험-기반-학습과-모델-프리-패러다임-2">09.6.1 경험 기반 학습과 모델 프리 패러다임</h2>
+
+<p>몬테카를로법의 본질은 <strong>‘경험(Experience)에 의한 직접 학습’</strong>입니다:</p>
+
+<ol>
+  <li><strong>표본 평균과 대수의 법칙 (Sample Mean &amp; Law of Large Numbers)</strong>:
+    <ul>
+      <li>무수히 많은 에피소드를 반복하며 관측된 실제 누적 할인 수익 <em>G</em>의 표본 평균을 계산하면, 통계학의 대수의 법칙에 의해 참 기댓값인 가치 함수 <em>V</em>(<em>s</em>)와 <em>Q</em>(<em>s</em>, <em>a</em>)에 오차 없이 정확히 수렴합니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/02_1b_law_of_large_numbers_mc_convergence.png" alt="대수의 법칙 표본 평균 수렴 인포그래픽" />
+<strong>그림 09-6-2aa</strong> 대수의 법칙에 의한 표본 평균의 수렴: 에피소드 수가 늘어날수록 참 가치 함수에 오차 없이 근사하는 메커니즘</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+몬테카를로 수렴성의 든든한 헌법은 바로 대수의 법칙입니다. 에피소드 표본이 누적될수록 초기 요동이 상쇄되고 표본 평균이 참 기댓값으로 반듯하게 수렴해 들어가는 수학적 안정성을 항상 기억해야 합니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-6">09.6 정리</h1>
+<h2 id="0961-경험-기반-학습과-모델-프리-패러다임-3">09.6.1 경험 기반 학습과 모델 프리 패러다임</h2>
+
+<ol>
+  <li><strong>무편향 추정 (Unbiased Estimation)</strong>:</li>
+</ol>
+
+<ul>
+  <li>다음 상태의 불확실한 추정 가치에 의존(부트스트랩)하지 않고, 에피소드가 끝날 때까지 실제로 모은 참 보상들의 누적 할인 합 <em>G</em>만을 온전하게 사용하므로, 추정치에 어떤 수학적 편향(Bias)도 끼어들지 않습니다.</li>
+</ul>
+
+<p><img src="./img/02_1c_unbiased_estimation_zero_bias_purity.png" alt="무편향 추정의 수학적 순수성" />
+<strong>그림 09-6-2ab</strong> 부트스트랩 없이 에피소드 완주 참 보상들의 합 G만을 정직하게 사용하여 편향(Bias = 0)을 원천 차단하는 무편향 추정의 원리</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+몬테카를로법의 가장 큰 강점 중 하나는 부트스트랩을 하지 않는다는 점입니다. 다른 상태의 불완전한 추정치를 빌려 쓰지 않고, 에피소드 완주 시점의 실제 관측 보상들로 계산하므로 어떤 편향도 끼어들지 않는 순수한 무편향 추정치를 얻습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-7">09.6 정리</h1>
+<h2 id="0961-경험-기반-학습과-모델-프리-패러다임-4">09.6.1 경험 기반 학습과 모델 프리 패러다임</h2>
+
+<ol>
+  <li><strong>역방향 누적 연산 (<code class="language-plaintext highlighter-rouge">reversed(memory)</code>)</strong>:</li>
+</ol>
+
+<ul>
+  <li>에피소드가 골 지점에서 종료된 후, 배낭에 담아둔 경험 버퍼를 뒤에서부터 거슬러 올라가며 점화식 <strong><em>G</em> ← <em>γ</em> · <em>G</em> + <em>R</em></strong>을 적용함으로써, 중복 연산 없이 단 한 번의 순회로 모든 상태의 수익을 <em>O</em>(<em>T</em>) 선형 시간에 계산해 내는 극도로 효율적인 파이썬 구현을 완성했습니다.</li>
+</ul>
+
+<p><img src="./img/02_2_mc_three_core_essences.png" alt="몬테카를로법의 3대 본질 인포그래픽" />
+<strong>그림 09-6-2b</strong> 몬테카를로법의 3대 본질 (대수의 법칙 표본 평균, 편향 없는 참 보상 정산, O(T) 선형 시간 역방향 순회) 입체 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+몬테카를로의 삼대 본질 속성을 한눈에 정리했습니다. 대수의 법칙에 기반한 표본 평균의 수렴성, 부트스트랩 없는 무편향 추정, 그리고 환경의 전이 확률을 전혀 요구하지 않는 완전한 모델 프리라는 세 개의 기둥이 강화학습의 혁명을 이끌었습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-8">09.6 정리</h1>
+<h2 id="0962-동적-프로그래밍dp-vs-몬테카를로법mc-총괄-비교">09.6.2 동적 프로그래밍(DP) vs 몬테카를로법(MC) 총괄 비교</h2>
+
+<p>동적 프로그래밍과 몬테카를로법의 구조적 차이를 종합 비교하면 다음과 같습니다:</p>
+
+<p><img src="./img/03_dp_vs_mc_comparison.png" alt="DP vs MC 비교" />
+<strong>그림 09-6-3</strong> 환경 지도를 펼쳐놓고 연립방정식을 푸는 DP 거울과, 발걸음으로 미로를 직접 개척하는 MC 거울의 대비</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점이 절에서는 전통의 거인 동적 프로그래밍과 신흥 강자 몬테카를로법을 전면 비교합니다. 동적 프로그래밍이 온실 속에서 완벽한 지도를 펼쳐놓고 연립방정식을 풀던 계획이었다면, 몬테카를로는 안개 낀 미지의 광야를 직접 겪어보며 지도를 그려나가는 학습입니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-9">09.6 정리</h1>
+<h2 id="0962-동적-프로그래밍dp-vs-몬테카를로법mc-총괄-비교-1">09.6.2 동적 프로그래밍(DP) vs 몬테카를로법(MC) 총괄 비교</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">비교 항목</th>
+      <th style="text-align: left">📐 동적 프로그래밍 (DP)</th>
+      <th style="text-align: left">🎲 몬테카를로법 (MC)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>환경 모델 (Model)</strong></td>
+      <td style="text-align: left">상태 전이 확률 <em>p</em>(<em>s</em>' | <em>s</em>, <em>a</em>), 보상 함수 <em>r</em> 필수</td>
+      <td style="text-align: left"><strong>환경 모델 불필요 (Model-Free)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>학습 원천 (Source)</strong></td>
+      <td style="text-align: left">벨만 연립방정식의 이론적 수학 전개</td>
+      <td style="text-align: left"><strong>실제 에피소드 상호작용 경험 샘플 (<em>G</em>)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>부트스트랩 (Bootstrap)</strong></td>
+      <td style="text-align: left"><strong>사용</strong> (다음 상태의 추정 가치 <em>V</em>(<em>s</em>')를 빌려 씀)</td>
+      <td style="text-align: left"><strong>미사용</strong> (에피소드 완주 참 수익 <em>G</em>만 정직하게 사용)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>학습 단위 (Unit)</strong></td>
+      <td style="text-align: left">1스텝 상태 전이 기대치 일괄 계산</td>
+      <td style="text-align: left"><strong>에피소드 완주 단위 (Episodic)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>수렴 속도와 분산</strong></td>
+      <td style="text-align: left">편향이 존재할 수 있으나 분산이 0</td>
+      <td style="text-align: left"><strong>무편향(Unbiased)이나 표본 분산이 큼</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>적용 현실성</strong></td>
+      <td style="text-align: left">환경 모델을 이미 아는 이상적 시뮬레이션에 국한</td>
+      <td style="text-align: left"><strong>환경을 모르는 미지의 실세계 로봇/게임 문제에 적용 가능</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img src="./img/03_1b_dp_vs_mc_table_visual_summary.png" alt="DP vs MC 6대 차원 요약 비교표" />
+<strong>그림 09-6-3aa</strong> 이상적인 책상 위 모델 기반 DP vs 미지의 거친 현실을 직접 개척하는 모델 프리 MC의 6대 핵심 비교 요약 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+두 패러다임의 설계 철학 대조를 보십시오. 이상적인 책상 위에서 벨만 방정식을 풀 것인가, 아니면 불확실성이 가득한 현실의 물리 환경에서 시행착오를 겪으며 경험을 축적할 것인가의 근본적인 차이를 보여줍니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-10">09.6 정리</h1>
+<h2 id="0962-동적-프로그래밍dp-vs-몬테카를로법mc-총괄-비교-2">09.6.2 동적 프로그래밍(DP) vs 몬테카를로법(MC) 총괄 비교</h2>
+
+<p>동적 프로그래밍은 환경의 완벽한 지도가 주어졌을 때 책상 위에서 연립방정식을 우아하게 풀어내는 방식인 반면, 몬테카를로법은 지도 한 장 없이도 직접 발을 내딛으며 부딪혀가며 지도를 스스로 완성해 가는 방식입니다. 바로 이 점 때문에 몬테카를로법이 진정한 현대 자율 강화학습의 출발점이 됩니다.</p>
+
+<p><img src="./img/03_2_dp_vs_mc_six_dimensions_infographic.png" alt="DP vs MC 6대 차원 정밀 비교" />
+<strong>그림 09-6-3b</strong> 모델 유무, 학습 원천, 부트스트랩, 학습 단위 등 6대 핵심 차원으로 정밀 대비한 DP vs MC 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+사대 핵심 축 비교표입니다. 환경 모델 유무, 학습 원천, 부트스트랩 여부, 그리고 갱신 단위에서 두 기법은 완벽히 대칭을 이룹니다. 동적 프로그래밍의 한계를 극복하고 현실 문제로 나아가기 위해 몬테카를로가 왜 필연적이었는지를 명쾌하게 보여줍니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-11">09.6 정리</h1>
+<h2 id="0963-정책-제어-q-함수-ε-탐욕-지수-이동-평균의-삼위일체">09.6.3 정책 제어: Q 함수, <em>ε</em>-탐욕, 지수 이동 평균의 삼위일체</h2>
+
+<p>몬테카를로법으로 행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)를 평가할 수 있다면, 이어서 <em>Q</em> 함수를 이용하여 정책을 더 우수하게 개선할 수 있습니다. 이 평가와 개선을 번갈아 반복하면 최적 정책에 도달할 수 있습니다:</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점삼 절에서는 몬테카를로 정책 제어를 완성한 삼위일체 엔진을 정리합니다. 다음 상태 확률을 몰라도 최적 행동을 고를 수 있게 해주는 행동 가치 큐 함수, 탐험과 이용의 균형을 잡아주는 입실론 탐욕 정책, 그리고 점진적 수렴을 이끄는 지수 이동 평균의 결합입니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-12">09.6 정리</h1>
+<h2 id="0963-정책-제어-q-함수-ε-탐욕-지수-이동-평균의-삼위일체-1">09.6.3 정책 제어: Q 함수, <em>ε</em>-탐욕, 지수 이동 평균의 삼위일체</h2>
+
+<ol>
+  <li><strong>행동 가치 함수 <em>Q</em>(<em>s</em>, <em>a</em>)의 채택</strong>:
+    <ul>
+      <li>상태 전이 확률을 모를 때는 상태 가치 <em>V</em>(<em>s</em>)만으로 다음 최적 행동을 선택할 수 없으므로, 환경 모델 없이도 크기 비교(argmax&lt;sub</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+정책 제어의 삼대 핵심 수식을 주목하십시오. 아그맥스로 최선의 행동을 찾는 식, 입실론 확률로 새로운 길을 탐색하는 정책 식, 그리고 학습률 알파를 보폭 삼아 점진적으로 가치를 갱신하는 큐 업데이트 식의 조화로운 오케스트라입니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-13">09.6 정리</h1>
+<h2 id="0964-오프-정책과-중요도-샘플링">09.6.4 오프-정책과 중요도 샘플링</h2>
+
+<p>에이전트의 정책은 역할 측면에서 볼 때, <strong>대상 정책(Target Policy, <em>π</em>)</strong>과 <strong>행동 정책(Behavior Policy, <em>b</em>)</strong>으로 나뉩니다:</p>
+
+<ul>
+  <li><strong>온-정책 (On-policy)</strong>: 행동 정책과 대상 정책이 동일 (<em>π</em> = <em>b</em>). 자신이 직접 뛴 발걸음으로 자신을 학습.</li>
+  <li><strong>오프-정책 (Off-policy)</strong>: 행동 정책과 대상 정책을 분리 (<em>π</em> ≠ <em>b</em>). 탐험은 행동 정책 <em>b</em>에게 맡겨 자유롭게 모험하게 하고, 대상 정책 <em>π</em>는 100% 최선의 탐욕 정책만을 순수하게 학습.</li>
+</ul>
+
+<p><img src="./img/03_3b_target_vs_behavior_policy_decoupling.png" alt="대상 정책과 행동 정책의 역할 분리" />
+<strong>그림 09-6-3ca</strong> 오프-정책의 핵심: 탐험을 도맡는 행동 정책 b와 100% 최선의 활용만을 연구하는 대상 정책 π의 사상적 역할 분리 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점사 절에서는 오프 정책과 중요도 샘플링을 재조명합니다. 안전하고 자유롭게 탐험하는 거동 정책과, 우리가 궁극적으로 달성하려는 백 퍼센트 순수 최적 정책을 완벽하게 분리해 낸 혁신적인 접근법이었습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-14">09.6 정리</h1>
+<h2 id="0964-오프-정책과-중요도-샘플링-1">09.6.4 오프-정책과 중요도 샘플링</h2>
+
+<p>오프-정책에서는 행동 정책 <em>b</em>에서 얻은 경험 데이터를 바탕으로 대상 정책 <em>π</em>에 대한 기댓값을 계산해야 합니다. 이때 사용하는 통계적 도구가 바로 <strong>중요도 샘플링(Importance Sampling)</strong>입니다:</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+중요도 샘플링의 핵심 등식을 보십시오. 서로 다른 정책에서 수집된 데이터일지라도, 두 정책의 확률 비율인 로를 가중치로 곱해주기만 하면 다른 사람의 경험으로도 우리 정책의 참 기댓값을 수학적으로 정확히 복원할 수 있습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-15">09.6 정리</h1>
+<h2 id="0964-오프-정책과-중요도-샘플링-2">09.6.4 오프-정책과 중요도 샘플링</h2>
+
+<p>두 정책의 확률 비율인 <strong>중요도 가중치 <em>ρ</em>(<em>x</em>) = <em>π</em>(<em>x</em>) / <em>b</em>(<em>x</em>)</strong>를 각 표본에 곱해줌으로써 다른 분포에서 온 데이터를 목표 정책의 참 기댓값으로 완벽하게 보정합니다. 비록 두 분포가 크게 벌어지면 분산이 폭발하는 문제가 발생하지만, 분포를 가깝게 조율함으로써 안정적인 근사를 달성할 수 있습니다.</p>
+
+<p><img src="./img/03_4_off_policy_importance_sampling_essence.png" alt="오프-정책과 중요도 샘플링 핵심 인포그래픽" />
+<strong>그림 09-6-3d</strong> 오프-정책의 정수: 탐험과 최적화의 역할 분담 및 중요도 가중치 ρ로 다른 분포 데이터를 완벽 보정하는 메커니즘 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+오프 정책이 선사하는 삼대 강점입니다. 탐색 실수 없는 완벽한 결정론적 최적 정책 학습, 과거의 경험 데이터 재활용, 그리고 사람 전문가의 주행 데이터를 통한 모방 학습까지 심층 강화학습으로 나아가는 문을 활짝 열어주었습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-16">09.6 정리</h1>
+<h2 id="0965-몬테카를로법의-한계와-10장-td법시간차-학습으로의-가교">09.6.5 몬테카를로법의 한계와 10장 TD법(시간차 학습)으로의 가교</h2>
+
+<p>몬테카를로법은 모델 프리 강화학습의 신기원을 열었지만, 현대 인공지능이 마주하는 복잡한 환경에서는 2가지 결정적인 한계점을 가지고 있습니다:</p>
+
+<p><img src="./img/04_mc_to_td_bridge.png" alt="MC에서 TD로의 가교" />
+<strong>그림 09-6-4</strong> 에피소드 완주를 기다리는 몬테카를로의 문을 지나, 매 스텝 실시간으로 학습하는 시간차 학습(TD)의 다리로 나아가는 도로시와 토토</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점오 절에서는 몬테카를로의 치명적인 두 가지 한계를 짚어봅니다. 에피소드가 끝날 때까지 하염없이 기다려야 한다는 점과, 긴 에피소드 동안 여러 무작위성이 곱해지며 분산이 지나치게 커진다는 현실적인 장벽입니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-17">09.6 정리</h1>
+<h2 id="0965-몬테카를로법의-한계와-10장-td법시간차-학습으로의-가교-1">09.6.5 몬테카를로법의 한계와 10장 TD법(시간차 학습)으로의 가교</h2>
+
+<ol>
+  <li><strong>에피소드 완주 필수 (Episodic 제약)</strong>:
+    <ul>
+      <li>에피소드가 완전히 끝날 때까지 기다려야만 비로소 누적 할인 수익 <em>G</em>를 계산할 수 있습니다. 따라서 주식 거래나 자율주행 자세 제어처럼 에피소드가 끝나지 않고 영구히 지속되는 연속적(Continuing) 환경에서는 몬테카를로법을 적용할 수 없습니다.</li>
+    </ul>
+  </li>
+  <li><strong>높은 분산 (High Variance)</strong>:
+    <ul>
+      <li>에피소드가 길어질수록 수많은 확률적 상태 전이와 행동 선택의 보상이 곱해지고 더해지며 누적 수익 <em>G</em>의 분산이 매우 커집니다. 분산이 크면 참 기댓값에 수렴하기 위해 수만 번 이상의 방대한 에피소드 표본이 필요합니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/04_2_mc_two_limitations_infographic.png" alt="몬테카를로의 2대 한계 경고 인포그래픽" />
+<strong>그림 09-6-4b</strong> 몬테카를로법의 2대 결정적 한계: 에피소드 완주 대기 피로(Episodic 제약)와 누적곱으로 인한 높은 분산(High Variance) 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+두 가지 결정적 한계의 상세 구조도입니다. 에피소드가 끝나지 않는 연속 과제에는 적용할 수 없고, 분산이 크기 때문에 수렴에 지나치게 많은 표본이 필요합니다. 바로 이 한계를 깨부수기 위해 10장에서 시간차 학습이 등장하게 됩니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-18">09.6 정리</h1>
+<h2 id="0965-몬테카를로법의-한계와-10장-td법시간차-학습으로의-가교-2">09.6.5 몬테카를로법의 한계와 10장 TD법(시간차 학습)으로의 가교</h2>
+
+<p><img src="./img/hojin_ch9_graduation_td_bridge.jpg" alt="이호진 교수님의 9장 완주 축하 및 10장 브릿지" />
+<strong>그림 09-6-5</strong> 이호진 교수님이 엄지 척을 하며 9장 몬테카를로법을 우수하게 마스터한 도로시에게 수료증을 수여하고, 조교 지니와 토토와 함께 찬란한 무지개다리로 이어진 ‘10장 TD법(시간차 학습)’을 향해 힘찬 출발을 응원하는 장면</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+9장의 위대한 여정을 완주하신 여러분을 진심으로 축하합니다. 모델 프리 강화학습의 수학적 기원부터 파이썬 실전 구현까지 온전히 여러분의 지식으로 체화되었습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-19">09.6 정리</h1>
+<h2 id="0965-몬테카를로법의-한계와-10장-td법시간차-학습으로의-가교-3">09.6.5 몬테카를로법의 한계와 10장 TD법(시간차 학습)으로의 가교</h2>
+
+<p>이러한 몬테카를로법의 한계를 극복하기 위해 등장하는 차세대 혁신이 바로 <strong>10장 시간차 학습(Temporal Difference, TD법)</strong>입니다!</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+칠판의 삼대 패러다임 브릿지를 보십시오. 동적 프로그래밍의 부트스트랩 장점과, 몬테카를로의 모델 프리 장점을 하나로 결합한 최강의 하이브리드, 그것이 바로 다음 장에서 배울 시간차 학습, 즉 티디 학습입니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-20">09.6 정리</h1>
+<h2 id="0966-핵심-정리-9장-몬테카를로-완주-3대-금자탑">09.6.6 핵심 정리: 9장 몬테카를로 완주 3대 금자탑</h2>
+
+<p><img src="./img/05_summary_core_takeaways.png" alt="핵심 정리 피날레" />
+<strong>그림 09-6-6</strong> 몬테카를로 3대 금자탑을 세우고, 찬란하게 열린 10장 시간차 학습의 황금 문을 향해 당당하게 걸어가는 도로시와 지니</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+구점육점육 절 총결산입니다. 무모델 패러다임의 확립, 파이썬 엔지니어링 구현 완성, 그리고 오프 정책 이론 정복이라는 삼대 금자탑을 우리는 훌륭히 세워냈습니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-21">09.6 정리</h1>
+<h2 id="0966-핵심-정리-9장-몬테카를로-완주-3대-금자탑-1">09.6.6 핵심 정리: 9장 몬테카를로 완주 3대 금자탑</h2>
+
+<ol>
+  <li><strong>모델 프리 가치 평가의 달성 (Model-Free Evaluation)</strong>:
+    <ul>
+      <li>환경의 전이 확률 행렬 <em>P</em>를 몰라도, 실제 에피소드를 밟아 얻은 누적 할인 수익 <em>G</em>의 표본 평균만으로 참 가치 함수에 완벽히 수렴함을 증명했습니다.</li>
+    </ul>
+  </li>
+  <li><strong>행동 가치 기반 정책 제어 (Q-Control &amp; <em>ε</em>-Greedy)</strong>:
+    <ul>
+      <li><em>Q</em>(<em>s</em>, <em>a</em>) 함수를 채택하여 환경 모델 없이 즉각적인 탐욕화를 수행하고, <em>ε</em>-탐욕 정책으로 탐색을 보장하며, 지수 이동 평균(<em>α</em>)으로 비정상 환경에 민첩하게 적응하는 자율 제어 루프를 완성했습니다.</li>
+    </ul>
+  </li>
+  <li><strong>오프-정책과 중요도 샘플링 (Off-Policy &amp; Importance Sampling)</strong>:
+    <ul>
+      <li>행동하는 정책과 학습하는 목표 정책을 분리하고 중요도 가중치 <em>ρ</em>로 정산함으로써, 탐험과 최적화라는 두 마리 토끼를 동시에 잡는 현대 강화학습의 핵심 패러다임을 확립했습니다.</li>
+    </ul>
+  </li>
+</ol>
+
+<p><img src="./img/05_2_three_monuments_of_ch9.png" alt="9장 몬테카를로 완주 3대 금자탑" />
+<strong>그림 09-6-6b</strong> 9장 몬테카를로법이 세운 3대 위대한 금자탑(모델 프리 평가, Q 함수 자율 제어, 오프-정책 중요도 샘플링) 황금 기념비 인포그래픽</p>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+삼대 금자탑 인포그래픽을 통해 여러분이 성취한 이론적, 실전적 도약을 한 번 더 정리해 두시기 바랍니다.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-22">09.6 정리</h1>
+<h2 id="0966-핵심-정리-9장-몬테카를로-완주-3대-금자탑-2">09.6.6 핵심 정리: 9장 몬테카를로 완주 3대 금자탑</h2>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+이호진 교수님의 9장 종강 멘토링 노트입니다. 완벽한 지도가 주어지지 않는 험난한 현실에서도 에이전트의 작은 발걸음과 경험이 모이면 우주의 참된 가치에 도달할 수 있다는 몬테카를로의 교훈을 가슴에 깊이 새겨두십시오.
+—</p>
+</blockquote>
+
+<h1 id="096-정리-23">09.6 정리</h1>
+<h2 id="0966-핵심-정리-9장-몬테카를로-완주-3대-금자탑-3">09.6.6 핵심 정리: 9장 몬테카를로 완주 3대 금자탑</h2>
+
+<blockquote>
+  <p><strong>[강의 스크립트]</strong>
+지니와 함께하는 완강 축하 파티입니다. 9장의 단단한 기초를 완벽히 다진 여러분은 이제 강화학습의 진정한 심장부인 10장 시간차 학습과 11장 심층 큐러닝으로 거침없이 나아갈 준비를 마쳤습니다. 대단히 수고 많으셨습니다.</p>
+</blockquote>
+
+
+            <!-- 구글 애드센스 출력 -->
+            <div class="mt-5">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3321560028329475"
+    crossorigin="anonymous"></script>
+<!-- jinydev-java -->
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3321560028329475" data-ad-slot="9323221865"
+    data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </div>
+        </div>
+
+        <div class="bd-toc mt-3 mb-5 my-lg-0 ps-xl-3 mb-lg-5 text-body-secondary">
+
+  <button class="btn btn-link p-md-0 mb-2 mb-md-0 text-decoration-none bd-toc-toggle d-md-none" type="button"
+    data-bs-toggle="collapse" data-bs-target="#tocContents" aria-expanded="false" aria-controls="tocContents">
+    서브목차
+    <svg class="bi d-md-none ms-2" aria-hidden="true">
+      <use xlink:href="#chevron-expand"></use>
+    </svg>
+  </button>
+
+  <strong class="d-none d-md-block h6 my-2">서브목차</strong>
+
+  <div class="collapse bd-toc-collapse" id="tocContents">
+    <nav id="TableOfContents">
+      <!--
+      <ul>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#cdn-links">CDN links</a></li>
+        <li><a href="#next-steps">Next steps</a></li>
+        <li><a href="#js-components">JS components</a></li>
+        <li><a href="#important-globals">Important globals</a>
+          <ul>
+            <li><a href="#html5-doctype">HTML5 doctype</a></li>
+            <li><a href="#responsive-meta-tag">Responsive meta tag</a></li>
+            <li><a href="#box-sizing">Box-sizing</a></li>
+            <li><a href="#reboot">Reboot</a></li>
+          </ul>
+        </li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+      -->
+    </nav>
+  </div>
+</div>
+    </main>
+</div>
+
+<!-- 공용 대화 오디오 플레이어 컨트롤러 스크립트 -->
+<script src="/assets/js/audio.js" defer></script>
+
+  <footer class="container">
+  <hr class="mt-5 mb-3">
+  <div class="row align-items-center pb-3">
+    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+    </div>
+    <div class="col-md-6 text-center text-md-end">
+      <a href="/character/" class="text-decoration-none text-secondary me-3">캐릭터 소개</a>
+      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+    window.addEventListener('load', async function () {
+      mermaid.initialize({ startOnLoad: false });
+
+      const mermaidCodes = document.querySelectorAll('pre code.language-mermaid');
+      const mermaidDivs = [];
+
+      mermaidCodes.forEach(codeBlock => {
+        const mermaidDefinition = codeBlock.textContent.trim();
+        const container = codeBlock.closest('div.highlighter-rouge');
+
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid';
+        mermaidDiv.textContent = mermaidDefinition;
+
+        if (container) {
+          container.replaceWith(mermaidDiv);
+        } else {
+          const pre = codeBlock.parentElement;
+          if (pre) pre.replaceWith(mermaidDiv);
+        }
+        mermaidDivs.push(mermaidDiv);
+      });
+
+      if (mermaidDivs.length > 0) {
+        await mermaid.run({ nodes: mermaidDivs });
+      }
+    });
+  </script>
+  <script src="/assets/js/toc.js"></script>
+
+</body>
+
+</html>
