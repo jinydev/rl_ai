@@ -1,12 +1,78 @@
-<footer class="container">
-  <hr class="mt-5 mb-3">
-  <div class="row align-items-center pb-3">
-    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-      <p class="mb-0 text-secondary">Copyright 2017~2026 JinyDev. All Rights Reserved.</p>
+{% assign f = site.data.footer %}
+<footer class="border-top mt-5 pt-5 pb-4 bg-light text-secondary">
+  <div class="container">
+    <div class="row g-4 mb-4">
+      <!-- 브랜드 및 강의 소개 -->
+      <div class="col-lg-5">
+        <div class="d-flex align-items-center mb-3">
+          <span class="fs-3 me-2">🎯</span>
+          <span class="fs-5 fw-bold text-dark">{{ f.brand.title }}</span>
+        </div>
+        <p class="small text-secondary mb-3 pe-lg-4 lh-base">
+          {{ f.brand.description }}
+        </p>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          {% for badge in f.brand.badges %}
+          <span class="badge rounded-pill bg-white text-dark border px-2 py-1 small">{{ badge }}</span>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- 관련 패밀리 사이트 -->
+      <div class="col-6 col-lg-4">
+        <h6 class="fw-bold text-dark mb-3">🔗 관련 학습 패밀리 사이트</h6>
+        <ul class="list-unstyled small mb-0">
+          {% for site_item in f.family_sites %}
+          <li class="mb-2">
+            {% if site_item.is_current %}
+            <span class="badge bg-success me-1">현재</span>
+            <span class="me-1">{{ site_item.icon }}</span>
+            <strong>{{ site_item.name }}</strong> <span class="text-muted ms-1">({{ site_item.domain }})</span>
+            {% else %}
+            <a href="{{ site_item.url }}" target="_blank" rel="noopener" class="text-secondary text-decoration-none hover-primary d-flex align-items-center">
+              <span class="me-2">{{ site_item.icon }}</span>
+              <span><strong>{{ site_item.name }}</strong> <span class="text-muted ms-1">({{ site_item.domain }})</span></span>
+            </a>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- 커리큘럼 및 안내 -->
+      <div class="col-6 col-lg-3">
+        <h6 class="fw-bold text-dark mb-3">🧭 커리큘럼 및 안내</h6>
+        <ul class="list-unstyled small mb-0">
+          {% for link in f.curriculum_links %}
+          <li class="mb-2">
+            <a href="{% if link.external %}{{ link.url }}{% else %}{{ link.url | relative_url }}{% endif %}"
+               {% if link.external %}target="_blank" rel="noopener"{% endif %}
+               class="text-secondary text-decoration-none hover-primary">
+              {{ link.title }}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
-    <div class="col-md-6 text-center text-md-end">
-      <a href="{{ '/character/' | relative_url }}" class="text-decoration-none text-secondary me-3">캐릭터 소개</a>
-      <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+
+    <!-- 하단 카피라이트 & 크레딧 -->
+    <hr class="my-3 text-muted">
+    <div class="row align-items-center small">
+      <div class="col-md-7 text-center text-md-start mb-2 mb-md-0">
+        <p class="mb-0 text-secondary">
+          Copyright &copy; {{ f.copyright.years }} <strong>{{ f.copyright.owner }}</strong>. {{ f.copyright.rights }}
+          <span class="d-none d-sm-inline mx-1">|</span>
+          <span class="text-muted">Directed & Created with ❤️ by {{ f.copyright.author }}.</span>
+        </p>
+      </div>
+      <div class="col-md-5 text-center text-md-end">
+        <a href="#" class="text-decoration-none text-secondary me-3" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+          맨 위로 가기 ↑
+        </a>
+        <a href="https://github.com/jinydev/rl_ai" target="_blank" rel="noopener" class="text-decoration-none text-secondary me-3">GitHub</a>
+        <a href="mailto:infohojin@naver.com" class="text-decoration-none text-secondary">Contact</a>
+      </div>
     </div>
   </div>
 </footer>

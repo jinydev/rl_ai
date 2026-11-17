@@ -262,16 +262,19 @@
               <hr class="d-lg-none my-2 text-white-50">
             </li>
 
-            <li class="nav-item col-6 col-lg-auto">
-              <a class="nav-link py-2 px-0 px-lg-2" href="https://jiny.dev" aria-label="Home">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="navbar-nav-svg"
-                  viewBox="0 0 16 16" role="img">
-                  <title>Home</title>
-                  <path fill="currentColor"
-                    d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                </svg>
-                <small class="d-lg-none ms-2">Home</small>
-              </a>
+            <li class="nav-item dropdown">
+              <button type="button" class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle text-white-50"
+                data-bs-toggle="dropdown" aria-expanded="false" data-bs-display="static">
+                패밀리 사이트
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="https://ai.jiny.dev" target="_blank">🤖 인공지능기초</a></li>
+                <li><a class="dropdown-item" href="https://deep.ai.jiny.dev" target="_blank">🧠 딥러닝</a></li>
+                <li><a class="dropdown-item" href="https://dezero.ai.jiny.dev" target="_blank">🌱 밑바닥 딥러닝 3</a></li>
+                <li><a class="dropdown-item active" href="https://rl.ai.jiny.dev">🎯 강화학습</a></li>
+                <li><a class="dropdown-item" href="https://pytoch.ai.jiny.dev" target="_blank">🔥 파이토치</a></li>
+                <li><a class="dropdown-item" href="https://python.jiny.dev" target="_blank">🐍 파이썬</a></li>
+              </ul>
             </li>
           </ul>
 
