@@ -1,6 +1,7 @@
 # ch12_2_22_fifo_oldest_drop.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 선입선출(FIFO) 자동 삭제 원리
-- **강의 캡션**: **그림 12-2-22** 용량이 꽉 차면 가장 오래된 경험부터 자동으로 밀려나 탈락하는 선입선출(FIFO) 순환 링 메커니즘
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 선입선출(FIFO) 오래된 캡슐 자동 슬라이드 배출
+- **강의 캡션**: **그림 12-2-22** 새 캡슐이 위에서 투입되자 가장 오래되고 빛바랜 캡슐이 아래 트랩도어를 통해 부드럽게 미끄러져 배출
+- **스토리 소스**: buffer_fifo (replay_buffer_fifo_eviction_1795343315535.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

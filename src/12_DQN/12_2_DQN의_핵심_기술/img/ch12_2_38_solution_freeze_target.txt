@@ -1,6 +1,7 @@
 # ch12_2_38_solution_freeze_target.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 해결책: TD 목표 과녁을 단단히 고정하라
-- **강의 캡션**: **그림 12-2-38** 스스로 도망치는 과녁을 얼음 자물쇠로 꽁꽁 묶어 고정하는 혁신적인 목표 신경망(Target Network)의 원리
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 얼음 자물쇠로 도망가는 과녁을 꽁꽁 고정하라!
+- **강의 캡션**: **그림 12-2-38** 스스로 도망치는 과녁을 얼음 자물쇠로 바닥에 꽁꽁 얼려 고정하는 혁신적인 목표 신경망의 해법
+- **스토리 소스**: target_frozen (target_network_frozen_1795341729865.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

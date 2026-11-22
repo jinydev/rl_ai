@@ -1,6 +1,7 @@
 # ch12_2_13_sequential_experience_tuple.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 순차 경험 데이터 E_t 구조
-- **강의 캡션**: **그림 12-2-13** 시간 흐름에 따라 순차적으로 얻어지는 4중 튜플 E_t = (S_t, A_t, R_t, S_{t+1})의 실시간 수집
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 카트폴 궤적의 순차 경험 데이터 체인
+- **강의 캡션**: **그림 12-2-13** 카트폴이 왼쪽으로 기울며 연속해서 쏟아지는 유사한 경험 튜플 E_t = (S_t, A_t, R_t, S_{t+1})의 사슬
+- **스토리 소스**: correlation (sl_vs_rl_data_correlation_v2_1795341732800.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

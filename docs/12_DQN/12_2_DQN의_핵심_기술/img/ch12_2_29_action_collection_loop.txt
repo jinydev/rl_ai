@@ -1,6 +1,7 @@
 # ch12_2_29_action_collection_loop.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 카트폴 무작위 수집 루프
-- **강의 캡션**: **그림 12-2-29** 행동을 취하며 환경과 상호작용하여 얻은 궤적 튜플들을 실시간으로 ReplayBuffer에 밀어 넣는 수집 루프
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 카트폴 실시간 상호작용 수집 루프
+- **강의 캡션**: **그림 12-2-29** 에이전트가 행동을 취하고 환경이 관찰과 보상을 돌려주며 버퍼를 채워나가는 메인 수집 루프
+- **스토리 소스**: rl_loop (rl_feedback_loop_cartpole_1795340973992.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

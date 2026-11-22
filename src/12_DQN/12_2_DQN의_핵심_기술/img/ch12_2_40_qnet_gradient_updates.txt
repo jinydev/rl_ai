@@ -1,6 +1,7 @@
 # ch12_2_40_qnet_gradient_updates.png
 
-## 프롬프트 및 구성 명세
+## 스토리 기반 프롬프트 및 구성 명세
 - **주제**: 일반적인 Q-러닝 역전파 갱신
-- **강의 캡션**: **그림 12-2-40** 미니배치 벨만 오차 손실함수를 역전파하여 qnet의 시냅스 가중치 theta를 정밀하게 조율하는 과정
+- **강의 캡션**: **그림 12-2-40** 미니배치 벨만 오차 손실을 역전파하여 qnet의 시냅스 가중치 theta를 정밀하게 조율하는 과정
+- **스토리 소스**: loss_backprop (dqn_backprop_td_error_v3_1795341905018.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

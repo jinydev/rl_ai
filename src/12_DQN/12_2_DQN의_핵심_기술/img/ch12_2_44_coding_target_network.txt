@@ -1,6 +1,7 @@
 # ch12_2_44_coding_target_network.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 목표 신경망 파이썬 코드 구현 도입
-- **강의 캡션**: **그림 12-2-44** 목표 신경망과 동기화 메서드를 객체지향 파이썬 코드로 구현하기 위한 DQNAgent 클래스 설계
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 목표 신경망 DQNAgent 파이썬 클래스 코딩
+- **강의 캡션**: **그림 12-2-44** 목표 신경망과 sync_qnet() 메서드를 객체지향 파이썬 코드로 구현하기 위한 DQNAgent 설계
+- **스토리 소스**: target_frozen (target_network_frozen_1795341729865.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

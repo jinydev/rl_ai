@@ -1,6 +1,7 @@
 # ch12_2_08_supervised_vs_rl_contrast.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 지도 학습 vs Q-러닝 비교
-- **강의 캡션**: **그림 12-2-08** 지도학습(고정 데이터셋)과 Q-러닝(실시간 상호작용)의 근본적인 환경 차이를 대조하는 이호진 교수님
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 지도학습 vs 강화학습 데이터 생성 비교
+- **강의 캡션**: **그림 12-2-08** 독립적인 정답 세트를 가진 지도학습과 순차적 궤적을 밟는 Q-러닝의 결정적 환경 차이
+- **스토리 소스**: correlation (sl_vs_rl_data_correlation_v2_1795341732800.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

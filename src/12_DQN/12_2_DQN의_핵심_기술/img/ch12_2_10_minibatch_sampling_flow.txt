@@ -1,6 +1,7 @@
 # ch12_2_10_minibatch_sampling_flow.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 미니배치 무작위 추출 흐름
-- **강의 캡션**: **그림 12-2-10** 전체 훈련 데이터셋에서 확률적 경사하강법(SGD)을 위해 데이터를 무작위로 추출하는 미니배치 샘플링
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 복권 추첨기에서 무작위 미니배치 추출
+- **강의 캡션**: **그림 12-2-10** 빈티지 복권 추첨기를 돌려 6만 장의 숫자 카드에서 골고루 32장의 미니배치를 뽑아내는 지니
+- **스토리 소스**: mnist_lottery (mnist_minibatch_lottery_1795343319436.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,6 +1,7 @@
 # ch12_2_02_deadly_triad_divergence.png
 
-## 프롬프트 및 구성 명세
+## 스토리 기반 프롬프트 및 구성 명세
 - **주제**: 치명적인 삼총사와 발산 위기
-- **강의 캡션**: **그림 12-2-02** 함수 근사, 부트스트래핑, 오프-정책의 결합으로 인한 Q-러닝의 불안정성과 발산 위험 경고
+- **강의 캡션**: **그림 12-2-02** 리처드 서튼 교수가 경고한 치명적인 삼총사(Deadly Triad)와 제어 불가능한 발산 곡선을 경고하는 이호진 교수님
+- **스토리 소스**: deadly_triad (deadly_triad_ghibli_illustration_1795341716797.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

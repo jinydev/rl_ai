@@ -1,6 +1,7 @@
 # ch12_2_43_periodic_sync_necessity.png
 
-## 프롬프트 및 구성 명세
-- **주제**: 주기적 동기화(Periodic Sync)의 필요성
-- **강의 캡션**: **그림 12-2-43** 영원히 고정되면 학습이 멈추므로, N 에피소드마다 원본 신경망의 최신 지식을 전수하는 주기적 동기화
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: 20에피소드 알람 시계 땡~ 황금 열쇠 동기화 축제!
+- **강의 캡션**: **그림 12-2-43** 20번째 에피소드 알람이 울리자 황금 열쇠로 얼음 자물쇠를 열어 qnet의 지식을 목표 신경망으로 동기화하는 축제
+- **스토리 소스**: sync_key_celebration (episode_20_sync_celebration_v2_1795343318852.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,6 +1,7 @@
 # ch12_2_59_hyperparameter_tuning_board.png
 
-## 프롬프트 및 구성 명세
-- **주제**: DQN 8대 하이퍼파라미터 튜닝 콘솔
-- **강의 캡션**: **그림 12-2-59** 할인율, 학습률, epsilon, 버퍼 크기, 배치 크기, 동기화 주기 등 DQN 성공을 결정짓는 8대 핵심 하이퍼파라미터 콘솔
+## 스토리 기반 프롬프트 및 구성 명세
+- **주제**: DQN 8대 하이퍼파라미터 계기판과 다음 장 출항
+- **강의 캡션**: **그림 12-2-59** 할인율, 학습률, epsilon, 버퍼 크기, 배치 크기 등 DQN 성공을 결정짓는 8대 하이퍼파라미터 계기판 점검
+- **스토리 소스**: hyperparams (dqn_hyperparameters_console_final_1795341892211.jpg)
 - **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
