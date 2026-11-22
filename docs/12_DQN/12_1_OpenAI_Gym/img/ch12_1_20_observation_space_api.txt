@@ -1,0 +1,7 @@
+# ch12_1_20_observation_space_api.png
+
+## 프롬프트 및 구성 명세
+- **주제**: observation_space API 규약
+- **설명**: **그림 12-1-20** 에이전트가 환경으로부터 받아들이는 관찰 데이터의 형태와 범위를 규정하는 `observation_space` 규격
+- **영문 프롬프트 디스크립션**: Observation space specification defining the interface for environment perception.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

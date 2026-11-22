@@ -1,0 +1,6 @@
+# ch12_2_47_copy_deepcopy_safe_clone.png
+
+## 프롬프트 및 구성 명세
+- **주제**: copy.deepcopy()를 통한 완전 복제
+- **강의 캡션**: **그림 12-2-47** 파이썬 copy.deepcopy()를 사용하여 메모리 참조가 아닌 실제 가중치 텐서 전체를 독립 복제하는 안전한 동기화
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

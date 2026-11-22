@@ -1,0 +1,6 @@
+# ch12_2_19_off_policy_superpower.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 오프-정책(Off-Policy) 알고리즘만의 특권
+- **강의 캡션**: **그림 12-2-19** 온-정책과 달리 과거 정책의 행동 데이터라도 자유롭게 재활용할 수 있는 Q-러닝의 오프-정책 슈퍼파워
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

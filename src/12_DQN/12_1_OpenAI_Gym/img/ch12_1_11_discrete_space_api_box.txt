@@ -1,0 +1,7 @@
+# ch12_1_11_discrete_space_api_box.png
+
+## 프롬프트 및 구성 명세
+- **주제**: Discrete(2) 행동 공간 클래스 규격
+- **강의 캡션**: **그림 12-1-11** 오직 {0, 1} 두 정수 원소만을 담고 있는 `gym.spaces.Discrete(2)` 큐브 상자와 무작위 선택을 위한 `sample()` 동전
+- **강화학습 도메인 시각화**: Jiny presenting clear cubic box gym.spaces.Discrete(2) containing glowing blocks 0 and 1.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,0 +1,6 @@
+# ch12_2_10_minibatch_sampling_flow.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 미니배치 무작위 추출 흐름
+- **강의 캡션**: **그림 12-2-10** 전체 훈련 데이터셋에서 확률적 경사하강법(SGD)을 위해 데이터를 무작위로 추출하는 미니배치 샘플링
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,0 +1,6 @@
+# ch12_2_20_memory_capacity_limits.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 물리 메모리 용량 한계
+- **강의 캡션**: **그림 12-2-20** 현실적인 시스템 RAM 용량 제한으로 인해 무한정 경험을 쌓을 수 없는 물리적 메모리 경계선
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

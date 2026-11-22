@@ -1,0 +1,6 @@
+# ch12_2_42_stable_convergence_achieved.png
+
+## 프롬프트 및 구성 명세
+- **주제**: TD 목표 고정에 의한 학습 안정화 달성
+- **강의 캡션**: **그림 12-2-42** 정답 레이블이 흔들리지 않고 고정됨으로써 신경망이 마침내 안정적인 수렴 궤도에 안착하는 순간
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

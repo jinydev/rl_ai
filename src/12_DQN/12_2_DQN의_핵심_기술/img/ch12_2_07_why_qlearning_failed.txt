@@ -1,0 +1,6 @@
+# ch12_2_07_why_qlearning_failed.png
+
+## 프롬프트 및 구성 명세
+- **주제**: Q-러닝에 신경망 적용이 어려웠던 이유
+- **강의 캡션**: **그림 12-2-07** 지도학습과 달리 데이터 분포가 실시간으로 변하고 상관성이 높아 신경망이 무너지는 원인 분석
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

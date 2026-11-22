@@ -1,0 +1,7 @@
+# ch12_1_13_step_reward_plus_one.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 생존 스텝당 +1 보상 누적 저금통
+- **강의 캡션**: **그림 12-1-13** 막대가 쓰러지지 않고 균형을 유지하는 매 타임스텝마다 황금 코인이 차곡차곡 누적되는 Total Reward 저금통
+- **강화학습 도메인 시각화**: Golden +1 reward coins dropping into clear glass Total Reward jar held by Dorothy.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

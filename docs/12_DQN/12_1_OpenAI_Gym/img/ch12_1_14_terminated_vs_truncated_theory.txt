@@ -1,0 +1,7 @@
+# ch12_1_14_terminated_vs_truncated_theory.png
+
+## 프롬프트 및 구성 명세
+- **주제**: terminated와 truncated의 강화학습 이론적 분리
+- **강의 캡션**: **그림 12-1-14** 환경 내부 실패로 인한 종료(`terminated`, $V(s_{terminal})=0$)와 시간 초과로 인한 조기 중단(`truncated`, 부트스트랩 $V(s_{t+1})$ 보존)의 가치 편향 방지 이론
+- **강화학습 도메인 시각화**: Professor Hojin teaching terminated (red door, zero bootstrap) vs truncated (blue clock portal, preserved bootstrap).
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

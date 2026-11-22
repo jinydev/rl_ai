@@ -1,0 +1,6 @@
+# ch12_2_13_sequential_experience_tuple.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 순차 경험 데이터 E_t 구조
+- **강의 캡션**: **그림 12-2-13** 시간 흐름에 따라 순차적으로 얻어지는 4중 튜플 E_t = (S_t, A_t, R_t, S_{t+1})의 실시간 수집
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

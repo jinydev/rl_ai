@@ -1,0 +1,6 @@
+# ch12_2_25_deque_maxlen_operation.png
+
+## 프롬프트 및 구성 명세
+- **주제**: deque append와 maxlen 자동 제어
+- **강의 캡션**: **그림 12-2-25** 새 데이터 append 시 maxlen 한도를 초과하면 좌측의 가장 오래된 요소를 자동으로 팝하는 동작 원리
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

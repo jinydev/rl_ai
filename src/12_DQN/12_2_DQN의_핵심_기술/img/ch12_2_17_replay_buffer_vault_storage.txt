@@ -1,0 +1,6 @@
+# ch12_2_17_replay_buffer_vault_storage.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 경험 버퍼(Replay Buffer) 저장소
+- **강의 캡션**: **그림 12-2-17** 에이전트가 겪은 소중한 경험 캡슐들을 안전하게 일시 보관하는 경험 버퍼(Replay Buffer) 크리스탈 볼트
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

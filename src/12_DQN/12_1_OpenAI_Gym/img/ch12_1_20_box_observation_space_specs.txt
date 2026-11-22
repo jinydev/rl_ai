@@ -1,0 +1,7 @@
+# ch12_1_20_box_observation_space_specs.png
+
+## 프롬프트 및 구성 명세
+- **주제**: Box(shape=(4,)) 4차원 관찰 공간 스펙
+- **강의 캡션**: **그림 12-1-20** 4개 물리축(위치, 속도, 각도, 각속도)의 하한과 상한 경계 범위를 정밀 계측하는 `gym.spaces.Box(shape=(4,))` 4차원 하이퍼큐브 스펙
+- **강화학습 도메인 시각화**: Jiny presenting luminous 4D hypercube gym.spaces.Box(shape=(4,)) with calibrated observation scales.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

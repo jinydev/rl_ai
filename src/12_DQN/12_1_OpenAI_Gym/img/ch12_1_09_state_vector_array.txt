@@ -1,0 +1,7 @@
+# ch12_1_09_state_vector_array.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 4차원 상태 벡터 배열
+- **설명**: **그림 12-1-9** 연속적인 실수 4개로 표현되는 상태 벡터 [위치, 속도, 각도, 각속도] 배열 구조를 확인하는 도로시와 지니
+- **영문 프롬프트 디스크립션**: Four continuous state variable elements [Position x, Velocity v, Angle theta, Angular velocity omega] array structure.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

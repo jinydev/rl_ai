@@ -1,0 +1,7 @@
+# ch12_1_21_markov_full_state_chess.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 상태: 환경의 완전한 정보와 마르코프 체스판
+- **강의 캡션**: **그림 12-1-21** 모든 기물의 배치가 100% 투명하게 드러나 과거 이력 없이 현재 배치($S_t$)만으로 미래 전이 확률이 완벽히 결정되는 마르코프 결정 과정(MDP)의 체스판
+- **강화학습 도메인 시각화**: Sunlit classical wooden chessboard representing Full Information State in Markov Decision Processes.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

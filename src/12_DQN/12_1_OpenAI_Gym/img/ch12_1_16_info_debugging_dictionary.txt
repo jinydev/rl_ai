@@ -1,0 +1,7 @@
+# ch12_1_16_info_debugging_dictionary.png
+
+## 프롬프트 및 구성 명세
+- **주제**: info 디버깅 딕셔너리
+- **설명**: **그림 12-1-16** 학습 알고리즘 자체에는 쓰이지 않지만 진단과 성능 분석을 위해 제공되는 부가 디버깅 정보(info)
+- **영문 프롬프트 디스크립션**: Diagnostic debugging info panel beside CartPole simulation.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

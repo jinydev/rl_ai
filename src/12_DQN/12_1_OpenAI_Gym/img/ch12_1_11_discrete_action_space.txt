@@ -1,0 +1,7 @@
+# ch12_1_11_discrete_action_space.png
+
+## 프롬프트 및 구성 명세
+- **주제**: Discrete(2) 행동 공간 인터페이스
+- **설명**: **그림 12-1-11** 에이전트가 선택할 수 있는 2가지 이산적인 선택지를 정의하는 `Discrete(2)` 행동 공간 인터페이스
+- **영문 프롬프트 디스크립션**: Retro-futuristic console labeled Discrete(2) with two glowing buttons for action choices.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

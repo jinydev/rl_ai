@@ -1,0 +1,7 @@
+# ch12_1_04_atari_gym_environments.png
+
+## 프롬프트 및 구성 명세
+- **주제**: OpenAI Gym 아타리 게임 환경
+- **강의 캡션**: **그림 12-1-4** OpenAI Gym이 제공하는 고전 아타리 2600 비디오 게임(Pong, Breakout, Space Invaders) 아케이드 환경을 탐험하는 도로시와 지니
+- **강화학습 도메인 시각화**: Dorothy and Jiny exploring classic Atari 2600 arcade cabinets in OpenAI Gym.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

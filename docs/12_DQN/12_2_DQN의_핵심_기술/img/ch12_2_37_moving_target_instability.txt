@@ -1,0 +1,6 @@
+# ch12_2_37_moving_target_instability.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 움직이는 과녁 문제(Moving Target Problem)
+- **강의 캡션**: **그림 12-2-37** 활시위를 당길 때마다 과녁이 로켓 바퀴를 달고 스스로 도망쳐 신경망을 발산시키는 움직이는 과녁 비극
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,0 +1,6 @@
+# ch12_2_57_epsilon_greedy_exploration.png
+
+## 프롬프트 및 구성 명세
+- **주제**: epsilon-탐욕 정책(epsilon=0.05)의 탐색-활용 조화
+- **강의 캡션**: **그림 12-2-57** 95% 확률로 최선의 탐욕 행동을 취하고 5% 확률로 새로운 경로를 탐색하는 epsilon-탐욕 정책 메커니즘
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

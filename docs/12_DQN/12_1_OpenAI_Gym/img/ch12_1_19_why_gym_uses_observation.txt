@@ -1,0 +1,7 @@
+# ch12_1_19_why_gym_uses_observation.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 실세계 센서 관찰과 Gym API 용어 배경
+- **강의 캡션**: **그림 12-1-19** 안개 낀 미지의 세계에서 카메라와 라이다(LiDAR) 센서 뷰파인더로 감지된 국소 정보(Observation)에 의존해 주행하는 탐사 로봇과 관찰 용어의 필연성
+- **강화학습 도메인 시각화**: Professor Hojin explaining why real-world robotics uses Observation through a rover camera viewfinder.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

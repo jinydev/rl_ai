@@ -1,0 +1,6 @@
+# ch12_2_41_qnet_target_freeze_and_sync.png
+
+## 프롬프트 및 구성 명세
+- **주제**: qnet_target 가중치 동결 및 동기화
+- **강의 캡션**: **그림 12-2-41** 평소에는 가중치를 단단히 얼려두고 오직 주기적 동기화 신호가 올 때만 qnet 가중치를 복제하는 메커니즘
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

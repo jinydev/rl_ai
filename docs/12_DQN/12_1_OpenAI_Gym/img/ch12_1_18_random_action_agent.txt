@@ -1,0 +1,7 @@
+# ch12_1_18_random_action_agent.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 무작위 랜덤 에이전트의 14스텝 한계
+- **강의 캡션**: **그림 12-1-18** 주사위 던지듯 0과 1을 무작위로 선택하는 랜덤 에이전트의 한계: 시작한 지 14스텝 만에 중심을 잃고 비틀거리며 쓰러지는 카트폴
+- **강화학습 도메인 시각화**: Dorothy holding stopwatch Step 14: Failed! as CartPole wobbles precariously while Jiny tosses dice.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

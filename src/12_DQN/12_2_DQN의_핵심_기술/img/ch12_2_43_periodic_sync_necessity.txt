@@ -1,0 +1,6 @@
+# ch12_2_43_periodic_sync_necessity.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 주기적 동기화(Periodic Sync)의 필요성
+- **강의 캡션**: **그림 12-2-43** 영원히 고정되면 학습이 멈추므로, N 에피소드마다 원본 신경망의 최신 지식을 전수하는 주기적 동기화
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

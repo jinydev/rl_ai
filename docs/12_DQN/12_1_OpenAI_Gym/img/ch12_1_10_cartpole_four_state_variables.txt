@@ -1,0 +1,7 @@
+# ch12_1_10_cartpole_four_state_variables.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 카트폴 4대 연속 물리 변수 홀로그램
+- **강의 캡션**: **그림 12-1-10** 카트의 위치($x$), 카트의 속도($v$), 막대의 각도($\theta$), 막대의 각속도($\omega$)라는 오일러-라그랑주 역학계의 4대 연속 상태 변수
+- **강화학습 도메인 시각화**: Holographic gauges floating over CartPole displaying Position x, Velocity v, Angle theta, Angular velocity omega.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

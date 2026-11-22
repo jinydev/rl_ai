@@ -1,0 +1,6 @@
+# ch12_2_26_experience_tuple_5element.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 5중 튜플 (s, a, r, s', done) 규격
+- **강의 캡션**: **그림 12-2-26** 상태, 행동, 보상, 차기 상태, 종료 플래그를 완벽하게 패키징하는 표준 5중 경험 튜플 단위
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

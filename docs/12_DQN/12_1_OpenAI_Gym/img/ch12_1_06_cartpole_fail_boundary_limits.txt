@@ -1,0 +1,7 @@
+# ch12_1_06_cartpole_fail_boundary_limits.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 카트폴 물리적 실패 한계선
+- **강의 캡션**: **그림 12-1-6** 막대 기울기 한계(±12°)와 카트 탈선 한계(±2.4m) 위험 경계선 위반 시 비상 경보와 함께 발생하는 실패(terminated: True) 조건
+- **강화학습 도메인 시각화**: CartPole robot on rail bounded by red hazard posts x = ±2.4m and angle limits theta = ±12 deg.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

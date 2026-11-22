@@ -1,8 +1,8 @@
-# Chapter 12.1: OpenAI Gym & Environments (12.1 OpenAI Gym: 현실 세계 물리 제어로의 도약) YouTube 16:9 Cover Specification & Prompt
+# Chapter 12.1: OpenAI Gym (12.1 OpenAI Gym) YouTube 16:9 Cover Specification & Prompt
 # File: 12_1_OpenAI_Gym.png (16:9 widescreen ratio, 1376x768)
 # Guide Standard: /Users/hojin9/dev/projects/dorothy/prompt.md
 # Reference Dataset: /Users/hojin9/dev/projects/dorothy/data/dataset/hojin & 11_3_신경망.png (Professor Hojin Facial Style)
-# Content Source: /Users/hojin9/dev/jinysite/강화학습3/src/12_DQN/12_1_OpenAI_Gym/index.md
+# Content Source: /Users/hojin9/Library/Mobile Documents/com~apple~CloudDocs/02.강의/A06_강화학습/src/12_DQN/12_1_OpenAI_Gym/index.md
 
 ================================================================================
 [1. 이호진 교수님 얼굴 데이터셋 및 11_3 스타일 참조 유의사항 (Facial Consistency Guidelines)]

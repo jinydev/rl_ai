@@ -1,0 +1,6 @@
+# ch12_2_12_iid_assumption_guarantee.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 독립 항등 분포(i.i.d.) 보장
+- **강의 캡션**: **그림 12-2-12** 신경망 최적화 수렴의 기본 전제인 독립 항등 분포(i.i.d.) 조건을 만족시키는 무작위 추출 메커니즘
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

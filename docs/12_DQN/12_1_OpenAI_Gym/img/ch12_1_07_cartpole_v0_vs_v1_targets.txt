@@ -1,0 +1,7 @@
+# ch12_1_07_cartpole_v0_vs_v1_targets.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 카트폴 버전별 목표 스텝 비교
+- **강의 캡션**: **그림 12-1-7** 200단계 균형 유지를 목표로 하는 CartPole-v0 트랙과 500단계 장거리 고지 도전을 요구하는 CartPole-v1 엑스퍼트 트랙 비교
+- **강화학습 도메인 시각화**: Comparison between 200m track (CartPole-v0) and longer 500m golden banner track (CartPole-v1).
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

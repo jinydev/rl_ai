@@ -1,0 +1,7 @@
+# ch12_1_16_info_diagnostic_toolbox.png
+
+## 프롬프트 및 구성 명세
+- **주제**: info 디버깅 딕셔너리 진단 공구 상자
+- **강의 캡션**: **그림 12-1-16** Q-러닝 알고리즘 수식 계산에는 사용되지 않지만, 환경 진단과 모니터링을 위해 제공되는 부가 메타데이터 공구 상자(`info`)
+- **강화학습 도메인 시각화**: Jiny examining open info = {} diagnostic toolbox with sensor health bars and debugging metadata.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

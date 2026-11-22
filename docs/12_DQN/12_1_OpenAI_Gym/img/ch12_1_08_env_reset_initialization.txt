@@ -1,0 +1,7 @@
+# ch12_1_08_env_reset_initialization.png
+
+## 프롬프트 및 구성 명세
+- **주제**: env.reset() 초기화 과정
+- **설명**: **그림 12-1-8** `env.reset()` 메서드를 호출하여 카트폴 환경을 원점으로 초기화하고 초기 상태 정보를 획득하는 과정
+- **영문 프롬프트 디스크립션**: Jiny tapping env.reset()[0] on laptop as CartPole robot resets to origin with glowing state vector.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,0 +1,6 @@
+# ch12_2_34_fixed_ground_truth_labels.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 지도학습 정답 레이블의 불변성
+- **강의 캡션**: **그림 12-2-34** 지도학습에서는 아무리 에포크(Epoch)가 돌아도 입력 이미지의 타깃 정답이 굳건히 고정되어 있음을 설명
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

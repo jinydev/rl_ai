@@ -1,0 +1,6 @@
+# ch12_2_33_second_difference_target.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 지도학습과 Q-러닝의 두 번째 차이
+- **강의 캡션**: **그림 12-2-33** 정답 레이블이 변하지 않는 지도학습과 매번 과녁이 도망치는 Q-러닝의 두 번째 결정적 차이점 비교
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

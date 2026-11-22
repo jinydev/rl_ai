@@ -1,0 +1,7 @@
+# ch12_1_17_agent_env_closed_loop.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 에이전트-환경 닫힌 루프 상호작용
+- **강의 캡션**: **그림 12-1-17** 에이전트의 관찰-행동 선택($A_t$)과 환경의 물리 시뮬레이션-보상/차기상태 반환($S_{t+1}, R_{t+1}$)이 끊임없이 순환하는 강화학습 메인 피드백 루프
+- **강화학습 도메인 시각화**: Circular RL loop connecting Agent (Dorothy) and Environment (CartPole) with action and state-reward arrows.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

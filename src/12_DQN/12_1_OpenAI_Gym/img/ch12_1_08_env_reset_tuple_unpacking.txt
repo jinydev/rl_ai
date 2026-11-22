@@ -1,0 +1,7 @@
+# ch12_1_08_env_reset_tuple_unpacking.png
+
+## 프롬프트 및 구성 명세
+- **주제**: env.reset()[0] 튜플 언패킹 메커니즘
+- **강의 캡션**: **그림 12-1-8** `(state, info) = env.reset()` 반환 튜플 캐비닛에서 0번째 서랍인 상태 벡터(`state`)를 언패킹하여 초기 관찰값을 얻는 과정
+- **강화학습 도메인 시각화**: Jiny unpacking (state, info) = env.reset() tuple cabinet, sliding out [0] state drawer into Dorothy hands.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

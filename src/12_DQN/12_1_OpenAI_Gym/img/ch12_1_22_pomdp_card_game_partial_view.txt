@@ -1,0 +1,7 @@
+# ch12_1_22_pomdp_card_game_partial_view.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 관찰: 부분 관측 마르코프 결정 과정(POMDP)
+- **강의 캡션**: **그림 12-1-22** 상대방의 패와 덱에 남은 카드가 물음표(?)로 뒤집혀 있어 내 손패(일부 센서 관찰값)만으로 불확실성을 추론해야 하는 부분 관측 환경(POMDP)
+- **강화학습 도메인 시각화**: Card game table with hidden question mark cards demonstrating Partial Information in POMDP.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

@@ -1,0 +1,6 @@
+# ch12_2_27_buffer_instance_inspection.png
+
+## 프롬프트 및 구성 명세
+- **주제**: ReplayBuffer(50000, 32) 인스턴스 검사
+- **강의 캡션**: **그림 12-2-27** 생성된 ReplayBuffer 인스턴스의 현재 적재 데이터 크기(__len__)를 실시간 모니터링하는 지니
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

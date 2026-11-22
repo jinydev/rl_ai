@@ -1,0 +1,7 @@
+# ch12_1_23_cartpole_state_equals_observation.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 카트폴 완전 관측 환경: 관찰과 상태의 동일성
+- **강의 캡션**: **그림 12-1-23** 카트폴은 역학 시뮬레이션의 모든 변수가 측정되는 완전 관측 환경이므로 관찰과 상태가 일치(`Observation = State`)함을 확인하고 본격적인 DQN 탐험으로 나아가는 도로시와 지니
+- **강화학습 도메인 시각화**: Jiny hoisting golden = sign between Observation and State in front of CartPole with cheering Dorothy and Professor Hojin.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

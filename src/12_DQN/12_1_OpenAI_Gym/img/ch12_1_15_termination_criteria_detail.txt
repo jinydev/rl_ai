@@ -1,0 +1,7 @@
+# ch12_1_15_termination_criteria_detail.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 카트폴 종료 조건 세부 판정 기준
+- **강의 캡션**: **그림 12-1-15** 막대 쓰러짐/탈선에 따른 실패 깃발(`terminated: True`)과 200회 스텝 유지 성공에 따른 축하 골인 깃발(`truncated: True`)의 현장 비교
+- **강화학습 도메인 시각화**: Two branching CartPole outcomes: left tilt failure vs right upright 200-step starry confetti finish.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

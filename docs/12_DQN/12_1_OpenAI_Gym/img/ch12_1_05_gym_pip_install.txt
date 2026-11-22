@@ -1,0 +1,7 @@
+# ch12_1_05_gym_pip_install.png
+
+## 프롬프트 및 구성 명세
+- **주제**: Gym 모듈 설치 및 시뮬레이터 빌드
+- **강의 캡션**: **그림 12-1-5** 터미널에서 pip install 명령어로 Gym 물리 엔진 패키지를 설치하고 카트폴 시뮬레이션 모듈 상자를 조립하는 지니와 이호진 교수님
+- **강화학습 도메인 시각화**: Jiny typing pip install gym[classic_control] on laptop terminal with CartPole module assembling under Professor Hojin thumbs up.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

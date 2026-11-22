@@ -1,0 +1,6 @@
+# ch12_2_51_action_fancy_indexing.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 선택된 행동의 Q값 팬시 인덱싱 마스킹
+- **강의 캡션**: **그림 12-2-51** qs[np.arange(batch_size), action] 연산을 통해 실제 수행한 행동의 Q-value만을 정확히 추출하는 넘파이 마스킹
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

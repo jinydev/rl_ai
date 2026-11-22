@@ -1,0 +1,7 @@
+# ch12_1_12_action_push_left_right.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 행동 0(좌측 추진)과 행동 1(우측 추진) 메커니즘
+- **강의 캡션**: **그림 12-1-12** 0번 버튼을 누르면 카트에 좌측 추진력이, 1번 버튼을 누르면 우측 추진력이 가해지는 수평 가속도 제어 메커니즘
+- **강화학습 도메인 시각화**: Console button 0 exerting left horizontal push and button 1 exerting right horizontal push on cart.
+- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.

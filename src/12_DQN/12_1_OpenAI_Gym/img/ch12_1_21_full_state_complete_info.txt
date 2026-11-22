@@ -1,0 +1,7 @@
+# ch12_1_21_full_state_complete_info.png
+
+## 프롬프트 및 구성 명세
+- **주제**: 상태: 환경의 완전한 정보 (MDP)
+- **설명**: **그림 12-1-21** 모든 기물의 위치가 투명하게 공개된 체스판처럼 환경의 모든 정보를 온전히 파악할 수 있는 '상태(State, MDP)'
+- **영문 프롬프트 디스크립션**: Chessboard metaphor representing full information state in Markov Decision Processes.
+- **화풍**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
