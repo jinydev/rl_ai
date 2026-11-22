@@ -1,0 +1,1 @@
+DQN의 2대 혁신인 경험 재생(Replay Buffer)과 목표 신경망(Target Network) 정상 16:9 와이드스크린 아키텍처 다이어그램
