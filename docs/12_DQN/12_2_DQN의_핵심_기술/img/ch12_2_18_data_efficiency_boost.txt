@@ -1,7 +1,1 @@
-# ch12_2_18_data_efficiency_boost.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 과거 경험 재활용과 데이터 효율성 극대화
-- **강의 캡션**: **그림 12-2-18** 한 번 쓰고 버려지던 과거 궤적을 버퍼에서 여러 번 반복 재학습하여 데이터 효율을 극대화하는 지혜
-- **스토리 소스**: replay_ladle (experience_replay_buffer_v3_1795341748846.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+보물상자에서 꺼낸 크리스탈 캡슐들을 재활용 깔때기에 부어 로봇을 반복 훈련시키는 데이터 효율성 극대화

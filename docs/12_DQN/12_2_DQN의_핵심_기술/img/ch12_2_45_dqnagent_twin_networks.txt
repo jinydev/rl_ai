@@ -1,7 +1,1 @@
-# ch12_2_45_dqnagent_twin_networks.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: DQNAgent의 쌍둥이 신경망 아키텍처
-- **강의 캡션**: **그림 12-2-45** DQNAgent 클래스 내부에 완전히 독립된 두 벌의 동일 구조 신경망(self.qnet & self.qnet_target) 배치
-- **스토리 소스**: deepcopy_safe (python_shallow_vs_deep_copy_v2_1795341751619.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+나란히 배치된 두 개의 독립된 마이크로칩: 학습을 주도하는 qnet과 목표를 제공하는 qnet_target

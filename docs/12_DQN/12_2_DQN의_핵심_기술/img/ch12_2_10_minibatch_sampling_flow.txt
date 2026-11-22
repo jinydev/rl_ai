@@ -1,7 +1,1 @@
-# ch12_2_10_minibatch_sampling_flow.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 복권 추첨기에서 무작위 미니배치 추출
-- **강의 캡션**: **그림 12-2-10** 빈티지 복권 추첨기를 돌려 6만 장의 숫자 카드에서 골고루 32장의 미니배치를 뽑아내는 지니
-- **스토리 소스**: mnist_lottery (mnist_minibatch_lottery_1795343319436.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+회전 추첨 통에서 32장의 카드가 골고루 쏟아져 나와 균일한 미니배치를 형성하는 흐름

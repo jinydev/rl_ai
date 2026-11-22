@@ -1,7 +1,1 @@
-# ch12_2_11_preventing_data_bias.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 특정 클래스 쏠림을 막는 공정한 표본 추출
-- **강의 캡션**: **그림 12-2-11** 특정 숫자(예: 2)만 뽑히지 않도록 무작위성을 확보하여 데이터 편향을 원천 차단하는 원리
-- **스토리 소스**: mnist_lottery (mnist_minibatch_lottery_1795343319436.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+도로시가 0부터 9까지의 숫자 카드를 균등한 높이의 10개 원목 보관함에 공정하게 분류하는 편향 방지 작업

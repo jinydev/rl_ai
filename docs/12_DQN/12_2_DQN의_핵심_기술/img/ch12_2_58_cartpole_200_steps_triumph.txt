@@ -1,7 +1,1 @@
-# ch12_2_58_cartpole_200_steps_triumph.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 흔들림 없이 200스텝 만점 트로피를 치켜든 도로시!
-- **강의 캡션**: **그림 12-2-58** 학습 전 10스텝 만에 쓰러지던 카트폴을 미동도 없이 꼿꼿하게 세운 채 200스텝 만점을 완벽하게 달성한 DQN 에이전트
-- **스토리 소스**: cartpole_mastery (cartpole_dqn_mastery_v2_1795341870593.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+카트폴 막대가 수직으로 안정되게 유지되며 200스텝 만점을 달성하고 승리의 환호를 지르는 도로시와 토토

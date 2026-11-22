@@ -1,7 +1,1 @@
-# ch12_2_23_collections_deque_datastructure.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: collections.deque 양방향 회전 링
-- **강의 캡션**: **그림 12-2-23** 파이썬 표준 라이브러리 collections.deque(maxlen=N)을 활용한 완벽한 O(1) 순환 링 버퍼
-- **스토리 소스**: deque_fifo (deque_memory_ring_illustration_1795341729925.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+파이썬 collections.deque를 상징하는 원형 링 버퍼에서 데이터가 O(1) 시간복잡도로 회전하는 구조

@@ -1,7 +1,1 @@
-# ch12_2_28_get_batch_random_sampling.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 황금 국자로 32개 캡슐을 골고루 건져 올리는 지니
-- **강의 캡션**: **그림 12-2-28** random.sample()로 버퍼에서 32개의 캡슐을 무작위로 건져 올려 상관관계를 완벽히 파괴하는 국자 샘플링
-- **스토리 소스**: replay_ladle (experience_replay_buffer_v3_1795341748846.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+지니가 황금 국자로 크리스탈 볼트에서 32개의 캡슐을 무작위로 추출하여 시간적 상관관계를 완전히 파괴하는 샘플링

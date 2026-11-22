@@ -1,7 +1,1 @@
-# ch12_2_03_neural_overfitting_hazard.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 신경망 과대적합의 롤러코스터
-- **강의 캡션**: **그림 12-2-03** 훈련 데이터 잡음까지 과적합되어 미지의 상태에서 엉뚱한 행동을 유발하는 과대적합 롤러코스터 곡선
-- **스토리 소스**: overfitting (overfitting_neural_network_jiny_dorothy_refined_1795341736259.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+신경망의 뛰어난 표현력 이면에 도사린 과대적합(Overfitting) 위험성과 굴곡진 파동

@@ -1,7 +1,1 @@
-# ch12_2_52_target_net_max_axis1.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 목표 신경망의 max(axis=1) 최댓값 축소
-- **강의 캡션**: **그림 12-2-52** self.qnet_target으로 계산한 next_qs에서 axis=1 최댓값을 취해 미래 최적 가치를 도출하는 핵심 코드
-- **스토리 소스**: target_frozen (target_network_frozen_1795341729865.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+목표 신경망 출력에서 가장 큰 미래 가치를 max 연산자로 선택하여 벨만 최적 목표를 산출하는 과정

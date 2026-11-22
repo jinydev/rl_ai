@@ -1,7 +1,1 @@
-# ch12_2_46_optimizer_isolation_qnet.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 옵티마이저 가중치 갱신 격리
-- **강의 캡션**: **그림 12-2-46** 옵티마이저는 오직 self.qnet의 매개변수만 갱신하며 self.qnet_target은 절대 건드리지 않는 엄격한 분리
-- **스토리 소스**: loss_backprop (dqn_backprop_td_error_v3_1795341905018.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+옵티마이저의 연결선이 오직 qnet에만 연결되어 qnet_target은 일체의 경사하강 간섭을 받지 않는 격리 구조

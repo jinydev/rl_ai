@@ -1,7 +1,1 @@
-# ch12_2_37_moving_target_instability.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 도망가는 로켓 롤러스케이트 과녁 추격전!
-- **강의 캡션**: **그림 12-2-37** 활시위를 당길 때마다 과녁이 롤러스케이트를 타고 스스로 도망쳐 도로시를 당황하게 만드는 Moving Target 소동
-- **스토리 소스**: moving_target_chase (q_learning_moving_target_1795343301632.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+활시위를 당길 때마다 로켓 롤러스케이트를 타고 도망치는 장난꾸러기 TD 과녁을 쫓는 도로시의 추격전

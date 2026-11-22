@@ -1,7 +1,1 @@
-# ch12_2_39_qnet_original_agent.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 원본 신경망(qnet): 실시간 학습 에이전트
-- **강의 캡션**: **그림 12-2-39** 경사하강법으로 실시간 매개변수를 부지런히 갈고닦으며 화살을 쏘는 원본 신경망(qnet)
-- **스토리 소스**: loss_backprop (dqn_backprop_td_error_v3_1795341905018.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+매 타임스텝마다 경사하강법으로 활발하게 파라미터를 업데이트하는 메인 실시간 신경망 qnet

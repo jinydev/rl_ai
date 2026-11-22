@@ -1,7 +1,1 @@
-# ch12_2_05_dqn_chapter_roadmap.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 12.2절 DQN 핵심 기술 탐험 로드맵
-- **강의 캡션**: **그림 12-2-05** 경험 재생부터 목표 신경망 구현까지 이어지는 DQN 핵심 기술의 체계적인 학습 대장정
-- **스토리 소스**: history_2015 (deepmind_2015_commemorative_illustration_1795338294740.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+도로시와 지니, 토토가 오크 탁자 위 양피지 지도에서 3대 이정표를 확인하는 탐험 로드맵

@@ -1,7 +1,1 @@
-# ch12_2_25_deque_maxlen_operation.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: deque append와 maxlen 자동 제어
-- **강의 캡션**: **그림 12-2-25** 새 데이터 append 시 maxlen을 넘어가면 가장 오래된 데이터를 스스로 버리는 deque의 동작 원리
-- **스토리 소스**: deque_fifo (deque_memory_ring_illustration_1795341729925.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+deque(maxlen=buffer_size) 자료구조에 append 수행 시 메모리 오버플로 없이 자동으로 크기가 유지되는 마법

@@ -1,7 +1,1 @@
-# ch12_2_33_second_difference_target.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 지도학습 vs Q-러닝의 두 번째 차이점
-- **강의 캡션**: **그림 12-2-33** 정답 레이블이 변하지 않는 지도학습과 과녁이 스스로 도망치는 Q-러닝의 두 번째 결정적 차이
-- **스토리 소스**: moving_target_chase (q_learning_moving_target_1795343301632.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+지도학습의 고정된 표적과 달리 Q-러닝에서는 정답 레이블(TD 목표)이 스스로 움직이는 두 번째 차이점

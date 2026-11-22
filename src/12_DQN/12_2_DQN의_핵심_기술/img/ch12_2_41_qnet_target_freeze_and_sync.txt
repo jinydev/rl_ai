@@ -1,7 +1,1 @@
-# ch12_2_41_qnet_target_freeze_and_sync.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 얼음 자물쇠 뒤에서 흔들리지 않는 qnet_target
-- **강의 캡션**: **그림 12-2-41** 평소에는 가중치를 단단히 얼려두고 오직 동기화 신호가 올 때만 qnet 가중치를 복사받는 목표 신경망
-- **스토리 소스**: target_frozen (target_network_frozen_1795341729865.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+가중치 업데이트로부터 격리되어 차분하게 고정된 정답 기준선을 제공하는 qnet_target의 든든한 모습

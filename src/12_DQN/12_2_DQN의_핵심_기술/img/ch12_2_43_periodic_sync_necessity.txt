@@ -1,7 +1,1 @@
-# ch12_2_43_periodic_sync_necessity.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 20에피소드 알람 시계 땡~ 황금 열쇠 동기화 축제!
-- **강의 캡션**: **그림 12-2-43** 20번째 에피소드 알람이 울리자 황금 열쇠로 얼음 자물쇠를 열어 qnet의 지식을 목표 신경망으로 동기화하는 축제
-- **스토리 소스**: sync_key_celebration (episode_20_sync_celebration_v2_1795343318852.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+20번째 에피소드마다 알람벨이 울리며 황금 열쇠로 얼음 자물쇠를 열고 최신 가중치를 복제하는 동기화 축제

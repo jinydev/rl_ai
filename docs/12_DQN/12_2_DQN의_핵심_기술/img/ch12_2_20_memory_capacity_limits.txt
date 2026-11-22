@@ -1,7 +1,1 @@
-# ch12_2_20_memory_capacity_limits.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 수위계 50,000 가득 참! 물리 메모리 한계
-- **강의 캡션**: **그림 12-2-20** 버퍼 수조의 노란색 수위계가 100%(50,000)를 가리키며 무한정 저장이 불가능함을 알리는 경보
-- **스토리 소스**: buffer_fifo (replay_buffer_fifo_eviction_1795343315535.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+버퍼 수위계가 50,000에 도달하여 만수가 되자 선입선출(FIFO) 슬라이드로 오래된 캡슐이 자동 배출되는 모습

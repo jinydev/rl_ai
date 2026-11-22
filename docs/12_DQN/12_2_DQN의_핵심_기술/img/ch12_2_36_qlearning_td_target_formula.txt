@@ -1,7 +1,1 @@
-# ch12_2_36_qlearning_td_target_formula.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: Q-러닝 TD 목표 수식 구조
-- **강의 캡션**: **그림 12-2-36** Q-러닝에서 정답 역할을 수행하는 TD 목표 수식 R_t + gamma * max_a Q(S_{t+1}, a)의 역학적 구조
-- **스토리 소스**: loss_backprop (dqn_backprop_td_error_v3_1795341905018.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+TD 목표 수식 r + gamma * max Q(s, a)가 칠판에 적혀 있고, 신경망 가중치 갱신에 따라 목표가 요동치는 구조

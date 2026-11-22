@@ -1,7 +1,1 @@
-# ch12_2_55_sync_interval_20_episodes.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 20에피소드 주기 목표 신경망 동기화 실행
-- **강의 캡션**: **그림 12-2-55** 매 20번째 에피소드마다 agent.sync_qnet()을 정확히 호출하여 목표 신경망의 과녁을 최신 지식으로 갱신
-- **스토리 소스**: sync_key_celebration (episode_20_sync_celebration_v2_1795343318852.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+코드 상에서 if episode % 20 == 0 조건문이 참이 되며 축제 종소리와 함께 가중치 동기화가 이루어지는 순간

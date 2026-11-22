@@ -1,7 +1,1 @@
-# ch12_2_07_why_qlearning_failed.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: Q-러닝에 신경망 적용이 극도로 어려웠던 원인
-- **강의 캡션**: **그림 12-2-07** 데이터의 실시간 변동과 비안정성으로 인해 신경망 가중치가 붕괴하던 근본 원인 분석
-- **스토리 소스**: deadly_triad (deadly_triad_ghibli_illustration_1795341716797.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+불안정하게 진동하고 스파크가 튀는 홀로그램 신경망 앞에서 곤혹스러워하는 도로시와 지니, 나이브 Q-러닝의 실패 원인

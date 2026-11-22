@@ -1,7 +1,1 @@
-# ch12_2_01_bootstrapping_concept.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: Q-러닝 부트스트래핑 원리
-- **강의 캡션**: **그림 12-2-01** 추정치로 추정치를 갱신하는 Q-러닝의 핵심 부트스트래핑 블록 탑을 쌓아 올리는 도로시와 지니
-- **스토리 소스**: concept_intro (ch12_intro_01_dqn_concept_1795338239661.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+Q-러닝의 핵심인 부트스트래핑(추정치로 추정치를 갱신) 개념을 시각화한 지브리 스타일 일러스트

@@ -1,7 +1,1 @@
-# ch12_2_35_label_immutability_example.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: MNIST 숫자 7은 절대 4로 바뀌지 않는다
-- **강의 캡션**: **그림 12-2-35** MNIST 손글씨 7의 정답 레이블은 신경망 가중치 갱신 중에도 결코 변하지 않는다는 확실한 기준
-- **스토리 소스**: moving_target_chase (q_learning_moving_target_1795343301632.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+도로시가 황금 자물쇠로 잠긴 7 석판을 들고 이호진 교수님이 "7은 절대 4로 바뀌지 않는다"고 확언하는 장면

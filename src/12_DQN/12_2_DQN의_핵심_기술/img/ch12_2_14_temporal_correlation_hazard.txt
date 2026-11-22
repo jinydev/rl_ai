@@ -1,7 +1,1 @@
-# ch12_2_14_temporal_correlation_hazard.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 시간적 상관관계(Temporal Correlation)의 덫
-- **강의 캡션**: **그림 12-2-14** 인접한 경험 데이터 간의 강한 시간적 종속성이 신경망의 파라미터를 파괴하는 치명적인 위험
-- **스토리 소스**: correlation (sl_vs_rl_data_correlation_v2_1795341732800.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+시간적 상관관계 사슬에 단단히 묶여 움직이지 못하는 카트폴 캡슐들과 이를 근심스럽게 바라보는 도로시와 토토

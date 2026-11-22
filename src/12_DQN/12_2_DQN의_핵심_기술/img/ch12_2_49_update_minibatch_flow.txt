@@ -1,7 +1,1 @@
-# ch12_2_49_update_minibatch_flow.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 학습 시 버퍼 미니배치 인출 조건
-- **강의 캡션**: **그림 12-2-49** 버퍼에 batch_size(32개) 이상의 경험이 누적되었을 때만 안정적으로 미니배치를 인출해 학습을 시작하는 조건문
-- **스토리 소스**: replay_ladle (experience_replay_buffer_v3_1795341748846.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+버퍼에 쌓인 경험 데이터 수가 batch_size(32) 이상이 되었을 때 비로소 게이트가 열리며 학습이 시작되는 흐름

@@ -1,7 +1,1 @@
-# ch12_2_57_epsilon_greedy_exploration.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 탐색 5% vs 활용 95%의 황금 천칭 저울
-- **강의 캡션**: **그림 12-2-57** 95% 확률로 최선의 탐욕 행동을 취하고 5% 확률로 새로운 경로를 탐색하는 epsilon-탐욕 정책 메커니즘
-- **스토리 소스**: epsilon_greedy (epsilon_greedy_scale_final_1795341899425.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+0.05 탐색의 호기심과 0.95 최적 행동 활용의 지혜가 완벽한 조화를 이루는 황금 천칭 저울

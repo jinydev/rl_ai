@@ -1,7 +1,1 @@
-# ch12_2_27_buffer_instance_inspection.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: ReplayBuffer(50000, 32) 용량 검사
-- **강의 캡션**: **그림 12-2-27** 생성된 버퍼 인스턴스에 현재 몇 개의 캡슐이 적재되었는지 __len__으로 실시간 검사하는 지니
-- **스토리 소스**: deque_fifo (deque_memory_ring_illustration_1795341729925.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+버퍼 인스턴스가 50,000개 저장 용량과 32개 미니배치 규격으로 완벽히 생성되었는지 확인하는 계측실

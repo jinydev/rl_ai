@@ -1,7 +1,1 @@
-# ch12_2_19_off_policy_superpower.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: 오프-정책(Off-Policy) Q-러닝의 슈퍼파워
-- **강의 캡션**: **그림 12-2-19** 온-정책과 달리 과거 정책의 경험 데이터라도 자유롭게 흡수할 수 있는 Q-러닝의 오프-정책 슈퍼파워
-- **스토리 소스**: off_policy (experience_replay_off_policy_v3_1795341908385.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+과거의 낡은 탐색 정책으로 수집된 경험도 벨만 최적 방정식으로 완벽히 재활용하는 오프-정책의 힘

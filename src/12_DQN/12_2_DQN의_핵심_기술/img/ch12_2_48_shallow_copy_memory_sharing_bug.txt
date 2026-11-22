@@ -1,7 +1,1 @@
-# ch12_2_48_shallow_copy_memory_sharing_bug.png
-
-## 스토리 기반 프롬프트 및 구성 명세
-- **주제**: copy.copy 얕은 복사 엉킨 전선 스파크 참사!
-- **강의 캡션**: **그림 12-2-48** 얕은 복사를 썼더니 두 로봇 두뇌의 전선이 엉켜 한쪽을 만지면 다른 쪽도 함께 바뀌는 치명적 버그 경고
-- **스토리 소스**: spark_wires (shallow_vs_deep_copy_illustration_1795343319725.jpg)
-- **화풍 규격**: Studio Ghibli 2D anime style, clean crisp dark espresso brown line art (#26211E), warm flat cel shading, pure white background (#FFFFFF), 1:1 square.
+얕은 복사로 인해 두 신경망이 동일한 메모리 주소를 공유하여 가중치가 동시에 변하며 스파크가 튀는 참사
