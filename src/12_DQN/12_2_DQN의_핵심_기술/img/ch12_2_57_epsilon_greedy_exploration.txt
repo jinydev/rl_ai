@@ -1,1 +1,3 @@
-0.05 탐색의 호기심과 0.95 최적 행동 활용의 지혜가 완벽한 조화를 이루는 황금 천칭 저울
+, deep reinforcement learning, dqn, ghibli 2d style, white background
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, 0.05 탐색의 호기심과 0.95 최적 행동 활용의 지혜가 완벽한 조화를 이루는 황금 천칭 저울. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text

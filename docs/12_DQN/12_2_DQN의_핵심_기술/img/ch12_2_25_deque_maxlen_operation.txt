@@ -1,1 +1,3 @@
-deque(maxlen=buffer_size) 자료구조에 append 수행 시 메모리 오버플로 없이 자동으로 크기가 유지되는 마법
+, deep reinforcement learning, dqn, ghibli 2d style, white background
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, deque(maxlen=buffer_size) 자료구조에 append 수행 시 메모리 오버플로 없이 자동으로 크기가 유지되는 마법. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text

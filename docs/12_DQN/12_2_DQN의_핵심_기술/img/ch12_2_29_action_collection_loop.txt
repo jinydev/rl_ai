@@ -1,1 +1,3 @@
-카트폴 콘솔에서 좌우 추진 행동을 실행하며 매 스텝마다 실시간 전이 데이터를 버퍼로 전송하는 루프
+, deep reinforcement learning, dqn, ghibli 2d style, white background
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, 카트폴 콘솔에서 좌우 추진 행동을 실행하며 매 스텝마다 실시간 전이 데이터를 버퍼로 전송하는 루프. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text

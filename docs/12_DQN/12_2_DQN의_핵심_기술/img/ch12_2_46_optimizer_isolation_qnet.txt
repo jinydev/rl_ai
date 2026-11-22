@@ -1,1 +1,3 @@
-옵티마이저의 연결선이 오직 qnet에만 연결되어 qnet_target은 일체의 경사하강 간섭을 받지 않는 격리 구조
+, deep reinforcement learning, dqn, ghibli 2d style, white background
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration, masterpiece, 옵티마이저의 연결선이 오직 qnet에만 연결되어 qnet_target은 일체의 경사하강 간섭을 받지 않는 격리 구조. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout, subtle soft contact shadow at feet, 1:1 square aspect ratio, no slide borders, no title banner, no text containers, no Japanese text
