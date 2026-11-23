@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, educational illustration, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, realistic photograph, 3d cgi render, presentation slide frame, slide border, dark background, blurry, deformed hands, garbled text, wrinkles, beard, mustache, watermark, signature
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. Dorothy kneeling beside a horizontal linear rail with a yellow ruler scale marked from -2.4m to +2.4m with 0.0m in the center. A cute red cart is positioned at +0.5m on the track, illustrating state[0] cart position x. Two red warning striped barrier flags stand at the edges (-2.4m and +2.4m) marking the boundary failure limit. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout silhouette, subtle soft contact shadow at feet, 1:1 square aspect ratio.

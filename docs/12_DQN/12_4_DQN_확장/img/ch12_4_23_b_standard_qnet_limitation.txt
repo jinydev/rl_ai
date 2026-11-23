@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Professor Hojin Lee (youthful 40s, thin metal glasses, solid navy polo shirt) explains to Dorothy a glowing standard Q-network black-box cube where a single State s input splits into tangled output pipes labeled Q(s, a1), Q(s, a2), Q(s, a3), showing that every action's value is entangled together in the final layer.

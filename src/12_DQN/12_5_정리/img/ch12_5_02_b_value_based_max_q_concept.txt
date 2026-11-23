@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+At a whimsical crossroads on a pure white background, Dorothy looks through a brass telescope with Jiny pointing forward at 4 wooden action signposts (Q(s, a1) = +2.4, Q(s, a2) = +8.9 BEST!, Q(s, a3) = -1.5, Q(s, a4) = +0.2). Dorothy spots the highest value sign using the max_a operator magnifying glass, illustrating the core principle of Value-Based RL.

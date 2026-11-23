@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+A transparent crystal replay buffer vault containing floating capsules: mostly soft blue normal steps, with a few intensely glowing golden capsules marked "High TD Error |δ|" representing rare breakthroughs and critical mistakes. Jiny uses light tweezers to extract a golden capsule toward the training network while Dorothy and Toto cheer joyfully.

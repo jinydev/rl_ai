@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+A whimsical brass balance scale representing Q = V + A. A mischievous floating "C" spirit shifts +C to V(s) and -C from A(s, a) without changing total Q, causing an identifiability wobble. Jiny points her glowing stylus at the stabilizing mean-subtraction normalization bracket Q = V + (A - mean(A)) restoring balance, while Dorothy and Toto watch intently.

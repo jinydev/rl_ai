@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, educational illustration, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, realistic photograph, 3d cgi render, presentation slide frame, slide border, dark background, blurry, deformed hands, garbled text, wrinkles, beard, mustache, watermark, signature
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. Dorothy holding a large transparent circular protractor over the hinge of the CartPole. A vertical dashed reference line marks 0.0 radians (0 degrees), and the pole tilts slightly to the right at an angle theta, illustrating state[2] pole angle. Red danger zones are clearly marked past +12 degrees and -12 degrees indicating termination failure. pure solid clean white background (#FFFFFF), perfectly centered subject, isolated presentation graphic cutout silhouette, subtle soft contact shadow at feet, 1:1 square aspect ratio.

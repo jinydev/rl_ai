@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Dorothy smiling confidently driving a small vintage red convertible along an open clear highway with Toto in the passenger seat. Floating above is a prominent golden shield reading "State Value V(s) = High (Safe Road)" while small action gauges (Steer Left, Steer Right, Cruise, Accelerate) show identical low advantage, visually explaining that the state value dominates when the situation is inherently safe.

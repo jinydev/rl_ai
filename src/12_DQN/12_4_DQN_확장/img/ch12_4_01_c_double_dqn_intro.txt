@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Two hovering magic mirrors illustrating Double DQN: on the left an active glowing golden neural network (Action Selection, θ) choosing the best action argmax with an arrow, and on the right a frozen ice-crystal neural network (Value Evaluation, θ') evaluating the Q-value of that selected action. Dorothy, Jiny (turquoise hair, blue vest, glowing tablet), and Toto observe with fascination.

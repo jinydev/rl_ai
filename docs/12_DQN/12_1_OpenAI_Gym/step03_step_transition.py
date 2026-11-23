@@ -1,67 +1,36 @@
-"""
-[Step 03] env.step(action) 상태 전이 및 5-튜플 반환값 검사 스크립트
+import time
+import gym
 
-이 스크립트는 에이전트가 선택한 행동을 환경에 전달하여 1스텝 물리 시뮬레이션을 수행하고,
-반환되는 5가지 정보(next_state, reward, terminated, truncated, info)의 이론적 의미를 확인합니다.
-"""
+env = gym.make('CartPole-v0', render_mode='human')
 
-import sys
+# 1. 초기 상태 획득 (s_0)
+state = env.reset()[0]
+print("1. 행동 전 초기 상태 (state)     :", state)
 
-try:
-    import gymnasium as gym
-except ImportError:
-    import gym
+# 2. 행동 선택 (0: 카트 왼쪽 밀기, 1: 카트 오른쪽 밀기)
+action = 0
+print(f"2. 에이전트의 선택 행동 (action)  : {action} (← 카트 좌측 밀기)")
 
-def main():
-    print("=" * 70)
-    print(" 3단계: env.step(action) 1스텝 전이 및 5대 반환값 정밀 검사")
-    print("=" * 70)
+# 3. 1스텝 환경 상호작용 (전이 수행)
+next_state, reward, terminated, truncated, info = env.step(action)
 
-    try:
-        env = gym.make('CartPole-v0', render_mode='rgb_array')
-    except Exception:
-        env = gym.make('CartPole-v1', render_mode='rgb_array')
+print("\n3. env.step(action) 반환값 5-튜플:")
+print("  - next_state (차기 상태)       :", next_state)
+print("  - reward     (즉각 보상)       :", reward)
+print("  - terminated (과제 실패 여부)  :", terminated)
+print("  - truncated  (시간 초과 여부)  :", truncated)
+print("  - info       (부가 진단 정보)  :", info)
 
-    # 초기화
-    reset_return = env.reset(seed=100)
-    state = reset_return[0] if isinstance(reset_return, tuple) else reset_return
+# 4. 상태 변화량 (Δs) 분석
+diff = next_state - state
+print("\n4. 1스텝 동안의 물리 상태 변화량 (Δs):")
+print(f"  - 카트 위치 변화 : {diff[0]:+.6f} m")
+print(f"  - 카트 속도 변화 : {diff[1]:+.6f} m/s (왼쪽으로 가속)")
+print(f"  - 막대 각도 변화 : {diff[2]:+.6f} rad")
+print(f"  - 막대 각속도 변화: {diff[3]:+.6f} rad/s")
 
-    print(f"[*] 초기 상태 (s_0): {state}\n")
+# 1스텝 상호작용 후 변화된 화면을 확인할 수 있도록 잠시 대기
+print("\n[안내] 1스텝 행동 후 카트폴 화면을 확인하세요. 3초 후 자동으로 창이 닫힙니다...")
+time.sleep(3)
 
-    # 행동 수행: 카트를 오른쪽으로 밀기 (action = 1)
-    action = 1
-    print(f"[*] 에이전트가 행동 선택: a_0 = {action} (오른쪽 추진력 +10N 인가)")
-
-    # 1스텝 전이 수행
-    step_result = env.step(action)
-
-    # 5-튜플 언패킹 (구버전 Gym 4개 반환 호환 처리)
-    if len(step_result) == 5:
-        next_state, reward, terminated, truncated, info = step_result
-    else:
-        next_state, reward, done, info = step_result
-        terminated = done
-        truncated = False
-
-    print("\n" + "-" * 70)
-    print(" env.step(action) 반환값 5-튜플 정밀 분석:")
-    print("-" * 70)
-    print(f"  1. next_state (차기 상태 s') : {next_state}")
-    print(f"     - 상태 변화량 (Δs)         : {next_state - state}")
-    print(f"  2. reward     (즉각 보상 R)   : {reward} (생존 성공 시 매 스텝 +1.0 지급)")
-    print(f"  3. terminated (과제 실패 종료): {terminated}")
-    print("     - 의미: 막대 각도 > 12° 이거나 카트 위치 > ±2.4m 도달 시 True")
-    print(f"  4. truncated  (시간 초과 종료): {truncated}")
-    print("     - 의미: MDP 외부 제약인 최대 스텝(200 또는 500) 도달 시 True")
-    print(f"  5. info       (디버깅 부가정보): {info}")
-    print("-" * 70)
-
-    # 통합 종료 플래그 계산
-    done = terminated or truncated
-    print(f"\n[*] 에피소드 종료 여부 (done = terminated | truncated) : {done}")
-
-    env.close()
-    print("=" * 70)
-
-if __name__ == '__main__':
-    main()
+env.close()

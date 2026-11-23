@@ -625,9 +625,13 @@
 
 <p>고전 제어 이론의 역진자 문제(CartPole, MountainCar, Pendulum)부터 2D/3D 로보틱스 물리 시뮬레이션(Box2D, MuJoCo), 그리고 아타리 2600 비디오 게임(Atari Arcade)에 이르기까지 연구자가 목적에 맞춰 선택할 수 있는 수백 가지의 표준 환경 벤치마크를 내장하고 있습니다.</p>
 
-<p><strong>그림 12-1</strong> OpenAI Gym [9]의 문제 목록 화면</p>
+<p><strong>그림 12-1</strong> OpenAI Gym (Gymnasium) 공식 문서의 CartPole 환경 스펙 화면</p>
 
-<p><img src="./img/fig-257.jpg" alt="그림 12-1" /></p>
+<p><img src="./img/ch12_1_cartpole_website_docs.png" alt="그림 12-1" /></p>
+
+<blockquote>
+  <p><a href="https://gymnasium.farama.org/environments/classic_control/cart_pole/">Gymnasium CartPole 공식 문서</a></p>
+</blockquote>
 
 <hr />
 
@@ -664,20 +668,144 @@
 
 <hr />
 
-<h3 id="1211-openai-gym-기초-지식">12.1.1 OpenAI Gym 기초 지식</h3>
+<h3 id="1211-openai-gym-실습-환경-구성-가이드">12.1.1 OpenAI Gym 실습 환경 구성 가이드</h3>
 
-<p>그럼 OpenAI Gym의 기본적인 사용법과 핵심 API 메커니즘을 단계별로 알아보겠습니다.</p>
+<p>OpenAI Gym과 카트폴 시뮬레이션을 원활하게 구동하기 위해 필요한 패키지를 설치합니다.</p>
 
-<p>먼저 OpenAI Gym 라이브러리를 설치합니다. 카트폴과 같은 고전 제어(Classic Control) 환경을 시뮬레이션하기 위해 패키지를 터미널에서 설치합니다.</p>
+<p><img src="./img/ch12_1_04_env_setup_overview.png" alt="OpenAI Gym 실습 환경 구성 가이드 오버뷰" />
+<strong>그림 12-1-4-A</strong> 안전한 파이썬 가상환경(.venv)과 Gymnasium 및 Pygame 시뮬레이션 환경 구축 준비를 마친 도로시와 연구진</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 구버전 Gym 설치 시</span>
-pip <span class="nb">install </span>gym[classic_control]
+<hr />
 
-<span class="c"># 최신 표준 Gymnasium 설치 시 (권장)</span>
-pip <span class="nb">install </span>gymnasium[classic-control] pygame
+<h4 id="시스템-전역-파이썬-보호-규정-pep-668과-쉘-와일드카드-주의사항">시스템 전역 파이썬 보호 규정 (PEP 668)과 쉘 와일드카드 주의사항</h4>
+
+<p>최근 파이썬 배포판(Python 3.11+)과 macOS/Linux에서는 시스템 전역 환경 보호 규정(<strong>PEP 668</strong>)에 따라 시스템 파이썬에 직접 <code class="language-plaintext highlighter-rouge">pip install</code>을 실행하면 다음과 같은 오류가 발생합니다:</p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>error: externally-managed-environment
+× This environment is externally managed
 </code></pre></div></div>
 
-<p>터미널에서 이 한 줄만 실행하면 물리 엔진 및 렌더링 백엔드가 함께 설치됩니다.</p>
+<p>또한 macOS의 기본 쉘인 <strong>zsh</strong>에서는 대괄호(<code class="language-plaintext highlighter-rouge">[...]</code>)를 파일 탐색 와일드카드로 인식하므로 <code class="language-plaintext highlighter-rouge">zsh: no matches found</code>가 발생할 수 있습니다.</p>
+
+<hr />
+
+<h4 id="왜-가상환경venv을-만들어야-하는가">왜 가상환경(venv)을 만들어야 하는가?</h4>
+
+<p>운영체제(macOS Apple Silicon vs Windows)에 맞춰 <strong>독립된 가상환경(venv)</strong>을 만들어 설치하는 것이 가장 안전하고 권장되는 글로벌 표준 방법입니다:</p>
+
+<ol>
+  <li><strong>시스템 OS 격리 보호</strong>: OS 자체 유틸리티가 사용하는 시스템 파이썬 패키지를 건드리지 않고 보호합니다.</li>
+  <li><strong>프로젝트별 버전 독립성</strong>: 다른 프로젝트와의 패키지 버전(예: NumPy, Gym, PyTorch) 충돌을 원천 차단합니다.</li>
+  <li><strong>손쉬운 초기화</strong>: 문제가 생기면 <code class="language-plaintext highlighter-rouge">.venv</code> 폴더 하나만 지우고 다시 만들면 깨끗하게 복구됩니다.</li>
+</ol>
+
+<p><img src="./img/ch12_1_04_b_virtual_env_concept.png" alt="가상환경 격리 및 시스템 보호 메커니즘" />
+<strong>그림 12-1-4-B</strong> 호스트 OS 시스템을 안전하게 보호하고 패키지 버전 충돌을 원천 차단하는 <code class="language-plaintext highlighter-rouge">.venv</code> 가상환경 샌드박스 메커니즘</p>
+
+<hr />
+
+<h4 id="-macos-apple-silicon-m1m2m3m4-환경-설정">🍏 macOS (Apple Silicon M1/M2/M3/M4) 환경 설정</h4>
+
+<p>터미널(zsh)을 열고 프로젝트 디렉토리에서 다음 명령어를 순서대로 실행합니다:</p>
+
+<div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 독립된 파이썬 가상환경 생성 (.venv)</span>
+python3 <span class="nt">-m</span> venv .venv
+
+<span class="c"># 2. 가상환경 활성화 (프롬프트 앞에 (.venv) 표시 확인)</span>
+<span class="nb">source</span> .venv/bin/activate
+
+<span class="c"># 3. 강화학습 환경 및 렌더링 백엔드 설치 (최신 파이썬 호환 pygame-ce 사용)</span>
+pip <span class="nb">install</span> <span class="s2">"gymnasium[classic-control]"</span> pygame-ce
+</code></pre></div></div>
+
+<hr />
+
+<blockquote>
+  <p>[!IMPORTANT]
+<strong><code class="language-plaintext highlighter-rouge">ERROR: Failed building wheel for pygame</code> 오류 원인과 해결:</strong>
+macOS의 최신 Homebrew 파이썬(Python 3.14) 환경에서는 기존 구형 <code class="language-plaintext highlighter-rouge">pygame</code> 패키지의 사전 빌드된 바이너리(wheel)가 없어 C 소스코드 컴파일을 시도하다가 <code class="language-plaintext highlighter-rouge">SDL.h not found</code> 에러가 발생합니다.
+최신 Python 3.14를 사용 중이시라면 3.14용 바이너리 휠을 공식 완벽 지원하며 100% 동일한 API로 동작하는 <strong><code class="language-plaintext highlighter-rouge">pygame-ce</code></strong>(Community Edition)를 지정하여 설치하시면 에러 없이 즉시 설치됩니다:</p>
+  <div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install</span> <span class="s2">"gymnasium[classic-control]"</span> pygame-ce
+</code></pre></div>  </div>
+  <p>또는 버전 충돌이 일체 없는 파이썬 3.11 가상환경을 <code class="language-plaintext highlighter-rouge">uv</code>로 즉시 생성하여 설치할 수도 있습니다:</p>
+  <div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv venv <span class="nt">--python</span> 3.11 .venv <span class="o">&amp;&amp;</span> <span class="nb">source</span> .venv/bin/activate <span class="o">&amp;&amp;</span> pip <span class="nb">install</span> <span class="s2">"gymnasium[classic-control]"</span> pygame
+</code></pre></div>  </div>
+</blockquote>
+
+<hr />
+
+<blockquote>
+  <p>[!TIP]
+<strong>가상환경 없이 즉시 설치하고 싶을 때 (빠른 실습용)</strong>:
+가상환경 생성 과정을 건너뛰고 시스템 파이썬에 즉시 설치하려면 <code class="language-plaintext highlighter-rouge">--break-system-packages</code> 플래그를 추가해 주시면 됩니다:</p>
+  <div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python3 <span class="nt">-m</span> pip <span class="nb">install</span> <span class="s2">"gymnasium[classic-control]"</span> pygame <span class="nt">--break-system-packages</span>
+</code></pre></div>  </div>
+
+  <p><strong>초고속 패키지 관리자 <code class="language-plaintext highlighter-rouge">uv</code>를 사용하는 경우</strong>:</p>
+  <div class="language-zsh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>uv run <span class="nt">--python</span> 3.11 <span class="nt">--with</span> <span class="s2">"gymnasium[classic-control],pygame"</span> python step01_make_env.py
+</code></pre></div>  </div>
+</blockquote>
+
+<hr />
+
+<h4 id="-windows-windows-1011-환경-설정">🪟 Windows (Windows 10/11) 환경 설정</h4>
+
+<p>PowerShell 또는 명령 프롬프트(CMD)를 열고 다음 명령어를 실행합니다:</p>
+
+<p><strong>1. PowerShell 사용 시:</strong></p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 파이썬 가상환경 생성</span><span class="w">
+</span><span class="n">python</span><span class="w"> </span><span class="nt">-m</span><span class="w"> </span><span class="nx">venv</span><span class="w"> </span><span class="o">.</span><span class="nf">venv</span><span class="w">
+
+</span><span class="c"># 2. 스크립트 실행 권한 허용 (최초 1회만 필요)</span><span class="w">
+</span><span class="n">Set-ExecutionPolicy</span><span class="w"> </span><span class="nt">-ExecutionPolicy</span><span class="w"> </span><span class="nx">RemoteSigned</span><span class="w"> </span><span class="nt">-Scope</span><span class="w"> </span><span class="nx">Process</span><span class="w">
+
+</span><span class="c"># 3. 가상환경 활성화</span><span class="w">
+</span><span class="o">.</span><span class="n">\.venv\Scripts\Activate.ps1</span><span class="w">
+
+</span><span class="c"># 4. 패키지 설치 (PowerShell에서도 따옴표 권장)</span><span class="w">
+</span><span class="n">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="s2">"gymnasium[classic-control]"</span><span class="w"> </span><span class="nx">pygame</span><span class="w">
+</span></code></pre></div></div>
+
+<hr />
+
+<p><strong>2. 명령 프롬프트 (CMD) 사용 시:</strong></p>
+
+<pre><code class="language-cmd">:: 1. 가상환경 생성
+python -m venv .venv
+
+:: 2. 가상환경 활성화
+.venv\Scripts\activate.bat
+
+:: 3. 패키지 설치
+pip install "gymnasium[classic-control]" pygame
+</code></pre>
+
+<hr />
+
+<h4 id="패키지-설치-및-시뮬레이터-빌드-확인">패키지 설치 및 시뮬레이터 빌드 확인</h4>
+
+<p>설치가 완료되면 파이썬 인터프리터에서 라이브러리가 정상적으로 불러와지는지 한 줄로 검증할 수 있습니다:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 가상환경 활성화 상태(source .venv/bin/activate)인 경우 (또는 윈도우 환경)</span>
+python <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+
+<span class="c"># 2. 가상환경을 별도로 켜지 않고 로컬 가상환경(.venv)으로 바로 확인할 경우</span>
+.venv/bin/python <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+
+<span class="c"># 3. macOS 일반 시스템 터미널 (시스템 전역에 설치한 경우)</span>
+python3 <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+</code></pre></div></div>
+
+<hr />
+
+<blockquote>
+  <p>[!NOTE]
+<strong>macOS <code class="language-plaintext highlighter-rouge">zsh: command not found: python</code> 오류 원인과 해결:</strong>
+macOS에서는 Python 2가 공식 제외된 이후 시스템 기본 명령어로 <code class="language-plaintext highlighter-rouge">python</code> 대신 <strong><code class="language-plaintext highlighter-rouge">python3</code></strong>를 사용합니다.
+앞서 만든 가상환경을 활성화(<code class="language-plaintext highlighter-rouge">source .venv/bin/activate</code>)하시면 터미널 경로가 가상환경으로 연결되어 <code class="language-plaintext highlighter-rouge">python</code> 명령어를 정상 사용할 수 있습니다. 만약 가상환경을 활성화하지 않은 상태라면 <code class="language-plaintext highlighter-rouge">.venv/bin/python</code> 또는 <code class="language-plaintext highlighter-rouge">python3</code>으로 실행해 주세요.</p>
+</blockquote>
+
+<hr />
 
 <p><img src="./img/ch12_1_05_gym_pip_install.png" alt="Gym 모듈 설치 및 시뮬레이터 빌드" />
 <strong>그림 12-1-5</strong> 터미널에서 pip install 명령어로 Gym 물리 엔진 패키지를 설치하고 카트폴 시뮬레이션 모듈 상자를 조립하는 지니와 이호진 교수님</p>
@@ -696,36 +824,56 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gym</span>
 
-<span class="c1"># CartPole 환경 인스턴스 생성 (화면 출력: render_mode='human')
+<span class="c1"># 1. CartPole 환경 생성 (render_mode='human': 시각화 창 활성화)
 </span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">human</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">환경 식별자 (ID)       :</span><span class="sh">"</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">최대 에피소드 스텝 수 :</span><span class="sh">"</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="n">max_episode_steps</span><span class="p">)</span>
+<span class="c1"># 2. 생성 확인 및 자원 해제
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">카트폴 환경이 성공적으로 생성되었습니다:</span><span class="sh">"</span><span class="p">,</span> <span class="n">env</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">환경 식별자 (Spec ID):</span><span class="sh">"</span><span class="p">,</span> <span class="n">env</span><span class="p">.</span><span class="n">spec</span><span class="p">.</span><span class="nb">id</span><span class="p">)</span>
+
 <span class="n">env</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p><img src="./img/ch12_1_step01_make_env_concept.png" alt="Gym 환경 생성 인스턴스화 메커니즘" />
+<strong>그림 12-1-S1-A</strong> <code class="language-plaintext highlighter-rouge">gym.make('CartPole-v0')</code> 호출을 통해 물리 엔진과 렌더링 파이프라인을 갖춘 카트폴 환경 인스턴스를 소환하는 개념도</p>
+
+<hr />
+
+<h4 id="cartpole-v0-vs-cartpole-v1-버전-차이-안내"><code class="language-plaintext highlighter-rouge">CartPole-v0</code> vs <code class="language-plaintext highlighter-rouge">CartPole-v1</code> 버전 차이 안내</h4>
+
 <blockquote>
   <p>[!NOTE]
-현재 <code class="language-plaintext highlighter-rouge">CartPole-v0</code> 버전은 공식 문서에서 out-of-date 경고 메시지를 출력할 수 있지만 기본 실행에는 전혀 문제가 없습니다. v0와 v1의 핵심 차이는 최대 목표 지속 스텝 수(200단계 vs 500단계)이며, 제공되는 실습 코드는 최신 Gymnasium과 구버전 Gym 모두에서 자동으로 상호 호환되도록 구성되어 있습니다.</p>
+현재 <code class="language-plaintext highlighter-rouge">CartPole-v0</code> 버전은 공식 문서에서 out-of-date 경고 메시지를 출력할 수 있지만 기본 실행에는 전혀 문제가 없습니다. v0와 v1의 핵심 차이는 최대 목표 지속 스텝 수(200단계 vs 500단계)이며, 혹시 지원이 중단되더라도 v0를 v1으로만 바꿔 실행하면 됩니다.</p>
 </blockquote>
 
 <hr />
 
-<h4 id="1단계-스크립트-실행-결과">1단계 스크립트 실행 결과</h4>
+<h4 id="1단계-스크립트-실행-방법-및-결과">1단계 스크립트 실행 방법 및 결과</h4>
 
-<p>작성한 <a href="./step01_make_env.py"><code class="language-plaintext highlighter-rouge">step01_make_env.py</code></a>를 실제로 실행하여 환경 스펙과 렌더 모드가 정상적으로 초기화되는지 확인합니다.</p>
+<p>작성한 <a href="./step01_make_env.py"><code class="language-plaintext highlighter-rouge">step01_make_env.py</code></a>를 터미널에서 실행하여 환경이 정상적으로 초기화되는지 확인합니다.</p>
 
+<p><strong>실행 방법 (터미널 명령어):</strong></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python step01_make_env.py
 </code></pre></div></div>
 
+<hr />
+
+<p><strong>출력 결과:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>카트폴 환경이 성공적으로 생성되었습니다: &lt;TimeLimit&lt;OrderEnforcing&lt;PassiveEnvChecker&lt;CartPoleEnv&lt;CartPole-v0&gt;&gt;&gt;&gt;&gt;
+환경 식별자 (Spec ID): CartPole-v0
+</code></pre></div></div>
+
 <p><img src="./img/ch12_1_step01_terminal.png" alt="step01 실행 터미널 출력 화면" />
-<strong>그림 12-1-S1</strong> <code class="language-plaintext highlighter-rouge">step01_make_env.py</code> 실행 결과: CartPole 환경의 정상 인스턴스화, 최대 허용 타임스텝, 보상 임계치(195.0) 및 환경 자원 해제(<code class="language-plaintext highlighter-rouge">env.close()</code>) 터미널 출력 화면</p>
+<strong>그림 12-1-S1</strong> <code class="language-plaintext highlighter-rouge">step01_make_env.py</code> 실행 방법과 터미널 출력 화면 캡처</p>
 
 <hr />
 
 <h4 id="카트-폴-문제의-물리적-화면-구성">〈카트 폴〉 문제의 물리적 화면 구성</h4>
 
-<p>환경 생성 시 <code class="language-plaintext highlighter-rouge">render_mode='human'</code>으로 설정하면 아래 그림과 같은 실시간 시뮬레이션 창을 띄워 에이전트의 움직임을 시각적으로 확인할 수 있습니다 (배치 연산이나 고속 학습 시에는 <code class="language-plaintext highlighter-rouge">'rgb_array'</code>로 설정하여 GUI 오버헤드를 제거합니다).</p>
+<p>환경 생성 시 <code class="language-plaintext highlighter-rouge">render_mode='human'</code>으로 설정하면 아래 그림과 같은 실시간 시뮬레이션 창을 띄워 에이전트의 움직임을 시각적으로 확인할 수 있습니다</p>
+
+<p>(배치 연산이나 고속 학습 시에는 <code class="language-plaintext highlighter-rouge">'rgb_array'</code>로 설정하여 GUI 오버헤드를 제거합니다).</p>
 
 <p><strong>그림 12-2</strong> 〈카트 폴〉 화면 구성</p>
 
@@ -737,7 +885,9 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <h4 id="카트폴의-물리적-실패-한계선">카트폴의 물리적 실패 한계선</h4>
 
-<p>카트폴 시뮬레이터는 매 타임스텝마다 뉴턴-오일러 역학 미분 방정식을 적분하여 물체의 거동을 계산합니다. 에이전트는 다음 두 가지 한계선을 넘지 않도록 균형을 잡아야 합니다:</p>
+<p>카트폴 시뮬레이터는 매 타임스텝마다 뉴턴-오일러 역학 미분 방정식을 적분하여 물체의 거동을 계산합니다.</p>
+
+<p>에이전트는 다음 두 가지 한계선을 넘지 않도록 균형을 잡아야 합니다:</p>
 
 <ol>
   <li><strong>막대의 각도 한계</strong>: 수직선 기준 막대의 기울기 각도 $\theta$가 $\pm 12^\circ$ (약 $\pm 0.2094$ rad)를 초과하면 복원 모멘트 상실로 <strong>실패(<code class="language-plaintext highlighter-rouge">terminated: True</code>)</strong> 처리됩니다.</li>
@@ -771,71 +921,265 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
   <li>실습 파일: <a href="./step02_reset_state.py"><code class="language-plaintext highlighter-rouge">step02_reset_state.py</code></a></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gym</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">gym</span>
 
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">rgb_array</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">human</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="c1"># 1. 상태 초기화 (Gymnasium 규격에서는 (state, info) 반환)
+<span class="c1"># 1. 초기 상태 얻기
 </span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">초기 상태 벡터:</span><span class="sh">'</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">상태:</span><span class="sh">'</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 
-<span class="c1"># 2. 행동 공간 규격 검사
+<span class="c1"># 2. 행동 공간의 크기 확인
 </span><span class="n">action_space</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="n">action_space</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">행동 공간 클래스:</span><span class="sh">'</span><span class="p">,</span> <span class="n">action_space</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">선택 가능한 행동 수:</span><span class="sh">'</span><span class="p">,</span> <span class="n">action_space</span><span class="p">.</span><span class="n">n</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">행동의 차원 수:</span><span class="sh">'</span><span class="p">,</span> <span class="n">action_space</span><span class="p">)</span>
+
+<span class="c1"># 화면 창을 확인할 수 있도록 3초간 대기 후 종료
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">[안내] 카트폴 화면을 확인하세요. 3초 후 자동으로 창이 닫힙니다...</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">env</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p><img src="./img/ch12_1_step02_reset_concept.png" alt="환경 초기화 및 행동 공간 파악 메커니즘" />
+<strong>그림 12-1-S2-A</strong> <code class="language-plaintext highlighter-rouge">env.reset()</code>으로 초기 물리 상태를 0 부근으로 재설정하고 <code class="language-plaintext highlighter-rouge">Discrete(2)</code> 행동 버튼을 확인하는 초기화 메커니즘</p>
+
 <hr />
 
-<h4 id="2단계-스크립트-실행-결과">2단계 스크립트 실행 결과</h4>
+<h4 id="2단계-스크립트-실행-방법-및-결과">2단계 스크립트 실행 방법 및 결과</h4>
 
 <p>작성한 <a href="./step02_reset_state.py"><code class="language-plaintext highlighter-rouge">step02_reset_state.py</code></a>를 실행하여 실제 반환되는 4차원 상태 벡터와 <code class="language-plaintext highlighter-rouge">Discrete(2)</code> 행동 공간을 정밀 검사합니다.</p>
 
+<p><strong>실행 방법 (터미널 명령어):</strong></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python step02_reset_state.py
 </code></pre></div></div>
 
+<p><strong>출력 결과:</strong></p>
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>상태: [ 0.02247306  0.01833331 -0.01464528  0.00566171]
+행동의 차원 수: Discrete(2)
+
+[안내] 카트폴 화면을 확인하세요. 3초 후 자동으로 창이 닫힙니다...
+</code></pre></div></div>
+
 <p><img src="./img/ch12_1_step02_terminal.png" alt="step02 실행 터미널 출력 화면" />
-<strong>그림 12-1-S2</strong> <code class="language-plaintext highlighter-rouge">step02_reset_state.py</code> 실행 결과: 4차원 연속 상태 벡터($x, \dot{x}, \theta, \dot{\theta}$)의 부동소수점 수치와 이산 행동 공간(<code class="language-plaintext highlighter-rouge">Discrete(2)</code>) 검사 터미널 출력 화면</p>
+<strong>그림 12-1-S2</strong> <code class="language-plaintext highlighter-rouge">step02_reset_state.py</code> 실행 방법과 터미널 출력 화면 캡처</p>
 
 <hr />
 
-<h4 id="envreset0-튜플-언패킹-메커니즘"><code class="language-plaintext highlighter-rouge">env.reset()[0]</code> 튜플 언패킹 메커니즘</h4>
+<h4 id="envreset0의-의미-반환-튜플에서-상태값만-쏙-꺼내기"><code class="language-plaintext highlighter-rouge">env.reset()[0]</code>의 의미: 반환 튜플에서 상태값만 쏙 꺼내기</h4>
 
-<p><code class="language-plaintext highlighter-rouge">env.reset()</code> 메서드는 환경의 모든 물리 변수를 약간의 무작위 노이즈를 섞어 초기화한 뒤 상태 정보를 반환합니다.</p>
+<p>파이썬 코드에서 <code class="language-plaintext highlighter-rouge">state = env.reset()[0]</code>이라고 적힌 부분의 정확한 의미를 살펴보겠습니다.</p>
 
-<p>과거 레거시 Gym에서는 상태 배열만을 반환했으나, 최신 표준(Gymnasium 및 Gym v0.26+)에서는 환경 진단용 딕셔너리를 포함하여 <code class="language-plaintext highlighter-rouge">(state, info)</code>라는 2-튜플을 반환하도록 규약이 확장되었습니다. 따라서 0번째 원소인 <code class="language-plaintext highlighter-rouge">env.reset()[0]</code>을 언패킹함으로써 순수한 상태 배열(<code class="language-plaintext highlighter-rouge">state</code>)을 추출할 수 있습니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># env.reset()의 실제 반환값 형태: (상태 배열, 부가정보 딕셔너리)
+</span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h5 id="1-환경을-초기화reset한다는-것은-무슨-뜻인가요">1. “환경을 초기화(reset)한다”는 것은 무슨 뜻인가요?</h5>
+
+<p>게임을 처음부터 새로 시작하기 위해 화면 속 모든 물체를 시작 위치로 되돌리는 것입니다.
+카트폴에서는 <strong>카트의 위치, 카트의 속도, 막대의 각도, 막대의 회전 속도</strong>라는 4가지 움직임 상태 값을 거의 수직에 가까운 0 부근의 초기값으로 깨끗하게 리셋합니다.</p>
+
+<p><img src="./img/ch12_1_08_env_reset_initialization.png" alt="환경 초기화 원점 복귀 메커니즘" />
+<strong>그림 12-1-8-A</strong> 모든 물리 변수(위치, 속도, 각도, 각속도)를 0 부근의 초기 상태로 깨끗하게 리셋하는 환경 초기화 메커니즘</p>
+
+<hr />
+
+<h5 id="2-왜-최신-gymnasium에서는-결과값을-2개짜리-묶음state-info으로-주나요">2. 왜 최신 Gymnasium에서는 결과값을 2개짜리 묶음<code class="language-plaintext highlighter-rouge">(state, info)</code>으로 주나요?</h5>
+<ul>
+  <li><strong>과거 (구버전 Gym)</strong>: <code class="language-plaintext highlighter-rouge">state = env.reset()</code> 처럼 상태값 하나만 돌려주었습니다.</li>
+  <li><strong>최신 표준 (Gymnasium)</strong>: 게임을 초기화할 때 상태값뿐만 아니라, <strong>“어떤 난이도로 초기화되었는가?”, “무작위 시드(seed) 번호는 무엇인가?”</strong> 와 같은 보조적인 진단 정보(<code class="language-plaintext highlighter-rouge">info</code> 딕셔너리)도 함께 전달할 수 있도록 인터페이스를 개선했습니다.</li>
+  <li>그래서 최신 <code class="language-plaintext highlighter-rouge">env.reset()</code>은 <strong><code class="language-plaintext highlighter-rouge">(상태 배열, 부가정보 딕셔너리)</code></strong>라는 <strong>2개짜리 묶음(튜플)</strong>을 통째로 반환합니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_08_c_gymnasium_two_tuple_evolution.png" alt="Gymnasium 2-튜플 확장 배경" />
+<strong>그림 12-1-8-B</strong> 상태 배열(<code class="language-plaintext highlighter-rouge">state</code>)과 부가 진단 정보(<code class="language-plaintext highlighter-rouge">info</code>)를 함께 제공하여 확장성을 확보한 최신 Gymnasium 2-튜플 표준</p>
+
+<hr />
+
+<h5 id="3-0으로-언패킹unpacking한다는-말의-뜻은">3. <code class="language-plaintext highlighter-rouge">[0]</code>으로 언패킹(Unpacking)한다는 말의 뜻은?</h5>
+<p>우리가 신경망 학습에 실제로 사용할 핵심 데이터는 4차원 <strong>상태 배열(<code class="language-plaintext highlighter-rouge">state</code>)</strong>뿐이며, 진단용 딕셔너리(<code class="language-plaintext highlighter-rouge">info</code>)는 당장 필요하지 않습니다.</p>
+
+<p>따라서 파이썬 튜플의 첫 번째 상자(인덱스 <code class="language-plaintext highlighter-rouge">0</code>번)만 쏙 꺼내기 위해 뒤에 <strong><code class="language-plaintext highlighter-rouge">[0]</code></strong>을 붙이는 것입니다:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 방법 A: 0번째 원소만 쏙 골라내기 (교재 스타일)
+</span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># 방법 B: 두 변수로 나누어 받기 (파이썬 언패킹 스타일)
+</span><span class="n">state</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>위 두 코드는 완전히 동일하게 동작합니다. 즉, <strong>“2개가 담긴 선물 보따리에서 0번째에 들어있는 알맹이(상태 배열)만 쏙 꺼내어 <code class="language-plaintext highlighter-rouge">state</code> 변수에 담는다”</strong>는 뜻입니다.</p>
 
 <p><img src="./img/ch12_1_08_env_reset_tuple_unpacking.png" alt="env.reset()[0] 튜플 언패킹 메커니즘" />
-<strong>그림 12-1-8</strong> <code class="language-plaintext highlighter-rouge">(state, info) = env.reset()</code> 반환 튜플 캐비닛에서 0번째 서랍인 상태 벡터(<code class="language-plaintext highlighter-rouge">state</code>)를 언패킹하여 초기 관찰값을 얻는 과정</p>
+<strong>그림 12-1-8-C</strong> <code class="language-plaintext highlighter-rouge">(state, info) = env.reset()</code> 반환 튜플 캐비닛에서 0번째 서랍인 상태 벡터(<code class="language-plaintext highlighter-rouge">state</code>)를 언패킹하여 초기 관찰값을 얻는 과정</p>
 
 <hr />
 
-<h4 id="4차원-상태-벡터-넘파이-배열-ndarray">4차원 상태 벡터 넘파이 배열 (<code class="language-plaintext highlighter-rouge">ndarray</code>)</h4>
+<h4 id="4차원-상태-벡터state의-정체-넘파이-배열ndarray과-4개의-원소">4차원 상태 벡터(<code class="language-plaintext highlighter-rouge">state</code>)의 정체: 넘파이 배열(<code class="language-plaintext highlighter-rouge">ndarray</code>)과 4개의 원소</h4>
 
-<p>출력된 <code class="language-plaintext highlighter-rouge">state</code> 객체는 4개의 원소를 가지는 1차원 NumPy 배열(<code class="language-plaintext highlighter-rouge">numpy.ndarray</code>, shape <code class="language-plaintext highlighter-rouge">(4,)</code>, dtype <code class="language-plaintext highlighter-rouge">float32</code> 또는 <code class="language-plaintext highlighter-rouge">float64</code>)입니다.</p>
+<p>앞서 <code class="language-plaintext highlighter-rouge">state = env.reset()[0]</code> 코드로 얻어온 <code class="language-plaintext highlighter-rouge">state</code> 변수를 출력해보면 다음과 같은 4개의 실수가 들어있습니다:</p>
 
-<p>인공신경망(DQN)을 학습시킬 때 이 4차원 부동소수점 벡터가 신경망 입력 계층의 특성(Feature) 값으로 그대로 입력됩니다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="nf">type</span><span class="p">(</span><span class="n">state</span><span class="p">))</span> <span class="c1"># &lt;class 'numpy.ndarray'&gt;
+</span><span class="nf">print</span><span class="p">(</span><span class="n">state</span><span class="p">.</span><span class="n">shape</span><span class="p">)</span> <span class="c1"># (4,) -&gt; 원소 4개짜리 1차원 배열
+</span><span class="nf">print</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>       <span class="c1"># [ 0.02247306  0.01833331 -0.01464528  0.00566171]
+</span></code></pre></div></div>
+
+<hr />
+
+<h5 id="1-state-변수-안에-들어있는-값인가요">1. <code class="language-plaintext highlighter-rouge">state</code> 변수 안에 들어있는 값인가요?</h5>
+
+<p>네, 정확히 맞습니다! 게임이 시작될 때 시뮬레이터가 현재 카트폴의 상황을 측정하여 넘겨준 4개의 부동소수점 수치가 바로 이 <code class="language-plaintext highlighter-rouge">state</code> 변수 안에 담겨 있습니다.</p>
+
+<p><img src="./img/ch12_1_09_state_in_variable.png" alt="상태 벡터 state 변수 내부 검사" />
+<strong>그림 12-1-9-B</strong> 카트폴 시뮬레이터가 에이전트에게 전달하는 현재 물리계의 4대 측정 수치(위치, 속도, 각도, 각속도)가 담긴 state 변수 내부 검사</p>
+
+<hr />
+
+<h5 id="2-ndarray-타입이란-무엇인가요">2. <code class="language-plaintext highlighter-rouge">ndarray</code> 타입이란 무엇인가요?</h5>
+<p>파이썬의 일반 리스트(<code class="language-plaintext highlighter-rouge">list</code>)가 아니라, 데이터 과학과 딥러닝에서 대량의 행렬 연산을 초고속으로 처리하는 <strong>넘파이(NumPy)의 다차원 배열 객체(<code class="language-plaintext highlighter-rouge">numpy.ndarray</code>)</strong> 타입입니다. 
+따라서 나중에 파이토치(PyTorch)나 텐서플로(TensorFlow) 인공신경망의 입력 텐서(<code class="language-plaintext highlighter-rouge">torch.FloatTensor</code>)로 변환할 때 별도의 복잡한 가공 없이 <code class="language-plaintext highlighter-rouge">torch.from_numpy(state)</code>로 즉시 변환하여 신경망에 집어넣을 수 있습니다.</p>
+
+<p><img src="./img/ch12_1_09_c_numpy_ndarray_tensor.png" alt="넘파이 ndarray 배열의 파이토치 텐서 결합" />
+<strong>그림 12-1-9-C</strong> 데이터 과학 표준 넘파이(NumPy) ndarray 배열과 딥러닝 인공신경망 입력 파이토치 텐서(Tensor)의 무봉제 결합</p>
+
+<hr />
+
+<h5 id="3-왜-하필-숫자가-4개인가요-위치-2개만으로는-안-되나요">3. 왜 하필 숫자가 4개인가요? (위치 2개만으로는 안 되나요?)</h5>
+<p>물리학과 강화학습 제어 이론에서 매우 중요한 질문입니다.</p>
+
+<p>카트폴 시스템은 2개의 물체(좌우로 움직이는 카트, 회전하는 막대)로 이루어져 있습니다. 그런데 단순히 <strong>“지금 카트가 어디에 있고, 막대가 몇 도로 서 있는가?”</strong>라는 <strong>위치 정보 2개만으로는 미래를 절대 예측할 수 없습니다.</strong></p>
+
+<p><img src="./img/ch12_1_09_d_why_four_variables.png" alt="위치 2개만으로는 불완전한 동역학 시스템" />
+<strong>그림 12-1-9-D</strong> 칠판 앞에서 위치 2개만으로는 불완전하며 속도 2개가 반드시 함께 주어져야 미래를 예측할 수 있음을 증명하는 이호진 교수님과 도로시</p>
+
+<hr />
+
+<ul>
+  <li><strong>사진(스냅샷)의 한계</strong>: 막대가 똑바로 수직($0^\circ$)으로 서 있는 사진을 보더라도, 이 막대가 가만히 멈춰있는지, 아니면 오른쪽으로 시속 100km로 맹렬하게 넘어지는 중인지 사진 한 장으로는 알 수 없습니다!</li>
+  <li><strong>속도(변화율)의 필연성</strong>: 다음 순간에 막대가 넘어질지 바로 설지를 알려면, <strong>“현재 어디에 있는가(위치)”</strong>와 함께 <strong>“어느 방향으로 얼마나 빠르게 움직이고 있는가(속도)”</strong>를 반드시 세트로 알아야 합니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_09_b_snapshot_vs_velocity.png" alt="정지 사진 스냅샷의 한계와 속도 벡터의 필연성" />
+<strong>그림 12-1-9-A</strong> 정지 사진(스냅샷)만으로는 막대의 전도 방향을 알 수 없으며, 미래를 완벽히 예측하기 위해 2개의 속도(변화율)가 반드시 필요한 물리적 이유</p>
+
+<hr />
+
+<p>따라서 카트와 막대 각각에 대해 <strong>[위치 + 속도]</strong>가 쌍을 이루어 총 4개가 됩니다:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">구분</th>
+      <th style="text-align: center">정적 위치 (현재 어디에 있는가)</th>
+      <th style="text-align: center">동적 속도 (어디로 얼마나 빠른가)</th>
+      <th style="text-align: center">합계</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><strong>카트(Cart)</strong></td>
+      <td style="text-align: center">① 수평 위치 ($x$)</td>
+      <td style="text-align: center">② 수평 이동 속도 ($\dot{x} = v$)</td>
+      <td style="text-align: center">2개</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>막대(Pole)</strong></td>
+      <td style="text-align: center">③ 기울기 각도 ($\theta$)</td>
+      <td style="text-align: center">④ 회전 각속도 ($\dot{\theta} = \omega$)</td>
+      <td style="text-align: center">2개</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><strong>총 상태 개수</strong></td>
+      <td style="text-align: center"><strong>2개</strong></td>
+      <td style="text-align: center"><strong>2개</strong></td>
+      <td style="text-align: center"><strong>총 4개</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>이 4개 수치만 알면 뉴턴 운동 방정식에 따라 미래의 움직임을 100% 완벽하게 계산해낼 수 있기 때문에, 카트폴 환경의 상태 벡터는 정확히 <strong>4차원</strong>으로 정의된 것입니다.</p>
 
 <p><img src="./img/ch12_1_09_state_vector_array_inspection.png" alt="4차원 상태 벡터 넘파이 배열 검사" />
 <strong>그림 12-1-9</strong> 연속적인 4개의 부동소수점 수치 [위치, 속도, 각도, 각속도]로 채워진 1차원 NumPy 배열(<code class="language-plaintext highlighter-rouge">ndarray</code>)의 구조를 정밀 검사하는 도로시와 지니</p>
 
 <hr />
 
-<h4 id="카트폴의-4대-연속-물리-변수-상세">카트폴의 4대 연속 물리 변수 상세</h4>
+<h4 id="state-배열-속-4대-물리-변수-상세-인덱스별-의미와-게임-오버-기준"><code class="language-plaintext highlighter-rouge">state</code> 배열 속 4대 물리 변수 상세: 인덱스별 의미와 게임 오버 기준</h4>
 
-<p>상태 벡터 $\mathbf{s} = [x, \; \dot{x}, \; \theta, \; \dot{\theta}]^T$의 각 원소는 오일러-라그랑주 역학계의 물리량을 나타냅니다:</p>
+<p>앞서 살펴본 <strong>카트의 [위치+속도]</strong>와 <strong>막대의 [각도+각속도]</strong>는 파이썬 <code class="language-plaintext highlighter-rouge">state</code> 배열의 <strong>0번부터 3번 칸</strong>에 차례대로 담겨 있습니다.</p>
 
-<ol>
-  <li><strong><code class="language-plaintext highlighter-rouge">state[0]</code> ($x$)</strong>: 카트의 수평 위치 ($[-4.8\text{m}, +4.8\text{m}]$, 실패 한계 $\pm 2.4\text{m}$)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">state[1]</code> ($\dot{x} = v$)</strong>: 카트의 수평 이동 속도 ($[-\infty, +\infty]$)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">state[2]</code> ($\theta$)</strong>: 막대의 수직선 대비 기울기 각도 (라디안 단위, $[-0.418\text{ rad}, +0.418\text{ rad}]$, 실패 한계 $\pm 12^\circ \approx \pm 0.2094\text{ rad}$)</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">state[3]</code> ($\dot{\theta} = \omega$)</strong>: 막대의 회전 각속도 ($[-\infty, +\infty]$)</li>
-</ol>
+<p>각 칸의 의미와 게임 실패(Game Over) 판정 기준을 하나씩 연결해 보겠습니다:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># state = [state[0], state[1], state[2], state[3]]
+#            카트 위치    카트 속도    막대 각도    막대 각속도
+</span></code></pre></div></div>
+
+<hr />
+
+<h5 id="1-state0-x-엑스-카트의-현재-위치">1. <code class="language-plaintext highlighter-rouge">state[0]</code> ($x$, 엑스): 카트의 현재 위치</h5>
+
+<ul>
+  <li><strong>기호 발음</strong>: 알파벳 <strong>엑스 [x]</strong></li>
+  <li>레일의 정중앙이 <code class="language-plaintext highlighter-rouge">0.0 m</code>입니다.</li>
+  <li>오른쪽으로 이동하면 <strong>양수(+)</strong>, 왼쪽으로 이동하면 <strong>음수(-)</strong>가 됩니다.</li>
+  <li><strong>실패 기준</strong>: 카트가 화면 경계선인 <strong>$\pm 2.4\text{ m}$</strong>를 벗어나 탈선하면 즉시 실패(<code class="language-plaintext highlighter-rouge">terminated: True</code>) 처리됩니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_10_a_cart_position.png" alt="상태 0: 카트 위치 x" />
+<strong>그림 12-1-10-A</strong> 수평 레일 중심선(0.0m)을 기준으로 좌우 위치를 나타내는 <code class="language-plaintext highlighter-rouge">state[0]</code> ($x$)와 탈선 한계선(±2.4m)</p>
+
+<hr />
+
+<h5 id="2-state1-dotx--v-엑스-도트--브이-카트의-이동-속도">2. <code class="language-plaintext highlighter-rouge">state[1]</code> ($\dot{x} = v$, 엑스 도트 / 브이): 카트의 이동 속도</h5>
+
+<ul>
+  <li><strong>기호 발음</strong>: <strong>엑스 도트 [x-dot]</strong>, 속도를 뜻하는 알파벳 <strong>브이 [v, velocity]</strong></li>
+  <li>카트가 어느 방향으로 얼마나 빠르게 달리고 있는지를 나타냅니다 (양수: 우측 주행, 음수: 좌측 주행).</li>
+  <li>
+    <blockquote>
+      <p><strong>수학 발음 팁</strong>: 문자 위의 점($\cdot$)은 영어로 ‘도트(Dot)’라고 읽으며, 물리학에서 <strong>‘시간에 따른 변화율(속도)’</strong>을 뜻하는 뉴턴의 미분 기호입니다. 따라서 $\dot{x}$는 <strong>“엑스 도트”</strong>라고 읽으며, 위치($x$)의 시간 변화율인 <strong>속도($v$)</strong>를 뜻합니다.</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p><img src="./img/ch12_1_10_b_cart_velocity.png" alt="상태 1: 카트 이동 속도 x-dot" />
+<strong>그림 12-1-10-B</strong> 카트가 좌우로 달리는 방향과 속력을 나타내는 시간 변화율 <code class="language-plaintext highlighter-rouge">state[1]</code> ($\dot{x} = v$)</p>
+
+<hr />
+
+<h5 id="3-state2-theta-세타-막대의-기울기-각도">3. <code class="language-plaintext highlighter-rouge">state[2]</code> ($\theta$, 세타): 막대의 기울기 각도</h5>
+
+<ul>
+  <li><strong>기호 발음</strong>: 그리스 문자 <strong>세타 [Theta, $\theta$]</strong></li>
+  <li>막대가 하늘을 향해 똑바로 수직으로 서 있을 때가 <code class="language-plaintext highlighter-rouge">0.0 rad</code> ($0^\circ$, 0 라디안)입니다.</li>
+  <li>오른쪽으로 기울면 <strong>양수(+)</strong>, 왼쪽으로 기울면 <strong>음수(-)</strong>입니다.</li>
+  <li><strong>실패 기준</strong>: 막대가 수직선에서 <strong>$\pm 12^\circ$ (약 $\pm 0.2094\text{ rad}$, 라디안)</strong> 이상 기울어지면 균형을 잃고 쓰러진 것으로 판정하여 즉시 실패(<code class="language-plaintext highlighter-rouge">terminated: True</code>) 처리됩니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_10_c_pole_angle.png" alt="상태 2: 막대 기울기 각도 theta" />
+<strong>그림 12-1-10-C</strong> 수직선(0.0 rad) 기준 막대의 기울어짐 정도를 나타내는 <code class="language-plaintext highlighter-rouge">state[2]</code> ($\theta$)와 쓰러짐 실패 한계선(±12°)</p>
+
+<hr />
+
+<h5 id="4-state3-dottheta--omega-세타-도트--오메가-막대의-회전-각속도">4. <code class="language-plaintext highlighter-rouge">state[3]</code> ($\dot{\theta} = \omega$, 세타 도트 / 오메가): 막대의 회전 각속도</h5>
+
+<ul>
+  <li><strong>기호 발음</strong>: <strong>세타 도트 [$\theta$-dot]</strong>, 회전 속도를 뜻하는 그리스 문자 <strong>오메가 [Omega, $\omega$]</strong></li>
+  <li>막대가 얼마나 빠른 속도로 회전하며 쓰러지고 있는지를 나타냅니다.</li>
+  <li>각도인 세타($\theta$) 위에 시간 변화율 점(도트)이 붙어 있으므로 <strong>“세타 도트”</strong>라고 읽으며, 물리학에서는 각속도 기호인 <strong>오메가($\omega$)</strong>와 같은 뜻입니다. 막대가 지금 똑바로 서 있더라도 세타 도트($\dot{\theta}$)가 크다면 다음 순간에 바로 쓰러지게 됩니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_10_d_pole_angular_velocity.png" alt="상태 3: 막대 회전 각속도 theta-dot" />
+<strong>그림 12-1-10-D</strong> 막대가 회전하며 넘어지는 순간 속도를 나타내는 시간 변화율 <code class="language-plaintext highlighter-rouge">state[3]</code> ($\dot{\theta} = \omega$)</p>
+
+<hr />
 
 <p><img src="./img/ch12_1_10_cartpole_four_state_variables.png" alt="카트폴 4대 연속 물리 변수 다이어그램" />
-<strong>그림 12-1-10</strong> 카트의 위치($x$), 카트의 속도($v$), 막대의 각도($\theta$), 막대의 각속도($\omega$)라는 오일러-라그랑주 역학계의 4대 연속 상태 변수 구조</p>
+<strong>그림 12-1-10</strong> 카트의 위치($x$), 카트의 속도($v$), 막대의 각도($\theta$), 막대의 각속도($\omega$)라는 4대 연속 상태 변수의 인덱스 매핑과 게임 오버 경계 기준 구조</p>
 
 <hr />
 
@@ -859,6 +1203,11 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
   <li><strong>행동 <code class="language-plaintext highlighter-rouge">1</code> (우측 추진)</strong>: 카트에 <strong>+10 뉴턴($+10\text{ N}$)</strong>의 수평 외력을 가해 카트를 오른쪽으로 가속합니다.</li>
 </ul>
 
+<p><img src="./img/ch12_1_12_c_push_force_physics.png" alt="행동 0(-10N)과 행동 1(+10N) 외력 인가 메커니즘" />
+<strong>그림 12-1-12-C</strong> 좌측 추진력 -10N(행동 0)과 우측 추진력 +10N(행동 1)에 따라 카트 가속 및 관성 복원 토크가 가해지는 물리 메커니즘</p>
+
+<hr />
+
 <p>막대가 오른쪽으로 쓰러지려고 할 때 카트를 신속하게 오른쪽으로 밀어주어야 관성에 의해 막대가 다시 수직으로 일어서는 복원 토크가 발생합니다.</p>
 
 <p><img src="./img/ch12_1_12_action_push_left_right.png" alt="행동 0(좌측 추진)과 행동 1(우측 추진) 메커니즘" />
@@ -866,45 +1215,110 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <hr />
 
-<h4 id="실습-3단계-envstepaction-1스텝-전이-및-5대-반환값-분석">[실습 3단계] <code class="language-plaintext highlighter-rouge">env.step(action)</code> 1스텝 전이 및 5대 반환값 분석</h4>
+<h4 id="실습-3단계-envstepaction-1스텝-전이-및-상태-변화-관찰">[실습 3단계] <code class="language-plaintext highlighter-rouge">env.step(action)</code> 1스텝 전이 및 상태 변화 관찰</h4>
 
-<p>이제 에이전트가 실제로 행동을 하나 선택하여 환경을 한 타임스텝($\Delta t = 0.02\text{s}$) 전진시키는 코드를 작성해 봅니다.</p>
+<p>이제 에이전트가 실제로 행동을 하나 선택하여 환경을 한 타임스텝($\Delta t = 0.02\text{s}$, 20밀리초) 전진시키는 코드를 작성해 봅니다.</p>
 
 <ul>
   <li>실습 파일: <a href="./step03_step_transition.py"><code class="language-plaintext highlighter-rouge">step03_step_transition.py</code></a></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">gym</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">gym</span>
 
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">rgb_array</span><span class="sh">'</span><span class="p">)</span>
-<span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">human</span><span class="sh">'</span><span class="p">)</span>
 
-<span class="c1"># 에이전트가 행동 선택 (예: 1번 우측 추진)
-</span><span class="n">action</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># 1. 초기 상태 획득 (s_0)
+</span><span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">1. 행동 전 초기 상태 (state)     :</span><span class="sh">"</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 
-<span class="c1"># 환경과 1스텝 상호작용
+<span class="c1"># 2. 행동 선택 (0: 카트 왼쪽 밀기, 1: 카트 오른쪽 밀기)
+</span><span class="n">action</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">2. 에이전트의 선택 행동 (action)  : </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s"> (← 카트 좌측 밀기)</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 3. 1스텝 환경 상호작용 (전이 수행)
 </span><span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">차기 상태 (next_state):</span><span class="sh">'</span><span class="p">,</span> <span class="n">next_state</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">즉각 보상 (reward)    :</span><span class="sh">'</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">과제 실패 (terminated):</span><span class="sh">'</span><span class="p">,</span> <span class="n">terminated</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">시간 초과 (truncated) :</span><span class="sh">'</span><span class="p">,</span> <span class="n">truncated</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="sh">'</span><span class="s">디버그 정보 (info)     :</span><span class="sh">'</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">3. env.step(action) 반환값 5-튜플:</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">  - next_state (차기 상태)       :</span><span class="sh">"</span><span class="p">,</span> <span class="n">next_state</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">  - reward     (즉각 보상)       :</span><span class="sh">"</span><span class="p">,</span> <span class="n">reward</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">  - terminated (과제 실패 여부)  :</span><span class="sh">"</span><span class="p">,</span> <span class="n">terminated</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">  - truncated  (시간 초과 여부)  :</span><span class="sh">"</span><span class="p">,</span> <span class="n">truncated</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">  - info       (부가 진단 정보)  :</span><span class="sh">"</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 4. 상태 변화량 (Δs) 분석
+</span><span class="n">diff</span> <span class="o">=</span> <span class="n">next_state</span> <span class="o">-</span> <span class="n">state</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">4. 1스텝 동안의 물리 상태 변화량 (Δs):</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 카트 위치 변화 : </span><span class="si">{</span><span class="n">diff</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="o">+</span><span class="p">.</span><span class="mi">6</span><span class="n">f</span><span class="si">}</span><span class="s"> m</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 카트 속도 변화 : </span><span class="si">{</span><span class="n">diff</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="o">+</span><span class="p">.</span><span class="mi">6</span><span class="n">f</span><span class="si">}</span><span class="s"> m/s (왼쪽으로 가속)</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 막대 각도 변화 : </span><span class="si">{</span><span class="n">diff</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">:</span><span class="o">+</span><span class="p">.</span><span class="mi">6</span><span class="n">f</span><span class="si">}</span><span class="s"> rad</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 막대 각속도 변화: </span><span class="si">{</span><span class="n">diff</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">:</span><span class="o">+</span><span class="p">.</span><span class="mi">6</span><span class="n">f</span><span class="si">}</span><span class="s"> rad/s</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 1스텝 상호작용 후 변화된 화면을 확인할 수 있도록 잠시 대기
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">[안내] 1스텝 행동 후 카트폴 화면을 확인하세요. 3초 후 자동으로 창이 닫힙니다...</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 
 <span class="n">env</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p><img src="./img/ch12_1_step03_transition_concept.png" alt="1스텝 물리 전이 및 외력 인가 메커니즘" />
+<strong>그림 12-1-S3-A</strong> <code class="language-plaintext highlighter-rouge">env.step(action)</code> 호출로 20밀리초 동안 $\pm 10\text{ N}$의 외력을 가해 차기 상태로 전이시키는 물리 엔진 적분 메커니즘</p>
+
 <hr />
 
-<h4 id="3단계-스크립트-실행-결과">3단계 스크립트 실행 결과</h4>
+<h4 id="3단계-스크립트-실행-방법-및-결과">3단계 스크립트 실행 방법 및 결과</h4>
 
-<p>작성한 <a href="./step03_step_transition.py"><code class="language-plaintext highlighter-rouge">step03_step_transition.py</code></a>를 실행하여 1스텝 전이의 결과로 반환되는 5대 정보를 확인합니다.</p>
+<p>작성한 <a href="./step03_step_transition.py"><code class="language-plaintext highlighter-rouge">step03_step_transition.py</code></a>를 실행하여 1스텝 전이의 결과로 반환되는 5대 정보와 물리량의 변화를 확인합니다.</p>
 
+<p><strong>실행 방법 (터미널 명령어):</strong></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python step03_step_transition.py
 </code></pre></div></div>
 
+<p><img src="./img/ch12_1_step03_transition_concept.png" alt="실습 3단계 step 전이 개념 다이어그램" />
+<strong>그림 12-1-S3-A</strong> 1스텝 행동 인가(Action 0)와 물리 시뮬레이션 전이에 따른 5-튜플 반환 메커니즘</p>
+
+<hr />
+
+<p><strong>출력 결과:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 행동 전 초기 상태 (state)     : [ 0.03816124 -0.00108902 -0.04776464 -0.02689348]
+2. 에이전트의 선택 행동 (action)  : 0 (← 카트 좌측 밀기)
+
+3. env.step(action) 반환값 5-튜플:
+  - next_state (차기 상태)       : [ 0.03813947 -0.1954946  -0.04830251  0.25034484]
+  - reward     (즉각 보상)       : 1.0
+  - terminated (과제 실패 여부)  : False
+  - truncated  (시간 초과 여부)  : False
+  - info       (부가 진단 정보)  : {}
+
+4. 1스텝 동안의 물리 상태 변화량 (Δs):
+  - 카트 위치 변화 : -0.000022 m
+  - 카트 속도 변화 : -0.194406 m/s (왼쪽으로 가속!)
+  - 막대 각도 변화 : -0.000538 rad
+  - 막대 각속도 변화: +0.277238 rad/s
+
+[안내] 1스텝 행동 후 카트폴 화면을 확인하세요. 3초 후 자동으로 창이 닫힙니다...
+</code></pre></div></div>
+
+<hr />
+
 <p><img src="./img/ch12_1_step03_terminal.png" alt="step03 실행 터미널 출력 화면" />
-<strong>그림 12-1-S3</strong> <code class="language-plaintext highlighter-rouge">step03_step_transition.py</code> 실행 결과: 1스텝 상호작용 후 차기 상태($s’$), 즉각 보상($R=+1.0$), 종료 플래그(<code class="language-plaintext highlighter-rouge">terminated</code>, <code class="language-plaintext highlighter-rouge">truncated</code>), 부가 정보 튜플 언패킹 터미널 출력 화면</p>
+<strong>그림 12-1-S3</strong> <code class="language-plaintext highlighter-rouge">step03_step_transition.py</code> 실행 방법과 5대 반환값 및 상태 변화량($\Delta s$) 터미널 출력 화면 캡처</p>
+
+<hr />
+
+<h4 id="1스텝-행동action--0-수행-직후의-실제-시뮬레이션-화면">1스텝 행동(<code class="language-plaintext highlighter-rouge">Action = 0</code>) 수행 직후의 실제 시뮬레이션 화면</h4>
+
+<p>카트를 왼쪽으로 미는 행동(<code class="language-plaintext highlighter-rouge">action = 0</code>, 힘 $-10\text{ N}$)을 가했을 때 시뮬레이터 화면 속에서 일어나는 실제 물리적 반응입니다:</p>
+
+<p><img src="./img/ch12_1_step03_transition_render.png" alt="1스텝 상호작용 후 카트폴 라이브 렌더 화면" />
+<strong>그림 12-1-S3-B</strong> <code class="language-plaintext highlighter-rouge">action=0</code> (좌측 추진력 $-10\text{ N}$) 인가 직후의 카트폴 라이브 시뮬레이션 화면: 카트가 왼쪽으로 순간 가속되면서 관성에 의해 막대에 시계방향 회전 모멘트가 발생하는 현장 포착</p>
 
 <hr />
 
@@ -920,6 +1334,9 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
   <li><strong><code class="language-plaintext highlighter-rouge">info</code></strong>: 강화학습 손실 함수 계산에는 사용되지 않는 진단용 메타데이터 딕셔너리</li>
 </ol>
 
+<p><img src="./img/ch12_1_12_b_step_five_tuple_returns.png" alt="env.step(action) 반환값 5-튜플 구조" />
+<strong>그림 12-1-12-B</strong> 강화학습 MDP 상호작용에서 매 스텝 반환되는 핵심 5대 요소(차기상태, 보상, 종료, 시간만료, 진단정보)의 데이터 흐름도</p>
+
 <hr />
 
 <h4 id="생존-스텝당-1-보상-누적-메커니즘">생존 스텝당 +1 보상 누적 메커니즘</h4>
@@ -927,6 +1344,8 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 <p>카트폴 환경에서 보상 함수는 매우 직관적입니다. 막대가 쓰러지지 않고 카트가 레일 안에 머무는 <strong>매 타임스텝마다 항상 <code class="language-plaintext highlighter-rouge">+1.0</code>의 보상</strong>이 지급됩니다.</p>
 
 \[R_{t+1} = 1.0 \quad (\text{if not terminated})\]
+
+<hr />
 
 <p>따라서 에이전트의 목표인 할인 누적 보상(Return) $G_t = \sum_{k=0}^{\infty} \gamma^k R_{t+k+1}$을 극대화하는 것은 곧 <strong>카트폴의 균형을 최대한 오랜 시간 유지하여 생존 시간을 극대화하는 것</strong>과 정확히 동치입니다.</p>
 
@@ -987,6 +1406,8 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
   </li>
 </ul>
 
+<hr />
+
 <p>통합 종료 플래그는 두 조건을 비트 OR 연산하여 <code class="language-plaintext highlighter-rouge">done = terminated | truncated</code>로 판정합니다.</p>
 
 <p><img src="./img/ch12_1_15_termination_criteria_detail.png" alt="카트폴 종료 조건 세부 판정 기준 다이어그램" />
@@ -1018,65 +1439,189 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <h4 id="실습-4단계-무작위random-에이전트-전체-에피소드-실행">[실습 4단계] 무작위(Random) 에이전트 전체 에피소드 실행</h4>
 
-<p>학습된 지능이 없는 상태에서 무작위로 동전을 던져 0(왼쪽) 또는 1(오른쪽)을 선택하는 ‘랜덤 에이전트’를 구동하고, 몇 스텝 만에 균형이 무너지는지 확인해 보겠습니다.</p>
+<p>지금까지 실습 1~3단계에서 환경 생성(<code class="language-plaintext highlighter-rouge">make</code>), 상태 초기화(<code class="language-plaintext highlighter-rouge">reset</code>), 1스텝 전이(<code class="language-plaintext highlighter-rouge">step</code>)의 개별 작동 원리를 확인했습니다.</p>
+
+<hr />
+
+<p>4단계에서는 이 모든 요소를 하나의 완전한 피드백 제어 루프(<code class="language-plaintext highlighter-rouge">while not done:</code>)로 통합하여, 에피소드가 끝날 때까지 카트폴을 실시간으로 조작해 봅니다. 단, 아직 학습된 인공지능(DQN)이 없으므로, 매 스텝 동전을 던지듯 0(좌측) 또는 1(우측)을 50% 확률로 무작위 선택하는 <strong>‘랜덤 에이전트(Random Agent)’</strong>를 구동합니다.</p>
+
+<p><img src="./img/ch12_1_step04_random_agent_loop.png" alt="랜덤 에이전트 무작위 폐루프 상호작용" />
+<strong>그림 12-1-S4</strong> 동전 던지기 무작위 행동으로 환경과 끊임없이 상호작용하는 랜덤 에이전트의 폐루프 루틴</p>
+
+<hr />
 
 <ul>
   <li>실습 파일: <a href="./step04_random_agent.py"><code class="language-plaintext highlighter-rouge">step04_random_agent.py</code></a></li>
 </ul>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
 <span class="kn">import</span> <span class="n">gym</span>
 
-<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">rgb_array</span><span class="sh">'</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="p">.</span><span class="nf">make</span><span class="p">(</span><span class="sh">'</span><span class="s">CartPole-v0</span><span class="sh">'</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="sh">'</span><span class="s">human</span><span class="sh">'</span><span class="p">)</span>
 <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">done</span> <span class="o">=</span> <span class="bp">False</span>
-<span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">step_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">total_reward</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-<span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
-    <span class="c1"># 0 또는 1을 무작위 선택
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s"> [실습 4단계] 무작위(Random) 에이전트 에피소드 루프 시작</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">초기 상태: 카트 위치 </span><span class="si">{</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s">m, 막대 각도 </span><span class="si">{</span><span class="n">np</span><span class="p">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="si">:</span><span class="p">.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">°</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="sh">'</span><span class="s">스텝</span><span class="sh">'</span><span class="si">:</span><span class="o">^</span><span class="mi">6</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">선택 행동</span><span class="sh">'</span><span class="si">:</span><span class="o">^</span><span class="mi">10</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">카트 위치</span><span class="sh">'</span><span class="si">:</span><span class="o">^</span><span class="mi">12</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">막대 각도</span><span class="sh">'</span><span class="si">:</span><span class="o">^</span><span class="mi">12</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="sh">'</span><span class="s">상태</span><span class="sh">'</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+</code></pre></div></div>
+<hr />
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="ow">not</span> <span class="n">done</span><span class="p">:</span>
+    <span class="n">env</span><span class="p">.</span><span class="nf">render</span><span class="p">()</span>
+    
+    <span class="c1"># 1. 행동 선택 (무작위 0 또는 1)
 </span>    <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">action_name</span> <span class="o">=</span> <span class="sh">"</span><span class="s">0 (← 좌측)</span><span class="sh">"</span> <span class="k">if</span> <span class="n">action</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="sh">"</span><span class="s">1 (→ 우측)</span><span class="sh">"</span>
     
-    <span class="c1"># 1스텝 전이
+    <span class="c1"># 2. 1스텝 전이
 </span>    <span class="n">next_state</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">terminated</span><span class="p">,</span> <span class="n">truncated</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="p">.</span><span class="nf">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="n">step_count</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">reward</span>
+    <span class="n">done</span> <span class="o">=</span> <span class="n">terminated</span> <span class="ow">or</span> <span class="n">truncated</span>
+</code></pre></div></div>
+<hr />
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1"># 각도를 디그리(Degree)로 변환하여 실시간 출력
+</span>    <span class="n">cart_x</span> <span class="o">=</span> <span class="n">next_state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">pole_deg</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">degrees</span><span class="p">(</span><span class="n">next_state</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="sh">"</span><span class="s">정상 유지</span><span class="sh">"</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span> <span class="nf">else </span><span class="p">(</span><span class="sh">"</span><span class="s">실패 (12° 초과 쓰러짐!)</span><span class="sh">"</span> <span class="k">if</span> <span class="n">terminated</span> <span class="k">else</span> <span class="sh">"</span><span class="s">성공 (200스텝 만료)</span><span class="sh">"</span><span class="p">)</span>
     
-    <span class="c1"># 종료 여부 검사
-</span>    <span class="n">done</span> <span class="o">=</span> <span class="n">terminated</span> <span class="o">|</span> <span class="n">truncated</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">step_count</span><span class="si">:</span><span class="o">^</span><span class="mi">6</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="n">action_name</span><span class="si">:</span><span class="o">^</span><span class="mi">10</span><span class="si">}</span><span class="s"> | </span><span class="si">{</span><span class="n">cart_x</span><span class="si">:</span><span class="o">^+</span><span class="mf">10.3</span><span class="n">f</span><span class="si">}</span><span class="s"> m | </span><span class="si">{</span><span class="n">pole_deg</span><span class="si">:</span><span class="o">^+</span><span class="mf">10.2</span><span class="n">f</span><span class="si">}</span><span class="s">° | </span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+    
+    <span class="c1"># 사람이 관찰할 수 있도록 약간의 딜레이 (0.05초)
+</span>    <span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">next_state</span>
+</code></pre></div></div>
+<hr />
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">-</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">[*] 에피소드 종료 요약:</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 총 버틴 스텝 수 : </span><span class="si">{</span><span class="n">step_count</span><span class="si">}</span><span class="s"> 스텝</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 총 획득 누적 보상: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="s"> 점 (최대 200점 만점 중)</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">  - 종료 사유        : </span><span class="si">{</span><span class="sh">'</span><span class="s">막대 전도 (Terminated)</span><span class="sh">'</span> <span class="k">if</span> <span class="n">terminated</span> <span class="k">else</span> <span class="sh">'</span><span class="s">시간 초과 (Truncated)</span><span class="sh">'</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">=</span><span class="sh">"</span> <span class="o">*</span> <span class="mi">60</span><span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">에피소드 종료! 총 획득 보상: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+<span class="c1"># 최종 쓰러진 화면을 확인할 수 있도록 2초 대기
+</span><span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="se">\n</span><span class="s">[안내] 최종 쓰러진 화면을 확인하세요. 2초 후 창이 자동으로 닫힙니다...</span><span class="sh">"</span><span class="p">)</span>
+<span class="n">time</span><span class="p">.</span><span class="nf">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">env</span><span class="p">.</span><span class="nf">close</span><span class="p">()</span>
 </code></pre></div></div>
 
+<p><img src="./img/ch12_1_step04_random_agent_loop.png" alt="무작위 에이전트 폐루프 제어 사이클" />
+<strong>그림 12-1-S4-A</strong> <code class="language-plaintext highlighter-rouge">while not done</code> 루프를 순환하며 매 스텝 무작위 동전 던지기로 카트를 조작하는 랜덤 에이전트 제어 사이클</p>
+
 <hr />
 
-<h4 id="4단계-스크립트-실행-결과-및-렌더링-화면">4단계 스크립트 실행 결과 및 렌더링 화면</h4>
+<h4 id="4단계-스크립트-실행-방법-및-실시간-터미널-출력-결과">4단계 스크립트 실행 방법 및 실시간 터미널 출력 결과</h4>
 
-<p>작성한 <a href="./step04_random_agent.py"><code class="language-plaintext highlighter-rouge">step04_random_agent.py</code></a>를 실행하여 터미널 로그와 시뮬레이터의 실제 거동 화면을 확인합니다.</p>
+<p>작성한 <a href="./step04_random_agent.py"><code class="language-plaintext highlighter-rouge">step04_random_agent.py</code></a>를 실행하여 터미널 로그와 시뮬레이터의 실시간 거동 화면을 확인합니다.</p>
 
+<p><strong>실행 방법 (터미널 명령어):</strong></p>
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>python step04_random_agent.py
 </code></pre></div></div>
 
+<hr />
+
+<p><strong>실시간 터미널 출력 결과:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>============================================================
+ [실습 4단계] 무작위(Random) 에이전트 에피소드 루프 시작
+============================================================
+초기 상태: 카트 위치 -0.015m, 막대 각도 -2.13°
+------------------------------------------------------------
+  스텝   |   선택 행동   |    카트 위치    |    막대 각도    | 상태
+------------------------------------------------------------
+  1    | 1 (→ 우측) |   -0.012 m   |    -1.04°    | 정상 유지
+  2    | 1 (→ 우측) |   -0.007 m   |    +0.04°    | 정상 유지
+  3    | 0 (← 좌측) |   -0.005 m   |    -1.05°    | 정상 유지
+  4    | 0 (← 좌측) |   -0.007 m   |    -2.14°    | 정상 유지
+  5    | 1 (→ 우측) |   -0.003 m   |    -1.04°    | 정상 유지
+  6    | 1 (→ 우측) |   +0.003 m   |    +0.06°    | 정상 유지
+  7    | 1 (→ 우측) |   +0.012 m   |    +1.17°    | 정상 유지
+</code></pre></div></div>
+<hr />
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  8    | 1 (→ 우측) |   +0.024 m   |    +2.28°    | 정상 유지
+  9    | 1 (→ 우측) |   +0.038 m   |    +3.41°    | 정상 유지
+  10   | 1 (→ 우측) |   +0.054 m   |    +4.57°    | 정상 유지
+  11   | 1 (→ 우측) |   +0.073 m   |    +5.77°    | 정상 유지
+  12   | 1 (→ 우측) |   +0.093 m   |    +7.04°    | 정상 유지
+  13   | 1 (→ 우측) |   +0.116 m   |    +8.41°    | 정상 유지
+  14   | 1 (→ 우측) |   +0.141 m   |   +12.28°    | 실패 (12° 초과 쓰러짐!)
+------------------------------------------------------------
+[*] 에피소드 종료 요약:
+  - 총 버틴 스텝 수 : 14 스텝
+  - 총 획득 누적 보상: 14.0 점 (최대 200점 만점 중)
+  - 종료 사유        : 막대 전도 (Terminated)
+============================================================
+
+[안내] 최종 쓰러진 화면을 확인하세요. 2초 후 창이 자동으로 닫힙니다...
+</code></pre></div></div>
+
+<hr />
+
 <p><img src="./img/ch12_1_step04_terminal.png" alt="step04 실행 터미널 출력 화면" />
-<strong>그림 12-1-S4</strong> <code class="language-plaintext highlighter-rouge">step04_random_agent.py</code> 실행 결과: 매 스텝 선택된 무작위 행동, 카트 위치($x$), 막대 각도($\theta$) 변화 추이 및 최종 12스텝 파국 요약 터미널 출력 화면</p>
+<strong>그림 12-1-S4</strong> <code class="language-plaintext highlighter-rouge">step04_random_agent.py</code> 실행 명령어 및 매 스텝 카트 위치, 막대 각도 추이와 14스텝 만에 막대 전도로 종료된 터미널 캡처</p>
 
 <hr />
 
-<h4 id="실제-카트폴-시뮬레이션-화면">실제 카트폴 시뮬레이션 화면</h4>
+<h4 id="실제-카트폴-시뮬레이션-라이브-렌더링-화면-분석">실제 카트폴 시뮬레이션 라이브 렌더링 화면 분석</h4>
 
-<p>랜덤 에이전트가 카트를 무작위로 조작할 때 렌더링된 실제 시뮬레이터 화면 캡처입니다:</p>
+<p>랜덤 에이전트가 카트를 무작위로 조작할 때 화면에 렌더링된 실제 시뮬레이터 화면 캡처입니다.</p>
 
-<p><img src="./img/ch12_1_step04_cartpole_render.png" alt="카트폴 라이브 렌더링 화면" />
-<strong>그림 12-1-S5</strong> 실제 카트폴 시뮬레이터 렌더링 화면: 균형을 잃고 오른쪽으로 급격히 기울어지며 한계 각도(12°)를 향해 쓰러져가는 막대의 순간 포착</p>
+<p>초기 수직 균형 상태와 14스텝 만에 한계 각도를 초과하여 쓰러진 순간을 비교할 수 있습니다.</p>
+
+<p><img src="./img/ch12_1_step04_cartpole_render.png" alt="카트폴 라이브 렌더링 화면: 초기 균형 vs 전도 실패" />
+<strong>그림 12-1-S5</strong> 실제 카트폴 시뮬레이터 렌더링 화면: [좌측] 에피소드 시작 직후($\theta \approx -2.13^\circ$) 거의 수직으로 서 있는 초기 균형 상태 vs [우측] 무작위 조작으로 14스텝 만에 오른쪽으로 급격히 기울어져 허용 한계 각도($\pm 12^\circ$)를 초과하여 전도된 실패 상태</p>
 
 <hr />
 
-<h4 id="무작위-행동-정책의-한계">무작위 행동 정책의 한계</h4>
+<h4 id="무작위-행동-정책의-물리적-한계와-dqn의-필연성">무작위 행동 정책의 물리적 한계와 DQN의 필연성</h4>
 
-<p><code class="language-plaintext highlighter-rouge">while not done:</code> 루프를 돌며 무작위로 행동을 취하면, 막대가 기울어지는 방향과 반대로 카트를 기민하게 밀어주지 못하고 엉뚱한 방향으로 밀어버리는 일이 빈번하게 발생합니다.</p>
+<p><code class="language-plaintext highlighter-rouge">while not done:</code> 루프를 돌며 무작위로 행동을 취하면 다음과 같은 치명적인 물리적 한계에 부딪힙니다:</p>
 
-<p>실행 결과에서 확인되듯이, 랜덤 에이전트는 시작한 지 <strong>불과 10~20 타임스텝 내외</strong>에서 막대가 12도 이상 넘어가며 즉시 에피소드가 끝나버립니다 (총 보상 10~20점).</p>
+<ol>
+  <li><strong>불안정한 역진자(Inverted Pendulum) 동역학</strong>:
+    <ul>
+      <li>카트 위에 놓인 막대는 무게중심이 회전축 위에 있는 본질적으로 불안정한 물리 시스템입니다.</li>
+      <li>막대가 오른쪽($+\theta$)으로 기울어지면 중력에 의해 기울어진 방향으로 더 큰 회전 토크가 발생합니다. 이를 바로잡으려면 카트를 즉시 오른쪽(1)으로 재빠르게 가속시켜 지지점을 밑으로 밀어 넣어야 합니다.</li>
+    </ul>
+  </li>
+</ol>
 
-<p>이를 극복하고 200스텝 혹은 500스텝 동안 완벽하게 중심을 잡기 위해서는 상태를 보고 최적의 행동 가치를 예측하는 신경망 기반의 지능형 제어기, 즉 <strong>DQN(Deep Q-Network)</strong>의 도입이 필연적입니다.</p>
+<hr />
+
+<ol>
+  <li><strong>랜덤 조작에 따른 각가속도 폭증</strong>:</li>
+</ol>
+
+<ul>
+  <li>그러나 무작위 에이전트는 막대가 오른쪽으로 쓰러지고 있는 긴박한 순간에도 엉뚱하게 왼쪽(0)으로 카트를 밀어버려, 넘어지는 속도(각속도 $\dot{\theta}$)를 더욱 폭발적으로 가속시킵니다.</li>
+  <li>그 결과, 시작한 지 <strong>불과 10~20 타임스텝(약 0.2~0.4초) 내외</strong>에서 막대가 한계 각도인 $12^\circ$를 넘어가며 실패(<code class="language-plaintext highlighter-rouge">terminated=True</code>)하고 맙니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_18_b_inverted_pendulum_divergence.png" alt="역진자의 본질적 불안정성과 각가속도 폭증 메커니즘" />
+<strong>그림 12-1-18-B</strong> 잘못된 방향으로 카트를 밀었을 때 중력 토크와 양성 피드백에 의해 각가속도가 폭증하여 10스텝 내외로 파국에 도달하는 물리적 메커니즘</p>
+
+<hr />
+
+<ol>
+  <li><strong>지능형 가치 기반 제어기(DQN)의 필요성</strong>:</li>
+</ol>
+
+<ul>
+  <li>200스텝(만점) 동안 단 한 번도 넘어지지 않고 완벽하게 수직을 유지하려면, 4차원 물리 상태 $[x, \dot{x}, \theta, \dot{\theta}]$를 정확히 파악하여 <strong>“지금 어느 방향으로 힘을 주어야 막대가 일어서는가?”</strong>를 예측할 수 있어야 합니다.</li>
+  <li>바로 이 상태-행동 가치 $Q(s, a)$를 딥러닝 인공신경망으로 학습해 내는 알고리즘이 다음 12.2절부터 본격적으로 배울 <strong>DQN(Deep Q-Network)</strong>입니다.</li>
+</ul>
+
+<p><img src="./img/ch12_1_18_c_dqn_controller_vision.png" alt="DQN 신경망 컨트롤러와 200스텝 완벽 균형의 비전" />
+<strong>그림 12-1-18-C</strong> 4차원 물리 상태를 입력받아 200스텝 만점 균형을 달성하는 미래의 DQN 심층 가치 신경망 컨트롤러의 비전</p>
+
+<hr />
 
 <p><img src="./img/ch12_1_18_random_action_agent.png" alt="무작위 랜덤 에이전트의 14스텝 한계" />
 <strong>그림 12-1-18</strong> 주사위 던지듯 0과 1을 무작위로 선택하는 랜덤 에이전트의 한계: 시작한 지 14스텝 만에 중심을 잃고 비틀거리며 쓰러지는 카트폴</p>
@@ -1091,7 +1636,7 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <p><img src="./img/fig-261.jpg" alt="그림 12-3" /></p>
 
-<p>지금은 무작위 조작이라 금방 쓰러지지만, 다음 12.2절부터 배울 DQN을 적용하면 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격하게 됩니다.</p>
+<p>지금은 무작위 조작이라 10여 스텝 만에 허무하게 쓰러지지만, 12.2절부터 배울 DQN 심층 강화학습을 적용하면 인간 제어기를 뛰어넘어 200스텝(또는 500스텝) 내내 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격하게 됩니다.</p>
 
 <hr />
 
@@ -1108,11 +1653,18 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <h4 id="관찰-공간-규격-box-space">관찰 공간 규격 (<code class="language-plaintext highlighter-rouge">Box</code> Space)</h4>
 
-<p>Gym API에서도 <code class="language-plaintext highlighter-rouge">env.observation_space</code>라는 속성 이름을 사용합니다. 카트폴의 관찰 공간을 출력해보면 다음과 같습니다:</p>
+<p>Gym API에서도 <code class="language-plaintext highlighter-rouge">env.observation_space</code>라는 속성 이름을 사용합니다.</p>
+
+<p>카트폴의 관찰 공간을 출력해보면 다음과 같습니다:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">print</span><span class="p">(</span><span class="n">env</span><span class="p">.</span><span class="n">observation_space</span><span class="p">)</span>
 <span class="c1"># Box([-4.8, -inf, -0.418, -inf], [4.8, inf, 0.418, inf], (4,), float32)
 </span></code></pre></div></div>
+
+<p><img src="./img/ch12_1_20_b_box_space_boundaries.png" alt="Box(shape=(4,)) 4대 연속 물리 경계 게이지" />
+<strong>그림 12-1-20-B</strong> 카트 위치, 속도, 막대 각도, 각속도의 4대 물리축 상하한 압력 게이지 계측판</p>
+
+<hr />
 
 <p><code class="language-plaintext highlighter-rouge">gym.spaces.Box</code> 클래스는 연속적인 다차원 실수 유클리드 공간을 표현하며, 각 축마다 최솟값(하한)과 최댓값(상한) 경계를 엄밀하게 정의하고 있습니다.</p>
 
@@ -1125,9 +1677,16 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <p><strong>상태(State, $S_t$)</strong>는 환경의 내부 메커니즘을 결정짓는 <strong>‘완전한 정보(Complete Information)’</strong>를 뜻합니다.</p>
 
+<p><img src="./img/ch12_1_21_b_markov_property_formula.png" alt="마르코프 성질 수식과 완전한 정보의 구체" />
+<strong>그림 12-1-21-B</strong> 마르코프 성질 수식과 과거 이력 없이 현재 상태만으로 미래 확률이 완벽히 결정되는 지식의 구체</p>
+
+<hr />
+
 <p>상태는 과거의 모든 이력 정보를 내포하고 있으므로, 현재 상태 $S_t$와 에이전트의 행동 $A_t$만 주어지면 미래 상태 $S_{t+1}$의 확률 분포가 과거와 완전히 독립적으로 결정되는 <strong>마르코프 성질(Markov Property)</strong>을 완벽하게 만족합니다:</p>
 
 \[\mathbb{P}(S_{t+1} \mid S_t, A_t, S_{t-1}, A_{t-1}, \dots, S_0, A_0) = \mathbb{P}(S_{t+1} \mid S_t, A_t)\]
+
+<hr />
 
 <p>모든 기물의 위치가 100% 투명하게 드러나 있는 체스판이나 바둑판이 완전 관측 상태의 대표적인 예시입니다.</p>
 
@@ -1140,6 +1699,11 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <p>반면, <strong>관찰(Observation, $O_t$)</strong>은 환경의 전체 내부 상태 중 에이전트의 센서나 시야를 통해 포착된 <strong>‘부분적인 정보(Partial Information)’</strong>입니다.</p>
 
+<p><img src="./img/ch12_1_22_b_pomdp_foggy_sensor.png" alt="안갯속 자율주행 탐사 로버와 부분 관측(POMDP)" />
+<strong>그림 12-1-22-B</strong> 안갯속에서 센서에 포착된 국소적 관찰값(Observation)만으로 불확실한 세계를 항해하는 부분 관측(POMDP) 시스템</p>
+
+<hr />
+
 <p>포커나 블랙잭처럼 상대방의 손패와 덱에 남은 카드를 알 수 없는 게임, 또는 안개 낀 도로에서 전방 카메라 한 장에만 의존해 달리는 자율주행 차량처럼, 실세계의 수많은 문제는 <strong>부분 관측 마르코프 결정 과정(POMDP, Partially Observable MDP)</strong>에 속합니다. 이때 에이전트가 받는 데이터는 상태가 아니라 관찰입니다.</p>
 
 <p><img src="./img/ch12_1_22_pomdp_card_game_partial_view.png" alt="관찰: 부분 관측 마르코프 결정 과정(POMDP)" />
@@ -1151,9 +1715,16 @@ pip <span class="nb">install </span>gymnasium[classic-control] pygame
 
 <p>OpenAI Gym은 현실의 POMDP 문제까지 포괄할 수 있도록 범용적인 용어인 <strong>‘Observation’</strong>을 API 표준으로 채택했습니다.</p>
 
+<p><img src="./img/ch12_1_23_b_cartpole_observable_glass.png" alt="투명한 크리스탈 카트폴: 관찰과 상태의 100% 동일성" />
+<strong>그림 12-1-23-B</strong> 카트폴은 모든 물리 변수가 100% 오차 없이 측정되는 완전 관측 환경이므로 관찰과 상태가 일치함을 확인하는 크리스탈 모형</p>
+
+<hr />
+
 <p>하지만 우리가 다루는 <strong>카트폴(CartPole) 환경</strong>은 카트의 위치, 속도, 막대의 각도, 각속도라는 동역학계의 모든 자유도 변수가 센서 오차 없이 에이전트에게 100% 고스란히 전달되는 <strong>완전 관측 환경(Fully Observable Environment)</strong>입니다. 즉, 관찰과 상태가 완전히 일치합니다:</p>
 
 \[O_t \equiv S_t\]
+
+<hr />
 
 <p>따라서 본 강의 교재 전반에서는 설명의 직관성과 통일성을 위해 두 용어를 동의어로 취급하고 친숙한 <strong>‘상태(State)’</strong>라는 용어를 중심으로 전개해 나갑니다.</p>
 

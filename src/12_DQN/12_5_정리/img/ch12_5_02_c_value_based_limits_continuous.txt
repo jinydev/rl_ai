@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Dorothy and Tinny (friendly steampunk tin robot) look perplexed before two dilemmas: an infinitely smooth continuous steering wheel dial overwhelmed with countless tiny Q-labels making max_a impossible to search, and a Rock-Paper-Scissors card table showing deterministic actions are easily exploited, highlighting the need for stochastic policies.

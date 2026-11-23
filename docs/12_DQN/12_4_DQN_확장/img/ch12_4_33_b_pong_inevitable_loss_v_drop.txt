@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Dorothy and Jiny beside a retro Pong arcade screen where the ball has passed the paddle into the goal. In the Dueling network above, the State Value node V(s) immediately drops to -1.0 (Inevitable Defeat) and simultaneously updates all three action Q-values (Up, Down, Stay) downward at once without needing to try each one separately.

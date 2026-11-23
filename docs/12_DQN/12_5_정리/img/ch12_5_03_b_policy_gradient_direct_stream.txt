@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Professor Hojin Lee (youthful 40s, navy polo, thin metal glasses) gestures inspiringly toward a radiant glowing archway leading to Chapter 13. A sleek neural-network stream directly maps State s to a smooth Gaussian action probability curve π_θ(a|s) controlling continuous robotic actions, while Dorothy, Jiny, and Toto prepare to step through into Policy Gradients.

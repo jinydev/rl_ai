@@ -1,0 +1,2 @@
+Studio Ghibli 2D hand-drawn animation style, pure solid white background (#FFFFFF), NO background scenery, NO frames, NO borders, NO banners, 1:1 aspect ratio square.
+Professor Hojin Lee (youthful early 40s, smooth face, navy polo shirt, thin glasses), Dorothy holding a glowing lantern, and Toto gather around a cozy wooden study desk reviewing an illustrated roadmap scroll of Chapter 12: CartPole inverted pendulum, Experience Replay vault, Target Network ice lock, Atari Breakout pixels, and Rainbow DQN.
