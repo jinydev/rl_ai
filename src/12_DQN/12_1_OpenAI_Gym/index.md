@@ -151,21 +151,27 @@ pip install "gymnasium[classic-control]" pygame-ce
 
 #### 🪟 Windows (Windows 10/11) 환경 설정
 
-PowerShell 또는 명령 프롬프트(CMD)를 열고 다음 명령어를 실행합니다:
+Windows에서는 사용하는 터미널(PowerShell, CMD, Git Bash)에 따라 가상환경 활성화 명령어가 다릅니다. 아래에서 본인이 사용하는 터미널에 맞춰 순서대로 실행하세요.
 
-**1. PowerShell 사용 시:**
+> [!IMPORTANT]
+> **본 교재 실습 코드(`import gym`)와 `numpy<2` 버전 호환성 주의:**
+> 본 장의 예제 코드(`step01`~`step05`)는 `import gym` 및 `CartPole-v0` 5-튜플 API를 사용합니다.
+> OpenAI `gym==0.26.2`는 **NumPy 2.0 이상과 호환되지 않아**(`AttributeError: module 'numpy' has no attribute 'bool8'`) 반드시 **`"numpy<2"`**와 함께 설치해야 하며, `render_mode='human'` 화면 출력을 위해 **`pygame`**도 함께 설치해야 합니다.
+
+**1. PowerShell 사용 시 (권장):**
 ```powershell
-# 1. 파이썬 가상환경 생성
+# 1. 실습 폴더로 이동 후 파이썬 가상환경 생성
 python -m venv .venv
 
-# 2. 스크립트 실행 권한 허용 (최초 1회만 필요)
+# 2. 스크립트 실행 권한 허용 (현재 터미널 세션에 1회 적용)
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 
-# 3. 가상환경 활성화
+# 3. 가상환경 활성화 (프롬프트 앞에 (.venv) 표시 확인)
 .\.venv\Scripts\Activate.ps1
 
-# 4. 패키지 설치 (PowerShell에서도 따옴표 권장)
-pip install "gymnasium[classic-control]" pygame
+# 4. pip 최신화 및 필수 패키지 설치 (gym 0.26.2 + numpy<2 + pygame + gymnasium)
+python -m pip install --upgrade pip
+pip install "numpy<2" gym==0.26.2 pygame gymnasium
 ```
 
 ---
@@ -179,9 +185,49 @@ python -m venv .venv
 :: 2. 가상환경 활성화
 .venv\Scripts\activate.bat
 
-:: 3. 패키지 설치
-pip install "gymnasium[classic-control]" pygame
+:: 3. 필수 패키지 설치
+python -m pip install --upgrade pip
+pip install "numpy<2" gym==0.26.2 pygame gymnasium
 ```
+
+---
+
+**3. Git Bash (MINGW64) 사용 시:**
+
+Windows용 VS Code 기본 터미널로 Git Bash를 사용하는 경우, macOS/Linux의 `.venv/bin/activate`가 아니라 **`.venv/Scripts/activate`** 경로를 사용해야 합니다.
+
+```bash
+# 1. 가상환경 생성
+python -m venv .venv
+
+# 2. 가상환경 활성화 (Windows Git Bash 전용 경로)
+source .venv/Scripts/activate
+
+# 3. 필수 패키지 설치
+python -m pip install --upgrade pip
+pip install "numpy<2" gym==0.26.2 pygame gymnasium
+```
+
+---
+
+> [!WARNING]
+> **VS Code / 에디터 우측 상단 ▶(실행) 버튼 클릭 시 `ModuleNotFoundError: No module named 'gym'` 오류가 발생할 때:**
+> 가상환경을 만들어 두었더라도 에디터의 Python 인터프리터가 시스템 전역 파이썬(`Python312\python.exe`)으로 지정되어 있으면 ▶ 버튼 실행 시 `.venv` 패키지를 찾지 못합니다. 아래 두 가지 중 한 가지로 인터프리터를 연결해 주세요.
+>
+> 1. **명령 팔레트로 직접 선택 (즉시 적용)**:
+>    - `Ctrl + Shift + P` → **`Python: Select Interpreter`** 입력
+>    - 목록에서 프로젝트 내부의 **`.venv\Scripts\python.exe`** 선택
+> 2. **워크스페이스 고정 설정 (`.vscode/settings.json`)**:
+>    ```json
+>    {
+>        "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+>        "python.terminal.activateEnvironment": true
+>    }
+>    ```
+>    *(상위 폴더를 워크스페이스로 열었다면 `.venv`까지의 상대 경로를 지정하세요.)*
+> 3. **가상환경 활성화 없이 직접 실행하고 싶을 때**:
+>    - PowerShell: `.\.venv\Scripts\python.exe step01_make_env.py`
+>    - Git Bash: `./.venv/Scripts/python.exe step01_make_env.py`
 
 ---
 
@@ -190,14 +236,14 @@ pip install "gymnasium[classic-control]" pygame
 설치가 완료되면 파이썬 인터프리터에서 라이브러리가 정상적으로 불러와지는지 한 줄로 검증할 수 있습니다:
 
 ```bash
-# 1. 가상환경 활성화 상태(source .venv/bin/activate)인 경우 (또는 윈도우 환경)
-python -c "import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"
+# 1. 가상환경 활성화 상태인 경우 (Windows / macOS 공통)
+python -c "import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"
 
-# 2. 가상환경을 별도로 켜지 않고 로컬 가상환경(.venv)으로 바로 확인할 경우
-.venv/bin/python -c "import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"
+# 2. Windows에서 가상환경을 켜지 않고 .venv 파이썬으로 바로 확인할 경우
+.\.venv\Scripts\python.exe -c "import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"
 
-# 3. macOS 일반 시스템 터미널 (시스템 전역에 설치한 경우)
-python3 -c "import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"
+# 3. macOS/Linux에서 가상환경을 켜지 않고 .venv 파이썬으로 바로 확인할 경우
+.venv/bin/python -c "import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"
 ```
 
 ---
@@ -959,7 +1005,178 @@ OpenAI Gym에서는 `render_mode='human'` 설정 후 `env.render()`를 호출하
 
 ![그림 12-3](./img/fig-261.jpg)
 
-지금은 무작위 조작이라 10여 스텝 만에 허무하게 쓰러지지만, 12.2절부터 배울 DQN 심층 강화학습을 적용하면 인간 제어기를 뛰어넘어 200스텝(또는 500스텝) 내내 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격하게 됩니다.
+지금은 무작위 조작이라 10여 스텝 만에 허무하게 쓰러지지만, 강화학습을 통해 상태별 행동 가치를 학습시키면 200스텝 내내 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격할 수 있습니다.
+
+---
+
+#### [실습 5단계] 학습된 카트폴 에이전트: 200스텝 완벽 균형 유지 시연
+
+실습 4단계에서는 아무것도 배우지 못한 무작위 에이전트가 14스텝 만에 쓰러지는 한계를 확인했습니다.
+
+이번 5단계에서는 **강화학습 에이전트가 실제로 시행착오를 거치며 스스로 균형 잡는 법을 배워 200스텝 만점을 완주하는 전체 과정**을 직접 실행하고 눈으로 확인해 봅니다.
+
+> [!TIP]
+> **학습 원리 미리 보기**: 본격적인 심층 신경망(DQN)은 다음 12.2절에서 다루므로, 5단계에서는 앞선 10장에서 배운 **Q-러닝(Q-Learning)**을 카트폴의 4차원 연속 상태를 구간(Bin)으로 나눈 Q-테이블에 적용합니다. 외부 딥러닝 프레임워크 없이 **약 2초 만에 200스텝 마스터 수준으로 수렴**하며, 곧바로 실시간 시뮬레이터 창(`render_mode='human'`)으로 안정적인 균형 제어 장면을 시연합니다.
+
+* 실습 파일: [`step05_trained_cartpole.py`](./step05_trained_cartpole.py)
+
+```python
+import time
+import warnings
+import numpy as np
+import gym
+
+warnings.filterwarnings('ignore')
+
+
+class DiscretizedQLearningAgent:
+    """연속 상태 공간(4차원)을 구간(Bin)으로 나누어 Q-테이블을 학습하는 에이전트"""
+
+    def __init__(self, n_bins=(3, 3, 8, 12), action_size=2,
+                 alpha=0.2, gamma=0.99,
+                 epsilon=1.0, epsilon_min=0.01, epsilon_decay=0.985):
+        self.action_size = action_size
+        self.alpha = alpha
+        self.gamma = gamma
+        self.epsilon = epsilon
+        self.epsilon_min = epsilon_min
+        self.epsilon_decay = epsilon_decay
+
+        # 카트폴 4차원 상태 [위치, 속도, 막대 각도, 막대 각속도]의 구간 경계 설정
+        self.bins = [
+            np.linspace(-2.4, 2.4, n_bins[0] - 1),
+            np.linspace(-2.5, 2.5, n_bins[1] - 1),
+            np.linspace(-0.21, 0.21, n_bins[2] - 1),
+            np.linspace(-2.5, 2.5, n_bins[3] - 1),
+        ]
+        self.q_table = np.zeros(n_bins + (action_size,), dtype=np.float64)
+
+    def discretize(self, state):
+        """연속 실수 상태 벡터를 Q-테이블 인덱스 튜플로 변환"""
+        return tuple(int(np.digitize(state[i], self.bins[i])) for i in range(len(self.bins)))
+
+    def get_action(self, state, greedy=False):
+        """ε-탐욕 정책 또는 순수 탐욕 정책(greedy=True)으로 행동 선택"""
+        if not greedy and np.random.rand() < self.epsilon:
+            return int(np.random.choice(self.action_size))
+        s_idx = self.discretize(state)
+        return int(np.argmax(self.q_table[s_idx]))
+
+    def update(self, state, action, reward, next_state, terminated):
+        """벨만 최적 방정식 기반 Q-테이블 TD 갱신"""
+        s_idx = self.discretize(state)
+        next_s_idx = self.discretize(next_state)
+
+        next_max_q = 0.0 if terminated else float(np.max(self.q_table[next_s_idx]))
+        td_target = reward + self.gamma * next_max_q
+        td_error = td_target - self.q_table[s_idx][action]
+        self.q_table[s_idx][action] += self.alpha * td_error
+
+    def decay_epsilon(self):
+        """에피소드 종료 시 탐색률(ε) 점진적 감소"""
+        self.epsilon = max(self.epsilon_min, self.epsilon * self.epsilon_decay)
+```
+
+---
+
+에이전트를 학습(`train_agent`)한 뒤 탐욕 정책($\varepsilon=0$)으로 5회 정량 검증(`evaluate_agent`)을 수행하고, 마지막으로 `render_mode='human'` 화면에 200스텝 완주 장면을 실시간으로 띄웁니다(`render_demo`):
+
+```python
+if __name__ == '__main__':
+    # 1부: 350 에피소드 고속 학습 (초기 ~17스텝 -> 250 에피소드 이후 200스텝 마스터)
+    trained_agent = train_agent(episodes=350, seed=42)
+
+    # 2부: 탐욕 정책(ε=0)으로 5회 연속 200스텝 만점 검증
+    evaluate_agent(trained_agent, n_tests=5, seed=1000)
+
+    # 3부: 학습된 에이전트의 실시간 카트폴 200스텝 균형 유지 화면 시연
+    render_demo(trained_agent, seed=2025)
+```
+
+---
+
+#### 5단계 스크립트 실행 방법 및 학습·시연 출력 결과
+
+**실행 방법 (터미널 명령어):**
+```bash
+# 가상환경 활성화 상태에서 실행
+python step05_trained_cartpole.py
+
+# 또는 Windows PowerShell에서 가상환경 활성화 없이 직접 실행
+.\.venv\Scripts\python.exe step05_trained_cartpole.py
+```
+
+**실시간 터미널 출력 결과:**
+
+```text
+====================================================================
+ [실습 5단계 - 1부] 카트폴 Q-러닝 에이전트 고속 학습 시작
+====================================================================
+   에피소드    |   현재 점수    |   최근 25회 평균    |   탐색률(ε)   | 학습 상태
+--------------------------------------------------------------------
+   1/350  |     17.0 점 |         17.0 점 |    0.985  | 초기 탐색 단계
+  50/350  |     69.0 점 |         38.5 점 |    0.470  | 초기 탐색 단계
+ 100/350  |     46.0 점 |        114.5 점 |    0.221  | 균형 유지 학습 중...
+ 150/350  |    122.0 점 |        157.6 점 |    0.104  | 균형 유지 학습 중...
+ 200/350  |     87.0 점 |        174.1 점 |    0.049  | 균형 유지 학습 중...
+ 250/350  |    200.0 점 |        200.0 점 |    0.023  | ★ 200스텝 마스터 달성!
+ 300/350  |    200.0 점 |        200.0 점 |    0.011  | ★ 200스텝 마스터 달성!
+ 350/350  |    200.0 점 |        200.0 점 |    0.010  | ★ 200스텝 마스터 달성!
+--------------------------------------------------------------------
+[*] 학습 완료! (소요 시간: 1.78초, 최종 25회 평균: 200.0점 / 200점)
+====================================================================
+
+====================================================================
+ [실습 5단계 - 2부] 학습 완료 에이전트 정량 검증 (탐욕 정책 ε=0)
+====================================================================
+  - 검증 테스트 1/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 2/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 3/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 4/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 5/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+--------------------------------------------------------------------
+[*] 5회 검증 평균 점수: 200.0 점 / 200.0 점
+====================================================================
+
+====================================================================
+ [실습 5단계 - 3부] 학습된 에이전트 라이브 시각화 시연 (200스텝 도전)
+====================================================================
+  스텝   |   선택 행동    |    카트 위치     |    막대 각도     | 상태
+--------------------------------------------------------------------
+  1    |  1 (→ 우측)  |   +0.049   m |   +1.91   ° | 안정적 균형 유지
+  20   |  1 (→ 우측)  |   +0.068   m |   +1.33   ° | 안정적 균형 유지
+  40   |  0 (← 좌측)  |   +0.101   m |   -0.16   ° | 안정적 균형 유지
+  60   |  1 (→ 우측)  |   +0.096   m |   +1.05   ° | 안정적 균형 유지
+  80   |  1 (→ 우측)  |   +0.106   m |   +1.17   ° | 안정적 균형 유지
+ 100   |  0 (← 좌측)  |   +0.140   m |   -0.19   ° | 안정적 균형 유지
+ 120   |  1 (→ 우측)  |   +0.141   m |   +1.48   ° | 안정적 균형 유지
+ 140   |  0 (← 좌측)  |   +0.182   m |   -0.38   ° | 안정적 균형 유지
+ 160   |  1 (→ 우측)  |   +0.177   m |   +1.43   ° | 안정적 균형 유지
+ 180   |  1 (→ 우측)  |   +0.210   m |   +0.51   ° | 안정적 균형 유지
+ 200   |  0 (← 좌측)  |   +0.236   m |   -0.40   ° | ★ 성공 (200스텝 만점 완주!)
+--------------------------------------------------------------------
+[*] 라이브 시연 종료 요약:
+  - 총 버틴 스텝 수   : 200 스텝 (최대 200스텝)
+  - 총 획득 누적 보상 : 200.0 점 / 200.0 점
+  - 주행 중 최대 기울기: ±2.05° (허용 한계 ±12.00° 이내 안정 제어)
+  - 종료 사유         : 200스텝 완주 성공 (Truncated)
+====================================================================
+```
+
+---
+
+#### 실습 4단계(무작위) vs 실습 5단계(학습 완료) 비교 및 12.2절로의 연결
+
+| 비교 항목 | 실습 4단계 (`step04_random_agent.py`) | 실습 5단계 (`step05_trained_cartpole.py`) |
+| :--- | :--- | :--- |
+| **행동 결정 방식** | 50:50 무작위 동전 던지기 | Q-러닝으로 학습된 최적 정책 ($\arg\max_a Q(s,a)$) |
+| **평균 생존 스텝** | 약 14 ~ 22 스텝 | **200.0 스텝 (5/5회 연속 만점)** |
+| **주행 중 막대 기울기** | $\pm 12^\circ$ 초과하며 급격히 전도 | **최대 $\pm 2.05^\circ$ 이내 안정적 수직 유지** |
+| **에피소드 종료 사유** | `terminated=True` (과제 실패) | **`truncated=True` (200스텝 완주 성공)** |
+
+> [!NOTE]
+> **왜 다음 12.2절에서 DQN(신경망)이 필요한가?**
+> 실습 5단계에서는 4차원 연속 상태를 사람이 직접 `(3, 3, 8, 12)` 구간으로 쪼개어(이산화) Q-테이블을 만들었기 때문에 카트폴을 풀 수 있었습니다. 하지만 상태 차원이 수만 픽셀에 달하는 아타리 게임이나 로봇 제어에서는 구간 나누기 방식이 **차원의 저주(Curse of Dimensionality)**로 불가능해집니다. 다음 **12.2절**에서는 이산화 없이 연속 상태 벡터 그대로 심층 신경망에 입력해 학습하는 **DQN**의 핵심 기술을 구현합니다.
 
 ---
 

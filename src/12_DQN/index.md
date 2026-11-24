@@ -47,3 +47,5 @@ DQN은 비디오 게임과 같은 복잡한 문제도 훌륭하게 해결합니�
 - [12.3 DQN과 아타리](./12_3_DQN과_아타리/index.md)
 - [12.4 DQN 확장](./12_4_DQN_확장/index.md)
 - [12.5 정리](./12_5_정리/index.md)
+- [12.6 실전 예제: 마운틴 카(MountainCar)](./12_6_MountainCar_실전_예제/index.md)
+- [12.7 실전 예제: 아타리 벽돌깨기(Atari Breakout)](./12_7_Atari_Breakout_실전_예제/index.md)

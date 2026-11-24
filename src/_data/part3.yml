@@ -27,6 +27,10 @@ main:
         url: "/12_DQN/12_4_DQN_확장/"
       - title: "12.5 정리"
         url: "/12_DQN/12_5_정리/"
+      - title: "12.6 실전 예제: 마운틴 카(MountainCar)"
+        url: "/12_DQN/12_6_MountainCar_실전_예제/"
+      - title: "12.7 실전 예제: 아타리 벽돌깨기(Atari Breakout)"
+        url: "/12_DQN/12_7_Atari_Breakout_실전_예제/"
   - title: "13강 정책 경사법"
     url: "/13_정책_경사법/"
     subitems:

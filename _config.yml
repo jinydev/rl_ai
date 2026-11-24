@@ -45,3 +45,5 @@ exclude:
   - README.md
   - package.json
   - package-lock.json
+  - "**/.venv"
+  - "**/__pycache__"
