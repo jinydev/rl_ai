@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, jiny the cat, direct preference optimization dpo, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, slide frames, dark background, blurry, wrinkles, old man, beard, snu badge, duplicate cats, japanese text
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. Metaphor of Direct Preference Optimization (DPO). Dorothy in her blue denim overalls with 'STEM HERO' patch and red sneakers happily takes a sleek, shining golden shortcut bridge labeled 'DPO Direct Path', completely bypassing two bulky, complex machines labeled 'Reward Model' and 'Critic PPO'. Jiny the cat with scholar glasses waves enthusiastically from the shortcut bridge, holding a concise scroll containing the elegant closed-form DPO loss formula. Solid pure clean white background (#FFFFFF), 1:1 square ratio, isolated character cutout, subtle soft contact shadow, no slide borders.

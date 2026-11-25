@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and her companions are climbing upward along a smooth grassy hill that represents an objective function landscape J(theta) in reinforcement learning.
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt, brown oxfords) holds a glowing brass hiking staff adorned with an upward-pointing golden vector arrow, marching enthusiastically up the slope (symbolizing Gradient Ascent, maximizing expected return).
+At the peak of the hill stands a bright golden flag marked with a glowing star representing the optimal policy parameter.
+Jiny (scholarly tuxedo cat with tiny round wire glasses and crimson bell collar) carries a rolled-up topographic contour map showing reward heights, pointing with his paw toward the steepest ascent direction.
+Toto (fluffy white puppy with sky-blue bandana) bounds energetically ahead up the hill towards the summit.
+Floating golden contour lines and gentle upward arrow particles, cheerful adventure and climbing spirit, pure solid white background.

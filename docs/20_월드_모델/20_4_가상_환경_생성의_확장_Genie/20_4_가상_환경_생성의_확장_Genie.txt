@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are experiencing the magic of Google DeepMind Genie (Generative Interactive Environments).
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) sits on the floor drawing a retro 2D platformer level on a large sketchpad using colorful pastels.
+As soon as she lifts her crayon, the sketch magically rises into the air as a vibrant, fully playable 2.5D floating video game level with floating brick platforms, bouncing green slime creatures, and sparkling gold coins.
+Jiny (scholarly tuxedo cat with tiny round wire glasses and crimson bell collar) holds a classic two-button retro console gamepad, testing latent action controls as a miniature chibi sprite responds to his inputs.
+Toto (fluffy white puppy with sky-blue bandana) jumps with joy chasing a floating pixel coin.
+Magical sketch-to-game transformation, pure solid white background.

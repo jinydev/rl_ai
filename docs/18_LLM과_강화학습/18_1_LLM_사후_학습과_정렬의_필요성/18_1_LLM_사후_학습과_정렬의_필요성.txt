@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, professor hojin, 40s youthful korean professor, navy polo, llm alignment 3h principles, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, slide frames, dark background, blurry, deformed hands, japanese text, wrinkles, old man, snu logo, duplicate cats
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. Dorothy in blue denim overalls with 'STEM HERO' patch and red sneakers, alongside youthful Professor Hojin (early 40s, navy polo, wire glasses), gently guiding and training a cute, oversized, wild book-dragon creature (symbolizing an untamed raw pre-trained LLM) into a polite, well-mannered assistant. Floating above are three radiant crystal badges representing the 3H principles: 'Helpful', 'Honest', and 'Harmless'. Solid pure clean white background (#FFFFFF), 1:1 square ratio, isolated character cutout, subtle soft contact shadow, no slide borders.

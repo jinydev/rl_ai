@@ -1,0 +1,12 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Professor Hojin is demonstrating the mathematical magic of the Policy Gradient Theorem and the Log-Derivative Trick to an amazed Dorothy and Jiny.
+Professor Hojin (early 40s Korean male, round dark wire-rim glasses, navy blue collared polo shirt, grey slacks) stands beside a sleek glass blackboard. He draws a circle around the unknown environmental transition probability formula with glowing blue chalk, then taps it with a wooden wand—dissolving the complex environmental term into sparkling dust.
+Remaining in brilliant golden light on the board is the clean, elegant Score Function log-derivative formulation.
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) gasps in delight with hands clasped together, amazed that we do not need to model the environment to calculate the gradient.
+Jiny (scholarly tuxedo cat with round wire spectacles and red bell collar) inspects the clean score function formula through a magnifying glass with an expression of profound scholarly enlightenment.
+Toto (fluffy white puppy with sky-blue bandana) sits happily watching the glowing sparkles.
+Pure solid white background, high academic clarity and magical wonder.

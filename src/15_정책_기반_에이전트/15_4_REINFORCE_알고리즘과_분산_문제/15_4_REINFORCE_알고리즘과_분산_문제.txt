@@ -1,0 +1,10 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are analyzing the Monte Carlo return collection and high-variance challenge of the REINFORCE algorithm.
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) holds a woven wicker basket filled with colorful crystal return gems collected at the end of full episodes. Some gems are huge and heavy, while others are tiny, causing the basket to wobble precariously (representing the high variance of complete episode returns G_t).
+Jiny (scholarly tuxedo cat with tiny round wire glasses and crimson bell collar) stands on a wooden stool, placing a sleek brass balance beam (representing the Baseline b(s)) under the basket to stabilize and center it, subtracting the expected baseline to reduce variance without introducing bias.
+Toto (fluffy white puppy with sky-blue bandana) sits nearby, balancing a small silver weight on his nose with great concentration.
+Floating mathematical scales, sparkling gem shards, warm and engaging learning laboratory atmosphere, pure solid white background.

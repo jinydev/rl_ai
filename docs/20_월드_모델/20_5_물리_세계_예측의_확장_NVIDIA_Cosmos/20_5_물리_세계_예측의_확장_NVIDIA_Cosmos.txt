@@ -1,0 +1,13 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Professor Hojin and Dorothy in a futuristic Physical AI robotics lab showcasing the NVIDIA Cosmos foundation world model platform.
+Professor Hojin (early 40s Korean male, round dark wire glasses, navy blue collared polo shirt, grey slacks) and Dorothy (chibi girl, mint-green hoodie with STEM HERO patch, navy pleated skirt) stand together before three majestic glowing holographic pillars representing the three pillars of Cosmos:
+1. Predict: A floating physics sphere predicting collision trajectories.
+2. Transfer: A sleek dual-arm industrial robotic manipulator transferring a digital twin simulation pose to a physical mechanical arm.
+3. Reason: Floating multimodal perception diagrams understanding spatial physical reasoning.
+Jiny (scholarly tuxedo cat with spectacles and bell collar) inspects the robotic gripper's precision alignment.
+Toto (fluffy white puppy with sky-blue bandana) sits dutifully looking up at the gentle robot arm.
+Cutting-edge robotic engineering meets warm anime laboratory, pure solid white background.

@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are running their PyTorch REINFORCE algorithm on the classic CartPole-v1 simulation in an inventive high-tech workshop.
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) sits on a wooden stool in front of an open dual-monitor workstation, typing PyTorch code on a sleek keyboard with a bright, focused smile.
+On the holographic display in front of them, a miniature glowing physics simulation of CartPole-v1 is rendered: a small black wheeled cart moving smoothly along a horizontal track, keeping an upright golden pole perfectly balanced with a vibrant green halo of stability (reaching 500 steps).
+Jiny (scholarly tuxedo cat with tiny round wire glasses and red bell collar) monitors the live training loss curve on the secondary screen, raising his paw in celebration as the episode reward graph climbs steadily to the maximum.
+Toto (small fluffy white terrier with sky-blue bandana) sits happily beside the cartpole hologram, tilting his head in sync with the upright pole.
+Pure solid white background, cozy coding sanctuary atmosphere.

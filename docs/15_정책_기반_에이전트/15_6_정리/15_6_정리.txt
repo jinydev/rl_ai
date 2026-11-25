@@ -1,0 +1,12 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Celebratory chapter conclusion scene for Chapter 15 Policy-Based Agents.
+Dorothy, Professor Hojin, Jiny, and Toto celebrate mastering the foundational principles of Policy Gradients and REINFORCE.
+At the center, Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt, brown oxfords) proudly holds up a golden diploma scroll tied with a royal blue ribbon, featuring a shimmering stamp of a policy gradient vector.
+Professor Hojin (early 40s Korean male, round dark wire-rim glasses, navy blue collared polo shirt, grey slacks) gives a warm, proud thumbs-up and beams with encouragement.
+Jiny (scholarly tuxedo cat with tiny round wire glasses and red bell collar) sits gracefully beside them, adjusting his glasses with a contented, scholarly purr while holding an open textbook pointing forward to Chapter 16 Actor-Critic.
+Toto (fluffy white terrier puppy with sky-blue bandana) wears a tiny graduation mortarboard cap tilted playfully on his head, happily wagging his tail.
+Golden confetti particles, joyful academic achievement, pure solid white background.

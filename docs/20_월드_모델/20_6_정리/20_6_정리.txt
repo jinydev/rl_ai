@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+The grand finale celebration of the entire 20-chapter Reinforcement Learning Masterclass!
+At the center, Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt, brown oxfords) triumphantly raises a majestic golden championship trophy crowned with a glowing blue atom of intelligence.
+Professor Hojin (early 40s Korean male, round dark wire glasses, navy blue collared polo shirt, grey slacks) stands proudly beside her with a warm, beaming smile, his arm resting gently on a long parchment roadmap that illustrates the journey from Chapter 1 (Bandits & MDP) all the way to Chapter 20 (World Models).
+Jiny (scholarly tuxedo cat with round wire spectacles and red bell collar) proudly displays an open golden ledger symbolizing complete mastery of AI.
+Toto (small fluffy white terrier puppy with sky-blue bandana) playfully leaps amidst a shower of sparkling golden confetti, wearing a miniature golden laurel wreath.
+Overwhelming sense of accomplishment, warmth, intellectual adventure, and academic completion, pure solid white background.

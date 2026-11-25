@@ -1,0 +1,10 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are exploring how a generative world model acts as an internal simulator before taking real-world actions.
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) stands on a stepping stone before a misty lake. In her hands, she holds a glowing crystal orb that projects a holographic preview of the exact next stone and environmental ripple before she steps onto it.
+Jiny (scholarly tuxedo cat with tiny round wire spectacles and red bell collar) holds a brass quill and compares the mental simulation prediction with real sensor readings on a parchment scroll.
+Toto (fluffy white terrier puppy with sky-blue bandana) excitedly watches the projected holographic stone with tilted head and wagging tail.
+Floating light particles showing state-action transition arrows, serene magical exploration atmosphere, pure solid white background.

@@ -1,0 +1,12 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+At the center, Professor Hojin, Dorothy, Jiny the scholar cat, and Toto the puppy stand at a radiant crossroads of deep reinforcement learning.
+Professor Hojin (early 40s Korean male, neat parted black hair, round wire-rim spectacles, warm reassuring smile, navy blue collared polo shirt, grey slacks) points with a wooden teaching pointer toward a glowing golden path of direct policy probability.
+Dorothy (4.5-head cute chibi girl, warm beige skin, shoulder-length wavy chestnut-brown hair, bright curious dark eyes, mint-green hoodie with STEM HERO patch, navy pleated skirt, brown oxford shoes) looks up with excited sparkling eyes, holding a magical compass that points directly toward optimal actions without needing a Q-table.
+Jiny (scholarly tuxedo cat, black and white fur, tiny round gold spectacles, crimson collar with brass bell) sits neatly on the floor adjusting his glasses with one paw while holding an open notebook labeled with neat mathematical symbols.
+Toto (small pure-white fluffy terrier puppy, coal-black eyes and button nose, sky-blue bandana around neck) happily wags his tail looking at the glowing path.
+Floating between them are clean semi-transparent glowing blueprint diagrams showing a comparison between an indirect Q-value table and a direct neural policy network flowing from state to action probabilities.
+Whimsical magical sparkles, warm academic atmosphere, pure clean composition.

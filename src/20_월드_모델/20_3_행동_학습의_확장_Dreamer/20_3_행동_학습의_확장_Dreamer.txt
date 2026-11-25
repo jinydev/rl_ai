@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are adventuring inside a Minecraft voxel world powered by the Dreamer RSSM (Recurrent State-Space Model).
+Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt, brown oxfords) holds an iron pickaxe inside an illuminated cubic voxel cave, delightfully discovering an exquisite glowing blue diamond block deep underground.
+Beside her, a translucent holographic HUD screen hovers, showing Dreamer's latent imagination rollouts—imagining thousands of future mining steps without querying the real game engine.
+Jiny (scholarly tuxedo cat with round wire spectacles and red bell collar) sits on a cubic stone block holding an open blueprint of the RSSM latent state transitions.
+Toto (small fluffy white terrier with sky-blue bandana) happily digs at a voxel dirt block with his paws.
+Sparkling blue diamond light, cubic voxel charm, warm adventurous atmosphere, pure solid white background.

@@ -1,0 +1,13 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and her companions are demonstrating the iconic Ha & Schmidhuber 2018 World Models architecture (Vision VAE, Memory MDN-RNN, Controller).
+On the floor, three connected vintage brass projector lamps shine luminous beams:
+1. The first lamp (Vision VAE) compresses an intricate high-definition racetrack scene into a compact glowing green crystal node.
+2. The second lamp (Memory MDN-RNN) projects forward in time, showing a series of ghosted future car trajectories with probability clouds.
+3. In the center, Dorothy (4.5-head chibi girl, mint-green hoodie, navy pleated skirt) drives a cute miniature red vintage convertible car inside the dream projection itself, steering effortlessly through imagined curves.
+Toto (fluffy white terrier with sky-blue bandana) wears tiny leather driving goggles riding in the passenger seat.
+Jiny (scholarly tuxedo cat with round wire spectacles and red bell collar) adjusts the brass projector knobs with a master engineer expression.
+Pure solid white background, ingenious retro-futuristic steampunk invention aesthetic.

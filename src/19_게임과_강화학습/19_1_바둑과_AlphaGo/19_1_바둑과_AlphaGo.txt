@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, jiny the cat, scholar glasses, alphago mcts go board tree search, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, slide frames, dark background, blurry, deformed hands, japanese text, wrinkles, old man, snu logo, duplicate cats
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. Dorothy in blue denim overalls with 'STEM HERO' patch and red sneakers places a glowing black Go stone onto a wooden Go board (Goban). From the stone, radiant golden branch lines of a Monte Carlo Tree Search (MCTS) spread out into the air like a blossoming magical tree, showing multiple simulated future moves. Beside her, Jiny the scholar cat with tiny round glasses holds a glowing compass pointing to the most promising branch labeled 'Policy Network Guide'. Pure white background (#FFFFFF), 1:1 square ratio, isolated character cutout, subtle soft contact shadow, no slide borders.

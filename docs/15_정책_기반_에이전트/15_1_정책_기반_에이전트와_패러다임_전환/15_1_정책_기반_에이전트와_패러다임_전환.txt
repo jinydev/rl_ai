@@ -1,0 +1,11 @@
+Prompt:
+Masterpiece, best quality, Studio Ghibli 2D anime style, clean lines in dark espresso brown, soft watercolor and cel-shaded digital colors, vibrant and cozy aesthetic, high resolution, 1:1 aspect ratio square.
+Background: pure solid white background (#FFFFFF), absolute flat stark white void, isolated studio shot, no background scenery, no gradient, no frame, no borders, no text, no letters.
+
+Characters & Scene:
+Dorothy and Jiny are comparing two distinct paradigms of reinforcement learning decision-making at a high-tech wooden control desk.
+On the left side of the desk is a cumbersome, crowded wooden shelf overloaded with countless heavy cubic Q-value boxes (representing the limit of value-based methods in continuous space).
+On the right side of the desk, Dorothy (4.5-head chibi girl, wavy chestnut hair, mint-green hoodie with STEM HERO patch, navy pleated skirt) smoothly turns a sleek, luminous brass rotary dial that outputs a continuous smooth probability bell curve (representing continuous action space and stochastic Gaussian policy).
+Jiny (scholarly tuxedo cat with tiny round wire glasses and red bell collar) carefully balances a miniature robotic arm on the desk, demonstrating how continuous steering angles and joint torques flow seamlessly from the direct policy probability without needing to search through infinite actions.
+Toto (small fluffy white terrier with sky-blue bandana) playfully paws at a floating translucent Gaussian normal distribution curve.
+Warm, inventive, inspiring laboratory atmosphere, pure solid white background.

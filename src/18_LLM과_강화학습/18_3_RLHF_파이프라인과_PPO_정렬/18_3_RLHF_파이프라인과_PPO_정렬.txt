@@ -1,0 +1,5 @@
+dorothy, 1girl, 9 years old, 4.5 heads tall, chibi, wavy twin pigtails with beads, blue denim overalls with STEM HERO patch, striped shirt, red sneakers, jiny the cat, scholar glasses, rlhf ppo four models, ghibli 2d anime style, pure white background
+
+Negative: 3d, photorealistic, slide frames, dark background, blurry, extra fingers, japanese text, wrinkles, old man, snu logo, duplicate cats, watermark
+
+Studio Ghibli 2D anime style, 2D animation aesthetic, clean crisp dark espresso brown line art (#26211E), warm vibrant flat cel shading, storybook educational illustration. The 4-model orchestra of PPO-based RLHF. Dorothy stands like a maestro conductor holding a baton: pointing to four floating holographic musical instruments labeled 'Actor (Policy π_θ)', 'Critic (Value V_w)', 'Reference Model (π_ref)', and 'Reward Model (r_ψ)'. A gentle glowing spring connects Actor and Ref to illustrate the KL divergence penalty keeping them close. Jiny the cat watches in admiration with his notepad. Solid pure clean white background (#FFFFFF), 1:1 square aspect ratio, isolated cutout graphic, soft contact shadows, no slide borders.

@@ -714,6 +714,11 @@ def parse_slides_file(folder_path):
         no_code = re.sub(r"(?:^|\n)>?[ \t]*```[\s\S]*?(?:^|\n)>?[ \t]*```", "", p_content)
         lines = [l.strip() for l in no_code.split("\n") if l.strip()]
 
+        slide_h3 = ""
+        slide_h4 = ""
+        slide_h5 = ""
+        slide_title_lead = ""
+
         for l in lines:
             if re.match(r"^#\s+[^\d]", l) or l.startswith("# 0") or l.startswith("# 1") or l.startswith("# 2") or l.startswith("# 3") or l.startswith("# 4") or l.startswith("# 5") or l.startswith("# CHAPTER"):
                 curr_h1 = re.sub(r"^#\s*", "", l)
@@ -722,8 +727,24 @@ def parse_slides_file(folder_path):
                 curr_h3 = ""
             elif l.startswith("### "):
                 curr_h3 = re.sub(r"^###\s*", "", l)
+                slide_h3 = curr_h3
+            elif l.startswith("#### "):
+                slide_h4 = re.sub(r"^####\s*", "", l)
+            elif l.startswith("##### "):
+                slide_h5 = re.sub(r"^#####\s*", "", l)
 
-        subtitle = curr_h3 or curr_h2 or "개념 이해와 실습"
+        # 개별 슬라이드의 세부 소제목/콜아웃 추출 (####, #####, [!IMPORTANT], **강조제목** 등)
+        if not (slide_h3 or slide_h4 or slide_h5):
+            m_call = re.search(r">\s*\[!(?:IMPORTANT|NOTE|TIP|CAUTION|WARNING)\]\s*\n>\s*\*\*([^\*]+)\*\*", p_content)
+            if m_call:
+                slide_title_lead = m_call.group(1).rstrip(":")
+            elif lines:
+                m_bold = re.match(r"^\*\*([^\*]+)\*\*", lines[0])
+                if m_bold and len(m_bold.group(1)) < 60:
+                    slide_title_lead = m_bold.group(1).rstrip(":")
+
+        slide_specific = slide_h5 or slide_h4 or slide_h3 or slide_title_lead
+        subtitle = slide_specific or curr_h3 or curr_h2 or "개념 이해와 실습"
 
         # D. 이미지 및 캡션
         img_info = None
