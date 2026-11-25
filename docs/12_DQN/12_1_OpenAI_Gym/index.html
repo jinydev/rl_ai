@@ -492,6 +492,20 @@
                 </a>
               </li>
               
+              <li>
+                <a href="/12_DQN/12_6_MountainCar_실전_예제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.6 실전 예제: 마운틴 카(MountainCar)
+                </a>
+              </li>
+              
+              <li>
+                <a href="/12_DQN/12_7_Atari_Breakout_실전_예제/"
+                  class="bd-links-link d-inline-block rounded ">
+                  12.7 실전 예제: 아타리 벽돌깨기(Atari Breakout)
+                </a>
+              </li>
+              
             </ul>
           </div>
           
@@ -750,20 +764,28 @@ macOS의 최신 Homebrew 파이썬(Python 3.14) 환경에서는 기존 구형 <c
 
 <h4 id="-windows-windows-1011-환경-설정">🪟 Windows (Windows 10/11) 환경 설정</h4>
 
-<p>PowerShell 또는 명령 프롬프트(CMD)를 열고 다음 명령어를 실행합니다:</p>
+<p>Windows에서는 사용하는 터미널(PowerShell, CMD, Git Bash)에 따라 가상환경 활성화 명령어가 다릅니다. 아래에서 본인이 사용하는 터미널에 맞춰 순서대로 실행하세요.</p>
 
-<p><strong>1. PowerShell 사용 시:</strong></p>
-<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 파이썬 가상환경 생성</span><span class="w">
+<blockquote>
+  <p>[!IMPORTANT]
+<strong>본 교재 실습 코드(<code class="language-plaintext highlighter-rouge">import gym</code>)와 <code class="language-plaintext highlighter-rouge">numpy&lt;2</code> 버전 호환성 주의:</strong>
+본 장의 예제 코드(<code class="language-plaintext highlighter-rouge">step01</code>~<code class="language-plaintext highlighter-rouge">step05</code>)는 <code class="language-plaintext highlighter-rouge">import gym</code> 및 <code class="language-plaintext highlighter-rouge">CartPole-v0</code> 5-튜플 API를 사용합니다.
+OpenAI <code class="language-plaintext highlighter-rouge">gym==0.26.2</code>는 <strong>NumPy 2.0 이상과 호환되지 않아</strong>(<code class="language-plaintext highlighter-rouge">AttributeError: module 'numpy' has no attribute 'bool8'</code>) 반드시 <strong><code class="language-plaintext highlighter-rouge">"numpy&lt;2"</code></strong>와 함께 설치해야 하며, <code class="language-plaintext highlighter-rouge">render_mode='human'</code> 화면 출력을 위해 <strong><code class="language-plaintext highlighter-rouge">pygame</code></strong>도 함께 설치해야 합니다.</p>
+</blockquote>
+
+<p><strong>1. PowerShell 사용 시 (권장):</strong></p>
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 실습 폴더로 이동 후 파이썬 가상환경 생성</span><span class="w">
 </span><span class="n">python</span><span class="w"> </span><span class="nt">-m</span><span class="w"> </span><span class="nx">venv</span><span class="w"> </span><span class="o">.</span><span class="nf">venv</span><span class="w">
 
-</span><span class="c"># 2. 스크립트 실행 권한 허용 (최초 1회만 필요)</span><span class="w">
+</span><span class="c"># 2. 스크립트 실행 권한 허용 (현재 터미널 세션에 1회 적용)</span><span class="w">
 </span><span class="n">Set-ExecutionPolicy</span><span class="w"> </span><span class="nt">-ExecutionPolicy</span><span class="w"> </span><span class="nx">RemoteSigned</span><span class="w"> </span><span class="nt">-Scope</span><span class="w"> </span><span class="nx">Process</span><span class="w">
 
-</span><span class="c"># 3. 가상환경 활성화</span><span class="w">
+</span><span class="c"># 3. 가상환경 활성화 (프롬프트 앞에 (.venv) 표시 확인)</span><span class="w">
 </span><span class="o">.</span><span class="n">\.venv\Scripts\Activate.ps1</span><span class="w">
 
-</span><span class="c"># 4. 패키지 설치 (PowerShell에서도 따옴표 권장)</span><span class="w">
-</span><span class="n">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="s2">"gymnasium[classic-control]"</span><span class="w"> </span><span class="nx">pygame</span><span class="w">
+</span><span class="c"># 4. pip 최신화 및 필수 패키지 설치 (gym 0.26.2 + numpy&lt;2 + pygame + gymnasium)</span><span class="w">
+</span><span class="n">python</span><span class="w"> </span><span class="nt">-m</span><span class="w"> </span><span class="nx">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="nt">--upgrade</span><span class="w"> </span><span class="nx">pip</span><span class="w">
+</span><span class="n">pip</span><span class="w"> </span><span class="nx">install</span><span class="w"> </span><span class="s2">"numpy&lt;2"</span><span class="w"> </span><span class="nx">gym</span><span class="o">==</span><span class="mf">0.26</span><span class="o">.</span><span class="nf">2</span><span class="w"> </span><span class="n">pygame</span><span class="w"> </span><span class="nx">gymnasium</span><span class="w">
 </span></code></pre></div></div>
 
 <hr />
@@ -776,9 +798,58 @@ python -m venv .venv
 :: 2. 가상환경 활성화
 .venv\Scripts\activate.bat
 
-:: 3. 패키지 설치
-pip install "gymnasium[classic-control]" pygame
+:: 3. 필수 패키지 설치
+python -m pip install --upgrade pip
+pip install "numpy&lt;2" gym==0.26.2 pygame gymnasium
 </code></pre>
+
+<hr />
+
+<p><strong>3. Git Bash (MINGW64) 사용 시:</strong></p>
+
+<p>Windows용 VS Code 기본 터미널로 Git Bash를 사용하는 경우, macOS/Linux의 <code class="language-plaintext highlighter-rouge">.venv/bin/activate</code>가 아니라 <strong><code class="language-plaintext highlighter-rouge">.venv/Scripts/activate</code></strong> 경로를 사용해야 합니다.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 가상환경 생성</span>
+python <span class="nt">-m</span> venv .venv
+
+<span class="c"># 2. 가상환경 활성화 (Windows Git Bash 전용 경로)</span>
+<span class="nb">source</span> .venv/Scripts/activate
+
+<span class="c"># 3. 필수 패키지 설치</span>
+python <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+pip <span class="nb">install</span> <span class="s2">"numpy&lt;2"</span> <span class="nv">gym</span><span class="o">==</span>0.26.2 pygame gymnasium
+</code></pre></div></div>
+
+<hr />
+
+<blockquote>
+  <p>[!WARNING]
+<strong>VS Code / 에디터 우측 상단 ▶(실행) 버튼 클릭 시 <code class="language-plaintext highlighter-rouge">ModuleNotFoundError: No module named 'gym'</code> 오류가 발생할 때:</strong>
+가상환경을 만들어 두었더라도 에디터의 Python 인터프리터가 시스템 전역 파이썬(<code class="language-plaintext highlighter-rouge">Python312\python.exe</code>)으로 지정되어 있으면 ▶ 버튼 실행 시 <code class="language-plaintext highlighter-rouge">.venv</code> 패키지를 찾지 못합니다. 아래 두 가지 중 한 가지로 인터프리터를 연결해 주세요.</p>
+
+  <ol>
+    <li><strong>명령 팔레트로 직접 선택 (즉시 적용)</strong>:
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">Ctrl + Shift + P</code> → <strong><code class="language-plaintext highlighter-rouge">Python: Select Interpreter</code></strong> 입력</li>
+        <li>목록에서 프로젝트 내부의 <strong><code class="language-plaintext highlighter-rouge">.venv\Scripts\python.exe</code></strong> 선택</li>
+      </ul>
+    </li>
+    <li><strong>워크스페이스 고정 설정 (<code class="language-plaintext highlighter-rouge">.vscode/settings.json</code>)</strong>:
+      <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"python.defaultInterpreterPath"</span><span class="p">:</span><span class="w"> </span><span class="s2">"${workspaceFolder}/.venv/Scripts/python.exe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"python.terminal.activateEnvironment"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>      </div>
+      <p><em>(상위 폴더를 워크스페이스로 열었다면 <code class="language-plaintext highlighter-rouge">.venv</code>까지의 상대 경로를 지정하세요.)</em></p>
+    </li>
+    <li><strong>가상환경 활성화 없이 직접 실행하고 싶을 때</strong>:
+      <ul>
+        <li>PowerShell: <code class="language-plaintext highlighter-rouge">.\.venv\Scripts\python.exe step01_make_env.py</code></li>
+        <li>Git Bash: <code class="language-plaintext highlighter-rouge">./.venv/Scripts/python.exe step01_make_env.py</code></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
 
 <hr />
 
@@ -786,14 +857,14 @@ pip install "gymnasium[classic-control]" pygame
 
 <p>설치가 완료되면 파이썬 인터프리터에서 라이브러리가 정상적으로 불러와지는지 한 줄로 검증할 수 있습니다:</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 가상환경 활성화 상태(source .venv/bin/activate)인 경우 (또는 윈도우 환경)</span>
-python <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 1. 가상환경 활성화 상태인 경우 (Windows / macOS 공통)</span>
+python <span class="nt">-c</span> <span class="s2">"import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"</span>
 
-<span class="c"># 2. 가상환경을 별도로 켜지 않고 로컬 가상환경(.venv)으로 바로 확인할 경우</span>
-.venv/bin/python <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+<span class="c"># 2. Windows에서 가상환경을 켜지 않고 .venv 파이썬으로 바로 확인할 경우</span>
+.<span class="se">\.</span>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe <span class="nt">-c</span> <span class="s2">"import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"</span>
 
-<span class="c"># 3. macOS 일반 시스템 터미널 (시스템 전역에 설치한 경우)</span>
-python3 <span class="nt">-c</span> <span class="s2">"import gymnasium; print('Gymnasium 설치 성공! 버전:', gymnasium.__version__)"</span>
+<span class="c"># 3. macOS/Linux에서 가상환경을 켜지 않고 .venv 파이썬으로 바로 확인할 경우</span>
+.venv/bin/python <span class="nt">-c</span> <span class="s2">"import gym, numpy, pygame; print('설치 성공! gym:', gym.__version__, '/ numpy:', numpy.__version__, '/ pygame:', pygame.__version__)"</span>
 </code></pre></div></div>
 
 <hr />
@@ -1636,7 +1707,205 @@ macOS에서는 Python 2가 공식 제외된 이후 시스템 기본 명령어로
 
 <p><img src="./img/fig-261.jpg" alt="그림 12-3" /></p>
 
-<p>지금은 무작위 조작이라 10여 스텝 만에 허무하게 쓰러지지만, 12.2절부터 배울 DQN 심층 강화학습을 적용하면 인간 제어기를 뛰어넘어 200스텝(또는 500스텝) 내내 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격하게 됩니다.</p>
+<p>지금은 무작위 조작이라 10여 스텝 만에 허무하게 쓰러지지만, 강화학습을 통해 상태별 행동 가치를 학습시키면 200스텝 내내 막대가 단 한 번도 넘어지지 않는 놀라운 제어 성능을 목격할 수 있습니다.</p>
+
+<hr />
+
+<h4 id="실습-5단계-학습된-카트폴-에이전트-200스텝-완벽-균형-유지-시연">[실습 5단계] 학습된 카트폴 에이전트: 200스텝 완벽 균형 유지 시연</h4>
+
+<p>실습 4단계에서는 아무것도 배우지 못한 무작위 에이전트가 14스텝 만에 쓰러지는 한계를 확인했습니다.</p>
+
+<p>이번 5단계에서는 <strong>강화학습 에이전트가 실제로 시행착오를 거치며 스스로 균형 잡는 법을 배워 200스텝 만점을 완주하는 전체 과정</strong>을 직접 실행하고 눈으로 확인해 봅니다.</p>
+
+<blockquote>
+  <p>[!TIP]
+<strong>학습 원리 미리 보기</strong>: 본격적인 심층 신경망(DQN)은 다음 12.2절에서 다루므로, 5단계에서는 앞선 10장에서 배운 <strong>Q-러닝(Q-Learning)</strong>을 카트폴의 4차원 연속 상태를 구간(Bin)으로 나눈 Q-테이블에 적용합니다. 외부 딥러닝 프레임워크 없이 <strong>약 2초 만에 200스텝 마스터 수준으로 수렴</strong>하며, 곧바로 실시간 시뮬레이터 창(<code class="language-plaintext highlighter-rouge">render_mode='human'</code>)으로 안정적인 균형 제어 장면을 시연합니다.</p>
+</blockquote>
+
+<ul>
+  <li>실습 파일: <a href="./step05_trained_cartpole.py"><code class="language-plaintext highlighter-rouge">step05_trained_cartpole.py</code></a></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">time</span>
+<span class="kn">import</span> <span class="n">warnings</span>
+<span class="kn">import</span> <span class="n">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="n">gym</span>
+
+<span class="n">warnings</span><span class="p">.</span><span class="nf">filterwarnings</span><span class="p">(</span><span class="sh">'</span><span class="s">ignore</span><span class="sh">'</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">DiscretizedQLearningAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">연속 상태 공간(4차원)을 구간(Bin)으로 나누어 Q-테이블을 학습하는 에이전트</span><span class="sh">"""</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">n_bins</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">action_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span>
+                 <span class="n">epsilon</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">epsilon_min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">epsilon_decay</span><span class="o">=</span><span class="mf">0.985</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">action_size</span> <span class="o">=</span> <span class="n">action_size</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">=</span> <span class="n">alpha</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="n">epsilon</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">epsilon_min</span> <span class="o">=</span> <span class="n">epsilon_min</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">epsilon_decay</span> <span class="o">=</span> <span class="n">epsilon_decay</span>
+
+        <span class="c1"># 카트폴 4차원 상태 [위치, 속도, 막대 각도, 막대 각속도]의 구간 경계 설정
+</span>        <span class="n">self</span><span class="p">.</span><span class="n">bins</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.21</span><span class="p">,</span> <span class="mf">0.21</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">np</span><span class="p">.</span><span class="nf">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">n_bins</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">q_table</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="nf">zeros</span><span class="p">(</span><span class="n">n_bins</span> <span class="o">+</span> <span class="p">(</span><span class="n">action_size</span><span class="p">,),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="p">.</span><span class="n">float64</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">discretize</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">연속 실수 상태 벡터를 Q-테이블 인덱스 튜플로 변환</span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="nf">tuple</span><span class="p">(</span><span class="nf">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">digitize</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">self</span><span class="p">.</span><span class="n">bins</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nf">range</span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">bins</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">get_action</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">greedy</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">ε-탐욕 정책 또는 순수 탐욕 정책(greedy=True)으로 행동 선택</span><span class="sh">"""</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">greedy</span> <span class="ow">and</span> <span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="n">random</span><span class="p">.</span><span class="nf">choice</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">action_size</span><span class="p">))</span>
+        <span class="n">s_idx</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">discretize</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nf">int</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">argmax</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">q_table</span><span class="p">[</span><span class="n">s_idx</span><span class="p">]))</span>
+
+    <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">state</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">next_state</span><span class="p">,</span> <span class="n">terminated</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">벨만 최적 방정식 기반 Q-테이블 TD 갱신</span><span class="sh">"""</span>
+        <span class="n">s_idx</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">discretize</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">next_s_idx</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">discretize</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+
+        <span class="n">next_max_q</span> <span class="o">=</span> <span class="mf">0.0</span> <span class="k">if</span> <span class="n">terminated</span> <span class="k">else</span> <span class="nf">float</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nf">max</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">q_table</span><span class="p">[</span><span class="n">next_s_idx</span><span class="p">]))</span>
+        <span class="n">td_target</span> <span class="o">=</span> <span class="n">reward</span> <span class="o">+</span> <span class="n">self</span><span class="p">.</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">next_max_q</span>
+        <span class="n">td_error</span> <span class="o">=</span> <span class="n">td_target</span> <span class="o">-</span> <span class="n">self</span><span class="p">.</span><span class="n">q_table</span><span class="p">[</span><span class="n">s_idx</span><span class="p">][</span><span class="n">action</span><span class="p">]</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">q_table</span><span class="p">[</span><span class="n">s_idx</span><span class="p">][</span><span class="n">action</span><span class="p">]</span> <span class="o">+=</span> <span class="n">self</span><span class="p">.</span><span class="n">alpha</span> <span class="o">*</span> <span class="n">td_error</span>
+
+    <span class="k">def</span> <span class="nf">decay_epsilon</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">에피소드 종료 시 탐색률(ε) 점진적 감소</span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span> <span class="o">=</span> <span class="nf">max</span><span class="p">(</span><span class="n">self</span><span class="p">.</span><span class="n">epsilon_min</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">self</span><span class="p">.</span><span class="n">epsilon_decay</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<p>에이전트를 학습(<code class="language-plaintext highlighter-rouge">train_agent</code>)한 뒤 탐욕 정책($\varepsilon=0$)으로 5회 정량 검증(<code class="language-plaintext highlighter-rouge">evaluate_agent</code>)을 수행하고, 마지막으로 <code class="language-plaintext highlighter-rouge">render_mode='human'</code> 화면에 200스텝 완주 장면을 실시간으로 띄웁니다(<code class="language-plaintext highlighter-rouge">render_demo</code>):</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="sh">'</span><span class="s">__main__</span><span class="sh">'</span><span class="p">:</span>
+    <span class="c1"># 1부: 350 에피소드 고속 학습 (초기 ~17스텝 -&gt; 250 에피소드 이후 200스텝 마스터)
+</span>    <span class="n">trained_agent</span> <span class="o">=</span> <span class="nf">train_agent</span><span class="p">(</span><span class="n">episodes</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="c1"># 2부: 탐욕 정책(ε=0)으로 5회 연속 200스텝 만점 검증
+</span>    <span class="nf">evaluate_agent</span><span class="p">(</span><span class="n">trained_agent</span><span class="p">,</span> <span class="n">n_tests</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+    <span class="c1"># 3부: 학습된 에이전트의 실시간 카트폴 200스텝 균형 유지 화면 시연
+</span>    <span class="nf">render_demo</span><span class="p">(</span><span class="n">trained_agent</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">2025</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="5단계-스크립트-실행-방법-및-학습시연-출력-결과">5단계 스크립트 실행 방법 및 학습·시연 출력 결과</h4>
+
+<p><strong>실행 방법 (터미널 명령어):</strong></p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># 가상환경 활성화 상태에서 실행</span>
+python step05_trained_cartpole.py
+
+<span class="c"># 또는 Windows PowerShell에서 가상환경 활성화 없이 직접 실행</span>
+.<span class="se">\.</span>venv<span class="se">\S</span>cripts<span class="se">\p</span>ython.exe step05_trained_cartpole.py
+</code></pre></div></div>
+
+<p><strong>실시간 터미널 출력 결과:</strong></p>
+
+<div class="language-text highlighter-rouge"><div class="highlight"><pre class="highlight"><code>====================================================================
+ [실습 5단계 - 1부] 카트폴 Q-러닝 에이전트 고속 학습 시작
+====================================================================
+   에피소드    |   현재 점수    |   최근 25회 평균    |   탐색률(ε)   | 학습 상태
+--------------------------------------------------------------------
+   1/350  |     17.0 점 |         17.0 점 |    0.985  | 초기 탐색 단계
+  50/350  |     69.0 점 |         38.5 점 |    0.470  | 초기 탐색 단계
+ 100/350  |     46.0 점 |        114.5 점 |    0.221  | 균형 유지 학습 중...
+ 150/350  |    122.0 점 |        157.6 점 |    0.104  | 균형 유지 학습 중...
+ 200/350  |     87.0 점 |        174.1 점 |    0.049  | 균형 유지 학습 중...
+ 250/350  |    200.0 점 |        200.0 점 |    0.023  | ★ 200스텝 마스터 달성!
+ 300/350  |    200.0 점 |        200.0 점 |    0.011  | ★ 200스텝 마스터 달성!
+ 350/350  |    200.0 점 |        200.0 점 |    0.010  | ★ 200스텝 마스터 달성!
+--------------------------------------------------------------------
+[*] 학습 완료! (소요 시간: 1.78초, 최종 25회 평균: 200.0점 / 200점)
+====================================================================
+
+====================================================================
+ [실습 5단계 - 2부] 학습 완료 에이전트 정량 검증 (탐욕 정책 ε=0)
+====================================================================
+  - 검증 테스트 1/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 2/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 3/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 4/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+  - 검증 테스트 5/5: 버틴 스텝 = 200 스텝 (★ 200스텝 만점 완주!)
+--------------------------------------------------------------------
+[*] 5회 검증 평균 점수: 200.0 점 / 200.0 점
+====================================================================
+
+====================================================================
+ [실습 5단계 - 3부] 학습된 에이전트 라이브 시각화 시연 (200스텝 도전)
+====================================================================
+  스텝   |   선택 행동    |    카트 위치     |    막대 각도     | 상태
+--------------------------------------------------------------------
+  1    |  1 (→ 우측)  |   +0.049   m |   +1.91   ° | 안정적 균형 유지
+  20   |  1 (→ 우측)  |   +0.068   m |   +1.33   ° | 안정적 균형 유지
+  40   |  0 (← 좌측)  |   +0.101   m |   -0.16   ° | 안정적 균형 유지
+  60   |  1 (→ 우측)  |   +0.096   m |   +1.05   ° | 안정적 균형 유지
+  80   |  1 (→ 우측)  |   +0.106   m |   +1.17   ° | 안정적 균형 유지
+ 100   |  0 (← 좌측)  |   +0.140   m |   -0.19   ° | 안정적 균형 유지
+ 120   |  1 (→ 우측)  |   +0.141   m |   +1.48   ° | 안정적 균형 유지
+ 140   |  0 (← 좌측)  |   +0.182   m |   -0.38   ° | 안정적 균형 유지
+ 160   |  1 (→ 우측)  |   +0.177   m |   +1.43   ° | 안정적 균형 유지
+ 180   |  1 (→ 우측)  |   +0.210   m |   +0.51   ° | 안정적 균형 유지
+ 200   |  0 (← 좌측)  |   +0.236   m |   -0.40   ° | ★ 성공 (200스텝 만점 완주!)
+--------------------------------------------------------------------
+[*] 라이브 시연 종료 요약:
+  - 총 버틴 스텝 수   : 200 스텝 (최대 200스텝)
+  - 총 획득 누적 보상 : 200.0 점 / 200.0 점
+  - 주행 중 최대 기울기: ±2.05° (허용 한계 ±12.00° 이내 안정 제어)
+  - 종료 사유         : 200스텝 완주 성공 (Truncated)
+====================================================================
+</code></pre></div></div>
+
+<hr />
+
+<h4 id="실습-4단계무작위-vs-실습-5단계학습-완료-비교-및-122절로의-연결">실습 4단계(무작위) vs 실습 5단계(학습 완료) 비교 및 12.2절로의 연결</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">비교 항목</th>
+      <th style="text-align: left">실습 4단계 (<code class="language-plaintext highlighter-rouge">step04_random_agent.py</code>)</th>
+      <th style="text-align: left">실습 5단계 (<code class="language-plaintext highlighter-rouge">step05_trained_cartpole.py</code>)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>행동 결정 방식</strong></td>
+      <td style="text-align: left">50:50 무작위 동전 던지기</td>
+      <td style="text-align: left">Q-러닝으로 학습된 최적 정책 ($\arg\max_a Q(s,a)$)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>평균 생존 스텝</strong></td>
+      <td style="text-align: left">약 14 ~ 22 스텝</td>
+      <td style="text-align: left"><strong>200.0 스텝 (5/5회 연속 만점)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>주행 중 막대 기울기</strong></td>
+      <td style="text-align: left">$\pm 12^\circ$ 초과하며 급격히 전도</td>
+      <td style="text-align: left"><strong>최대 $\pm 2.05^\circ$ 이내 안정적 수직 유지</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>에피소드 종료 사유</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">terminated=True</code> (과제 실패)</td>
+      <td style="text-align: left"><strong><code class="language-plaintext highlighter-rouge">truncated=True</code> (200스텝 완주 성공)</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>[!NOTE]
+<strong>왜 다음 12.2절에서 DQN(신경망)이 필요한가?</strong>
+실습 5단계에서는 4차원 연속 상태를 사람이 직접 <code class="language-plaintext highlighter-rouge">(3, 3, 8, 12)</code> 구간으로 쪼개어(이산화) Q-테이블을 만들었기 때문에 카트폴을 풀 수 있었습니다. 하지만 상태 차원이 수만 픽셀에 달하는 아타리 게임이나 로봇 제어에서는 구간 나누기 방식이 <strong>차원의 저주(Curse of Dimensionality)</strong>로 불가능해집니다. 다음 <strong>12.2절</strong>에서는 이산화 없이 연속 상태 벡터 그대로 심층 신경망에 입력해 학습하는 <strong>DQN</strong>의 핵심 기술을 구현합니다.</p>
+</blockquote>
 
 <hr />
 

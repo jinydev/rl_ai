@@ -64,6 +64,7 @@ def get_chapter_badge(folder_path, raw_title):
         "09_몬테카를로법": "PART 09 · 몬테카를로법",
         "10_TD법": "PART 10 · TD법",
         "11_신경망과_Q_러닝": "PART 11 · 심층 강화학습",
+        "12_DQN": "PART 12 · DQN",
     }
 
     # 1. Match subchapters like 01.1, 2.3, 3_1, 5_4
@@ -299,16 +300,78 @@ class PresentationBuilder:
             p.alignment = PP_ALIGN.CENTER
             p.line_spacing = 1.3
 
-        r_box = slide.shapes.add_textbox(Inches(6.0), Inches(1.90), Inches(6.4), Inches(4.8))
-        tf = r_box.text_frame
-        tf.word_wrap = True
-        tf.vertical_anchor = MSO_ANCHOR.MIDDLE
-        tf.margin_left = 0
-        tf.margin_right = 0
-        tf.margin_top = 0
-        tf.margin_bottom = 0
+        r_left = Inches(6.0)
+        r_width = Inches(6.5)
+        top_y = Inches(1.90)
+        avail_h = Inches(4.90)
 
-        self._populate_text_frame(tf, body_text)
+        if code_block and code_block.strip():
+            raw_code_lines = code_block.strip().split("\n")
+            num_code_lines = len(raw_code_lines)
+            clean_intro = clean_math_and_symbols(body_text.strip()) if body_text else ""
+            clean_intro = re.sub(r">\s*\[!(?:IMPORTANT|NOTE|TIP|CAUTION|WARNING)\]", "", clean_intro)
+            clean_intro = re.sub(r"^>\s?", "", clean_intro, flags=re.MULTILINE).strip()
+            has_intro = bool(clean_intro)
+
+            if has_intro:
+                intro_len = len(clean_intro)
+                if intro_len > 120:
+                    text_h = Inches(1.30)
+                    font_sz = Pt(14)
+                elif intro_len > 60:
+                    text_h = Inches(0.95)
+                    font_sz = Pt(16)
+                else:
+                    text_h = Inches(0.55)
+                    font_sz = Pt(17)
+
+                t_box = slide.shapes.add_textbox(r_left, top_y, r_width, text_h)
+                tf = t_box.text_frame
+                tf.word_wrap = True
+                tf.margin_left = 0
+                tf.margin_right = 0
+                tf.margin_top = 0
+                tf.margin_bottom = 0
+                p = tf.paragraphs[0]
+                p.text = clean_intro
+                p.font.name = FONT_NAME
+                p.font.size = font_sz
+                p.font.color.rgb = COLOR_BODY
+                p.line_spacing = 1.3
+
+                code_top = top_y + text_h + Inches(0.12)
+                code_h = avail_h - text_h - Inches(0.12)
+            else:
+                code_top = top_y
+                code_h = avail_h
+
+            bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, r_left, code_top, r_width, code_h)
+            bg.fill.solid()
+            bg.fill.fore_color.rgb = COLOR_CODE_BG
+            bg.line.color.rgb = COLOR_CODE_BORDER
+            bg.line.width = Pt(1.0)
+
+            pad_h = Inches(0.25)
+            pad_v = Inches(0.20)
+            c_font_size = Pt(11.5) if num_code_lines <= 6 else (Pt(10.0) if num_code_lines <= 12 else Pt(8.5))
+
+            self._render_code_column(
+                slide, raw_code_lines,
+                r_left + pad_h, code_top + pad_v,
+                r_width - (pad_h * 2), code_h - (pad_v * 2),
+                c_font_size
+            )
+        else:
+            r_box = slide.shapes.add_textbox(r_left, top_y, r_width, avail_h)
+            tf = r_box.text_frame
+            tf.word_wrap = True
+            tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+            tf.margin_left = 0
+            tf.margin_right = 0
+            tf.margin_top = 0
+            tf.margin_bottom = 0
+
+            self._populate_text_frame(tf, body_text)
 
     def _render_wide_text_layout(self, slide, body_text):
         box = slide.shapes.add_textbox(Inches(1.0), Inches(1.90), Inches(11.333), Inches(4.8))
@@ -331,8 +394,23 @@ class PresentationBuilder:
         code_width = Inches(11.733)
 
         if has_intro:
-            intro_clean = clean_math_and_symbols(body_text.replace("\n", " ").strip())
-            if len(intro_clean) > 80:
+            intro_clean = clean_math_and_symbols(body_text.strip())
+            intro_clean = re.sub(r">\s*\[!(?:IMPORTANT|NOTE|TIP|CAUTION|WARNING)\]", "", intro_clean)
+            intro_clean = re.sub(r"^>\s?", "", intro_clean, flags=re.MULTILINE)
+            intro_clean = intro_clean.replace("\n", " ").strip()
+            intro_len = len(intro_clean)
+
+            if intro_len > 250:
+                intro_h = Inches(1.25)
+                code_top = Inches(3.15)
+                code_height = Inches(3.85)
+                font_sz = Pt(13.5)
+            elif intro_len > 120:
+                intro_h = Inches(0.85)
+                code_top = Inches(2.75)
+                code_height = Inches(4.25)
+                font_sz = Pt(15.0)
+            elif intro_len > 60:
                 intro_h = Inches(0.55)
                 code_top = Inches(2.45)
                 code_height = Inches(4.55)
@@ -603,20 +681,37 @@ def parse_slides_file(folder_path):
         else:
             p_content = p_raw
 
-        # B. 코드 블록 추출
-        code_matches = list(re.finditer(r"```(?:python|bash|text)?\n([\s\S]*?)```", p_content))
+        # B. 코드 블록 추출 (zsh, powershell, cmd, bash, python, text, 블록인용구 `> ``` 등 모든 언어 태그 완벽 지원)
+        raw_code_matches = list(re.finditer(r"(?:^|\n)>?[ \t]*```([^\n]*)\n([\s\S]*?)(?:^|\n)>?[ \t]*```", p_content))
         code_block = None
-        if code_matches:
-            if len(code_matches) == 1:
-                code_block = code_matches[0].group(1)
-            else:
-                main_code = code_matches[0].group(1).rstrip()
-                output_code = code_matches[1].group(1).strip()
-                out_lines = "\n".join(f"# {l}" for l in output_code.split("\n"))
-                code_block = f"{main_code}\n\n# --- [실행 결과] ---\n{out_lines}"
+        if raw_code_matches:
+            cleaned_blocks = []
+            for m in raw_code_matches:
+                lang = m.group(1).strip().lower()
+                raw_lines = m.group(2).split("\n")
+                cleaned_lines = [re.sub(r"^>\s?", "", l) for l in raw_lines]
+                cleaned_text = "\n".join(cleaned_lines).rstrip()
+                if cleaned_text:
+                    cleaned_blocks.append((lang, cleaned_text))
+
+            if len(cleaned_blocks) == 1:
+                code_block = cleaned_blocks[0][1]
+            elif len(cleaned_blocks) > 1:
+                parts_out = []
+                for idx, (lang, c_text) in enumerate(cleaned_blocks):
+                    if idx > 0 and lang in ("text", "output"):
+                        out_lines = "\n".join(f"# {l}" for l in c_text.split("\n"))
+                        parts_out.append(f"# --- [실행 결과] ---\n{out_lines}")
+                    elif idx > 0 and lang in ("bash", "zsh", "sh", "cmd", "powershell"):
+                        parts_out.append(f"# --- [터미널 명령어] ---\n{c_text}")
+                    elif idx > 0:
+                        parts_out.append(f"\n# ----------------------------------------\n{c_text}")
+                    else:
+                        parts_out.append(c_text)
+                code_block = "\n\n".join(parts_out)
 
         # C. 헤딩 파싱
-        no_code = re.sub(r"```[\s\S]*?```", "", p_content)
+        no_code = re.sub(r"(?:^|\n)>?[ \t]*```[\s\S]*?(?:^|\n)>?[ \t]*```", "", p_content)
         lines = [l.strip() for l in no_code.split("\n") if l.strip()]
 
         for l in lines:
